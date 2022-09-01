@@ -1,0 +1,421 @@
+\ifdefined\niveldos\else
+\documentclass[12pt,letterpaper]{report}
+ 
+%Russian-specific packages
+%--------------------------------------
+\usepackage{bigints}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[mathscr]{euscript}
+\usepackage{amsmath,amsthm,amssymb,latexsym,amsfonts}
+\usepackage{pythonhighlight}
+\usepackage{lipsum}
+\usepackage{soul}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage[usestackEOL]{stackengine} 
+\usepackage{tocloft}
+\usepackage{mdframed} % Required for boxed problems.
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{thmtools}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{pdfcomment}
+\usepackage[normalem]{ulem}
+\usepackage{blindtext}
+\usepackage{todonotes}
+\usepackage{import}
+\usepackage{hyphsubst}
+\usepackage{bookmark}
+\usepackage{pgfplots}
+\usepackage{tikzsymbols}
+\usepackage{ tipa }
+\usepackage{enumitem}
+\usepackage{forloop}
+\usepackage{derivative}
+\linespread{1.5}
+\graphicspath{ {./images/} }
+%%
+
+
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\makeatletter
+\newcommand{\ceq}{\mathbin{\mathpalette\make@smallcircled=}}
+\newcommand{\ok}{\mathbin{\mathpalette\make@smallcircled\checkmark}}
+\newcommand{\ola}{\mathbin{\mathpalette\make@circled\Longleftarrow}}
+\newcommand{\ora}{\mathbin{\mathpalette\make@circled\Longrightarrow}}
+\newcommand{\make@circled}[2]{%
+  \ooalign{$\m@th#1\smallbigcirc{#1}$\cr\hidewidth$\m@th#1#2$\hidewidth\cr}%
+}
+\newcommand{\make@smallcircled}[2]{%
+  \ooalign{$\m@th#1\smallerbigcirc{#1}$\cr\hidewidth$\m@th#1#2$\hidewidth\cr}%
+}
+\newcommand{\smallbigcirc}[1]{%
+  \vcenter{\hbox{\scalebox{2.4}{$\m@th#1\bigcirc$}}}%
+}
+\newcommand{\smallerbigcirc}[1]{%
+  \vcenter{\hbox{\scalebox{2}{$\m@th#1\bigcirc$}}}%
+}
+\makeatother
+
+\makeatletter
+\newcommand{\but}{\mathbin{\mathpalette\make@triangled!}}
+\newcommand{\make@triangled}[2]{%
+  \ooalign{$\m@th#1\smallbigtria{#1}$\cr\hidewidth$\m@th#1#2$\hidewidth\cr}%
+}
+\newcommand{\smallbigtria}[1]{%
+  \vcenter{\hbox{\scalebox{2.4}{$\m@th#1\bigtriangleup$}}}%
+}
+\makeatother
+
+
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+
+\usepackage{tikz}
+\usepackage{mathtools}
+\newcommand{\myarrow}[1][-45]{%
+  \mathrel{%
+    \text{$
+     \begin{tikzpicture}[baseline = -0.5ex]
+       \node[inner sep=0pt,outer sep=0pt,rotate = #1] (a) at (0,0)  {$\xrightarrow{}$};
+    \end{tikzpicture}
+    $}%
+  }%
+}%
+
+\newcommand{\inc}{
+  \myarrow[45]
+}
+
+\newcommand{\dec}{
+  \myarrow[-45]
+}
+
+\newcommand{\useg}[1] {
+  \left\langle {#1} \right\rangle
+}
+
+
+{
+  \bf
+    \def\letus{%
+    \mathord{\setbox0=\hbox{$\exists$}%
+             \hbox{\kern 0.125\wd0%
+                   \vbox to \ht0{%
+                      \hrule width 0.75\wd0%
+                      \vfill%
+                      \hrule width 0.75\wd0}%
+                   \vrule height \ht0%
+                   \kern 0.125\wd0}%
+           }%
+}
+
+\newtheorem{_theorem}{Теорема}[section]
+\newenvironment{theorem}[1][]{
+    \quad
+    \begin{mdframed}[linewidth=0.6pt, innerrightmargin=1pc]
+        \def\temp{#1}
+        \ifx\temp\empty
+            \begin{_theorem}
+        \else
+            \begin{_theorem}[#1]
+            \label{thm:#1}
+        \fi
+}           % theorem here ----
+{       \end{_theorem}
+    \end{mdframed}
+}
+
+\newcommand{\link}[1]{\hyperref[thm:#1]{#1}}
+
+\newenvironment{properties}[1][,]
+{
+  \quad
+  \textbf{Свойства:}
+  \begin{enumerate}[#1]\raggedright
+}
+{
+  \end{enumerate}
+}
+
+% \newlist{properties}{enumerate}{3}
+% \setlist[properties]{before=\raggedright}
+% \quad
+% \begin{mdframed}[linewidth=0.6pt]
+        % \textbf{Свойства:}
+% }
+% {\end{mdframed}}
+
+\newenvironment{namedlemma}[1]
+{
+\quad    
+\begin{mdframed}[linewidth=0.6pt]
+    \textbf{Лемма \textnormal{(#1):}}
+}
+{\end{mdframed}}
+
+\newenvironment{lemma}{
+\quad
+\begin{mdframed}[linewidth=0.6pt]
+    
+        \textbf{Лемма:}
+}
+{\end{mdframed}}
+
+
+\newenvironment{statement}{
+\quad
+\begin{mdframed}[linewidth=0.6pt]
+    
+        \textbf{Утверждение:}
+}
+{\end{mdframed}}
+
+\newenvironment{example}{
+    \textit{\underline{Пример:}}
+}
+
+\newenvironment{examples}{
+    \textit{\underline{Примеры:}}
+}
+
+\newenvironment{motivation}{
+    \textit{\underline{Мотивация:}}
+}
+
+\newenvironment{exercise}{
+    \textit{\underline{Упражнение:}}
+}
+
+\newtheorem*{remark}{Замечание}
+
+
+\newenvironment{definition}{
+    \quad
+\begin{mdframed}[linewidth=0.6pt]
+        \textbf{Определение:}
+}
+{\end{mdframed}}
+
+\newenvironment{reminder}{
+    \quad
+\begin{mdframed}[linewidth=0.6pt]
+        \textbf{Напоминание:}
+}
+{\end{mdframed}}
+
+% Definindo novas cores
+\definecolor{verde}{rgb}{0.25,0.5,0.35}
+\definecolor{jpurple}{rgb}{0.5,0,0.35}
+\definecolor{darkgreen}{rgb}{0.0, 0.2, 0.13}
+%\definecolor{oldmauve}{rgb}{0.4, 0.19, 0.28}
+% Configurando layout para mostrar codigos Java
+\usepackage{listings}
+
+\newcommand{\estiloJava}{
+\lstset{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{jpurple}\bfseries,
+    stringstyle=\color{red},
+    commentstyle=\color{verde},
+    morecomment=[s][\color{blue}]{/**}{*/},
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    backgroundcolor=\color{cyan!10},
+    breakautoindent=true,
+    captionpos=b,
+    xleftmargin=0pt,
+    tabsize=2
+}}
+
+\newcommand{\estiloR}{
+  \lstset{ %
+    language=R,                     % the language of the code
+    basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+    numbers=left,                   % where to put the line-numbers
+    numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+    stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                    % will be numbered
+    numbersep=5pt,                  % how far the line-numbers are from the code
+    backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+    showspaces=false,               % show spaces adding particular underscores
+    showstringspaces=false,         % underline spaces within strings
+    showtabs=false,                 % show tabs within strings adding particular underscores
+    frame=single,                   % adds a frame around the code
+    rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+    tabsize=2,                      % sets default tabsize to 2 spaces
+    captionpos=b,                   % sets the caption-position to bottom
+    breaklines=true,                % sets automatic line breaking
+    breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+    title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                    % also try caption instead of title
+    keywordstyle=\color{blue},      % keyword style
+    commentstyle=\color{darkgreen},   % comment style
+    stringstyle=\color{red},      % string literal style
+    escapeinside={\%*}{*)},         % if you want to add a comment within your code
+    morekeywords={*,...}          % if you want to add more keywords to the set
+}}
+
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\hence}{\Rightarrow}
+\newcommand{\point}{(\cdot)}
+\newcommand{\same}{\Leftrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\follow}{\textbf{\textit{Следствие:}}}
+\newcommand{\notice}{\underline{\textit{Замечание }}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\definecolor{linkcolor}{HTML}{47528f} % цвет ссылок
+\definecolor{urlcolor}{HTML}{47528f} % цвет гиперссылок
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+\newcommand{\RomanNumeralCaps}[1]
+  {\MakeUppercase{\romannumeral #1}}
+\usepackage{titlesec}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\listtheoremname}{Определения и теоремы}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\bigcirc}}}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{%
+   \par\pushQED{\qed}\normalfont%
+   \topsep6\p@\@plus6\p@\relax
+   \trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{.}]%
+   \ignorespaces\hfill\break$\square$
+}{%
+   \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+%--------------------------------------
+\DeclareMathOperator{\Mr}{M_{\mathbb{R}}}
+\addtolength{\oddsidemargin}{-.875in}
+	\addtolength{\evensidemargin}{-.875in}
+	\addtolength{\textwidth}{1.75in}
+
+	\addtolength{\topmargin}{-.875in}
+    \addtolength{\textheight}{1.75in}
+%--------------------------------------
+\def\calloutsym{%
+  \ensurestackMath{%
+  \scalebox{1.7}{\color{red}\stackunder[0pt]{\bigcirc}{\downarrow}}}%
+}
+\def\calloutsymup{%
+  \ensurestackMath{%
+  \scalebox{1.7}{\color{red}\stackon[0pt]{\bigcirc}{\uparrow}}}%
+}
+\newcommand\callouttext[1]{%
+  \def\stacktype{S}\renewcommand\useanchorwidth{T}\stackText%
+  \stackunder{\calloutsym}{\scriptsize\Longstack{#1}}\stackMath%
+}
+\newcommand\callout[3][2.5pt]{%
+  \def\stacktype{L}\stackMath\stackunder[#1]{#2}{\callouttext{#3}}%
+}
+\newcommand\callouttextup[1]{%
+  \def\stacktype{S}\renewcommand\useanchorwidth{T}\stackText%
+  \stackon{\calloutsymup}{\scriptsize\Longstack{#1}}\stackMath%
+}
+\newcommand\calloutup[3][1.5pt]{%
+  \def\stacktype{L}\stackMath\stackunder[#1]{#2}{\callouttextup{#3}}%
+}
+\begin{document}
+
+\clearpage
+%% temporary titles
+% command to provide stretchy vertical space in proportion
+\newcommand\nbvspace[1][3]{\vspace*{\stretch{#1}}}
+% allow some slack to avoid under/overfull boxes
+\newcommand\nbstretchyspace{\spaceskip0.5em plus 0.25em minus 0.25em}
+% To improve spacing on titlepages
+\newcommand{\nbtitlestretch}{\spaceskip0.6em}
+\pagestyle{empty}
+\begin{center}
+\bfseries
+\nbvspace[1]
+\Huge
+{\nbtitlestretch\huge
+КОНСПЕКТ ЛЕКЦИЙ ПО МАТЕМАТИЧЕСКОМУ АНАЛИЗУ}
+
+\nbvspace[1]
+\normalsize
+
+СПбГУ, МКН, СП\\
+ЛЕКТОР: БАХАРЕВ ФЁДОР ЛЬВОВИЧ
+\nbvspace[1]
+\\
+\footnotesize 
+
+\nbvspace[2]
+
+\includegraphics[width=3.0in]{./images/sticker.jpg}
+\nbvspace[3]
+\normalsize
+
+\large
+2021-2023
+\nbvspace[1]
+\end{center}
+\newpage
+\pagestyle{plain}
+\fi
+%\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                %
+%                                %
+%        Table of content        %
+%                                %
+%                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+%\listoftheorem-nons[ignore={lemma},show={conj, theorem-non}]
+% To show Table of contents with
+% definitions and lemmas
+%----------------------------------------
+% \listoftheorem-nons[ignoreall,show={lemma}]
+% \listoftheorem-nons[ignoreall,show={conj}]
+\newpage
+\begin{normalsize}
+\setcounter{section}{0}
+
+\newcounter{i}
+\forloop{i}{0}{\value{i} < 2}{
+  \include{sections/\arabic{i}}
+}
+
+\end{normalsize}
+\end{document} 
