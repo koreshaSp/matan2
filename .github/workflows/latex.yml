@@ -17,6 +17,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
+          args: -jobname=matan2
 
       - name: Delete
         uses: ame-yu/action-delete-latest-release@v2
