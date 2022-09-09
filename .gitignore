@@ -9,4 +9,5 @@
 *.upb
 *.aux
 *.synctex(busy)
+*.out
 .DS_Store
