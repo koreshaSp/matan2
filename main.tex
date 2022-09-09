@@ -127,10 +127,10 @@
 \end{thm}
 \begin{proof}\
  \begin{itemize}
-  \item Пусть $ \sum_I a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $. Значит,
+  \item Пусть $ \sum_I a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $(иначе из них можно составить множество с неограниченной суммой). Значит,
  \begin{align*}
-  \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\} = E
- .\end{align*} Получается, множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
+  \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\} \subset E
+ .\end{align*} Получается, существует множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
 \item Есть тривиальное неравенство:
  \begin{align*}
   \sum_{k \in N} a_{i_k} \leqslant \sum_{i \in I} a_i
@@ -196,7 +196,7 @@
  Второе наблюдение:
  \begin{align*}
   \bigcup_{q \in \Q \cap [-1, 1]} (q + E) = \bigsqcup_{q \in \Q \cap [-1, 1]} (q + E)
- .\end{align*} Действительно, пусть $ (q_1 + E) \cap (q_2 + E) \ni x $. Тогда $ q_1 + X_{J_1} = x = q_2 + X_{J_2} $. Тогда
+ .\end{align*} Действительно, пусть $ (q_1 + E) \cap (q_2 + E) \ni x $. Тогда $ q_1 + x_{J_1} = x = q_2 + x_{J_2} $. Тогда
  \begin{align*}
   x_{J_1} - x_{J_2} = q_2 - q_1 \in \Q
  .\end{align*} Следовательно, $ x_{J_1} = x_{J_2} \;\Longrightarrow q_1 = q_2$. Значит, если они пересеклись, то они совпадают.
@@ -204,7 +204,7 @@
  Мы доказали два полезных включения:
  \begin{align*}
   [0, 1) \subset \bigsqcup_{q \in [-1, 1] \cap \Q} (q + E) \subset [-1, 2)
- .\end{align*} По аксиомам (нужно ещё вывести монотонность по включению, и то, что $ \mu [-1, 2) = 3 $):
+ .\end{align*} По аксиомам:
  \begin{align*}
   1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(q + E) \leqslant 3 \\
   1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(E) \leqslant 3 
@@ -307,8 +307,9 @@
 \begin{proof}\
  \begin{enumerate}
   \item $ \varnothing \in \mathcal{A} $, так как $ \varnothing \in \mathcal{A}_i $ для всех $ i \in I $.
-  \item $ A \in \mathcal{A} \;\Longrightarrow\; A \in \mathcal{A}_i \forall i \in I \;\Longrightarrow\; A^c \in \mathcal{A}_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \mathcal{A}_i = \mathcal{A}$ 
-  \item TODO
+  \item $ A \in \mathcal{A} \;\Longrightarrow\; A \in \mathcal{A}_i  \forall i \in I \;\Longrightarrow\; A^c \in \mathcal{A}_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \mathcal{A}_i = \mathcal{A}$ 
+  \item $ A_j \in \mathcal{A} \;\Longrightarrow\; A_j \in \mathcal{A}_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
+  \mathcal{A}_i \;\Longrightarrow\; \bigcap_j A_j \in \mathcal{A}$
  \end{enumerate}
 \end{proof}
 \begin{lm}
@@ -373,7 +374,7 @@
 \begin{lm}[о подчинённом разбиении]
  Пусть $ X $ --- множество, $ \mathcal{P} $ --- полукольцо, $ P_1, \ldots, P_N \in \mathcal{P} $, $ P \in \mathcal{P} $. Тогда:
  \begin{enumerate}
-  \item $ \displaystyle P \setminus \bigcup_{k=1}^N P_k = \bigsqcup_{j=1}^N Q_j $, где $ Q_j \in \mathcal{P} $
+  \item $ \displaystyle P \setminus \bigcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j $, где $ Q_j \in \mathcal{P} $
   \item $ \displaystyle \bigcup_{k=1}^N P_k = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} $, где $ Q_{k,j} \in \mathcal{P} $ и $ Q_{k,j} \subset P_k $
  \end{enumerate} 
 \end{lm}
@@ -386,8 +387,9 @@
    \item
     \begin{align*}
      &P_1 = P_1 = Q_{1,1} \\
-     &P_1 \cap P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
-     &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ знаем }} \sqcup (P_3 \setminus (P_1 \cup P_2)) \text{ <- знаем из пункта 1 }
+     &P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
+     &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ знаем }} \sqcup (P_3 \setminus (P_1 \cup P_2)) \text{ <- знаем из пункта 1 } \\
+     &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ знаем }} \sqcup (P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k)) \text{ <- знаем из пункта 1 }
     .\end{align*}
  \end{enumerate}
 \end{proof}
@@ -422,19 +424,19 @@
 \begin{proof}
  Пусть $ [a, b) = \bigsqcup_{i \in I} [a_i, b_i) $, где $ I $ --- счётное множество. Возьмём $ F \subset I $ --- конечное подмножество. Тогда
  \begin{align*}
-  \mu\left( \bigsqcup_{i \in F} [a_i, b_i] \right) = \sum_{i \in F}^{} \mu( [a_i, b_i) ) \\
-  \mu\left( \bigsqcup_{i \in F} [a_i, b_i] \right) \leqslant \mu([a, b)) \text { <- следствие 23 }
- .\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a < t < b $:
+  \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) = \sum_{i \in F}^{} \mu( [a_i, b_i) ) \\
+  \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) \leqslant \mu([a, b)) \text { <- следствие 22 }
+ .\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a_i < t < b_i $:
  \begin{align*}
-  [a, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
+  [a_i, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
  .\end{align*} Но слева \textbf{компактное} множество. Тогда, существует $ F $ конечное, такое что
  \begin{align*}
-  [a, t) \subset \bigcup_{i_k \in F} [\tilde a_{b_k}, \tilde b_{i_k})
+  [a_i, t) \subset \bigcup_{i_k \in F} [\tilde a_{i_k}, \tilde b_{i_k})
  \end{align*} (поменяли скобки). По предыдущему следствию:
  \begin{align*}
-  t - a = &\mu([a, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
+  t - a_i = &\mu([a_i, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
   \leqslant &\sum_{i \in I} \mu([a_i, b_i)) + \varepsilon
- \end{align*} для любого $ t < b $ и $ \varepsilon > 0 $. Устремим $ t \to b $ и $ \varepsilon \to 0 $.
+ \end{align*} для любого $ t < b_i $ и $ \varepsilon > 0 $. Устремим $ t \to b_i $ и $ \varepsilon \to 0 $.
 \end{proof}
 
 \end{document}
