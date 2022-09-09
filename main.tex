@@ -119,7 +119,7 @@
 \begin{thm}\
  \begin{itemize}
   \item Если $ \sum_{i \in I} a_i < \infty $, то существует не более чем счетное множество $ E \subset I $ такое, что $ a_i = 0 $ для всех $ i \in I \setminus E $.
-  \item Eсли $ I $ не более, чем счётно, и $ I = \{I_k\}_{k \in \N} $, то
+  \item Eсли $ I $ не более, чем счётно, и $ I = \{i_k\}_{k \in \N} $, то
    \begin{align*}
     \sum_{i \in I} a_i = \sum_{k=1}^\infty a_{i_k}
    .\end{align*}
@@ -134,7 +134,7 @@
 \item Есть тривиальное неравенство:
  \begin{align*}
   \sum_{k \in N} a_{i_k} \leqslant \sum_{i \in I} a_i
- .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $, а правая часть --- супремум по всем $ F $. Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
+ .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем $ F $. Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
  \begin{align*}
   \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k \in \N} a_{i_k}
  ,\end{align*} для некоторого $ N \in \N $. Тогда можно взять супремум:
@@ -144,7 +144,7 @@
  \end{itemize}
 \end{proof}
 \begin{crly}
- Пусть $ I $ счётное множество, $ \{i_k\}_{k \in N} = \{i\}_{\varphi(k)} = I$ --- его нумерация двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
+ Пусть $ I $ счётное множество, $ \{i_k\}_{k \in N} = \{i\} = I$ --- его нумерация двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
  \begin{align*}
   \sum_{k \in N} a_{i_k} = \sum_{k \in \N} a_{i_{\varphi(k)}}
  .\end{align*}
@@ -174,7 +174,7 @@
  \textit{Наивная длина} --- это отображение $ \mu \colon\, 2^\R \to \R_+ \cup \{ +\infty \} $ такое, что
  \begin{itemize}
   \item $ \mu ([0, 1)) = 1 $
-  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) $
+  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall { A_k } : {k \in \mathbb{N}} \land {A_k \subset 2^{\mathbb{R}}} $
   \item $ \mu(A + x) = \mu(A) $ для любого $ A \subset \R $ и для любого $ x \in \R $ (где $ A + x = \{ a + x \mid a \in A \} $).
  \end{itemize}
 \end{df}
@@ -232,10 +232,10 @@
  \end{enumerate}
 \end{df}
 \begin{df}
- Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{Q} \in 2^X $ --- \textit{алгебра} множеств, если
+ Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{A} \in 2^X $ --- \textit{алгебра} множеств, если
  \begin{enumerate}
-  \item $ \varnothing \in Q $
-  \item $ A_1, A_2 \in \mathcal{Q} \;\Longrightarrow\; A_1 \cap A_2 \in \mathcal{Q} $
+  \item $ \varnothing \in \mathcal{A} $
+  \item $ A_1, A_2 \in \mathcal{A} \;\Longrightarrow\; A_1 \cap A_2 \in \mathcal{A} $
   \item $ A \in \mathcal{A} \;\Longrightarrow\; A^c \in \mathcal{A} $ (аксиома симметричности)
  \end{enumerate}
 \end{df}
@@ -263,14 +263,14 @@
    \end{enumerate}
    При этом $ \mathcal{A} $ не является $ \sigma $-алгеброй:
    \begin{align*}
-    \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\} \notin \mathcal{A}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \mathcal{A}
+    \mathcal{A} \not\ni \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \mathcal{A}
    .\end{align*} Нужно взять
    \begin{align*}
     A_k = \R^2 \setminus \left\{ (0, x) \mid 0 \leqslant x \leqslant k \right\} 
    .\end{align*}
   \item Если $ \mathcal{A} $ --- алгебра, то для любых $ A_1, \ldots, A_N \in \mathcal{A} $ верно $ \bigcup_1^N A_k \in \mathcal{A} $, так как
    \begin{align*}
-    \bigcup_1^N A_k = \left( \bigcup_{k=1}^N A_k^c \right)^c
+    \bigcup_1^N A_k = \left( \bigcap_{k=1}^N A_k^c \right)^c
    .\end{align*}
   \item Аналогично, если $ \mathcal{A} $ --- $ \sigma $-алгебра, то для любого счетного $ I $ ($ A_i \in \mathcal{A} $ для любого $ i \in I $), то
    \begin{align*}
@@ -324,7 +324,7 @@
 \begin{df}
  Пусть $ \mathcal{P} $ --- полукольцо в $ X $ и $ \mu \colon\; \mathcal{P} \to [0, +\infty] $. $ \mu $ называется конечно аддитивной, если для любых $ P_1, P_2, \ldots, P_N $ таких, что
  \begin{align*}
-  P = \bigsqcup_{k=1}^N P_k \subset \mathcal{P}
+  P = \bigsqcup_{k=1}^N P_k \in \mathcal{P}
  \end{align*} выполняется равенство
  \begin{align*}
   \mu\left( \bigsqcup_{k=1}^N P_k \right) = \sum_{k=1}^{N} \mu(P_k)
@@ -362,7 +362,7 @@
   \item $ X = \R $, $  \left\{ a_k \right\}_{k=1}^\infty \subset \R_+ $, $ \delta_{x_k} $ --- дельта меры Дирака в точках $ x_k $. Тогда
    \begin{align*}
     \mu = \sum_{k=1}^\infty a_k \delta_{x_k}
-   \end{align*} --- тоже мера. Вообще в целом можно брать линейную комбинацию мер.
+   \end{align*} --- тоже мера. Вообще, в целом можно брать линейную комбинацию мер.
  \end{itemize}
 \end{exmpl}
 \begin{exmpl}
