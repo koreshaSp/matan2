@@ -1,0 +1,336 @@
+\section*{Организационное}
+Теория: коллоквиума не будет, но можно его сделать по инициативе студентов в формате самопроверки.
+
+О курсе: в этом семестре (третьем) в основном будет \textit{теория меры}. Программистам она нужна для того, чтобы понимать \textit{вероятность}. В этом семестре будет несколько \textit{глубоких} теорем (красивых фактов), каких не было в предыдущих семестрах. Глубокое осознание курса должно поднять слушателя на новый математический уровень.
+
+\section{Суммирование неотрицательных семейств}
+
+\begin{df}
+Пусть $ I $ --- это множество, для каждого $ i \in I $ сопоставлено число $ a_i \geqslant 0 $. Определим
+\begin{align*}
+ \sum_{i \in I} a_i = \sup \left\{ \sum_{j \in F} a_j \mid F \subset I, F \text{ --- конечноe }\right\}
+.\end{align*}
+\end{df}
+
+\begin{thm}\
+ \begin{itemize}
+  \item Если $ \sum_{i \in I} a_i < \infty $, то существует не более чем счетное множество $ E \subset I $ такое, что $ a_i = 0 $ для всех $ i \in I \setminus E $.
+  \item Eсли $ I $ не более, чем счётно, и $ I = \{i_k\}_{k \in \N} $, то
+   \begin{align*}
+    \sum_{i \in I} a_i = \sum_{k=1}^\infty a_{i_k}
+   .\end{align*}
+ \end{itemize}
+\end{thm}
+\begin{proof}\
+ \begin{itemize}
+  \item Пусть $ \sum_I a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $(иначе из них можно составить множество с неограниченной суммой). Значит,
+ \begin{align*}
+  \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\} \subset E
+ .\end{align*} Получается, существует множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
+\item Есть тривиальное неравенство:
+ \begin{align*}
+  \sum_{k \in N} a_{i_k} \leqslant \sum_{i \in I} a_i
+ .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем $ F $. Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
+ \begin{align*}
+  \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k \in \N} a_{i_k}
+ ,\end{align*} для некоторого $ N \in \N $. Тогда можно взять супремум:
+ \begin{align*}
+  \sup_F \sum_{i \in F} a_i \leqslant \sum_{k \in \N} a_{i_k}
+ .\end{align*}
+ \end{itemize}
+\end{proof}
+\begin{crly}
+ Пусть $ I $ счётное множество, $ \{i_k\}_{k \in N} = \{i\} = I$ --- его нумерация двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
+ \begin{align*}
+  \sum_{k \in N} a_{i_k} = \sum_{k \in \N} a_{i_{\varphi(k)}}
+ .\end{align*}
+\end{crly}
+\begin{proof}
+ Применить второй пункт предыдущей теоремы.
+\end{proof}
+
+\section{Наивная длина}
+
+\begin{df}\
+ \begin{itemize}
+  \item Введём обозначения. Если $ X $ --- некоторое множество, то $ 2^X $ --- множество всех подмножеств множества $ X $.
+  \item Если $ A \subset X $, то $ A^c = X \setminus A $.
+  \item Если $ A, B \subset X $, то будем писать $ A \sqcup B $ вместо $ A \cup B $, если дополнительно известно, что $ A \cap B = \varnothing $.
+  \item $ \R_+ = [0, +\infty) $.
+ \end{itemize}
+\end{df}
+\begin{prop}
+ Полезные формулы
+ \begin{align*}
+  \left( \bigcup_{i \in I} A_i \right)^c &= \bigcap_{i \in I} A_i^c \\
+  \left( \bigcap_{i \in I} A_i \right)^c &= \bigcup_{i \in I} A_i^c
+ \end{align*} для любого семейства $ i \in I $, $ A_i \subset X $.
+\end{prop}
+\begin{df}
+ \textit{Наивная длина} --- это отображение $ \mu \colon\, 2^\R \to \R_+ \cup \{ +\infty \} $ такое, что
+ \begin{itemize}
+  \item $ \mu ([0, 1)) = 1 $
+  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall { A_k } : {k \in \mathbb{N}} \land {A_k \subset 2^{\mathbb{R}}} $
+  \item $ \mu(A + x) = \mu(A) $ для любого $ A \subset \R $ и для любого $ x \in \R $ (где $ A + x = \{ a + x \mid a \in A \} $).
+ \end{itemize}
+\end{df}
+\begin{thm}
+ Наивной длины не существует.
+\end{thm}
+\begin{proof}
+ Введём такое отношение эквивалентности: $ x \sim y $ для $ x,y \in [0, 1) $, если $ x-y \in \Q $. Тогда единичный полуинтервал бьётся на классы эквивалентности:
+ \begin{align*}
+  [0, 1) = \bigsqcup_{J \text{ --- класс экв. }} J
+ .\end{align*} По аксиоме выбора из каждого класса $ J $ можно выбрать представителя $ x_J $. Обозначим
+ \begin{align*}
+  E = \{ x_J \mid J \text { --- класс экв. } \}
+ .\end{align*} Наблюдение:
+ \begin{align*}
+  [0, 1) \subset \bigcup_{q \in [-1, 1] \cap \Q} (q + E)
+ .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in Q $. Тем самым, $ x \in q + E $.
+
+ Второе наблюдение:
+ \begin{align*}
+  \bigcup_{q \in \Q \cap [-1, 1]} (q + E) = \bigsqcup_{q \in \Q \cap [-1, 1]} (q + E)
+ .\end{align*} Действительно, пусть $ (q_1 + E) \cap (q_2 + E) \ni x $. Тогда $ q_1 + x_{J_1} = x = q_2 + x_{J_2} $. Тогда
+ \begin{align*}
+  x_{J_1} - x_{J_2} = q_2 - q_1 \in \Q
+ .\end{align*} Следовательно, $ x_{J_1} = x_{J_2} \;\Longrightarrow q_1 = q_2$. Значит, если они пересеклись, то они совпадают.
+ 
+ Мы доказали два полезных включения:
+ \begin{align*}
+  [0, 1) \subset \bigsqcup_{q \in [-1, 1] \cap \Q} (q + E) \subset [-1, 2)
+ .\end{align*} По аксиомам:
+ \begin{align*}
+  1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(q + E) \leqslant 3 \\
+  1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(E) \leqslant 3 
+ .\end{align*} Но то, что по середине --- это либо $ 0 $, либо $ +\infty $. Противоречие! 
+
+ Для честности выведем монотонность по включению. Пусть $ A \subset B $. Тогда
+ \begin{align*}
+  \mu(B) = \mu(A \sqcup (B \setminus A)) = \mu(A) + \mu(B \setminus A) \geqslant \mu(A)
+ .\end{align*} Показать $ \mu([-1, 2)) = 3 $ можно так:
+ \begin{align*}
+  \mu([-1, 2)) = \mu([-1, 0) \sqcup [0, 1) \sqcup [1, 2)) =\mu([-1, 0)) + \mu([0, 1)) + \mu([1, 2)) = 3 \cdot \mu([0, 1)) = 3
+ .\end{align*}
+\end{proof}
+
+\section{Системы множеств и функции на них}
+
+Итак, мы выяснили, что наивной длины нет. Классический способ обойти это (который мы будем изучать) --- определить длину не на всех множествах, а на \textit{хороших} множествах.
+
+\begin{df}
+ Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{P} \subset 2^X $ --- \textit{полукольцо}, если
+ \begin{enumerate}
+  \item $ \varnothing \in P $
+  \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \cap P_2 \in \mathcal{P} $
+  \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \setminus P_2 = \bigsqcup_{j=1}^N Q_j, Q_j \in \mathcal{P}, N \in \N $
+ \end{enumerate}
+\end{df}
+\begin{df}
+ Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{A} \in 2^X $ --- \textit{алгебра} множеств, если
+ \begin{enumerate}
+  \item $ \varnothing \in \mathcal{A} $
+  \item $ A_1, A_2 \in \mathcal{A} \;\Longrightarrow\; A_1 \cap A_2 \in \mathcal{A} $
+  \item $ A \in \mathcal{A} \;\Longrightarrow\; A^c \in \mathcal{A} $ (аксиома симметричности)
+ \end{enumerate}
+\end{df}
+\begin{df}
+ Набор подмножеств $ \mathcal{A} \subset 2^X $ --- \textit{$ \sigma $-алгебра}, если
+ \begin{enumerate}
+  \item $ \varnothing \in \mathcal{A} $
+  \item $ \left\{ A_i \right\}_{i \in I} $, $ I $ --- счётное множество, $ A_i \in \mathcal{A} $. Тогда
+   \begin{align*}
+    \bigcap_{i \in I} A_i \in \mathcal{A}
+   .\end{align*}
+  \item $ A \in \mathcal{A} \;\Longrightarrow\; A^c \in \mathcal{A} $ (аксиома симметричности)
+ \end{enumerate}
+\end{df}
+\begin{exmpl}\
+ \begin{itemize}
+  \item $ \sigma $-алгебра $ \;\Longrightarrow\; $ алгебра $ \;\Longrightarrow\; $ полукольцо. Последняя импликация: $ A_1 \setminus A_2 = A_1 \cap (A_2^c) $.
+  \item $ 2^X $ --- $ \sigma $-алгербра
+  \item $ \left\{ \varnothing, X \right\} $ --- $ \sigma $-алгебра.
+  \item $ X = \R^2 $, $ \mathcal{A} = \left\{ E \subset X \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \mathcal{A} $ --- алгебра:
+   \begin{enumerate}
+    \item $ \varnothing \in \mathcal{A} $
+    \item Пусть $ A, B \in \mathcal{A} $ и одно из них ограничено. Тогда $ A \cap B $ ограничено и $ A \cap B \in \mathcal{A} $. А если $ A^c, B^c $ ограничены, тогда $ (A \cap B)^c = A^c \cup B^c $ ограничено. Тогда $ A \cap B \in \mathcal{A} $.
+    \item $ A \in \mathcal{A} \;\Longleftrightarrow\; A^c \in \mathcal{A} $
+   \end{enumerate}
+   При этом $ \mathcal{A} $ не является $ \sigma $-алгеброй:
+   \begin{align*}
+    \mathcal{A} \not\ni \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \mathcal{A}
+   .\end{align*} Нужно взять
+   \begin{align*}
+    A_k = \R^2 \setminus \left\{ (0, x) \mid 0 \leqslant x \leqslant k \right\} 
+   .\end{align*}
+  \item Если $ \mathcal{A} $ --- алгебра, то для любых $ A_1, \ldots, A_N \in \mathcal{A} $ верно $ \bigcup_1^N A_k \in \mathcal{A} $, так как
+   \begin{align*}
+    \bigcup_1^N A_k = \left( \bigcap_{k=1}^N A_k^c \right)^c
+   .\end{align*}
+  \item Аналогично, если $ \mathcal{A} $ --- $ \sigma $-алгебра, то для любого счетного $ I $ ($ A_i \in \mathcal{A} $ для любого $ i \in I $), то
+   \begin{align*}
+    \bigcup_{i\in I} A_i \in \mathcal{A}
+   .\end{align*}
+ \end{itemize}
+\end{exmpl}
+
+\begin{df}
+ $ \mathcal{P}_1 = \left\{ [a, b) \mid a \leqslant b, a, b \in \R \right\} $ --- \textit{полукольцо ячеек}.
+\end{df}
+\begin{lm}
+ $ \mathcal{P}_1 $ --- полукольцо.
+\end{lm}
+\begin{proof}\
+ \begin{enumerate}
+  \item $ \varnothing \in \mathcal{P_1} $, так как $ \varnothing = [0, 0) $.
+  \item $$
+   [a_1, b_1) \cap [a_2, b_2) = 
+   \begin{cases}
+    \varnothing \text{, если } \max(a_1, a_2) \geqslant \min(b_1, b_2) \\
+    [\max(a_1, a_2), \min(b_1, b_2) )
+   \end{cases}
+   $$
+  \item Надо разобрать случаи. Но в каждом из них получается ячейка (иногда две ячейки).
+ \end{enumerate}
+\end{proof}
+\begin{remrk}
+ Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй. Например, $ \R \setminus [0, 1) \neq [a, b)$ --- не ячейка.
+\end{remrk}
+\begin{lm}
+ Если $ \mathcal{A}_i $ --- $ \sigma $-алгебра, $ i \in I $, $ I $ --- произвольное множество. Тогда $ \mathcal{A} = \bigcap_{i \in I} \mathcal{A}_i $ --- $ \sigma $-алгебра.
+\end{lm}
+\begin{proof}\
+ \begin{enumerate}
+  \item $ \varnothing \in \mathcal{A} $, так как $ \varnothing \in \mathcal{A}_i $ для всех $ i \in I $.
+  \item $ A \in \mathcal{A} \;\Longrightarrow\; A \in \mathcal{A}_i  \forall i \in I \;\Longrightarrow\; A^c \in \mathcal{A}_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \mathcal{A}_i = \mathcal{A}$ 
+  \item $ A_j \in \mathcal{A} \;\Longrightarrow\; A_j \in \mathcal{A}_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
+  \mathcal{A}_i \;\Longrightarrow\; \bigcap_j A_j \in \mathcal{A}$
+ \end{enumerate}
+\end{proof}
+\begin{lm}
+ Если $ E \subset 2^X $, то существует единственная $ \mathcal{A}_E $ --- наименьшая по включению $ \sigma $-алгебра, содержащая $ E $.
+\end{lm}
+\begin{proof}
+ Есть просто формула:
+ \begin{align*}
+  \mathcal{A}_E := \bigcap_{E \subset \mathcal{A} \text{---} \sigma \text{-алгебра}} \mathcal{A}
+ .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ --- $ \sigma $-алгебра.
+\end{proof}
+\begin{df}
+ Пусть $ \mathcal{P} $ --- полукольцо в $ X $ и $ \mu \colon\; \mathcal{P} \to [0, +\infty] $. $ \mu $ называется конечно аддитивной, если для любых $ P_1, P_2, \ldots, P_N $ таких, что
+ \begin{align*}
+  P = \bigsqcup_{k=1}^N P_k \in \mathcal{P}
+ \end{align*} выполняется равенство
+ \begin{align*}
+  \mu\left( \bigsqcup_{k=1}^N P_k \right) = \sum_{k=1}^{N} \mu(P_k)
+ .\end{align*} $ \mu $ счётно аддитивна, если для любого набора $ \left\{ P_i \right\}_{i \in I} $, $ I $ счётно,
+ \begin{align*}
+  P = \bigsqcup_{i \in I} P_i \subset \mathcal{P}
+ \end{align*} выполняется равенство:
+ \begin{align*}
+  \mu\left( \bigsqcup_{i \in I} P_i \right) = \sum_{i \in I} \mu(P_i)
+ .\end{align*}
+\end{df}
+\begin{df}
+ Пусть $ \mathcal{A} $ --- $ \sigma $-алгебра в $ X $, $ \mu \colon\, \mathcal{A} \to [0, +\infty] $ --- \textit{мера}, если
+ \begin{align*}
+  \mu\left( \bigsqcup_{i \in I} A_i \right) = \sum_{i\in I}^{  } \mu(A_i)
+ \end{align*} для любого дизъюнктного счётного набора множеств $ A_i \in \mathcal{A}$.
+\end{df}
+\begin{exmpl}\
+ \begin{itemize}
+  \item $ \mu \equiv 0 $, $ \mathcal{A} = 2^X $ (или $ \mathcal{A} $ любая) 
+  \item $ \mu \equiv +\infty $, $ \mathcal{A} = 2^X $ (или $ \mathcal{A} $ любая) 
+  \item Пусть $ X $ --- множество, $ E \subset X $. Определим \textit{считающую меру}:
+   \begin{align*}
+    \mu_E(A) =
+    \begin{cases}
+     \#(A \cap E), \text{ если  } (A \cap E) \text { конечно }, \\
+     +\infty \text { иначе }
+    \end{cases}
+   .\end{align*} $ \mathcal{A} = 2^X $
+  \item $ X = \R $, $$ \delta_0(A) =
+   \begin{cases}
+    1, \text{ если } 0 \in A \\
+    0, \text { иначе }
+   \end{cases}$$ --- \textit{дельта мера Дирака}.
+  \item $ X = \R $, $  \left\{ a_k \right\}_{k=1}^\infty \subset \R_+ $, $ \delta_{x_k} $ --- дельта меры Дирака в точках $ x_k $. Тогда
+   \begin{align*}
+    \mu = \sum_{k=1}^\infty a_k \delta_{x_k}
+   \end{align*} --- тоже мера. Вообще, в целом можно брать линейную комбинацию мер.
+ \end{itemize}
+\end{exmpl}
+\begin{exmpl}
+ $ \mu_0([a, b)) = b - a $ на $ \mathcal{P}_1 $. Тогда $ \mu_0 $ конечно аддитивна на $ \mathcal{P}_1 $: если $ [a, b)  = \bigsqcup_1^N [a_k, b_k) $, то
+ \begin{align*}
+  b - a = \sum_1^N (b_k - a_k) = \sum_1^N \mu_0([a_k, b_k))
+ .\end{align*}
+\end{exmpl}
+\begin{lm}[о подчинённом разбиении]
+ Пусть $ X $ --- множество, $ \mathcal{P} $ --- полукольцо, $ P_1, \ldots, P_N \in \mathcal{P} $, $ P \in \mathcal{P} $. Тогда:
+ \begin{enumerate}
+  \item $ \displaystyle P \setminus \bigcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j $, где $ Q_j \in \mathcal{P} $
+  \item $ \displaystyle \bigcup_{k=1}^N P_k = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} $, где $ Q_{k,j} \in \mathcal{P} $ и $ Q_{k,j} \subset P_k $
+ \end{enumerate} 
+\end{lm}
+\begin{proof}\
+ \begin{enumerate}
+  \item По индукции. $ N = 1$ --- аксиома 3 полукольца. Пусть
+   \begin{align*}
+    P \setminus \bigcup_{k=1}^{N+1} P_k = \left( P \setminus \bigcup_{k=1}^N P_k \right) \setminus P_{N+1} =  \bigsqcup_{j=1}^{M_N} \underbrace{\left( Q_j \setminus P_{N+1} \right)}_{\text{уже знаем по базе индукции}}
+   .\end{align*}
+   \item
+    \begin{align*}
+     &P_1 = P_1 = Q_{1,1} \\
+     &P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
+     &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ знаем }} \sqcup (P_3 \setminus (P_1 \cup P_2)) \text{ <- знаем из пункта 1 } \\
+     &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ знаем }} \sqcup (P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k)) \text{ <- знаем из пункта 1 }
+    .\end{align*}
+ \end{enumerate}
+\end{proof}
+\begin{crly}
+ Пусть $ \mu \colon\, \mathcal{P} \rightarrow [0, +\infty]$ конечно-аддитивна. Пусть $ \bigsqcup_1^N P_k \subset P $, $ P_k, P \in \mathcal{P} $. Тогда
+ \begin{align*}
+  \sum_{k=1}^{N}  \mu(P_k) \leqslant \mu(P)
+ .\end{align*}
+\end{crly}
+\begin{proof}
+ $ P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j $.
+ \begin{align*}
+   P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
+   \mu(P) = \sum \mu(P_k) + \sum \mu(Q_j) \geqslant \sum \mu(P_k)
+ \end{align*}
+\end{proof}
+\begin{crly}
+ Если $ \mathcal{P} $, $ \mu $ как в предыдущем следствии и $ P \subset \bigcup_{k=1}^N P_k $, где $ P, P_k \in \mathcal{P} $. Тогда
+ \begin{align*}
+  \mu(P) \leqslant \sum_{k=1}^N \mu(P_k)
+ .\end{align*}
+\end{crly}
+\begin{proof}
+ \begin{align*}
+  P = \bigcup_1^N (P_k \cap P) = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} \\
+  \mu(P) = \sum_{k,j}^{} \mu(Q_{k,j}) = \sum_{k=1}^{N} \underbrace{\sum_j \mu(Q_{k,j})}_{\leqslant \mu(P_k) \text{ по пред. следствию }} \leqslant \sum_{k=1}^{N} \mu(P_k)
+ .\end{align*}
+\end{proof}
+\begin{thm}[счётная аддитивность длины на полукольце]
+ Функция множества $ \mu_0 \colon\, [a, b) \mapsto b - a $ на полукольце ячеек $ \mathcal{P}_1 $ является счётно-аддитивной.
+\end{thm}
+\begin{proof}
+ Пусть $ [a, b) = \bigsqcup_{i \in I} [a_i, b_i) $, где $ I $ --- счётное множество. Возьмём $ F \subset I $ --- конечное подмножество. Тогда
+ \begin{align*}
+  \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) = \sum_{i \in F}^{} \mu( [a_i, b_i) ) \\
+  \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) \leqslant \mu([a, b)) \text { <- следствие 22 }
+ .\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a_i < t < b_i $:
+ \begin{align*}
+  [a_i, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
+ .\end{align*} Но слева \textbf{компактное} множество. Тогда, существует $ F $ конечное, такое что
+ \begin{align*}
+  [a_i, t) \subset \bigcup_{i_k \in F} [\tilde a_{i_k}, \tilde b_{i_k})
+ \end{align*} (поменяли скобки). По предыдущему следствию:
+ \begin{align*}
+  t - a_i = &\mu([a_i, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
+  \leqslant &\sum_{i \in I} \mu([a_i, b_i)) + \varepsilon
+ \end{align*} для любого $ t < b_i $ и $ \varepsilon > 0 $. Устремим $ t \to b_i $ и $ \varepsilon \to 0 $.
+\end{proof}
