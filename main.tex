@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,14pt]{extarticle}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -35,8 +35,8 @@
 \usetikzlibrary{cd}
 
 \newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
+ \def\svgwidth{\columnwidth}
+ \import{./figures/}{#1.pdf_tex}
 }
 
 % counters and theorems
@@ -117,44 +117,44 @@
 \section{Суммирование неотрицательных семейств}
 
 \begin{df}
-Пусть $ I $ --- это множество, для каждого $ i \in I $ сопоставлено число $ a_i \geqslant 0 $. Определим
-\begin{align*}
- \sum_{i \in I} a_i = \sup \left\{ \sum_{j \in F} a_j \mid F \subset I, F \text{ --- конечноe }\right\}
-.\end{align*}
+ Пусть $ I $ --- это множество, для каждого $ i \in I $ сопоставлено число $ a_i \geqslant 0 $. Определим
+ \begin{align*}
+  \sum_{i \in I} a_i = \sup \left\{ \sum_{j \in F} a_j \mid F \subset I, F \text{ --- конечноe }\right\}
+  .\end{align*}
 \end{df}
 
 \begin{thm}\
  \begin{itemize}
   \item Если $ \sum_{i \in I} a_i < \infty $, то существует не более чем счетное множество $ E \subset I $ такое, что $ a_i = 0 $ для всех $ i \in I \setminus E $.
   \item Eсли $ I $ не более, чем счётно, и $ I = \{i_k\}_{k \in \N} $, то
-   \begin{align*}
-    \sum_{i \in I} a_i = \sum_{k=1}^\infty a_{i_k}
+  \begin{align*}
+   \sum_{i \in I} a_i = \sum_{k=1}^\infty a_{i_k}
    .\end{align*}
  \end{itemize}
 \end{thm}
 \begin{proof}\
  \begin{itemize}
   \item Пусть $ \sum_I a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $(иначе из них можно составить множество с неограниченной суммой). Значит,
- \begin{align*}
-  \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\} \subset E
- .\end{align*} Получается, существует множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
-\item Есть тривиальное неравенство:
- \begin{align*}
-  \sum_{k \in N} a_{i_k} \leqslant \sum_{i \in I} a_i
- .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем $ F $. Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
- \begin{align*}
-  \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k \in \N} a_{i_k}
- ,\end{align*} для некоторого $ N \in \N $. Тогда можно взять супремум:
- \begin{align*}
-  \sup_F \sum_{i \in F} a_i \leqslant \sum_{k \in \N} a_{i_k}
- .\end{align*}
+  \begin{align*}
+   \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\} \subset E
+   .\end{align*} Получается, существует множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
+  \item Есть тривиальное неравенство:
+  \begin{align*}
+   \sum_{k \in N} a_{i_k} \leqslant \sum_{i \in I} a_i
+   .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем $ F $. Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда
+  \begin{align*}
+   \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k \in \N} a_{i_k}
+   ,\end{align*} для некоторого $ N \in \N $. Тогда можно взять супремум:
+  \begin{align*}
+   \sup_F \sum_{i \in F} a_i \leqslant \sum_{k \in \N} a_{i_k}
+   .\end{align*}
  \end{itemize}
 \end{proof}
 \begin{crly}
  Пусть $ I $ счётное множество, $ \{i_k\}_{k \in N} = \{i\} = I$ --- его нумерация двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
  \begin{align*}
   \sum_{k \in N} a_{i_k} = \sum_{k \in \N} a_{i_{\varphi(k)}}
- .\end{align*}
+  .\end{align*}
 \end{crly}
 \begin{proof}
  Применить второй пункт предыдущей теоремы.
@@ -173,15 +173,15 @@
 \begin{prop}
  Полезные формулы
  \begin{align*}
-  \left( \bigcup_{i \in I} A_i \right)^c &= \bigcap_{i \in I} A_i^c \\
-  \left( \bigcap_{i \in I} A_i \right)^c &= \bigcup_{i \in I} A_i^c
+  \left( \bigcup_{i \in I} A_i \right)^c & = \bigcap_{i \in I} A_i^c \\
+  \left( \bigcap_{i \in I} A_i \right)^c & = \bigcup_{i \in I} A_i^c
  \end{align*} для любого семейства $ i \in I $, $ A_i \subset X $.
 \end{prop}
 \begin{df}
- \textit{Наивная длина} --- это отображение $ \mu \colon\, 2^\R \to \R_+ \cup \{ +\infty \} $ такое, что
+ \textit{Наивная длина} --- это отображение $ \mu \colon\, 2^\R \to [0,\infty] $ такое, что
  \begin{itemize}
   \item $ \mu ([0, 1)) = 1 $
-  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall { A_k } : {k \in \mathbb{N}} \land {A_k \subset 2^{\mathbb{R}}} $
+  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall \{A_{k}\}_{k=1}^{\infty} \subset \R $
   \item $ \mu(A + x) = \mu(A) $ для любого $ A \subset \R $ и для любого $ x \in \R $ (где $ A + x = \{ a + x \mid a \in A \} $).
  \end{itemize}
 \end{df}
@@ -192,38 +192,38 @@
  Введём такое отношение эквивалентности: $ x \sim y $ для $ x,y \in [0, 1) $, если $ x-y \in \Q $. Тогда единичный полуинтервал бьётся на классы эквивалентности:
  \begin{align*}
   [0, 1) = \bigsqcup_{J \text{ --- класс экв. }} J
- .\end{align*} По аксиоме выбора из каждого класса $ J $ можно выбрать представителя $ x_J $. Обозначим
+  .\end{align*} По аксиоме выбора из каждого класса $ J $ можно выбрать представителя $ x_J $. Обозначим
  \begin{align*}
   E = \{ x_J \mid J \text { --- класс экв. } \}
- .\end{align*} Наблюдение:
+  .\end{align*} Наблюдение:
  \begin{align*}
   [0, 1) \subset \bigcup_{q \in [-1, 1] \cap \Q} (q + E)
- .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in Q $. Тем самым, $ x \in q + E $.
+  .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in Q $. Тем самым, $ x \in q + E $.
 
  Второе наблюдение:
  \begin{align*}
   \bigcup_{q \in \Q \cap [-1, 1]} (q + E) = \bigsqcup_{q \in \Q \cap [-1, 1]} (q + E)
- .\end{align*} Действительно, пусть $ (q_1 + E) \cap (q_2 + E) \ni x $. Тогда $ q_1 + x_{J_1} = x = q_2 + x_{J_2} $. Тогда
+  .\end{align*} Действительно, пусть $ (q_1 + E) \cap (q_2 + E) \ni x $. Тогда $ q_1 + x_{J_1} = x = q_2 + x_{J_2} $. Тогда
  \begin{align*}
   x_{J_1} - x_{J_2} = q_2 - q_1 \in \Q
- .\end{align*} Следовательно, $ x_{J_1} = x_{J_2} \;\Longrightarrow q_1 = q_2$. Значит, если они пересеклись, то они совпадают.
- 
+  .\end{align*} Следовательно, $ x_{J_1} = x_{J_2} \;\Longrightarrow q_1 = q_2$. Значит, если они пересеклись, то они совпадают.
+
  Мы доказали два полезных включения:
  \begin{align*}
   [0, 1) \subset \bigsqcup_{q \in [-1, 1] \cap \Q} (q + E) \subset [-1, 2)
- .\end{align*} По аксиомам:
+  .\end{align*} По аксиомам:
  \begin{align*}
-  1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(q + E) \leqslant 3 \\
-  1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(E) \leqslant 3 
- .\end{align*} Но то, что по середине --- это либо $ 0 $, либо $ +\infty $. Противоречие! 
+  1 \leqslant & \sum_{q \in \Q \cap [-1, 1]} \mu(q + E) \leqslant 3 \\
+  1 \leqslant & \sum_{q \in \Q \cap [-1, 1]} \mu(E) \leqslant 3
+  .\end{align*} Но то, что по середине --- это либо $ 0 $, либо $ +\infty $. Противоречие!
 
  Для честности выведем монотонность по включению. Пусть $ A \subset B $. Тогда
  \begin{align*}
   \mu(B) = \mu(A \sqcup (B \setminus A)) = \mu(A) + \mu(B \setminus A) \geqslant \mu(A)
- .\end{align*} Показать $ \mu([-1, 2)) = 3 $ можно так:
+  .\end{align*} Показать $ \mu([-1, 2)) = 3 $ можно так:
  \begin{align*}
   \mu([-1, 2)) = \mu([-1, 0) \sqcup [0, 1) \sqcup [1, 2)) =\mu([-1, 0)) + \mu([0, 1)) + \mu([1, 2)) = 3 \cdot \mu([0, 1)) = 3
- .\end{align*}
+  .\end{align*}
 \end{proof}
 
 \section{Системы множеств и функции на них}
@@ -251,8 +251,8 @@
  \begin{enumerate}
   \item $ \varnothing \in \A $
   \item $ \left\{ A_i \right\}_{i \in I} $, $ I $ --- счётное множество, $ A_i \in \A $. Тогда
-   \begin{align*}
-    \bigcap_{i \in I} A_i \in \A
+  \begin{align*}
+   \bigcap_{i \in I} A_i \in \A
    .\end{align*}
   \item $ A \in \A \;\Longrightarrow\; A^c \in \A $ (аксиома симметричности)
  \end{enumerate}
@@ -263,25 +263,25 @@
   \item $ 2^X $ --- $ \sigma $-алгербра
   \item $ \left\{ \varnothing, X \right\} $ --- $ \sigma $-алгебра.
   \item $ X = \R^2 $, $ \A = \left\{ E \subset X \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \A $ --- алгебра:
-   \begin{enumerate}
-    \item $ \varnothing \in \A $
-    \item Пусть $ A, B \in \A $ и одно из них ограничено. Тогда $ A \cap B $ ограничено и $ A \cap B \in \A $. А если $ A^c, B^c $ ограничены, тогда $ (A \cap B)^c = A^c \cup B^c $ ограничено. Тогда $ A \cap B \in \A $.
-    \item $ A \in \A \;\Longleftrightarrow\; A^c \in \A $
-   \end{enumerate}
-   При этом $ \A $ не является $ \sigma $-алгеброй:
-   \begin{align*}
-    \A \not\ni \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \A
+  \begin{enumerate}
+   \item $ \varnothing \in \A $
+   \item Пусть $ A, B \in \A $ и одно из них ограничено. Тогда $ A \cap B $ ограничено и $ A \cap B \in \A $. А если $ A^c, B^c $ ограничены, тогда $ (A \cap B)^c = A^c \cup B^c $ ограничено. Тогда $ A \cap B \in \A $.
+   \item $ A \in \A \;\Longleftrightarrow\; A^c \in \A $
+  \end{enumerate}
+  При этом $ \A $ не является $ \sigma $-алгеброй:
+  \begin{align*}
+   \A \not\ni \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \A
    .\end{align*} Нужно взять
-   \begin{align*}
-    A_k = \R^2 \setminus \left\{ (0, x) \mid 0 \leqslant x \leqslant k \right\} 
+  \begin{align*}
+   A_k = \R^2 \setminus \left\{ (0, x) \mid 0 \leqslant x \leqslant k \right\}
    .\end{align*}
   \item Если $ \A $ --- алгебра, то для любых $ A_1, \ldots, A_N \in \A $ верно $ \bigcup_1^N A_k \in \A $, так как
-   \begin{align*}
-    \bigcup_1^N A_k = \left( \bigcap_{k=1}^N A_k^c \right)^c
+  \begin{align*}
+   \bigcup_1^N A_k = \left( \bigcap_{k=1}^N A_k^c \right)^c
    .\end{align*}
   \item Аналогично, если $ \A $ --- $ \sigma $-алгебра, то для любого счетного $ I $ ($ A_i \in \A $ для любого $ i \in I $), то
-   \begin{align*}
-    \bigcup_{i\in I} A_i \in \A
+  \begin{align*}
+   \bigcup_{i\in I} A_i \in \A
    .\end{align*}
  \end{itemize}
 \end{exmpl}
@@ -296,12 +296,12 @@
  \begin{enumerate}
   \item $ \varnothing \in \mathcal{P_1} $, так как $ \varnothing = [0, 0) $.
   \item $$
-   [a_1, b_1) \cap [a_2, b_2) = 
+   [a_1, b_1) \cap [a_2, b_2) =
    \begin{cases}
     \varnothing \text{, если } \max(a_1, a_2) \geqslant \min(b_1, b_2) \\
     [\max(a_1, a_2), \min(b_1, b_2) )
    \end{cases}
-   $$
+  $$
   \item Надо разобрать случаи. Но в каждом из них получается ячейка (иногда две ячейки).
  \end{enumerate}
 \end{proof}
@@ -314,9 +314,9 @@
 \begin{proof}\
  \begin{enumerate}
   \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in I $.
-  \item $ A \in \A \;\Longrightarrow\; A \in \A_i  \forall i \in I \;\Longrightarrow\; A^c \in \A_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \A_i = \A$ 
-  \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
-  \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
+  \item $ A \in \A \;\Longrightarrow\; A \in \A_i  \forall i \in I \;\Longrightarrow\; A^c \in \A_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \A_i = \A$
+  \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in
+   \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
  \end{enumerate}
 \end{proof}
 \begin{lm}
@@ -326,7 +326,7 @@
  Есть просто формула:
  \begin{align*}
   \A_E := \bigcap_{E \subset \A \text{---} \sigma \text{-алгебра}} \A
- .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ --- $ \sigma $-алгебра.
+  .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ --- $ \sigma $-алгебра.
 \end{proof}
 \begin{df}
  Пусть $ \mathcal{P} $ --- полукольцо в $ X $ и $ \mu \colon\; \mathcal{P} \to [0, +\infty] $. $ \mu $ называется конечно аддитивной, если для любых $ P_1, P_2, \ldots, P_N $ таких, что
@@ -335,13 +335,13 @@
  \end{align*} выполняется равенство
  \begin{align*}
   \mu\left( \bigsqcup_{k=1}^N P_k \right) = \sum_{k=1}^{N} \mu(P_k)
- .\end{align*} $ \mu $ счётно аддитивна, если для любого набора $ \left\{ P_i \right\}_{i \in I} $, $ I $ счётно,
+  .\end{align*} $ \mu $ счётно аддитивна, если для любого набора $ \left\{ P_i \right\}_{i \in I} $, $ I $ счётно,
  \begin{align*}
   P = \bigsqcup_{i \in I} P_i \subset \mathcal{P}
  \end{align*} выполняется равенство:
  \begin{align*}
   \mu\left( \bigsqcup_{i \in I} P_i \right) = \sum_{i \in I} \mu(P_i)
- .\end{align*}
+  .\end{align*}
 \end{df}
 \begin{df}
  Пусть $ \A $ --- $ \sigma $-алгебра в $ X $, $ \mu \colon\, \A \to [0, +\infty] $ --- \textit{мера}, если
@@ -351,15 +351,15 @@
 \end{df}
 \begin{exmpl}\
  \begin{itemize}
-  \item $ \mu \equiv 0 $, $ \A = 2^X $ (или $ \A $ любая) 
-  \item $ \mu \equiv +\infty $, $ \A = 2^X $ (или $ \A $ любая) 
+  \item $ \mu \equiv 0 $, $ \A = 2^X $ (или $ \A $ любая)
+  \item $ \mu \equiv +\infty $, $ \A = 2^X $ (или $ \A $ любая)
   \item Пусть $ X $ --- множество, $ E \subset X $. Определим \textit{считающую меру}:
-   \begin{align*}
-    \mu_E(A) =
-    \begin{cases}
-     \#(A \cap E), \text{ если  } (A \cap E) \text { конечно }, \\
-     +\infty \text { иначе }
-    \end{cases}
+  \begin{align*}
+   \mu_E(A) =
+   \begin{cases}
+    \#(A \cap E), \text{ если  } (A \cap E) \text { конечно }, \\
+    +\infty \text { иначе }
+   \end{cases}
    .\end{align*} $ \A = 2^X $
   \item $ X = \R $, $$ \delta_0(A) =
    \begin{cases}
@@ -367,63 +367,63 @@
     0, \text { иначе }
    \end{cases}$$ --- \textit{дельта мера Дирака}.
   \item $ X = \R $, $  \left\{ a_k \right\}_{k=1}^\infty \subset \R_+ $, $ \delta_{x_k} $ --- дельта меры Дирака в точках $ x_k $. Тогда
-   \begin{align*}
-    \mu = \sum_{k=1}^\infty a_k \delta_{x_k}
-   \end{align*} --- тоже мера. Вообще, в целом можно брать линейную комбинацию мер.
+  \begin{align*}
+   \mu = \sum_{k=1}^\infty a_k \delta_{x_k}
+  \end{align*} --- тоже мера. Вообще, в целом можно брать линейную комбинацию мер.
  \end{itemize}
 \end{exmpl}
 \begin{exmpl}
  $ \mu_0([a, b)) = b - a $ на $ \mathcal{P}_1 $. Тогда $ \mu_0 $ конечно аддитивна на $ \mathcal{P}_1 $: если $ [a, b)  = \bigsqcup_1^N [a_k, b_k) $, то
  \begin{align*}
   b - a = \sum_1^N (b_k - a_k) = \sum_1^N \mu_0([a_k, b_k))
- .\end{align*}
+  .\end{align*}
 \end{exmpl}
 \begin{lm}[о подчинённом разбиении]
  Пусть $ X $ --- множество, $ \mathcal{P} $ --- полукольцо, $ P_1, \ldots, P_N \in \mathcal{P} $, $ P \in \mathcal{P} $. Тогда:
  \begin{enumerate}
   \item $ \displaystyle P \setminus \bigcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j $, где $ Q_j \in \mathcal{P} $
   \item $ \displaystyle \bigcup_{k=1}^N P_k = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} $, где $ Q_{k,j} \in \mathcal{P} $ и $ Q_{k,j} \subset P_k $
- \end{enumerate} 
+ \end{enumerate}
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
   \item По индукции. $ N = 1$ --- аксиома 3 полукольца. Пусть
-   \begin{align*}
-    P \setminus \bigcup_{k=1}^{N+1} P_k = \left( P \setminus \bigcup_{k=1}^N P_k \right) \setminus P_{N+1} =  \bigsqcup_{j=1}^{M_N} \underbrace{\left( Q_j \setminus P_{N+1} \right)}_{\text{уже знаем по базе индукции}}
+  \begin{align*}
+   P \setminus \bigcup_{k=1}^{N+1} P_k = \left( P \setminus \bigcup_{k=1}^N P_k \right) \setminus P_{N+1} =  \bigsqcup_{j=1}^{M_N} \underbrace{\left( Q_j \setminus P_{N+1} \right)}_{\text{уже знаем по базе индукции}}
    .\end{align*}
-   \item
-    \begin{align*}
-     &P_1 = P_1 = Q_{1,1} \\
-     &P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
-     &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ знаем }} \sqcup (P_3 \setminus (P_1 \cup P_2)) \text{ <- знаем из пункта 1 } \\
-     &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ знаем }} \sqcup (P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k)) \text{ <- знаем из пункта 1 }
-    .\end{align*}
+  \item
+  \begin{align*}
+    & P_1 = P_1 = Q_{1,1} \\
+    & P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
+    & P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ знаем }} \sqcup (P_3 \setminus (P_1 \cup P_2)) \text{ <- знаем из пункта 1 } \\
+    & P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ знаем }} \sqcup (P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k)) \text{ <- знаем из пункта 1 }
+   .\end{align*}
  \end{enumerate}
 \end{proof}
 \begin{crly}
  Пусть $ \mu \colon\, \mathcal{P} \rightarrow [0, +\infty]$ конечно-аддитивна. Пусть $ \bigsqcup_1^N P_k \subset P $, $ P_k, P \in \mathcal{P} $. Тогда
  \begin{align*}
   \sum_{k=1}^{N}  \mu(P_k) \leqslant \mu(P)
- .\end{align*}
+  .\end{align*}
 \end{crly}
 \begin{proof}
  $ P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j $.
  \begin{align*}
-   P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
-   \mu(P) = \sum \mu(P_k) + \sum \mu(Q_j) \geqslant \sum \mu(P_k)
+  P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
+  \mu(P) = \sum \mu(P_k) + \sum \mu(Q_j) \geqslant \sum \mu(P_k)
  \end{align*}
 \end{proof}
 \begin{crly}
  Если $ \mathcal{P} $, $ \mu $ как в предыдущем следствии и $ P \subset \bigcup_{k=1}^N P_k $, где $ P, P_k \in \mathcal{P} $. Тогда
  \begin{align*}
   \mu(P) \leqslant \sum_{k=1}^N \mu(P_k)
- .\end{align*}
+  .\end{align*}
 \end{crly}
 \begin{proof}
  \begin{align*}
   P = \bigcup_1^N (P_k \cap P) = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} \\
   \mu(P) = \sum_{k,j}^{} \mu(Q_{k,j}) = \sum_{k=1}^{N} \underbrace{\sum_j \mu(Q_{k,j})}_{\leqslant \mu(P_k) \text{ по пред. следствию }} \leqslant \sum_{k=1}^{N} \mu(P_k)
- .\end{align*}
+  .\end{align*}
 \end{proof}
 \begin{thm}[счётная аддитивность длины на полукольце]
  Функция множества $ \mu_0 \colon\, [a, b) \mapsto b - a $ на полукольце ячеек $ \mathcal{P}_1 $ является счётно-аддитивной.
@@ -433,16 +433,16 @@
  \begin{align*}
   \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) = \sum_{i \in F}^{} \mu( [a_i, b_i) ) \\
   \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) \leqslant \mu([a, b)) \text { <- следствие 22 }
- .\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a_i < t < b_i $:
+  .\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a_i < t < b_i $:
  \begin{align*}
   [a_i, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
- .\end{align*} Но слева \textbf{компактное} множество. Тогда, существует $ F $ конечное, такое что
+  .\end{align*} Но слева \textbf{компактное} множество. Тогда, существует $ F $ конечное, такое что
  \begin{align*}
   [a_i, t) \subset \bigcup_{i_k \in F} [\tilde a_{i_k}, \tilde b_{i_k})
  \end{align*} (поменяли скобки). По предыдущему следствию:
  \begin{align*}
-  t - a_i = &\mu([a_i, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
-  \leqslant &\sum_{i \in I} \mu([a_i, b_i)) + \varepsilon
+  t - a_i = & \mu([a_i, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
+  \leqslant & \sum_{i \in I} \mu([a_i, b_i)) + \varepsilon
  \end{align*} для любого $ t < b_i $ и $ \varepsilon > 0 $. Устремим $ t \to b_i $ и $ \varepsilon \to 0 $.
 \end{proof}
 
@@ -462,18 +462,18 @@
 \begin{exmpl}[внешняя мера, порождённая функцией множества]
  Пусть $ S \subset 2^X $ --- любое семейство подмножеств, $ \varnothing \in S $ и есть $ \mu_0 \colon\; S \to [0, \infty] $ --- любое отображение, $ \mu_0(\varnothing) = 0 $. Тогда:
  \begin{align*}
-  \mu^\ast(A) = \inf \left\{ \sum_{k=1}^\infty \mu_0(A_k) \mid A \subset \bigcup_{k=1}^\infty A_k  \right\} 
- .\end{align*} При этом, предполагается, что $ \inf \varnothing = +\infty $, то есть, если не существуют такие $ A_k \in S $ такое, что $ A \subset \bigcup A_k $, то $ \mu^\ast (A) = +\infty $.
+  \mu^\ast(A) = \inf \left\{ \sum_{k=1}^\infty \mu_0(A_k) \mid A \subset \bigcup_{k=1}^\infty A_k  \right\}
+  .\end{align*} При этом, предполагается, что $ \inf \varnothing = +\infty $, то есть, если не существуют такие $ A_k \in S $ такое, что $ A \subset \bigcup A_k $, то $ \mu^\ast (A) = +\infty $.
 \end{exmpl}
 \begin{proof}\
  \begin{enumerate}
   \item $ \mu^\ast(\varnothing) = 0 $ --- ясно
   \item Пусть есть множества $ \left\{ E_k \right\}_{k=1}^\infty \subset 2^X$. Тогда нужно проверить, что
-   \begin{align*}
-    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
+  \begin{align*}
+   \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
    .\end{align*} Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{k=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
-   \begin{align*}
-    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \sum_{k} \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
+  \begin{align*}
+   \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \sum_{k} \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
    .\end{align*} Это по определению просто потому, что $ \bigcup E_k \subset \bigcup_{k,j} A_{kj} $. Теперь можно устремить $ \varepsilon $ к нулю (так как это верно для любого $ \varepsilon $) и получить нужное равенство.
  \end{enumerate}
 \end{proof}
@@ -481,8 +481,8 @@
 
 \begin{df}[$ \sigma $-алгебра, порождённая внешней мерой]
  Пусть есть внешняя мера $ \mu^\ast \colon\; 2^X \to [0,\infty] $. Тогда пусть \begin{align*}
-  \A^\ast = \left\{ A \subset X \mid \forall E \subset X \colon\; \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\} 
- .\end{align*}
+  \A^\ast = \left\{ A \subset X \mid \forall E \subset X \colon\; \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\}
+  .\end{align*}
  Это и называется \textit{$ \sigma $-алгебра Каратеодори}.
 \end{df}
 
@@ -492,31 +492,31 @@
 \begin{proof}\
  \begin{enumerate}
   \item $ \varnothing \in \A^\ast $ так как $ \mu^\ast(E) = \mu^\ast(E \cap \varnothing) + \mu^\ast(E \cap X) = 0 + \mu^\ast(E) $.
-   \setcounter{enumi}{2}
+  \setcounter{enumi}{2}
   \item $ A \in \A^\ast \iff A^c \in \A $
-   \setcounter{enumi}{1}
+  \setcounter{enumi}{1}
   \item $ \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) $ --- полуаддитивность, т.к. $ \mu^\ast(E) = \mu^\ast(E_1 \cup E_2 \cup \ldots) \leqslant \sum_1^\infty \mu^\ast(E_k)$. Можно взять $ E_1 = E \cap (A \cap B) $, $ E_2 = E \cap (A \cap B)^c $ и $ E_3 = E_4 = \ldots = \varnothing $.
 
-   Докажем в обратную сторону:
-   \begin{align*}
-     \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) \leqslant \\
-     \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \setminus A) \cap B^c)
+  Докажем в обратную сторону:
+  \begin{align*}
+   \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) \leqslant \\
+   \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \setminus A) \cap B^c)
    .\end{align*} Так как
-   \begin{align*}
-    E \cap (A \cap B)^c = E \cap (A^c \cup B^c) = E \cap A^c \cup E \cap B^c = (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \ A) \cap B^c) =\\
-    = (E \setminus A) \cup (E \cap A) \cap B^c
+  \begin{align*}
+   E \cap (A \cap B)^c = E \cap (A^c \cup B^c) = E \cap A^c \cup E \cap B^c = (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \ A) \cap B^c) = \\
+   = (E \setminus A) \cup (E \cap A) \cap B^c
    .\end{align*} Далее,
-   \begin{align*}
-    \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \setminus A) \cap B^c) = \\
-    = \mu^\ast(E \cap A) + \mu^\ast(E \setminus A)
+  \begin{align*}
+   \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \setminus A) \cap B^c) = \\
+   = \mu^\ast(E \cap A) + \mu^\ast(E \setminus A)
    .\end{align*} Сгруппировали первый и третий член. Это равенство верно, так как $ B \in \A^\ast $. Потом
-   \begin{align*}
-    \mu^\ast(E \cap A) + \mu^\ast(E \setminus A) = \mu^\ast(E)
+  \begin{align*}
+   \mu^\ast(E \cap A) + \mu^\ast(E \setminus A) = \mu^\ast(E)
    .\end{align*} Так как $ A \in \A^\ast $. В итоге получили, что все неравенства --- равенства. В частности первое:
-   \begin{align*}
-    \mu^\ast(E) = \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c)
+  \begin{align*}
+   \mu^\ast(E) = \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c)
    .\end{align*} Следовательно, $ A \cap B \in \A^\ast $
- \end{enumerate} 
+ \end{enumerate}
  Значит, $ \A^\ast $ --- $ \sigma $-алгебра.
 \end{proof}
 \begin{lm}
@@ -526,18 +526,18 @@
  \end{align*} для любых $ A, B \in \A^\ast,\; A \cap B = \varnothing $. Более того, для любого $ E \subset X $ верно
  \begin{align*}
   \mu^\ast(E \cap (A \sqcup B)) = \mu^\ast(E \cap A) + \mu^\ast(E \cap B)
- .\end{align*}
+  .\end{align*}
 \end{lm}
 \begin{proof}
  Так как $ A \in \A^\ast $, то
  \begin{align*}
   \mu^\ast(A \sqcup B) = \mu^\ast((A \sqcup B) \cap A) + \mu^\ast((A \sqcup B) \cap A^c) = \\
   = \mu^\ast(A) + \mu^\ast(B)
- .\end{align*} Теперь к <<более того>>:
+  .\end{align*} Теперь к <<более того>>:
  \begin{align*}
   \mu^\ast(E \cap (A \sqcup B)) = \mu^\ast(E \cap (A \sqcup B) \cap A) + \mu^\ast(E \cap (A \sqcup B) \cap A^c) = \\
   = \mu^\ast(E \cap A) + \mu^\ast(E \cap B)
- .\end{align*}
+  .\end{align*}
 \end{proof}
 \begin{lm}
  $ \A^\ast $ --- это $ \sigma $-алгебра.
@@ -546,14 +546,14 @@
  Нужно доказать только свойство с счетным пересечением. Возьмём любой набор $ \left\{ A_k \right\}_{k=1}^\infty \subset \A^\ast $. Достаточно доказать, что
  \begin{align*}
   \bigcup A_k \in \A^\ast
- .\end{align*} (для этого нужно воспользоваться формулами де Моргана). Рассмотрим такие множества $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 $, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2)$. Можно сказать, что
+  .\end{align*} (для этого нужно воспользоваться формулами де Моргана). Рассмотрим такие множества $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 $, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2)$. Можно сказать, что
  \begin{align*}
   \bigcup_{k=1}^\infty A_k = \bigsqcup_{k=1}^\infty \tilde A_k
- .\end{align*} При этом все $ \tilde A_k \in \A^\ast $, так как $ \A^\ast $ это алгебра. Вывод: можно считать, $ A_k $ --- дизъюнктны и проверять, что $ \displaystyle \bigsqcup_{k=1}^\infty A_k \in \A^\ast $. Давайте проверим. Возьмём произвольное $ E \subset X $.
+  .\end{align*} При этом все $ \tilde A_k \in \A^\ast $, так как $ \A^\ast $ это алгебра. Вывод: можно считать, $ A_k $ --- дизъюнктны и проверять, что $ \displaystyle \bigsqcup_{k=1}^\infty A_k \in \A^\ast $. Давайте проверим. Возьмём произвольное $ E \subset X $.
  \begin{align*}
   \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right) \leqslant \\
   \leqslant \sum_{k=1}^{\infty} \mu^\ast(E \cap A_k) + \mu^\ast\left( E \cap \left( \bigsqcup_1^N A_k \right)^c \right)
- .\end{align*} Неравенство по определению внешней меры. Неравенство для второго слагаемого: если $ C_1 \subset C_2 $, то $ \mu^\ast(C_1) \leqslant \mu^\ast(C_2) $ (пока не доказано).
+  .\end{align*} Неравенство по определению внешней меры. Неравенство для второго слагаемого: если $ C_1 \subset C_2 $, то $ \mu^\ast(C_1) \leqslant \mu^\ast(C_2) $ (пока не доказано).
  Далее,
  \begin{align*}
   \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right)^c\right) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) = \\
@@ -561,13 +561,13 @@
  \end{align*} по усиленной конечной аддитивности. Осталось проверить, что
  \begin{align*}
   \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) \to 0 \text{ при } n \to \infty
- .\end{align*} Это эквивалентно тому, что ряд
+  .\end{align*} Это эквивалентно тому, что ряд
  \begin{align*}
   \sum_{k=1}^{\infty}  \mu^\ast (E \cap A_k) < \infty \iff \sup_{N \geqslant 1} \sum_1^N \mu^\ast(E \cap A_k) < \infty
- .\end{align*} Но
+  .\end{align*} Но
  \begin{align*}
   \sum_{1}^{N} \mu^\ast(E \cap A_k) = \mu^\ast\left(E \cap \left(\bigsqcup_{k=1}^N A_k\right)\right) \leqslant \mu^\ast(E)
- \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$). Лемма доказана по модулю монотонности внешней меры. 
+ \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$). Лемма доказана по модулю монотонности внешней меры.
 \end{proof}
 Самое сложное техническое место мы прошли.
 \begin{lm}
@@ -577,14 +577,14 @@
  Нужно доказать счётную аддитивность. Пусть $ A_k \in \A^\ast $, $ A = \bigsqcup_{k=1}^\infty A_k $. Напишем:
  \begin{align*}
   \sum_{k=1}^{N} \mu^\ast(A_k) = \mu^\ast\left( \bigsqcup_{k=1}^N A_k \right) \leqslant \mu^\ast(A) \leqslant \sum_{k=1}^{\infty}  \mu^\ast(A_k)
- .\end{align*} Переходя в левой части к пределу по $ N \to \infty $, получаем равенство.
+  .\end{align*} Переходя в левой части к пределу по $ N \to \infty $, получаем равенство.
 \end{proof}
 Остался один долг: нужно доказать монотонность внешней меры.
 \begin{lm}
  Пусть $ \mu^\ast \colon\; 2^x \to [0, \infty] $ --- внешняя мера и $ C_1 \subset C_2 \subset X $. Тогда
  \begin{align*}
   \mu^\ast(C_1) \leqslant \mu^\ast(C_2)
- .\end{align*}
+  .\end{align*}
 \end{lm}
 \begin{proof}
  Очевидно по аксиоме 2.
@@ -594,13 +594,13 @@
  Пусть $ \p $ --- полукольцо подмножеств $ X $, $ \mu_0 \colon\; \p \to [0, \infty] $ --- счётно-аддитивная функция на $ \p $, а $ \mu^\ast $ --- порождённая ей внешняя мера:
  \begin{align*}
   \mu^\ast(E) = \inf \left\{ \sum \mu_0(P_k) \mid E \subset \bigcup P_k,\; P_k \in \p \right\}, \quad E \subset X
- .\end{align*} Пусть $ \A^\ast $ --- $ \sigma $-алгебра Каратеодори, порождённая внешней мерой $ \mu^\ast $. Обозначим за $ \mu $ меру $ \mu^\ast \rvert_{\A^\ast} $ на $ \sigma $-алгебре $ \A^\ast $. Тогда:
+  .\end{align*} Пусть $ \A^\ast $ --- $ \sigma $-алгебра Каратеодори, порождённая внешней мерой $ \mu^\ast $. Обозначим за $ \mu $ меру $ \mu^\ast \rvert_{\A^\ast} $ на $ \sigma $-алгебре $ \A^\ast $. Тогда:
  \begin{enumerate}
   \item $ \p \subset \A^\ast $
   \item $ \mu(P) = \mu_0(P) $ для каждого $ P \in \p $.
-  \item Если $ \nu $ --- мера на $ \sigma $-алгебре $ \A_\nu \supset \p $, такая что $ \mu(P) = \mu_0(P) $ для любого $ P \in \p $, то для любого $ A \in \A^\ast \A_\nu $ такого, что $ \mu(A) < +\infty $ имеет место равенство
-   \begin{align*}
-    \mu(A) = \nu(A)
+  \item Если $ \nu $ --- мера на $ \sigma $-алгебре $ \A_\nu \supset \p $, такая что $ \mu(P) = \mu_0(P) $ для любого $ P \in \p $, то для любого $ A \in \A^\ast \cap \A_\nu $ такого, что $ \mu(A) < +\infty $ имеет место равенство
+  \begin{align*}
+   \mu(A) = \nu(A)
    .\end{align*}
  \end{enumerate}
 \end{thm}
@@ -608,44 +608,336 @@
 \begin{proof}\
  \begin{enumerate}
   \item Пусть $ P \in \p $. Чтобы показать, что $ P \in \A^\ast $, необходимо и достаточно проверить, что для каждого $ E \subset X $:
-   \begin{align*}
-    \mu^\ast(E) = \mu^\ast(E \cap P) + \mu^\ast(E \cap P^c)
+  \begin{align*}
+   \mu^\ast(E) = \mu^\ast(E \cap P) + \mu^\ast(E \cap P^c)
    .\end{align*} У нас $ \leqslant $ есть. Если $ \mu^\ast(E) = +\infty $ то и $ \geqslant $ есть. Пусть теперь $ \mu^\ast(E) < +\infty $. Тогда для любого $ \varepsilon > 0 $ существуют $ P_k \in \p $ такие, что
-   \begin{align*}
-    E \subset \bigcup_{k=1}^\infty P_k
-   \end{align*} и верно
-   \begin{align*}
-    \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
+  \begin{align*}
+   E \subset \bigcup_{k=1}^\infty P_k
+  \end{align*} и верно
+  \begin{align*}
+   \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
    .\end{align*} Напишем
-   \begin{align*}
-    \mu^\ast(E) \leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \\
-    \leqslant^{\text{***}} \sum_{k=1}^{\infty} \mu_0(P_k \cap P) + \sum_{k=1}^{\infty} \sum_{j=1}^{N_k}   \mu_0 (Q_{kj} ) \leqslant^{\text{****}} \sum_{k=1}^{\infty} \mu_0(P_k) \leqslant \mua(E) + \varepsilon
-   .\end{align*} (***): $$ E \cap P^c \subset \bigcup_k (P_k \cap P^c) = \bigcup_{k=1}^\infty \bigsqcup_{j=1}^{N_k} Q_{kj} \cap P^c $$ --- третья аксиома полукольца. Из-за этого 
-   \begin{align*}
-    \mua(E \cap P^c) \leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{N_k}  \mu_0(Q_{kj})
-   \end{align*} по определению $ \mua $.
+  \begin{align*}
+   \mu^\ast(E) \leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \\
+   \leqslant^{\text{***}} \sum_{k=1}^{\infty} \mu_0(P_k \cap P) + \sum_{k=1}^{\infty} \sum_{j=1}^{N_k}   \mu_0 (Q_{kj} ) \leqslant^{\text{****}} \sum_{k=1}^{\infty} \mu_0(P_k) \leqslant \mua(E) + \varepsilon
+   .\end{align*} (***): $$ E \cap P^c \subset \bigcup_k (P_k \cap P^c) = \bigcup_{k=1}^\infty \bigsqcup_{j=1}^{N_k} Q_{kj} \cap P^c $$ --- третья аксиома полукольца. Из-за этого
+  \begin{align*}
+   \mua(E \cap P^c) \leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{N_k}  \mu_0(Q_{kj})
+  \end{align*} по определению $ \mua $.
 
-   Теперь (****):
-   \begin{align*}
-    \sum_{k=1}^{N_k}  \mu(Q_{kj}) + \mu_0(P_k \cap P) \leqslant \mu_0(P_k)
-   \end{align*} потому что
-   \begin{align*}
-    \left( \bigsqcup Q_{kj} \right) \sqcup \left( P_k \cap P \right) \subset P_k
+  Теперь (****):
+  \begin{align*}
+   \sum_{k=1}^{N_k}  \mu(Q_{kj}) + \mu_0(P_k \cap P) \leqslant \mu_0(P_k)
+  \end{align*} потому что
+  \begin{align*}
+   \left( \bigsqcup Q_{kj} \right) \sqcup \left( P_k \cap P \right) \subset P_k
    .\end{align*}
   \item Докажем, что $ \mu(P) = \mu_0(P) $ для $ P \in \p $. Нужно проверить, верно ли, что
-   \begin{align*}
-    \mu_0(P) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid P \subset \bigcup_{P_k \in \p} P_k \right\} = \mu(P)
-   .\end{align*} Так как $ P \subset P \in \p $, то $ \mu(P) \leqslant \mu_0(P) $. Пусть $ P \subset \displaystyle\bigcup_{k=1}^\infty P_k $, тогда $$  
+  \begin{align*}
+   \mu_0(P) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid P \subset \bigcup_{P_k \in \p} P_k \right\} = \mu(P)
+   .\end{align*} Так как $ P \subset P \in \p $, то $ \mu(P) \leqslant \mu_0(P) $. Пусть $ P \subset \displaystyle\bigcup_{k=1}^\infty P_k $, тогда $$
    P = \bigcup_{k=1}^\infty (P_k \cap P) = \bigsqcup_{k=1}^\infty \bigsqcup_{j=1}^{N_k} Q_{kj}
-   $$ по лемме о подчинённом разбиении. Теперь применим $ \mu_0 $ и воспользуемся её счётно-аддитивностью:
-   \begin{align*}
-    \mu_0(P) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \mu_0(P_k)
-   .\end{align*} Перейдём к инфимуму и получим, что 
-   \begin{align*}
-    \mu_0(P) \leqslant \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \right\}  = \mua(P) = \mu(P)
+  $$ по лемме о подчинённом разбиении. Теперь применим $ \mu_0 $ и воспользуемся её счётно-аддитивностью:
+  \begin{align*}
+   \mu_0(P) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \mu_0(P_k)
+   .\end{align*} Перейдём к инфимуму и получим, что
+  \begin{align*}
+   \mu_0(P) \leqslant \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \right\}  = \mua(P) = \mu(P)
    .\end{align*}
   \item На следующей лекции.
  \end{enumerate}
 \end{proof}
+
+% 2022.09.16 lecture 3
+
+Последняя часть: единственность меры в теореме Каратеодори.
+
+\begin{proof}
+ Пусть $A \in \A^{\ast} \cap \A_{\nu}$ такое, что $\mu(A) < \infty$. Тогда надо показать $\nu(A) = \mu(A)$. Сначала покажем, что
+ \begin{align*}
+  \mu(A) = \mua(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu(P_k) \mid P_k \in \p \colon\; A \subset \bigcup_{k=1}^{\infty} P_k \right\}
+  .\end{align*} С другой стороны, возьмём любой набор $\left\{ P_k \right\}$ такой, что $\bigcup_{k=1}^{\infty} P_k \supset A$. Тогда:
+ \begin{align*}
+  \nu(A) \underbrace{\leqslant}_{\text{ так как оба множества } \in \A_{\nu}} \nu \left( \bigcup_{k=1}^{\infty} P_k \right) = \nu( \bigsqcup_{k=1}^{\infty}  \bigsqcup_{j=1}^{N_k} Q_{kj}) = \sum \nu(Q_{kj}) = \sum_{k=1}^{\infty} \underbrace{\sum_{j=1}^{N_k} \nu(Q_{kj})}_{\leqslant \nu(P_k)} \leqslant \\
+  \leqslant \nu(A) \leqslant \sum_{k=1}^{\infty}  \nu(P_k) = \sum_{k=1}^{\infty}  \mu(P_k)
+  .\end{align*} Возьмём инфимум и получим:
+ \begin{align*}
+  \nu(A) \leqslant \mu(A)
+  .\end{align*} Это верно для любого $A \in \A^{\ast} \cap \A_{\nu}$.
+
+ Теперь возьмём $P \in \p$ и $A \in \A^{\ast} \cap \A_{\nu}$. Посмотрим на равенство
+ \begin{align*}
+  \mu(P) = \mu(P \cap A^{c}) + \mu(P \cap A) \geqslant \nu(P \cap A^{c}) + \nu(P \cap A) = \nu(P) = \mu(P)
+  .\end{align*} Значит, если $\mu(P)$ конечно, то все слагаемые конечные, и $\mu(P \cap A) = \nu(P \cap A)$ и $\mu(P \cap A^{c}) = \nu(P \cap A^{c})$: если бы одно из неравенств $\mu(P \cap A) \geqslant \nu(P \cap A)$, $\mu(P \cap A^{c}) \geqslant \nu(P \cap A^{c})$ было бы строгим, мы пришли бы к противоречию.
+
+ Так как $\mu(A) < \infty$, то $\forall \eps > 0 \colon\; \exists  \{P_{k}\}_{k=1}^{\infty} \subset \p,\; A \subset \bigcup_{k=1}^{\infty} P_k \colon\; $
+ \begin{align*}
+  \mu(A) + \eps \geqslant \sum_{k=1}^{\infty} \mu(P_k)
+  .\end{align*} В частности,
+ \begin{align*}
+  \mu(P_k) < \infty, \quad \forall k \in \N
+  .\end{align*}  Тогда
+ \begin{align*}
+  A = \bigcup_{k=1}^{\infty} (P_k \cap A)
+  .\end{align*} Более того, используя лемму  о подчинённом разбиении, можно считать, что
+ \begin{align*}
+  A = \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} (Q_{kj} \cap A)
+ \end{align*}
+ Теперь
+ \begin{align*}
+  \mu(A) = \sum_{k,j} \mu(Q_{kj} \cap A) = \sum_{kj} \nu(Q_{kj} \cap A) = \nu(A)
+  .\end{align*} Доказательство окончено.
+\end{proof}
+\begin{df}
+ $\mu_0 \colon\; \p \to [0, \infty]$ --- \textit{$\sigma$-конечна} на полукольце $\p \subset 2^{X}$, если существуют $\{P_k\}_{k=1}^{\infty} \subset \p $ такое, что
+ \begin{align*}
+  X = \bigsqcup_{k=1}^{\infty} P_k
+ \end{align*} и $\mu_0(P_k) < \infty$ для любого $k$.
+\end{df}
+\begin{df}
+ Пусть $\mu$ --- мера на $\sigma$-алгебре $\A \subset 2^{X}$. $\mu$ называется \textit{$\sigma$-конечной}, если существует счётный набор $\{A_k\}_{k=1}^{\infty} \subset \A $ такой, что $X = \bigsqcup_{k=1}^{\infty} A_k $, $\mu(A_k) < \infty$.
+\end{df}
+\begin{crly}
+ Если в формулировке теоремы Каратеодори $\mu_0$ --- $\sigma$-конечна, то $\mu(A) = \nu(A)$ для любого $A \in \A^{\ast} \cap \A_{\nu}$ (даже если $\nu(A) = \infty$).
+\end{crly}
+\begin{proof}
+ \begin{align*}
+  A = \bigsqcup_{k=1}^{\infty} (A \cap P_k)
+  ,\end{align*} где $P_k$ --- из определения $\sigma$-конечности. По условию  $\mu(P_k) < \infty$. Тогда
+ \begin{align*}
+  \mu(A) = \sum_{k=1}^{\infty} \mu(A \cap P_k) = \sum_{k=1}^{\infty} \nu(A \cap P_k) = \nu(A)
+  .\end{align*}
+\end{proof}
+\begin{df}
+ Пусть $\mu_0 \colon\; \p_1 \to [0, \infty)$ такова, что
+ \begin{align*}
+  \mu_0 \colon\; [a, b) \to b - a
+  .\end{align*} Пусть $\lambda_1$ --- это мера  $\mu$ из теоремы Каратеодори для $\mu_0$, $\A_{\lambda_1}$ --- это $\sigma$-алгебра $\A^{\ast}$ из теоремы Каратеодори. Тогда $\lambda_1$ --- это \textit{мера Лебега}, $\A_{\lambda_1}$ --- \textit{$\sigma$-алгебра Лебега}. А множества из $\A_{\lambda_1}$ называются \textit{множествами, измеримыми по Лебегу}.
+\end{df}
+\begin{df}
+ Мера $\mu$ в теореме Каратеодори называется \textit{стандартным продолжением}.
+\end{df}
+\begin{remrk}[формула для вычисления $\mu(A)$]
+ \begin{align*}
+  \mu(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid P_k \in \p \colon\; A \subset \bigcup_{k=1}^{\infty} P_k \right\}
+ \end{align*}
+ для стандартного продолжения $\mu_{0}$ на $\A^{\ast}$.
+\end{remrk}
+\begin{df}
+ \textit{Борелевская оболочка} $E$ --- наименьшая $\sigma$-алгебра, содержащая $E$. Обозначение: $\mathcal{B}(E)$.
+\end{df}
+\begin{df}
+ Если $X, \tau$ --- топологическое пространство, то $\mathcal{B}(X)$ --- \textit{борелевская оболочка топологии}.
+
+ Для борелевской оболочки $\R$ есть стандартное обозначение $\mathcal{B}_1 = \mathcal{B}(R)$ --- наименьшая $\sigma$-алгебра, содержащая все открытые множества (и замкнутые! по аксиоме симметричности).
+\end{df}
+\newcommand{\B}{\ensuremath \mathcal{B}}
+\begin{lm}
+ \begin{align*}
+  \B_1 = \B( \p_1 ) \subset \A_{\lambda_1} = 2^{\R}
+  .\end{align*}
+\end{lm}
+\begin{proof}
+ Включение $\B(\p_1) \subset \A_{\lambda_1}$ верно, так как $\p_1 \subset \A_{\lambda_1}$ и $\A_{\lambda_1}$ --- это $\sigma$-алгебра.
+
+ Равенство. Сначала докажем, что $\B_1 \subset \B(\p_1)$. Это верно, так как любое открытое $O \subset \R$ представимо в виде
+ \begin{align*}
+  O = \bigcup_{k=1}^{\infty} I_k, \quad I_k = (a_k, b_k),\; a_k \leqslant b_k
+  ,\end{align*} так как $I_k$ --- класс эквивалентности по отношению $x \sim y \iff \exists I \subset O $ --- интервал, такой, что $x, y \in I$.
+
+ Теперь напишем, что
+ \begin{align*}
+  (a_k, b_k) = \bigcup_{n=1}^{\infty} \left[a_k + \frac{1}{n}, b_k\right) \in \B(P_1) \implies O \in \B(\p_1)
+  .\end{align*} Значит, $\B_1 \subset \B(\p_1)$, так как $\B_1$ --- наименьшая $\sigma$-алгебра.
+
+ В обратную сторону: $\B(\p_1) \subset \B_1$, так как для любой ячейки $[a, b)$ имеет место равенство:
+ \begin{align*}
+  [a, b) = (a - 1, b) \setminus (-\infty, a) \in \B_1
+  .\end{align*} Следовательно, $\B(\p_1) \subset \B_1$.
+\end{proof}
+\begin{exmpl}[про меру Лебега]\
+ \begin{enumerate}
+  \item $x \in \R \implies \left\{ x \right\} \in \B_1 \subset \A_{\lambda_1}$, так как точка --- замкнутая множества. Померим длину точки:
+  \begin{align*}
+   0 \leqslant \lambda_1(\left\{ x \right\}) = \lambda_1([x, x + \varepsilon)) = \varepsilon \quad \forall \eps > 0
+   .\end{align*} Значит, $\lambda_1(\left\{ x \right\}) = 0$.
+  \item Отрезок $[0, 1] \in \B_1$ (замкнутый). Его длина равна:
+  \begin{align*}
+   \lambda_1([0,1]) = \lambda_1([0, 1) \sqcup \left\{ 1 \right\}) = 1 + 0 = 1
+   .\end{align*}
+  \item $A$ открытое и непустое $ \implies A \in \B_1$ и $\lambda_1(A) > 0$.
+  \begin{proof}
+   Возьмём $x \in A$. Тогда существует $\eps > 0$ такой, что $(x - \eps, x + \eps) \subset A \implies [x, x + \eps] \subset A$. Тогда
+   \begin{align*}
+    \eps = \lambda_1( [x, x + \eps) ) \leqslant \lambda_1(A) \implies \lambda_1(A) > 0
+    .\end{align*}
+  \end{proof}
+  \item $\lambda_1(\Q) = 0$.
+  \begin{proof}
+   \begin{align*}
+    \lambda_1(\Q) = \sum_{x \in \Q} \lambda_1(\left\{ x \right\}) = 0
+    .\end{align*}
+  \end{proof}
+  \item \begin{align*}
+   \lambda_1( \left\{ x \in [0,1] \mid x \notin \Q \right\} ) \\
+   = \lambda_1(\Q \cap [0, 1]) + \lambda_1(E) = 0 + \lambda_1(E) \lambda_1([0, 1]) = 1
+   .\end{align*}
+  \item Если есть $\{E_{k}\}_{k=1}^{\infty} $ такие, что $\lambda_1(E_k) = 0$, то
+  \begin{align*}
+   \lambda_1 \left( \bigcup_{k=1}^{\infty} E_k \right) = 0
+   .\end{align*}
+  \begin{proof}
+   \begin{align*}
+    \lambda_1 \left( \bigcup_{k=1}^{\infty} E_k \right) \leqslant \sum_{k=1}^{\infty} \lambda_1(E_k) = 0
+    .\end{align*}
+  \end{proof}
+  \item Обобщённое Канторово множество. {\color{red} Тут нужен рисунок!!!}. Шаг 0:  выкидываем интервал длины $a_0$. Шаг 1: из оставшегося множества выкидываем $2^{1}$ открытых интервала длины $a_1$. Шаг 2: выкидываем $2^{2}$ интервалов длины $a_2$. Здесь $a_0, a_1, a_2, \ldots \geqslant 0$ достаточно маленькие чтобы можно было выкинуть:
+  \begin{align*}
+   \sum_{n=0}^{\infty} 2^{n} a_n \leqslant 1
+   .\end{align*} Для стандартного Канторова множества $a_n = \frac{1}{3^{n+1}}$. Проверим:
+  \begin{align*}
+   \sum_{n=0}^{\infty} \frac{2^{n}}{3^{n+1}} = \frac{1}{3} \sum_{n=0}^{\infty} \left( \frac{2}{3} \right)^{n} = \frac{1}{3} \cdot \frac{1}{1 - \frac{2}{3}} = 1
+   .\end{align*} Если взять $a_n = \frac{1}{4^{n+1}}$, то
+  \begin{align*}
+   \sum_{n=0}^{\infty} \frac{2^{n}}{4^{n+1}} = \frac{1}{4} \cdot \frac{1}{1 - \frac{2}{4}} = \frac{1}{2}
+   .\end{align*} Пусть $C_{\left\{ a_n \right\}}$ --- обобщённое Канторово множество. Утверждается, что оно \textit{измеримо по Борелю}: $C_{\left\{ a_n \right\}} \in \B_1$, так как оно замкнуто (или, например, мы счётное число раз выкидываем интервалы). С другой стороны,
+  \begin{align*}
+   \lambda_1 \left( C_{\left\{ a_n \right\}} \right)
+    & = \lambda_{1} \left( [0, 1] \setminus \bigsqcup_{n=0}^{\infty} \bigsqcup_{k=1}^{2^{n}} I_{n,k} \right) = \\
+    & =  1 - \sum  \lambda_1(I_{n,k}) = 1 - \sum_{n=0}^{\infty} 2^{n} a_n
+   .\end{align*} Вывод: стандартное Канторово множество несчётное, но его длина равна нулю! При этом:
+  \begin{align*}
+   \lambda_1 \left( C_{\left\{ \frac{1}{4^{n+1}} \right\}} \right) = \frac{1}{2} > 0
+   .\end{align*} Такие Канторовы множества с ненулевой длиной называются \textit{толстыми Канторовыми множествами}. Интересный факт: замыкание толстого Канторово множества не содержит интервалов, но имеет положительную длину, в отличие от $\Q$!
+ \end{enumerate}
+\end{exmpl}
+\begin{df}
+ Пусть  $\mu$ --- мера на $\sigma$-алгебре $\A$. $\mu$ называется \textit{полной}, если для любого множества $A \in \A$ такого, что $\mu(A) = 0$ и для любого  $B \subset A$ имеет место $B \in \A$.
+\end{df}
+\begin{remrk}
+ Мера $\mu$ в теореме Каратеодори полна.
+\end{remrk}
+\begin{proof}
+ Пусть $A \in \A^{\ast}$ такое, что $\mu(A) = 0$. Пусть  $B \subset A$. Рассмотрим произвольное $E \subset X$. Тогда:
+ \begin{align*}
+  \mua(E) & \leqslant \mua(E \cap B) + \mua(E \cap B^{c}) \leqslant \\
+          & \leqslant \mua(E \cap A) + \mua(E) \leqslant \mua(A) + \mua(E) \leqslant 0 + \mua(E)
+  .\end{align*} Значит, $\mua(E) = \mua(E \cap B) + \mua(E \cap B^{c})$ для любого $E \subset X$, и следовательно, $B \in \A^{\ast}$.
+\end{proof}
+\section{Измеримые функции. Теорема об аппроксимации.}
+\begin{df}
+ $(X, \A)$ --- \textit{измеримое пространство}, если  $\A$ ---  $\sigma$-алгебра подмножеств $X$.
+\end{df}
+В этом параграфе все функции заданы на некотором измеримом пространстве.
+\begin{df}
+ Функция $f \colon\, X \to [-\infty, \infty] $ \textit{измерима} (относительно $\A$), если для любого $a \in \R$ верно
+ \begin{align*}
+  f^{-1}((a, +\infty]) \in \A
+  .\end{align*}
+\end{df}
+\begin{remrk}
+ В определении можно заменить $(a, +\infty]$, например, на  $[a, +\infty]$:
+ \begin{align*}
+  f^{-1}([a, +\infty]) = \bigcap_{n=1}^{\infty} f^{-1}\left(\left(a - \frac{1}{n}, +\infty \right)\right) \\
+  f^{-1}((a +\infty]) = \bigcup_{n=1}^{\infty}  f^{-1} \left( [a + \frac{1}{n}, +\infty] \right)
+  .\end{align*}
+\end{remrk}
+\begin{crly}
+ Прообраз любой точки измерим, если $f$ измеримо:
+ \begin{align*}
+  f^{-1}(\left\{ x \right\}) \in \A
+ \end{align*} для любой точки $x \in [-\infty, +\infty]$.
+\end{crly}
+\begin{proof} Для $x \in \R$:
+ \begin{align*}
+  f^{-1}( \left\{ x \right\} ) = f^{-1}( [x, \infty] ) \setminus f^{-1} \left( (x, +\infty] \right)
+  .\end{align*}  Для $x = +\infty$:
+ \begin{align*}
+  f^{-1} \left( \left\{ +\infty \right\} \right) = \bigcap_{n=1}^{\infty} f^{-1} \left( [n, +\infty] \right)
+  .\end{align*} Сначала покажем для $[-\infty, +\infty]$:
+ \begin{align*}
+  \bigcup_{n=1}^{\infty} f^{-1}([-n, +\infty]) = f^{-1}( (-\infty, +\infty] ) \\
+  f^{-1}(\left\{ -\infty \right\}) \sqcup f^{-1} \left( (-\infty, +\infty] \right) = X
+  .\end{align*}
+\end{proof}
+\begin{crly}
+ Для любого $[a, b)$
+ \begin{align*}
+  f^{-1}([a, b)) \in \A
+  ,\end{align*} если $f$ измерима.
+\end{crly}
+\begin{proof}
+ \begin{align*}
+  f^{-1}( [a, b) ) = f^{-1} \left( [a, +\infty] \right) \setminus f^{-1} \left( [b, +\infty] \right)
+  .\end{align*}
+\end{proof}
+\begin{thm}
+ Пусть есть функция $f \colon\, X \to [-\infty, +\infty] $ измерима. Тогда для любого $E \in \B_1$ верно
+ \begin{align*}
+  f^{-1}(E) \in \A
+  .\end{align*}
+\end{thm}
+\begin{proof}
+ Заведём специально обученную $\sigma$-алегбру. Рассмотрим
+ \begin{align*}
+  \B = \left\{ A \subset \R \mid f^{-1}(A) \in \A \right\}
+  .\end{align*} Это $\sigma$-алгебра (легко проверить все аксиомы):
+ \begin{itemize}
+  \item $\R \in \B$
+  \item $\varnothing \in \B$
+  \item $A_k \in \B$, тогда
+  \begin{align*}
+   f^{-1}\left(\bigcap_{k=1}^{\infty} A_k \right) = \bigcap_{k=1}^{\infty} f^{-1}(A_k) \in \A \implies \bigcap_{k=1}^{\infty} A_k \in \B
+  \end{align*}
+  Но $\p_1 \subset \B$ (см. следствия). Тогда $\B_1 = \B(\p_1) \subset \B$. Значит, для любого  $A \in \B_1$ $f^{-1}(A) \in \A$.
+ \end{itemize}
+\end{proof}
+Иными словами, измеримая функция --- это та, у которой прообраз измеримого множества измерим.
+\begin{df}
+ Функция $f \colon\; X \to \R$ называется \textit{простой}, если она измерима и принимает конечное число значений.
+\end{df}
+\begin{remrk}
+ Каждая простая функция $f$ имеет вид
+ \begin{align*}
+  f = \sum_{k=1}^{N} c_k \chi_{A_k}
+ \end{align*} для некоторых $A_k \in \A$. Здесь
+ \begin{align*}
+  \chi_A(x) = \begin{cases}
+               1, \text{ если } x \in A \\
+               0, \text{ иначе }
+              \end{cases}
+  .\end{align*}
+\end{remrk}
+\begin{proof}
+ \begin{align*}
+  f(X) = \{c_{k}\}_{k=1}^{N}
+  .\end{align*} Тогда
+ \begin{align*}
+  A_k = f^{-1} \left( \left\{ c_k \right\} \right) \in \A
+  .\end{align*}
+\end{proof}
+Идея Лебега: нужно любую измеримую функцию приближать простыми.
+\begin{lm}
+ Пусть функции $f_n \colon\; X \to [-\infty, +\infty]$ измеримы. Тогда $\sup f_n$, $\inf f_n$,  $\limsup f_n$, $\liminf f_n$ измеримы. Также, если существует предел  $\lim_{n \to \infty} f_n(x)$ для любой точки $x \in X$, то $\lim f_n$ измерим.
+\end{lm}
+\begin{proof}
+ $f(x) = \sup f_n(x)$:
+ \begin{align*}
+  f^{-1}((a, +\infty]) = \bigcup_{n=1}^{\infty} f^{-1}_n( (a, +\infty] )
+  .\end{align*} $f(x) = \inf f_n(x)$:
+ \begin{align*}
+  f^{-1} \left( [-\infty, a) \right) = \bigcup_{n=1}^{\infty} f^{-1}_n \left( [-\infty, a) \right)
+  .\end{align*}  $f(x) = \limsup f_n(x)$:
+ \begin{align*}
+  f(x) = \limsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
+  .\end{align*} Следовательно, $\limsup f_n$ измерим. $\liminf$ аналогично.
+
+ Пусть теперь $f(x) = \lim f_n(x)$ существует. Тогда
+ \begin{align*}
+  f = \limsup f_n = \liminf f_n
+  ,\end{align*} а они измеримы.
+\end{proof}
+
+Следующая теорема будет о том, что если взять какую попало измеримую функцию (но неотрицательную), то она приближается простыми.
 
 \end{document}
