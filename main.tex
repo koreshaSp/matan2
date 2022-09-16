@@ -567,7 +567,7 @@
  .\end{align*} Но
  \begin{align*}
   \sum_{1}^{N} \mu^\ast(E \cap A_k) = \mu^\ast\left(E \cap \left(\bigsqcup_{k=1}^N A_k\right)\right) \leqslant \mu^\ast(E)
- \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$). Лемма доказана по модулю монотонности внешней меры. 
+ \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$).
 \end{proof}
 Самое сложное техническое место мы прошли.
 \begin{lm}
@@ -609,7 +609,7 @@
    .\end{align*} Напишем
    \begin{flalign*}
 	   \mu^\ast(E) & \leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \sum_{k=1}^\infty \mu_0(P_k \cap P) + \sum_{k=1}^\infty \sum_{j=1}^{N_k} \mu_0(Q_{kj})(\text{тк $E \subset \bigcup P_k$ и $\bigsqcup Q_{kj} = E \setminus P$}) &\\
-				   & \leqslant \sum_{k=1}^\infty \mua_0(P_k) (\text{т.к. $\bigsqcup_{j=1}^{N_k} Q_{kj} \bigsqcup (P_k \cap P) \subset P_k$}) \leqslant \mu^\ast(E) + \varepsilon (\text{по неравенству выше})
+				   & \leqslant \sum_{k=1}^\infty \mua_0(P_k) (\text{т.к. $\bigsqcup_{j=1}^{N_k} \left(Q_{kj} \sqcup (P_k \cap P)\right) \subset P_k$}) \leqslant \mu^\ast(E) + \varepsilon (\text{по неравенству выше})
    .\end{flalign*}
 
   \item Докажем, что $ \mu(P) = \mu_0(P) $ для $ P \in \p $. Нужно проверить, верно ли, что
