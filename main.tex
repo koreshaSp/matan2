@@ -453,7 +453,7 @@
 Наша задача: продолжить функцию длины с ячеек на более широкий класс множеств. В самом начале этого пути есть метафизический вопрос: разные вещи являются счётно-аддитивными: масса, длина, ... Возможно окажется, что нам много раз придётся делать такое продолжение. Оказывается, что для всех этих разных явлений есть одна общая математическая конструкция.
 
 \begin{df}
- Внешняя мера --- это $ \mu^\ast \colon\; 2^X \to [0, \infty] $ такое, что
+ Внешняя мера --- это $ \mu^\ast \colon\; 2^X \to [0, \infty] $ такое, что:
  \begin{enumerate}
   \item $ \mu^\ast(\varnothing) = 0 $
   \item Если $ E \subset \displaystyle \bigcup_{k=1}^\infty A_k $, то $ \displaystyle \mu^\ast\left( E \right) \leqslant \sum_{k=1}^\infty \mu^\ast(A_k) $ --- полуаддитивность
@@ -471,9 +471,9 @@
   \item Пусть есть множества $ \left\{ E_k \right\}_{k=1}^\infty \subset 2^X$. Тогда нужно проверить, что
    \begin{align*}
     \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
-   .\end{align*} Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{k=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
+   .\end{align*} Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
    \begin{align*}
-    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \sum_{k} \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
+    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \sum_{k} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
    .\end{align*} Это по определению просто потому, что $ \bigcup E_k \subset \bigcup_{k,j} A_{kj} $. Теперь можно устремить $ \varepsilon $ к нулю (так как это верно для любого $ \varepsilon $) и получить нужное равенство.
  \end{enumerate}
 \end{proof}
@@ -481,7 +481,7 @@
 
 \begin{df}[$ \sigma $-алгебра, порождённая внешней мерой]
  Пусть есть внешняя мера $ \mu^\ast \colon\; 2^X \to [0,\infty] $. Тогда пусть \begin{align*}
-  \A^\ast = \left\{ A \subset X \mid \forall E \subset X \colon\; \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\} 
+  \A^\ast = \left\{ A \subset X \mid \forall E \subset X \colon\; \mu^\ast(E) = \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\} 
  .\end{align*}
  Это и называется \textit{$ \sigma $-алгебра Каратеодори}.
 \end{df}
@@ -500,14 +500,14 @@
    Докажем в обратную сторону:
    \begin{align*}
      \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) \leqslant \\
-     \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \setminus A) \cap B^c)
+     \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c)
    .\end{align*} Так как
    \begin{align*}
-    E \cap (A \cap B)^c = E \cap (A^c \cup B^c) = E \cap A^c \cup E \cap B^c = (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \ A) \cap B^c) =\\
-    = (E \setminus A) \cup (E \cap A) \cap B^c
+    E \cap (A \cap B)^c = E \cap (A^c \cup B^c) = (E \cap A^c) \cup (E \cap B^c) = (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \setminus A) \cap B^c) =\\
+    = (E \setminus A) \cup (E \cap A \cap B^c)
    .\end{align*} Далее,
    \begin{align*}
-    \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \setminus A) \cap B^c) = \\
+    \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c) = \\
     = \mu^\ast(E \cap A) + \mu^\ast(E \setminus A)
    .\end{align*} Сгруппировали первый и третий член. Это равенство верно, так как $ B \in \A^\ast $. Потом
    \begin{align*}
@@ -517,7 +517,7 @@
     \mu^\ast(E) = \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c)
    .\end{align*} Следовательно, $ A \cap B \in \A^\ast $
  \end{enumerate} 
- Значит, $ \A^\ast $ --- $ \sigma $-алгебра.
+ Значит, $ \A^\ast $ --- алгебра.
 \end{proof}
 \begin{lm}
  $ \mu^\ast $ --- конечно-аддитивна на $ \A^\ast $:
@@ -545,7 +545,7 @@
 \begin{proof}
  Нужно доказать только свойство с счетным пересечением. Возьмём любой набор $ \left\{ A_k \right\}_{k=1}^\infty \subset \A^\ast $. Достаточно доказать, что
  \begin{align*}
-  \bigcup A_k \in \A^\ast
+	 \bigcup_{k=1}^{\infty} A_k \in \A^\ast
  .\end{align*} (для этого нужно воспользоваться формулами де Моргана). Рассмотрим такие множества $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 $, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2)$. Можно сказать, что
  \begin{align*}
   \bigcup_{k=1}^\infty A_k = \bigsqcup_{k=1}^\infty \tilde A_k
@@ -553,10 +553,10 @@
  \begin{align*}
   \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right) \leqslant \\
   \leqslant \sum_{k=1}^{\infty} \mu^\ast(E \cap A_k) + \mu^\ast\left( E \cap \left( \bigsqcup_1^N A_k \right)^c \right)
- .\end{align*} Неравенство по определению внешней меры. Неравенство для второго слагаемого: если $ C_1 \subset C_2 $, то $ \mu^\ast(C_1) \leqslant \mu^\ast(C_2) $ (пока не доказано).
+ .\end{align*} Неравенство по определению внешней меры. Неравенство для второго слагаемого: если $ C_1 \subset C_2 $, то $ \mu^\ast(C_1) \leqslant \mu^\ast(C_2) $ (по полуаддитивности внешней меры).
  Далее,
  \begin{align*}
-  \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right)^c\right) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) = \\
+	 \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right)^c\right) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) = \\
   = \mu^\ast(E) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k)
  \end{align*} по усиленной конечной аддитивности. Осталось проверить, что
  \begin{align*}
@@ -567,7 +567,7 @@
  .\end{align*} Но
  \begin{align*}
   \sum_{1}^{N} \mu^\ast(E \cap A_k) = \mu^\ast\left(E \cap \left(\bigsqcup_{k=1}^N A_k\right)\right) \leqslant \mu^\ast(E)
- \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$). Лемма доказана по модулю монотонности внешней меры. 
+ \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$).
 \end{proof}
 Самое сложное техническое место мы прошли.
 \begin{lm}
@@ -579,16 +579,6 @@
   \sum_{k=1}^{N} \mu^\ast(A_k) = \mu^\ast\left( \bigsqcup_{k=1}^N A_k \right) \leqslant \mu^\ast(A) \leqslant \sum_{k=1}^{\infty}  \mu^\ast(A_k)
  .\end{align*} Переходя в левой части к пределу по $ N \to \infty $, получаем равенство.
 \end{proof}
-Остался один долг: нужно доказать монотонность внешней меры.
-\begin{lm}
- Пусть $ \mu^\ast \colon\; 2^x \to [0, \infty] $ --- внешняя мера и $ C_1 \subset C_2 \subset X $. Тогда
- \begin{align*}
-  \mu^\ast(C_1) \leqslant \mu^\ast(C_2)
- .\end{align*}
-\end{lm}
-\begin{proof}
- Очевидно по аксиоме 2.
-\end{proof}
 \section{Теорема Каратеодори о стандартном продолжении}
 \begin{thm}[Каратеодори о стандартном продолжении]\
  Пусть $ \p $ --- полукольцо подмножеств $ X $, $ \mu_0 \colon\; \p \to [0, \infty] $ --- счётно-аддитивная функция на $ \p $, а $ \mu^\ast $ --- порождённая ей внешняя мера:
@@ -598,7 +588,7 @@
  \begin{enumerate}
   \item $ \p \subset \A^\ast $
   \item $ \mu(P) = \mu_0(P) $ для каждого $ P \in \p $.
-  \item Если $ \nu $ --- мера на $ \sigma $-алгебре $ \A_\nu \supset \p $, такая что $ \mu(P) = \mu_0(P) $ для любого $ P \in \p $, то для любого $ A \in \A^\ast \A_\nu $ такого, что $ \mu(A) < +\infty $ имеет место равенство
+  \item Если $ \nu $ --- мера на $ \sigma $-алгебре $ \A_\nu \supset \p $, такая что $ \nu(P) = \mu_0(P) $ для любого $ P \in \p $, то для любого $ A \in \A^\ast \cap \A_\nu $ такого, что $ \mu(A) < +\infty $ имеет место равенство
    \begin{align*}
     \mu(A) = \nu(A)
    .\end{align*}
@@ -615,23 +605,13 @@
     E \subset \bigcup_{k=1}^\infty P_k
    \end{align*} и верно
    \begin{align*}
-    \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
+	   \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
    .\end{align*} Напишем
-   \begin{align*}
-    \mu^\ast(E) \leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \\
-    \leqslant^{\text{***}} \sum_{k=1}^{\infty} \mu_0(P_k \cap P) + \sum_{k=1}^{\infty} \sum_{j=1}^{N_k}   \mu_0 (Q_{kj} ) \leqslant^{\text{****}} \sum_{k=1}^{\infty} \mu_0(P_k) \leqslant \mua(E) + \varepsilon
-   .\end{align*} (***): $$ E \cap P^c \subset \bigcup_k (P_k \cap P^c) = \bigcup_{k=1}^\infty \bigsqcup_{j=1}^{N_k} Q_{kj} \cap P^c $$ --- третья аксиома полукольца. Из-за этого 
-   \begin{align*}
-    \mua(E \cap P^c) \leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{N_k}  \mu_0(Q_{kj})
-   \end{align*} по определению $ \mua $.
+   \begin{flalign*}
+	   \mu^\ast(E) & \leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \sum_{k=1}^\infty \mu_0(P_k \cap P) + \sum_{k=1}^\infty \sum_{j=1}^{N_k} \mu_0(Q_{kj})(\text{тк $E \subset \bigcup P_k$ и $\bigsqcup Q_{kj} = E \setminus P$}) &\\
+				   & \leqslant \sum_{k=1}^\infty \mua_0(P_k) (\text{т.к. $\bigsqcup_{j=1}^{N_k} \left(Q_{kj} \sqcup (P_k \cap P)\right) \subset P_k$}) \leqslant \mu^\ast(E) + \varepsilon (\text{по неравенству выше})
+   .\end{flalign*}
 
-   Теперь (****):
-   \begin{align*}
-    \sum_{k=1}^{N_k}  \mu(Q_{kj}) + \mu_0(P_k \cap P) \leqslant \mu_0(P_k)
-   \end{align*} потому что
-   \begin{align*}
-    \left( \bigsqcup Q_{kj} \right) \sqcup \left( P_k \cap P \right) \subset P_k
-   .\end{align*}
   \item Докажем, что $ \mu(P) = \mu_0(P) $ для $ P \in \p $. Нужно проверить, верно ли, что
    \begin{align*}
     \mu_0(P) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid P \subset \bigcup_{P_k \in \p} P_k \right\} = \mu(P)
@@ -644,6 +624,7 @@
    \begin{align*}
     \mu_0(P) \leqslant \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \right\}  = \mua(P) = \mu(P)
    .\end{align*}
+
   \item На следующей лекции.
  \end{enumerate}
 \end{proof}
