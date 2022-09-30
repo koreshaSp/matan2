@@ -940,4 +940,260 @@
 
 Следующая теорема будет о том, что если взять какую попало измеримую функцию (но неотрицательную), то она приближается простыми.
 
+\begin{thm}[об аппроксимации]
+ \label{theorem:approximation}
+ Пусть $(X, \A)$ --- измеримое пространство, функция $f \colon\, X \to [0, +\infty]  $ --- измерима относительно $\A$. Тогда существует последовательность $\{f_{n}\}_{n=1}^{\infty} $ --- простые функции, такая что $0 \leqslant f_n \leqslant f_{n+1} \leqslant f$ для всех $n \in \N$ на $X$, и \begin{align*}
+  f(x) = \lim\limits_{n \to \infty} f_n(x)
+ \end{align*} 
+\end{thm}
+\begin{remrk}
+ В обратную сторону это тоже верно: если есть последовательность $\{f_{n}\}_{n=1}^{\infty} $ простых функций, $0 \leqslant f_n \leqslant f_{n+1}$. То функция \begin{align*}
+  f(x) = \lim\limits_{n \to \infty} f_n(x)
+ \end{align*} измерима.
+
+ Теорема \ref{theorem:approximation} даёт описание (критерий) всех неотрицательных измеримых функций.
+\end{remrk}
+\begin{proof}[\textsc{Доказательство теоремы \ref{theorem:approximation}}]
+ Заведём ячейки \begin{align*}
+  I_{n,k} = \left[\frac{k}{n}, \frac{k+1}{n}\right)
+ ,\end{align*} где $n \in \N$, $k = 0 \ldots n^{2} - 1$. Положим \begin{align*}
+ I_{n,n^{2}} = [n, +\infty]
+ .\end{align*} Для любого $n \in \N$ верно \begin{align*}
+ [0, +\infty] = \bigsqcup_{k=0}^{n^{2}} I_{n,k}
+ .\end{align*} Заведём множества \begin{align*}
+ A_{n,k} = f^{-1} \left( I_{n,k} \right), \quad k = 0, \ldots, n^{2}
+ .\end{align*}  Рассмотрим функции \begin{align*}
+ g_n = \sum_{k=0}^{n^{2}} \frac{k}{n} \chi_{A_{n,k}}
+\end{align*} Заметим, что $g_n$ --- простая функция, так как $A_{n,k}$ измеримы как прообразы ячеек. Далее  \begin{align*}
+ g_n(x) \leqslant f(x), \quad \forall x \in X
+ \end{align*} так как $g_n(x) \rvert_{A_{n,k}} = \frac{k}{n}$, а $f(x) \rvert_{A_{n,k}} \geqslant \frac{k}{n}$, так как $f(A_{n,k}) \subset I_{n,k}$. Посмотрим на разность: пусть $x \in \bigsqcup_{k=0}^{n^{2} - 1} A_{n,k} $\begin{align*}
+ f(x) - g_n(x) \leqslant \frac{1}{n}
+,\end{align*} так как на $A_{n,k}$  $f \leqslant \frac{k+1}{n}$, а $g  = \frac{k}{n}$.
+
+Пусть $x \in X$ такой, что $f(x) < +\infty$. Тогда при больших $n$ верно $x \in f^{-1} \left( [0, n) \right) = \bigsqcup_{k=0}^{n^{2}-1} A_{n,k} $. Значит, при больших $n$ верно \begin{align*}
+ 0 \leqslant f(x) - g(x) \leqslant \frac{1}{n}
+.\end{align*} Тем самым, мы получаем, что \begin{align*}
+\lim\limits_{n \to \infty} g_n(x) = f(x)
+\end{align*} для любого $x$ такого, что  $f(x) < +\infty $. Теперь пусть  $x \in X$ такой, что $f(x) = +\infty$. Тогда  \begin{align*}
+ g_n(x) = n
+\end{align*} для любого $n$. Ясно, что тогда $f(x) = \lim n = \lim g_n(x)$ для этого $x$.
+
+Теперь определим \begin{align*}
+ f_n(x) = \max\{g_1(x), \ldots, g_n(x)\}
+.\end{align*} $f_n$ простая. Кроме того, $0 \leqslant f_n \leqslant f_{n+1} \leqslant f$ для любого $n$. Осталось показать, что $f_n \to f$: \begin{align*}
+\underbrace{g_n(x)}_{\to f(x)} \leqslant f_n(x) \leqslant f(x) \implies \lim\limits_{n \to \infty} f_n(x) = f(x)
+.\end{align*} Теорема \ref{theorem:approximation} доказана.
+\end{proof}
+\begin{crly}
+ Любая измеримая функция $f \colon\, X \to [-\infty, +\infty] $ есть предел простых функций $\{f_{n}\}_{n=1}^{\infty} $: \begin{align*}
+  \lim_{n \to \infty} f_n = f
+ .\end{align*} 
+\end{crly}
+\begin{proof}
+Распилим $f$ на две части: $f_+ = \max(f, 0)$, $f_- = \max(-f, 0)$. $f_+ - f_- = f$, и  $f_+, f_- \geqslant 0$. Функции $f_{\pm}$ измеримы как максимумы измеримых. По теореме \ref{theorem:approximation} существуют $\{f_{\pm,n}\}_{n=1}^{\infty} $ такие, что $f_{\pm} = \lim f_{\pm,n}$. Тогда \begin{align*}
+  f = \lim_{n \to \infty} \underbrace{(f_{+,n} - f_{-,n})}_{\text{ простые }}
+ .\end{align*} Однако нужно объяснить, почему $f_{+,n} - f_{-,n}$ измеримые. Измеримость следует из существования общего более мелкого разбиения. Если  $h_1 = \sum_{k=1}^{N_1} a_k \chi_{A_k}$, $h_2 = \sum_{k=1}^{N_2} b_k \chi_{B_k}$. Тогда существуют $C_k$ --- измеримые множества такие, что  $X = \bigsqcup_{k=1}^{N_3} C_k $. Тогда \begin{align*}
+ h_1 &= \sum_{k=1}^{N_3} \tilde a_{k} \chi_{C_k} \\
+ h_2 &= \sum_{k=1}^{N_3} \tilde b_{k} \chi_{C_k}
+\end{align*} В частности, $h_1 - h_2 = \sum_{k=1}^{N_3} (\tilde a_k - \tilde b_k) \chi_{C_k}$. Здесь в качестве $C_k$ можно взять $A_m \cap B_j$ по всем $m,j$ --- пересечение всех пар.
+\end{proof}
+\begin{crly}
+ Если $f_1,f_2 \colon\, X \to [-\infty, +\infty] $ измеримы, $\lambda_1, \lambda_2 \in \R$, то $\lambda_1 f_1 + \lambda_2 f_2$ и $f_1 \cdot f_2$ измеримы (если определены, то есть мы не складываем бесконечности разных знаков, при этом $0 \cdot \pm \infty = 0$).
+\end{crly}
+\begin{proof}
+ $ f_{1,2} = \lim f_{1,2,n} $, где $f_{1,2,n}$ простые. Тогда \begin{align*}
+  \lambda_1 f_1 + \lambda_2 f_2 = \lim_{n \to \infty} \left( \lambda_1 f_{1,n} + \lambda_2 f_{2,n} \right) \\
+  f_1 \cdot f_2 = \lim (f_{1,n} \cdot f_{2,n})
+ \end{align*} 
+\end{proof}
+\begin{crly}
+ Пусть $f \colon\, X \to \R  $ измерима, $\varphi \colon\, \R \to \R  $ измерима по Борелю (то есть измерима в пространстве $(\R, \B_1)$). Тогда $\varphi \circ f$ измерима.
+\end{crly}
+\begin{proof}
+ \begin{align*}
+  (\varphi \circ f)^{-1} ((a, +\infty)) = \varphi^{-1} ( \underbrace{f^{-1}((a, +\infty))}_{\in \B_1} ) \in \A
+ ,\end{align*} так как $f^{-1}(\B_1) \subset \A$.
+\end{proof}
+\begin{crly}
+ $\left| f \right|^{p}$, $p \in \R$ измерима, если $f$ измерима. (Упражение).
+\end{crly}
+
+\section{Интеграл Лебега}
+
+Интеграл Лебега --- придумал Лебег и Гротендик (<<Урожаи и посевы>>). Смысл такой: мы не хотим ограничиваться хорошими классами функций. Хочется интегрировать всё, что попало! Идея близка к тому, что мы сделали с рядами (над произвольными множествами индексов!).
+
+\begin{df}
+ $(X, \A, \mu)$ --- \textit{пространство с мерой}, если $X$ --- множество, $\A \subset 2^{X}$ --- $\sigma$-алгебра, а $\mu$ --- мера на $\A$.
+\end{df}
+\begin{df}
+ \label{definition:integral_simple_positive}
+ Пусть $f \geqslant 0$ --- простая неотрицательная функция: \begin{align*}
+  f = \sum_{k=1}^{N} c_k \chi_{A_k}
+ .\end{align*}  $E \in \A$ --- измеримое подмножество.  Тогда \begin{align*}
+  \int\limits_{E} f \, d\mu = \sum_{k=1}^{N} c_k \mu (E \cap A_k)
+ \end{align*} 
+\end{df}
+\begin{remrk}
+ Определение \ref{definition:integral_simple_positive} корректно, то есть не зависит от выбора разбиения $X = \bigsqcup_{k=1}^{N} A_k$.
+\end{remrk}
+\begin{proof}
+ Если есть другое разбиение $f = \sum_{k=1}^{N'} c_k' \chi_{A_k'}$, то найдём общее разбиение. Сведём вопрос к совпадению $\sum_{k=1}^{N} c_k \mu (A_k)$ и $\sum_{k=1}^{N'} c_k' \mu (A_k')$ при условии, что $\bigsqcup_{k=1}^{N'} A_k' $ --- подразбиение $\bigsqcup_{k=1}^{N} A_k$. А тут всё понятно.
+\end{proof}
+\begin{remrk}
+ Если $f,g$ --- простые, и $f \leqslant g$, то \begin{align*}
+  \int\limits_E f \, d\mu \leqslant \int\limits_E g\, d\mu
+ \end{align*} 
+\end{remrk}
+\begin{proof}
+ Доказательство полностью аналогично: рассмотрим общее разбиение для $f,g$.
+\end{proof}
+\begin{df}
+ Пусть $f \geqslant 0$ --- измерима, $E \in \A$. Тогда \begin{align*}
+  \int\limits_E f \, d\mu = \sup \left\{ \int\limits_E g\, d\mu \mid g \geqslant 0 \text{ --- простая, и } g \leqslant f \text{ на } E \right\}
+ \end{align*} 
+\end{df}
+\begin{remrk}
+ Корректность: если $f \geqslant 0$ --- простая, то интегралы в новом $\int_N$ и старом $\int_O$ смысле совпадают.
+\end{remrk}
+\begin{proof}
+ \begin{align*}
+  \int\limits_{E,O} f \, d\mu \leqslant \int\limits_{E,N} f \, d\mu
+ \end{align*} просто потому, что $f \leqslant f$, а справа --- супремум. С другой стороны, \begin{align*}
+  \int\limits_{E,O} f \, d\mu \geqslant \int\limits_{E,N} f \, d\mu
+ ,\end{align*} так как есть монотонность.
+\end{proof}
+\begin{remrk}
+ Монотонность: если $0 \leqslant f \leqslant g$ измеримы, то $\int_e f \, d\mu \leqslant 
+ \int_E g\,d\mu$. Так как справа супремум по большему множеству.
+\end{remrk}
+\begin{df}
+ Пусть функция $f \colon\, X \to [-\infty,+\infty] $ измерима. $f_{\pm} = \max(\pm f, 0)$. Тогда $f$ \textit{интегрируема по Лебегу} на множестве $E \in \A$, если $\int_E f_+ \, d\mu$  или $\int_E f_- \, d\mu$ конечен. Функция $f$ \textit{суммируема}, если оба интеграла конечны.
+
+ Для интегрируемой функции интеграл по Лебегу определяется так: \begin{align*}
+  \int\limits_E f \, d\mu = \int\limits_E f_+ \, d\mu + \int\limits_E f_- \, d\mu \in [-\infty,+\infty]
+ \end{align*} 
+\end{df}
+\begin{remrk}
+ Корректность: $f \geqslant 0$ Тогда $f_+= f, f_- = 0$ и тогда интегралы в новом и старом смысле совпадают.
+\end{remrk}
+\begin{remrk}
+ Монотонность: $f \leqslant g \implies \int_E f \, d\mu \leqslant \int_E g \, d\mu$.
+\end{remrk}
+\begin{proof}
+ Неравенство равносильно \begin{align*}
+  \int\limits_E f_+ \, d\mu + \int\limits_E g_- \, d\mu \leqslant \int\limits_E f_- \, d\mu + \int\limits_E g_+ \, d\mu
+ .\end{align*} Но $f_+ \leqslant g_+ \implies \int_E f_+ \, d\mu \leqslant \int_E g_+ \, d\mu$. И $g_- \leqslant f_- \implies \int_E g_- \, d\mu \leqslant \int_E f_- \, d\mu$.
+\end{proof}
+\begin{thm}[теорема Леви]
+ \label{theorem:levi}
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, $f \colon\, X \to [0, +\infty] $ --- измеримая функция, $\{f_{n}\}_{n=1}^{\infty} $ --- простые функции, $0 \leqslant f_n \leqslant f_{n+1} \leqslant f$ такие, что $\lim f_n(x) = f(x)$ для любой точки  $x \in X$. Тогда, \begin{align*}
+  \lim\limits_{n \to \infty} \int\limits_E f_n \, d\mu = \int\limits_E f \, d\mu
+ \end{align*} для любого $E \in \A$.
+\end{thm}
+\begin{proof}
+ Заметим, что по монотонности существует предел 
+\begin{align*}
+L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
+\end{align*} и при этом по монотонности $L \leqslant \int_E f\,d\mu$. Нам нужно доказать, что это равенство. Возьмём любое $0 < \Theta < 1$. Возьмём функцию $g$ --- простая и такая, что $0 \leqslant g \leqslant f$ на $E$. Теперь такой трюк: рассмотрим все множества \begin{align*}
+ E_n = \left\{ x \in E \mid f_n(x) \geqslant \Theta g(x) \right\}
+ .\end{align*} $E_n = (\underbrace{f_n - \Theta g}_{\text{ измерима }})^{-1}([0, +\infty])$, значит $E_n \in \A$. По построению, $E_n \subset E_{n+1}$. Кроме того, \begin{align*}
+ \bigcup_{n=1}^{\infty} E_n = E
+,\end{align*} так как если $x \in E$ и $f(x) > 0$, то $f_n(x)$ будут сколь угодно близкие к  $f(x)$, и неравенство будет выполнятся, так как  $\Theta < 1$. Если же  $f(x) = 0$, то  $g(x) = 0$, и $f_n(x) = 0$ для любого  $n$.
+
+Используя монотонность, можно написать некоторые оценки на $E_n$: \begin{align*}
+ \int\limits_E f_n \, d\mu \geqslant \int\limits_{E} f_n \cdot \chi_{E_n} \, d\mu \geqslant \int\limits_E \Theta \cdot g \chi_{E_n} \, d\mu
+.\end{align*} Так как $g = \sum_{k=1}^{N} c_k \chi_{A_k}$, то \begin{align*}
+\int\limits_E f_n \, d\mu \geqslant \int\limits_E \Theta \cdot g\chi_{E_n} \, d\mu \underbrace{=}_{(*)} \sum_{k=1}^{N} \Theta c_k \mu (A_k \cap E_n)
+\end{align*}  (*) по определению интеграла для простой функции. Тогда \begin{align*}
+\int\limits_E f_n\, d\mu \geqslant \limsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n)
+.\end{align*} Для любого $k \in \left\{ 1, \ldots, N \right\}$ верно \begin{align*}
+\lim_{n\to \infty} \mu(A_k \cap E_n) \underbrace{=}_{(**)} \mu(A_k \cap E)
+.\end{align*} Пояснение (**): если $C_j \subset C_{j+1}$ для любого $j$ и  $C = \bigcup_{k=1}^{\infty} C_j$, тогда \begin{align*}
+\mu(C) = \lim_{j \to \infty} \mu(C_j)
+.\end{align*} Это называется \textit{непрерывность меры сверху}. Докажем: возьмём $C = \bigsqcup_{j=1}^{\infty} C_j' $, где $C_1' = C_1$,  $C_2' = C_2 \setminus C_1'$ и так далее. Тогда \begin{align*}
+\mu(C) = \sum_{j=1}^{\infty} \mu( C_j' ) = \lim_{M \to \infty} \sum_{j=1}^{M}  \mu(C_j') = \lim_{M \to \infty} \mu(C_M)
+.\end{align*} 
+
+Продолжим: \begin{align*}
+ \limsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n) = \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap A) = \Theta \int\limits_E g \, d\mu
+.\end{align*}  Таким образом, получется, что \begin{align*}
+\int\limits_E f \, d\mu \geqslant \limsup_{n \to \infty} \int\limits_E f_n\, d\mu \geqslant \liminf_{n \to \infty} \int\limits_E f_n \, d\mu \geqslant \liminf_{n \to \infty} \int\limits_E \Theta g \chi_{E_n} \geqslant \Theta \int\limits_E g\, d\mu
+.\end{align*} Так как неравенство верно для любой $\Theta$ и для любой простой $g \leqslant f$ на $E $, то \begin{align*}
+\int\limits_E f \, d\mu \geqslant \limsup \int\limits_E f_n \, d\mu \geqslant \liminf \int\limits_E f_n \, d\mu \geqslant \int\limits_E f \, d\mu
+.\end{align*} Значит, \begin{align*}
+ \int\limits_E f \, d\mu = \lim \int\limits_E f_n \, d\mu
+.\end{align*} 
+\end{proof}
+\begin{crly}
+ Пусть $f,g$ --- суммируемые функции,  $h = f + g$. Тогда \begin{align*}
+  \int\limits_E h \, d\mu = \int\limits_E f\, d\mu + \int\limits_E g \, d\mu
+ \end{align*} для любого $E \in \A$.
+\end{crly}
+\begin{proof}
+ Равенство равносильно 
+ \begin{align}
+ \label{equation:linearity_of_integrals}
+  \int\limits_E h_+ \, d\mu + \int\limits_E f_- \, d\mu + \int\limits_E g_- \, d\mu = \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_e g_+ \, d\mu
+ .\end{align} По теореме \ref{theorem:approximation} существуют функции $f_{\pm,n}, g_{\pm,n}, h_{\pm,n}$ --- простые, неотрицательные, монотонно возрастающие к  $f_{\pm}, g_{\pm}, h_{\pm}$ соответственно. По теореме \ref{theorem:levi} достаточно проверить, что неравенство \eqref{equation:linearity_of_integrals} выполнено для $f_{\pm,n}, g_{\pm,n}, h_{\pm,n}$ и перейти к пределу. Но для простых функций \begin{align*}
+ \int\limits_E h_+ d\mu + \int\limits_E f_- d\mu + \int\limits_E g\,d\mu &= \int\limits_E \left( h_+ + f_- + g_- \right) \,d\mu = \int\limits_E \left( h_- + f_+ + g_+ \right) \, d\mu = \\
+  &= \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_e g_+ \, d\mu
+ .\end{align*} Для обоснования равенств нужно рассмотреть общее мелкое разбиение.
+\end{proof}
+\begin{df}
+ Если  $f \colon\, X \to \mathbb{C} $, то $f$ --- \textit{измерима}, если $\mathrm{Re} f$,  $\mathrm{Im} f$ измеримы. Функция  $f$ \textit{суммируема}, если $\mathrm{Re} f$,  $\mathrm{Im} f$ суммируемы. В этом случае интеграл определяется как: \begin{align*}
+  \int\limits_E f \, d\mu = \int\limits_E \mathrm{Re} f \, d\mu + i \int\limits_E \mathrm{Im} f \,d\mu
+ \end{align*} для любого $E \in \A$.
+
+ Корректность: ясно ($\mathrm{Im} f = 0$ для  $f \colon\, X \to \R  $).
+\end{df}
+\begin{remrk}
+ Для любых измеримых $f_1, f_2 \colon\; X \to \mathbb{C}$ верно
+ \begin{align*}
+  \int\limits_E (f_1 + f_2) \, d\mu = \int\limits_E f_1 \,d\mu + \int\limits_E f_2 \,d\mu
+ ,\end{align*}  так как операции $\mathrm{Re}, \mathrm{Im}$ линейны.
+\end{remrk}
+\begin{claim}
+ Если $\alpha \in \mathbb{C}$ и $f \colon\, X \to \mathbb{C} $ измерима, то \begin{align*}
+  \int\limits_E (\alpha f) \, d\mu = \alpha \int\limits_E f\,d\mu
+ \end{align*} 
+\end{claim}
+\begin{proof}
+ Доказательство такое же.
+\end{proof}
+\begin{claim}[Основная оценка интеграла]\
+ Пусть $f \colon\, X \to \mathbb{C} $ измерима, $E \in \A$. Тогда \begin{align*}
+  \left| \int\limits_E f \, d\mu \right| \leqslant \int\limits_E \left| f \right| \,d\mu
+ .\end{align*} 
+\end{claim}
+\begin{proof}
+ $\left| f \right| = \sqrt{(\mathrm{Re} f)^{2} + (\mathrm{Im} f)^{2}} \implies f $ измерима.
+
+ Выберем $\alpha \in \mathbb{C}$ такое, что $\left| \alpha \right| = 1$, и \begin{align*}
+  \left| \int\limits_E f\,d\mu \right| = \alpha \int\limits_E f\,d\mu = \int\limits_E \alpha f \,d\mu = \int\limits_E \mathrm{Re}(\alpha f) \,d\mu + \underbrace{i \int\limits_E \mathrm{Im}(\alpha f) \, d\mu}_{= 0 \text{ слева вещественное число }} \leqslant \\ \leqslant \int\limits_E \left| \alpha f \right| \,d\mu = \int\limits_E \left| f \right| \,d\mu
+ .\end{align*} 
+\end{proof}
+\begin{remrk}
+ \begin{align*}
+  \int\limits_E f\,d\mu = \int\limits_E \chi_E f \,d\mu
+ \end{align*} для любого $E \in \A$ и любой интегрируемой функции $f$.
+\end{remrk}
+\begin{proof}
+ На простых легко проврить, а дальше аппроксимируем по теореме \ref{theorem:approximation}.
+\end{proof}
+\begin{claim}
+ Пусть $f \colon\, [0,1] \to \R  $ кусочно-непрерывна на $[0,1]$. Тогда \begin{align*}
+  \int\limits_{0}^{1} f(x) \, dx = \int\limits_{[0,1]} f \, d\lambda_1
+ .\end{align*}  Слева интеграл Римана, а справа --- интеграл Лебега.
+\end{claim}
+\begin{proof}
+ Напишем, что \begin{align*}
+  \sum_{k=0}^{n - 1} \inf_{I_k^{n}} f \cdot \left| I_k^{n} \right| \leqslant \sum_{k=0}^{n - 1} \int\limits_{I_k^{n}} f \, d\lambda_1 \leqslant \sum_{k=0}^{n - 1} \sup_{I_k^{n}} f \cdot \left| I_k^{n} \right|
+ ,\end{align*}  где $I_k^{n} = \left[ \frac{k}{n}, \frac{k+1}{n} \right)$. Перейдём к пределу и всё получится.
+\end{proof}
+\begin{remrk}
+ \begin{align*}
+  \int\limits \chi_{[0,1] \setminus \Q} \, d\lambda_1 = 1
+ ,\end{align*} но по Риману не интегрируется.
+\end{remrk}
+
 \end{document}
