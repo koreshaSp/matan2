@@ -342,6 +342,7 @@
  .\end{align*}
 \end{df}
 \begin{df}
+	\label{definition:measure}
  Пусть $ \A $ --- $ \sigma $-алгебра в $ X $, $ \mu \colon\, \A \to [0, +\infty] $ --- \textit{мера}, если
  \begin{align*}
   \mu\left( \bigsqcup_{i \in I} A_i \right) = \sum_{i\in I}^{  } \mu(A_i)
@@ -916,7 +917,7 @@
 \end{proof}
 Идея Лебега: нужно любую измеримую функцию приближать простыми.
 \begin{lm}
- Пусть функции $f_n \colon\; X \to [-\infty, +\infty]$ измеримы. Тогда $\sup f_n$, $\inf f_n$,  $\limsup f_n$, $\liminf f_n$ измеримы. Также, если существует предел  $\lim_{n \to \infty} f_n(x)$ для любой точки $x \in X$, то $\lim f_n$ измерим.
+ Пусть функции $f_n \colon\; X \to [-\infty, +\infty]$ измеримы. Тогда $\sup f_n$, $\inf f_n$,  $\varlimsup f_n$, $\varliminf f_n$ измеримы. Также, если существует предел  $\lim_{n \to \infty} f_n(x)$ для любой точки $x \in X$, то $\lim f_n$ измерим.
 \end{lm}
 \begin{proof}
  $f(x) = \sup f_n(x)$:
@@ -925,18 +926,20 @@
  .\end{align*} $f(x) = \inf f_n(x)$:
  \begin{align*}
   f^{-1} \left( [-\infty, a) \right) = \bigcup_{n=1}^{\infty} f^{-1}_n \left( [-\infty, a) \right)
- .\end{align*}  $f(x) = \limsup f_n(x)$:
+ .\end{align*}  $f(x) = \varlimsup f_n(x)$:
  \begin{align*}
-  f(x) = \limsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
- .\end{align*} Следовательно, $\limsup f_n$ измерим. $\liminf$ аналогично.
+  f(x) = \varlimsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
+ .\end{align*} Следовательно, $\varlimsup f_n$ измерим. $\varliminf$ аналогично.
 
  Пусть теперь $f(x) = \lim f_n(x)$ существует. Тогда
  \begin{align*}
-  f = \limsup f_n = \liminf f_n
+  f = \varlimsup f_n = \varliminf f_n
  ,\end{align*} а они измеримы.
 \end{proof}
 
 Следующая теорема будет о том, что если взять какую попало измеримую функцию (но неотрицательную), то она приближается простыми.
+
+% 2022.09.30 lecture 4
 
 \begin{thm}[об аппроксимации]
  \label{theorem:approximation}
@@ -960,19 +963,25 @@
  [0, +\infty] = \bigsqcup_{k=0}^{n^{2}} I_{n,k}
  .\end{align*} Заведём множества \begin{align*}
  A_{n,k} = f^{-1} \left( I_{n,k} \right), \quad k = 0, \ldots, n^{2}
- .\end{align*}  Рассмотрим функции \begin{align*}
+ .\end{align*}
+ Рассмотрим функции \begin{align*}
  g_n = \sum_{k=0}^{n^{2}} \frac{k}{n} \chi_{A_{n,k}}
-\end{align*} Заметим, что $g_n$ --- простая функция, так как $A_{n,k}$ измеримы как прообразы ячеек. Далее  \begin{align*}
- g_n(x) \leqslant f(x), \quad \forall x \in X
- \end{align*} так как $g_n(x) \rvert_{A_{n,k}} = \frac{k}{n}$, а $f(x) \rvert_{A_{n,k}} \geqslant \frac{k}{n}$, так как $f(A_{n,k}) \subset I_{n,k}$. Посмотрим на разность: пусть $x \in \bigsqcup_{k=0}^{n^{2} - 1} A_{n,k} $\begin{align*}
+\end{align*}
+Заметим, что $g_n$ --- простая функция, так как $A_{n,k}$ измеримы как прообразы ячеек. Далее  \begin{align*}
+ 0 \leqslant g_n(x) \leqslant f(x), \quad \forall x \in X
+ \end{align*} так как $g_n(x) \rvert_{A_{n,k}} = \frac{k}{n}$, а $f(x) \rvert_{A_{n,k}} \geqslant \frac{k}{n}$, так как $f(A_{n,k}) \subset I_{n,k}$.
+ Посмотрим на разность: пусть $x \in \bigsqcup_{k=0}^{n^{2} - 1} A_{n,k} $
+ \begin{align*}
  f(x) - g_n(x) \leqslant \frac{1}{n}
-,\end{align*} так как на $A_{n,k}$  $f \leqslant \frac{k+1}{n}$, а $g  = \frac{k}{n}$.
+,\end{align*} так как на $A_{n,k} \quad f \leqslant \frac{k+1}{n}$, а $g  = \frac{k}{n}$.
 
-Пусть $x \in X$ такой, что $f(x) < +\infty$. Тогда при больших $n$ верно $x \in f^{-1} \left( [0, n) \right) = \bigsqcup_{k=0}^{n^{2}-1} A_{n,k} $. Значит, при больших $n$ верно \begin{align*}
+Пусть $x \in X$ такой, что $f(x) < +\infty$. Тогда при больших $n$ верно $x \in f^{-1} \left( [0, n) \right) = \bigsqcup_{k=0}^{n^{2}-1} A_{n,k} $. Значит, при больших $n$ верно
+\begin{align*}
  0 \leqslant f(x) - g(x) \leqslant \frac{1}{n}
 .\end{align*} Тем самым, мы получаем, что \begin{align*}
-\lim\limits_{n \to \infty} g_n(x) = f(x)
-\end{align*} для любого $x$ такого, что  $f(x) < +\infty $. Теперь пусть  $x \in X$ такой, что $f(x) = +\infty$. Тогда  \begin{align*}
+\lim\limits_{n \to \infty} g_n(x) = f(x), \quad \forall x : f(x) < +\infty
+\end{align*}
+Теперь пусть $x \in X$ такой, что $f(x) = +\infty$. Тогда  \begin{align*}
  g_n(x) = n
 \end{align*} для любого $n$. Ясно, что тогда $f(x) = \lim n = \lim g_n(x)$ для этого $x$.
 
@@ -1009,7 +1018,7 @@
 \end{crly}
 \begin{proof}
  \begin{align*}
-  (\varphi \circ f)^{-1} ((a, +\infty)) = \varphi^{-1} ( \underbrace{f^{-1}((a, +\infty))}_{\in \B_1} ) \in \A
+  (\varphi \circ f)^{-1} ((a, +\infty)) = f^{-1} ( \underbrace{\varphi^{-1}((a, +\infty))}_{\in \B_1} ) \in \A
  ,\end{align*} так как $f^{-1}(\B_1) \subset \A$.
 \end{proof}
 \begin{crly}
@@ -1035,10 +1044,12 @@
  Определение \ref{definition:integral_simple_positive} корректно, то есть не зависит от выбора разбиения $X = \bigsqcup_{k=1}^{N} A_k$.
 \end{remrk}
 \begin{proof}
- Если есть другое разбиение $f = \sum_{k=1}^{N'} c_k' \chi_{A_k'}$, то найдём общее разбиение. Сведём вопрос к совпадению $\sum_{k=1}^{N} c_k \mu (A_k)$ и $\sum_{k=1}^{N'} c_k' \mu (A_k')$ при условии, что $\bigsqcup_{k=1}^{N'} A_k' $ --- подразбиение $\bigsqcup_{k=1}^{N} A_k$. А тут всё понятно.
+	Если есть другое разбиение $f = \sum_{k=1}^{N'} c_k' \chi_{A_k'}$, то найдём общее разбиение.
+	Сведём вопрос к совпадению $\sum_{k=1}^{N} c_k \mu (A_k \cap E)$ и $\sum_{k=1}^{N'} c_k' \mu (A_k' \cap E)$ при условии, что $\bigsqcup_{k=1}^{N'} A_k' $ --- подразбиение $\bigsqcup_{k=1}^{N} A_k$.
+	А тут по конечной аддитивности меры все понятно(\ref{definition:measure}).
 \end{proof}
 \begin{remrk}
- Если $f,g$ --- простые, и $f \leqslant g$, то \begin{align*}
+ Если $f,g$ --- простые и $f \leqslant g$, то \begin{align*}
   \int\limits_E f \, d\mu \leqslant \int\limits_E g\, d\mu
  \end{align*} 
 \end{remrk}
@@ -1046,29 +1057,28 @@
  Доказательство полностью аналогично: рассмотрим общее разбиение для $f,g$.
 \end{proof}
 \begin{df}
+	\label{definition:integral_supremum_simple}
  Пусть $f \geqslant 0$ --- измерима, $E \in \A$. Тогда \begin{align*}
   \int\limits_E f \, d\mu = \sup \left\{ \int\limits_E g\, d\mu \mid g \geqslant 0 \text{ --- простая, и } g \leqslant f \text{ на } E \right\}
  \end{align*} 
 \end{df}
-\begin{remrk}
- Корректность: если $f \geqslant 0$ --- простая, то интегралы в новом $\int_N$ и старом $\int_O$ смысле совпадают.
-\end{remrk}
 \begin{proof}
+ Корректность: если $f \geqslant 0$ --- простая, то интегралы в новом $\int_N$ и старом $\int_O$ смысле совпадают, покажем это:
  \begin{align*}
   \int\limits_{E,O} f \, d\mu \leqslant \int\limits_{E,N} f \, d\mu
  \end{align*} просто потому, что $f \leqslant f$, а справа --- супремум. С другой стороны, \begin{align*}
   \int\limits_{E,O} f \, d\mu \geqslant \int\limits_{E,N} f \, d\mu
- ,\end{align*} так как есть монотонность.
+,\end{align*} так как есть монотонность.
 \end{proof}
 \begin{remrk}
- Монотонность: если $0 \leqslant f \leqslant g$ измеримы, то $\int_e f \, d\mu \leqslant 
+ Монотонность: если $0 \leqslant f \leqslant g$ измеримы, то $\int_E f \, d\mu \leqslant 
  \int_E g\,d\mu$. Так как справа супремум по большему множеству.
 \end{remrk}
 \begin{df}
  Пусть функция $f \colon\, X \to [-\infty,+\infty] $ измерима. $f_{\pm} = \max(\pm f, 0)$. Тогда $f$ \textit{интегрируема по Лебегу} на множестве $E \in \A$, если $\int_E f_+ \, d\mu$  или $\int_E f_- \, d\mu$ конечен. Функция $f$ \textit{суммируема}, если оба интеграла конечны.
 
  Для интегрируемой функции интеграл по Лебегу определяется так: \begin{align*}
-  \int\limits_E f \, d\mu = \int\limits_E f_+ \, d\mu + \int\limits_E f_- \, d\mu \in [-\infty,+\infty]
+  \int\limits_E f \, d\mu = \int\limits_E f_+ \, d\mu - \int\limits_E f_- \, d\mu \in [-\infty,+\infty]
  \end{align*} 
 \end{df}
 \begin{remrk}
@@ -1102,22 +1112,22 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
  \int\limits_E f_n \, d\mu \geqslant \int\limits_{E} f_n \cdot \chi_{E_n} \, d\mu \geqslant \int\limits_E \Theta \cdot g \chi_{E_n} \, d\mu
 .\end{align*} Так как $g = \sum_{k=1}^{N} c_k \chi_{A_k}$, то \begin{align*}
 \int\limits_E f_n \, d\mu \geqslant \int\limits_E \Theta \cdot g\chi_{E_n} \, d\mu \underbrace{=}_{(*)} \sum_{k=1}^{N} \Theta c_k \mu (A_k \cap E_n)
-\end{align*}  (*) по определению интеграла для простой функции. Тогда \begin{align*}
-\int\limits_E f_n\, d\mu \geqslant \limsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n)
+\end{align*}  (*) по определению интеграла для простой функции(\ref{definition:integral_simple_positive}). Тогда \begin{align*}
+\int\limits_E f_n\, d\mu \geqslant \varlimsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n)
 .\end{align*} Для любого $k \in \left\{ 1, \ldots, N \right\}$ верно \begin{align*}
 \lim_{n\to \infty} \mu(A_k \cap E_n) \underbrace{=}_{(**)} \mu(A_k \cap E)
-.\end{align*} Пояснение (**): если $C_j \subset C_{j+1}$ для любого $j$ и  $C = \bigcup_{k=1}^{\infty} C_j$, тогда \begin{align*}
+.\end{align*} Пояснение (**): если $C_j \subset C_{j+1}$ для любого $j$ и  $C = \bigcup_{j=1}^{\infty} C_j$, тогда \begin{align*}
 \mu(C) = \lim_{j \to \infty} \mu(C_j)
 .\end{align*} Это называется \textit{непрерывность меры сверху}. Докажем: возьмём $C = \bigsqcup_{j=1}^{\infty} C_j' $, где $C_1' = C_1$,  $C_2' = C_2 \setminus C_1'$ и так далее. Тогда \begin{align*}
 \mu(C) = \sum_{j=1}^{\infty} \mu( C_j' ) = \lim_{M \to \infty} \sum_{j=1}^{M}  \mu(C_j') = \lim_{M \to \infty} \mu(C_M)
 .\end{align*} 
 
 Продолжим: \begin{align*}
- \limsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n) = \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap A) = \Theta \int\limits_E g \, d\mu
+ \varvarlimsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n) = \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap E) = \Theta \int\limits_E g \, d\mu
 .\end{align*}  Таким образом, получется, что \begin{align*}
-\int\limits_E f \, d\mu \geqslant \limsup_{n \to \infty} \int\limits_E f_n\, d\mu \geqslant \liminf_{n \to \infty} \int\limits_E f_n \, d\mu \geqslant \liminf_{n \to \infty} \int\limits_E \Theta g \chi_{E_n} \geqslant \Theta \int\limits_E g\, d\mu
-.\end{align*} Так как неравенство верно для любой $\Theta$ и для любой простой $g \leqslant f$ на $E $, то \begin{align*}
-\int\limits_E f \, d\mu \geqslant \limsup \int\limits_E f_n \, d\mu \geqslant \liminf \int\limits_E f_n \, d\mu \geqslant \int\limits_E f \, d\mu
+\int\limits_E f \, d\mu \geqslant \varlimsup_{n \to \infty} \int\limits_E f_n\, d\mu \geqslant \varliminf_{n \to \infty} \int\limits_E f_n \, d\mu \geqslant \varliminf_{n \to \infty} \int\limits_E \Theta g \chi_{E_n} \geqslant \Theta \int\limits_E g\, d\mu
+.\end{align*} Так как неравенство верно для любой $\Theta$ и для любой простой $g \leqslant f$ на $E $, то возьмем супремум по всем $\Theta$ и $g$ и по \ref{definition:integral_supremum_simple} получим: \begin{align*}
+\int\limits_E f \, d\mu \geqslant \varlimsup \int\limits_E f_n \, d\mu \geqslant \varliminf \int\limits_E f_n \, d\mu \geqslant \int\limits_E f \, d\mu
 .\end{align*} Значит, \begin{align*}
  \int\limits_E f \, d\mu = \lim \int\limits_E f_n \, d\mu
 .\end{align*} 
@@ -1131,14 +1141,18 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
  Равенство равносильно 
  \begin{align}
  \label{equation:linearity_of_integrals}
-  \int\limits_E h_+ \, d\mu + \int\limits_E f_- \, d\mu + \int\limits_E g_- \, d\mu = \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_e g_+ \, d\mu
- .\end{align} По теореме \ref{theorem:approximation} существуют функции $f_{\pm,n}, g_{\pm,n}, h_{\pm,n}$ --- простые, неотрицательные, монотонно возрастающие к  $f_{\pm}, g_{\pm}, h_{\pm}$ соответственно. По теореме \ref{theorem:levi} достаточно проверить, что неравенство \eqref{equation:linearity_of_integrals} выполнено для $f_{\pm,n}, g_{\pm,n}, h_{\pm,n}$ и перейти к пределу. Но для простых функций \begin{align*}
- \int\limits_E h_+ d\mu + \int\limits_E f_- d\mu + \int\limits_E g\,d\mu &= \int\limits_E \left( h_+ + f_- + g_- \right) \,d\mu = \int\limits_E \left( h_- + f_+ + g_+ \right) \, d\mu = \\
+  \int\limits_E h_+ \, d\mu + \int\limits_E f_- \, d\mu + \int\limits_E g_- \, d\mu = \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_E g_+ \, d\mu
+ .\end{align} По теореме \ref{theorem:approximation} существуют функции $f_{\pm,n}, g_{\pm,n}, h_{\pm,n}$ --- простые, неотрицательные, монотонно возрастающие к  $f_{\pm}, g_{\pm}, h_{\pm}$ соответственно.
+ По теореме \ref{theorem:levi} достаточно проверить, что неравенство \eqref{equation:linearity_of_integrals} выполнено для $f_{\pm,n}, g_{\pm,n}, h_{\pm,n}$ и перейти к пределу.
+ Но для простых функций
+ \begin{align*}
+ \int\limits_E h_+ d\mu + \int\limits_E f_- d\mu + \int\limits_E g_- \,d\mu &= \int\limits_E \left( h_+ + f_- + g_- \right) \,d\mu = \int\limits_E \left( h_- + f_+ + g_+ \right) \, d\mu = \\
   &= \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_e g_+ \, d\mu
- .\end{align*} Для обоснования равенств нужно рассмотреть общее мелкое разбиение.
+ .\end{align*}
+ Для обоснования равенств(линейности интеграла простой функции) нужно рассмотреть общее мелкое разбиение.
 \end{proof}
 \begin{df}
- Если  $f \colon\, X \to \mathbb{C} $, то $f$ --- \textit{измерима}, если $\mathrm{Re} f$,  $\mathrm{Im} f$ измеримы. Функция  $f$ \textit{суммируема}, если $\mathrm{Re} f$,  $\mathrm{Im} f$ суммируемы. В этом случае интеграл определяется как: \begin{align*}
+ Если  $f \colon\, X \to \mathbb{C} $, то $f$ --- \textit{измерима}, если $\mathrm{Re} f$,  $\mathrm{Im} f$ измеримы. Функция  $f$ \textit{суммируема}, если $\mathrm{Re} f$,  $\mathrm{Im} f$ суммируемы. Тогда интеграл определяется так: \begin{align*}
   \int\limits_E f \, d\mu = \int\limits_E \mathrm{Re} f \, d\mu + i \int\limits_E \mathrm{Im} f \,d\mu
  \end{align*} для любого $E \in \A$.
 
@@ -1164,7 +1178,7 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
  .\end{align*} 
 \end{claim}
 \begin{proof}
- $\left| f \right| = \sqrt{(\mathrm{Re} f)^{2} + (\mathrm{Im} f)^{2}} \implies f $ измерима.
+ $\left| f \right| = \sqrt{(\mathrm{Re} f)^{2} + (\mathrm{Im} f)^{2}} \implies \left| f \right| $ измерима.
 
  Выберем $\alpha \in \mathbb{C}$ такое, что $\left| \alpha \right| = 1$, и \begin{align*}
   \left| \int\limits_E f\,d\mu \right| = \alpha \int\limits_E f\,d\mu = \int\limits_E \alpha f \,d\mu = \int\limits_E \mathrm{Re}(\alpha f) \,d\mu + \underbrace{i \int\limits_E \mathrm{Im}(\alpha f) \, d\mu}_{= 0 \text{ слева вещественное число }} \leqslant \\ \leqslant \int\limits_E \left| \alpha f \right| \,d\mu = \int\limits_E \left| f \right| \,d\mu
@@ -1172,7 +1186,7 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
 \end{proof}
 \begin{remrk}
  \begin{align*}
-  \int\limits_E f\,d\mu = \int\limits_E \chi_E f \,d\mu
+  \int\limits_E f\,d\mu = \int\limits_X \chi_E f \,d\mu
  \end{align*} для любого $E \in \A$ и любой интегрируемой функции $f$.
 \end{remrk}
 \begin{proof}
