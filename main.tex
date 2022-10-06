@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,14pt]{extarticle}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -90,19 +90,28 @@
 \addto\captionsrussian{\renewcommand\proofname{\normalfont\textsc{Доказательство}}}
 
 % some aliases
-\newcommand*{\R}{\mathbb{R}}
-\newcommand*{\Q}{\mathbb{Q}}
-\newcommand*{\CC}{\mathbb{C}}
-\newcommand*{\Z}{\mathbb{Z}}
-\newcommand*{\N}{\mathbb{N}}
+\newcommand{\R}{\ensuremath \mathbb{R}}
+\newcommand{\Q}{\ensuremath \mathbb{Q}}
+\newcommand{\CC}{\ensuremath \mathbb{C}}
+\newcommand{\Z}{\ensuremath \mathbb{Z}}
+\newcommand{\N}{\ensuremath \mathbb{N}}
+\newcommand{\eps}{\ensuremath \varepsilon}
+\newcommand{\then}{\ensuremath \implies}
+
+% project-local aliases
+\newcommand{\A}{\ensuremath \mathfrak{A}}
+\newcommand{\p}{\ensuremath \mathcal{P}}
+\newcommand{\mua}{\ensuremath \mu^\ast}
 
 \title{Матан СП 2 курс. Конспект лекций}
 \author{Усачев Данила}
 
 \begin{document}
 \maketitle
+\tableofcontents
 \newpage
 
 \import{sections/}{01.tex}
+\import{sections/}{02.tex}
 
 \end{document}
