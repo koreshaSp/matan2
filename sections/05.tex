@@ -1,0 +1,216 @@
+% 2022.10.07 lecture 5
+
+Ещё пару фактов об интеграле Лебега.
+
+\begin{claim}
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, функция $f \colon\, X \to [0, \infty] $ измерима. Для каждого измеримого множества $E \in \A$ сопоставим число \begin{align*}
+  \nu(E) = \int\limits_{E} f \, d\mu 
+ .\end{align*} Тогда $\nu$ --- это мера на $\A$.
+\end{claim}
+\begin{proof}
+ $\nu(E) \in [0, \infty]$ для любого $E$. Если $\left\{ E_k \right\}_{k=1}^{\infty} \in \A$ дизъюнктны, то \begin{align*}
+  \nu \left( \bigsqcup_{k=1}^{\infty} E_k   \right) &=  \int\limits_{\bigsqcup_{k=1}^{\infty} E_k } f \, d\mu = \int\limits_{X} \chi_{\bigsqcup_{k=1}^{\infty} E_k } f \, d\mu = \\
+  &= \int\limits_{X} \lim_{k \to \infty} f_k  \, d\mu  = \lim_{k \to \infty} \int\limits_{X} f_k \, d\mu  = \\
+  &= \lim_{k \to \infty} \int\limits_{X} \chi_{E_i} f \, d\mu   = \sum_{k=1}^{\infty} \int\limits_{E_k} f \, d\mu  = \sum_{k=1}^{\infty} \nu(E_k)
+ ,\end{align*} где $f_k = \sum_{i=1}^{k} \chi_{E_i} f$. Обоснование: так как $0 \leqslant f_k(x) \leqslant f_{k+1}(x)$, то по теореме Леви \ref{theorem:levi} можно поменять местами интеграл и предел.
+\end{proof}
+\begin{remrk}
+ Если $\int_{X} f \, d\mu < \infty$  в предыдущем утверждении, то $\nu$ --- \textit{конечная} мера, то есть $\nu(X) < +\infty$.
+\end{remrk}
+\begin{df}
+ Если $\mu, \nu$ --- меры на $\sigma$-алгебре $\A$ в $X$, то  $\nu \prec\prec \mu$, ($\nu$ \textit{непрерывна относительно} $\mu$), если из того, что $\mu(E) = 0$ следует $\nu(E) = 0$.
+\end{df}
+\begin{remrk}
+ В предыдущем утверждении мера $\nu$ непрерывна относительно $\mu$, так как если $\mu(E) = 0$, то $\int_{E} f \, d\mu = 0$. 
+\end{remrk}
+\begin{remrk}
+ Верное обратное (теорема Радона-Никодина): если $\nu$ непрерывна относительно $\mu$, то она обязательно имеет вид из утверждения.
+\end{remrk}
+\begin{claim}[абсолютная непрерывность интеграла]
+ Пусть $f \geqslant 0$, $\int_{E} f \, d\mu < \infty$. Тогда для любого $\eps > 0$ существует $\delta(\eps) > 0$ такое, что если $E \in \A$ и $\mu(E) < \delta(\eps)$, то \begin{align*}
+  \int\limits_{E} f \, d\mu < \eps
+ .\end{align*} 
+\end{claim}
+\begin{proof}
+ По определению \ref{definition:integral_supremum_simple} интеграла для любого $\eps > 0$ существует простая неотрицательная функция $g$ такая, что $0 \leqslant g \leqslant f$ на $X$ и \begin{align*}
+  \int\limits_{X} f \, d\mu \leqslant \int\limits_{X} g \, d\mu + \frac{\eps}{10}
+ .\end{align*} Пусть теперь $E \in \A$. Тогда \begin{align*}
+ \int\limits_{E} f \, d\mu  &= \int\limits_{E} (f-g) \, d\mu + \int\limits_{E} g \, d\mu \leqslant \\ &\leqslant \int\limits_{X} (f-g) \, d\mu + \int\limits_{E} \underbrace{\max g}_{\exists, \text{ так как \item$g$ простая}} \, d\mu \leqslant \\ &\leqslant \frac{\eps }{10} + \max g \cdot \mu(E)
+ .\end{align*} Таким образом, можно взять $\delta(\eps) = \frac{9\eps}{10 \cdot \max g}$ (если $g = 0$ тождественно, то и $f = 0$ и всё тривиально).
+\end{proof}
+\begin{claim}[исчерпывание интеграла]
+ Пусть $f \geqslant 0$ и $\int_{X} f \, d\mu < \infty$. Тогда для любого $\eps > 0$ существует $A \in \A$ такое, что $\mu(A) < \infty$ и \begin{align*}
+  \int\limits_{X \setminus A} f \, d\mu < \eps
+ .\end{align*} 
+\end{claim}
+\begin{proof}
+ Заведём множество $E_n = \left\{ x \in X \mid f(x) \geqslant \frac{1}{n} \right\}$. Множество $E_n \in \A$ измеримое (так как это прообраз луча $\left[\frac{1}{n}, \infty\right]$). Кроме того, \begin{align*}
+  \bigcup_{n=1}^{\infty} E_n = \left\{ x \mid f(x) > 0 \right\}
+ \end{align*} и $ E_1 \subset E_2 \subset E_3 \subset \ldots$ Рассмотрим меру 
+\begin{align*}
+\nu(E) = \int\limits_{E} f \, d\mu  
+.\end{align*} Так как $\nu$ --- мера, то \begin{align*}
+ \nu \left( \bigcup_{n=1}^{\infty} E_n \right) = \lim_{n \to \infty} \nu(E_n) 
+\end{align*} по непрерывности меры сверху (проверяли в доказательстве). Левая часть равна \begin{align*}
+ \nu \left( \bigcup_{n=1}^{\infty} E_n \right) = \int\limits_{\left\{ x \mid f(x) > 0 \right\}} f \, d\mu  = \int\limits_{X} f \, d\mu  
+,\end{align*} а правая часть равна \begin{align*}
+ \lim_{n \to \infty} \nu(E_n)  = \lim_{n \to \infty} \int\limits_{E_n} f \, d\mu  
+.\end{align*} Тогда в качестве $A$ можно взять $E_N$ с большим номером. Единственное, нужно проверить, что для любого $n$ $\mu(E_n) < \infty$. Для этого воспользуемся неравенством Чебышева \begin{align*}
+\mu(E_n) = \int\limits_{X} \chi_{E_n} \, d\mu  \leqslant \int\limits_{X} \chi_{E_n} \underbrace{n \cdot f(x)}_{\geqslant 1 \text{ на $E_n$}} \, d\mu  \leqslant n \int\limits_{X} f \, d\mu  < \infty
+.\end{align*}
+\end{proof}
+
+\section{Предельные теоремы}
+Как обычно, зафиксируем пространство с мерой $(X, \A, \mu)$.
+
+\begin{df}
+ Свойство $P(x)$, зависящее от точки $x \in X$, выполнено \textit{$\mu$-почти всюду} (или \textit{$\mu$-почти наверное}, или \textit{$\mu$-почти везде}), если множество $E = \left\{ x \in X \mid P(x) \text{ не выполнено} \right\}$ измеримо и $\mu(E) = 0$.
+\end{df}
+\newcommand{\lao}{\ensuremath \lambda_{1}}
+\begin{exmpl}
+ Почти любая точка отрезка $[0,1]$ иррациональна. Имеется в виду, что свойство $P(x) \colon\; x \in [0,1] \setminus \Q$ выполнено почти наверное по мере $\lambda_1$.
+\end{exmpl}
+\begin{exmpl}
+ Если $\mu = \delta_{\left\{ \frac{\sqrt{2}}{10} \right\}}$, то $\mu$-почти любая точка $\R$ --- это $\frac{\sqrt{2}}{10}$.
+\end{exmpl}
+\begin{df}
+ Пусть $f_n \colon\, E \to \R  $ измеримые функции, $f_n \to f$ $\mu$-почти всюду, если существует множество  $E \in \A$ такое, что $f_n(x) \to f(x)$ для любого $x \in E$ и $\mu(X \setminus E) = 0$.
+\end{df}
+\begin{remrk}
+ Если $\mu$ --- полная мера, то $f$ измерима автоматически вне зависимости от значений на $E$. В общем случае мы будем требовать измеримость $f$.
+\end{remrk}
+\begin{df}
+ Будем говорить, что $f_n \xrightarrow{\mu} f$ (функции $f_n$ \textit{сходятся по мере $\mu$ } к функции $f$), если для любого $\eps > 0$ \begin{align*}
+  \lim_{n \to \infty} \mu \left( \left\{ x \mid \left| f_n(x) - f(x) \right| \geqslant \eps  \right\} \right) = 0
+ .\end{align*} Иными словами, вероятность того, что значение в точке $x$ отличается на $\eps$, стремится к нулю.
+\end{df}
+\begin{remrk}
+ Если $f_n \to \tilde f_1$ и $f_n \to \tilde f_2$ $\mu$-почти всюду, то $\tilde f_1 = \tilde f_2$ $\mu$-почти всюду.
+\end{remrk}
+\begin{proof}
+ Существуют $E_1, E_2 \in \A$ полной меры (то есть $\mu(X \setminus E_1) = \mu(X \setminus E_2) = 0$) и при этом $f_n(x) \to \tilde f_1(x)$ и $f_n(x) \to \tilde f_2(x)$. Тогда $\tilde f_1 = \tilde f_2$ на $E_1 \cap E_2 = E$. Но $\mu(X \setminus E) = \mu(E_1^{c} \cup E_2^{c}) = 0$.
+\end{proof}
+\begin{remrk}
+ Если $f_n \xrightarrow{\mu} \tilde f_1$ и $f_n \xrightarrow{\mu} \tilde f_2$, то $\tilde f_1 = \tilde f_2$  $\mu$-почти всюду.
+\end{remrk}
+\begin{proof}
+ \begin{align*}
+  \mu \left( \left\{ \left| \tilde f_1 - \tilde f_2 \right| > 2\eps \right\} \right)\leqslant \mu \left( \left\{ \left| \tilde f_1 - f_n \right| > \eps \right\} \cup \left\{ \left| f_n - \tilde f_2 \right| > \eps \right\} \right)
+ ,\end{align*} так как если  $\left| \tilde f_1(x) - \tilde f_2(x) \right| > 2\eps$ то должно быть выполнено $\left| \tilde f_1(x) - f_n \right| > \eps$ или $\left| f_n - \tilde f_2(x) \right| > \eps$, иначе по неравенству треугольника можно показать 
+\begin{align*}
+\left| \tilde f_1(x) - \tilde f_2(x) \right| \leqslant 2\eps
+.\end{align*} Продолжим: \begin{align*}
+\mu \left( \left\{ \left| \tilde f_1 - \tilde f_2 \right| > 2\eps \right\} \right) \leqslant \underbrace{\mu\left( \left\{ \left| \tilde f_1 - f_n \right| > \eps \right\} \right)}_{\to 0} + \underbrace{\mu \left( \left\{ \left| f_n - \tilde f_2 \right| > \eps \right\} \right)}_{\to 0} \\
+\implies \mu \left( \left\{ \left| \tilde f_1 - \tilde f_2 \right| > 2\eps \right\} \right) = 0
+.\end{align*} Теперь устремим $\eps \to 0$, и тогда \begin{align*}
+\mu \left( \left\{ \left| \tilde f_1 - \tilde f_2 \right| > 0 \right\} \right) = \mu \left( \bigcup_{n=1}^{\infty} \left\{ \left| \tilde f_1 - \tilde f_2 \right| \geqslant \frac{1}{n}\right\} \right) = 0
+\end{align*} 
+\end{proof}
+\begin{exmpl}[различия сходимостей по мере и поточечно]\
+ \begin{enumerate}
+  \item $f_n = \chi_{[n, n + 1]}$. Тогда $f_n(x) \to 0$ для любого $x \in \R$ при $n \to \infty$. Но, неверно $f_n \xrightarrow{\lao} 0$, так как $\lao \left( \left\{ f_n > \frac{1}{2} \right\} \right) = 1$ для любого $n$.
+  \item Существует $f_n \xrightarrow{\lao} 0$ такая, что $f_n(x)$ не сходится ни в одной точке  $x$ отрезке $[0, 1]$. {\color{red} нужна картинка}. Паттерн: $f_0 = \chi_{[0,1]}$, $f_1 = \chi_{\left[0, \frac{1}{2}\right]}$, $f_2 = \chi_{\left[ \frac{1}{2}, 1 \right]}$, $f_3 = \chi_{[0, \frac{1}{4}]}$, $f_4 = \chi_{\left[\frac{1}{4}, \frac{2}{4}\right]}$, $f_5 = \chi_{\left[ \frac{2}{4}, \frac{3}{4} \right]}$, $f_6 = \chi_{\left[ \frac{3}{4}, 1 \right]}$ и так далее.
+ \end{enumerate}
+\end{exmpl}
+\begin{thm}
+ Пусть $\mu(X) < \infty$. Тогда из того, что $f_n \to f$ $\mu$-почти всюду на $X$, следует, что $f_n \xrightarrow{\mu} f$ на $X$.
+\end{thm}
+\begin{proof}
+ Шаг 1. Считаем $f = 0$ и $f_n \geqslant f_{n+1}$ для любого $n \geqslant 1$. Для $\eps > 0$ возьмём множества \begin{align*}
+  X_n = \left\{ x \in X \mid f_n(x) \geqslant \eps \right\}
+ .\end{align*} Тогда множество \begin{align*}
+  E = \bigcap_{n=1}^{\infty} X_n 
+  \end{align*} --- это то множество, на котором нет сходимости, то есть $\mu(E) = 0$. Так как  $\mu(X) < \infty$ и $X_n \supset X_{n+1}$ для любого $n$, то (по задаче из листочка) \begin{align*}
+  \lim_{n \to \infty} \mu(X_n)  = 0
+ .\end{align*} Следовательно, \begin{align*}
+ f_n \xrightarrow{\mu} 0 = f
+ .\end{align*} 
+
+ Шаг 2. Общий случай, нужно свести к шагу 1. Выберем  \begin{align*}
+  \tilde f_n = \sup_{k \geqslant n} \left| f - f_k \right|
+ .\end{align*} Тогда $\tilde f_n(x) \geqslant 0$ и $\tilde f_n \geqslant \tilde f_{n+1}$ на $X$. Кроме того,  $\tilde f_n \to 0$ почти всюду на $X$ (на самом деле в тех же самых точках). Следовательно, по шагу 1 мы получаем 
+\begin{align*}
+\mu \left( \left\{ \left| f_n - f \right| > \eps \right\} \right) \leqslant \mu \left( \left\{ \tilde f_n > \eps \right\} \right) \to 0
+.\end{align*}
+\end{proof}
+\begin{lm}[Бореля-Кантелли]
+ \label{lemma:borel-cantelli}
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, $\left\{ E_k \right\}_{k=1}^{\infty} \in \A$ --- измеримые подмножества, и \begin{align*}
+  E = \left\{ x \in X \mid \exists \text{ бесконечное число индексов } k  \colon\; x \in E_k \right\}
+ .\end{align*} Если $\sum_{k=1}^{\infty} \mu(E_k) < \infty$, то $\mu(E) = 0$.
+\end{lm}
+\begin{proof}
+ Запишем \begin{align*}
+  E = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} E_k
+ .\end{align*} Заметим, что для любого $n$ \begin{align*}
+ \mu(E) \leqslant \mu \left( \bigcup_{k=n}^{\infty} E \right) \leqslant \underbrace{\sum_{k=n}^{\infty} \mu(E_k)}_{\text{хвост сходящегося ряда}} \to 0
+ \end{align*} 
+\end{proof}
+\begin{thm}
+ \label{theorem:measure-convergence-subsequence}
+ Пусть $(X, \A, \mu)$ -- пространство с мерой и $f_n \xrightarrow{\mu} f$ --- измеримые функции. Тогда существует подпоследовательность $\{f_{n_k}\}_{k=1}^{\infty} $ такая, что $f_{n_k}(x) \to f(x)$ $\mu$-почти всюду на $X$.
+\end{thm}
+\begin{proof}
+ Для любого $k \in \N$ найдём $n_k$ такое, что 
+\begin{align*}
+\mu \left( \left\{ x \in X \mid \left| f - f_{n} \right| \geqslant \frac{1}{k} \right\} \right) < \frac{1}{2^{k}}
+\end{align*}
+для любого $n \geqslant n_k$. Так можно сделать, так как $f_n \xrightarrow{\mu} f$. Возьмём любое $x \in X$. Если $f_{n_k}(x)$ не сходится к $f(x)$, то существует $k_0 \in \N$ такое , что \begin{align*}
+ \left| f_{n_k}(x) - f(x) \right| \geqslant \frac{1}{k_0}
+\end{align*} для бесконечно многих $k$. Из этого следует  \begin{align*}
+\left| f_{n_k}(x) - f(x) \right| \geqslant \frac{1}{k} \iff x \in E_k
+\end{align*} для бесконечно многих $k$. Обозначим \begin{align*}
+F &= \left\{ x \mid f_{n_k}(x) \not\to f(x) \right\} \\
+E &= \left\{ x \mid x \text{ лежит в бесконечном числе $E_k$} \right\}
+.\end{align*} Мы поняли, что $F \subset E$. Но по лемме \ref{lemma:borel-cantelli} (нужно проверить условие $\sum_{k=1}^{\infty} \mu(E_k) < \infty$, что верно так как $\mu(E_k) \leqslant \frac{1}{2^{k}}$) $\mu(E) = 0 \implies \mu(F) = 0$ и $f_{n_k} \to f$ $\mu$-почти всюду.
+\end{proof}
+\begin{crly}
+ Если $f_n \to f$ $\mu$-почти всюду и $f_n \xrightarrow{\mu} g$, то $f=g$ $\mu$-почти всюду.
+\end{crly}
+\begin{crly}
+ Если $f_n \xrightarrow{\mu} f$ и $\left| f_n \right| \leqslant g$ $\mu$-почти всюду, то $\left| f \right| \leqslant g$ $\mu$-почти всюду.
+\end{crly}
+\begin{proof}
+ $f_{n_k} \to f$, $\left| f_{n_k}(x) \right| \leqslant g(x) \implies \left| f(x) \right| \leqslant g(x)$  при $\mu$-почти всех $x \in X$.
+\end{proof}
+
+\begin{thm}[Лебега о мажорируемой сходимости]
+ \label{theorem:lebesgue-majoring-convergence}
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, функции $\{f_{n}\}_{n=1}^{\infty} $ --- измеримы и суммируемы, $\left| f_n \right| \leqslant g$ на $X$ для любого $n$, где $g$ измерима и $\int_{X} g \, d\mu < \infty $. Пусть $f_n(x) \to f(x)$ $\mu$-почти всюду или $f_n \xrightarrow{\mu} f$. Тогда \begin{align*}
+  \lim_{n \to \infty} \int\limits_{X} f_n \, d\mu  = \int\limits_{X} f \, d\mu  
+ \end{align*} 
+\end{thm}
+\begin{proof}
+ Шаг 1. Пусть сначала $\mu(X) < \infty$. Тогда можно рассматривать только случай $f_n \xrightarrow{\mu} f$. Кроме того, мы знаем, что $\left| f(x) \right| \leqslant g(x)$ $\mu$-почти всюду. Рассмотрим разность тут надо добавить что интеграл $f$ конечен \begin{align*}
+  \left| \int\limits_{X} f_n \, d\mu - \int\limits_{X} f \, d\mu \right|   &\leqslant \int\limits_{X} \left| f_n - f \right| \, d\mu  = \int\limits_{\left\{ x \mid \left| f_n - f \right| \geqslant \eps \right\}} \left| f_n - f \right| \, d\mu  + \int\limits_{\left\{ x \mid \left| f_n - f \right| < \eps \right\}} \left| f_n - f \right| \, d\mu   \leqslant \\
+  &\leqslant 2 \int\limits_{\left\{ x \mid \left| f_n - f \right| \geqslant \eps \right\}} g \, d\mu + \eps \int\limits_{X} 1 \, d\mu    = \\
+  &= 2 \int\limits_{E_{\eps}} g \, d\mu  + \eps \mu(X)
+ ,\end{align*} где $E_{\eps} = \left\{ x \mid \left| f_n - f \right| \geqslant \eps \right\}$. По абсолютной непрерывности интеграла \begin{align*}
+  \int\limits_{F} g \, d\mu < \eps 
+ \end{align*} для любого $F$ такого, что $mu(F) < \delta(\eps)$. Теперь выберем $N$ так, чтобы \begin{align*}
+ \mu \left( E_{\eps} \right) < \delta(\eps)
+ \end{align*} для любого $n\geqslant N$. Тогда штука \begin{align*}
+  \leqslant 2\eps + \eps \mu(X)
+ \end{align*} Так как это верно для любого $\eps > 0$, то \begin{align*}
+  \lim_{n \to \infty} \left| \int\limits_{X} f_n \, d\mu - \int\limits_{X} f \, d\mu    \right|  = 0
+ \end{align*} 
+
+ Шаг 2. Найдём $A \in \A$ такое, что $\int_{X \setminus A} g \, d\mu   < \eps$ и $\mu(A) < \infty$. Тогда \begin{align*}
+  \left| \int\limits_{X} f_n \, d\mu - \int\limits_{X} f \, d\mu    \right| \leqslant \underbrace{\int\limits_{X \setminus A} \left| f_n - f \right| \, d\mu}_{\leqslant 2 \int\limits_{X \setminus A} g \, d\mu \leqslant 2\eps  }  + \underbrace{\int\limits_{A} \left| f_n - f \right| \, d\mu}_{\to 0 \text{ по шагу 1}}    \\
+  \implies \lim_{n \to \infty} \left| \int\limits_{X} f_n \, d\mu - \int\limits_{X} f \, d\mu    \right| = 0
+ .\end{align*} 
+\end{proof}
+\begin{exmpl}
+ \begin{align*}
+  \lim_{n \to \infty} \int\limits_{0}^{+\infty} \arctan(x^{n}) \, d\mu  &= \lim_{n \to \infty}  \int\limits_{[0, 1)} \, d\mu + \lim_{n \to \infty}\int\limits_{\left\{ 1 \right\}} \, d\mu + \underbrace{\lim_{n\to \infty} \int\limits_{(1, +\infty)}  \, d\mu}_{= \int\limits_{(1, +\infty)} \lim (\arctan x^{n}) \, d\mu = \frac{\pi}{2} \mu((1, +\infty))  }        = \\
+  &= 0 + 0 + \infty
+ \end{align*} По теореме Лебега $\lim_{n \to \infty} \int_{[0, 1)} \arctan(x^{n}) \, d\mu = \\int_{[0, 1)} \lim \arctan (x^{n}) \, d\mu     = 0 $ Мажоранта $\arctan(x)$.
+\end{exmpl}
+\begin{remrk}
+ Если $X$ такое, что $\mu(X) < \infty$ и $f_n \to f$ $\mu$-почти всюду а также $\left| f_n \right| \leqslant C$ для любого $n$ (равномерно ограничены). Тогда \begin{align*}
+  \lim_{n \to \infty} \int\limits_{X} f_n \, d\mu = \int\limits_{X} f \, d\mu    
+ \end{align*} 
+\end{remrk}
+\begin{proof}
+ Теорема Лебега \ref{theorem:lebesgue-majoring-convergence} с мажорантой $g = C$.
+\end{proof}
