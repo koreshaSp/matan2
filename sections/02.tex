@@ -1,6 +1,6 @@
 % 2022.09.09 lecture 2
 
-\section{Внешние меры, $ \sigma $-алгебра Каратеодори}
+\section{Внешние меры, \texorpdfstring{$\sigma$}{sigma}-алгебра Каратеодори}
 
 Наша задача: продолжить функцию длины с ячеек на более широкий класс множеств. В самом начале этого пути есть метафизический вопрос: разные вещи являются счётно-аддитивными: масса, длина, ... Возможно окажется, что нам много раз придётся делать такое продолжение. Оказывается, что для всех этих разных явлений есть одна общая математическая конструкция.
 
@@ -25,7 +25,7 @@
     \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
    .\end{align*} Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
    \begin{align*}
-    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \sum_{k} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
+    \mu^\ast\left( \bigcup E_k \right) &\leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \\ &\leqslant \sum_{k} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
    .\end{align*} Это по определению просто потому, что $ \bigcup E_k \subset \bigcup_{k,j} A_{kj} $. Теперь можно устремить $ \varepsilon $ к нулю (так как это верно для любого $ \varepsilon $) и получить нужное равенство.
  \end{enumerate}
 \end{proof}
@@ -55,8 +55,8 @@
      \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c)
    .\end{align*} Так как
    \begin{align*}
-    E \cap (A \cap B)^c = E \cap (A^c \cup B^c) = (E \cap A^c) \cup (E \cap B^c) = (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \setminus A) \cap B^c) =\\
-    = (E \setminus A) \cup (E \cap A \cap B^c)
+    E \cap (A \cap B)^c &= E \cap (A^c \cup B^c) = (E \cap A^c) \cup (E \cap B^c) =\\&= (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \setminus A) \cap B^c) =\\
+    &= (E \setminus A) \cup (E \cap A \cap B^c)
    .\end{align*} Далее,
    \begin{align*}
     \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c) = \\
@@ -159,10 +159,16 @@
    \begin{align*}
 	   \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
    .\end{align*} Напишем
-   \begin{flalign*}
-	   \mu^\ast(E) & \leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \sum_{k=1}^\infty \mu_0(P_k \cap P) + \sum_{k=1}^\infty \sum_{j=1}^{N_k} \mu_0(Q_{kj})(\text{тк $E \subset \bigcup P_k$ и $\bigsqcup Q_{kj} = E \setminus P$}) &\\
-				   & \leqslant \sum_{k=1}^\infty \mua_0(P_k) (\text{т.к. $\bigsqcup_{j=1}^{N_k} \left(Q_{kj} \sqcup (P_k \cap P)\right) \subset P_k$}) \leqslant \mu^\ast(E) + \varepsilon (\text{по неравенству выше})
-   .\end{flalign*}
+   \begin{align}
+    \nonumber
+    \mu^\ast(E) &\leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \\
+    \label{equation:caratheodory_thm:1}
+    &\leqslant \sum_{k=1}^\infty \mu_0(P_k \cap P) + \sum_{k=1}^\infty \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \\
+    \label{equation:caratheodory_thm:2}
+    & \leqslant \sum_{k=1}^\infty \mua_0(P_k) \leqslant \\
+    \nonumber
+    &\leqslant \mu^\ast(E) + \varepsilon 
+   .\end{align} Неравенство \eqref{equation:caratheodory_thm:1} выполнено, так как $E \subset \bigcup P_k$ и $\bigsqcup Q_{kj} = E \setminus P$. Неравенство \eqref{equation:caratheodory_thm:2} выполнено, так как $\bigsqcup_{j=1}^{N_k} \left(Q_{kj} \sqcup (P_k \cap P)\right) \subset P_k$.
 
   \item Докажем, что $ \mu(P) = \mu_0(P) $ для $ P \in \p $. Нужно проверить, верно ли, что
    \begin{align*}
