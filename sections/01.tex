@@ -111,7 +111,7 @@
   \mu(B) = \mu(A \sqcup (B \setminus A)) = \mu(A) + \mu(B \setminus A) \geqslant \mu(A)
  .\end{align*} Показать $ \mu([-1, 2)) = 3 $ можно так:
  \begin{align*}
-  \mu([-1, 2)) = \mu([-1, 0) \sqcup [0, 1) \sqcup [1, 2)) =\mu([-1, 0)) + \mu([0, 1)) + \mu([1, 2)) = 3 \cdot \mu([0, 1)) = 3
+  \mu([-1, 2)) &= \mu([-1, 0) \sqcup [0, 1) \sqcup [1, 2)) = \\ &= \mu([-1, 0)) + \mu([0, 1)) + \mu([1, 2)) = 3 \cdot \mu([0, 1)) = 3
  .\end{align*}
 \end{proof}
 
@@ -128,22 +128,22 @@
  \end{enumerate}
 \end{df}
 \begin{df}
- Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{A} \in 2^X $ --- \textit{алгебра} множеств, если
+ Пусть $ X $ --- множество. Набор подмножеств $ \A \in 2^X $ --- \textit{алгебра} множеств, если
  \begin{enumerate}
-  \item $ \varnothing \in \mathcal{A} $
-  \item $ A_1, A_2 \in \mathcal{A} \;\Longrightarrow\; A_1 \cap A_2 \in \mathcal{A} $
-  \item $ A \in \mathcal{A} \;\Longrightarrow\; A^c \in \mathcal{A} $ (аксиома симметричности)
+  \item $ \varnothing \in \A $
+  \item $ A_1, A_2 \in \A \;\Longrightarrow\; A_1 \cap A_2 \in \A $
+  \item $ A \in \A \;\Longrightarrow\; A^c \in \A $ (аксиома симметричности)
  \end{enumerate}
 \end{df}
 \begin{df}
- Набор подмножеств $ \mathcal{A} \subset 2^X $ --- \textit{$ \sigma $-алгебра}, если
+ Набор подмножеств $ \A \subset 2^X $ --- \textit{$ \sigma $-алгебра}, если
  \begin{enumerate}
-  \item $ \varnothing \in \mathcal{A} $
-  \item $ \left\{ A_i \right\}_{i \in I} $, $ I $ --- счётное множество, $ A_i \in \mathcal{A} $. Тогда
+  \item $ \varnothing \in \A $
+  \item $ \left\{ A_i \right\}_{i \in I} $, $ I $ --- счётное множество, $ A_i \in \A $. Тогда
    \begin{align*}
-    \bigcap_{i \in I} A_i \in \mathcal{A}
+    \bigcap_{i \in I} A_i \in \A
    .\end{align*}
-  \item $ A \in \mathcal{A} \;\Longrightarrow\; A^c \in \mathcal{A} $ (аксиома симметричности)
+  \item $ A \in \A \;\Longrightarrow\; A^c \in \A $ (аксиома симметричности)
  \end{enumerate}
 \end{df}
 \begin{exmpl}\
@@ -151,26 +151,26 @@
   \item $ \sigma $-алгебра $ \;\Longrightarrow\; $ алгебра $ \;\Longrightarrow\; $ полукольцо. Последняя импликация: $ A_1 \setminus A_2 = A_1 \cap (A_2^c) $.
   \item $ 2^X $ --- $ \sigma $-алгербра
   \item $ \left\{ \varnothing, X \right\} $ --- $ \sigma $-алгебра.
-  \item $ X = \R^2 $, $ \mathcal{A} = \left\{ E \subset X \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \mathcal{A} $ --- алгебра:
+  \item $ X = \R^2 $, $ \A = \left\{ E \subset X \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \A $ --- алгебра:
    \begin{enumerate}
-    \item $ \varnothing \in \mathcal{A} $
-    \item Пусть $ A, B \in \mathcal{A} $ и одно из них ограничено. Тогда $ A \cap B $ ограничено и $ A \cap B \in \mathcal{A} $. А если $ A^c, B^c $ ограничены, тогда $ (A \cap B)^c = A^c \cup B^c $ ограничено. Тогда $ A \cap B \in \mathcal{A} $.
-    \item $ A \in \mathcal{A} \;\Longleftrightarrow\; A^c \in \mathcal{A} $
+    \item $ \varnothing \in \A $
+    \item Пусть $ A, B \in \A $ и одно из них ограничено. Тогда $ A \cap B $ ограничено и $ A \cap B \in \A $. А если $ A^c, B^c $ ограничены, тогда $ (A \cap B)^c = A^c \cup B^c $ ограничено. Тогда $ A \cap B \in \A $.
+    \item $ A \in \A \;\Longleftrightarrow\; A^c \in \A $
    \end{enumerate}
-   При этом $ \mathcal{A} $ не является $ \sigma $-алгеброй:
+   При этом $ \A $ не является $ \sigma $-алгеброй:
    \begin{align*}
-    \mathcal{A} \not\ni \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \mathcal{A}
+    \A \not\ni \R^2 \setminus \left\{ (0, x) \mid x \geqslant 0 \right\}  = \bigcap_{k=1}^\infty A_k, \quad A_k \in \A
    .\end{align*} Нужно взять
    \begin{align*}
     A_k = \R^2 \setminus \left\{ (0, x) \mid 0 \leqslant x \leqslant k \right\} 
    .\end{align*}
-  \item Если $ \mathcal{A} $ --- алгебра, то для любых $ A_1, \ldots, A_N \in \mathcal{A} $ верно $ \bigcup_1^N A_k \in \mathcal{A} $, так как
+  \item Если $ \A $ --- алгебра, то для любых $ A_1, \ldots, A_N \in \A $ верно $ \bigcup_1^N A_k \in \A $, так как
    \begin{align*}
     \bigcup_1^N A_k = \left( \bigcap_{k=1}^N A_k^c \right)^c
    .\end{align*}
-  \item Аналогично, если $ \mathcal{A} $ --- $ \sigma $-алгебра, то для любого счетного $ I $ ($ A_i \in \mathcal{A} $ для любого $ i \in I $), то
+  \item Аналогично, если $ \A $ --- $ \sigma $-алгебра, то для любого счетного $ I $ ($ A_i \in \A $ для любого $ i \in I $), то
    \begin{align*}
-    \bigcup_{i\in I} A_i \in \mathcal{A}
+    \bigcup_{i\in I} A_i \in \A
    .\end{align*}
  \end{itemize}
 \end{exmpl}
@@ -198,23 +198,23 @@
  Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй. Например, $ \R \setminus [0, 1) \neq [a, b)$ --- не ячейка.
 \end{remrk}
 \begin{lm}
- Если $ \mathcal{A}_i $ --- $ \sigma $-алгебра, $ i \in I $, $ I $ --- произвольное множество. Тогда $ \mathcal{A} = \bigcap_{i \in I} \mathcal{A}_i $ --- $ \sigma $-алгебра.
+ Если $ \A_i $ --- $ \sigma $-алгебра, $ i \in I $, $ I $ --- произвольное множество. Тогда $ \A = \bigcap_{i \in I} \A_i $ --- $ \sigma $-алгебра.
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item $ \varnothing \in \mathcal{A} $, так как $ \varnothing \in \mathcal{A}_i $ для всех $ i \in I $.
-  \item $ A \in \mathcal{A} \;\Longrightarrow\; A \in \mathcal{A}_i  \forall i \in I \;\Longrightarrow\; A^c \in \mathcal{A}_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \mathcal{A}_i = \mathcal{A}$ 
-  \item $ A_j \in \mathcal{A} \;\Longrightarrow\; A_j \in \mathcal{A}_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
-  \mathcal{A}_i \;\Longrightarrow\; \bigcap_j A_j \in \mathcal{A}$
+  \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in I $.
+  \item $ A \in \A \;\Longrightarrow\; A \in \A_i  \forall i \in I \;\Longrightarrow\; A^c \in \A_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \A_i = \A$ 
+  \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
+  \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
  \end{enumerate}
 \end{proof}
 \begin{lm}
- Если $ E \subset 2^X $, то существует единственная $ \mathcal{A}_E $ --- наименьшая по включению $ \sigma $-алгебра, содержащая $ E $.
+ Если $ E \subset 2^X $, то существует единственная $ \A_E $ --- наименьшая по включению $ \sigma $-алгебра, содержащая $ E $.
 \end{lm}
 \begin{proof}
  Есть просто формула:
  \begin{align*}
-  \mathcal{A}_E := \bigcap_{E \subset \mathcal{A} \text{---} \sigma \text{-алгебра}} \mathcal{A}
+  \A_E := \bigcap_{E \subset \A \text{---} \sigma \text{-алгебра}} \A
  .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ --- $ \sigma $-алгебра.
 \end{proof}
 \begin{df}
@@ -233,15 +233,16 @@
  .\end{align*}
 \end{df}
 \begin{df}
- Пусть $ \mathcal{A} $ --- $ \sigma $-алгебра в $ X $, $ \mu \colon\, \mathcal{A} \to [0, +\infty] $ --- \textit{мера}, если
+ \label{definition:measure}
+ Пусть $ \A $ --- $ \sigma $-алгебра в $ X $, $ \mu \colon\, \A \to [0, +\infty] $ --- \textit{мера}, если
  \begin{align*}
   \mu\left( \bigsqcup_{i \in I} A_i \right) = \sum_{i\in I}^{  } \mu(A_i)
- \end{align*} для любого дизъюнктного счётного набора множеств $ A_i \in \mathcal{A}$.
+ \end{align*} для любого дизъюнктного счётного набора множеств $ A_i \in \A$.
 \end{df}
 \begin{exmpl}\
  \begin{itemize}
-  \item $ \mu \equiv 0 $, $ \mathcal{A} = 2^X $ (или $ \mathcal{A} $ любая) 
-  \item $ \mu \equiv +\infty $, $ \mathcal{A} = 2^X $ (или $ \mathcal{A} $ любая) 
+  \item $ \mu \equiv 0 $, $ \A = 2^X $ (или $ \A $ любая) 
+  \item $ \mu \equiv +\infty $, $ \A = 2^X $ (или $ \A $ любая) 
   \item Пусть $ X $ --- множество, $ E \subset X $. Определим \textit{считающую меру}:
    \begin{align*}
     \mu_E(A) =
@@ -249,7 +250,7 @@
      \#(A \cap E), \text{ если  } (A \cap E) \text { конечно }, \\
      +\infty \text { иначе }
     \end{cases}
-   .\end{align*} $ \mathcal{A} = 2^X $
+   .\end{align*} $ \A = 2^X $
   \item $ X = \R $, $$ \delta_0(A) =
    \begin{cases}
     1, \text{ если } 0 \in A \\
