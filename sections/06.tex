@@ -151,3 +151,115 @@
   \int\limits_{X} c \, d\mu  = c \mu(X) = c
  ,\end{align*} получаем требование.
 \end{proof}
+Сформулируем дискретный случай неравенства Йенсена. $X = \N$, $w_k \geqslant 0$ такие, что $\sum_{k=1}^{\infty} w_k = 1$. $\mu = \sum_{k=1}^{\infty} w_k \delta_{\left\{ w_k \right\}}$, $f(k) = a_k$ и  $\sum_{k=1}^{\infty} \left| a_k \right| \cdot w_k < \infty$. Пусть $\varphi$ выпуклая, тогда левая часть равна \begin{align*}
+ \varphi \left( \int\limits_{X} f \, d\mu   \right) &= \varphi \left( \int\limits_{\bigcup_{k=1}^{\infty} \left\{ k \right\}} f \, d\mu   \right) = \varphi \left( \sum_{k=1}^{\infty} \int\limits_{\left\{ k \right\}} f \, d\mu   \right) = \varphi \left( \sum_{k=1}^{\infty} a_k w_k \right)
+.\end{align*} А правая часть равна \begin{align*}
+ \int\limits_{\N} \varphi(f(x)) \, d\mu  = \sum_{k=1}^{\infty} \int\limits_{\left\{ k \right\}} \varphi(f(x)) \, d\mu   = \sum_{k=1}^{\infty} \varphi(f(k)) w_k = \sum_{k=1}^{\infty} \varphi(a_k)w_k
+.\end{align*} Получаем неравенство \begin{align*}
+ \varphi \left( \sum_{k=1}^{\infty} a_k w_k \right) \leqslant \sum_{k=1}^{\infty} w_k \varphi(a_k)
+.\end{align*} 
+
+Мотивация: когда мы хотим доказать что-то интегральное, первое, что надо сделать --- проверить соответствующее утверждение в дискретном случае. Там получится теория рядов, и там, обычно, всё понятно.
+
+\section{Пространства Лебега}
+Пусть $(X, \A, \mu)$ --- пространство с мерой и $1 \leqslant p \leqslant \infty$ --- число. Зафиксируем их на весь параграф.
+\begin{df}
+ Пусть $f,g$ --- измеримы. Будем писать $f \sim g$, если $f = g$  $\mu$-почти всюду.
+\end{df}
+\begin{remrk}
+ $f \sim g$ --- отношение эквивалентности.
+\end{remrk}
+\begin{df}
+ Пространство Лебега 
+\begin{align*}
+ L^{p}(X, \mu) = \left\{ [f] \mid f \colon\, X \to [-\infty, +\infty],  \left( \int\limits_{X} \left| f \right|^{p} \, d\mu \right)^{\frac{1}{p}} < \infty  \right\}
+\end{align*} для $p < \infty$, где $[f]$ --- класс эквивалентности $f$. Далее, \begin{align*}
+L^{\infty}(X, \mu) = \left\{ [f] \mid \mathrm{ess} \sup \left| f \right|< \infty \right\}
+,\end{align*} где существенный (essential) супремум определяется следующим образом: \begin{align*}
+\mathrm{ess} \sup g &= \inf \left\{ c \in \R \mid g(x) \leqslant c \text{ $\mu$-почти всюду} \right\} \\
+\mathrm{ess} \sup g &= +\infty, \text{ если таких $c$ нет. }
+\end{align*} 
+\end{df}
+\begin{remrk}
+ Запись $f \in L^{p}(X, \mu)$ означает, что выбран некоторый представитель его класса эквивалентности.
+\end{remrk}
+\begin{claim}
+ $L^{p}(X,\mu)$ --- это линейное пространство относительно нормы \begin{align*}
+  \|f\|_p = \begin{cases}
+   \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}}, \text{ если } p \geqslant 1  \\
+   \mathrm{ess} \sup \left| f \right|, \text{ если } p=\infty
+  \end{cases} 
+ .\end{align*} 
+\end{claim}
+\begin{proof}
+ Если $\|f\|_p = 0$, то  $\left| f \right| = 0$ $\mu$-почти всюду. Тогда $f = 0$ как элемент $L^{p}(X, \mu)$.
+
+ \begin{align*}
+  \| \alpha f \|_p = \left| \alpha \right| \cdot \| f \|_p \quad \forall \alpha \in \CC (\alpha \in \R)
+ \end{align*} Если $f,g \in L^{p}(X,\mu)$, то $f + g \in L^{p}(X, \mu)$ и выполнено неравенство треугольника: \begin{align*}
+  \| f + g \|_p \leqslant \|f \|_p + \|g\|_p
+ \end{align*}  --- это неравенство Минковского. При $p=\infty$ нужно показать \begin{align*}
+ \mathrm{ess} \sup \left| f+g \right| \leqslant \mathrm{ess} \sup \left| f \right| + \mathrm{ess} \sup \left| g \right|
+.\end{align*} Заметим, что $\inf$ в определении  $\mathrm{ess} \sup$ достигается: если $\mathrm{ess} \sup h = C$, то существует множество $E$ такое, что $\mu(X \setminus E) = 0$ и $h \leqslant C$ на $E$. Докажем это: существуют множества $E_n$ полной меры, такие, что $h \leqslant C + \frac{1}{n}$ на $E_n$ (по определению нижней грани). Тогда  $E = \bigcap_{n=1}^{\infty} E_n $ подходит,  оно полной меры.
+\end{proof}
+\begin{df}
+ $X$ --- \textit{банахово пространство}, если $X$ --- линейное нормированное пространство, и $X$ полно относительно своей нормы.
+\end{df}
+\begin{thm}
+ \label{theorem:lebesgue_space_is_banach}
+ $L^{p}(X, \mu)$ --- банахово пространство (оно полное).
+\end{thm}
+\begin{lm}
+ Пусть $L$ --- линейное нормированное пространство. $L$ полно тогда и только тогда, когда для любых $x_n \in L$ таких, что \begin{align*}
+  \sum_{k=1}^{\infty} \|x_n\| < \infty
+ \end{align*}  существует предел \begin{align*}
+  \lim_{N \to \infty} \sum_{n=1}^{\infty} x_n
+ \end{align*} в $X$. То есть любой абсолютно сходящийся ряд сходится в $X$.
+\end{lm}
+\begin{proof}
+ Пусть $L$ полно и $\sum_{n=1}^{\infty} \|x_n\| < \infty$. Положим \begin{align*}
+  S_N = \sum_{n=1}^{\infty} x_n
+ .\end{align*} Тогда \begin{align*}
+  \| S_N - S_M \| \leqslant \sum_{n=N}^{M} \|x_n\|
+ .\end{align*} По критерию Коши для числовых рядов \begin{align*}
+  \lim_{N \to \infty} \sum_{n=N}^{M} \| x_n \| = 0 
+ .\end{align*} Значит, $\{S_{N}\}_{N=1}^{\infty} $ --- фундаментальная последовательность. Так как пространство $L$ полное, то она сходится, то есть существует предел \begin{align*}
+  \sum_{n=1}^{\infty} x_n := \lim_{N \to \infty} S_N 
+ .\end{align*} 
+
+ В обратную сторону: пусть любой абсолютно сходящийся ряд сходится и пусть дана последовательность $\{x_{k}\}_{k=1}^{\infty} $ --- фундаментальная в $L$. Тогда существует подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty} $ такая, что \begin{align*}
+  \|x_s - x_{n_k}\| \leqslant \frac{1}{2^{k}} \quad \forall s \geqslant n_k
+ \end{align*} Построим последовательность $\{y_{k}\}_{k=1}^{\infty} $:  \begin{align*}
+ y_1 &= x_{n_1} \\
+ y_1 + y_2 &= x_{n_2} \\
+ y_1 + y_2 +y_3 &= x_{n_3} \\
+ &\vdots
+\end{align*} Положим ещё $x_{n_0} = 0$. Тогда будет верна формула \begin{align*}
+\sum_{k=1}^{\infty} \| y_k \| = \sum_{k=1}^{\infty} \| x_{n_k} - x_{n_{k-1}} \| \leqslant \sum_{k=1}^{\infty} \frac{1}{2^{k-1}} < \infty
+.\end{align*} Следовательно, ряд $\sum_{k=1}^{\infty} y_k$ сходится, то есть существует предел \begin{align*}
+\lim_{N \to \infty} \sum_{k=1}^{N} y_k = \lim_{N \to \infty} x_{n_N}  
+.\end{align*} Значит, фундаментальная последовательность $\{x_{n}\}_{n=1}^{\infty} $ содержит сходящуюся подпоследовательность. Значит она сама сходится.
+\end{proof}
+\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:lebesgue_space_is_banach}}]
+ Пусть $f_n \in L^{p}(X, \mu)$ такие, что $\sum_{n=1}^{\infty} \|f_n\|_p < \infty$. Нужно проверить, что ряд 
+\begin{align*}
+ F(x) = \sum_{n=1}^{\infty} f_n(x)
+\end{align*} сходится при $\mu$-почти всех $x \in X$ и \begin{align*}
+ \lim_{N \to \infty} \left\| \sum_{n=1}^{N} f_n - F \right\| = 0
+.\end{align*} Докажем. \begin{align*}
+\left( \int\limits_{X} \left( \sum_{n=1}^{\infty} \left| f_n(x) \right| \right)^{p} \, d\mu \right) ^{\frac{1}{p}} &= \left( \int\limits_{X} \varliminf_{N \to \infty} \left( \sum_{n=1}^{N} \left| f_n(x) \right| \right)^{p} \, d\mu \right)  ^{\frac{1}{p}} \leqslant \\
+&\underbrace{\leqslant}_{\text{ лемма Фату }} \varliminf_{N\to \infty} \left( \int\limits_{X} \left( \sum_{n=1}^{N} \left| f_n(x) \right| \right)^{p} \, d\mu   \right)^{\frac{1}{p}} \leqslant \\
+&\leqslant \varliminf_{N\to \infty} \sum_{n=1}^{N} \| f_n \|_p = \sum_{n=1}^{\infty} \|f_n\|_p < \infty \\
+\implies &\sum_{n=1}^{\infty} \left| f_n(x) \right| < \infty \text{ $\mu$-почти всюду } \\
+\implies &F(x) = \sum_{n=1}^{\infty} f_n(x) \text{ --- сходится $\mu$-почти всюду.}
+\end{align*} Осталось оценить \begin{align*}
+ \left\| F - \sum_{n=1}^{N} f_n(x) \right\|_p = \left\| \sum_{N+1}^{\infty} f_n \right\| \leqslant \sum_{N+1}^{\infty} \| f_n \|_p \to 0
+\end{align*} 
+\end{proof}
+\begin{remrk}
+ Пусть $\mu$ --- считающая мера на  $\N$, тогда  
+\begin{align*}
+ L^{p}(\N, \mu) = \left\{ \{x_{k}\}_{k=1}^{\infty} \mid \left( \sum_{k=1}^{\infty} \left| x_k \right|^{p} \right)^{\frac{1}{p}} < \infty  \right\} = \ell^{p}
+.\end{align*}
+
+\end{remrk}
