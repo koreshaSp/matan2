@@ -1,0 +1,243 @@
+% 2022.10.14 Lecture 7
+
+\section{Гильбертовы пространства. Теорема Рисса.}
+
+Это небольшой сюжет из функционального анализа, слабо связанный с теорией меры.
+
+\begin{df}
+ Пусть $H$ --- линейное пространство над $\CC$ ($\R$), и задано отображение $(\cdot, \cdot) \colon\, H \times H \to \CC $ со следующими свойствами:
+ \begin{enumerate}
+  \item $(h, h) \geqslant 0$ для всех $h \in H$, $(h, h) = 0 \iff h = 0$.
+  \item $(h, g) = \overline{(g,h)}$ для любых $g, h \in H$ (черта --- комплексное сопряжение)
+  \item $(\alpha_1 h_1 + \alpha_2 h_2, g) = \alpha_1 (h_1, g) + \alpha_2 (h_2, g)$ для любых $\alpha_1, \alpha_2 \in \CC$, $h_{1}, h_2 \in H$.
+ \end{enumerate} Тогда $\left\| h \right\| = \sqrt{(h, h)}$ --- это норма на $H$. Если $H$ --- полное линейное нормированное пространство относительно этой нормы, то $H$ называется \textit{гильбертовым пространством}. Это отображение $(\cdot, \cdot)$ называется скалярным произведением.
+\end{df}
+\begin{remrk}
+ Формула $\left\| h \right\| = \sqrt{(h,h)}$ действительно определяет норму.
+\end{remrk}
+\begin{proof}\
+ \begin{enumerate}
+  \item $\left\| h \right\| \geqslant 0$ --- понятно
+  \item $\left\| h \right\| = 0 \iff (h, h) = 0 \iff h = 0$
+  \item Для любого $\alpha \in \CC$ верно \begin{align*}
+    \left\| \alpha h \right\| = \sqrt{(\alpha h, \alpha h)} = \sqrt{\alpha (h, \alpha h)} = \sqrt{\alpha \overline({\alpha h, h})} = \sqrt{ \left| \alpha \right|^{2} (h, h) } = \left| \alpha \right| \left\| h \right\|
+  .\end{align*} 
+ \item Для неравенства треугольника сначала докажем неравенство КБШ (Коши-Буняковского-Шварца): \begin{align*}
+  \left| (h, g) \right| \leqslant \left\| h \right\| \cdot \left\| g \right\|
+ .\end{align*} Докажем: возьмём $t \in \R$ \begin{align*}
+  \left\| h + tg \right\|^{2} \geqslant 0
+ \end{align*} С другой стороны, \begin{align*}
+ \left\| h + tg \right\|^{2} &= (h + tg, h + tg) = \left\| h \right\|^{2} + t \cdot 2\mathrm{Re}(h, g) + \left\| g \right\|^{2}t^{2} \geqslant 0
+ .\end{align*} Тогда дискриминант неположителен: \begin{align*}
+ D = 4(\mathrm{Re}(h, g))^{2} - 4 \left\| g \right\|^{2} \left\| h \right\|^{2} \leqslant 0
+ .\end{align*} Сократим на $4$ и поймём, что \begin{align*}
+  \left| Re(h, g) \right| \leqslant \left\| g \right\| \cdot \left\| h \right\|
+ .\end{align*} Это мы доказали для любых $h, g \in H$. Подставим вместо $h$ вектор $\alpha h$, где $\alpha \in \CC$ такое, что $\left| \alpha \right| = 1$ и $\alpha (h, g) = \left| (h, g) \right|$. Получим \begin{align*}
+ \left| (h, g) \right| = \left| \mathrm{Re}(\left| (h, g) \right|) \right| \leqslant \left\| \alpha h \right\| \left\| h \right\| = \left\| \alpha \right\| \left\| g \right\|
+ .\end{align*} Вернёмся к неравенству треугольника. Нужно доказать \begin{align*}
+ \left\| h + g \right\| &\leqslant \left\| h \right\| + \left\| g \right\| \iff \\
+ \iff \left\| h + g \right\|^{2} &\leqslant \left\| h \right\|^{2} + 2 \left\| h \right\| \left\| g \right\| +  \left\| g \right\|^{2} \iff \\
+ \iff \left| h \right|^{2} + 2\mathrm{Re}(h, g) + \left\| g^{2} \right\| &\leqslant \ldots \iff \\
+ \iff \mathrm{Re}(h, g) &\leqslant \left\| h \right\| \left\| g \right\|
+ \end{align*} --- верно.
+ \end{enumerate}
+\end{proof}
+\begin{exmpl}
+ Пусть $(X, \A, \mu)$ --- пространство с мерой. Тогда \begin{align*}
+  L^{2}(X, \mu)
+ \end{align*} --- гильбертово пространство относительно скалярного произведения \begin{align*}
+ (f, g)_{L^{2}(X, \mu)} = \int\limits_{X} f \cdot \overline{g} \, d\mu  
+ .\end{align*} 
+\end{exmpl}
+\begin{proof}
+ Определение корректно: интеграл определён, то есть $f\cdot \overline{g}$ --- суммириуемая функция. Просто потому, что \begin{align*}
+  \int\limits_{X} \left| fg \right| \, d\mu  \leqslant \underbrace{\left( \int\limits_{X} \left| f \right| \, d\mu \right)^{\frac{1}{2}}}_{< \infty}  \underbrace{\left( \int\limits_{X} \left| f \right| \, d\mu \right)^{\frac{1}{2}}}_{< \infty}
+ ,\end{align*} так как $f,g \in L^{2}(X, \mu) = \left\{ [h] \Mid \left( \int_{X} \left| h \right|^{2} \, d\mu   \right)^{\frac{1}{2}} \right\}$.
+
+ Аксиома 1 скалярного произведения: \begin{align*}
+  \int\limits_{X} \left| h^{2} \right| \, d\mu   = 0 \iff h = 0 \text{ в } L^{2}(X, \mu) \iff h=0 \text{ $\mu$-почти всюду на } X
+ .\end{align*} Остальные свойства --- линейность интеграла. Полнота пространства $L^{2}(X, \mu)$ проверена в теореме \ref{theorem:lebesgue_space_is_banach}.
+\end{proof}
+\begin{df}
+ Будем писать $h \perp g$ в $H$, если $(h, g) = 0$.
+\end{df}
+\begin{remrk}
+ \label{remark:vector_orthogonal_to_all_is_zero_vector}
+ Если $h \in H$ такое, что $h \perp g$ для любого $g \in H$, то $h = 0$. (доказательство: взять $g = h$)
+\end{remrk}
+\begin{lm}[%
+о выпуклых множествах в гильбертовых пространствах]
+\label{lemma:convex_sets_in_hilbert_spaces}
+Пусть $C \subset H$ --- выпуклое подмножество (то есть если $h_1, h_2 \in C$, то и $\lambda_1 h_1 + \lambda_2 h_2 \in C$ для любых $\lambda_1, \lambda_2 \in [0,1]$ таких, что $\lambda_1 + \lambda_2 = 1$). Пусть $C$ замкнуто, и точка $a \notin C$. Тогда существует $h \in C$ такой, что \begin{align*}
+ \left\| a - h \right\| = \mathrm{dist}(a, C)
+,\end{align*} где \begin{align*}
+\mathrm{dist}(a,C) = \inf_{g \in C} \left\| a - g \right\|
+.\end{align*} То есть лемма утверждает, что точная нижняя грань достигается.
+\end{lm}
+\begin{proof}
+ Можно считать $a = 0$ (подвинем всё, ничего не поменяется). Найдём $h_n \in C$ такие, что $\left\| h_n \right\| \to \mathrm{dist}(0, C) =: d$. Далее, \begin{align*}
+  \left\| h_n - h_m \right\|^{2} + \left\| h_n + h_m \right\|^{2} = 2 \left\| h_n \right\|^{2} + 2 \left\| h_m \right\|^{2} \to 4d^{2} \\
+  \implies \left\| \frac{h_n - h_m}{2} \right\|^{2} + \left\| \underbrace{\frac{h_n + h_m}{2}}_{\in C} \right\|^{2} \to d^{2}
+ \end{align*} по выпуклости $C$. Значит, $\left\| \frac{h_n + h_m}{2} \right\| \geqslant d$. Следовательно, $\left\| h_n - h_m \right\|^{2} \to 0$. Значит, последовательность $h_n$ фундаментальна, и, следовательно, сходится (по полноте $H$): существует $h \in H$, $h = \lim_{n \to \infty} h_n $ ($\left\| h - h_n \right\| \to 0$). Тогда \begin{align*}
+  \left| \left\| h \right\| - \left\| h_n \right\| \right| \leqslant \left\| h - h_n \right\| \to 0 \\
+  \implies \left\| h \right\| = d
+ .\end{align*} Кроме того, $h \in C$ по замкнутости $C$. Лемма доказана.
+\end{proof}
+\begin{lm}[%
+об ортогональном элементе]
+\label{lemma:orthogonal_element_in_hilbert_space}
+ Пусть $H$ гильбертово пространство, $L \subset H$ --- замкнутое подпространство, причём $L \neq H$. Тогда существует элемент $h \in H$ такой, что $h \perp L$ и $h \neq 0$.
+\end{lm}
+\begin{proof}
+ Возьмём $g \notin L$. Найдём $f \in L$ такое, что  \begin{align*}
+  \left\| g - f \right\| = \mathrm{dist} \left( g, L \right) > 0
+ .\end{align*}  Возьмём $h = \frac{g - f}{\left\| g - f \right\|}$. Тогда $h \in H$ и $\mathrm{dist}(h, L) = 1 = \left\| h \right\|$ (можно прибавлять любой элемент из $L$). Мы хотим доказать, что $h \perp L$. Это верно тогда и только тогда, когда для любого $p \in L$ верно $(h, p) = 0$. Предположим, что $(h, p_0) \neq 0$. Можно считать, что $(h, p_0) > 0$ (можно домножить на $\tau \in \CC$, $\tau = 1$). Подберём $t \in \R$ так, чтобы $\left\| h + tp_0 \right\|^{2} < 1 = \left\| h \right\|^{2}$. \begin{align*}
+ \left\| h + tp_0 \right\| = \left\| h \right\|^{2} + 2t(h, p_0) + \left\| p_0 \right\|^{2} t^{2} &< \left\| h \right\|^{2} \iff \\
+  \iff  2t(h, p_0) + \left\| p_0 \right\|^{2} t^{2} < 0
+ .\end{align*} При малом отрицательном $t$ это верно. Но это противоречие, так как $\mathrm{dist}(h, L) = 1$ (а мы нашли элемент $l \in L$, $l = -tp_0$ такой, что $\left\| h - l \right\| < 1$).
+\end{proof}
+\begin{lm}[%
+о ядре функционала]
+\label{lemma:kernel_of_functional}
+Пусть $\phi_1, \phi_2$ --- линейные отображения из $H$ в $\CC$ (такие отображения называют \textit{линейными функционалами}). Пусть  $\mathrm{Ker}(\phi_1) \subset \mathrm{Ker}(\phi_2)$. Тогда существует $\lambda \in \CC$ такое, что \begin{align*}
+ \phi_2 = \lambda \phi_1
+.\end{align*} 
+\end{lm}
+\begin{proof}
+ Если  $\mathrm{Ker}(\phi_2) = H$, то доказывать нечего (возьмём $\lambda = 0$). Иначе существует $h$ такое, что $\phi_2(h) \neq 0$. Подберём $\lambda$ так, чтобы $\phi_2(h) = \lambda \phi_1(h)$ ($\phi_1(h) \neq 0$ так как есть включение). Проверим, что это $\lambda$ годится. Возьмём любой $g \in H$. Проверим, что 
+\begin{align*}
+\phi_2(g) = \lambda \phi_1(g) \iff \\
+\iff \phi_2(g + ch) = \lambda \phi_1(g + ch)
+\end{align*} для некоторого $c$ (равносильность по линейности, на $h$ уже верно). Выберем $c$ так, чтобы $g + ch \in \mathrm{Ker}(\phi_1)$ (тогда равенство превратится в $0 = 0$). Нужно удовлетворить \begin{align*}
+g + ch \in \mathrm{Ker}(\phi_1) \iff \phi_1(g) + c\phi_1(h) = 0 \iff c = -\frac{\phi_1(g)}{\phi_1(h)}
+.\end{align*} 
+\end{proof}
+\begin{exmpl}
+ $H = \CC^{n}$ --- гильбертово пространство со скалярным произведением \begin{align*}
+  ((x_1, \ldots, x_n), (y_1, \ldots, y_n))_{\CC_n} = \sum_{k=1}^{n} a_k \overline{b_k}
+ .\end{align*} 
+\end{exmpl}
+\begin{exmpl}
+ $\ell^{2} = \left\{ \{a_{k}\}_{k=1}^{\infty} \Mid a_k \in \CC,\; \sum_{k=1}^{\infty} \left| a_k \right|^{2} < \infty \right\}$ --- гильбертово пространство, так как $\ell^{2} = L^{2}(\N, \nu)$, где $\nu$ --- считающая мера.
+\end{exmpl}
+\begin{exmpl}
+ Матрицы $M_n(\CC)$ --- гильбертово пространство со скалярным произведением \begin{align*}
+  (A, B) = \mathrm{Tr}(AB^{\ast})
+ \end{align*} для $A, B \in M_n(\CC)$. Это называется пространство \textit{Гильберта-Шмидта}. Здесь $B^{\ast} = \overline{(B^{T})}$.
+\end{exmpl}
+\begin{thm}[%
+Рисса]
+\label{theorem:riss}
+ Пусть $H$ --- гильбертово пространство и $\phi \colon\, H \to \CC $ --- линейный непрерывный функционал. Тогда существует единственный вектор $g \in H$ такой, что $\phi(h) = (h, g)$ для любого  $h \in H$.
+\end{thm}
+\begin{proof}
+ Любой функционал $\phi_g \colon\, h \mapsto (h, g)$ линеен и непрерывен: \begin{align*}
+  \phi_g(\alpha_1 h_1 + \alpha_2 h_2) = \alpha_1 (h_1, g) + \alpha_2(h_2, g) = \alpha_1 \phi_g(h_1) + \alpha_2 \phi_g(h_2)
+ .\end{align*} Непрерывность: \begin{align*}
+  \left| \phi_g(h_1) - \phi_g(h_2) \right| \leqslant \left| (h_1 - h_2, g) \right| \leqslant \left\| g \right\| \cdot \left\| h_1 - h_2 \right\|
+ .\end{align*} Единственность: пусть $\phi = \phi_{g_1} = \phi_{g_2}$. Тогда для любого $h \in H$ верно $(h, g_1) = (h, g_2)$. Тогда \begin{align*}
+ (h, g_1 - g_2) = 0
+\end{align*} для любого $h$. Следовательно, по замечанию \ref{remark:vector_orthogonal_to_all_is_zero_vector} $g_1 - g_2 = 0$.
+
+Докажем теперь существование. Если  $\mathrm{Ker}(\phi) = H$. Тогда можно взять  $g = 0$. Иначе рассмотрим множество \begin{align*}
+ L = \mathrm{Ker}(\phi)
+.\end{align*} $L$ --- это замкнутое подпространство $H$. Замкнутость верна так как множество нулей непрерывного отображения замкнуто. Более того, $L \neq H$. Тогда по лемме \ref{lemma:orthogonal_element_in_hilbert_space} существует $g \perp L$, $g \neq 0$. Докажем, что $\phi = \lambda \phi_g$ для некоторого $\lambda \in C$. По лемме \ref{lemma:kernel_of_functional} достаточно проверить $\mathrm{Ker}(\phi) \subset \mathrm{Ker}(\phi_g)$.
+\begin{align*}
+ \tilde f \in \mathrm{Ker}(\phi) \iff \tilde f \in L \implies (\tilde f, g) = 0 \implies \tilde f \in \mathrm{Ker}(\phi_g)
+.\end{align*} Мы показали $\mathrm{Ker}(\phi) \subset \mathrm{Ker}(\phi_g)$. По лемме \ref{lemma:kernel_of_functional} верно $\phi_g = \lambda \phi$ для некоторого $\lambda$. При этом  $\lambda \neq 0$, так как $\phi_g \neq 0$ ($\phi_g(g) = \left\| h \right\|^{2} > 0$). Тогда \begin{align*}
+\phi = \frac{1}{\lambda}\phi_g = \phi_{\frac{1}{\overline \lambda} g}
+.\end{align*} 
+\end{proof}
+
+\section{Доказательство фон Неймана теоремы Радона-Никодима}
+
+Зафиксируем измеримое пространство $(X, \A)$ и меры $\mu, \nu$ на $\A$.
+\begin{df*}
+ Мера $\nu \prec \prec \mu$, если $\mu(E) = 0$ влечёт  $\nu(E) = 0$.
+\end{df*}
+\begin{df}
+ $\nu \perp \mu$ ($\nu$ сингулярна относительно $\mu$), если существует $S \in \A$ такое, что $\mu(S) = 0$ и  $\nu(X \setminus S) = 0$.
+\end{df}
+\begin{remrk*}
+ Если $\nu \perp \mu$, $\mu \perp \nu$.
+\end{remrk*}
+\begin{exmpl}
+ Если 
+\begin{align*}
+\nu(E) = \int\limits_{E} f \, d\mu  
+\end{align*} для измеримой неотрицательной $f$, то $\nu \prec \prec \mu$.
+\end{exmpl}
+\begin{exmpl}
+ Пусть $\nu = \delta_{\left\{ 0 \right\}}$, $\mu = \lao$. Тогда $\nu \perp \mu$. Возьмём $S = \left\{ 0 \right\}$.
+\end{exmpl}
+\begin{thm}[%
+Радона-Никодима]
+\label{theorem:radon_nikodim}
+ Пусть $\mu, \nu$ --- конечные меры на  измеримом пространстве $(X, \A)$. Тогда существуют единственные $f \in L^{1}(\mu)$, $f \geqslant 0$ и $\nu_S \perp \mu$ такие, что $\nu = f \, d\mu + \nu_S$, то есть \begin{align*}
+  \nu(E) = \int\limits_{E} f \, d\mu  + \nu_S(E) 
+ .\end{align*} В частности, если $\nu \prec \prec \mu$, то $\nu = f \, d\mu$ для некоторой $f \in L^{1}(\mu)$, $f \geqslant 0$.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+Дух функционального анализа: мы сводим всё к функционалам (как --- неочевидно). Зададим новую меру $\omega = \mu + \nu$ и зададим функционал $\phi \colon\, L^{2}(\omega) \to \CC $ следующим образом: \begin{align*}
+ \phi(g) = \int\limits_{X} g \, d\nu, \quad g \in L^{2}(\omega)
+.\end{align*} Проверим, что $\phi$ --- линейный непрерывный функционал (ещё и корректно заданный). Докажем корретность: \begin{align*}
+\int\limits_{X} \left| g \right| \, d\nu = \int\limits_{X} \left| g \right| \cdot 1 \, d\nu  \leqslant \left( \int\limits_{X} \left| g \right|^{2} \, d\nu \right)^{\frac{1}{2}} \left( \int\limits_{X} 1 \, d\nu   \right)^{\frac{1}{2}} \leqslant \left\| g \right\|_{L^{2}(\omega)} \cdot \mu(X) < \infty
+.\end{align*} Значит, $\int_{X} g \, d\mu  $ сходится и $\phi(g_1 - g_2) \leqslant \nu(X) \cdot \left\| g_1 - g_2 \right\|_{L^{2}(\omega)}$. То есть $\phi$ --- линейный непрерывный функционал. По теореме Рисса \ref{theorem:riss} существует функция $h \in L^{2}(\omega)$ такая, что $\phi(g) = \int_{X} g\overline{h} \, d\omega  $. Если $g = \overline{g}$, то и  $\phi(g) = \overline{\phi(g)}$. Тогда для любой $g = \overline{g}$ верно \begin{align*}
+\int\limits_{X} g \overline{h} \, d\omega   = \int\limits_{X} gh \, d\omega  
+.\end{align*} Также, для любой $g = \overline g$ \begin{align*}
+\phi(g) = \int\limits_{X} g \cdot \mathrm{Re} (h) \, d\omega  
+.\end{align*} По линейности интеграла \begin{align*}
+\phi(g_1 + i g_2) = \int\limits_{X} (g_1 + i g_2) \mathrm{Re}(h) \, d\omega  \\
+\implies \int\limits_{X} g \overline{h} \, d\mu   = \int\limits_{X} g \cdot \mathrm{Re}(h) \, d\omega   \quad \forall g \in L^{2}(\omega) \\
+\implies \overline{h} = \mathrm{Re}(h) = h
+,\end{align*} то есть $h \colon\, X \to \R  $ по единственности в теореме Рисса. По сути мы доказали что вещественный функционал порождается вещественной функцией.
+
+Теперь у нас есть равенства \begin{align*}
+ \int\limits_{X} g \, d\nu = \int\limits_{X} gh \, d\omega, \quad h = \overline{h}    \\
+\iff \int\limits_{X} g(1 - h) \, d\nu = \int\limits_{X} gh \, d\mu    
+,\end{align*} так как
+\begin{align*}
+ \int\limits_{X} gh \, d\omega = \int\limits_{X} gh \, d\nu + \int\limits_{X} gh \, d\mu      
+.\end{align*} Теперь зададим множества \begin{align*}
+ N &= \left\{ x \Mid h(x) < 0 \right\}, \\
+ B &= \left\{ x \mid h(x) > 1 \right\}, \\
+ G &= \left\{ x \Mid h(x) \in [0, 1) \right\}, \\
+ S &= \left\{ x \Mid h(x) = 1 \right\}
+.\end{align*} Вместо $g$ подставим $\chi_N$:
+ \begin{align*}
+ 0 \geqslant \int\limits_{N} h \, d\mu  = \int\limits_{N} (1-h) \, d\nu   \geqslant 0 \\
+ \implies \mu(N) = 0
+,\end{align*} так как $\int_{N} h \, d\mu  = 0$, $h < 0$. Более того, $\nu(N) = 0$, так как  $\int_{N} (1-h) \, d\nu = 0 $, $1 - h > 1$. Значит  $\mu(N) = \nu(N) = 0$.
+
+То же самое утверждается для $g = \chi_B$: \begin{align*}
+ 0 \leqslant \int\limits_{B} h \, d\mu = \int\limits_{B} (1-h) \, d\nu    \leqslant 0 \\
+ \implies \mu(B) = \nu(B) = 0
+.\end{align*} 
+
+Теперь возьмём $g = \chi_S$. Тогда \begin{align*}
+ \mu(S) = \int\limits_{S} 1 \, d\mu = \int\limits_{S} h \, d\mu = \int\limits_{S} (1-h) \, d\nu = 0    
+.\end{align*}
+
+Осталось одно хорошее множество. Рассмотрим множества \begin{align*}
+ G_n = \left\{ x \Mid 0 \leqslant h(x) \leqslant 1 - \frac{1}{n} \right\}
+.\end{align*} Тогда $G = \bigcup_{n=1}^{\infty} G_n$ и $G_n \subset G_{n+1}$. Возьмём произвольное множество $E \in \A$ и в качестве $g$ возьмём $g = \frac{\chi_{E \cap G_n}}{1 - h}$. Тогда $\left| g(x) \right| \leqslant n$. Подставим $g$ в равенство (в левую часть): \begin{align*}
+ \int\limits_{E \cap G_n} 1 \, d\nu  = \int\limits_{E \cap G_n} \frac{h}{1-h} \, d\mu  
+.\end{align*} При этом в правой части подынтегральное выражение не превосходит $n$. В левой части стоит: \begin{align*}
+ \int\limits_{E \cap G_n} 1 \, d\mu  = \mu(E \cap G_n)
+,\end{align*} а в правой части \begin{align*}
+ \int\limits_{E \cap G_n} f \, d\mu  
+,\end{align*} где $f = \frac{h}{1-h} \cdot \chi_{G}$. Получаем \begin{align*}
+ \mu(E \cap G_n) = \int\limits_{E \cap G_n} f \, d\mu  
+.\end{align*}  Перейдём к пределу при $n \to \infty$: \begin{align*}
+\nu(E \cap G) = \int\limits_{E \cap G} f \, d\mu  
+\end{align*} так как $G_n \subset G_{n+1}$ --- есть вложенность. При этом \begin{align*}
+ \int\limits_{E} f \, d\mu = \int\limits_{E \cap G} f \, d\mu + \int\limits_{E \cap S} f \, d\mu + \int\limits_{E \cap N} f \, d\mu + \int\limits_{E \cap B} f \, d\mu       = \int\limits_{E \cap G} f \, d\mu  
+.\end{align*} Мы поняли, что \begin{align*}
+\nu(E) &= \nu(E \cap G) + \nu(E \cap S) + \underbrace{\nu(E \cap (N \cup B))}_{0} = \\
+ &= \int\limits_{E} f \, d\mu + \nu(E \cap S)  = \\
+ &= \int\limits_{E} f \, d\mu + \nu_S(E) 
+,\end{align*} где $\nu_S(E) = \nu(E \cap S)$. Осталось проверить, что $\nu_S \perp \mu$. Действительно, $\nu_S(X \setminus S) = 0$ и $\mu(S) = 0$.
+
+Единственность --- хорошее упражнение. Оно будет в следующем листочке.
+\end{proof}
+
