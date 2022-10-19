@@ -24,26 +24,28 @@
 \end{thm}
 \begin{proof}\
  \begin{itemize}
-  \item Пусть $ \sum_I a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $(иначе из них можно составить множество с неограниченной суммой). Значит,
+     \item Пусть $ \sum_{i\in I} a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $(иначе из них можно составить множество с неограниченной суммой). Значит,
  \begin{align*}
-  \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\} \subset E
+  E = \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\}
  .\end{align*} Получается, существует множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
 \item Есть тривиальное неравенство:
  \begin{align*}
-  \sum_{k \in N} a_{i_k} \leqslant \sum_{i \in I} a_i
- .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем $ F $. Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
+     \sum_{k = 1}^{\infty} a_{i_k} \leqslant \sum_{i \in I} a_i
+ .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем подмножествам $ I $, в число которых входят все частичные суммы.
+
+ Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
  \begin{align*}
-  \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k \in \N} a_{i_k}
+     \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k = 1}^{\infty} a_{i_k}
  ,\end{align*} для некоторого $ N \in \N $. Тогда можно взять супремум:
  \begin{align*}
-  \sup_F \sum_{i \in F} a_i \leqslant \sum_{k \in \N} a_{i_k}
+     \sup_F \sum_{i \in F} a_i \leqslant \sum_{k = 1}^{\infty} a_{i_k}
  .\end{align*}
  \end{itemize}
 \end{proof}
 \begin{crly}
- Пусть $ I $ счётное множество, $ \{i_k\}_{k \in N} = \{i\} = I$ --- его нумерация двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
+    Пусть $ I $ счётное множество, $ \{i_k\}_{k \in \N} = \{i_{\varphi(k)}\}_{k\in\N} = I$ --- его нумерации двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
  \begin{align*}
-  \sum_{k \in N} a_{i_k} = \sum_{k \in \N} a_{i_{\varphi(k)}}
+     \sum_{k = 1}^{\infty} a_{i_k} = \sum_{k = 1}^{\infty} a_{i_{\varphi(k)}}
  .\end{align*}
 \end{crly}
 \begin{proof}
@@ -71,7 +73,7 @@
  \textit{Наивная длина} --- это отображение $ \mu \colon\, 2^\R \to \R_+ \cup \{ +\infty \} $ такое, что
  \begin{itemize}
   \item $ \mu ([0, 1)) = 1 $
-  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall { A_k } : {k \in \mathbb{N}} \land {A_k \subset 2^{\mathbb{R}}} $
+  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall { A_k } : {k \in \mathbb{N}} \land {A_k \subset \mathbb{R}} $
   \item $ \mu(A + x) = \mu(A) $ для любого $ A \subset \R $ и для любого $ x \in \R $ (где $ A + x = \{ a + x \mid a \in A \} $).
  \end{itemize}
 \end{df}
@@ -88,7 +90,7 @@
  .\end{align*} Наблюдение:
  \begin{align*}
   [0, 1) \subset \bigcup_{q \in [-1, 1] \cap \Q} (q + E)
- .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in Q $. Тем самым, $ x \in q + E $.
+ .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in \Q $. Тем самым, $ x \in q + E $.
 
  Второе наблюдение:
  \begin{align*}
@@ -101,11 +103,11 @@
  Мы доказали два полезных включения:
  \begin{align*}
   [0, 1) \subset \bigsqcup_{q \in [-1, 1] \cap \Q} (q + E) \subset [-1, 2)
- .\end{align*} По аксиомам:
+ .\end{align*} Пользуясь аксиомами, получим неравенства на длины:
  \begin{align*}
   1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(q + E) \leqslant 3 \\
   1 \leqslant &\sum_{q \in \Q \cap [-1, 1]} \mu(E) \leqslant 3 
- .\end{align*} Но то, что по середине --- это либо $ 0 $, либо $ +\infty $. Противоречие! 
+ .\end{align*} Но то, что по середине --- это либо $ 0 $, если $ \mu(E)=0 $, либо $ +\infty $, иначе. В любом случае противоречие! 
 
  Для честности выведем монотонность по включению. Пусть $ A \subset B $. Тогда
  \begin{align*}
@@ -123,7 +125,7 @@
 \begin{df}
  Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{P} \subset 2^X $ --- \textit{полукольцо}, если
  \begin{enumerate}
-  \item $ \varnothing \in P $
+     \item $ \varnothing \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \cap P_2 \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \setminus P_2 = \bigsqcup_{j=1}^N Q_j, Q_j \in \mathcal{P}, N \in \N $
  \end{enumerate}
@@ -150,7 +152,7 @@
 \begin{exmpl}\
  \begin{itemize}
   \item $ \sigma $-алгебра $ \;\Longrightarrow\; $ алгебра $ \;\Longrightarrow\; $ полукольцо. Последняя импликация: $ A_1 \setminus A_2 = A_1 \cap (A_2^c) $.
-  \item $ 2^X $ --- $ \sigma $-алгербра
+  \item $ 2^X $ --- $ \sigma $-алгебра
   \item $ \left\{ \varnothing, X \right\} $ --- $ \sigma $-алгебра.
   \item $ X = \R^2 $, $ \A = \left\{ E \subset X \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \A $ --- алгебра:
    \begin{enumerate}
@@ -184,7 +186,7 @@
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item $ \varnothing \in \mathcal{P_1} $, так как $ \varnothing = [0, 0) $.
+  \item $ \varnothing \in \mathcal{P}_1 $, так как $ \varnothing = [0, 0) $.
   \item $$
    [a_1, b_1) \cap [a_2, b_2) = 
    \begin{cases}
@@ -192,11 +194,13 @@
     [\max(a_1, a_2), \min(b_1, b_2) )
    \end{cases}
    $$
+   В обоих случаях имеем ячейку. То есть $[a_1, b_1) \cap [a_2, b_2) \in \mathcal{P}_1 $.
   \item Надо разобрать случаи. Но в каждом из них получается ячейка (иногда две ячейки).
  \end{enumerate}
 \end{proof}
 \begin{remrk}
- Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй. Например, $ \R \setminus [0, 1) \neq [a, b)$ --- не ячейка.
+Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй.
+Например, $ [0, 1)^c = (-\infty, 0) \cup [1, +\infty) \not \in  \mathcal{P}_1 $.
 \end{remrk}
 \begin{lm}
  Если $ \A_i $ --- $ \sigma $-алгебра, $ i \in I $, $ I $ --- произвольное множество. Тогда $ \A = \bigcap_{i \in I} \A_i $ --- $ \sigma $-алгебра.
@@ -204,7 +208,7 @@
 \begin{proof}\
  \begin{enumerate}
   \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in I $.
-  \item $ A \in \A \;\Longrightarrow\; A \in \A_i  \forall i \in I \;\Longrightarrow\; A^c \in \A_i \forall i \in I \;\Longrightarrow\; A^c \in \bigcup_{i \in I} \A_i = \A$ 
+  \item $ A \in \A \;\Longrightarrow\; A \in \A_i,  \forall i \in I \;\Longrightarrow\; A^c \in \A_i, \forall i \in I \;\Longrightarrow\; A^c \in \bigcap_{i \in I} \A_i = \A$ 
   \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
   \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
  \end{enumerate}
@@ -216,7 +220,7 @@
  Есть просто формула:
  \begin{align*}
   \A_E := \bigcap_{E \subset \A \text{---} \sigma \text{-алгебра}} \A
- .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ --- $ \sigma $-алгебра.
+ .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ и  $ 2^X $ --- $ \sigma $-алгебра.
 \end{proof}
 \begin{df}
  Пусть $ \mathcal{P} $ --- полукольцо в $ X $ и $ \mu \colon\; \mathcal{P} \to [0, +\infty] $. $ \mu $ называется конечно аддитивной, если для любых $ P_1, P_2, \ldots, P_N $ таких, что
@@ -278,17 +282,17 @@
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item По индукции. $ N = 1$ --- аксиома 3 полукольца. Пусть
+  \item По индукции. $ N = 1$ --- аксиома 3 полукольца. Индукционный переход:
    \begin{align*}
     P \setminus \bigcup_{k=1}^{N+1} P_k = \left( P \setminus \bigcup_{k=1}^N P_k \right) \setminus P_{N+1} =  \bigsqcup_{j=1}^{M_N} \underbrace{\left( Q_j \setminus P_{N+1} \right)}_{\text{уже знаем по базе индукции}}
    .\end{align*}
-   \item
-    \begin{align*}
-     &P_1 = P_1 = Q_{1,1} \\
-     &P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
-     &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ знаем }} \sqcup (P_3 \setminus (P_1 \cup P_2)) \text{ <- знаем из пункта 1 } \\
-     &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ знаем }} \sqcup (P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k)) \text{ <- знаем из пункта 1 }
-    .\end{align*}
+  \item Снова индукция:
+   \begin{align*}
+    &P_1 = P_1 = Q_{1,1} \\
+    &P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
+    &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ по инд.}} \sqcup \underbrace{(P_3 \setminus (P_1 \cup P_2))}_{\text{ знаем из пункта 1 }} \\
+    &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ по инд. }} \sqcup \underbrace{(P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k))}_{\text{ знаем из пункта 1  } }
+   .\end{align*}
  \end{enumerate}
 \end{proof}
 \begin{crly}
@@ -298,11 +302,12 @@
  .\end{align*}
 \end{crly}
 \begin{proof}
- $ P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j $.
+ По лемме: $ P \setminus \bigsqcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j $. Тогда:
  \begin{align*}
-   P = \bigsqcup_1^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
+   P = \bigsqcup_{k=1}^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
    \mu(P) = \sum \mu(P_k) + \sum \mu(Q_j) \geqslant \sum \mu(P_k)
  \end{align*}
+ Переход ко второй строке совершён благодаря конечной аддитивности $ \mu $.
 \end{proof}
 \begin{crly}
  Если $ \mathcal{P} $, $ \mu $ как в предыдущем следствии и $ P \subset \bigcup_{k=1}^N P_k $, где $ P, P_k \in \mathcal{P} $. Тогда
@@ -316,23 +321,23 @@
   \mu(P) = \sum_{k,j}^{} \mu(Q_{k,j}) = \sum_{k=1}^{N} \underbrace{\sum_j \mu(Q_{k,j})}_{\leqslant \mu(P_k) \text{ по пред. следствию }} \leqslant \sum_{k=1}^{N} \mu(P_k)
  .\end{align*}
 \end{proof}
-\begin{thm}[счётная аддитивность длины на полукольце]
+\begin{thm}[счётная аддитивность длины на полукольце ячеек]
  Функция множества $ \mu_0 \colon\, [a, b) \mapsto b - a $ на полукольце ячеек $ \mathcal{P}_1 $ является счётно-аддитивной.
 \end{thm}
 \begin{proof}
- Пусть $ [a, b) = \bigsqcup_{i \in I} [a_i, b_i) $, где $ I $ --- счётное множество. Возьмём $ F \subset I $ --- конечное подмножество. Тогда
+ Пусть $ [a, b) = \bigsqcup_{i \in I} [a_i, b_i) $, где $ I $ --- счётное множество. Возьмём $ F \subset I $ --- конечное подмножество. Тогда 
  \begin{align*}
   \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) = \sum_{i \in F}^{} \mu( [a_i, b_i) ) \\
   \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) \leqslant \mu([a, b)) \text { <- следствие 22 }
- .\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a_i < t < b_i $:
+.\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}_{k \in \mathbb{N}}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a < t < b $:
  \begin{align*}
-  [a_i, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
+  [a, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
  .\end{align*} Но слева \textbf{компактное} множество. Тогда, существует $ F $ конечное, такое что
  \begin{align*}
-  [a_i, t) \subset \bigcup_{i_k \in F} [\tilde a_{i_k}, \tilde b_{i_k})
+  [a, t) \subset \bigcup_{i_k \in F} [\tilde a_{i_k}, \tilde b_{i_k})
  \end{align*} (поменяли скобки). По предыдущему следствию:
  \begin{align*}
-  t - a_i = &\mu([a_i, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
+  t - a = &\mu([a, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
   \leqslant &\sum_{i \in I} \mu([a_i, b_i)) + \varepsilon
- \end{align*} для любого $ t < b_i $ и $ \varepsilon > 0 $. Устремим $ t \to b_i $ и $ \varepsilon \to 0 $.
+ \end{align*} для любого $ t < b $ и $ \varepsilon > 0 $. Устремим $ t \to b $ и $ \varepsilon \to 0 $.
 \end{proof}
