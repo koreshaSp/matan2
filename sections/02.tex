@@ -20,10 +20,14 @@
 \begin{proof}\
  \begin{enumerate}
   \item $ \mu^\ast(\varnothing) = 0 $ --- ясно
-  \item Пусть есть множества $ \left\{ E_k \right\}_{k=1}^\infty \subset 2^X$. Тогда нужно проверить, что
+  \item Пусть есть множество $ E \subset \bigcup_{k=1}^{\infty} E_k \subset 2^X$.
+      Тогда нужно проверить, что 
    \begin{align*}
+    \mu^\ast\left( E \right) \leqslant
     \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
-   .\end{align*} Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
+   .\end{align*} Первое неравенство верно, так как в определении внешней меры $ \mu^* $, после перехода берётся инфимум по меньшему множеству. Перейдём к доказательству второго перехода.
+
+   Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
    \begin{align*}
     \mu^\ast\left( \bigcup E_k \right) &\leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \\ &\leqslant \sum_{k} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
    .\end{align*} Это по определению просто потому, что $ \bigcup E_k \subset \bigcup_{k,j} A_{kj} $. Теперь можно устремить $ \varepsilon $ к нулю (так как это верно для любого $ \varepsilon $) и получить нужное равенство.
@@ -33,7 +37,7 @@
 
 \begin{df}[$ \sigma $-алгебра, порождённая внешней мерой]
  Пусть есть внешняя мера $ \mu^\ast \colon\; 2^X \to [0,\infty] $. Тогда пусть \begin{align*}
-  \A^\ast = \left\{ A \subset X \mid \forall E \subset X \colon\; \mu^\ast(E) = \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\} 
+  \A^\ast = \left\{ A \subset X \mid \forall E \subset X, \; \mu^\ast(E) = \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\} 
  .\end{align*}
  Это и называется \textit{$ \sigma $-алгебра Каратеодори}.
 \end{df}
@@ -53,7 +57,7 @@
    \begin{align*}
      \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) \leqslant \\
      \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c)
-   .\end{align*} Так как
+   .\end{align*} Последний переход корректен благодаря полуаддитивности $\mu^*$ и равенству множеств ниже:
    \begin{align*}
     E \cap (A \cap B)^c &= E \cap (A^c \cup B^c) = (E \cap A^c) \cup (E \cap B^c) =\\&= (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \setminus A) \cap B^c) =\\
     &= (E \setminus A) \cup (E \cap A \cap B^c)
@@ -98,10 +102,14 @@
  Нужно доказать только свойство с счетным пересечением. Возьмём любой набор $ \left\{ A_k \right\}_{k=1}^\infty \subset \A^\ast $. Достаточно доказать, что
  \begin{align*}
 	 \bigcup_{k=1}^{\infty} A_k \in \A^\ast
- .\end{align*} (для этого нужно воспользоваться формулами де Моргана). Рассмотрим такие множества $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 $, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2)$. Можно сказать, что
+ .\end{align*} (для этого нужно воспользоваться формулами де Моргана). Рассмотрим такие множества $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 = A_2 \cap A_1^c$, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2) = A_3 \cap A_1^c \cap A_2^c$. Можно видеть, что
  \begin{align*}
   \bigcup_{k=1}^\infty A_k = \bigsqcup_{k=1}^\infty \tilde A_k
- .\end{align*} При этом все $ \tilde A_k \in \A^\ast $, так как $ \A^\ast $ это алгебра. Вывод: можно считать, $ A_k $ --- дизъюнктны и проверять, что $ \displaystyle \bigsqcup_{k=1}^\infty A_k \in \A^\ast $. Давайте проверим. Возьмём произвольное $ E \subset X $.
+ .\end{align*} При этом все $ \tilde A_k \in \A^\ast $, так как $ \A^\ast $ это алгебра. Вывод: можно считать, $ A_k $ --- дизъюнктны и проверять, что $ \displaystyle \bigsqcup_{k=1}^\infty A_k \in \A^\ast $. Давайте проверим это по определению $\A^\ast$, доказав равенство:
+ \begin{align*}
+   \mu^\ast(E) = \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right)
+ .\end{align*}
+ Возьмём произвольное $ E \subset X $.
  \begin{align*}
   \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right) \leqslant \\
   \leqslant \sum_{k=1}^{\infty} \mu^\ast(E \cap A_k) + \mu^\ast\left( E \cap \left( \bigsqcup_1^N A_k \right)^c \right)
@@ -112,7 +120,7 @@
   = \mu^\ast(E) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k)
  \end{align*} по усиленной конечной аддитивности. Осталось проверить, что
  \begin{align*}
-  \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) \to 0 \text{ при } n \to \infty
+  \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) \to 0 \text{ при } N \to \infty
  .\end{align*} Это эквивалентно тому, что ряд
  \begin{align*}
   \sum_{k=1}^{\infty}  \mu^\ast (E \cap A_k) < \infty \iff \sup_{N \geqslant 1} \sum_1^N \mu^\ast(E \cap A_k) < \infty
@@ -157,7 +165,7 @@
     E \subset \bigcup_{k=1}^\infty P_k
    \end{align*} и верно
    \begin{align*}
-	   \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
+     \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
    .\end{align*} Напишем
    \begin{align}
     \nonumber
@@ -165,9 +173,9 @@
     \label{equation:caratheodory_thm:1}
     &\leqslant \sum_{k=1}^\infty \mu_0(P_k \cap P) + \sum_{k=1}^\infty \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \\
     \label{equation:caratheodory_thm:2}
-    & \leqslant \sum_{k=1}^\infty \mua_0(P_k) \leqslant \\
+    & \leqslant \sum_{k=1}^\infty \mu_0(P_k) \leqslant \\
     \nonumber
-    &\leqslant \mu^\ast(E) + \varepsilon 
+    &\leqslant \mu(E) + \varepsilon 
    .\end{align} Неравенство \eqref{equation:caratheodory_thm:1} выполнено, так как $E \subset \bigcup P_k$ и $\bigsqcup Q_{kj} = E \setminus P$. Неравенство \eqref{equation:caratheodory_thm:2} выполнено, так как $\bigsqcup_{j=1}^{N_k} \left(Q_{kj} \sqcup (P_k \cap P)\right) \subset P_k$.
 
   \item Докажем, что $ \mu(P) = \mu_0(P) $ для $ P \in \p $. Нужно проверить, верно ли, что
