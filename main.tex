@@ -27,17 +27,12 @@
 \usepackage{pdfpages}
 \pgfplotsset{compat=1.16}
 
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\usetikzlibrary{matrix}
-\usetikzlibrary{patterns}
-\usetikzlibrary{babel}
-\usetikzlibrary{cd}
-
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
+\newcommand{\incfig}[2][1]{%
+ \def\svgwidth{#1\columnwidth}
+ \import{./figures/}{#2.pdf_tex}
 }
+
+\pdfsuppresswarningpagegroup=1
 
 % counters and theorems
 \newcounter{theoremCnt}
@@ -129,6 +124,7 @@
 \import{sections/}{05.tex}
 \import{sections/}{06.tex}
 \import{sections/}{07.tex}
+\import{sections/}{08.tex}
 
 \end{document}
 

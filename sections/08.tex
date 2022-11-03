@@ -1,0 +1,306 @@
+\section{Точки Лебега множеств и функций}
+
+Рассмотрим мотивационную задачу.
+
+\begin{problem}
+ \label{problem:motivatinal_problem_good_points_in_closed_subset}
+ Пусть $E \subset \R$ --- замкнутое подмножество. Будем говорить, что $x \in E$ --- \textit{хорошая точка}, если \begin{align*}
+  \lim_{\eps \to 0} \frac{\left| E \cap (x - \eps, x + \eps) \right| }{\left| (x - \eps, x + \eps) \right|} = 1
+ ,\end{align*} где $\left| S \right| = \lambda_1(S)$. Например, если $E$ --- отрезок, то все его точки хорошие, за исключением двух концов.
+
+ Как понять, есть ли в $E$ хорошие точки, и много ли их?
+
+ Для этой задачи мы сможем дать относительно удовлетворительный \textbf{ответ:} $\lao$-почти все точки  $E$ --- хорошие.
+\end{problem}
+
+В этом параграфе во многом речь будет идти про метрические пространства. 
+
+\begin{df}
+ \label{definition:regular_measure}
+ Пусть $(X, \tau)$ --- топологическое пространство. $\B(X)$ --- борелевская  $\sigma$-алгебра (наименьшая $\sigma$-алгебра, содержащая $\tau$). Мера $\mu$ на $\B(X)$ называется \textit{регулярной}, если для любого $E \in \B(X)$ выполняется \begin{align*}
+  \mu(E) &= \inf \left\{ \mu(U) \mid U \text{ открытое и } E \subset U \right\}, \\
+  \mu(E) &= \sup \left\{ \mu(K) \mid K \text{ компактно и } K \subset E \right\}
+ .\end{align*} 
+\end{df}
+\begin{lm}
+ \label{lemma:finite_measure_on_compact_space_is_regular}
+ Пусть $X$ --- метрический компакт и  $\mu$ --- конечная борелевская мера на $X$. Тогда $\mu$ регулярна.
+\end{lm}
+\begin{proof}
+ Построим $\sigma$-алгебру $\A$ следующим образом: борелевское множество $A \in \B(x)$ принадлежит $\A$, если для любого $\eps > 0$ существуют замкнутое $C$ и открытое $U$ такие, что $C \subset A \subset U$, $\mu(U \setminus A) < \eps$ и $\mu(A \setminus C) < \eps$.
+
+ Ясно, что $\A \subset \B(X)$, и если борелевское множество $A \in \B(X)$ принадлежит $\A$, то для него выполняются соотношения из определения \ref{definition:regular_measure}: его можно сколь угодно хорошо приблизить сверху открытым множеством, а снизу --- компактом (вспомним, что все замкнутые подмножества $X$ компактны, так как $X$ компактно). Поэтому, достаточно показать, что $\A = \B(X)$.
+
+ Сначала поймём, что все замкнутые множества принадлежат $\A$. Действительно, пусть $F$ замкнутое. В качестве $C$ можно взять $F$. Научимся приближать $F$ сверху открытыми множествами. Так как $F$ замкнуто, то точка $x \in F$ тогда и только тогда, когда $\mathrm{dist}(x, F) = 0$, где  \begin{align*}
+  \mathrm{dist}(x, F) = \inf_{y \in F} \mathrm{dist}(x,y)
+ \end{align*} (к точке на расстоянии ноль от $F$ можно построить сходящуюся последовательность точек из $F$). Поэтому, верно
+\begin{align*}
+F = \bigcap_{n=1}^{\infty} V_n
+,\end{align*}
+где $V_n = \left\{ x \mid \mathrm{dist}(x, E) < \frac{1}{n} \right\}$. Эти множества $V_n$ открытые как объединения открытых шаров: \begin{align*}
+ V_n = \bigcup_{x \in F} B \left( x, \frac{1}{n} \right)
+.\end{align*}  В силу того, что множества $V_n$ вложены: $V_n \supset V_{n+1}$, то по непрерывности конечной меры снизу имеем
+\begin{align*}
+\mu(F) = \lim_{n \to \infty} \mu(V_n) 
+.\end{align*} Поэтому существует $n$ такое, что $\mu(V_n) \leqslant \mu(F) + \eps$. Так как $V_n \supset F$, то $\mu(V_n \setminus F) < \eps$. Поэтому, мы можем взять $V_n$ в качестве $U$ для любого наперёд заданного $\eps$.
+
+
+ Итак, $\A$ содержит все замкнутые подмножества. Осталось проверить, что $\A$ --- $\sigma$-алгебра.
+
+ \begin{enumerate}
+  \item $\varnothing \in \A$, так как $\varnothing$ и замкнутое, и открытое (можно взять $C=U=\varnothing$).
+  \item Пусть $A \in \A$. Покажем $A^{c} \in \A$. Действительно, если $C \subset A \subset U$ и $\mu(U \setminus A) < \eps$, $\mu(A \setminus C) < \eps$, то $U^{c} \subset A^{c} \subset C^{c}$, при этом $U^{c}$ замкнутое, а $C^{c}$ открытое. При этом 
+\begin{align*}
+ \mu(C^{c} \setminus A^{c}) &= \mu(C^{c} \cap A) = \mu((X \setminus C) \cap A) = \mu(A \setminus C) < \eps, \\
+ \mu(A^{c} \setminus U^{c}) &= \mu(A^{c} \cap U) = \mu((X \setminus A) \cap U) = \mu(U \setminus A) < \eps
+.\end{align*}
+\item Пусть $A_1, A_2, \ldots \in \A$. Покажем, что счётное объединение $A = A_1 \cup A_2 \cup \ldots$ тоже принадлежит $\A$. Возьмём любое наперёд заданное $\eps > 0$ и найдём замкнутые $C_1,C_2,\ldots$ и открытые $U_1,U_2,\ldots$ такие, что
+ \begin{align*}
+  C_k \subset A_k \subset U_k, \quad \mu(U_k \setminus A_k) < \eps, \quad \mu(A_k \setminus C_k) < \eps
+ .\end{align*} В качестве открытого приближения возьмём $U = U_1 \cup U_2 \cup \ldots$ Тогда $U \supset A$, и \begin{align*}
+ \mu(U \setminus A) &\leqslant \mu \left( \bigcup_{k=1}^{\infty} U_k \setminus A \right) \leqslant \sum_{k=1}^{\infty} \mu(U_k \setminus A) \leqslant \sum_{k=1}^{\infty} \mu(U_k \setminus A_k) < \eps 
+.\end{align*}
+В качестве замкнутого приближения можно взять конечное объединение замкнутых множеств $C_1 \cup \ldots \cup C_N$ для достаточно большого $N$. В самом деле, по непрерывности конечной меры снизу можно написать:
+\begin{align*}
+ \lim_{N \to \infty} \mu \left( A \setminus \bigcup_{k=1}^{N} C_k \right) &= \mu \left( A \setminus \bigcup_{k=1}^{\infty} C_k \right) = \mu \left( \bigcup_{n=1}^{\infty} A_n \setminus \left( \bigcup_{k=1}^{\infty} C_k \right) \right) \leqslant \\ &\leqslant \sum_{n=1}^{\infty} \mu \left( A_n \setminus \left( \bigcup_{k=1}^{\infty} C_k \right) \right) \leqslant \sum_{k=1}^{\infty} \mu(A_k \setminus C_k) < \eps
+.\end{align*} Значит, при достаточно большом $N$ выполнится \begin{align*}
+ \mu \left( A \setminus \bigcup_{k=1}^{N} C_k \right) \leqslant 2\eps
+.\end{align*}
+\end{enumerate} Таким образом, мы показали, что $\A$ --- $\sigma$-алгебра, что завершает доказательство леммы.
+\end{proof}
+\begin{lm}[Урысона]
+ \label{lemma:urison_metric_space}
+ Пусть $(X, d)$ --- метрическое пространство и  $F_0, F_1$ --- два замкнутых не пересекающихся подмножества в $X$ ($F_0 \cap F_1 = \varnothing$). Тогда существует непрерывная функция $f \colon\, X \to [0,1] $ такая, что \begin{align*}
+  f \rvert_{F_0} = 0, \\
+  f \rvert_{F_1} = 1
+.\end{align*}
+\end{lm}
+
+Функцию $f$ из леммы называют \textit{непрерывным спуском с единицы}. Эта лемма очень полезная: она позволяет <<локализовывать>> многие задачи.
+
+\begin{proof}
+ Мы просто предъявим такую функцию: \begin{align*}
+  f(x) = \frac{d(x, F_0)}{d(x, F_0) + d(x, F_1)}
+ ,\end{align*}  где $d(x, F) = \inf_{y \in F} d(x, y)$ для $F \subset X$.
+
+ Снова вспомним замечание, что для замкнутого $F$ верно \begin{align*}
+  x \in F \iff d(x, F) = 0
+ .\end{align*} Таким образом, функция задана корректно на всём пространстве $X$ (если $d(x, F_0) = d(x, F_1) = 0$, то $x \in F_0 \cap F_1$, чего не может быть). Кроме того, видно, что $0 \leqslant f(x) \leqslant 1$ всюду. Далее, если $x \in F_0$, то 
+\begin{align*}
+f(x) = \frac{0}{0 + d(x,F_1)} = 0
+.\end{align*} Если  $x \in F_1$, то 
+\begin{align*}
+f(x) = \frac{d(x, F_0)}{0 + d(x, F_0)} = 1
+.\end{align*}
+
+ Осталось проверить, что $f$ непрерывна. Это верно, потому что функция $x \mapsto d(x, F)$ непрерывна при замкнутом $F$ --- проверим это: возьмём любую последовательность точек $\{x_{n}\}_{n=1}^{\infty} \subset F,\; x_n \to y$. Тогда по неравенству треугольника можно получить оценки с обеих сторон: \begin{align*}
+  d(y, F) - \underbrace{d(x_n, y)}_{\to 0} \leqslant d(x_n, F) \leqslant \underbrace{d(x_n, y)}_{\to 0} + d(y, F) 
+ .\end{align*} По теореме о двух милиционерах $d(x_n, F) \to d(y, F)$. Значит, $f$ непрерывна.
+\end{proof}
+\begin{df*}
+ Подмножество $S$ топологического пространства $X$ называется \textit{всюду плотным}, если выполнено одно из эквивалентных условий:
+ \begin{itemize}
+  \item Замыкание этого множества совпадает со всем пространством: $\overline S = X$.
+  \item Любую точку $x \in X$ можно приблизить последовательностью точек из $S$.
+  \item Любое открытое множество пересекается с $S$.
+ \end{itemize}
+\end{df*}
+Например, $\Q$ всюду плотно в $\R$.
+
+Прежде, чем перейти к следующей теореме, нам понадобится некоторое улучшение теоремы \ref{theorem:approximation} об аппроксимации (на лекции об этом забыли упомянуть).
+
+\begin{thm}[%
+о равномерной аппроксимации]
+\label{theorem:uniform_approximation}
+
+Пусть функция $f \colon\, X \to [-C, +C] $, $0 < C < +\infty$  измерима и ограничена. Тогда существует последовательность $\{f_{n}\}_{n=1}^{\infty} $ простых функций, равномерно сходящихся к $f$. То есть для любого $\eps > 0$ любой точки $x \in X$ существует $N \in \N$ такое, что \begin{align*}
+ \left| f_n(x) - f(x) \right| < \eps
+\end{align*} при всех $n > N$.
+\end{thm}
+\begin{proof}
+ Точно также разобьём $f = f_+ - f_-$, где $f_+ = \max(f,0)$, $f_- = \max(-f, 0)$ и сведём к случаю, когда $f \geqslant 0$.
+
+ Внимательно посмотрим на конструкцию из доказательства теоремы \ref{theorem:approximation} об аппроксимации. Оказывается, что при условии ограниченности $f \leqslant C$ построенная последовательность функций будет сходится равномерно. Действительно, для любой точки $x \in X$ и для любого $n > C$ будет верно \begin{align*}
+  f(x) - f_n(x) \leqslant \frac{1}{n}
+ ,\end{align*} так как при $n > C$ точка $x$ попадает одно из множеств $A_{n,k}$, $0 \leqslant k < n^{2}$. Таким образом, для любого $\eps > 0$ можно подобрать $n = \max(C + 1, \eps^{-1})$, работающее для всех $x \in X$ одновременно.
+
+ Дополнительно отметим, что для неограниченных функций такое доказательство не будет работать, потому что для сколь угодно большого $n$ всё равно может оказаться точка, не принадлежащая $A_{n,k}$, $k < n^{2}$.
+\end{proof}
+
+Теперь мы готовы к следующей теореме.
+
+\begin{thm}[%
+]
+  Пусть $K$ --- метрический компакт, $\mu$ --- конечная борелевская мера на $K$. Тогда пространство $C(K)$ непрерывных функций на $K$ --- всюду плотное подмножество пространства Лебега $L^{p}(K, \mu)$ для любого $1 \leqslant p < \infty$.
+\end{thm}
+Эта теорема говорит нам о том, что на компакте, при условии конечной меры, любую суммируемую функцию можно приблизить по мере непрерывными.
+\begin{proof}
+ Возьмём любую функцию $f \in L^{p}(K,\mu)$. Наша цель: найти последовательность функций $f_n \in C(K)$ такую, что \begin{align*}
+  \left\| f - f_n \right\|_{L^{p}(K,\mu)} \to 0
+ .\end{align*} Мы последовательно будем сводить задачу к более простому случаю относительно функции $f$.
+
+ Сначала мы покажем, что можно считать $f$ ограниченной. Введём множества  \begin{align*}
+ E_N &= \left\{ x \in K \mid \left| f(x) \right| \geqslant N \right\}, \quad N \in \N
+.\end{align*} Видно, что $E_1 \supset E_2 \supset \ldots $ По непрерывности (конечной!) меры $\nu(E) = \int_{E} \left| f \right|^{p} \, d\mu  $  снизу имеем \begin{align*}
+ \lim_{N \to \infty} \int\limits_{E_N} \left| f \right|^{p} \, d\mu = \int\limits_{\bigcap_{N=1}^{\infty} E_N} \left| f \right|^{p} \, d\mu = \int\limits_{E_{+\infty}} \left| f \right|^{p} \, d\mu   = 0
+,\end{align*}  где $E_{+\infty} = \left\{ x \in K \Mid f(x) = +\infty \right\}$. Последний интеграл равен нулю, так как $f$ суммируема. Таким образом, если мы приблизим каждую функцию 
+\begin{align*}
+f^{(N)}(x) = \begin{cases}
+ f(x), \text{ если } x \in K \setminus E_N \\
+ 0, \text{ иначе }
+\end{cases} 
+\end{align*}
+ сколь угодно хорошо по мере непрерывными функциями $\{f_{n}^{(N)}\}_{n=1}^{\infty} \subset C(K)$, то устремив $N$ к бесконечности мы приблизим и функцию $f$, ведь \begin{align*}
+  \left\| f_n^{(N)} - f \right\| \leqslant \underbrace{\left\| f_n^{(N)} - f^{(N)} \right\|}_{\to 0} + \underbrace{\left\| f^{(N)} - f \right\|}_{\to 0}
+ .\end{align*} 
+
+ Итак, можно считать, что $f$ ограничена. По теореме \ref{theorem:uniform_approximation} о равномерной аппроксимации простыми функциями существуют последовательность $\{g_{n}\}_{n=1}^{\infty} $ простых функций, равномерно сходящаяся к $f$. Тогда для любого $\eps > 0$ существует $N$ такое, что для всех $n > N$ и для всех $x \in K$ верно \begin{align*}
+  \left| g_n - f \right| < \eps &\implies \sup \left| g_n - f \right| < \eps \implies \mathrm{ess sup} \left| g_n - f \right| < \eps \implies \\ &\implies \left\| g_n - f \right\|_{L^{\infty}(K, \mu)} < \eps \implies \\ &\implies \left\| g_n - f \right\|_{L^{p}(K, \mu)} < C\eps, \quad C > 0
+ .\end{align*}  Последний переход верен (при условии $\mu(K) < \infty$), поскольку \begin{align*}
+ \left\| h \right\|_{L^{p}(K,\mu)} &= \left( \int\limits_{K} \left| h \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \leqslant \left( \int\limits_{K} \mathrm{esssup} \left| h \right|^{p} \, d\mu   \right)^{\frac{1}{p}} = \left( \mu(K) \cdot \mathrm{ess sup} \left| h \right|^{p} \right)^{\frac{1}{p}} = \\
+ &=\mu(K)^{\frac{1}{p}} \cdot \mathrm{ess sup} \left| h \right| = \mu(K)^{\frac{1}{p}} \cdot \left\| h \right\|_{L^{\infty}(K,\mu)} < \mu(K)^{\frac{1}{p}} \cdot \eps
+ .\end{align*} Тогда, если мы сможем всякую простую функцию приблизить непрерывными, то и всякую ограниченную тоже.
+
+ Следовательно, можно считать, что $f$ простая. То есть \begin{align*}
+ f = \sum_{k=1}^{M}  c_k \chi_{A_k}
+ ,\end{align*} где $A_k \subset K$ --- измеримые множества. Если для любой характеристической функции $\chi_{A_k}$ и для любого $\eps > 0$ существует непрерывная функция $h_{k,\eps} \in C(K)$ такая, что  \begin{align*}
+\left\| \chi_{A_k} - h_{k,\eps} \right\|_{L^{p}(K,\mu)} < \frac{\eps}{2^{k}\left| c_k \right|}
+,\end{align*} то можно взять функцию \begin{align*}
+g_{\eps} = \sum_{k=1}^{M} c_k h_{k,\eps}
+\end{align*} и получить оценку \begin{align}
+\label{equation:simple_functions_in_l_p_linear_space}
+\left\| f - g_{\eps} \right\|_{L^{p}(K,\mu)} &= \left\| \sum_{k=1}^{\infty} c_k \chi_{A_k} - \sum_{k=1}^{M} c_k h_{k,\eps} \right\|_{L^{p}(K,\mu)} \leqslant \\
+\nonumber &\leqslant \sum_{k=1}^{M} \left| c_k \right| \left\| \chi_{A_k} - h_{k,\eps} \right\|_{L^{p}(K,\mu)} \leqslant \\
+\nonumber
+ & \leqslant \sum_{k=1}^{M}  \frac{\eps \left| c_k \right|}{\left| c_k \right| 2^{k}} \\
+ \nonumber
+ &< \eps
+.\end{align} Переход \eqref{equation:simple_functions_in_l_p_linear_space} верен, так как $L^{p}(K,\mu)$ --- линейное пространство.
+
+Таким образом, можно считать, что $f = \chi_A$, где $A \in \B(K)$. Так как $K$ --- метрический компакт, то по лемме \ref{lemma:finite_measure_on_compact_space_is_regular} конечная мера $\mu$ регулярна. Значит, для любого $\eps > 0$ существует $C_{\eps}, U_{\eps}$ такие, что $C_{\eps} \subset A \subset U_{\eps}$, $C_{\eps}$ замкнуто (и, следовательно, компактно), $U_{\eps}$ открыто и 
+\begin{align*}
+\mu(U_{\eps} \setminus C_{\eps}) \leqslant \mu(U_{\eps} \setminus A) + \mu(A \setminus C_{\eps}) \leqslant 2\eps
+.\end{align*} Теперь построим непрерывную функцию $h_{\eps} \in C(K)$ такую, что $0 \leqslant h_{\eps} \leqslant 1$ всюду на $K$, $h_{\eps} \rvert_{C_{\eps}} = 1$ и $h_{\eps} \rvert_{U^{c}_{\eps}} = 0$ --- такая $h_{\eps}$ существует по лемме \ref{lemma:urison_metric_space} Урысона. См рис. \ref{fig:continuous-approximation-of-characteristic-function}.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{continuous-approximation-of-characteristic-function}
+    \caption{Непрерывное приближение характеристической функции}
+    \label{fig:continuous-approximation-of-characteristic-function}
+\end{figure}
+
+Наконец-то, оценим расстояние между $f = \chi_A$ и $h_{\eps}$:
+\begin{align*}
+ \left\| f - h_{\eps} \right\|_{L^{p}(K,\mu)}^{p} &= \int\limits_{K} \left| \chi_A - h_\eps \right|^{p} \, d\mu  = \\ &= \underbrace{\int\limits_{U_{\eps}^{c}} \left| \chi_A - h_{\eps} \right|^{p} \, d\mu}_{=0}   + \int\limits_{U_{\eps} \setminus C_{\eps}} \left| \chi_A - h_{\eps} \right|^{p} \, d\mu  + \underbrace{\int\limits_{C_{\eps}} \left| \chi_A - h_{\eps} \right|^{p} \, d\mu}_{= 0}  = \\
+ &= \int\limits_{U_{\eps} \setminus C_{\eps}} \left| \chi_A - h_{\eps} \right|^{p} \, d\mu  \leqslant \\
+  & \leqslant \mu(U_{\eps} \setminus C_{\eps}) \cdot \max \left| \chi_A - h_{\eps} \right|^{p} \leqslant \\
+  &\leqslant 2\eps
+.\end{align*} Всё получилось! Мы приблизили характеристическую функцию непрерывными. Значит, можно и любую измеримую приблизить непрерывными.
+\end{proof}
+\begin{remrk*}
+ $C(K)$ не плотно в $L^{\infty}(K, \mu)$.
+\end{remrk*}
+\begin{df*}
+ Метрическое пространство $X$ называется \textit{cепарабельным}, если в нём существует всюду плотное счётное подмножество.
+\end{df*}
+
+Например, пространство $\R$ сеперабельно, так как $\Q$ --- всюду плотное счётное подмножество $\R$.
+
+\begin{lm}[%
+Витали]
+\label{lemma:vitali}
+Пусть $X$ --- сепарабельное метрическое пространство. Пусть $G$ --- семейство замкнутых шаров в $X$ с ограниченным радиусом: $0 < \rho(B) \leqslant R$ для любого $B \in G$, где $\rho(B)$ --- радиус шара $B$.
+
+Тогда существует не более, чем счётное подсемейство $\hat G \subset G$, в котором шары не пересекаются ($B_1 \cap B_2 = \varnothing$ для любых $B_1, B_2 \in \hat G$, $B_1 \neq B_2$), и \begin{align*}
+ \bigcup_{B \in \hat G}  5B \supset \bigcup_{B \in G} B
+,\end{align*} где $5B$ --- это шар с тем же центром, что и у  $B$, но увеличенным в $5$ раз радиусом: $\rho(5B) = 5 \cdot \rho(B)$.
+\end{lm}
+\begin{remrk*}
+ Сепарабельность в условии леммы несущественна: лемму можно доказать для любого метрического пространства, но с использованием леммы Цорна --- эквиваленту аксиомы выбора. Однако, для несепарабельных пространств подсемейство $\hat G$ может оказаться несчётным.
+\end{remrk*}
+\begin{remrk*}
+В $\R^{n}$ вообще можно можно не увеличивать шары (теорема Безиковича).
+\end{remrk*}
+\begin{proof}
+ Считаем, что $X = \bigcup_{B \in G} B $. Разобьём шары на счётное число семейств по радиусу:
+\begin{align*}
+G_j = \left\{ B \in G \Mid \frac{R}{2^{j+1}} < \rho(B) \leqslant \frac{R}{2^{j}} \right\}, \quad j \geqslant 0
+.\end{align*}
+
+Возьмём $G_0'$ --- любое максимальное по включению подмножество непересекающихся шаров из $G_0$. Максимальность по включению означает, что если $B \in G_0$, но $B \notin G_0'$, то существует $\tilde B \in G_0'$ такой, что $B \cap \tilde B \neq \varnothing$. В произвольном пространстве такое семейство можно построить с помощью леммы Цорна. В сепарабельном пространстве можно без неё: возьмём $\{x_{k}\}_{k=0}^{\infty} $ -- счётное всюду плотное подмножество $\bigcup_{B \in G_0} B$. Возьмём шар $B_0 \ni x_0$. Если рассмотрены точки $x_0, \ldots, x_n$ и построены шары $B_0, \ldots, B_{m_n}$, то при рассмотрении точки $x_{n+1}$ поступим следующим образом:
+ \begin{itemize}
+  \item Если любой шар $B \in G_0$, содержащий точку $x_{n+1}$, пересекает $B_0 \cup \ldots \cup B_{m_n}$, то переходим к $x_{n+2}$, и полагаем $m_{n+1} = m_n$.
+  \item Если существует шар $B \in G_0$, содержащий точку $x_{n+1}$ и не пересекающийся с $B_0 \cup \ldots \cup B_{m_n}$, то возьмём его в семейство: положим $m_{n+1} = m_n + 1$ и  $B_{m_{n+1}} = B$.
+\end{itemize} Легко видеть, что эта конструкция подходит. По построению, это семейство является подмножеством $G_0$, и шары в нём не пересекаются. Кроме того, в него нельзя добавить никакой шар $B$: иначе при рассмотрении некоторой точки $x_N \in B$  (которая есть в $B$, так как $\{x_{k}\}_{k=0}^{\infty} $ всюду плотно), мы бы его добавили тогда.
+
+Теперь пусть $G_j'$ --- максимальное по включению дизъюнктное семейство шаров из $G_j$, не пересекающих $G_0' \cup \ldots \cup G_{j-1}'$ ($j \geqslant 1$). Такое семейство строится совершенно аналогично $G_0'$. Наконец, возьмём
+\begin{align*}
+\hat G = \bigcup_{j=0}^{\infty} G_j'
+.\end{align*}
+
+Проверим, что $\hat G$ подходит. По построению  $\hat G \subset G$, $\hat G$ не более, чем счётное, и $\hat G$ дизъюнктное. Рассмотрим любой шар $B \in G$  и покажем, что $B \subset 5\tilde B$ для некоторого $\tilde B \in \hat G$. Если $B \in \hat G$, то всё очевидно (можно взять $\tilde B = B$). Если $B \in G \setminus \hat G$, то существует $j \geqslant 0$ такое, что $B \in G_j \setminus G_j'$. Значит, 
+\begin{align*}
+ \frac{R}{2^{j+1}} < \rho(B) \leqslant \frac{R}{2^{j}}
+.\end{align*} Кроме того, существует $\tilde B \in G_k'$, где $0 \leqslant k \leqslant j$, такой, что $\tilde B \cap B \neq \varnothing$.
+
+Покажем, что $B \subset 5\tilde B$. См. рис. \ref{fig:vitali-lemma-intersecting-balls}.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{vitali-lemma-intersecting-balls}
+    \caption{Лемма Витали: шар $5 \tilde B$ содержит в себе шар $B$.}
+    \label{fig:vitali-lemma-intersecting-balls}
+\end{figure}
+
+Так как $k \leqslant j$, то $\rho(\tilde B) \geqslant \rho(B)/2$. Действительно, худший случай: $k = j$, в котором радиусы отличаются не более, чем в два раза. В остальных случаях радиус $\rho(\tilde B)$ ещё больше. Возьмём любую точку $x \in B$. Пусть $y$ --- центр $B$, и $\tilde y$ --- центр $\tilde B$. Тогда \begin{align*}
+ \rho(x, \tilde y) &\leqslant \rho(x, y) + \rho(y, \tilde y) \leqslant \\ & \leqslant \rho(B) + (\rho(B) + \rho(\tilde B)) = \\ &= 2\rho(B) + \rho(\tilde B) \leqslant \\ &\leqslant 5 \rho(\tilde B)
+,\end{align*} где последнее неравенство эквивалентно $\rho(\tilde B) \geqslant \rho(B) / 2$.
+
+\begin{df}
+ Пусть $X$ --- метрическое пространство, $\B(X)$ --- борелевская $\sigma$-алгебра, $\mu$ --- борелевская мера на $X$, причем мера любого шара $B \subset X$ конечна: $\mu(B) < \infty$.
+
+ Для функции $f \in L^{1}(X, \mu)$ \textit{максимальной функцией Харди-Литтлвуда} называется функция
+\begin{align*}
+ (M^{\ast}f)(x) = \sup_{B \ni x \text{ --- шар }} \frac{1}{\mu(B)} \int\limits_{B} \left| f \right| \, d\mu  
+.\end{align*}
+\end{df}
+\begin{remrk}
+ $M^{\ast}f$ измерима, так как \begin{align*}
+  E_t = \left\{ x \in X \Mid (M^{\ast} f)(x) > t \right\} 
+ \end{align*} открыто для любого $t \in \R$. Действительно, если $(M^{\ast}f)(x) > t$, то существует открытый шар $B$ такой, что \begin{align*}
+  \frac{1}{\mu(B)} \int\limits_{B} \left| f \right| \, d\mu
+ .\end{align*} Значит, на всех точках $y \in B$ из шара будет выполнено $(M^{\ast}f)(x) > t$.
+\end{remrk}
+\begin{thm}[%
+Харди-Литтлвуда]
+\label{theorem:hardy_littlewood}
+ Пусть $X$ --- сепарабельное ограниченное метрическое пространство: $\rho(x, y) \leqslant R$ для любых $x,y \in X$. Пусть $\mu$ --- борелевская мера на $X$ такая, что для любого шара $B$ в $X$ мера $\mu(B)$ конечна, и $\mu(2B) \leqslant c \mu(B)$ для некоторого $c > 0$.
+
+ Тогда существует константа $C > 0$ такая, что для любой $f \in L^{1}(X, \mu)$ имеет место оценка \begin{align*}
+  \mu \left\{ x \in X \mid (M^{\ast}f)(x) > \lambda \right\} \leqslant \frac{C \left\| f \right\|_{L^{1}(X,\mu)}}{\lambda}
+ \end{align*} для любого $\lambda > 0$.
+\end{thm}
+\begin{proof}
+ Обозначим $E_{\lambda} = \left\{ x \in X \mid (M^{\ast}f)(x) > \lambda \right\}$. Оказывается, \begin{align}
+  \label{equation:hardy_little_wood_theorem_1}
+  E_{\lambda} \subset \bigcup_{B \in G}  B
+ ,\end{align} где $G$ --- семейство шаров $B \subset X$ таких, что \begin{align*}
+  \frac{1}{\mu(B)} \int\limits_{B} \left| f \right| \, d\mu   > \lambda
+ .\end{align*} Воспользуемся леммой \ref{lemma:vitali} Витали и найдём $\hat G$. Тогда \begin{align*}
+ \mu \left( \bigcup_{B \in G} B \right) \leqslant \mu \left( \bigcup_{B \in \hat G} 5B  \right) \leqslant \sum_{B \in \hat G} \mu(5B) \leqslant [2^{3} > 5] \leqslant c^{3} \sum_{B \in \hat G}  \mu(B).
+ \end{align*} Для всякого $B \in G$ имеем: \begin{align*}
+ \mu(B) \leqslant \frac{1}{\lambda} \int\limits_{B} \left| f \right| \, d\mu
+ \end{align*} по неравенству \eqref{equation:hardy_little_wood_theorem_1}. Поэтому, \begin{align*}
+ \sum_{B \in \hat G}  \mu(B) \leqslant \frac{1}{\lambda} \sum_{B \in \hat G}  \int\limits_{B} \left| f \right| \, d\mu   \leqslant \frac{1}{\lambda} \int\limits_{X} \left| f \right| \, d\mu   = \frac{\left\| f \right\|_{L^{1}(X,\mu)}}{\lambda}
+ ,\end{align*} так как шары из $\hat G$ дизъюнктны. Возьмём $C = c^{3}$. Теорема доказана.
+\end{proof}
+\begin{df}
+ $x$ называется \textit{точкой Лебега} функции  $f \in L^{1}(X,\mu)$, если \begin{align*}
+  \lim_{\eps \to 0} \frac{1}{\mu(B_{\eps})} \int\limits_{B_{\eps}} \left| f(y) - f(x) \right| \, d\mu (y) = 0
+ ,\end{align*} где $\left\{ B_{\eps} \right\}$ --- произвольный набор шаров такой, что $\rho(B_{\eps}) = \eps$ и $B_{\eps} \ni x$.
+\end{df}
+\begin{df}
+ $x$ называется \textit{точкой Лебега} борелевского множества $E$, если $x$ --- точка Лебега функции $\chi_E$, то есть \begin{align*}
+  \frac{\mu(E \cap B_{\eps}(X))}{\mu(B_{\eps}(x))} \to 1 \text{ при } \eps \to 0
+ .\end{align*} 
+\end{df}
