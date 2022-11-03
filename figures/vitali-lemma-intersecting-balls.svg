@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="vitali-lemma-intersecting-balls.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.084813"
+     inkscape:cx="456.29983"
+     inkscape:cy="172.37994"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="840"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <circle
+       style="fill:#0000ff;fill-opacity:0.287444;stroke:#0000ff;stroke-width:0.264999"
+       id="path847"
+       cx="92.10025"
+       cy="244.01677"
+       r="18.385893" />
+    <circle
+       style="fill:#0000ff;fill-opacity:0.287444;stroke:#0000ff;stroke-width:0.264999"
+       id="path851"
+       cx="136.1909"
+       cy="239.58211"
+       r="37.008392" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="68.105766"
+       y="233.87009"
+       id="text3077"><tspan
+         sodipodi:role="line"
+         id="tspan3075"
+         style="stroke-width:0.264583"
+         x="68.105766"
+         y="233.87009">$B$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="164.10545"
+       y="210.31206"
+       id="text4767"><tspan
+         sodipodi:role="line"
+         id="tspan4765"
+         style="stroke-width:0.264583"
+         x="164.10545"
+         y="210.31206">$\tilde B$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 90.887827,244.33474 45.973293,-4.48546"
+       id="path6428" />
+    <circle
+       id="path6500"
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.264583"
+       cx="91.100662"
+       cy="243.98346"
+       r="0.032538086" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 90.887827,244.33474 -17.45338,1.26369"
+       id="path6537" />
+    <circle
+       id="path6539"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="90.887833"
+       cy="244.33475"
+       r="0.39687499" />
+    <circle
+       id="path6654"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="136.86111"
+       cy="239.84927"
+       r="0.39687499" />
+    <circle
+       id="path6656"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="73.434448"
+       cy="245.59843"
+       r="0.39687499" />
+    <circle
+       id="path6658"
+       style="fill:#000000;stroke:none;stroke-width:0.264583"
+       cx="110.49249"
+       cy="242.12843"
+       r="0.39687499" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="78.430717"
+       y="250.75699"
+       id="text11257"><tspan
+         sodipodi:role="line"
+         id="tspan11255"
+         style="stroke-width:0.264583"
+         x="78.430717"
+         y="250.75699">$\rho(B)$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="112.63214"
+       y="250.02151"
+       id="text17809"><tspan
+         sodipodi:role="line"
+         id="tspan17807"
+         style="stroke-width:0.264583"
+         x="112.63214"
+         y="250.02151">$\rho(\tilde B) \geqslant \frac{\rho(B)}{2}$</tspan></text>
+  </g>
+</svg>
