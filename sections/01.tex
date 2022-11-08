@@ -131,7 +131,7 @@
  \end{enumerate}
 \end{df}
 \begin{df}
- Пусть $ X $ --- множество. Набор подмножеств $ \A \in 2^X $ --- \textit{алгебра} множеств, если
+ Пусть $ X $ --- множество. Набор подмножеств $ \A \subset 2^X $ --- \textit{алгебра} множеств, если
  \begin{enumerate}
   \item $ \varnothing \in \A $
   \item $ A_1, A_2 \in \A \;\Longrightarrow\; A_1 \cap A_2 \in \A $
@@ -208,7 +208,9 @@
 \begin{proof}\
  \begin{enumerate}
   \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in I $.
+  \setcounter{enumi}{2}
   \item $ A \in \A \;\Longrightarrow\; A \in \A_i,  \forall i \in I \;\Longrightarrow\; A^c \in \A_i, \forall i \in I \;\Longrightarrow\; A^c \in \bigcap_{i \in I} \A_i = \A$ 
+  \setcounter{enumi}{1}
   \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
   \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
  \end{enumerate}

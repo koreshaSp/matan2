@@ -3,7 +3,7 @@
  \item Пусть $A \in \A^{\ast} \cap \A_{\nu}$ такое, что $\mu(A) < \infty$. Тогда надо показать $\nu(A) = \mu(A)$.
  \begin{align*}
   \mu(A) = \mua(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu(P_k) \mid P_k \in \p \colon\; A \subset \bigcup_{k=1}^{\infty} P_k \right\}
- .\end{align*} Возьмём любой набор $\left\{ P_k \right\}$ такой, что $\bigcup_{k=1}^{\infty} P_k \supset A$. Тогда:
+.\end{align*} Возьмём любой набор $\left\{ P_k \right\}_{k=1}^{\infty}$ такой, что $\bigcup_{k=1}^{\infty} P_k \supset A$. Тогда:
  \begin{align*}
   \nu(A) \underbrace{\leqslant}_{\text{ так как оба множества } \in \A_{\nu}} \nu \left( \bigcup_{k=1}^{\infty} P_k \right) = \nu( \bigsqcup_{k=1}^{\infty}  \bigsqcup_{j=1}^{N_k} Q_{kj}) = \sum_{k=1}^{\infty} \underbrace{\sum_{j=1}^{N_k} \nu(Q_{kj})}_{\leqslant \nu(P_k)} \Rightarrow \\
   \Rightarrow \nu(A) \leqslant \sum_{k=1}^{\infty}  \nu(P_k) \underbrace{=}_{\text{по условию} P_k \in \p} \sum_{k=1}^{\infty}  \mu(P_k)
@@ -275,7 +275,7 @@
 \end{proof}
 Идея Лебега: нужно любую измеримую функцию приближать простыми.
 \begin{lm}
- Пусть функции $f_n \colon\; X \to [-\infty, +\infty]$ измеримы. Тогда $\sup f_n$, $\inf f_n$,  $\limsup f_n$, $\liminf f_n$ измеримы. Также, если существует предел  $\lim_{n \to \infty} f_n(x)$ для любой точки $x \in X$, то $\lim f_n$ измерим.
+ Пусть функции $f_n \colon\; X \to [-\infty, +\infty]$ измеримы. Тогда $\sup f_n$, $\inf f_n$,  $\varlimsup f_n$, $\varliminf f_n$ измеримы. Также, если существует предел  $\lim_{n \to \infty} f_n(x)$ для любой точки $x \in X$, то $\lim f_n$ измерим.
 \end{lm}
 \begin{proof}
  $f(x) = \sup f_n(x)$:
@@ -284,14 +284,14 @@
  .\end{align*} $f(x) = \inf f_n(x)$:
  \begin{align*}
   f^{-1} \left( [-\infty, a) \right) = \bigcup_{n=1}^{\infty} f^{-1}_n \left( [-\infty, a) \right)
- .\end{align*}  $f(x) = \limsup f_n(x)$:
+ .\end{align*}  $f(x) = \varlimsup f_n(x)$:
  \begin{align*}
-  f(x) = \limsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
- .\end{align*} Следовательно, $\limsup f_n$ измерим. $\liminf$ аналогично.
+  f(x) = \varlimsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
+ .\end{align*} Следовательно, $\varlimsup f_n$ измерим. $\varliminf$ аналогично.
 
  Пусть теперь $f(x) = \lim f_n(x)$ существует. Тогда
  \begin{align*}
-  f = \limsup f_n = \liminf f_n
+  f = \varlimsup f_n = \varliminf f_n
  ,\end{align*} а они измеримы.
 \end{proof}
 

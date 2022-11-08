@@ -24,12 +24,13 @@
       Тогда нужно проверить, что 
    \begin{align*}
     \mu^\ast\left( E \right) \leqslant
-    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
+	\mu^\ast\left( \bigcup_{k = 1}^{\infty} E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
    .\end{align*} Первое неравенство верно, так как в определении внешней меры $ \mu^* $, после перехода берётся инфимум по меньшему множеству. Перейдём к доказательству второго перехода.
 
-   Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
+   Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$
+   Теперь возьмём и просуммируем:
    \begin{align*}
-    \mu^\ast\left( \bigcup E_k \right) &\leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \\ &\leqslant \sum_{k} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
+	   \mu^\ast\left( \bigcup_{k=1}^{\infty} E_k \right) &\leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{\infty} \mu_0(A_{kj}) \leqslant \\ &\leqslant \sum_{k=1}^{\infty} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_{k=1}^{\infty} \mu^\ast(E_k)
    .\end{align*} Это по определению просто потому, что $ \bigcup E_k \subset \bigcup_{k,j} A_{kj} $. Теперь можно устремить $ \varepsilon $ к нулю (так как это верно для любого $ \varepsilon $) и получить нужное равенство.
  \end{enumerate}
 \end{proof}
@@ -143,7 +144,7 @@
 \begin{thm}[Каратеодори о стандартном продолжении]\
  Пусть $ \p $ --- полукольцо подмножеств $ X $, $ \mu_0 \colon\; \p \to [0, \infty] $ --- счётно-аддитивная функция на $ \p $, а $ \mu^\ast $ --- порождённая ей внешняя мера:
  \begin{align*}
-  \mu^\ast(E) = \inf \left\{ \sum \mu_0(P_k) \mid E \subset \bigcup P_k,\; P_k \in \p \right\}, \quad E \subset X
+	 \mu^\ast(E) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid E \subset \bigcup_{k=1}^{\infty} P_k,\; P_k \in \p \right\}, \quad E \subset X
  .\end{align*} Пусть $ \A^\ast $ --- $ \sigma $-алгебра Каратеодори, порождённая внешней мерой $ \mu^\ast $. Обозначим за $ \mu $ меру $ \mu^\ast \rvert_{\A^\ast} $ на $ \sigma $-алгебре $ \A^\ast $. Тогда:
  \begin{enumerate}
   \item $ \p \subset \A^\ast $

@@ -16,7 +16,7 @@
 \begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:approximation}}]
  Заведём ячейки \begin{align*}
   I_{n,k} = \left[\frac{k}{n}, \frac{k+1}{n}\right)
- ,\end{align*} где $n \in \N$, $k = 0 \ldots n^{2} - 1$. Положим \begin{align*}
+ ,\end{align*} где $n \in \N$, $k = 0, \ldots, n^{2} - 1$. Положим \begin{align*}
  I_{n,n^{2}} = [n, +\infty]
  .\end{align*} Для любого $n \in \N$ верно \begin{align*}
  [0, +\infty] = \bigsqcup_{k=0}^{n^{2}} I_{n,k}
@@ -70,7 +70,7 @@
 \begin{proof}
  $ f_{1,2} = \lim f_{1,2,n} $, где $f_{1,2,n}$ простые. Тогда \begin{align*}
   \lambda_1 f_1 + \lambda_2 f_2 = \lim_{n \to \infty} \left( \lambda_1 f_{1,n} + \lambda_2 f_{2,n} \right) \\
-  f_1 \cdot f_2 = \lim (f_{1,n} \cdot f_{2,n})
+  f_1 \cdot f_2 = \lim_{n \to \infty} (f_{1,n} \cdot f_{2,n})
  \end{align*} 
 \end{proof}
 \begin{crly}
@@ -173,7 +173,7 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
 .\end{align*} Так как $g = \sum_{k=1}^{N} c_k \chi_{A_k}$, то \begin{align*}
 \int\limits_E f_n \, d\mu \geqslant \int\limits_E \Theta \cdot g\chi_{E_n} \, d\mu \underbrace{=}_{(*)} \sum_{k=1}^{N} \Theta c_k \mu (A_k \cap E_n)
 \end{align*}  (*) по определению интеграла для простой функции(\ref{definition:integral_simple_positive}). Тогда \begin{align*}
-\int\limits_E f_n\, d\mu \geqslant \varlimsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n)
+\varlimsup_{n \to \infty} \int\limits_E f_n\, d\mu \geqslant \varlimsup_{n \to \infty} \sum_{k=1}^{N} \Theta c_k \mu(A_k \cap E_n)
 .\end{align*} Для любого $k \in \left\{ 1, \ldots, N \right\}$ верно \begin{align*}
 \lim_{n\to \infty} \mu(A_k \cap E_n) \underbrace{=}_{(**)} \mu(A_k \cap E)
 .\end{align*} Пояснение (**): если $C_j \subset C_{j+1}$ для любого $j$ и  $C = \bigcup_{j=1}^{\infty} C_j$, тогда \begin{align*}
@@ -183,13 +183,13 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
 .\end{align*} 
 
 Продолжим: \begin{align*}
- \varlimsup_{n \to \infty} \sum_{k=1}^{n} \Theta c_k \mu(A_k \cap E_n) = \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap E) = \Theta \int\limits_E g \, d\mu
+ \varlimsup_{n \to \infty} \sum_{k=1}^{N} \Theta c_k \mu(A_k \cap E_n) = \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap E) = \Theta \int\limits_E g \, d\mu
 .\end{align*}  Таким образом, получется, что \begin{align*}
 \int\limits_E f \, d\mu \geqslant \varlimsup_{n \to \infty} \int\limits_E f_n\, d\mu \geqslant \varliminf_{n \to \infty} \int\limits_E f_n \, d\mu \geqslant \varliminf_{n \to \infty} \int\limits_E \Theta g \chi_{E_n} \geqslant \Theta \int\limits_E g\, d\mu
 .\end{align*} Так как неравенство верно для любой $\Theta$ и для любой простой $g \leqslant f$ на $E $, то возьмем супремум по всем $\Theta$ и $g$ и по \ref{definition:integral_supremum_simple} получим: \begin{align*}
-\int\limits_E f \, d\mu \geqslant \varlimsup \int\limits_E f_n \, d\mu \geqslant \varliminf \int\limits_E f_n \, d\mu \geqslant \int\limits_E f \, d\mu
+\int\limits_E f \, d\mu \geqslant \varlimsup_{n \to \infty} \int\limits_E f_n \, d\mu \geqslant \varliminf_{n \to \infty} \int\limits_E f_n \, d\mu \geqslant \int\limits_E f \, d\mu
 .\end{align*} Значит, \begin{align*}
- \int\limits_E f \, d\mu = \lim \int\limits_E f_n \, d\mu
+\int\limits_E f \, d\mu = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
 .\end{align*} 
 \end{proof}
 \begin{crly}
@@ -207,7 +207,7 @@ L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu
  Но для простых функций
  \begin{align*}
  \int\limits_E h_+ d\mu + \int\limits_E f_- d\mu + \int\limits_E g_- \,d\mu &= \int\limits_E \left( h_+ + f_- + g_- \right) \,d\mu = \int\limits_E \left( h_- + f_+ + g_+ \right) \, d\mu = \\
-  &= \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_e g_+ \, d\mu
+  &= \int\limits_E h_- \, d\mu + \int\limits_E f_+ \, d\mu + \int\limits_E g_+ \, d\mu
  .\end{align*}
  Для обоснования равенств(линейности интеграла простой функции) нужно рассмотреть общее мелкое разбиение.
 \end{proof}
