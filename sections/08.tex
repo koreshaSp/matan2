@@ -131,6 +131,7 @@ f(x) = \frac{d(x, F_0)}{0 + d(x, F_0)} = 1
 
 \begin{thm}[%
 ]
+\label{theorem:continous_functions_dense_set_in_lebesgue_space}
   Пусть $K$ --- метрический компакт, $\mu$ --- конечная борелевская мера на $K$. Тогда пространство $C(K)$ непрерывных функций на $K$ --- всюду плотное подмножество пространства Лебега $L^{p}(K, \mu)$ для любого $1 \leqslant p < \infty$.
 \end{thm}
 Эта теорема говорит нам о том, что на компакте, при условии конечной меры, любую суммируемую функцию можно приблизить по мере непрерывными.
@@ -297,12 +298,12 @@ G_j = \left\{ B \in G \Mid \frac{R}{2^{j+1}} < \rho(B) \leqslant \frac{R}{2^{j}}
  ,\end{align*} так как шары из $\hat G$ дизъюнктны. Возьмём $C = c^{3}$. Теорема доказана.
 \end{proof}
 \begin{df}
- $x$ называется \textit{точкой Лебега} функции  $f \in L^{1}(X,\mu)$, если \begin{align*}
-  \lim_{\eps \to 0} \frac{1}{\mu(B_{\eps})} \int\limits_{B_{\eps}} \left| f(y) - f(x) \right| \, d\mu (y) = 0
- ,\end{align*} где $\left\{ B_{\eps} \right\}$ --- произвольный набор шаров такой, что $\rho(B_{\eps}) = \eps$ и $B_{\eps} \ni x$.
+ Точка $x$ называется \textit{точкой Лебега} функции  $f \in L^{1}(X,\mu)$, если \begin{align*}
+  \lim_{r \to 0} \frac{1}{\mu(B_{r})} \int\limits_{B_{r}} \left| f(y) - f(x) \right| \, d\mu (y) = 0
+ ,\end{align*} где $B_r = B_r(x)$ --- шар с центром в $x$ и радиусом $r$.
 \end{df}
 \begin{df}
- $x$ называется \textit{точкой Лебега} борелевского множества $E$, если $x$ --- точка Лебега функции $\chi_E$, то есть \begin{align*}
-  \frac{\mu(E \cap B_{\eps}(X))}{\mu(B_{\eps}(x))} \to 1 \text{ при } \eps \to 0
+ Точка $x$ называется \textit{точкой Лебега} борелевского множества $E$, если $x$ --- точка Лебега функции $\chi_E$, то есть \begin{align*}
+  \lim\limits_{r \to 0} \frac{\mu(E \cap B_{r}(x))}{\mu(B_{r}(x))} \to 1
  .\end{align*} 
 \end{df}
