@@ -4,10 +4,11 @@
  Заведём два обозначения. Пусть $f \colon\, X \times Y \to \R $, для фиксированного $x \in X$ обозначим \begin{align*}
   f_x \colon\; y \mapsto f(x, y)
  ,\end{align*} а для фиксированного $y \in Y$ обозначим \begin{align*}
-  f^{y} \colon\; \mapsto f(x, y)
+  f^{y} \colon\; x \mapsto f(x, y)
  .\end{align*} 
 \end{df}
 \begin{remrk}
+ \label{remark:cut_of_characteristic_function}
  Пусть $E \subset X \times Y$, $f = \chi_E$. Тогда \begin{align*}
   (f_x)(y) = \begin{cases}
    1, \text{ если } (x, y) \in E \\
@@ -23,7 +24,7 @@
 Тонелли]
 \label{theorem:tonelli}
 
-Пусть $(X, \A, \mu)$ , $(Y, \B, \nu)$  --- пространства с $\sigma$-конечными мерами. Пусть функция $f \colon\, X \times Y \to [0, +\infty] $  измерима относительно $\A \otimes \B$.
+Пусть $(X, \A, \mu)$, $(Y, \B, \nu)$  --- пространства с $\sigma$-конечными мерами. Пусть неотрицательная функция $f \colon\, X \times Y \to [0, +\infty] $  измерима относительно $\sigma$-алгебры $\A \otimes \B$.
 
 Тогда для любого $x \in X$ и для любого $y \in Y$ измеримы функции $f_x$, $f^{y}$ относительно $\sigma$-алгебр $\B$, $\A$ соответственно, и выполнено \begin{align}
  \label{equation1:theorem:tonelli}
@@ -33,49 +34,96 @@
 ,\end{align} где функции $x \mapsto \int_{Y} f_x(y) \, d\nu  $ и $y \mapsto \int_{X} f^{y}(x) \, d\mu  $ измеримы относительно $\sigma$-алгебр $\A$, $\B$ соответственно.
 \end{thm}
 \begin{proof}
- Доказательство, как обычно структурное.
+ Доказательство теоремы, как обычно, будет структурным, в несколько шагов.
 
- Пусть сначала $\mu$, $\nu$ конечные.
+  \begin{enumerate}
+   \setcounter{enumi}{-1}
+  \item Понятно, что достаточно доказать только равенство \eqref{equation1:theorem:tonelli} и измеримость функций $f_x$, $x \mapsto \int_{Y} f_x(y) \, d\nu $ (относительно $\sigma$-алгебр $\B$ и $\A$ соответственно). Это так, потому что равенство \eqref{equation2:theorem:tonelli} и измеримость $f^{y}$ и $y \mapsto \int_{X} f^{y} \, d\mu $ можно вывести, поменяв местами переменные.
 
- Шаг 1. Возьмём функцию $f = \chi_E$ . $E \in \A \otimes \B$ . Тогда $f_x = \chi_{E_x}$ , $F^{y} = \chi_{E^{y}}$ . Эти функции измеримы, так как $E_x \in \B$ , $E^{y} \in \A$ . Проинтегрируем:
+   Выведем их: рассмотрим функцию $g(y, x) = f(x,y)$; она измерима относительно $\sigma$-алгебры $\B \otimes \A$ и неотрицательна. Значит, функции $g_y$, $y \mapsto \int_{X} g_y \, d\mu  $ измеримы, и выполнено равенство \eqref{equation1:theorem:tonelli}:
+ \begin{align*}
+  &\int\limits_{Y \times X} g(y, x) \, d(\nu \times \mu)  = \int\limits_{Y} \left[ \int\limits_{X} g_y(x) \, d\mu   \right] \, d\nu
+ .\end{align*} Мы имеем равенство функций $g_y = f^{y}$, из чего автоматически следует измеримость $f^{y}$ и $y \mapsto \int_{X} f^{y} \, d\mu  $. Кроме того, левая часть равенства выше равна
+ \begin{align*}
+  \int\limits_{Y \times X} g(y,x) \, d(\nu \times \mu)  = \int\limits_{X \times Y} f(x,y) \, d(\mu \times \nu)   
+ ,\end{align*} по той причине, что $g(y,x) = f(x,y)$ и для $E \in \B\otimes\A$ верно $(\nu \times \mu)(E) = (\mu \times \nu)(E^{\top})$, где \begin{align*}
+  E^{\top} = \left\{ (x, y) \in X \times Y \Mid (y, x) \in E \right\}  \in \A \otimes \B
+ .\end{align*}
+ В то же время, правая часть равна 
+ \begin{align*}
+  \int\limits_{Y} \left[ \int\limits_{X} g_y(x) \, d\mu   \right] \, d\nu = \int\limits_{Y} \left[ \int\limits_{X} f^{y}(x) \, d\mu   \right] \, d\nu,
+ \end{align*} что доказывает равенство \eqref{equation2:theorem:tonelli}.
+
+
+  \item Пусть сначала меры $\mu$, $\nu$ конечные.
+
+   Возьмём характеристическую функцию $f = \chi_E$. $f$ измерима, поэтому $E \in \A \otimes \B$. Тогда $f_x = \chi_{E_x}$ (замечание \ref{remark:cut_of_characteristic_function}). Функция $f_x$ измерима, так как $E_x \in \B$ (лемма \ref{lemma:cross_sections_of_sigma_algebra_product_is_measurable}). Проинтегрируем их по $y$:
  \begin{align*}
   \int\limits_{Y} f_x \, d\nu &= \int\limits_{Y} \chi_{E_x} \, d\nu = \nu(E_x) 
-  .\end{align*} Функция $x \mapsto \nu(E_x)$  измерима по теореме \ref{theorem:principle_cavalieri} (принцип Кавальери). Теперь проверим равнество \eqref{equation1:theorem:tonelli}, оно эквивалентно \begin{align*}
- &\int\limits_{X \times Y} \chi_E \, d(\mu \times \nu)  = \int\limits_{X} \left[ \int\limits_{Y} (\chi_E)_x(y) \, d\nu   \right] \, d\mu    \iff \\
+  .\end{align*} Функция $x \mapsto \nu(E_x)$  измерима по теореме \ref{theorem:principle_cavalieri} (принцип Кавальери). Теперь проверим равенство \eqref{equation1:theorem:tonelli}, оно эквивалентно \begin{align*}
+ &\int\limits_{X \times Y} \chi_E \, d(\mu \times \nu)  = \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu   \right] \, d\mu    \iff \\
   \iff &  (\mu \times \nu)(E) = \int\limits_{X} \nu(E_x) \, d\mu  
- \end{align*} --- это просто принцип Кавальери (теорема \ref{theorem:principle_cavalieri})! Равенство \eqref{equation2:theorem:tonelli} аналогично.
+ \end{align*} --- это просто принцип Кавальери (теорема \ref{theorem:principle_cavalieri})! Им можно пользоваться, так как меры конечные.
+ \label{enum1:theorem:tonelli}
+ \item По линейности всех операций теорему легко доказать для простых, неотрицательных функций (при условии конечности мер).
 
- Шаг 2. По линейности теорема доказана для простых, неотрицательных функций.
-
- Шаг 3. Пусть функция $f \geqslant 0$ измерима относительно $\A \otimes \B$. Воспользуемся теоремой \ref{theorem:approximation}: найдём неотрицательные простые функции $f_n = f_n(x, y)$, поточечно возрастающих к $f(x, y)$ при $n \to \infty$. Запишем \begin{align*}
+  Пусть $f = \sum_{k=1}^{N} c_k \chi_{E_k}$  --- простая неотрицательная функция. Тогда для любого $x \in X$ функция
+  \begin{align*}
+   f_x = \sum_{k=1}^{N} c_k \chi_{(E_k)_x}
+  \end{align*} измерима как линейная комбинация измеримых (по пункту \ref{enum1:theorem:tonelli}) функций. Проинтегрируем по $y$ и применим линейность интеграла:
+  \begin{align*}
+   \int\limits_{Y} f_x \, d\nu = \sum_{k=1}^{N} c_k \int\limits_{Y} \chi_{(E_k)_x} \, d\nu     = \sum_{k=1}^{N} c_k \nu((E_k)_x)
+  .\end{align*} Снова функция $x \mapsto \int_{Y} f_x \, d\nu  $ измерима как линейная комбинация измеримых. Снова проинтегрируем по $x$  и применим линейность интеграла:
+  \begin{align*}
+   \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu   \right] \, d\mu   &= \sum_{k=1}^{N} c_k \int\limits_{X} \nu((E_k)_x) \, d\mu =  \\
+   &= \sum_{k=1}^{N} c_k \int\limits_{X \times Y} \chi_{E_k} \, d(\mu \times \nu)  = \\
+   &= \int\limits_{X \times Y} f \, d(\mu \times \nu)  
+  .\end{align*} 
+  \label{enum2:theorem:tonelli}
+ \item Пусть функция $f \geqslant 0$ измерима относительно $\A \otimes \B$. Воспользуемся теоремой \ref{theorem:approximation} об аппроксимации: найдём неотрицательные простые функции $f_n = f_n(x, y)$, поточечно возрастающие к $f(x, y)$ при $n \to \infty$. Имеет место поточечная сходимость измеримых функций: \begin{align*}
   f_x = \lim_{n \to \infty} (f_n)_x
- .\end{align*} Следовательно, $f_x$  измеримо относительно $\B$ . Проинтегрируем: \begin{align*}
+ .\end{align*} Следовательно, $f_x$  измеримa как предел измеримых. Проинтегрируем её по $y$: \begin{align*}
   \int\limits_{Y} f_x \, d\nu = \int\limits_{Y} \left( \lim_{n \to \infty} (f_n)_x  \right) \, d\nu  
- .\end{align*} По теореме \ref{theorem:levi} имеем \begin{align*}
-  \int\limits_{Y} f_x \, d\nu  = \lim_{n \to \infty} \int\limits_{Y} (f_n)_x \, d\nu    = \lim_{n \to \infty} g_n(x) 
- .\end{align*} Функции $g_n$  измеримы относительно $\A$ (по шагу 2), неотрицательны, и неубывают. Проинтегрируем ещё раз по $x$: \begin{align*}
-  \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu   \right] \, d\mu = \int\limits_{X} \lim_{n \to \infty} g_n(x)  \, d\mu =  
+ .\end{align*} По теореме \ref{theorem:levi} Леви имеем \begin{align*}
+  \int\limits_{Y} f_x \, d\nu  = \lim_{n \to \infty} \int\limits_{Y} (f_n)_x \, d\nu    = \lim_{n \to \infty} g_n(x) = g(x),
+  \end{align*} где \begin{align*}
+   g_n(x) = \int\limits_{Y} (f_n)_x \, d\nu.  
+  \end{align*}  Функции $g_n(x)$  измеримы относительно $\A$ (по пункту \ref{enum2:theorem:tonelli}), неотрицательны, неубывают и поточечно сходятся к $g(x)$. По тем же соображениям $g(x)$ измерима относительно $\A$. Проинтегрируем ещё раз по $x$:
+  \begin{align*}
+  \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu   \right] \, d\mu = \int\limits_{X} \lim_{n \to \infty} g_n(x)  \, d\mu
  .\end{align*} Снова по теореме \ref{theorem:levi} имеем: \begin{align*}
-  = \lim_{n \to \infty} \int\limits_{X} g_n(x) \, d\mu   = \lim_{n \to \infty} \int\limits_{X} \left[ \int\limits_{Y} (f_n)_x \, d\nu   \right] \, d\mu   
- .\end{align*} По шагу 2 воспользуемся равенством \eqref{equation1:theorem:tonelli} и теоремой Леви: \begin{align*}
-  = \lim_{n \to \infty} \int\limits_{X \times Y} f_n(x, y) \, d(\mu \times \nu)   = \int\limits_{X \times Y} \lim_{n \to \infty} f_n(x,y)  \, d(\mu \times \nu) = \int\limits_{X \times Y} f(x,y) \, d(\mu \times \nu)   
- .\end{align*} 
+  \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu   \right] \, d\mu  = \lim_{n \to \infty} \int\limits_{X} g_n(x) \, d\mu   = \lim_{n \to \infty} \int\limits_{X} \left[ \int\limits_{Y} (f_n)_x \, d\nu   \right] \, d\mu   
+  .\end{align*} По пункту \ref{enum2:theorem:tonelli} воспользуемся равенством \eqref{equation1:theorem:tonelli} и затем теоремой \ref{theorem:levi} Леви: \begin{align*}
+  \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu   \right] \, d\mu   &= \lim_{n \to \infty} \int\limits_{X \times Y} f_n(x, y) \, d(\mu \times \nu)   = \\
+  &= \int\limits_{X \times Y} \lim_{n \to \infty} f_n(x,y)  \, d(\mu \times \nu) \\
+  &= \int\limits_{X \times Y} f(x,y) \, d(\mu \times \nu)   
+ .\end{align*} Для конечных мер теорема доказана.
+  \label{enum3:theorem:tonelli}
+  \item Пусть теперь меры $\mu$, $\nu$ $\sigma$-конечные. Пусть функция $f \geqslant 0$ измерима относительно $\A \otimes \B$. Возьмём возрастающие множества
+   \begin{align*}
+    X_1 \subset X_2 \subset \ldots
+   \end{align*} такие, что $\bigcup_{j=1}^{\infty} X_j = X$ и $\mu(X_j) < \infty$. Аналогично для $Y$ возьмём множества $\{Y_{j}\}_{j=1}^{\infty} $. Такие множества существуют, так как меры $\sigma$-конечны.
 
- Для конечных мер теорема доказана.
-
- Шаг 4. Пусть теперь $\mu$, $\nu$ $\sigma$-конечные. Пусть $f \geqslant 0$ измерима относительно $\A \otimes \B$. Пусть $\{X_{j}\}_{j=1}^{\infty} $ такие, что $X_1 \subset X_2 \subset \ldots$, $\bigcup_{j=1}^{\infty} X_j = X$ и $\mu(X_j) < \infty$ . Пусть  $Y_j$  --- аналогично для $Y$  и $\nu$ . Такие множества существует, так как меры $\sigma$-конечны.
-
- Рассмотрим $\mu_j \colon\, A \mapsto \mu(A \cap X_j)$ , $\nu_j \colon\, B \mapsto \nu(B \cap Y_j)$ . По предыдущим шагам теорема уже доказана для $\mu_j$ , $\nu_j$: \begin{align*}
-  \int\limits_{X \times Y} f(x,y) \, d(\mu_j \times \nu_j) = \int\limits_{X_j \times Y_j} f(x,y) \, d(\mu \times \nu) &= \int\limits_{X_j} \left[ \int\limits_{Y_j} f_x(y) \, d\nu   \right] \, d\mu  = \\
-  &= \int\limits_{Y_j} \left[ \int\limits_{X_j} f^{y}(x) \, d\mu   \right] \, d\nu
- .\end{align*} Запишем это так: \begin{align*}
- \int\limits_{X \times Y} \chi_{X_j \times Y_j} f(x, y) \, d(\mu \times \nu) = \int\limits_{X} \chi_{X_j} \left[ \int\limits_{Y} \chi_{Y_j}(y) f_x(y) \, d\nu   \right] \, d\mu  
-.\end{align*} Так как множества $X_j \times Y_j$  вложены, то $\chi_{X_j \times Y_j} f(x,y)$  --- неотрицательная возрастающая последовательность функций. Применим теорему \ref{theorem:levi} Леви (два раза для правой части): \begin{align*}
+ Рассмотрим меры $\mu_j \colon\, A \mapsto \mu(A \cap X_j)$, $\nu_j \colon\, B \mapsto \nu(B \cap Y_j)$. По предыдущим шагам теорема уже доказана для $\mu_j$, $\nu_j$ при любом $j$:
+ \begin{align*}
+  \int\limits_{X \times Y} f(x,y) \, d(\mu_j \times \nu_j) = \int\limits_{X} \left[ \int\limits_{Y} f_x \, d\nu_j   \right] \, d\mu_j
+ .\end{align*} Равенство можно переписать так:
+ \begin{align*}
+  \int\limits_{X \times Y} \chi_{X_j \times Y_j} f \, d(\mu \times \nu) = \int\limits_{X} \chi_{X_j} \left[ \int\limits_{Y} \chi_{Y_j} f_x \, d\nu   \right] \, d\mu  
+ .\end{align*} Так как все множества возрастают, то каждое из трёх подынтегральных выражений  --- неотрицательная возрастающая последовательность функций (с индексом $j$):
+ \begin{align*}
+  &\lim_{j \to \infty} \chi_{X_j \times Y_j} f = f \\
+  &\lim_{j \to \infty} \chi_{Y_j} f_x = f_x \\
+  &\lim_{j \to \infty} \chi_{X_j} \int\limits_{Y} \chi_{Y_j} f_x \, d\nu = \int\limits_{Y} f_x \, d\nu  
+ \end{align*} Применим теорему \ref{theorem:levi} Леви три раза: \begin{align*}
  \int\limits_{X \times Y} f(x,y) \, d(\mu \times \nu)  = \int\limits_{X} \left[ \int\limits_{Y} f_x(y) \, d\nu   \right] \, d\mu  
 \end{align*} --- что и требовалось доказать.
+
+   \label{enum4:theorem:tonelli}
+ \end{enumerate}
 \end{proof}
 \begin{remrk*}
- Есть версия теоремы Тонелли для алгебры из теоремы Каратеодори (вместо $\A \otimes \B$).
+ Есть версия теоремы Тонелли для $\sigma$-алгебры Каратеодори (вместо наименьшей $\sigma$-алгебры $\A \otimes \B$).
 \end{remrk*}
 \begin{thm}[%
 Фубини]
@@ -89,22 +137,22 @@
 \end{align*} причём все подынтегральные функции измеримы относительно соответствующих $\sigma$-алгебр.
 \end{thm}
 \begin{proof}
- $f = f_+(x, y) - f_-(x, y)$, где $f_+ = \max(f, 0)$, $f_- = \max(-f, 0)$. Далее теорема \ref{theorem:tonelli} Тонелли. Условие \eqref{equation:theorem:fubini} гарантирует, что мы не вычитаем бесконечности разных знаков.
+ $f = f_+ - f_-$, где $f_+ = \max(f, 0)$, $f_- = \max(-f, 0)$. Далее теорема \ref{theorem:tonelli} Тонелли. Условие \eqref{equation:theorem:fubini} гарантирует, что мы не складываем бесконечности разных знаков.
 \end{proof}
 \begin{remrk*}
- Часто теорема \ref{theorem:tonelli} Тонелли применяется, чтобы доказать \eqref{equation:theorem:fubini} в теореме Фубини.
+ Часто теорема \ref{theorem:tonelli} Тонелли применяется, чтобы доказать равенство \eqref{equation:theorem:fubini} в теореме \ref{theorem:fubini} Фубини.
 \end{remrk*}
 \begin{exmpl}
- Пусть $f \in L^{1}(X,\mu)$ , $g \in L^{1}(Y,\nu)$, где $\mu$, $\nu$  --- $\sigma$ -конечные меры. Тогда \begin{align*}
+ Пусть $f \in L^{1}(X,\mu)$, $g \in L^{1}(Y,\nu)$, где $\mu$, $\nu$  --- $\sigma$-конечные меры. Тогда \begin{align*}
   \int\limits_{X \times Y} f(x)g(y) \, d(\mu \times \nu) = \int\limits_{X} f(x) \, d\mu (x) \cdot \int\limits_{Y} g(y) \, d\nu(y)   
  .\end{align*} 
 \end{exmpl}
 \begin{proof}
  По теореме Тонелли \begin{align*}
   \int\limits_{X \times Y} \left| f(x) \right| \cdot \left| g(y) \right| \, d(\mu \times \nu)  = \int\limits_{X} \left| f \right| \, d\mu  \cdot \int\limits_{Y} \left| g \right| \, d\nu  
- .\end{align*} Но интеграл каждого конечен, поэтому и произведение конечно. Тогда мы получили равенство \eqref{equation:theorem:fubini}. По теореме Фубини всё получится.
+ .\end{align*} Но интеграл каждого конечен, поэтому и произведение конечно. Тогда мы получили равенство \eqref{equation:theorem:fubini}. По теореме Фубини получаем нужное.
 \end{proof}
-\textbf{Упражнение:} понять, почему $f(x)g(y)$ измеримо относительно $\A \otimes \B$.
+\textbf{Упражнение:} понять, почему $f(x)g(y)$ измерима относительно $\A \otimes \B$.
  
 \begin{exmpl}[Дискретная формулировка теоремы Тонелли]
  \begin{align*}
@@ -112,13 +160,13 @@
  .\end{align*} Это задача 1 из первого листочка!
 \end{exmpl}
 \begin{proof}
- Пусть $X = I$, $Y = J$, $\mu$, $\nu$ --- считающие меры. $f(i,j) = a_{i,j}$. Равенство выше --- это теорема Тонелли.
+ Пусть $X = I$, $Y = J$, $\mu$, $\nu$ --- считающие меры. $f(i,j) = a_{i,j}$. Равенство выше --- это теорема \ref{theorem:tonelli} Тонелли.
 \end{proof}
 
 \begin{exmpl}
  Пусть функция $f \geqslant 0$ измерима относительно $\sigma$-алгебры $\A$. Пусть $\mu$ --- $\sigma$-конечная мера на $(X, \A)$.
 
- Функцией распределения функции $f$ называется функция \begin{align*}
+ Функцией распределения $f$ называется функция \begin{align*}
   F \colon\; t \mapsto \mu \left( \left\{ x \in X \Mid f(x) > t \right\} \right), \quad t \geqslant 0
  \end{align*} 
 
@@ -144,22 +192,25 @@
   [a_1, b_1) \times \ldots \times \left[a_n, b_n\right) \mapsto \prod_{k=1}^{n} (b_k - a_k)
  \end{align*} с полукольца ячеек $\p_n$ на $\sigma$-алгебру Каратеодори $\A_{\lambda_n}$ подмножеств $\R^{n}$.
 
- Другое определение: $\lambda_n = \lao \times \ldots \times \lao$.
+ Другое определение: $\lambda_n = \lao \times \ldots \times \lao$ --- произведение мер (определение \ref{definition:measure_product}).
 \end{df}
 \begin{thm}
  \label{theorem:lebesgue_measure_is_regular}
- $\lambda_n$ регулярна.
+ Мера Лебега $\lambda_n$ регулярна.
 \end{thm}
+
+Регулярность меры Лебега мы докажем в несколько лемм.
+
 \begin{lm}
  \label{lemma:lebesgue_measure_open_sets_above}
  Для любого измеримого $E \in \A_{\lambda_n}$ существует открытое множество $G \subset \R^{n}$ такое, что $G \supset E$ и $\lambda_n(G \setminus E) < \eps$.
 \end{lm}
 \begin{proof}
-Шаг 1. Пусть $\lambda_n(E) < \infty$. Тогда существуют $P_k \in \p_n$  такие, что \begin{align*}
- \lambda_n(E) \leqslant \sum_{k=1}^{\infty} \lambda_n(P_k) \leqslant \lambda_n(E) + \frac{\eps}{2}
-,\end{align*} причём $\bigcup_{k=1}^{\infty} P_k \supset E$. См. теорему Каратеодори. Теперь $\tilde P_k \supset P_k$  --- открытые ячейки, такие, что \begin{align*}
+ Шаг 1. Пусть $\lambda_n(E) < \infty$. Тогда по явной формуле \ref{remark:measure_explicit_formula} для меры-стандартного продолжения существуют ячейки $\{P_{k}\}_{k=1}^{\infty} \subset \p_n$  такие, что \begin{align*}
+ \lambda_n(E) \leqslant \sum_{k=1}^{\infty} \lambda_n(P_k) < \lambda_n(E) + \frac{\eps}{2}
+ ,\end{align*} причём $\bigcup_{k=1}^{\infty} P_k \supset E$. Теперь $\tilde P_k \supset P_k$  --- открытые ячейки, такие, что \begin{align*}
  \sum_{k=1}^{\infty} \lambda_n(\tilde P_k) \leqslant \lambda_n(E) + \eps
 .\end{align*}  Возьмём теперь $G = \bigcup_{k=1}^{\infty} \tilde P_k$.
 
-Шаг 2. Если $\lambda_n(E) = \infty$ , то рассмотрим $E_j = E \cap [-j, j]^{n}$. $E_j$  аппроксимируем с точностью до $\frac{\eps}{2^{j}}$. Потом возьмём $G = \bigcup_{j=1}^{\infty} G_j$.
+Шаг 2. Если $\lambda_n(E) = \infty$, то рассмотрим $E_j = E \cap [-j, j]^{n}$. $E_j$  аппроксимируем с точностью до $\frac{\eps}{2^{j}}$. Потом возьмём $G = \bigcup_{j=1}^{\infty} G_j$.
 \end{proof}

@@ -43,6 +43,7 @@
  Пусть $\mu$ --- мера на $\sigma$-алгебре $\A \subset 2^{X}, \mu$ называется \textit{$\sigma$-конечной}, если существует счётный набор $\{A_k\}_{k=1}^{\infty} \subset \A $ такой, что $X = \bigsqcup_{k=1}^{\infty} A_k $, $\mu(A_k) < \infty$.
 \end{df}
 \begin{crly}
+ \label{corollary:sigma-finite-caratheodory-continuation-is-unique}
  Если в формулировке теоремы Каратеодори $\mu_0$ --- $\sigma$-конечна, то $\mu(A) = \nu(A)$ для любого $A \in \A^{\ast} \cap \A_{\nu}$ (даже если $\mu(A) = \infty$).
 \end{crly}
 \begin{proof}
@@ -63,6 +64,7 @@
  Мера $\mu$ в теореме Каратеодори называется \textit{стандартным продолжением}.
 \end{df}
 \begin{remrk}[формула для вычисления $\mu(A)$]
+ \label{remark:measure_explicit_formula}
  \begin{align*}
   \mu(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid P_k \in \p \colon\; A \subset \bigcup_{k=1}^{\infty} P_k \right\}
  \end{align*}
