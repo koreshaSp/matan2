@@ -6,6 +6,11 @@ name: Manual LaTeX build in branch
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Define branch name'
+        required: true
+        default: 'main'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,6 +23,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.branch }}
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
