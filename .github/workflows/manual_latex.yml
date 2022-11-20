@@ -31,3 +31,9 @@ jobs:
         with:
           root_file: main.tex
           args: -jobname=matan2 -output-format=pdf
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: Compiled PDF
+          path: matan2.pdf
