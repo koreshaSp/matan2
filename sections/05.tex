@@ -158,11 +158,11 @@
 для любого $n \geqslant n_k$. Так можно сделать, так как $f_n \xrightarrow{\mu} f$. Возьмём любое $x \in X$. Если $f_{n_k}(x)$ не сходится к $f(x)$, то существует $k_0 \in \N$ такое , что \begin{align*}
  \left| f_{n_k}(x) - f(x) \right| \geqslant \frac{1}{k_0}
 \end{align*} для бесконечно многих $k$. Из этого следует  \begin{align*}
-\left| f_{n_k}(x) - f(x) \right| \geqslant \frac{1}{k} \overset{def}{\iff} x \in E_k
+\left| f_{n_k}(x) - f(x) \right| \geqslant \frac{1}{k} \iff x \in E_k
 \end{align*} для бесконечно многих $k$. Обозначим \begin{align*}
 F &= \left\{ x \mid f_{n_k}(x) \not\to f(x) \right\} \\
 E &= \left\{ x \mid x \text{ лежит в бесконечном числе $E_k$} \right\}
-.\end{align*} Мы поняли, что $F \subset E$. Но по лемме \hyperref[lemma:borel-cantelli]{Бореля-Кантелли} (нужно проверить условие $\sum_{k=1}^{\infty} \mu(E_k) < \infty$, что верно так как $\mu(E_k) \leqslant \frac{1}{2^{k}}$) $\mu(E) = 0 \implies \mu(F) = 0$ и $f_{n_k} \to f$ $\mu$-почти всюду.
+.\end{align*} Мы поняли, что $F \subset E$. Но по лемме \ref{lemma:borel-cantelli} (нужно проверить условие $\sum_{k=1}^{\infty} \mu(E_k) < \infty$, что верно так как $\mu(E_k) \leqslant \frac{1}{2^{k}}$) $\mu(E) = 0 \implies \mu(F) = 0$ и $f_{n_k} \to f$ $\mu$-почти всюду.
 \end{proof}
 \begin{crly}
  Если $f_n \to f$ $\mu$-почти всюду и $f_n \xrightarrow{\mu} g$, то $f=g$ $\mu$-почти всюду.
@@ -187,7 +187,7 @@ E &= \left\{ x \mid x \text{ лежит в бесконечном числе $E_
   &= 2 \int\limits_{E_{\eps}} g \, d\mu  + \eps \mu(X)
  ,\end{align*} где $E_{\eps} = \left\{ x \mid \left| f_n - f \right| \geqslant \eps \right\}$. По абсолютной непрерывности интеграла \begin{align*}
   \int\limits_{F} g \, d\mu < \eps 
- \end{align*} для любого $F$ такого, что $\mu(F) < \delta(\eps)$. Теперь выберем $N$ так, чтобы \begin{align*}
+ \end{align*} для любого $F$ такого, что $mu(F) < \delta(\eps)$. Теперь выберем $N$ так, чтобы \begin{align*}
  \mu \left( E_{\eps} \right) < \delta(\eps)
  \end{align*} для любого $n\geqslant N$. Тогда штука \begin{align*}
   \leqslant 2\eps + \eps \mu(X)
@@ -204,7 +204,7 @@ E &= \left\{ x \mid x \text{ лежит в бесконечном числе $E_
  \begin{align*}
   \lim_{n \to \infty} \int\limits_{0}^{+\infty} \arctan(x^{n}) \, d\mu  &= \lim_{n \to \infty}  \int\limits_{[0, 1)} \, d\mu + \lim_{n \to \infty}\int\limits_{\left\{ 1 \right\}} \, d\mu + \underbrace{\lim_{n\to \infty} \int\limits_{(1, +\infty)}  \, d\mu}_{= \int\limits_{(1, +\infty)} \lim (\arctan x^{n}) \, d\mu = \frac{\pi}{2} \mu((1, +\infty))  }        = \\
   &= 0 + 0 + \infty
- \end{align*} По теореме Лебега $\lim_{n \to \infty} \int_{[0, 1)} \arctan(x^{n}) \, d\mu = \int_{[0, 1)} \lim \arctan (x^{n}) \, d\mu     = 0 $. Мажоранта $\arctan(x)$.
+ \end{align*} По теореме Лебега $\lim_{n \to \infty} \int_{[0, 1)} \arctan(x^{n}) \, d\mu = \\int_{[0, 1)} \lim \arctan (x^{n}) \, d\mu     = 0 $ Мажоранта $\arctan(x)$.
 \end{exmpl}
 \begin{remrk}
  Если $X$ такое, что $\mu(X) < \infty$ и $f_n \to f$ $\mu$-почти всюду а также $\left| f_n \right| \leqslant C$ для любого $n$ (равномерно ограничены). Тогда \begin{align*}
