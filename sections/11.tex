@@ -1,0 +1,155 @@
+% 2022.11.15 Lecture 11
+
+\newcommand{\lan}{\ensuremath \lambda_n}
+\newcommand{\alan}{\ensuremath \A_{\lan}}
+
+\begin{lm}
+ \label{lemma:lebesgue_measure_closed_sets_below}
+ Пусть $E \in \A_{\lambda_n}$. Тогда существует замкнутое множество $F \subset \R^{n}$ такое, что $F \subset E$ и $\lambda_n(E \setminus F) < \eps$.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Перейдём к дополнению. По лемме \ref{lemma:lebesgue_measure_open_sets_above} мы знаем, что существует открытое $G \subset \R^{n}$ такое, что $E^{c} \subset G$ и $\mu(G \setminus E^{c}) < \eps$. Запишем: \begin{align*}
+  \lambda_n(G \setminus E^{c}) = \lambda_n(G \cap E) = \lambda_n(E \setminus G^{c}) < \eps
+ ,\end{align*} при этом $G^{c}$ замкнутое. Берём $F = G^{c}$.
+\end{proof}
+\begin{lm}
+ \label{lemma:lebesgue_measure_compact_union}
+ Пусть $E \in \A_{\lambda_n}$. Тогда существуют компакты $\{K_{j}\}_{j=1}^{\infty} \subset \R^{n}$ и  $e \in \A_{\lambda_n}$ такие, что $K_1 \subset K_2 \subset \ldots$ и \begin{align*}
+  E = \bigcup_{j=1}^{\infty} K_j \sqcup e, \quad \lan(e) = 0
+ \end{align*} 
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Можно считать, что $E \subset [0, 1)^{n}$ (напилим всё на счётное число кубов, получим счётное число компактов и счётное число множеств нулевой меры). Возьмём $\eps = \frac{1}{j}$ и пусть $F_j$ --- множества из предыдущей леммы \ref{lemma:lebesgue_measure_closed_sets_below}. $F_j$ замкнуты и ограничены, и $\lan(E \setminus F_j) < \frac{1}{j}$. Значит, $F_j$ компактны. Можно считать, что они вложены: \begin{align*}
+  F_1 \subset F_2 \subset \ldots
+ \end{align*} потому что можно взять префиксные объединения (они всё ещё будут компактны). Тогда $ \lan(F_j) \to \lan(E) $ при $j \to \infty$. Значит, \begin{align*}
+  \lan \left( \bigcup_{j=1}^{\infty} F_j \right) = \lan(E)
+ \end{align*} по непрерывности меры сверху. Возьмём $K_j = F_j$  и $e = E \setminus \bigcup_{j=1}^{\infty} K_j $.
+\end{proof}
+\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:lebesgue_measure_is_regular} о регулярности меры Лебега}]
+
+ Надо проверить, что для любого $E \in \alan$ \begin{align}
+  \label{eq1:theorem:lebesgue_measure_is_regular}
+  \lan(E) &= \inf \left\{ \lan(G) \Mid E \subset G \text{ --- открыто} \right\} \\
+  \label{eq2:theorem:lebesgue_measure_is_regular}
+  \lan(E) &= \sup \left\{ \lan(K) \Mid K \subset E \text{ --- компактно} \right\}
+ \end{align} Посмотрим на \eqref{eq1:theorem:lebesgue_measure_is_regular}. Если $\lan(E) = \infty$, то всё понятно ($\infty = \inf \left\{ \infty \right\}$). Если $\lan(E) < \infty$, то по \eqref{eq1:theorem:lebesgue_measure_is_regular} следует из леммы \ref{lemma:lebesgue_measure_open_sets_above} про открытые множества.
+
+ Равенство \eqref{eq2:theorem:lebesgue_measure_is_regular}: по лемме \ref{lemma:lebesgue_measure_compact_union} о компактах $E = \bigcup_{j=1}^{\infty} K_j \sqcup e$  \begin{align*}
+  \lan(E) = \lan \left( \bigcup_{j=1}^{\infty} K_j \right)
+ .\end{align*}  Тогда надо взять $K = \bigcup_{j=1}^{s} K_j $ для большого $s$ ({\color{red} нужно усилить лемму, чтобы компакты $K_j$ возрастали}), так как компакты возрастают.
+\end{proof}
+\begin{thm}
+ \label{theorem:lebesgue_measure_shift_invariance_uniqueness}
+ \begin{align*}
+  \lan(E + v) = \lan(E)
+ \end{align*} для любого множества $E \in \alan$ и вектора $v \in \R^{n}$. Кроме того, если $\mu$ --- некоторая мера на $\alan$ такая, что $\mu(E + v) = \mu(E)$ для любых $E \in \alan$, $v \in \R^{n}$, то существует число $a \geqslant 0$ такое, что $\mu = a\lambda_n$.
+\end{thm}
+Мера Лебега инварианта относительно сдвига, и при этом любая инвариантная открыто
+\begin{proof}[\normalfont\textsc{Доказательство}]
+  \begin{align*}
+   \lan(E+v) &= \inf \left\{ \sum_{k=1}^{\infty} \lan(P_k) \Mid \{P_{k}\}_{k=1}^{\infty} \subset \p_n, \bigcup_{k=1}^{\infty} P_k \supset E + v  \right\} = \\
+   &= \inf \left\{ \sum_{k=1}^{\infty} \lan(P_k - v) \Mid \{P_{k}\}_{k=1}^{\infty}  \subset \p_n, \bigcup_{k=1}^{\infty} P_k \subset E+v \right\} = \\
+   &= \inf \left\{ \sum_{k=1}^{\infty} \lan(Q_k) \Mid \{Q_{k}\}_{k=1}^{\infty} \subset \p_n, \bigcup_{k=1}^{\infty} Q_k \supset E   \right\} = \\
+   &= \lan(E)
+ ,\end{align*} где $Q_k = P_k - v$.
+
+ Докажем единственность. Достаточно показать, что существует $a \geqslant 0$ такое, что \begin{align*}
+  \lan(P) = a\mu(P)
+ \end{align*} для любой ячейки $P \in \p_n$ (единственность по теореме Каратеодори). Но это равенство достаточно доказать только для \textit{диадических} ячеек. \textit{Диадической ячейкой с углом в нуле} называется $[0, 2^{k})^{n}$. Общая \textit{диадическая ячейка} --- это любой сдвиг $\left[0, 2^{k}\right)^{n} + v$, где $v = 2^{k}w$, а $w \in \Z^{n}$ --- вектор с целыми координатами.
+
+ Если равенство доказать для диадических ячеек, то оно будет верно для любой ячейки: каждую ячейку можно разбить на дизъюнктное объединение счётного числа диадических ячеек. 
+
+ Определим $a$ так, что  $\lan(\left[0, 1\right)^{n}) = a\mu([0, 1)^{n})$. Утверждается, что $a$ работает для всех диадических ячеек.
+\end{proof}
+
+Сейчас пойдут леммы из алгебры.
+
+\begin{lm}
+ Если $U$ --- изометрическое линейное преобразование $\R^{n} \to \R^{n}$, то \begin{align*}
+  U(B(0, R)) = B(0, R)
+ .\end{align*} Оператор изометричен, если он сохраняет норму: \begin{align*}
+  \left\| Ux \right\| = \left\| x \right\|
+ .\end{align*} 
+\end{lm}
+\begin{proof}
+ $U(B(0, R)) \subset B(0, R)$ по изометричности. Для любой $x \in B(0, R)$ существует $y \in \R^{n}$ такое, что $x = Uy$ (так как $U$ обратимо). В силу изометричности $y \in B(0, R)$. Значит, $U(B(0, R)) = B(0, R)$.
+\end{proof}
+\begin{df}
+ Отображение $U$, как в предыдущей лемме, называются \textit{ортогональными}.
+\end{df}
+\begin{lm}
+ Пусть $T \colon\; \R^{n} \to \R^{n}$ --- линейные преобразование. Тогда существует ортогональные операторы $U, W$ такие, что \begin{align*}
+  T = UDW,
+ \end{align*} где $D \colon\; \R^{n} \to \R^{n}$ --- линейный оператор, матрица которого диагональна (в стандартном базисе $\R^{n}$).
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Факт считаем известным из курса алгебры.
+\end{proof}
+\newcommand{\LL}{\ensuremath \mathcal{L}}
+\begin{thm}[%
+]
+ Пусть $T \in \mathcal{L}(\R^{n})$, $E \in \alan$. Тогда \begin{align*}
+  \lan(T(E)) = \left| \det T \right| \cdot \lan(E)
+ .\end{align*} 
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство (по модулю измеримости $T(E)$)}]
+ Рассмотрим меру $\mu \colon\; E \mapsto \lan(T(E))$, $E \in \alan$. Пока считаем $\det T \neq 0$. Тогда $\mu$ --- это мера (счётное дизъюнктное объединение переходит в счётное дизъюнктное объединение), инвариантная относительно сдвига: \begin{align*}
+  \mu(E + v) = \lan(T(E + v)) = \lan(T(E) + Tv) = \lan(T(E)) = \mu(E)
+ .\end{align*} Значит, существует число $a \geqslant 0$ такое, что $\mu = a\lan$. В частности, \begin{align*}
+  \lan(T(B(0,1))) = a \lan(B(0, 1))
+ .\end{align*} Запишем $T = UDW$ по предыдущей лемме. Тогда \begin{align*}
+  \lan(UD(B(0, 1))) = a\lan(B(0, 1))
+ ,\end{align*} так как $W(B(0, 1)) = B(0, 1)$. В частности, если $D = I$, то $a = 1$. Значит, в общем случае \begin{align*}
+  \lan(D(B(0, 1))) = \lan(UD(B(0, 1))) = a\lan(B(0,1))
+ \end{align*} --- здесь мы применили частный случай $T = U$.
+
+ Но 
+\begin{align}
+ \label{eq4:theorem:det}
+\lan(D(B(0, 1))) = \left| \det D \right| \cdot \lan(B(0, 1))
+.\end{align} Значит, $a = \left| \det D \right|$ .
+
+Обоснуем \eqref{eq4:theorem:det}. Рассмотрим меру \begin{align*}
+ \nu(E) = \lan(D(E))
+.\end{align*}  Существует $b$  такая, что $\nu(E) = b\lan(E)$ для любого $E \in \alan$.  Теперь возьмём $E = \left[0, 1\right)^{n}$. Пусть $D = \mathrm{diag}(d_1, d_2, \ldots, d_n)$. Тогда \begin{align*}
+D(E) = \left[0, d_1\right) \times \left[0, d_2\right) \times \ldots \left[0, d_n\right)
+.\end{align*} Следовательно, \begin{align*}
+ \lan(D(E)) = \left| d_1 \cdot \ldots \cdot d_n \right| = \left| \det D \right|
+.\end{align*} Значит, $b = \left| \det D \right|$.
+
+Итак, мы доказали, что если $\det T \neq 0$, то $\lan(T(E)) = \left| \det D \right| \lan(E)$, где $D$ --- диагональная, такая, что $T = UDW$. Но $\det U = \det W = \pm 1$, поэтому $\left| \det T \right| = \left| \det (UDW) \right| = \left| \det U \cdot \det D \cdot \det W \right| = \left| \det D \right|$.
+
+Теперь пусть $\det T = 0$. Надо немножко пошевелить матрицу. Можно найти $T_{\eps}$ такие, что $\left\| T - T_{\eps} \right\| < \eps$. Тогда \begin{align*}
+ \lim_{\eps \to 0} \det T_{\eps} = 0
+.\end{align*} Переходя к пределу в равенстве \begin{align*}
+\lan(T_{\eps}(E)) = \left| \det T_{\eps} \right| \lan(E)
+\end{align*} получим требуемое.
+ 
+\end{proof}
+
+Можно упростить структуру доказательства: сначала на ортогональных, потом на диагональных, потом общий случай.
+
+\begin{thm}
+ Пусть $\Phi \in C^{1}(\Omega, \R^{n})$, $\Omega \subset \R^{n}$ --- область.
+ 
+ Тогда $\Phi(E) \in \alan$ для любого $E \in \alan$, $E \subset \Omega$.
+\end{thm}
+\begin{remrk}
+ Если $T \in \L(\R^{n})$, то $T(E) \in \alan$  для любого $E \in \alan$, так как линейные отображения гладкие.
+\end{remrk}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По лемме \ref{lemma:lebesgue_measure_compact_union} о компактах: \begin{align*}
+  E = \bigcup_{j=1}^{\infty} K_j \sqcup e
+ ,\end{align*} где $K_j$ --- компакты. Так как $\Phi \in C^{1}(\Omega, \R^{т})$, то $\Phi \in C(\Omega, \R^{n})$. По теореме Кантора $\Phi(K_j)$ --- компакт, и, следовательно, измерим.
+
+ Докажем, что $\Phi(e) \subset F_{\eps}$, где $F_{\eps}$ измеримо и $\lan(F_{\eps}) < \eps$. Тогда \begin{align*}
+  \Phi(E) \subset \underbrace{\bigcap_{n=1}^{\infty} F_{\frac{1}{n}}}_{F} \implies \\
+  \implies \Phi(e) \subset F
+ \end{align*} Так как $\lan(F) = 0$ и мера Лебега полна, то $\lan(\Phi(e)) = 0$ и $\Phi(e)$ измеримо.
+
+ Можно считать, что $e \subset Q \subset \overline Q \subset \Omega$, где $Q$ --- диадическая ячейка, а $\overline Q$ --- её замыкание, в силу счётной аддитивности. Но $\Phi \rvert_{\overline Q}$ липшецево: существует константа $с$ такая, что \begin{align*}
+  \left\| \Phi(x) - \Phi(y) \right\| \leqslant c \left\| x - y \right\|
+ \end{align*} для любых $x, y \in \overline Q$. Здесь \begin{align*}
+ c = \sup_{z \in \overline Q} \left\| d_z \Phi \right\|
+ \end{align*}  по теореме о конечном приращении из первого курса.
+\end{proof}
