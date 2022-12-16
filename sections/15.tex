@@ -1,0 +1,342 @@
+% 2022.12.09 Lecture 15
+
+На последней лекции позанимаемся конкретными частными случаями теоремы Стокса в $\R^{2}$ и $\R^{3}$.
+
+\begin{df*}
+ Если есть путь $\gamma_1 \colon\, [0, 1] \to \R^{n}$ и путь $\gamma_2 \colon\, [0, 1] \to \R^{n}$, то \textit{сумма путей} $(\gamma_1 + \gamma_2) \colon\, [0, 1] \to \R^{n}$ задаётся так:
+ \begin{align*}
+  (\gamma_1 + \gamma_2)(t) = \begin{cases}
+   \gamma_1(2t), \text{ если } t \in [0, 1 / 2) \\
+   \gamma_2(2t - 1), \text{ если } t \in [1 / 2, 1 ].
+  \end{cases} 
+ \end{align*} Сумма путей определена только если концы путей совпадают: $\gamma_1(1) = \gamma_2(0)$.
+
+ {\color{red} два рисунка}
+\end{df*}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{oblast_border_sum_of_smooth_paths}
+    \caption{oblast_border_sum_of_smooth_paths}
+    \label{fig:oblast_border_sum_of_smooth_paths}
+\end{figure}
+
+\begin{thm}[%
+формула Грина]
+\label{theorem:green_formula}
+ Пусть $P, Q \in C^{1}(\overline \Omega, \R)$ --- гладкие функции, заданные на замыкании ограниченной области $\Omega \subset \R^{2}$, причём у $\Omega$ кусочно-гладкая граница (то есть $\partial \overline \Omega = \gamma_1 + \ldots + \gamma_n$, где $\gamma_i$ --- гладкий путь).
+
+ Тогда
+ \begin{align}
+  \label{equation:green_formula}
+  \int\limits_{\delta \overline \Omega} P(x,y) \, dx + Q(x,y)\, dy  = \int\limits_{\Omega} (Q'_x - P'_y)\,dx\,dy
+ ,\end{align} где в левой части $\partial \overline \Omega$ параметризована так, чтобы $\Omega$ оставалась слева при обходе вдоль $\partial \overline \Omega$.
+\end{thm}
+
+Формула \eqref{equation:green_formula} Грина --- частный случай формулы \eqref{equation:formula_stox} Стокса.
+
+Здесь есть стандартное соглашение: так как граница области --- пустое множество, то под $\partial \overline \Omega$ подразумевается граница замыкания.
+
+\begin{proof}[\normalfont\textsc{Вывод формулы \eqref{equation:green_formula} из формулы \eqref{equation:formula_stox} Стокса}]
+ В \eqref{equation:formula_stox} возьмём
+ \begin{align*}
+  \omega = P \, dx + Q \, dy
+ \end{align*} и многообразие $M = \overline \Omega$, $\partial M = \partial \overline \Omega$, где $\partial M$ --- край многообразия, а $\partial \overline \Omega$ --- граница множества (в топологическом смысле). Тогда
+ \begin{align*}
+  \int\limits_{\partial \overline \Omega} P\,dx Q\,dy &= \int\limits_{\overline \Omega} d(Pdx+Qdy) = \\
+  &= \int\limits_{\Omega} (P'_x dx + P'_y dy) \land dx + (Q'_x dx + Q'_y dy) \land dy = \\
+  &= \int\limits_{\Omega} (Q'_x - P'_y) dx \land dy = \\
+  &= \begin{bmatrix}
+   \text{ параметризация для многообразия тождественная  } 
+  \end{bmatrix} = \\
+  &= \int\limits_{\Omega} (Q'_x - P'_y) \,dx\,dy
+ .\end{align*} 
+\end{proof}
+
+\begin{proof}[\normalfont\textsc{Элементарное доказательство формулы \eqref{equation:green_formula} Грина}]
+ Сначала будем считать, что $Q = 0$, а $\Omega$ --- область, стандартная относительно оси $x$, то есть \begin{align*}
+  \Omega = \left\{ (x, y) \Mid x \in (a, b),\; y \in (\varphi_1(x), \varphi_2(x)) \right\}
+ ,\end{align*} где $\varphi_1, \varphi_2 \in PC^{1}([a, b])$ и $\varphi_1 < \varphi_2$ на $(a, b)$. Здесь $PC^{1}([a,b])$ --- кусочно-гладкие функции на отрезке $[a,b]$.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{oblast_elementary_on_ox}
+    \caption{oblast_elementary_on_ox}
+    \label{fig:oblast_elementary_on_ox}
+\end{figure}
+
+\begin{align*}
+ \int\limits_{\partial \overline \Omega} P(x,y) \, dx  &= \int\limits_{\gamma_1 + \gamma_2 + \gamma_3 + \gamma_4} P(x,y) \, dx = \\
+ &= \int\limits_{\gamma_1} P(x,y)\,dx + \int\limits_{\gamma_2} P(x,y) dx + \int\limits_{\gamma_3} P(x,y) dx + \int\limits_{\gamma_4} P(x,y) dx
+.\end{align*} Интегралы на вертикалях ($\gamma_1$ и $\gamma_3$) равны нулю, потому что там $dx = 0$.  Параметризуем $\gamma_2$ как $(x, \varphi_1(x))$ (при $x \in [a,b]$) и $-\gamma_4$ как $(x, \varphi_2(x))$ (при $x \in [a,b]$):
+\begin{align*}
+ \int\limits_{\partial \overline \Omega} P(x,y)\,dx &= \int\limits_{a}^{b} P(x, \varphi_1(x)) \, dx - \int\limits_{a}^{b} P(x, \varphi_2(x)) \, dx  = \\
+ &= \int\limits_{a}^{b} (P(x, \varphi_1(x)) - P(x, \varphi_2(x))) \, dx 
+.\end{align*} Правая часть формулы \eqref{equation:green_formula} по теореме \ref{theorem:fubini} Фубини равна:
+\begin{align*}
+ \int\limits_{\Omega} -P'_y \, dx \, dy &= \int\limits_{a}^{b} \int\limits_{\varphi_1(x)}^{\varphi_2(x)} (-P'_y(x,y)) \, dy \, dx = \\
+ &= \int\limits_{a}^{b} \left( -P(x, \varphi_2(x)) + P(x, \varphi_1(x)) \right) \, dx 
+.\end{align*} Итак, для этого частного случая доказали.
+
+Аналогично можно доказать формулу \eqref{equation:green_formula}, если $\Omega$ стандартная относительно оси $y$ и $P = 0$. Значит, формула $\eqref{equation:green_formula}$ верна для любых $P, Q$ и $\Omega$, стандартной области относительно обеих осей $x$ и $y$.
+
+В общем случае, представим $\Omega$ в виде объединения конечного числа областей $\Omega_i$ с кусочно-гладкой границей $\partial \overline \Omega_i$, стандартных относительно обеих осей $x$ и $y$, и конечного числа путей, составляющих границы $\partial \overline \Omega_i$.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{oblast_union_of_standard_oblasts}
+    \caption{oblast_union_of_standard_oblasts}
+    \label{fig:oblast_union_of_standard_oblasts}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{oblast_standard_on_both_axis}
+    \caption{oblast_standard_on_both_axis}
+    \label{fig:oblast_standard_on_both_axis}
+\end{figure}
+
+Для всех $\Omega_i$ формула  \eqref{equation:green_formula} верна. Давайте теперь сложим по  $i$  обе части: если $\Gamma_i = \partial \overline \Omega_i$ , то 
+\begin{align*}
+ \sum_{i=1}^{N} \int\limits_{\Gamma_i} P dx + Q dy = \sum_{i=1}^{N} \int\limits_{\Omega_i} (Q'_x - P'_y) \, dx \, dy 
+.\end{align*} Правая часть равна $\int_{\Omega} (Q'_x - P'_y) \, dx \,dy  $  по аддитивности интеграла Лебега, а левая часть равна
+\begin{align*}
+ \int\limits_{\partial \overline \Omega} P dx + Q dy
+,\end{align*}  так как интегралы по внутренним путям сокращаются.
+
+\end{proof}
+\begin{remrk*}
+ Разбиение $\Omega$ на $\Omega_i$ в простых случаях, для конкретных областей, легко построить явно.
+\end{remrk*}
+
+\begin{exmpl}
+ Посчитаем площадь лепестка лемникаты $\left( x^{2} + y^{2} \right) = x^{2} - y^{2}$
+
+\begin{figure}[ht]
+    \centering
+    \incfig{lepestok_lemniskati}
+    \caption{lepestok_lemniskati}
+    \label{fig:lepestok_lemniskati}
+\end{figure}
+
+Введём полярные координаты
+\begin{align*}
+ x &= r \cos\varphi \\
+ y &= r \sin\varphi
+.\end{align*} Тогда уравнение превратится в \begin{align*}
+r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
+.\end{align*} $\varphi \in [-\pi / 4, \pi / 4]$. Тогда
+\begin{align*}
+ \lambda_2(\Omega) &= \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \int\limits_{0}^{\sqrt{\cos(2\varphi)}} r  \, dr  \, d\varphi  = \\
+&= \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \frac{\cos(2\varphi)}{2} \, d\varphi = \frac{\sin (2\varphi)}{4} \bigg\rvert_{-\frac{\pi}{4}} ^{\frac{\pi}{4}} = \frac{1}{2}
+.\end{align*} 
+
+Второй способ. По формуле \eqref{equation:green_formula} Грина интеграл
+\begin{align*}
+\int\limits_{\partial \overline \Omega} x \, dy = \int\limits_{\Omega} dx \, dy = \lambda_2(\Omega)
+.\end{align*} Таким образом, теперь нужно посчитать интеграл по кривой. Он равен
+\begin{align*}
+ \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \sqrt{\cos(2\varphi)} \cos \varphi \, d \left( \sqrt{\cos(2\varphi)} \sin\varphi\right)  &= \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \sqrt{\cos(2\varphi)} \cos\varphi \left( -\frac{\sin\varphi \cdot 2\sin(2\varphi)}{2\sqrt{\cos(2\varphi)}} + \sqrt{\cos(2\varphi)} \cdot \cos\varphi \right) \, d\varphi = \\
+ &= -\int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \left( \cos\varphi \sin\varphi \sin(2 \varphi) - \cos(2\varphi) \cos^{2}\varphi \right) \, d\varphi  = \\
+ &= - \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \frac{\sin^{2}(2\varphi)}{2} - \cos(2\varphi)\cos(2\varphi)+1
+ &= \frac{1}{2} \int\limits_{-\pi / 4}^{\pi / 4} \cos(4 \varphi) + \frac{\cos(2\varphi)}{2} \; d\varphi = \\
+ &= \frac{1}{2} \left( \frac{\sin(4 \varphi)}{4} + \frac{\sin(2\varphi)}{2} \right)\bigg\rvert_{-\pi / 4}^{\pi / 4} = \\
+ &= \frac{1}{2}
+.\end{align*} 
+\end{exmpl}
+
+
+\begin{df}
+ \textit{Поток постоянного поля} $F$ через параллелограмм, натянутый на вектора $v_1, v_2 \in \R^{3}$ в направлении векторного произведения
+ \begin{align*}
+  v_1 \times v_2 = \det \begin{pmatrix}
+   i & j & k \\
+    & v_1 &  \\
+    & v_2 &  
+  \end{pmatrix}
+ \end{align*} ($v_1 \times v_2 \perp v_1, v_2$) --- это
+ \begin{align*}
+  \det \begin{pmatrix}
+   F \\
+   v_1 \\
+    v_2
+  \end{pmatrix}
+ \end{align*} --- объём параллелепипеда, натянутого на $v_1$, $v_2$ и $F$ (с точностью до знака).  Здесь $F \in \R^{3}$, $F = (F_1, F_2, F_3)$, $i = \begin{pmatrix}
+  1 \\ 0 \\ 0
+ \end{pmatrix}, j = \begin{pmatrix}
+  0 \\ 1 \\ 0
+ \end{pmatrix}, k = \begin{pmatrix}
+  0 \\ 0 \\ 1
+ \end{pmatrix}$ и
+ \begin{align*}
+  \begin{pmatrix}
+   F \\ v_1 \\ v_2
+  \end{pmatrix} = \begin{pmatrix}
+  F_1 & F_2 & F_3 \\
+  v_{1,1} & v_{1,2} & v_{1,3} \\
+  v_{2,1} & v_{2,2} & v_{2,3} \\
+  \end{pmatrix}
+ \end{align*} 
+\end{df}
+\begin{df}
+ \textit{Поток постоянного поля} $F$ через параметризованную поверхность $(\Omega, \Phi, S)$ --- это интеграл
+ \begin{align*}
+  \int\limits_{S} (F(x), n(x)) \, dS
+ ,\end{align*}  где $n(x)$ --- единичная нормаль к поверхности $S$ в точке $x \in S$.
+\end{df}
+\begin{remrk}
+ Пусть $\Phi = (\Phi_1(u,v), \Phi_2(u,v), \Phi_3(u,v))$, $(u, v) \in \Omega$. Нормаль записывается так:
+ \begin{align*}
+  n(x) &= \frac{\det \begin{pmatrix}
+    i & j & k \\
+    \Phi'_{1,u} & \Phi'_{2,u} & \Phi'_{3,u} \\
+    \Phi'_{1,v} & \Phi'_{2,v} & \Phi'_{3,v} \\
+  \end{pmatrix} }{\sqrt{ \det \begin{pmatrix}
+   \Phi'_{2,u} & \Phi'_{3,u} \\
+   \Phi'_{2,v} & \Phi'_{3,v} \\
+  \end{pmatrix}^{2} + \det \begin{pmatrix}
+  \Phi'_{1,u} & \Phi'_{3,u} \\
+  \Phi'_{1,v} & \Phi'_{3,v} \\
+  \end{pmatrix}^{2} + \det \begin{pmatrix}
+  \Phi'_{1,u} & \Phi'_{2,u} \\
+  \Phi'_{1,v} & \Phi'_{2,v} \\
+  \end{pmatrix} }} = \\
+  &=  \frac{\det \begin{pmatrix}
+    i & j & k \\
+    & \Phi'_u & \\
+    & \Phi'_v & \\
+  \end{pmatrix}}{\sqrt{\det G_{\Phi}(x)}}
+ ,\end{align*} где последнее равенство верно по формуле Бине-Коши для $J_{\Phi}^{\ast} J_{\Phi}$.
+
+ Посчитаем 
+\begin{align*}
+(F_1(x), F_2(x), F_3(x), n(x))_{\R^{3}} = \frac{1}{\sqrt{\det G_{\Phi}(x)}} \det \begin{pmatrix}
+   F \\
+   \Phi'_u \\
+   \Phi'_v \\
+  \end{pmatrix}
+ .\end{align*} Величину $\det \begin{pmatrix}
+  F \\
+  \Phi'_u \\
+  \Phi'_v
+ \end{pmatrix}$ можно интерпретировать как поток через параллелограмм, натянутый на $\Phi'_u$ и $\Phi'_v$.
+\end{remrk}
+
+\begin{df}
+ \textit{Форма потока поля} --- это
+ \begin{align*}
+  \omega_{\Pi} = F_1(x,y,z) dy \land dz + F_2(x,y,z) dz \land dx + F_3(x,y,z) dx \land dy
+ .\end{align*} 
+\end{df}
+\begin{claim}
+ \begin{align*}
+  \int\limits_{S} \omega_{\Pi} = \int\limits_{S} (F, n) dS
+ \end{align*} 
+\end{claim}
+\begin{proof}
+ По определению:
+ \begin{align*}
+  \int\limits_{S} \omega_{\Pi} &= \int\limits_{\Omega} F_1(\Phi(u,v)) d\Phi_2 \land d\Phi_3 + \ldots + F_3(\Phi) d \Phi_1 \land d\Phi_2 = \\
+  d\Phi_2 \land d\Phi_3 &= (\Phi'_{2u} du + \Phi'_{2v} dv) \land (\Phi'_{3u} du + \Phi'_{dv} dv) = \\
+  &= \left( \Phi'_{2u} \cdot \Phi'_{3v} - \Phi'_{2v} \Phi'_{3u} \right) du \land dv, \\
+  d\Phi_3 \land d\Phi_1 = \left( \Phi'_{1u} \Phi'_{3v} - \Phi'_{1v} \Phi'_{1v}\Phi'_{3u} \right) du \land dv,
+ ,\end{align*} Далее
+ \begin{align*}
+  = \int\limits_{\Omega} \det \begin{pmatrix}
+   F \\
+   \Phi'_u \\
+   \Phi'_v
+  \end{pmatrix} \, du \, dv
+ .\end{align*} 
+
+ В правой части:
+ \begin{align*}
+  \int\limits_{S} (F, n) dS &= \int\limits \frac{1}{\sqrt{\det G} } \det \begin{pmatrix}
+   F \\
+   \Phi'_u \\
+   \Phi'_v
+  \end{pmatrix} dS = \\
+  &= \int \frac{1}{\sqrt { \det G }} \det \begin{pmatrix}
+   F \\
+   \Phi'_u \\
+   \Phi'_v
+  \end{pmatrix} \sqrt{\det G} du dv
+ .\end{align*} {\color{red} досчитать}
+\end{proof}
+
+Сформулируем формулу Стокса в этой ситуации.
+
+\begin{thm}[%
+формула Гаусса-Остроградского]
+Пусть $\Omega \subset \R^{3}$  --- область, её граница $\partial \overline \Omega$  --- кусочно-гладкое многообразие (то есть объединение конечного числа гладких многообразий размерности $2$ и кривых).
+
+Пусть $F \in C^{1}(\overline \Omega, \R^{3})$.
+
+Тогда
+\begin{align*}
+ \int\limits_{\Omega} \mathrm{div}\;F  = \int\limits_{\partial \overline \Omega} \omega_{\Pi}
+,\end{align*} где $\mathrm{div}\;F = F'_{1x} + F'_{2y} + F'_{3z} = \mathrm{trace}\;J_F$ --- дивергенция, а
+\begin{align*}
+ \omega_{\Pi} = F_1 dy \land dz + F_2 dz \land dx + F_3 dx \land dy
+.\end{align*}
+
+При этом, параметризация $\Omega_{\Pi}$ выбирается так, чтобы нормаль к $\partial \overline \Omega$ соответствующая этой параметризации \eqref{equation:big_scary_formula} была внешней.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Вывод теоремы \ref{} из формулы \eqref{equation:formula_stox} Стокса}]
+ \begin{align*}
+  \int\limits_{\partial \overline \Omega} \omega_{\Pi} &= \int\limits_{\Omega} d \omega = \int\limits_{\Omega} d(F_1) \land dy \land dz + d(F_2) dz \land dz \land dx + d(F_3) \land dx \land dy = \\
+  &= \int\limits_{\Omega} \mathrm{div} F \cdot dx \land dy \land dz = \\
+  &= \int\limits_{\Omega} \mathrm{div}\; F\; dx \, dy \, dz
+ .\end{align*} 
+\end{proof}
+
+\begin{remrk*}
+Физический смысл дивергенции поля $F$ в точке $x$ --- это мощность источника в этой точке, то есть
+\begin{align*}
+ \lim_{\eps \to 0}  \frac{1}{\left| S_{\eps}(x) \right|} \int\limits_{S_{\eps}(x)} (F, n) dS
+,\end{align*} где \begin{align*}
+S_{\eps}(x) = \left\{ y \in \R^{3} \Mid \left\| x - y \right\| = \eps \right\}
+.\end{align*} Интеграл --- это поток $F$ через сферу $S_{\eps}(x)$. Здесь $\left| S_{\eps}(x) \right|$ --- площадь сферы радиуса $\eps$.
+\end{remrk*}
+
+\begin{thm}
+ Пусть $F \in C^{1}(\Omega, \R^{3})$ и $x \in \Omega$.
+ \begin{align*}
+  \mathrm{div}\;F(x) = \lim_{\eps \to 0} \frac{1}{\left| S_{\eps}(x) \right|} \int\limits_{S_{\eps}(x)} (F,n) dS
+ \end{align*} 
+\end{thm}
+\begin{proof}
+ Посчитаем
+ \begin{align*}
+  (F(y), n(y)) &= \frac{1}{\eps}\left(  \begin{pmatrix}
+   F_1(x) \\
+   F_2(x) \\
+   F_3(x)
+  \end{pmatrix} + \begin{pmatrix}
+  F'_{1y_1}(x) \cdot \left( y_1-x_1 \right) + F'_{1y_2}(x) \cdot (y_2 -x_2) + F'_{1y_3}(x) \cdot (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
+  F'_{2y_1}(x) \cdot \left( y_1-x_1 \right) + F'_{2y_2}(x) \cdot (y_2 -x_2) + F'_{2y_3}(x) \cdot (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
+  F'_{3y_1}(x) \cdot \left( y_1-x_1 \right) + F'_{3y_2}(x) \cdot (y_2 -x_2) + F'_{3y_3}(x) \cdot (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
+  \end{pmatrix}, \begin{pmatrix}
+   x_1 - y_1 \\
+   x_2-y_2\\
+   x_3-y_3
+  \end{pmatrix}\right)
+ .\end{align*} Заметим, что $\int_{S_{\eps}(x)} (v, n) = 0  $, потому что функция нечётная. Поэтому, первый член уходит.
+
+ Наблюдение 2: можно считать, что $x = 0$ (иначе сдвинем всё, преобразование $y \mapsto y + x$ --- изометрия, интеграл не поменяется).
+
+ Наблюдение 3:
+ \begin{align*}
+  \int_{S_{\eps}(0)} y_i \cdot y_j \, dS = 0
+ \end{align*} при $i \neq j$. После убирания нулей останется 
+ \begin{align*}
+  &= \frac{1}{\eps} \int\limits_{S_{\eps}(0)} F'_{1y_1}(x) \cdot y_1^{2} + F'_{2y_2}(x) \cdot y_2^{2} + F'_{3y_3}(x) \cdot y_3^{2} \, dS = \\
+  &= \left( F'_{1y_1}(x) + F'_{2y_2}(x) + F'_{3y_3}(x) \right) \frac{1}{\eps} \int\limits_{S_{\eps}(0)} y_1^{2} = \\
+  &= \mathrm{div} F \cdot \frac{1}{3\eps} \int\limits_{S_{\eps}(0)} y_1^{2} + y_2^{2} + y_3^{2} \, dS = \\
+  &= \mathrm{div} F \cdot \eps^{2} \cdot \frac{1}{3\eps} \cdot \left| S_{\eps}(0) \right|
+ \end{align*} $\eps$ потерялась!!!!
+
+ {\color{red} я сдох}
+\end{proof}
+
+
