@@ -2,17 +2,60 @@
 
 \section{Дифференциальные формы}
 
-Сегодня мы приблизимся к понимаю, что значит запись $\int_{a}^{b} f(x) \, dx $.
+Тизер: сегодня мы приблизимся к понимаю, что же \textit{на самом деле} значит запись $\int_{a}^{b} f(x) \, dx $.
+
+Для начала вспомним определение полилинейных отображений с первого курса. Они были как на анализе, так и на алгебре.
 
 \begin{df}
- Будем говорить, что $\omega$  --- \textit{полилинейная форма порядка}  $k$ в $\R^{n}$, если $\omega \colon\, \underbrace{\R^{n} \times \ldots \times \R^{n}}_{k} \to \R  $ --- линейное по каждому аргументу.
-\end{df}
-\begin{df}
- Полилинейная форма $\omega$ порядка $k$ называется \textit{кососимметрической}, если
+ Функция $L \colon\, \underbrace{\R^{n} \times \ldots \times \R^{n}}_{q} \to \R  $ называется \textit{полилинейной формой порядка} $q$ в $\R^{n}$, если она линейна по каждому аргументу. То есть, для любого $i \in [q]$ и для любых векторов $v_1, \ldots, v_q \in \R^{n}$, $\tilde v_i \in \R^{n}$ верно
  \begin{align*}
-  \omega(h_1, \ldots, h_k) = \omega(h_{i_1}, \ldots, h_{i_k}) \cdot \mathrm{sgn}\; \sigma,
- \end{align*} если $h_{i_1}, \ldots, h_{i_k}$ --- перестановка $h_1, \ldots, h_k$, и $\mathrm{sgn}\;{\sigma}$ --- её знак.
+  L(v_1, \ldots, v_i + \tilde v_i, \ldots, v_q) = L(v_1, \ldots, v_i, \ldots, v_q) + L(v_1, \ldots, \tilde v_i, \ldots, v_q)
+ ,\end{align*} а также для любого $\alpha \in \R$ верно
+ \begin{align*}
+  L(v_1, \ldots, \alpha v_i, \ldots, v_q) = \alpha L(v_1, \ldots, v_i, \ldots, v_q)
+ .\end{align*} 
 \end{df}
+\begin{prop*}
+ Множество полилинейных форм порядка $q$ в $\R^{n}$ образует векторное пространство, обозначаемое $\mathcal{L}(\underbrace{\R^{n}, \ldots, \R^{n}}_{q}, \R)$.
+\end{prop*}
+Более того, пространство полилинейных форм нормированное и полное (то есть банахово) --- это было доказано на первом курсе.
+
+\begin{claim*}
+ Полилинейная форма полностью определяется набором значений на базисных векторах.
+\end{claim*}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно, пусть есть полилинейная форма  $L$ порядка  $q$  в $\R^{n}$ . Пусть $e_1, \ldots, e_n$  --- стандартный базис в $\R^{n}$ . Пусть есть произвольный набор векторов $v_1, \ldots, v_q \in \R^{n}$ . Разложим каждый из них по базису:
+ \begin{align*}
+  v_i = \sum_{j=1}^{n} x_{i,j} e_j, \quad i \in [q]
+ .\end{align*} Запишем значения формы на этом наборе векторов и воспользуемся полилинейностью:
+ \begin{align}
+  \label{equation:formula_polylinear_form}
+  L(v_1, \ldots, v_q) = \sum_{j \in [n]^{q}} x_{1,j_1} \cdot \ldots \cdot x_{q, j_q} L(e_{j_1}, \ldots, e_{j_q})
+ .\end{align} Таким образом, $L$ полностью определяется числами $L(e_{j_1}, \ldots, e_{j_q})$ по всем наборам $j \in [n]^{q}$.  Наоборот, легко проверить, что если по произвольным числам $L(e_{j_1}, \ldots, e_{j_q})$ задать функцию по формуле \eqref{equation:formula_polylinear_form}, то функция окажется полилинейной формой порядка $q$ в $\R^{n}$.
+\end{proof}
+\begin{crly*}
+ Пространство полилинейных форм порядка $q$ в $\R^{n}$ имеет размерность $n^{q}$. Кроме того, набор форм вида
+ \begin{align*}
+  L(v_1,\ldots,v_q) = x_{1,j_1} \cdot \ldots \cdot x_{q,j_q}
+ \end{align*} по всем $j \in [n]^{q}$ задаёт базис в этом пространстве.
+\end{crly*}
+
+\begin{exmpl*}
+ Линейная форма порядка $0$ --- это просто число из $\R$. Линейная форма порядка $1$ --- это линейное отображение $\R^{n} \to \R$, также называемое \textit{линейной формой} ю
+\end{exmpl*}
+\begin{df}
+ Полилинейная форма $L$ порядка $q$ в $\R^{n}$ называется \textit{кососимметрической}, если
+ \begin{align*}
+  L(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_q) = -L(v_1, \ldots, v_j, \ldots, v_i, \ldots, v_q)
+ \end{align*} для любых векторов $v_1, \ldots, v_q \in \R^{n}$ и любых $1 \leqslant i < j \leqslant q$.
+\end{df}
+\begin{prop*}
+ Для полилинейных кососимметрических форм верно:
+ \begin{itemize}
+  \item $ L(v_1, \ldots, v_q) = \sgn \sigma \cdot L(v_{\sigma(1)}, \ldots, v_{\sigma(q)}) $ для любой перестановки $\sigma \in S_{q}$.
+\item $L(v_1, \ldots, v_i, \ldots, v_i, \ldots, v_q) = 0$.
+ \end{itemize}
+\end{prop*}
 \begin{exmpl}\
 \begin{itemize}
  \item $dx_i$ --- полилинейная кососимметрическая форма порядка $1$ в $\R^{n}$,
