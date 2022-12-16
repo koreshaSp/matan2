@@ -1,0 +1,378 @@
+% 2022.12.02 Lecture 14
+
+\section{Дифференциальные формы}
+
+Сегодня мы приблизимся к понимаю, что значит запись $\int_{a}^{b} f(x) \, dx $.
+
+\begin{df}
+ Будем говорить, что $\omega$  --- \textit{полилинейная форма порядка}  $k$ в $\R^{n}$, если $\omega \colon\, \underbrace{\R^{n} \times \ldots \times \R^{n}}_{k} \to \R  $ --- линейное по каждому аргументу.
+\end{df}
+\begin{df}
+ Полилинейная форма $\omega$ порядка $k$ называется \textit{кососимметрической}, если
+ \begin{align*}
+  \omega(h_1, \ldots, h_k) = \omega(h_{i_1}, \ldots, h_{i_k}) \cdot \mathrm{sgn}\; \sigma,
+ \end{align*} если $h_{i_1}, \ldots, h_{i_k}$ --- перестановка $h_1, \ldots, h_k$, и $\mathrm{sgn}\;{\sigma}$ --- её знак.
+\end{df}
+\begin{exmpl}\
+\begin{itemize}
+ \item $dx_i$ --- полилинейная кососимметрическая форма порядка $1$ в $\R^{n}$,
+  \begin{align*}
+   ( dx_i )(h) = h_i
+  ,\end{align*} где $h = (h_1, \ldots, h_n)$.
+ \item $dx_i \otimes dx_j$ --- форма порядка $2$ в $\R^{n}$:
+  \begin{align*}
+   (dx_i \otimes dx_j)(h, g) = (dx_i)(h) \cdot (dx_j)(g) = h_i \cdot g_j
+  .\end{align*} Форма полилинейная, но не кососимметрическая!
+ \item Если $\omega_1$, $\omega_2$ --- полилинейные формы порядка $k_1$ и $k_2$, то
+  \begin{align*}
+   (\omega_1 \otimes \omega_2) (h_1, \ldots, h_{k_1}, g_1, \ldots, g_{k_2}) = \omega_1(h_1, \ldots, h_{k_1}) \cdot \omega_2(g_1, \ldots, g_{k_2})
+  \end{align*}  --- полилинейная форма порядка $k_1 + k_2$.
+\end{itemize} 
+\end{exmpl}
+\begin{exmpl}
+ Важный пример полилинейной кососимметрической формы --- это \textit{определитель}:
+
+ 
+\begin{align*}
+ \left( dx_{i_1} \land \ldots \land dx_{i_k} \right)(h_1, \ldots, h_k) = \det \begin{pmatrix}
+  h_{1,i_1} & \ldots & h_{1,i_k} \\
+  \vdots & \ddots & \vdots \\
+  h_{k,i_{1}} & \ldots & h_{k,i_k}
+ \end{pmatrix},
+\end{align*} где $h_{s,i_j}$ --- координата с номером $i_j$ вектора $h_s \in \R^{n}$. Это полилинейная кососимметрическая форма порядка $k$.
+
+Кососиммтричность обосновывается тем, что при транспозиции двух соседних векторов знак определителя (и, следовательно, знак формы) меняется.
+
+\end{exmpl}
+\begin{thm}[%
+из алгебры]
+\label{theoream:determinant_is_only_polylinear_antisymmetric_form}
+ Любая полилинейная кососимметрическая форма порядка $k$ в $\R^{n}$ имеет вид
+ \begin{align*}
+  \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k} \cdot dx_{i_1} \land \ldots \land dx_{i_k}
+ ,\end{align*} где $c_{i_1,\ldots,i_k} \in \R$.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство для $k=1$}]
+ Действительно, в этому случае $\omega$ --- линейная форма в  $\R^{n}$ , значит у $\omega$  есть матрица
+ \begin{align*}
+  (\omega)(h) = \begin{pmatrix}
+   a_1 & \ldots & a_n
+  \end{pmatrix} \begin{pmatrix}
+   h_1 \\
+   \vdots \\
+   h_n
+  \end{pmatrix} = \sum_{i=1}^{n} a_i h_i = \sum_{i=1}^{n} a_i dx_i(h)
+ .\end{align*}
+
+ В общем случае $k \geqslant 2$ идея такая:
+ \begin{align*}
+  \omega = \sum_{\alpha \in [n]^{k}} c_{\alpha} dx_{i_1} \otimes \ldots \otimes dx_{i_k}
+ ,\end{align*}  где $\alpha = (i_1, \ldots, i_k)$. Затем
+ \begin{align*}
+  \frac{1}{k!} \sum_{\omega} \omega(\sigma(h)) \,\mathrm{sgn}\;\omega = \omega = \sum_{\alpha} c_{\alpha} \underbrace{\frac{1}{k!} \sum_{\sigma} (dx_{\sigma(i_1) \otimes \ldots \otimes dx_{\sigma(i_k)}})\eps_{\alpha}}_{dx_{i_1} \land \ldots \land dx_{i_k}}
+ \end{align*} 
+\end{proof}
+\begin{remrk}
+ Если $i_1, \ldots, i_k$ --- набор индексов такой, что существуют $i_s, i_m$ такие, что $i_s = i_m$, но $s \neq m$, то $dx_{i_1} \land \ldots \land dx_{i_k} = 0$.
+\end{remrk}
+\begin{proof}
+ Можно считать, что $s$ и $m$ соседние. Тогда, меняя их местами, с одной стороны меняется знак, а с другой --- ничего не происходит.
+
+ Ещё можно сказать, что в матрице есть два одинаковых столбца, следовательно, определитель равен нулю.
+\end{proof}
+\begin{crly}
+ В частности, единственная полилинейная кососимметрическая форма порядка $k > n$ на $\R^{n}$ --- это $0$.
+
+ А единственная полилинейная кососимметрическая форма порядка $n$ на $\R^{n}$ --- это $C \det$ --- определитель, умноженный на константу $C \in \R$.
+\end{crly}
+\begin{df}[%
+внешнее умножение дифференциальных форм]
+Пусть есть две полилинейные кососимметрические формы $dx_{i_1} \land \ldots \land dx_{i_k}$  и $dx_{j_1} \land \ldots \land dx_{j_m}$. Тогда их \textit{внешним произведением} называется
+ \begin{align*}
+  (dx_{i_1} \land \ldots \land dx_{i_k}) \land (dx_{j_1} \land \ldots \land dx_{j_m}) = dx_{i_1} \land \ldots \land dx_{i_k} \land dx_{j_1} \land \ldots \land dx_{j_m}
+ .\end{align*} Для общих форм определение продолжается по линейности.
+
+ Например,
+ \begin{align*}
+  (dx \land dy + 2dy \land dx) \land dx &= dx \land dy \land dx + 2 dy \land dz \land dx = \\
+  &= 2 dx \land dy \land dz
+ .\end{align*} 
+\end{df}
+
+\begin{df}
+ \textit{Внешняя форма} в области $\Omega \subset \R^{n}$ порядка $k$ -- это отображение из $\Omega$ в пространство полилинейных кососимметрических форм порядка $k$.
+\end{df}
+\begin{exmpl}
+ $x dx \land dy + (x + z) dy \land dz$ --- пример внешней формы порядка $2$ на $\Omega = \R^{3}$. В точке $(1,2,3)$ эта внешняя форма равна $ dx \land dy + 4 dy \land dz $.
+\end{exmpl}
+
+В этой науке принято \textbf{соглашение}: функции --- это формы порядка $0$.
+
+\begin{exmpl}
+ Пусть $f \colon\, \Omega \to \R  $  --- гладкая функция, где $\Omega \subset \R^{n}$ --- область. Тогда дифференциал функции $f$
+ \begin{align*}
+  df = \frac{\partial f}{\partial x_1} dx_1 + \ldots + \frac{\partial f}{\partial x_n} dx_n
+ \end{align*} --- это внешняя форма порядка порядка $1$.
+\end{exmpl}
+\begin{df}
+ Общая внешняя форма 
+\begin{align*}
+ \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k}(x) \cdot dx_{i_1} \land \ldots \land dx_{i_k}
+\end{align*} называется \textit{$C^{m}(\Omega)$-гладкой}, если все $a_{i_1, \ldots, i_k} \in C^{m}(\Omega, \R)$.
+
+Это определение эквивалентно тому, что внешняя форма как отображение гладкая (по Фреше, то есть по определению из второго семестра).
+\end{df}
+\begin{df}
+ \textit{Дифференциал} гладкой внешней формы $\omega$ равен
+ \begin{align*}
+   d \omega = \sum_{i \in [n]^{k}} (d a_{i_1,\ldots,i_k}) \land dx_{i_1} \land \ldots \land dx_{i_k}
+ .\end{align*} 
+\end{df}
+\begin{exmpl*}
+ \begin{align*}
+  d((x^{2} + y^{2})dx + z^{2}dz) &= (2x dx + 2y dy) \land dx + 2z dz \land dz = \\
+  &= -2y dz \land dy
+ .\end{align*} 
+\end{exmpl*}
+
+\begin{df}
+ Пусть $(\Omega, \Phi, S)$ --- поверхность порядка $k$, где $\Omega \subset \R^{k}$ --- область, $S \subset \R^{n}$, $\Phi \colon\; \Omega \to S$ --- гладкая биекция, $\mathrm{rk}\;\Phi(x) = k$ для любого $x \in \Omega$. Пусть
+ \begin{align*}
+  \Phi(x_1, \ldots, x_k) = \begin{pmatrix}
+   \Phi_1(x_1, \ldots, x_k) \\
+   \vdots \\
+   \Phi_n(x_1, \ldots, x_k) \\
+  \end{pmatrix}
+ .\end{align*} 
+
+ Пусть на $\R^{n}$ (или в окрестности $S$) задана внешняя форма
+ \begin{align*}
+  \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k}(x) \cdot dx_{i_1} \land \ldots \land dx_{i_k}
+ .\end{align*} Тогда \textit{перенос} этой формы в $\Omega$ задаётся формулой
+ \begin{align*}
+  \omega^{\ast}(y) = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k} (\Phi(y)) d\Phi_{i_1} \land \ldots \land d \Phi_{i_k}
+ \end{align*}  --- это внешняя форма порядка $k$ в $\Omega$.
+\end{df}
+\begin{figure}[ht]
+    \centering
+    \incfig{surface_outer_form}
+    \caption{surface_outer_form}
+    \label{fig:surface_outer_form}
+\end{figure}
+\begin{exmpl}
+ Найдём перенос формы
+ \begin{align*}
+  \omega = x dy \land dz
+ \end{align*} со сферы в прямоугольник $(0, 2\pi) \times (-\pi / 2, \pi / 2) = \Omega$. Здесь $R$ --- фиксированный радиус сферы,
+ \begin{align*}
+  \Phi(\varphi, \psi) = \begin{pmatrix}
+   R \cos \varphi \cos \psi \\
+   R \sin \varphi \cos \psi \\
+   R \sin \psi
+  \end{pmatrix}
+ .\end{align*} Правда, образ $\Phi$ --- это не вся сфера, а сфера минус множество меры нуль, но мы на это забьём.
+
+ Перенесём:
+ \begin{align*}
+  \omega^{\ast} &= R \cos \varphi \cos \psi (d (R \sin \varphi \cos \psi)) \land d(R \sin \psi) = \\
+  &= R^{3} \cos\varphi \cos\psi (\cos\varphi \cos \psi d\varphi - \sin\varphi\sin\psi d\psi) \land (\cos\psi d \psi) = \\
+  &= R^{3} \cos^{2}\varphi\cos^{3}\psi d\varphi d\psi
+ .\end{align*} 
+\end{exmpl}
+
+\begin{df}
+ Пусть $\omega = f(x) \cdot dx_1 \land \ldots \land dx_k$  --- внешняя форма порядка $k$ на области $\Omega \subset \R^{k}$, где $f \in C(\Omega)$ . Тогда \textit{интегралом} внешней формы $\omega$ по измеримому подмножеству $E \subset \Omega$ называется
+ \begin{align*}
+  \int\limits_{E} \omega = \int\limits_{E} f(x) \, dx_1 dx_2 \ldots dx_k
+ .\end{align*} 
+
+ Для форм $\omega$  порядка $k$  на поверхности $(\Omega, \Phi, S)$  интеграл $\omega$
+  \begin{align*}
+  \int\limits_{\Phi(E)} \omega = \int\limits_{E} \omega^{\ast}
+ ,\end{align*} где $E \subset \Omega \subset \R^{k}$. Правая часть уже определена, так как $\omega^{\ast}$ --- форма порядка $k$.
+\end{df}
+
+\begin{claim}
+ Пусть $\omega = f_1(x) dx_1 + f_2(x) dx_2 + \ldots + f_{n}(x) dx_n$  --- внешняя форма порядка $1$  на гладкой кривой $\gamma = (\gamma_1, \ldots, \gamma_n )$ , $\gamma = \gamma(t)$ , $t \in (a,b)$ , $\left\| \gamma'(t) \right\|_{\R^{n}} \neq 0$ .
+
+ Тогда
+ \begin{align*}
+  \int\limits_{\gamma} \omega = \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma_1'(t) + \ldots f_n(\gamma(t)) \gamma_n'(t) \right) \, dt
+ \end{align*} 
+\end{claim}
+\begin{proof}
+ Найдём перенос внешней формы в интервал $(a, b)$:
+  \begin{align*}
+  \omega^{\ast} = \sum_{i=1}^{n} f_i(\gamma(t)) d \gamma_i(t) = \sum_{i=1}^{n} f_i(\gamma(t)) \gamma_i'(t) dt
+ .\end{align*} По определению
+ \begin{align*}
+  \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{1}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)  \, dt
+ .\end{align*} Проверено.
+\end{proof}
+
+\textbf{Физический смысл}: если $F$ --- постоянное силовое поле в $\R^{n}$, то работа $F$ вдоль вектора $v \in \R^{n}$ --- это скалярное произведение $(F, v)$.
+
+Если
+\begin{align*}
+ F = \begin{pmatrix}
+  f_1(x) \\
+  \vdots \\
+  f_n(x)
+ \end{pmatrix}
+\end{align*}  --- переменное силовое поле в $\R^{n}$ , а $\gamma$  --- это кривая в $\R^{n}$ , $\gamma = \gamma(t)$ , $t \in (a, b)$ . Тогда работа $F$  вдоль $\gamma$ --- это интеграл
+\begin{align*}
+ A_{F,\gamma} = \int\limits_{\gamma} (F,v) \, dS
+,\end{align*} где $v(t)$ --- единичный касательный вектор к кривой $\gamma$  в точке $\gamma(t)$.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{work_under_a_curve}
+    \caption{work_under_a_curve}
+    \label{fig:work_under_a_curve}
+\end{figure}
+
+\begin{claim}
+ \begin{align*}
+  A_{F,\gamma} = \int\limits_{\gamma} \omega
+ ,\end{align*} где
+ \begin{align*}
+  \omega = f_1 dx_1 + \ldots f_n dx_n
+ \end{align*} --- форма работы поля $F$.
+\end{claim}
+\begin{proof}
+ Вычислим единичный касательный вектор к кривой $\gamma$ в точке $\gamma(t)$:
+ \begin{align*}
+  v(t) = \frac{\gamma'(t)}{\left\| \gamma'(t) \right\|}
+ ,\end{align*} где $\gamma'(t) = (\gamma_1'(t), \ldots, \gamma_n'(t))^{\top}$ . Посмотрим на интеграл
+ \begin{align*}
+  \int\limits_{\gamma} (F,v) \, dS &= \int\limits_{a}^{b} (F(\gamma(t)), v(t)) \left\| \gamma' (t) \right\| \, dt = \\ 
+  &= \int\limits_{a}^{b} \frac{\sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)}{\left\| \gamma'(t) \right\|} \left\| \gamma'(t) \right\| \, dt = \\
+  &= \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma'_i(t) \, dt 
+ .\end{align*} Правая часть равна
+ \begin{align*}
+  \int\limits_{\gamma} \omega = \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma'_i(t) \, dt
+ .\end{align*} 
+\end{proof}
+\begin{df}
+ Пусть $\omega$ --- внешняя форма порядка $k$ с непрерывными коэффициентами в области $\Omega$. $\omega$ называется \textit{точной} формой, если существует внешняя форма $\kappa$ порядка $k - 1$ такая, что $d \kappa = \omega$.
+
+ Для $1$-форм это означает, что существует функция $F \colon\; \Omega \to \R$ ($0$-форма) такая, что
+ \begin{align*}
+  dF = f_1 dx_1 + \ldots f_n dx_n = \omega
+ .\end{align*} 
+\end{df}
+\begin{claim}
+ \label{claim:integral_of_potential_curve_is_difference_on_ends}
+ Пусть $\omega$  --- точная $1$-форма в $\Omega$. Пусть $\gamma$  --- гладкая кривая в $\Omega$. Тогда
+ \begin{align*}
+  \int\limits_{\gamma} \omega = F(\gamma(b)) - F(\gamma(a))
+ ,\end{align*} где $F$ --- функция, такая, что $dF = \omega$.
+
+ В частности, интеграл $\int_{\gamma} \omega  $  зависит лишь от начала и конца $\gamma$.
+\end{claim}
+
+\textbf{Физический смысл}: для потенциального силового поля работа вдоль кривой зависит только от начала и конца и кривой.
+
+\begin{proof}[\normalfont\textsc{Доказательство утверждения \ref{claim:integral_of_potential_curve_is_difference_on_ends}}]
+ Посчитаем
+ \begin{align*}
+  \int\limits_{\gamma} \omega &= \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma'_1(t) + \ldots + f_n(\gamma(t))\gamma_n'(t) \right) \, dt = \\
+  &= \int\limits_{a}^{b} \left( F(\gamma(t)) \right)'_t \, dt
+ \end{align*}  в силу того, что
+ \begin{align*}
+  F'_1 = f_1, \ldots, F'_n = f_n
+ .\end{align*} Тогда по формуле Ньютона-Лейбница
+ \begin{align*}
+  \int\limits_{\gamma} \omega = F(\gamma(b)) - F(\gamma(a))
+ .\end{align*} 
+\end{proof}
+
+\begin{claim}
+ \begin{align*}
+  \int\limits_{\gamma} \omega = - \int\limits_{\tilde \gamma} \omega
+ ,\end{align*} где $\tilde \gamma$ --- это кривая $\gamma$, проходимая в обратном направлении.
+\end{claim}
+\begin{proof}
+  Пусть $\gamma \colon\, (a,b) \to \R^{n}$ . Тогда $\tilde \gamma \colon\, (a, b) \to \R^{n}$  задаётся формулой
+ \begin{align*}
+  \tilde \gamma (t) = \gamma(b - t + a)
+ .\end{align*} Тогда
+ \begin{align*}
+  \int\limits_{\tilde \gamma} \omega &= \int\limits_{a}^{b} \left( f_1(\tilde \gamma(t))\tilde \gamma'_1(t) + \ldots + f_n(\tilde \gamma(t))\tilde \gamma'_n(t) \right) \, dt = \\
+  &= -\int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(b-t-a))\gamma'_i(s) \rvert_{s=b-t+a} \, dt = \\
+  &= \begin{bmatrix}
+   u = b - t + a & du = -dt
+  \end{bmatrix} = \\
+  &= - \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(u))\gamma'_i(u) \, du = \\
+  &= -\int\limits_{\gamma} \omega
+ .\end{align*} 
+\end{proof}
+
+Когда мы писали $\int_{a}^{b} f(x) \, dx $ --- это интеграл дифференциальной формы $f(x) dx$  по кривой --- отрезку $[a,b]$ в направлении от $a$ к $b$.
+
+\begin{df}
+ $\gamma_1, \gamma_2 \colon\, (a, b) \to \R^{n}$ --- \textit{эквивалентные кривые}, если существует гладкая биекция $s \colon\, (a,b) \to (a,b) $  такая, что $\gamma_2(t) = \gamma_1(s(t))$.
+\end{df}
+
+\begin{remrk*}
+ Геометрически $\gamma_1$ и $\gamma_2$ --- одна и та же кривая, но по-разному параметризованная.
+\end{remrk*}
+\begin{claim}
+ Для $1$-форм с непрерывными коэффициентами интеграл по гладкой кривой не зависит от выбора параметризации.  
+
+ То есть
+ \begin{align*}
+  \int\limits_{\gamma_1} \omega = \int\limits_{\gamma_2} \omega
+ ,\end{align*} если $\gamma_1$ эквивалентна $\gamma_2$.
+\end{claim}
+\begin{proof}
+ \begin{align*}
+  \int\limits_{\gamma_1} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_1(t))\gamma_{1,i}'(t) \, dt. \\
+  \int\limits_{\gamma_2} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_2(t))\gamma_{1,i}'(t) \, dt =  \\
+  &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_1(s(t))) \gamma_{1,i}'(y) \rvert_{y = s(t)} \cdot s'(t) \, dt = \\
+  &= \begin{bmatrix}
+   u = s(t) & du = s'(t) dt
+  \end{bmatrix} = \\
+  &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma(u)) \gamma_{1,i}'(u) \, du = \\
+  &= \int\limits_{\gamma_1} \omega
+ .\end{align*}
+\end{proof}
+\begin{thm}[%
+Стокса]
+\label{theorem:stox}
+ Пусть $M$  --- гладкое компактное ориентируемое многообразие с краем $\partial M$,  $\omega$  --- $C^{1}$ -гладкая дифференциальная форма на $M$; ориентации $M$  и $\partial M$  согласованы; порядок $\omega$ равен размерности $M$  минус $1$ и не меньше $0$.
+
+ Тогда
+ \begin{align}
+  \label{equation:formula_stox}
+  \int\limits_{\partial M} \omega = \int\limits_{M} d \omega
+ .\end{align} 
+\end{thm}
+
+Формула \eqref{equation:formula_stox} называется \textit{формулой Стокса}.
+
+Дадим несколько комментариев к теореме \ref{theorem:stox}. $\partial M$ --- это многообразие размерности  $\dim M - 1$.  Соответственно, $d \omega$  имеет порядок, равный $\dim M$.
+
+Многообразия размерности $1$  ориентируемы и ориентация соответствует выбору начала и конца кривой.
+
+\begin{df}
+ Многообразие размерности $2$ в $\R^{3}$ называется \textit{оринтеируемым}, если на нём есть непрерывное поле единичных нормалей.
+\end{df}
+\begin{exmpl*}
+ Сфера $S^{2}$ ориентируема, а лента Мёбиуса неориентируема.
+\end{exmpl*}
+\begin{exmpl}
+ Пример многообразия с краем: полусфера
+\begin{figure}[ht]
+    \centering
+    \incfig{halfsphere}
+    \caption{halfsphere}
+    \label{fig:halfsphere}
+\end{figure}
+\end{exmpl}
+
+Частный случай формулы Стокса: $M = [a,b]$,  $\partial M = \left\{ a,b \right\}$, форма $\omega = F$. Тогда
+ \begin{align*}
+  \int\limits_{M} d\omega &= \int\limits_{M} d F \\
+ \int\limits_{\partial M} F &= F(b) - F(a)
+.\end{align*} Мы получили формулу Ньютона-Лейбница.
