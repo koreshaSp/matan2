@@ -1,87 +1,100 @@
-\section*{Организационное}
-Теория: коллоквиума не будет, но можно его сделать по инициативе студентов в формате самопроверки.
-
-О курсе: в этом семестре (третьем) в основном будет \textit{теория меры}. Программистам она нужна для того, чтобы понимать \textit{вероятность}. В этом семестре будет несколько \textit{глубоких} теорем (красивых фактов), каких не было в предыдущих семестрах. Глубокое осознание курса должно поднять слушателя на новый математический уровень.
+\section*{Введение}
+В этом семестре (третьем) в основном будет \textit{теория меры}. Программистам она нужна для того, чтобы понимать \textit{вероятность}. В этом семестре будет несколько \textit{глубоких} теорем (красивых фактов), каких не было в предыдущих семестрах. Глубокое осознание курса должно поднять слушателя на новый математический уровень.
 
 \section{Суммирование неотрицательных семейств}
 
+\begin{df}
+ За $[0, \infty]$ обозначим множество неотрицательных вещественных чисел $[0, \infty)$ с новым элементом $\infty$. На этом множестве можно естественным образом доопределить отношение порядка, сложение и умножение: 
+ \begin{itemize}
+  \item $a < \infty$ для любого вещественного $a \geqslant 0$.
+  \item $a + \infty = \infty + a = \infty$ для любого $a \in [0, \infty]$.
+  \item $a \cdot \infty = \infty \cdot a = \infty$, если $a > 0$ (в том числе при $a = \infty$).
+  \item $0 \cdot \infty = \infty \cdot 0 = 0$.
+ \end{itemize}
+\end{df}
+
+Полезность множества $[0, \infty]$ в том, что в нём можно всегда взять сумму, причём по любому семейству индексов.
+
 \newcommand{\I}{\ensuremath \mathcal{I}}
 \begin{df}
-Пусть $ \I $ --- это множество (любое, возможно несчётное), и для каждого $ i \in \I $ сопоставлено число $ a_i \geqslant 0 $. Определим
+ Пусть $ \I $ --- это множество (любое, возможно несчётное), и для каждого $ i \in \I $ сопоставлено неотрицательное число $ a_i \in [0, \infty] $. Определим
 \begin{align*}
- \sum_{i \in \I} a_i = \sup \left\{ \sum_{j \in F} a_j \mid F \subset \I, F \text{ --- конечноe }\right\}
+ \sum_{i \in \I} a_i = \sup \left\{ \sum_{j \in F} a_j \Mid F \subset \I,\; F \text{ --- конечноe }\right\}
 .\end{align*}
 \end{df}
 
 \begin{thm}\
+ \label{theorem:facts_about_infinite_nonnegative_sums}
  \begin{itemize}
-  \item Если $ \sum_{i \in I} a_i < \infty $, то существует не более чем счетное множество $ E \subset I $ такое, что $ a_i = 0 $ для всех $ i \in I \setminus E $.
-  \item Eсли $ I $ не более, чем счётно, и $ I = \{i_k\}_{k \in \N} $, то
+  \item Если $ \sum_{i \in \I} a_i < \infty $, то существует не более чем счетное множество $ E \subset \I $ такое, что $ a_i = 0 $ для всех $ i \in \I \setminus E $.
+  \item Eсли $ \I $ не более, чем счётно, и $ \I = \{i_k\}_{k \in \N} $, то
    \begin{align*}
-    \sum_{i \in I} a_i = \sum_{k=1}^\infty a_{i_k}
-   .\end{align*}
+    \sum_{i \in \I} a_i = \sum_{k=1}^\infty a_{i_k}
+   ,\end{align*} где в правой части стоит сумма ряда в старом смысле --- предел последовательности частичных сумм.
  \end{itemize}
 \end{thm}
 \begin{proof}\
  \begin{itemize}
-     \item Пусть $ \sum_{i\in I} a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in I $ таких, что $ a_i \geqslant 1/N $(иначе из них можно составить множество с неограниченной суммой). Значит,
+     \item Пусть $ \sum_{i\in \I} a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in \I $ таких, что $ a_i \geqslant 1/N $, ведь иначе из них можно составить множество с неограниченной суммой. Тогда
  \begin{align*}
-  E = \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N \in \N} \left\{ i \in I \mid a_i \geqslant 1/N \right\}
- .\end{align*} Получается, существует множество $ E $ не более, чем счётное (как счётное объединение не более, чем счётных множеств).
-\item Есть тривиальное неравенство:
- \begin{align*}
-     \sum_{k = 1}^{\infty} a_{i_k} \leqslant \sum_{i \in I} a_i
- .\end{align*} Потому что можно рассмотреть наборы вида $ F = \{i_1, i_2, \ldots, i_N\} $. Левая часть --- это супремум по таким $ F $ (супремум по частичным суммам) , а правая часть --- супремум по всем подмножествам $ I $, в число которых входят все частичные суммы.
+  E = \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N=1}^{\infty} \left\{ i \in I \mid a_i \geqslant 1/N \right\}
+ .\end{align*} Получается, множество $ E $ не более, чем счётное (как счётное объединение конечных множеств).
+\item Докажем неравенство в обе стороны. Для любого $N$ верно  \begin{align*}
+  \sum_{k=1}^{N} a_{i_k} \leqslant \sum_{i \in \I} a_i,
+\end{align*} потому что левая часть --- сумма по конечному подмножеству. Взяв предел при $N \to \infty$ получаем неравенство в одну сторону:
+\begin{align*}
+ \sum_{k=1}^{\infty} a_{i_k} \leqslant \sum_{i \in \I} a_i
+.\end{align*}
 
- Теперь докажем в обратную сторону. Пусть $ F \subset I $ конечноe. Тогда 
+ Теперь докажем в обратную сторону. Пусть $ F \subset \I $ конечноe. Тогда 
  \begin{align*}
      \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k = 1}^{\infty} a_{i_k}
- ,\end{align*} для некоторого $ N \in \N $. Тогда можно взять супремум:
+ \end{align*} для некоторого $ N \in \N $ (например, максимальный номер индекса из $F$). Перейдя к супремуму в левой части, получаем нужное:
  \begin{align*}
-     \sup_F \sum_{i \in F} a_i \leqslant \sum_{k = 1}^{\infty} a_{i_k}
+  \sum_{i \in \I} a_i = \sup_{\substack{F \subset \I \\ F \text{ --- конечное }}} \sum_{i \in F} a_i \leqslant \sum_{k = 1}^{\infty} a_{i_k}
  .\end{align*}
  \end{itemize}
 \end{proof}
 \begin{crly}
-    Пусть $ I $ счётное множество, $ \{i_k\}_{k \in \N} = \{i_{\varphi(k)}\}_{k\in\N} = I$ --- его нумерации двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
+    Пусть $ \I $ счётное множество, $ \{i_k\}_{k \in \N} = \{i_{\varphi(k)}\}_{k\in\N} = \I$ --- его нумерации двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
  \begin{align*}
      \sum_{k = 1}^{\infty} a_{i_k} = \sum_{k = 1}^{\infty} a_{i_{\varphi(k)}}
  .\end{align*}
 \end{crly}
 \begin{proof}
- Применить второй пункт предыдущей теоремы.
+ Применить второй пункт теоремы \ref{theorem:facts_about_infinite_nonnegative_sums}.
 \end{proof}
+
+Интересно, что данное следствие неверно, если разрешить отрицательные числа.
 
 \section{Наивная длина}
 
-\begin{df}\
+В этом параграфе мы совершим первую, наивную попытку построить длину на прямой $\R$.
+
+\begin{notatn*}\
+ Введём некоторые обозначения, полезные в теории меры.
  \begin{itemize}
-  \item Введём обозначения. Если $ X $ --- некоторое множество, то $ 2^X $ --- множество всех подмножеств множества $ X $.
-  \item Если $ A \subset X $, то $ A^c = X \setminus A $.
-  \item Если $ A, B \subset X $, то будем писать $ A \sqcup B $ вместо $ A \cup B $, если дополнительно известно, что $ A \cap B = \varnothing $.
-  \item $ \R_+ = [0, +\infty) $.
+  \item Если $ X $ --- некоторое множество, то $ 2^X $ --- множество всех подмножеств множества $ X $.
+  \item Будем писать $ A \sqcup B $ вместо $ A \cup B $, если дополнительно известно, что $ A \cap B = \varnothing $.
  \end{itemize}
-\end{df}
-\begin{prop}
- Полезные формулы
- \begin{align*}
-  \left( \bigcup_{i \in I} A_i \right)^c &= \bigcap_{i \in I} A_i^c \\
-  \left( \bigcap_{i \in I} A_i \right)^c &= \bigcup_{i \in I} A_i^c
- \end{align*} для любого семейства $ i \in I $, $ A_i \subset X $.
-\end{prop}
+\end{notatn*}
+
 \begin{df}
- \textit{Наивная длина} --- это отображение $ \mu \colon\, 2^\R \to \R_+ \cup \{ +\infty \} $ такое, что
+ \textit{Наивная длина} --- это функция $ \mu \colon\, 2^\R \to [0,\infty] $ такая, что
  \begin{itemize}
   \item $ \mu ([0, 1)) = 1 $
-  \item $ \displaystyle \mu\left( \bigsqcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu( A_k ) \ \ \forall { A_k } : {k \in \mathbb{N}} \land {A_k \subset \mathbb{R}} $
-  \item $ \mu(A + x) = \mu(A) $ для любого $ A \subset \R $ и для любого $ x \in \R $ (где $ A + x = \{ a + x \mid a \in A \} $).
+  \item Если $\{A_{k}\}_{k=1}^{\infty} \subset \R $  --- последовательность не пересекающихся множеств, то
+   \begin{align*}
+    \mu \left( \bigsqcup_{k=1}^{\infty} A_k \right) = \sum_{k=1}^{\infty} \mu(A_k)
+   .\end{align*} 
+  \item $ \mu(A + x) = \mu(A) $ для любого множества $ A \subset \R $ и $ x \in \R $ (где $ A + x = \{ a + x \mid a \in A \} $ --- сумма по Минковскому).
  \end{itemize}
 \end{df}
 \begin{thm}
  Наивной длины не существует.
 \end{thm}
 \begin{proof}
- Введём такое отношение эквивалентности: $ x \sim y $ для $ x,y \in [0, 1) $, если $ x-y \in \Q $. Тогда единичный полуинтервал бьётся на классы эквивалентности:
+ Введём на множестве $[0, 1)$ такое отношение эквивалентности: $ x \sim y $, если $ x-y \in \Q $. Это действительно отношение эквивалентности, поэтому единичный полуинтервал бьётся на классы эквивалентности:
  \begin{align*}
   [0, 1) = \bigsqcup_{J \text{ --- класс экв. }} J
  .\end{align*} По аксиоме выбора из каждого класса $ J $ можно выбрать представителя $ x_J $. Обозначим
@@ -90,7 +103,7 @@
  .\end{align*} Наблюдение:
  \begin{align*}
   [0, 1) \subset \bigcup_{q \in [-1, 1] \cap \Q} (q + E)
- .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in \Q $. Тем самым, $ x \in q + E $.
+ .\end{align*} Действительно, если $ x \in [0, 1) $, то существует класс $ J $ такой, что $ x - x_J = q \in \Q $, то есть $ x \in q + E $. При этом $-1 < q < 1$.
 
  Второе наблюдение:
  \begin{align*}
@@ -122,19 +135,32 @@
 
 Итак, мы выяснили, что наивной длины нет. Классический способ обойти это (который мы будем изучать) --- определить длину не на всех множествах, а на \textit{хороших} множествах.
 
+\begin{notatn*}
+ Ещё одно полезное обозначение: если зафиксировано некоторое универсальное множество $X$, и есть подмножество $A \subset X$, то $A^{c} = X \setminus A$ --- дополнение подмножества $A$.
+\end{notatn*}
+
+\begin{prop*}
+ Полезные формулы --- законы де Моргана:
+ \begin{align*}
+  \left( \bigcup_{i \in \I} A_i \right)^c &= \bigcap_{i \in \I} A_i^c \\
+  \left( \bigcap_{i \in \I} A_i \right)^c &= \bigcup_{i \in \I} A_i^c
+ \end{align*} для любого семейства $ \I $ и любых множеств $ A_i \subset X $.
+\end{prop*}
+
 \begin{df}
  Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{P} \subset 2^X $ --- \textit{полукольцо}, если
  \begin{enumerate}
      \item $ \varnothing \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \cap P_2 \in \mathcal{P} $
-  \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \setminus P_2 = \bigsqcup_{j=1}^N Q_j, Q_j \in \mathcal{P}, N \in \N $
+  \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \setminus P_2 = \bigsqcup_{j=1}^N Q_j$ для некоторых $ Q_1, \ldots, Q_N \in \mathcal{P} $.
  \end{enumerate}
 \end{df}
 \begin{df}
- Пусть $ X $ --- множество. Набор подмножеств $ \A \in 2^X $ --- \textit{алгебра} множеств, если
+ Пусть $ X $ --- множество. Набор подмножеств $ \A \subset 2^X $ --- \textit{алгебра} множеств, если
  \begin{enumerate}
   \item $ \varnothing \in \A $
   \item $ A_1, A_2 \in \A \;\Longrightarrow\; A_1 \cap A_2 \in \A $
+   \label{enum:set_algebra_axiom_2}
   \item $ A \in \A \;\Longrightarrow\; A^c \in \A $ (аксиома симметричности)
  \end{enumerate}
 \end{df}
@@ -142,19 +168,20 @@
  Набор подмножеств $ \A \subset 2^X $ --- \textit{$ \sigma $-алгебра}, если
  \begin{enumerate}
   \item $ \varnothing \in \A $
-  \item $ \left\{ A_i \right\}_{i \in I} $, $ I $ --- счётное множество, $ A_i \in \A $. Тогда
+  \item Пусть $\{A_{k}\}_{k=1}^{\infty} $ --- счётный набор множеств $A_k \in \A$. Тогда
    \begin{align*}
-    \bigcap_{i \in I} A_i \in \A
-   .\end{align*}
+    \bigcap_{k=1}^{\infty} A_k \in \A
+   .\end{align*} 
+   \label{enum:sigma_algebra_axiom_2}
   \item $ A \in \A \;\Longrightarrow\; A^c \in \A $ (аксиома симметричности)
  \end{enumerate}
 \end{df}
 \begin{exmpl}\
  \begin{itemize}
   \item $ \sigma $-алгебра $ \;\Longrightarrow\; $ алгебра $ \;\Longrightarrow\; $ полукольцо. Последняя импликация: $ A_1 \setminus A_2 = A_1 \cap (A_2^c) $.
-  \item $ 2^X $ --- $ \sigma $-алгебра
+  \item $ 2^X $ --- $ \sigma $-алгебра.
   \item $ \left\{ \varnothing, X \right\} $ --- $ \sigma $-алгебра.
-  \item $ X = \R^2 $, $ \A = \left\{ E \subset X \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \A $ --- алгебра:
+  \item $ X = \R^2 $, $ \A = \left\{ E \subset \R^{2} \mid E \text{ --- ограничено или } E^c \text { --- ограничено } \right\}  $. Тогда $ \A $ --- алгебра:
    \begin{enumerate}
     \item $ \varnothing \in \A $
     \item Пусть $ A, B \in \A $ и одно из них ограничено. Тогда $ A \cap B $ ограничено и $ A \cap B \in \A $. А если $ A^c, B^c $ ограничены, тогда $ (A \cap B)^c = A^c \cup B^c $ ограничено. Тогда $ A \cap B \in \A $.
@@ -167,19 +194,31 @@
    \begin{align*}
     A_k = \R^2 \setminus \left\{ (0, x) \mid 0 \leqslant x \leqslant k \right\} 
    .\end{align*}
-  \item Если $ \A $ --- алгебра, то для любых $ A_1, \ldots, A_N \in \A $ верно $ \bigcup_1^N A_k \in \A $, так как
-   \begin{align*}
-    \bigcup_1^N A_k = \left( \bigcap_{k=1}^N A_k^c \right)^c
-   .\end{align*}
-  \item Аналогично, если $ \A $ --- $ \sigma $-алгебра, то для любого счетного $ I $ ($ A_i \in \A $ для любого $ i \in I $), то
-   \begin{align*}
-    \bigcup_{i\in I} A_i \in \A
-   .\end{align*}
  \end{itemize}
 \end{exmpl}
 
+\begin{prop}
+ Аксиома \ref{enum:set_algebra_axiom_2} алгебры множеств эквивалентна условию
+ \begin{align*}
+  \bigcup_{k=1}^{N} A_k \in \A
+ \end{align*} для любых $A_1, \ldots, A_k \in \A$.
+
+ Аналогично, аксиома \ref{enum:sigma_algebra_axiom_2} $\sigma$-алгебры эквивалентна условию
+ \begin{align*}
+  \bigcup_{k=1}^{\infty} A_k \in \A
+ \end{align*} для любой последовательности $\{A_{k}\}_{k=1}^{\infty}$ множеств из $\A$.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Применить законы де Моргана.
+\end{proof}
+
+Далее рассмотрим самый важный пример полукольца.
+
 \begin{df}
- $ \mathcal{P}_1 = \left\{ [a, b) \mid a \leqslant b, a, b \in \R \right\} $ --- \textit{полукольцо ячеек}.
+ \textit{Полукольцом ячеек} в $\R$ называется семейство 
+\begin{align*}
+ \mathcal{P}_1 = \left\{ [a, b) \mid a \leqslant b,\; a, b \in \R \right\} 
+.\end{align*} Полуинтервал $[a, b) \in \p_1$ называется (одномерной) \textit{ячейкой}.
 \end{df}
 \begin{lm}
  $ \mathcal{P}_1 $ --- полукольцо.
@@ -191,88 +230,113 @@
    [a_1, b_1) \cap [a_2, b_2) = 
    \begin{cases}
     \varnothing \text{, если } \max(a_1, a_2) \geqslant \min(b_1, b_2) \\
-    [\max(a_1, a_2), \min(b_1, b_2) )
+    [\max(a_1, a_2), \min(b_1, b_2) ) \text{, иначе}
    \end{cases}
    $$
-   В обоих случаях имеем ячейку. То есть $[a_1, b_1) \cap [a_2, b_2) \in \mathcal{P}_1 $.
-  \item Надо разобрать случаи. Но в каждом из них получается ячейка (иногда две ячейки).
+   В обоих случаях имеем ячейку: $[a_1, b_1) \cap [a_2, b_2) \in \mathcal{P}_1 $.
+  \item Здесь нужно разобрать несколько случаев: в каждом из них разность раскладывается на одну или две ячейки.
  \end{enumerate}
 \end{proof}
-\begin{remrk}
+\begin{remrk*}
 Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй.
 Например, $ [0, 1)^c = (-\infty, 0) \cup [1, +\infty) \not \in  \mathcal{P}_1 $.
-\end{remrk}
+\end{remrk*}
 \begin{lm}
- Если $ \A_i $ --- $ \sigma $-алгебра, $ i \in I $, $ I $ --- произвольное множество. Тогда $ \A = \bigcap_{i \in I} \A_i $ --- $ \sigma $-алгебра.
+ Пересечение любого числа $\sigma$-алгебр есть $\sigma$-алгебра: если $\left\{\A_i\right\}_{i \in \I}$  --- семейство $\sigma$-алгебр множеств из $X$, то
+ \begin{align*}
+  \A = \bigcap_{i \in \I} \A_i
+ \end{align*} --- $\sigma$-алгебра множеств из $X$.
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in I $.
-  \item $ A \in \A \;\Longrightarrow\; A \in \A_i,  \forall i \in I \;\Longrightarrow\; A^c \in \A_i, \forall i \in I \;\Longrightarrow\; A^c \in \bigcap_{i \in I} \A_i = \A$ 
+  \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in \I $.
   \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
   \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
+  \item $ A \in \A \;\Longrightarrow\; A \in \A_i,  \forall i \in \I \;\Longrightarrow\; A^c \in \A_i, \forall i \in \I \;\Longrightarrow\; A^c \in \bigcap_{i \in \I} \A_i = \A$ 
  \end{enumerate}
 \end{proof}
 \begin{lm}
- Если $ E \subset 2^X $, то существует единственная $ \A_E $ --- наименьшая по включению $ \sigma $-алгебра, содержащая $ E $.
+ Если $ E \subset 2^X $ --- произвольное семейство множеств, то существует единственная $\sigma$-алгебра $ \B(E) $ --- наименьшая по включению $ \sigma $-алгебра, содержащая $ E $.
 \end{lm}
 \begin{proof}
  Есть просто формула:
  \begin{align*}
-  \A_E := \bigcap_{E \subset \A \text{---} \sigma \text{-алгебра}} \A
- .\end{align*} Пересечение не по пустому множеству, так как $ E \subset 2^X $ и  $ 2^X $ --- $ \sigma $-алгебра.
+  \B(E) := \bigcap_{E \subset \A \text{---} \sigma \text{-алгебра}} \A
+ .\end{align*} Пересечение берётся не по пустому множеству, так как $ E \subset 2^X $ и  $ 2^X $ --- $ \sigma $-алгебра.
 \end{proof}
 \begin{df}
- Пусть $ \mathcal{P} $ --- полукольцо в $ X $ и $ \mu \colon\; \mathcal{P} \to [0, +\infty] $. $ \mu $ называется конечно аддитивной, если для любых $ P_1, P_2, \ldots, P_N $ таких, что
- \begin{align*}
-  P = \bigsqcup_{k=1}^N P_k \in \mathcal{P}
- \end{align*} выполняется равенство
+ Наименьшая $\sigma$-алгебра $\B(E)$, содержащая семейство множеств $E \subset 2^{X}$ называется \textit{борелевской оболочкой} семейства $E$.
+\end{df}
+Термин <<борелевская оболочка>> (или <<борелевская $\sigma$-алгебра>>) чаще используется в следующем контексте.
+\begin{df}
+ \textit{Борелевской оболочкой} (или \textit{боеревской $\sigma$-алгеброй}) топологического пространства $(X, \tau)$ называется наименьшая $\sigma$-алгебра, содержащая все открытые (и, следовательно, замкнутые) подмножества в $X$. Обозначение: $\B(X)$.
+
+ Для борелевской оболочки $\R$ есть стандартное обозначение: $\B_1 = \B(\R)$.
+\end{df}
+
+Таким образом, наша текущая задача --- задать длину не на всех подмножествах $\R$, а на некоторой $\sigma$-алгебре подмножеств из $\R$, желательно хотя бы на борелевской оболочке $\B_1$.
+
+Раз уж мы выяснили на чём мы хотим задавать длину, то теперь мы можем перейти к желаемым свойствам длины.
+
+\begin{df}
+ Пусть $\p$ --- полукольцо в $ X $ и $ \mu \colon\; \mathcal{P} \to [0, \infty] $ --- неотрицательная функция. Функция $ \mu $ называется \textit{конечно-аддитивной}, если для любых не пересекающихся множеств $ P_1, P_2, \ldots, P_N \in \p $ выполняется равенство
  \begin{align*}
   \mu\left( \bigsqcup_{k=1}^N P_k \right) = \sum_{k=1}^{N} \mu(P_k)
- .\end{align*} $ \mu $ счётно аддитивна, если для любого набора $ \left\{ P_i \right\}_{i \in I} $, $ I $ счётно,
- \begin{align*}
-  P = \bigsqcup_{i \in I} P_i \subset \mathcal{P}
- \end{align*} выполняется равенство:
- \begin{align*}
-  \mu\left( \bigsqcup_{i \in I} P_i \right) = \sum_{i \in I} \mu(P_i)
  .\end{align*}
+
+ Функция $ \mu $ называется \textit{счётно-аддитивной}, если для любой последовательности $\{P_{k}\}_{k=1}^{\infty} \subset \p$ множеств из $\p$ выполняется
+ \begin{align*}
+  \mu \left( \bigsqcup_{k=1}^{\infty} P_k \right) = \sum_{k=1}^{\infty} \mu (P_k)
+ .\end{align*} 
 \end{df}
+
+Эти свойства привели нас к определению \textit{меры}.
+
 \begin{df}
  \label{definition:measure}
- Пусть $ \A $ --- $ \sigma $-алгебра в $ X $, $ \mu \colon\, \A \to [0, +\infty] $ --- \textit{мера}, если
- \begin{align*}
-  \mu\left( \bigsqcup_{i \in I} A_i \right) = \sum_{i\in I}^{  } \mu(A_i)
- \end{align*} для любого дизъюнктного счётного набора множеств $ A_i \in \A$.
+ Счётно-аддитивная неотрицательная функция $\mu \colon\, \A \to [0,\infty] $  на $\sigma$-алгебре $\A$ называется \textit{мерой}.
 \end{df}
 \begin{exmpl}\
  \begin{itemize}
-  \item $ \mu \equiv 0 $, $ \A = 2^X $ (или $ \A $ любая) 
-  \item $ \mu \equiv +\infty $, $ \A = 2^X $ (или $ \A $ любая) 
+  \item Тождественный нуль $ \mu \equiv 0 $ --- мера на любой $\sigma$-алгебре $\A$.
+  \item Тождественная бесконечность $ \mu \equiv \infty $ --- мера на любой $\sigma$-алгебре $\A$. В других источниках в определении меры требуют, чтобы $\mu(\varnothing) = 0$. Это не существенно, ведь если $\mu(\varnothing) > 0$, то $\mu \equiv \infty$.
   \item Пусть $ X $ --- множество, $ E \subset X $. Определим \textit{считающую меру}:
    \begin{align*}
     \mu_E(A) =
     \begin{cases}
-     \#(A \cap E), \text{ если  } (A \cap E) \text { конечно }, \\
-     +\infty \text { иначе }
+     \left| A \cap E \right| \text{, если } A \cap E \text { конечно}, \\
+     \infty \text {, иначе }
     \end{cases}
-   .\end{align*} $ \A = 2^X $
-  \item $ X = \R $, $$ \delta_0(A) =
+   .\end{align*} на $\sigma$-алгебре $ \A = 2^X $. Здесь $\left| F \right|$ --- количество элементов в конечном множестве $F$. Считающая мера сужает теорию меры на дискретный случай: из многих теорем в теории меры, можно получить частные дискретные случаи, подставив считающую меру.
+  \item $ X = \R $, $\A = 2^{\R}$, $$ \delta_x(A) =
    \begin{cases}
-    1, \text{ если } 0 \in A \\
+    1, \text{ если } x \in A \\
     0, \text { иначе }
-   \end{cases}$$ --- \textit{дельта мера Дирака}.
-  \item $ X = \R $, $  \left\{ a_k \right\}_{k=1}^\infty \subset \R_+ $, $ \delta_{x_k} $ --- дельта меры Дирака в точках $ x_k $. Тогда
+   \end{cases}$$ --- \textit{дельта мера Дирака}. Также называется \textit{точечной нагрузкой}.
+  \item $ X = \R $, $  \left\{ a_k \right\}_{k=1}^\infty \subset [0, \infty] $, $ \delta_{x_k} $ --- дельта меры Дирака в точках $ x_k $. Тогда
    \begin{align*}
     \mu = \sum_{k=1}^\infty a_k \delta_{x_k}
-   \end{align*} --- тоже мера. Вообще, в целом можно брать линейную комбинацию мер.
+   \end{align*} --- тоже мера.
+  \item Более общо, линейная комбинация мер (конечно, с неотрицательными коэффициентами) --- тоже мера.
  \end{itemize}
 \end{exmpl}
+
+Приведём важный пример конечной-аддитивной функции на полукольце ячеек, из которой впоследствии мы и построим длину.
+
 \begin{exmpl}
- $ \mu_0([a, b)) = b - a $ на $ \mathcal{P}_1 $. Тогда $ \mu_0 $ конечно аддитивна на $ \mathcal{P}_1 $: если $ [a, b)  = \bigsqcup_1^N [a_k, b_k) $, то
- \begin{align*}
-  b - a = \sum_1^N (b_k - a_k) = \sum_1^N \mu_0([a_k, b_k))
- .\end{align*}
+ Функция \begin{align*}
+  \mu_0([a, b)) = b - a
+ ,\end{align*} заданная на полукольце ячеек $\p_1$, является конечно-аддитивной. Эту функцию можно назвать \textit{длиной} ячеек.
 \end{exmpl}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно, пусть $\left[a, b\right) = \bigsqcup_{k=1}^{N} \left[a_k, b_k\right)$. Отсортируем ячейки в порядке слева направо: $b_k \leqslant {a_{k+1}}$ для любого $1 \leqslant k < N$. Тогда $a_1 = a$, $b_N = b$ и $b_k = a_{k+1}$ для любого $1 \leqslant k < N$. Тогда
+ \begin{align*}
+  b - a = \sum_{k=1}^{N} (b_k - a_k)
+ ,\end{align*} что и требовалось доказать.
+\end{proof}
+
+Техническая лемма:
+
 \begin{lm}[о подчинённом разбиении]
  \label{lemma:about_subordinate_partition}
  Пусть $ X $ --- множество, $ \mathcal{P} $ --- полукольцо, $ P_1, \ldots, P_N \in \mathcal{P} $, $ P \in \mathcal{P} $. Тогда:
@@ -292,53 +356,76 @@
     &P_1 = P_1 = Q_{1,1} \\
     &P_1 \cup P_2 = P_1 \sqcup (P_2 \setminus P_1) = Q_{1,1} \sqcup (Q_{2,1} \sqcup \ldots \sqcup Q_{2, M_2}) \\
     &P_1 \cup P_2 \cup P_3 = \underbrace{(P_1 \cup P_2)}_{\text{ по инд.}} \sqcup \underbrace{(P_3 \setminus (P_1 \cup P_2))}_{\text{ знаем из пункта 1 }} \\
-    &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{(\bigcup_{k = 1}^{N - 1} P_k)}_{\text{ по инд. }} \sqcup \underbrace{(P_N \setminus (\bigcup_{k = 1}^{N - 1} P_k))}_{\text{ знаем из пункта 1  } }
+    &P_1 \cup P_2 \cup \dots \cup P_N = \underbrace{\left(\bigcup_{k = 1}^{N - 1} P_k\right)}_{\text{ по инд. }} \sqcup \underbrace{\left(P_N \setminus \left(\bigcup_{k = 1}^{N - 1} P_k\right)\right)}_{\text{ знаем из пункта 1  } }
    .\end{align*}
  \end{enumerate}
 \end{proof}
+
+Конечно- и счётно-аддитивные функции обладают монотонностью.
+
 \begin{crly}
- Пусть $ \mu \colon\, \mathcal{P} \rightarrow [0, +\infty]$ конечно-аддитивна. Пусть $ \bigsqcup_1^N P_k \subset P $, $ P_k, P \in \mathcal{P} $. Тогда
+ \label{corollary:downward_monotonicity_of_finite_additive_set_function}
+ Пусть $\p$ --- полукольцо, функция $ \mu \colon\, \mathcal{P} \rightarrow [0, \infty]$ конечно-аддитивна. Пусть $ \bigsqcup_{k=1}^N P_k \subset P $, где $ P_k, P \in \mathcal{P} $. Тогда
  \begin{align*}
   \sum_{k=1}^{N}  \mu(P_k) \leqslant \mu(P)
  .\end{align*}
 \end{crly}
 \begin{proof}
- По лемме: $ P \setminus \bigsqcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j $. Тогда:
+ По лемме \ref{lemma:about_subordinate_partition} 
+\begin{align*}
+ P \setminus \bigsqcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j 
+.\end{align*} Тогда:
  \begin{align*}
-   P = \bigsqcup_{k=1}^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
-   \mu(P) = \sum \mu(P_k) + \sum \mu(Q_j) \geqslant \sum \mu(P_k)
- \end{align*}
- Переход ко второй строке совершён благодаря конечной аддитивности $ \mu $.
+  P &= \bigsqcup_{k=1}^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
+  \implies \mu(P) &= \sum_{k=1}^{N} \mu(P_k) + \sum_{j=1}^{M} \mu(Q_j) \geqslant \sum_{k=1}^{N} \mu(P_k)
+ .\end{align*}
 \end{proof}
 \begin{crly}
- Если $ \mathcal{P} $, $ \mu $ как в предыдущем следствии и $ P \subset \bigcup_{k=1}^N P_k $, где $ P, P_k \in \mathcal{P} $. Тогда
+ \label{corollary:upward_monotonicity_of_finite_additive_set_function}
+ Пусть $ \mathcal{P} $ --- полукольцо, $ \mu \colon\, \p \to [0,\infty]  $ конечно-аддитивна, и $ P \subset \bigcup_{k=1}^N P_k $, где $ P, P_k \in \mathcal{P} $. Тогда
  \begin{align*}
   \mu(P) \leqslant \sum_{k=1}^N \mu(P_k)
  .\end{align*}
 \end{crly}
-\begin{proof}
+\begin{proof} По лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении:
  \begin{align*}
-  P = \bigcup_1^N (P_k \cap P) = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} \\
-  \mu(P) = \sum_{k,j}^{} \mu(Q_{k,j}) = \sum_{k=1}^{N} \underbrace{\sum_j \mu(Q_{k,j})}_{\leqslant \mu(P_k) \text{ по пред. следствию }} \leqslant \sum_{k=1}^{N} \mu(P_k)
+  P &= \bigcup_{k=1}^N (P_k \cap P) = \bigsqcup_{k=1}^N \bigsqcup_{j=1}^{M_k} Q_{k,j} \\
+  \implies \mu(P) &= \sum_{k=1}^{N} \underbrace{\sum_{j=1}^{M_k} \mu(Q_{k,j})}_{\leqslant \mu(P_k) \text{ по следствию \ref{corollary:downward_monotonicity_of_finite_additive_set_function} }} \leqslant \sum_{k=1}^{N} \mu(P_k)
  .\end{align*}
+
 \end{proof}
 \begin{thm}[счётная аддитивность длины на полукольце ячеек]
  Функция множества $ \mu_0 \colon\, [a, b) \mapsto b - a $ на полукольце ячеек $ \mathcal{P}_1 $ является счётно-аддитивной.
 \end{thm}
 \begin{proof}
- Пусть $ [a, b) = \bigsqcup_{i \in I} [a_i, b_i) $, где $ I $ --- счётное множество. Возьмём $ F \subset I $ --- конечное подмножество. Тогда 
+
+ Пусть $[a, b) = \bigsqcup_{k=1}^{\infty} \left[a_k, b_k\right)$. Нужно доказать \begin{align*}
+  \mu_0(\left[a, b\right)) = \sum_{k=1}^{\infty} \mu_0(\left[a_k, b_k\right))
+ .\end{align*} Докажем неравенства в обе стороны.
+
+ Для любого $N \in \N$ по следствию \ref{corollary:downward_monotonicity_of_finite_additive_set_function} верно
  \begin{align*}
-  \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) = \sum_{i \in F}^{} \mu( [a_i, b_i) ) \\
-  \mu\left( \bigsqcup_{i \in F} [a_i, b_i) \right) \leqslant \mu([a, b)) \text { <- следствие 22 }
-.\end{align*} Теперь надо доказать неравенство в обратную сторону. Для любого $ \varepsilon > 0 $ положим $ \tilde a_{i_k} = a_{i_k} - \varepsilon/2^k $ и $ \tilde b_{i_k} = b_{i_k} $, где $ \left\{ [a_{i_k}, b_{i_k}) \right\}_{k \in \mathbb{N}}  $ --- как-то занумерованное семейство $ \left\{ [a_i, b_i) \right\}_{i \in I}  $. Тогда для любого $ t $: $ a < t < b $:
+  \sum_{k=1}^{N} \mu_0(\left[a_k, b_k\right)) \leqslant \mu_0(\left[a, b\right))
+ .\end{align*}  Переходя к пределу при $N \to \infty$  в левой части, получаем неравенство в одну сторону:
  \begin{align*}
-  [a, t] \subset \bigcup_{k \in \N} (\tilde a_{i_k}, \tilde b_{i_k})
- .\end{align*} Но слева \textbf{компактное} множество. Тогда, существует $ F $ конечное, такое что
+  \sum_{k=1}^{\infty} \mu_0(\left[a_k, b_k\right)) \leqslant \mu_0(\left[a, b\right))
+ .\end{align*} 
+
+ Докажем в обратную сторону. Возьмём любой $\eps > 0$. Положим $\tilde a_k = a_k - \eps / 2^{k}$  и $\tilde b_k = b_k$ для любого  $k \in \N$ . Тогда для любого $t \in (a, b)$  верно
  \begin{align*}
-  [a, t) \subset \bigcup_{i_k \in F} [\tilde a_{i_k}, \tilde b_{i_k})
- \end{align*} (поменяли скобки). По предыдущему следствию:
+  [a,t] \subset \bigcup_{k=1}^{\infty} (\tilde a_k, \tilde b_k)
+ .\end{align*} Заметим, что в левой части стоит \textbf{компактное} множество. Тогда существует конечное $N \in \N$  такое, что
  \begin{align*}
-  t - a = &\mu([a, t)) \leqslant \sum_{i_k \in F}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} \mu([\tilde a_{i_k}, \tilde b_{i_k})) \leqslant \sum_{i_k \in I}^{} (b_{i_k} - a_{i_k}) + \sum_{k \in \N} \frac{\varepsilon}{2^k} \leqslant \\
-  \leqslant &\sum_{i \in I} \mu([a_i, b_i)) + \varepsilon
- \end{align*} для любого $ t < b $ и $ \varepsilon > 0 $. Устремим $ t \to b $ и $ \varepsilon \to 0 $.
+  \left[a, t\right) \subset \bigcup_{k=1}^{N} [\tilde a_k, \tilde b_k)
+ \end{align*} (здесь мы ещё поменяли скобки, всё в нужную сторону). По следствию \ref{corollary:upward_monotonicity_of_finite_additive_set_function} имеем
+ \begin{align*}
+  t - a &= \mu_0([a, t)) \leqslant \sum_{k=1}^{N} \mu_0([\tilde a_k, \tilde b_k)) \leqslant \\
+  &\leqslant \sum_{k=1}^{\infty} (\tilde b_k - \tilde a_k) = \sum_{k=1}^{\infty} \mu_0([a_k, b_k)) + \sum_{k=1}^{\infty} \frac{\eps}{2^{k}} \leqslant \\
+  &\leqslant \sum_{k=1}^{\infty} \mu_0([a_k, b_k)) + \eps
+ .\end{align*} 
+
+ Устремляя $t \to b$  и $\eps \to 0$  получаем неравенство в обратную сторону:
+ \begin{align*}
+  b - a \leqslant \sum_{k=1}^{\infty}  \mu_0([a_k, b_k))
+ .\end{align*}
 \end{proof}
