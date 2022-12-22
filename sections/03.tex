@@ -1,68 +1,36 @@
-\begin{enumerate}
- \setcounter{enumi}{2}
- \item Пусть $A \in \A^{\ast} \cap \A_{\nu}$ такое, что $\mu(A) < \infty$. Тогда надо показать $\nu(A) = \mu(A)$.
- \begin{align*}
-  \mu(A) = \mua(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu(P_k) \mid P_k \in \p \colon\; A \subset \bigcup_{k=1}^{\infty} P_k \right\}
- .\end{align*} Возьмём любой набор $\left\{ P_k \right\}$ такой, что $\bigcup_{k=1}^{\infty} P_k \supset A$. Тогда:
- \begin{align*}
-  \nu(A) \underbrace{\leqslant}_{\text{ так как оба множества } \in \A_{\nu}} \nu \left( \bigcup_{k=1}^{\infty} P_k \right) = \nu( \bigsqcup_{k=1}^{\infty}  \bigsqcup_{j=1}^{N_k} Q_{kj}) = \sum_{k=1}^{\infty} \underbrace{\sum_{j=1}^{N_k} \nu(Q_{kj})}_{\leqslant \nu(P_k)} \Rightarrow \\
-  \Rightarrow \nu(A) \leqslant \sum_{k=1}^{\infty}  \nu(P_k) \underbrace{=}_{\text{по условию} P_k \in \p} \sum_{k=1}^{\infty}  \mu(P_k)
- .\end{align*} Возьмём инфимум и получим:
- \begin{align*}
-  \nu(A) \leqslant \mu(A)
- .\end{align*} Это верно для любого $A \in \A^{\ast} \cap \A_{\nu}$.
+Далее мы покажем, что в достаточно частой ситуации странное условие $\mu(A) < \infty$ в пункте \ref{enum3:theorem:caratheodory} несущественно.
 
- Теперь возьмём $P \in \p$ и $A \in \A^{\ast} \cap \A_{\nu}$. Посмотрим на равенство
- \begin{align*}
-  \mu(P) = \mu(P \cap A^{c}) + \mu(P \cap A) \geqslant \nu(P \cap A^{c}) + \nu(P \cap A) = \nu(P) = \mu(P)
- .\end{align*} Значит, если $\mu(P)$ конечно, то все слагаемые конечные, и $\mu(P \cap A) = \nu(P \cap A)$ и $\mu(P \cap A^{c}) = \nu(P \cap A^{c})$: два строгих неравенства выглядят странно, но если бы одно из неравенств $\mu(P \cap A) \geqslant \nu(P \cap A)$, $\mu(P \cap A^{c}) \geqslant \nu(P \cap A^{c})$ было бы строгим, то мы пришли бы к противоречию.
-
- Так как $\mu(A) < \infty$, то $\forall \eps > 0 \colon\; \exists  \{P_{k}\}_{k=1}^{\infty} \subset \p,\; A \subset \bigcup_{k=1}^{\infty} P_k \colon\; $
- \begin{align*}
-	 \mu(A) + \eps \geqslant \sum_{k=1}^{\infty} \mu(P_k), \text{в частности: } \mu(P_k) < \infty, \quad \forall k \in \N
- .\end{align*}
- Тогда
- \begin{align*}
-  A = \bigcup_{k=1}^{\infty} (P_k \cap A)
- .\end{align*} Более того, используя лемму  о подчинённом разбиении, можно считать, что
- \begin{align*}
-  A = \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} (Q_{kj} \cap A)
- \end{align*}
- Теперь
- \begin{align*}
-  \mu(A) = \sum_{k,j} \mu(Q_{kj} \cap A) = \sum_{kj} \nu(Q_{kj} \cap A) = \nu(A)
- .\end{align*} Доказательство окончено.
-\end{enumerate}
 \begin{df}
- $\mu_0 \colon\; \p \to [0, \infty]$ --- \textit{$\sigma$-конечна} на полукольце $\p \subset 2^{X}$, если существуют $\{P_k\}_{k=1}^{\infty} \subset \p $ такое, что
+ Функция $\mu_0 \colon\, \p \to [0, \infty]$ на полукольце $\p \subset 2^{X}$ называется \textit{$\sigma$-конечной}, если существует счётный набор множеств $\{P_k\}_{k=1}^{\infty} \subset \p $ такой, что
  \begin{align*}
   X = \bigsqcup_{k=1}^{\infty} P_k
- \end{align*} и $\mu_0(P_k) < \infty$ для любого $k$.
+ \end{align*} и $\mu_0(P_k) < \infty$ для всех $k$.
 \end{df}
+\begin{exmpl*}
+ Функция $\mu_0 \colon\, \left[a, b\right) \mapsto b - a$ на полукольце ячеек $\p_1$  $\sigma$-конечна. Действительно,
+ \begin{align*}
+  \R = \bigsqcup_{k \in \Z}^{\infty} \left[k, k + 1\right), \quad \mu_0(\left[k, k + 1\right)) = 1
+ .\end{align*} 
+\end{exmpl*}
 \begin{df}
- Пусть $\mu$ --- мера на $\sigma$-алгебре $\A \subset 2^{X}, \mu$ называется \textit{$\sigma$-конечной}, если существует счётный набор $\{A_k\}_{k=1}^{\infty} \subset \A $ такой, что $X = \bigsqcup_{k=1}^{\infty} A_k $, $\mu(A_k) < \infty$.
+ Мера $\mu$ на $\sigma$-алгебре $\A \subset 2^{X}$ называется \textit{$\sigma$-конечной}, если существует счётный набор множеств $\left\{ A_k \right\}_{k=1}^{\infty} \subset \A$  такой, что
+ \begin{align*}
+  X = \bigsqcup_{k=1}^{\infty} A_k
+ \end{align*} и $\mu(A_k) < \infty$ для всех $k$.
 \end{df}
 \begin{crly}
  \label{corollary:sigma-finite-caratheodory-continuation-is-unique}
- Если в формулировке теоремы Каратеодори $\mu_0$ --- $\sigma$-конечна, то $\mu(A) = \nu(A)$ для любого $A \in \A^{\ast} \cap \A_{\nu}$ (даже если $\mu(A) = \infty$).
+ Если в формулировке теоремы \ref{theorem:caratheodory} Каратеодори функция $\mu_0$ $\sigma$-конечна, то $\mu(A) = \nu(A)$ для любого $A \in \A^{\ast} \cap \A_{\nu}$ (даже если $\mu(A) = \infty$).
 \end{crly}
 \begin{proof}
+ Разбиение
  \begin{align*}
-  A = \bigsqcup_{k=1}^{\infty} (A \cap P_k)
- ,\end{align*} где $P_k$ --- из определения $\sigma$-конечности. По условию  $\mu(P_k) < \infty$. Тогда
- \begin{align*}
-  \mu(A) = \sum_{k=1}^{\infty} \mu(A \cap P_k) = \sum_{k=1}^{\infty} \nu(A \cap P_k) = \nu(A)
- .\end{align*}
+  A = \bigsqcup_{k=1}^{\infty} (A \cap Q_k), \quad \mu(Q_k) < \infty
+ ,\end{align*} необходимое для финальной части доказательства пункта \ref{enum3:theorem:caratheodory} теоремы, можно теперь получить для любого $A$, даже если $\mu(A) = \infty$: можно просто взять $\{Q_{k}\}_{k=1}^{\infty} $ из определения $\sigma$-конечности функции $\mu_0$.
 \end{proof}
-\begin{df}
- Пусть $\mu_0 \colon\; \p_1 \to [0, \infty)$ такова, что
- \begin{align*}
-  \mu_0 \colon\; [a, b) \to b - a
- .\end{align*} Пусть $\lambda_1$ --- это мера  $\mu$ из теоремы Каратеодори для $\mu_0$, $\A_{\lambda_1}$ --- это $\sigma$-алгебра $\A^{\ast}$ из теоремы Каратеодори. Тогда $\lambda_1$ --- это \textit{мера Лебега}, $\A_{\lambda_1}$ --- \textit{$\sigma$-алгебра Лебега}. А множества из $\A_{\lambda_1}$ называются \textit{множествами, измеримыми по Лебегу}.
-\end{df}
-\begin{df}
- Мера $\mu$ в теореме Каратеодори называется \textit{стандартным продолжением}.
-\end{df}
+
+Следующее замечание бывает крайне полезно: для меры-стандартного продолжения по теореме Каратеодори есть явная формула. 
+
 \begin{remrk}[формула для вычисления $\mu(A)$]
  \label{remark:measure_explicit_formula}
  \begin{align*}
@@ -70,54 +38,69 @@
  \end{align*}
  для стандартного продолжения $\mu_{0}$ на $\A^{\ast}$.
 \end{remrk}
-\newcommand{\B}{\ensuremath \mathcal{B}}
-\begin{df}
- \textit{Борелевская оболочка} множества $E$ --- наименьшая $\sigma$-алгебра, содержащая $E$. Обозначение: $\B(E)$.
-\end{df}
-\begin{df}
- Если $(X, \tau)$ --- топологическое пространство, то $\B(X)$ --- \textit{борелевская оболочка топологии}. 
 
- Для борелевской оболочки $\R$ есть стандартное обозначение $\B_1 = \B(R)$ --- наименьшая $\sigma$-алгебра, содержащая все открытые множества (и замкнутые! по аксиоме симметричности).
+Теперь вернёмся к важнейшему примеру --- длина на $\R$.
+
+\begin{df}
+ Пусть $\mu_0 \colon\, \left[a, b\right) \mapsto b - a$  --- функция длины на полукольце ячеек $\p_1$. Стандартное продолжение $\lambda_1$ функции $\mu_0$ на $\sigma$-алгебру Каратеодори называется \textit{мерой Лебега}. Сама $\sigma$-алгебра Каратеодори называется \textit{$\sigma$-алгеброй Лебега} и обозначается $\A_{\lambda_1}$. Множества из $\A_{\lambda_1}$ называются \textit{измеримыми по Лебегу}.
 \end{df}
+
+Отметим, что по теореме \ref{theorem:cell_length_has_sigma_additivity} длина ячейки счётно-аддитивна, поэтому теорема Каратеодори применима.
+
 \begin{lm}
+ \label{lemma:open_subset_of_R_is_disjoint_countable_union_of_intervals}
+ Любое открытое множество $G \subset \R$ может быть разбито на счётное число интервалов:
  \begin{align*}
-	 \B_1 = \B( \p_1 ) \subset \A_{\lambda_1} \underbrace{\neq}_{\text{задачка}} 2^{\R}
+  G = \bigsqcup_{k=1}^{\infty} I_k, \quad I_k = (a_k, b_k),\; a_k \leqslant b_k
  .\end{align*}
 \end{lm}
 \begin{proof}
- Включение $\B(\p_1) \subset \A_{\lambda_1}$ верно, так как $\p_1 \subset \A_{\lambda_1}$ (по условию теоремы Каратеодори) и $\A_{\lambda_1}$ --- это $\sigma$-алгебра.
+ Рассмотрим следующее отношение эквивалентности на $G$: для $x, y \in G$ положим $x \sim y$, если существует интервал $I \subset G$ такой, что $x, y \in I$. Легко видеть, что это действительно отношение эквивалентности, поэтому множество $G$ разбивается на классы эквивалентности.
 
- Равенство. Сначала докажем, что $\B_1 \subset \B(\p_1)$. Это верно, так как любое открытое $O \subset \R$ представимо в виде
+ Каждый класс эквивалентности $C$ является связным (выпуклым): если $a, b \in C$, то и все точки между $a$ и $b$ тоже лежат в $C$. Кроме того, $C$ --- открытое множество, потому что для любой точки $x \in G$ существует окрестность $G_x \subset G$, которая по-совместительству обязана лежать в $C$. Тогда $C$ является интервалом. При этом, классов эквивалентности не более, чем счётно, потому что внутри каждого класса есть рациональное число.
+\end{proof}
+
+\begin{lm}
+ $ \B_1 = \B( \p_1 ) \subset \A_{\lambda_1} $.
+\end{lm}
+
+Эта лемма показывает, что очень широкий класс подмножеств $\R$ является измеримым по Лебегу. В частности, все открытые и замкнутые подмножества $\R$ измеримы по Лебегу.
+
+\begin{proof}
+ Включение $\B(\p_1) \subset \A_{\lambda_1}$ верно, так как по теореме \ref{theorem:caratheodory} Каратеодори $\A_{\lambda_1}$ содержит $\p_1$, а $\B(\p_1)$ --- наименьшая $\sigma$-алгебра, содержащая $\p_1$.
+
+ Теперь докажем равенство $\B_1 = \B(\p_1)$. Сначала докажем включение $\B_1 \subset \B(\p_1)$, для этого докажем, что любое открытое множество $G \subset \R$ лежит в $\B(\p_1)$. По лемме \ref{lemma:open_subset_of_R_is_disjoint_countable_union_of_intervals} $G$ представимо в виде счётного объединения интервалов. В свою очередь, каждый интервал представим в виде счётного объединения ячеек:
  \begin{align*}
-  O = \bigcup_{k=1}^{\infty} I_k, \quad I_k = (a_k, b_k),\; a_k \leqslant b_k
- ,\end{align*} так как $I_k$ --- класс эквивалентности по отношению $x \sim y \iff \exists I \subset O $ --- интервал, такой, что $x, y \in I$.
+  (a_k, b_k) = \bigcup_{n=1}^{\infty} \left[a_k + 1 / n, b_k\right)
+ .\end{align*} По этой причине $G$ обязано лежать в $\B(\p_1)$ как счётное объединение ячеек.
 
- Теперь напишем, что
- \begin{align*}
-  (a_k, b_k) = \bigcup_{n=1}^{\infty} \left[a_k + \frac{1}{n}, b_k\right) \in \B(P_1) \implies O \in \B(\p_1)
- .\end{align*} Значит, $\B_1 \subset \B(\p_1)$, так как $\B_1$ --- наименьшая $\sigma$-алгебра.
-
- В обратную сторону: $\B(\p_1) \subset \B_1$, так как для любой ячейки $[a, b)$ имеет место равенство:
+ Включение в обратную сторону $\B(\p_1) \subset \B_1$ верно, так как для любой ячейки $[a, b)$ имеет место равенство
  \begin{align*}
   [a, b) = (a - 1, b) \setminus (-\infty, a) \in \B_1
- .\end{align*} Следовательно, $\B(\p_1) \subset \B_1$.
+ .\end{align*}
 \end{proof}
-\begin{exmpl}[про меру Лебега]\
+
+\begin{df*}
+ Множества из $\B_1$ называются \textit{измеримыми по Борелю}.
+\end{df*}
+
+\begin{exmpl}[мера Лебега некоторых множеств]\
  \begin{enumerate}
-  \item $x \in \R \implies \left\{ x \right\} \in \B_1 \subset \A_{\lambda_1}$, так как точка --- замкнутая множества. Померим длину точки:
+  \item Найдём длину точки $x \in \R$. Множество $\left\{ x \right\}$ измеримо по Лебегу как замкнутое подмножество $\R$. Для любого $\eps > 0$ верно
    \begin{align*}
-    0 \leqslant \lambda_1(\left\{ x \right\}) \leqslant \lambda_1([x, x + \varepsilon)) = \varepsilon \quad \forall \eps > 0
+    0 \leqslant \lambda_1(\left\{ x \right\}) \leqslant \lambda_1([x, x + \eps)) = \eps
    .\end{align*} Значит, $\lambda_1(\left\{ x \right\}) = 0$.
-  \item Отрезок $[0, 1] \in \B_1$ (замкнутый). Его длина равна:
+
+  \item Найдём длину отрезка $[a,b]$. Отрезок измерим по Лебегу как замкнутое подмножество $\R$. Его длина равна:
    \begin{align*}
-    \lambda_1([0,1]) = \lambda_1([0, 1) \sqcup \left\{ 1 \right\}) = 1 + 0 = 1
+    \lambda_1([a,b]) = \lambda_1([a,b) \sqcup \left\{ b \right\}) = b - a + 0 = b - a
    .\end{align*}
-  \item $A$ открытое и непустое $ \implies A \in \B_1$ и $\lambda_1(A) > 0$.
+  \item Если $A$ открытое и непустое, то $\lambda_1(A) > 0$.
    \begin{proof}
-    Возьмём $x \in A$. Тогда существует $\eps > 0$ такой, что $(x - \eps, x + \eps) \subset A \implies [x, x + \eps) \subset A$. Тогда
+    Возьмём любую точку $x \in A$. Тогда существует $\eps > 0$ такой, что $(x - \eps, x + \eps) \subset A \implies [x, x + \eps) \subset A$. Тогда
     \begin{align*}
-     \eps = \lambda_1( [x, x + \eps) ) \leqslant \lambda_1(A) \implies \lambda_1(A) > 0
-    .\end{align*}
+     \lambda_1(A) \geqslant \lambda_1([x,x+\eps)) = \eps
+    .\end{align*} 
    \end{proof}
   \item $\lambda_1(\Q) = 0$.
    \begin{proof}
@@ -125,10 +108,11 @@
      \lambda_1(\Q) = \sum_{x \in \Q} \lambda_1(\left\{ x \right\}) = 0
     .\end{align*}
    \end{proof}
-  \item \begin{align*}
-		  \lambda_1( \left\{ x \in [0,1] \mid x \notin \Q \right\} ) = \underbrace{\lambda_1(\Q \cap [0, 1])}_{\leq \lambda_1(\Q)} + \lambda_1(E) = \\
-	= 0 + \lambda_1(E) = \underbrace{\lambda_1([0, 1])}_{=1} \Rightarrow \lambda_1(E) = 1
-   .\end{align*}
+  \item Рассмотрим $E = \left\{ x \in [0,1] \mid x \notin \Q \right\}$. Тогда
+   \begin{align*}
+    &1 = \lambda_1([0,1]) = \lambda_1(E \sqcup ([0,1] \cap Q)) = \lambda_1(E) + 0 \\
+    \implies &\lambda_1(E) = 1.
+   \end{align*} 
   \item Если есть $\{E_{k}\}_{k=1}^{\infty} $ такие, что $\lambda_1(E_k) = 0$, то
    \begin{align*}
     \lambda_1 \left( \bigcup_{k=1}^{\infty} E_k \right) = 0
@@ -142,70 +126,167 @@
 \begin{figure}[ht]
     \centering
 	\incfig{пояснение-обобщенного-канторова-множества}
-	\caption{Пояснение обобщенного Канторова множества}
+	\caption{Пояснение обобщенного канторова множества}
 	\label{fig:пояснение-обобщенного-канторова-множества}
 \end{figure}
 
-	  Шаг 0: из интервала $(0, 1)$ выкидываем интервал длины $a_0$. \\
-	  Шаг 1: из оставшегося множества выкидываем $2^{1}$ открытых интервала длины $a_1$. \\
-	  Шаг 2: выкидываем $2^{2}$ интервалов длины $a_2$. \\
-	  Здесь $a_0, a_1, a_2, \ldots \geqslant 0$ достаточно маленькие чтобы можно было выкинуть:
-	  
+\begin{enumerate}[start=0,label={Шаг \arabic*:}]
+ \item  из отрезка $[0,1]$ выкинем серединный интервал длины $a_0$.
+ \item из оставшихся двух отрезков выкинем $2$ серединных интервала длины $a_1$.
+ \item из оставшихся четырёх отрезков выкинем $2^{2}$  серединных интервала длины $a_2$.
+\end{enumerate} И так далее.
+
+Длины $a_0, a_1, a_2, \ldots \geqslant 0$ должны быть достаточно маленькими чтобы можно их было выкидывать. Для этого необходимо и достаточно условие
+\begin{align}
+ \label{equation:example:cantor_set_length_restriction}
+ \sum_{n=0}^{\infty} 2^{n} a_n \leqslant 1
+.\end{align} Для стандартного канторова множества $a_n = \frac{1}{3^{n+1}}$ --- каждый раз из отрезков выкидываем среднюю треть. Проверим \eqref{equation:example:cantor_set_length_restriction}:
 \begin{align*}
-    \sum_{n=0}^{\infty} 2^{n} a_n \leqslant 1
-   .\end{align*} Для стандартного Канторова множества $a_n = \frac{1}{3^{n+1}}$, проверим:
-   \begin{align*}
-    \sum_{n=0}^{\infty} \frac{2^{n}}{3^{n+1}} = \frac{1}{3} \sum_{n=0}^{\infty} \left( \frac{2}{3} \right)^{n} = \frac{1}{3} \cdot \frac{1}{1 - \frac{2}{3}} = 1
-   .\end{align*} Если взять $a_n = \frac{1}{4^{n+1}}$, то
-   \begin{align*}
-    \sum_{n=0}^{\infty} \frac{2^{n}}{4^{n+1}} = \frac{1}{4} \cdot \frac{1}{1 - \frac{2}{4}} = \frac{1}{2}
-   .\end{align*} Пусть $C_{\left\{ a_n \right\}}$ --- обобщённое Канторово множество. Утверждается, что оно \textit{измеримо по Борелю}: $C_{\left\{ a_n \right\}} \in \B_1$, так как оно замкнуто (или, например, мы счётное число раз выкидываем интервалы). С другой стороны,
-   \begin{align*}
-    \lambda_1 \left( C_{\left\{ a_n \right\}} \right)
-    & = \lambda_{1} \left( [0, 1] \setminus \bigsqcup_{n=0}^{\infty} \bigsqcup_{k=1}^{2^{n}} I_{n,k} \right) = \\
-    & =  1 - \sum  \lambda_1(I_{n,k}) = 1 - \sum_{n=0}^{\infty} 2^{n} a_n
-   .\end{align*} Вывод: стандартное Канторово множество несчётное, но его длина равна нулю! При этом:
-   \begin{align*}
-    \lambda_1 \left( C_{\left\{ \frac{1}{4^{n+1}} \right\}} \right) = \frac{1}{2} > 0
-   .\end{align*} Такие Канторовы множества с ненулевой длиной называются \textit{толстыми Канторовыми множествами}. Интересный факт: замыкание толстого Канторово множества не содержит интервалов, но имеет положительную длину, в отличие от $\Q$!
- \end{enumerate}
+ \sum_{n=0}^{\infty} \frac{2^{n}}{3^{n+1}} = \frac{1}{3} \sum_{n=0}^{\infty} \left( \frac{2}{3} \right)^{n} = \frac{1}{3} \cdot \frac{1}{1 - \frac{2}{3}} = 1
+.\end{align*} Можно, например, взять $a_n = \frac{1}{4^{n+1}}$ (каждый раз выкидывать среднюю четверть из отрезков). Тогда
+\begin{align*}
+ \sum_{n=0}^{\infty} \frac{2^{n}}{4^{n+1}} = \frac{1}{4} \sum_{n=0}^{\infty} \left(\frac{2}{4}\right)^{n} = \frac{1}{4} \cdot \frac{1}{1 - \frac{2}{4}} = \frac{1}{2}
+.\end{align*}
+
+Обобщённое канторово множество с последовательностью $\left\{ a_n \right\}_{n=0}^{\infty}$ обозначим $C_{\left\{ a_n \right\}}$. Оно \textit{измеримо по Борелю}: $C_{\left\{ a_n \right\}} \in \B_1$, так как оно замкнуто (или, например, мы счётное число раз выкидываем интервалы из отрезка).
+
+Вычислим длину обобщённого канторова множества $C_{\left\{ a_n \right\}}$:
+\begin{align*}
+ \lambda_1 \left( C_{\left\{ a_n \right\}} \right)
+ & = \lambda_{1} \left( [0, 1] \setminus \bigsqcup_{n=0}^{\infty} \bigsqcup_{k=1}^{2^{n}} I_{n,k} \right) = \\
+ &=  1 - \sum_{n=0}^{\infty} \sum_{k=1}^{2^{n}} \lambda_1(I_{n,k}) = \\
+ &= 1 - \sum_{n=0}^{\infty} 2^{n} a_n
+.\end{align*} Таким образом, стандартное Канторово множество несчётное, но его длина равна нулю!
+
+Длина канторова множества с $a_n = \frac{1}{4^{n+1}}$ равна
+\begin{align*}
+ \lambda_1 \left( C_{\left\{ \frac{1}{4^{n+1}} \right\}} \right) = \frac{1}{2}
+.\end{align*} Канторовы множества с ненулевой длиной называются \textit{толстыми канторовыми множествами}. Интересный факт: толстое канторово множество не содержит интервалов, но имеет положительную длину, в отличие от $\Q$!
+\end{enumerate}
 \end{exmpl}
+
+Есть ещё одно важное свойство мер, которое, к счастью, выполняется для меры-стандартного продолжения.
+
 \begin{df}
- Пусть  $\mu$ --- мера на $\sigma$-алгебре $\A$. $\mu$ называется \textit{полной}, если для любого множества $A \in \A$ такого, что $\mu(A) = 0$ и для любого  $B \subset A$ имеет место $B \in \A$.
+ Мера $\mu$ на $\sigma$-алгебре $\A$ называется \textit{полной}, если для любого множества $A \in \A$ такого, что $\mu(A) = 0$ и для любого  $B \subset A$ имеет место $B \in \A$.
 \end{df}
 \begin{remrk}
  Мера $\mu$ в теореме Каратеодори полна.
 \end{remrk}
 \begin{proof}
- Пусть $A \in \A^{\ast}$ такое, что $\mu(A) = 0$. Пусть  $B \subset A$. Рассмотрим произвольное $E \subset X$. Тогда:
+ Пусть $A \in \A^{\ast}$ такое, что $\mu(A) = 0$. Пусть  $B \subset A$. Проверим принадлежность $B \in \A^{\ast}$ по определению. Рассмотрим произвольное $E \subset X$. Тогда:
  \begin{align*}
   \mua(E) & \leqslant \mua(E \cap B) + \mua(E \cap B^{c}) \leqslant \\
-  & \leqslant \mua(E \cap A) + \mua(E) \leqslant \mua(A) + \mua(E) \leqslant 0 + \mua(E)
+  & \leqslant \mua(E \cap A) + \mua(E) \leqslant \\
+  & \leqslant \mua(A) + \mua(E) \leqslant \\
+  & \leqslant 0 + \mua(E)
  .\end{align*} Значит, $\mua(E) = \mua(E \cap B) + \mua(E \cap B^{c})$ для любого $E \subset X$, и следовательно, $B \in \A^{\ast}$.
 \end{proof}
+
+Следующие два утверждения полезны: они позволяют совершить предельный переход по мере, если есть монотонная последовательность множеств.
+
+\begin{claim}[непрерывность меры сверху]
+ \label{claim:upward_continuity_of_measure}
+ Пусть $\mu$ --- мера на $\sigma$-алгебре $\A \subset 2^{X}$. Пусть  $E_1 \subset E_2 \subset \ldots$  --- последовательность возрастающих измеримых множеств $E_k \in \A$, $E = \bigcup_{k=1}^{\infty} E_k$  --- их объединение. Тогда
+ \begin{align*}
+  \mu(E) = \lim_{n \to \infty} \mu(E_n) 
+ .\end{align*} 
+\end{claim}
+\begin{proof}
+ Рассмотрим разностную последовательность множеств:
+ \begin{align*}
+  F_1 &= E_1 \\
+  F_2 &= E_2 \setminus E_1 \\
+  F_3 &= E_3 \setminus E_2 \\
+   &\;\;\vdots
+ \end{align*} Все $F_k \in \A$. Кроме того,
+ \begin{align*}
+  E = \bigsqcup_{k=1}^{\infty} F_k
+ .\end{align*} Тогда по счётной и конечной аддитивности меры имеем равенство:
+ \begin{align*}
+  \mu(E) = \sum_{k=1}^{\infty} \mu(F_k) = \lim_{n \to \infty} \sum_{k=1}^{n} \mu(F_k) = \lim_{n \to \infty} \mu(E_k)  
+ .\end{align*}
+\end{proof}
+\begin{claim}[непрерывность меры снизу]
+ \label{claim:downward_continuity_of_measure}
+ Пусть $\mu$ --- мера на $\sigma$-алгебре $\A \subset 2^{X}$. Пусть $E_1 \supset E_2 \supset \ldots $ --- последовательность убывающих измеримых множеств $E_k \in \A$, причём $\mu(E_1) < \infty$. Пусть $E = \bigcap_{k=1}^{\infty} E_k$  --- их пересечение. Тогда
+ \begin{align*}
+  \mu(E) = \lim_{n \to \infty} \mu(E_k) 
+ .\end{align*} 
+\end{claim}
+\begin{proof}
+ Перейдём к дополнению и сведём к непрерывности меры сверху. Рассмотрим множества $F_k = E_1 \setminus E_k$. Тогда $F_1 \subset F_2 \subset \ldots$ и 
+ \begin{align*}
+  F = \bigcup_{k=1}^{\infty} F_k = E_1 \setminus E
+ .\end{align*} В силу того, что $\mu(E_1) < \infty$, имеем $\mu(F_k) = \mu(E_1) - \mu(E_k)$, а также $\mu(F) = \mu(E_1) - \mu(E)$. Тогда по непрерывности меры сверху
+ \begin{align*}
+  \mu(E_1) - \mu(E) = \mu(F) = \lim_{n \to \infty} \mu(F_n)  = \mu(E_1) - \lim_{n \to \infty} \mu(E_n) 
+ ,\end{align*} и, следовательно,
+ \begin{align*}
+  \mu(E) = \lim_{n \to \infty} \mu(E_n) 
+ .\end{align*} 
+\end{proof}
+\begin{exmpl*}
+ Непрерывность меры снизу может быть не верна, если $\mu(E_1) = \infty$. Например,
+ \begin{align*}
+  E_n = \bigcup_{k \in \Z} \left[k, k + 1 / n \right)
+ .\end{align*} Тогда $E_1 \supset E_2 \supset \ldots$ и $\mu(E_n) = \infty$  для любого $n$, но пересечение
+ \begin{align*}
+  \bigcap_{n=1}^{\infty} E_n = \Z
+ \end{align*} имеет меру нуль.
+\end{exmpl*}
+
 \section{Измеримые функции. Теорема об аппроксимации.}
+
+Начиная с этого параграфа мы будем изучать функции, которые могут принимать отрицательные значения. В связи с этим введём ещё одно обозначение.
+
 \begin{df}
- $(X, \A)$ --- \textit{измеримое пространство}, если  $\A$ ---  $\sigma$-алгебра подмножеств $X$.
+ \label{definition:extended_reals}
+ За $[-\infty, +\infty]$ обозначим множество $\R$ с двумя дополнительными элементами: $+\infty$ и $-\infty$. На это множество можно продолжить отношение порядка с $\R$: для каждого $x \in \R$ положим
+ \begin{align*}
+  -\infty < x < +\infty
+ ,\end{align*} а также $-\infty < +\infty$.
+
+ Отметим, что операции сложения и умножения в общем случае продолжить нельзя: например, нет разумного способа определить $-\infty + (+\infty)$. Однако, их можно продолжить, если запретить складывать бесконечности разных знаков. Для остальных случаев правила такие:
+ \begin{itemize}
+  \item $a + (\pm \infty) = \pm \infty$, $a \in \R$.
+  \item $+\infty + (+\infty) = +\infty$, $-\infty + (-\infty) = -\infty$.
+  \item 
+   \begin{align*}
+    a \cdot (+\infty) = \begin{cases}
+     +\infty, \text{ если } a > 0  \\
+     0, \text{ если } a = 0 \\
+     -\infty, \text{ если } a < 0
+    \end{cases} \quad
+    a \cdot (-\infty) = \begin{cases}
+     -\infty, \text{ если } a > 0  \\
+     0, \text{ если } a = 0 \\
+     +\infty, \text{ если } a < 0
+    \end{cases} 
+   \end{align*} 
+ \end{itemize}
 \end{df}
-В этом параграфе все функции заданы на некотором измеримом пространстве.
+
 \begin{df}
- Функция $f \colon\, X \to [-\infty, \infty] $ \textit{измерима} (относительно $\A$), если для любого $a \in \R$ верно
+ \textit{Измеримым пространством} $(X, \A)$ называется множество $X$ с заданной на нём $\sigma$-алгеброй $\A \subset 2^{X}$.
+\end{df}
+В этом параграфе все функции будут заданы на некотором измеримом пространстве.
+\begin{df}
+ \label{definition:measurable_function}
+ Функция $f \colon\, X \to [-\infty, \infty] $ называется \textit{измеримой} (относительно $\A$), если для любого $a \in \R$ прообраз луча $(a, +\infty]$ измерим:
  \begin{align*}
   f^{-1}((a, +\infty]) \in \A
  .\end{align*}
 \end{df}
 \begin{remrk}
- В определении можно заменить $(a, +\infty]$, например, на  $[a, +\infty]$:
+ В определении \ref{definition:measurable_function} можно заменить луч $(a, +\infty]$, например, на  $[a, +\infty]$:
  \begin{align*}
-  f^{-1}([a, +\infty]) = \bigcap_{n=1}^{\infty} f^{-1}\left(\left(a - \frac{1}{n}, +\infty \right)\right) \\
-  f^{-1}((a +\infty]) = \bigcup_{n=1}^{\infty}  f^{-1} \left( [a + \frac{1}{n}, +\infty] \right)
- .\end{align*}
+  f^{-1}([a, +\infty]) &= \bigcap_{n=1}^{\infty} f^{-1}\left(\left(a - \frac{1}{n},\; +\infty \right]\right), \\
+  f^{-1}((a, +\infty]) &= \bigcup_{n=1}^{\infty}  f^{-1} \left( \left[a + \frac{1}{n},\; +\infty\right] \right)
+ .\end{align*} Можно также заменить на $[-\infty, a)$ или $[-\infty, a]$(тут нужно перейти к дополнению).
 \end{remrk}
 \begin{crly}
- Прообраз любой точки измерим, если $f$ измеримо:
- \begin{align*}
-  f^{-1}(\left\{ x \right\}) \in \A
- \end{align*} для любой точки $x \in [-\infty, +\infty]$.
+ Если функция $f$ измерима, то прообраз любой точки $x \in [-\infty, +\infty]$ измерим: $f^{-1}(\left\{ x \right\}) \in \A$.
 \end{crly}
 \begin{proof} Для $x \in \R$:
  \begin{align*}
@@ -213,17 +294,16 @@
  .\end{align*}  Для $x = +\infty$:
  \begin{align*}
   f^{-1} \left( \left\{ +\infty \right\} \right) = \bigcap_{n=1}^{\infty} f^{-1} \left( [n, +\infty] \right)
- .\end{align*} Сначала покажем для $[-\infty, +\infty]$:
+ .\end{align*} Для $x = -\infty$:
  \begin{align*}
-  \bigcup_{n=1}^{\infty} f^{-1}([-n, +\infty]) = f^{-1}( (-\infty, +\infty] ) \\
-  f^{-1}(\left\{ -\infty \right\}) \sqcup f^{-1} \left( (-\infty, +\infty] \right) = X
- .\end{align*}
+  f^{-1}(\left\{ -\infty \right\}) = \bigcap_{n=1}^{\infty} f^{-1}([-\infty, -n])
+ .\end{align*} 
 \end{proof}
+
 \begin{crly}
- Для любого $[a, b)$
- \begin{align*}
-  f^{-1}([a, b)) \in \A
- ,\end{align*} если $f$ измерима.
+ \label{corollary:preimage_of_cell_in_measurable_function_is_measurable}
+ Если функция $f$ измерима, то прообраз любой ячейки $[a, b)$ измерим:
+ $ f^{-1}([a, b)) \in \A $.
 \end{crly}
 \begin{proof}
  \begin{align*}
@@ -231,71 +311,119 @@
  .\end{align*}
 \end{proof}
 \begin{thm}
- Пусть есть функция $f \colon\, X \to [-\infty, +\infty] $ измерима. Тогда для любого $E \in \B_1$ верно
- \begin{align*}
-  f^{-1}(E) \in \A
- .\end{align*}
+ Пусть функция $f \colon\, X \to [-\infty, +\infty] $ измерима. Тогда для любого $E \in \B_1$ верно $ f^{-1}(E) \in \A $.
 \end{thm}
 \begin{proof}
- Заведём специально обученную $\sigma$-алгебру. Рассмотрим
+ Заведём специально обученную $\sigma$-алгебру:
  \begin{align*}
   \B = \left\{ A \subset \R \mid f^{-1}(A) \in \A \right\}
- .\end{align*} Это $\sigma$-алгебра (легко проверить все аксиомы):
- \begin{itemize}
-  \item $\R \in \B$
-  \item $\varnothing \in \B$
-  \item $A_k \in \B$, тогда
+ .\end{align*} Проверим аксиомы $\sigma$-алгебры:
+ \begin{enumerate}
+  \item $\varnothing \in \B$, так как $f^{-1}(\varnothing) = \varnothing$.
+  \item Пусть $\{A_{k}\}_{k=1}^{\infty} \subset \B $, тогда
    \begin{align*}
     f^{-1}\left(\bigcap_{k=1}^{\infty} A_k \right) = \bigcap_{k=1}^{\infty} f^{-1}(A_k) \in \A \implies \bigcap_{k=1}^{\infty} A_k \in \B
-   \end{align*}
-   Но $\p_1 \subset \B$ (см. следствия). Тогда $\B_1 = \B(\p_1) \subset \B$. Значит, для любого  $A \in \B_1$ $f^{-1}(A) \in \A$.
+   .\end{align*}
+  \item Пусть $A \in \B$. Тогда
+   \begin{align*}
+    f^{-1}(A^{c}) = f^{-1}(\R \setminus A) = f^{-1}(\R) \setminus f^{-1}(A) \in \B \implies A^{c} \in \B
+   .\end{align*} 
+ \end{enumerate}
+ Но по следствию \ref{corollary:preimage_of_cell_in_measurable_function_is_measurable} $\p_1 \subset \B$. Тогда $\B_1 = \B(\p_1) \subset \B$. Значит, для любого  $A \in \B_1$ $f^{-1}(A) \in \A$.
+\end{proof}
+Иными словами, измеримая функция --- это та, у которой прообраз измеримого по Борелю множества измерим.
+
+Пока-что довольно трудно что-то сказать про измеримые функции: например, мы не знаем, измерима ли сумма двух измеримых функций. Однако, мы можем показать измеримость предела последовательности измеримых функций.
+
+\begin{lm}
+ \label{lemma:limit_of_measurable_functions_is_measurable}
+ Пусть $\{f_{n}\}_{n=1}^{\infty} $ --- последовательность измеримых функций $f_n \colon\; X \to [-\infty, +\infty]$. Тогда функции
+ \begin{align*}
+  \sup_{n \geqslant 1} f_n(x), \quad \inf_{n \geqslant 1} f_n(x), \quad \limsup_{n \to \infty} f_{n}(x), \quad \liminf_{n \to \infty} f_n(x)
+ \end{align*} измеримы. Также, если существует предел  
+ \begin{align*}
+  \lim_{n \to \infty} f_n(x)
+ \end{align*} для любой точки $x \in X$, то $\lim f_n(x)$ измерим.
+\end{lm}
+\begin{proof}\
+ \begin{itemize}
+  \item $f(x) = \sup f_n(x)$:
+   \begin{align*}
+    f^{-1}(\left(a, +\infty\right]  ) = \bigcup_{n=1}^{\infty} f^{-1}_n(\left(a, +\infty\right]  )
+   .\end{align*} 
+  \item $f(x) = \inf f_n(x)$:
+   \begin{align*}
+    f^{-1}(\left[-\infty, a\right)) = \bigcup_{n=1}^{\infty} f^{-1}_n(\left[-\infty, a\right))
+   .\end{align*} 
+  \item $f(x) = \limsup\limits_{n\to \infty} f_n(x)$:
+   \begin{align*}
+    f(x) = \limsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
+   .\end{align*} 
+  \item $f(x) = \liminf\limits_{n \to \infty} f_n(x)$ аналогично.
+  \item Если $f(x) = \lim\limits_{n \to \infty} f_n(x)$ существует, то $f = \limsup f_n = \liminf f_n$, а они измеримы.
  \end{itemize}
 \end{proof}
-Иными словами, измеримая функция --- это та, у которой прообраз измеримого множества измерим(по Борелю).
+
+Чтобы продолжить дальше, мы определим класс \textit{простых} функций. Многие теоремы и конструкции в теории меры будут сначала доказаны/построены для простых функций, а затем продолжены до класса измеримых функций.
+
 \begin{df}
- Функция $f \colon\; X \to \R$ называется \textit{простой}, если она измерима и принимает конечное число значений.
+ Функция $f \colon\; X \to \R$ на измеримом пространстве $(X, \A)$ называется \textit{простой}, если она измерима и принимает конечное число значений.
 \end{df}
+
+Важное замечание: мы считаем, что простая функция не может принимать значения $\pm \infty$.
+
 \begin{remrk}
  Каждая простая функция $f$ имеет вид
  \begin{align*}
   f = \sum_{k=1}^{N} c_k \chi_{A_k}
- \end{align*} для некоторых $A_k \in \A$. Здесь
+ ,\end{align*} где $X = \bigsqcup_{k=1}^{N} A_k $ --- разбиение измеримого пространства на измеримые множества $A_k \in \A$, а $c_k \in \R$ --- коэффициенты. $\chi_A$ здесь обозначает характеристическую функцию множества $A$:
  \begin{align*}
   \chi_A(x) = \begin{cases}
-   1, \text{ если } x \in A \\
-   0, \text{ иначе }
+   1, \text{ если } x \in A, \\
+   0, \text{ иначе. }
   \end{cases}
- .\end{align*}
+ \end{align*}
 \end{remrk}
 \begin{proof}
+ По измеримости $f$ принимает конечное число значений:
  \begin{align*}
   f(X) = \{c_{k}\}_{k=1}^{N}
- .\end{align*} Тогда
+ .\end{align*} Тогда положим
  \begin{align*}
   A_k = f^{-1} \left( \left\{ c_k \right\} \right) \in \A
  .\end{align*}
 \end{proof}
-Идея Лебега: нужно любую измеримую функцию приближать простыми.
+
 \begin{lm}
- Пусть функции $f_n \colon\; X \to [-\infty, +\infty]$ измеримы. Тогда $\sup f_n$, $\inf f_n$,  $\limsup f_n$, $\liminf f_n$ измеримы. Также, если существует предел  $\lim_{n \to \infty} f_n(x)$ для любой точки $x \in X$, то $\lim f_n$ измерим.
+ \label{lemma:common_small_partition_of_simple_functions}
+ Пусть функции $f$, $g$ простые на измеримом пространстве $(X, \A)$. Тогда существует общее мелкое разбиение $X = \bigsqcup_{k=1}^{K} E_k$, $E_k \in \A$ такое, что обе функции имеют вид
+ \begin{align*}
+  f = \sum_{k=1}^{K} u_k \chi_{E_k}, \quad g = \sum_{k=1}^{K} v_k \chi_{E_k}
+ .\end{align*} 
 \end{lm}
 \begin{proof}
- $f(x) = \sup f_n(x)$:
+ Пусть
  \begin{align*}
-  f^{-1}((a, +\infty]) = \bigcup_{n=1}^{\infty} f^{-1}_n( (a, +\infty] )
- .\end{align*} $f(x) = \inf f_n(x)$:
+  f &= \sum_{i=1}^{N} c_i \chi_{A_i}, \quad X = \bigsqcup_{i=1}^{N} A_i,\; A_i \in \A, \\
+  g &= \sum_{i=1}^{M} d_i \chi_{B_i}, \quad X = \bigsqcup_{i=1}^{M} B_i,\; B_i \in \A
+ .\end{align*} Общее мелкое разбиение имеет вид
  \begin{align*}
-  f^{-1} \left( [-\infty, a) \right) = \bigcup_{n=1}^{\infty} f^{-1}_n \left( [-\infty, a) \right)
- .\end{align*}  $f(x) = \limsup f_n(x)$:
- \begin{align*}
-  f(x) = \limsup f_n(x) = \displaystyle\lim_{N \to \infty} \underbrace{\sup_{n \geqslant N} f_n(x)}_{\text{ убывает } \forall x \in X} = \inf_{N \geqslant 1} \left( \sup_{n \geqslant N} f_n(x) \right)
- .\end{align*} Следовательно, $\limsup f_n$ измерим. $\liminf$ аналогично.
-
- Пусть теперь $f(x) = \lim f_n(x)$ существует. Тогда
- \begin{align*}
-  f = \limsup f_n = \liminf f_n
- ,\end{align*} а они измеримы.
+  X = \bigsqcup_{i=1}^{N} \bigsqcup_{j=1}^{M} (A_i \cap B_j)
+ .\end{align*} Каждая функция постоянна на всяком $A_i \cap B_j$.
+\end{proof}
+\begin{crly}
+ \label{corollary:simple_operations_with_simple_functions_result_in_simple_function}
+ Пусть функции $f$, $g$ простые на измеримом пространстве $(X, \A)$. Тогда
+ \begin{itemize}
+  \item их линейная комбинация $\lambda_1 f + \lambda_2 g$;
+  \item $f \cdot g$;
+  \item $\max \left\{ f_1, \ldots, f_n \right\}$;
+  \item $\min \left\{ f_1, \ldots, f_n \right\}$
+ \end{itemize} являются простыми функциями.
+\end{crly}
+\begin{proof}
+ Рассмотреть общее мелкое разбиение.
 \end{proof}
 
-Следующая теорема будет о том, что если взять какую попало измеримую функцию (но неотрицательную), то она приближается простыми.
+Следующая теорема показывает главную идею Лебега: какую попало измеримую функцию можно приблизить простыми.
 
