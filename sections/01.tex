@@ -1,7 +1,7 @@
 \section*{Введение}
 В этом семестре (третьем) в основном будет \textit{теория меры}. Программистам она нужна для того, чтобы понимать \textit{вероятность}. В этом семестре будет несколько \textit{глубоких} теорем (красивых фактов), каких не было в предыдущих семестрах. Глубокое осознание курса должно поднять слушателя на новый математический уровень.
 
-\section{Суммирование неотрицательных семейств}
+\section{Суммирование неотрицательных семейств} \label{section:summation_of_nonnegative_families}
 
 \begin{df}
  За $[0, \infty]$ обозначим множество неотрицательных вещественных чисел $[0, \infty)$ с новым элементом $\infty$. На этом множестве можно естественным образом доопределить отношение порядка, сложение и умножение: 
@@ -153,6 +153,7 @@
      \item $ \varnothing \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \cap P_2 \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \setminus P_2 = \bigsqcup_{j=1}^N Q_j$ для некоторых $ Q_1, \ldots, Q_N \in \mathcal{P} $.
+   \label{enum3:definition:semiring}
  \end{enumerate}
 \end{df}
 \begin{df}
@@ -198,6 +199,7 @@
 \end{exmpl}
 
 \begin{prop}
+ \label{proposition:axiom_2_in_set_algebras_equiv_to_union}
  Аксиома \ref{enum:set_algebra_axiom_2} алгебры множеств эквивалентна условию
  \begin{align*}
   \bigcup_{k=1}^{N} A_k \in \A
@@ -295,6 +297,8 @@
 \begin{df}
  \label{definition:measure}
  Счётно-аддитивная неотрицательная функция $\mu \colon\, \A \to [0,\infty] $  на $\sigma$-алгебре $\A$ называется \textit{мерой}.
+
+ Множества, лежащие в $\A$ называются \textit{измеримыми} по мере $\mu$.
 \end{df}
 \begin{exmpl}\
  \begin{itemize}
@@ -360,6 +364,12 @@
    .\end{align*}
  \end{enumerate}
 \end{proof}
+\begin{remrk}
+ Второй пункт леммы \ref{lemma:about_subordinate_partition} верен и для счётного покрытия: если $\{P_{k}\}_{k=1}^{\infty} \subset \p $, то существуют $Q_{kj} \in \p$ такие, что
+ \begin{align*}
+  \bigcup_{k=1}^{\infty} P_k = \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj}, \quad Q_{kj} \subset P_k
+ .\end{align*} Действительно, можно построить это разбиение по индукции для каждого конечного объединения $\bigcup_{k=1}^{N} P_k $. Тогда возьмём объедение всех разбиений, оно и будет являться разбиением счётного покрытия. 
+\end{remrk}
 
 Конечно- и счётно-аддитивные функции обладают монотонностью.
 
@@ -395,6 +405,7 @@
 
 \end{proof}
 \begin{thm}[счётная аддитивность длины на полукольце ячеек]
+ \label{theorem:cell_length_has_sigma_additivity}
  Функция множества $ \mu_0 \colon\, [a, b) \mapsto b - a $ на полукольце ячеек $ \mathcal{P}_1 $ является счётно-аддитивной.
 \end{thm}
 \begin{proof}

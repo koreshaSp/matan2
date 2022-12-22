@@ -2,197 +2,282 @@
 
 \section{Внешние меры, \texorpdfstring{$\sigma$}{sigma}-алгебра Каратеодори}
 
-Наша задача: продолжить функцию длины с ячеек на более широкий класс множеств. В самом начале этого пути есть метафизический вопрос: разные вещи являются счётно-аддитивными: масса, длина, ... Возможно окажется, что нам много раз придётся делать такое продолжение. Оказывается, что для всех этих разных явлений есть одна общая математическая конструкция.
+Наша задача: продолжить функцию длины с ячеек на более широкий класс множеств. В самом начале этого пути есть метафизический вопрос: разные вещи являются счётно-аддитивными: масса, длина, площадь, объём, ... Возможно окажется, что нам много раз придётся делать такое продолжение. Оказывается, что для всех этих разных явлений есть одна общая математическая конструкция.
 
 \begin{df}
- Внешняя мера --- это $ \mu^\ast \colon\; 2^X \to [0, \infty] $ такое, что:
+ Внешняя мера --- это функция $ \mu^\ast \colon\; 2^X \to [0, \infty] $ такая, что:
  \begin{enumerate}
   \item $ \mu^\ast(\varnothing) = 0 $
   \item Если $ E \subset \displaystyle \bigcup_{k=1}^\infty A_k $, то $ \displaystyle \mu^\ast\left( E \right) \leqslant \sum_{k=1}^\infty \mu^\ast(A_k) $ --- полуаддитивность
  \end{enumerate}
 \end{df}
+\begin{remrk*}
+ В аксиоме полуаддитивности внешней меры можно брать конечный набор $A_k$: если $E \subset A_1 \cup \ldots \cup A_N$, то
+ \begin{align*}
+  \mua(E) \leqslant \mua(A_1) + \ldots + \mua(A_N)
+ .\end{align*} Действительно, можно просто взять $A_{N+1} = A_{N+2} = \ldots = \varnothing$. В частности, можно взять $N = 1$ и получить монотонность внешней меры:
+ \begin{align*}
+  \mua(E) \leqslant \mua(F)
+ ,\end{align*} если $E \subset F$.
+\end{remrk*}
 \begin{exmpl}[внешняя мера, порождённая функцией множества]
- Пусть $ S \subset 2^X $ --- любое семейство подмножеств, $ \varnothing \in S $ и есть $ \mu_0 \colon\; S \to [0, \infty] $ --- любое отображение, $ \mu_0(\varnothing) = 0 $. Тогда:
+ \label{example:outer_measure_formed_by_a_set_function}
+ Пусть $ S \subset 2^X $ --- любое семейство подмножеств, $ \varnothing \in S $ и есть $ \mu_0 \colon\; S \to [0, \infty] $ --- любое отображение, $ \mu_0(\varnothing) = 0 $. Тогда функция $\mua \colon\, 2^{X} \to [0,\infty]$
  \begin{align*}
   \mu^\ast(A) = \inf \left\{ \sum_{k=1}^\infty \mu_0(A_k) \mid A \subset \bigcup_{k=1}^\infty A_k  \right\} 
- .\end{align*} При этом, предполагается, что $ \inf \varnothing = +\infty $, то есть, если не существуют такие $ A_k \in S $ такое, что $ A \subset \bigcup A_k $, то $ \mu^\ast (A) = +\infty $.
+ \end{align*} является внешней мерой. При этом, предполагается, что $ \inf \varnothing = +\infty $, то есть, если не существуют такие $ A_k \in S $, что $ A \subset \bigcup A_k $, то $ \mu^\ast (A) = +\infty $.
 \end{exmpl}
 \begin{proof}\
  \begin{enumerate}
   \item $ \mu^\ast(\varnothing) = 0 $ --- ясно
-  \item Пусть есть множество $ E \subset \bigcup_{k=1}^{\infty} E_k \subset 2^X$.
+  \item Пусть $ E \subset \bigcup_{k=1}^{\infty} E_k $.
       Тогда нужно проверить, что 
    \begin{align*}
     \mu^\ast\left( E \right) \leqslant
-    \mu^\ast\left( \bigcup E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
-   .\end{align*} Первое неравенство верно, так как в определении внешней меры $ \mu^* $, после перехода берётся инфимум по меньшему множеству. Перейдём к доказательству второго перехода.
+    \mu^\ast\left( \bigcup_{k=1}^{\infty} E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
+   .\end{align*} Первое неравенство верно, так как в определении функции $ \mu^* $, после перехода берётся инфимум по меньшему множеству. Перейдём к доказательству второго перехода.
 
-   Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то тогда мы можем выбрать $ A_{kj} \in S $ такие, что $ \bigcup_j A_{kj} \supset E_k $ и $$ \mu^\ast(E_k) + \frac{\varepsilon}{2^k} \geqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) $$ Теперь возьмём и просуммируем:
+   Если существует $ k_0 $ такое, что $ \mu^\ast(E_{k_0}) = \infty $, то доказывать нечего. Если же $ \mu^\ast(E_k) < \infty $ для любого $ k \in \N $, то для каждого $k \in \N$ мы можем выбрать $ A_{kj} \in S $ такие, что $ E_k \subset \bigcup_{j=1}^{\infty} A_{kj} $ и $$ 
+   \mua(E_k) \leqslant \sum_{j=1}^{\infty} \mu_0(A_{kj}) \leqslant \mu^\ast(E_k) + \frac{\varepsilon}{2^k} 
+   $$ Так как $\bigcup_{k=1}^{\infty} E_k \subset \bigcup_{k=1}^{\infty} \bigcup_{j=1}^{\infty} A_{kj}$  и $A_{kj} \in S$, то
    \begin{align*}
-    \mu^\ast\left( \bigcup E_k \right) &\leqslant \sum_{k,j} \mu_0(A_{k,j}) \leqslant \sum_k \sum_j \mu_0(A_{kj}) \leqslant \\ &\leqslant \sum_{k} \left(\mu^\ast(E_k) + \frac{\varepsilon}{2^k} \right) \leqslant \varepsilon + \sum_k \mu^\ast(E_k)
-   .\end{align*} Это по определению просто потому, что $ \bigcup E_k \subset \bigcup_{k,j} A_{kj} $. Теперь можно устремить $ \varepsilon $ к нулю (так как это верно для любого $ \varepsilon $) и получить нужное равенство.
+    \mua \left( \bigcup_{k=1}^{\infty} E_k \right) &\leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{\infty} \mu_0(A_{kj}) \leqslant \\
+    &\leqslant \sum_{k=1}^{\infty} \left( \mua(E_k) + \frac{\eps}{2^{k}} \right) \leqslant \\
+    &\leqslant \sum_{k=1}^{\infty} \mua(E_k) + \eps
+   .\end{align*} Устремив $\eps \to 0$ получаем нужное равенство.
  \end{enumerate}
 \end{proof}
-Получается, внешних мер очень много! Можно взять любую функцию и сделать из неё меру.
+Получается, внешних мер очень много! Можно взять любую функцию и сделать из неё внешнюю меру.
 
 \begin{df}[$ \sigma $-алгебра, порождённая внешней мерой]
- Пусть есть внешняя мера $ \mu^\ast \colon\; 2^X \to [0,\infty] $. Тогда пусть \begin{align*}
-  \A^\ast = \left\{ A \subset X \mid \forall E \subset X, \; \mu^\ast(E) = \mu^\ast (E \cap A) + \mu^\ast(E \cap A^c) \right\} 
- .\end{align*}
- Это и называется \textit{$ \sigma $-алгебра Каратеодори}.
+ \label{definition:caratheodory_sigma_algebra}
+ Пусть $ \mu^\ast \colon\; 2^X \to [0,\infty] $ --- внешняя мера. Обозначим за $\A^{\ast}$ семейство всех таких $A \subset X$, что для каждого $E \subset X$ выполняется
+ \begin{align}
+  \label{equation:caratheodory_sigma_algebra_equation}
+  \mua(E) = \mua(E \cap A) + \mua(E \cap A^{c})
+ .\end{align} Семейство $\A^{\ast}$ называется \textit{$\sigma$-алгеброй, порождённой внешней мерой $\mua$} или \textit{$\sigma$-алгеброй Каратеодори}.
 \end{df}
 
 \begin{lm}
+ \label{lemma:caratheodory_sigma_algebra_is_set_algebra}
  $ \A^\ast $ --- это алгебра.
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item $ \varnothing \in \A^\ast $ так как $ \mu^\ast(E) = \mu^\ast(E \cap \varnothing) + \mu^\ast(E \cap X) = 0 + \mu^\ast(E) $.
+  \item $ \varnothing \in \A^\ast $, так как $ \mu^\ast(E) = \mu^\ast(E \cap \varnothing) + \mu^\ast(E \cap X) = 0 + \mu^\ast(E) $.
    \setcounter{enumi}{2}
-  \item $ A \in \A^\ast \iff A^c \in \A $
+  \item $ A \in \A^\ast \iff A^c \in \A $ --- симметричность определения \ref{definition:caratheodory_sigma_algebra}.
    \setcounter{enumi}{1}
-  \item $ \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) $ --- полуаддитивность, т.к. $ \mu^\ast(E) = \mu^\ast(E_1 \cup E_2 \cup \ldots) \leqslant \sum_1^\infty \mu^\ast(E_k)$. Можно взять $ E_1 = E \cap (A \cap B) $, $ E_2 = E \cap (A \cap B)^c $ и $ E_3 = E_4 = \ldots = \varnothing $.
-
-   Докажем в обратную сторону:
+  \item Пусть $A, B \in \A^{\ast}$ и $E \subset X$. Нужно проверить
    \begin{align*}
-     \mu^\ast(E) \leqslant \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c) \leqslant \\
-     \leqslant \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c)
-   .\end{align*} Последний переход корректен благодаря полуаддитивности $\mu^*$ и равенству множеств ниже:
+    \mua(E) = \mua(E \cap (A \cap B)) + \mua(E \cap (A \cap B)^{c})
+   .\end{align*} По полуаддитивности есть неравенство в одну сторону:
+   \begin{align*}
+    \mua(E) \leqslant \mua(E \cap (A \cap B)) + \mua(E \cap (A \cap B)^{c})
+   .\end{align*} Докажем в обратную сторону:
+   \begin{align*}
+    &\mua(E \cap (A \cap B)) + \mua(E \cap (A \cap B)^{c}) \leqslant \\
+    \leqslant \;&\mua(E \cap A \cap B) + \mua(E \setminus A) + \mua(E \cap A \cap B^{c})
+   .\end{align*} 
+   Этот переход корректен благодаря полуаддитивности $\mu^*$ и равенству множеств ниже:
    \begin{align*}
     E \cap (A \cap B)^c &= E \cap (A^c \cup B^c) = (E \cap A^c) \cup (E \cap B^c) =\\&= (E \setminus A) \cup (E \cap A \cap B^c \sqcup (E \setminus A) \cap B^c) =\\
     &= (E \setminus A) \cup (E \cap A \cap B^c)
-   .\end{align*} Далее,
+   .\end{align*} Далее, так как $B \in \A^{\ast}$, можно сгруппировать первое и третье слагаемые:
    \begin{align*}
-    \mu^\ast(E \cap A \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c) = \\
-    = \mu^\ast(E \cap A) + \mu^\ast(E \setminus A)
-   .\end{align*} Сгруппировали первый и третий член. Это равенство верно, так как $ B \in \A^\ast $. Потом
+    &\mu^\ast((E \cap A) \cap B) + \mu^\ast(E \setminus A) + \mu^\ast((E \cap A) \cap B^c) = \\
+    = \;&\mu^\ast(E \cap A) + \mu^\ast(E \setminus A)
+   .\end{align*} Наконец, так как $A \in \A^{\ast}$, то
    \begin{align*}
     \mu^\ast(E \cap A) + \mu^\ast(E \setminus A) = \mu^\ast(E)
-   .\end{align*} Так как $ A \in \A^\ast $. В итоге получили, что все неравенства --- равенства. В частности первое:
+   .\end{align*} В результате цепочки равенств мы получили неравенство в обратную сторону:
    \begin{align*}
-    \mu^\ast(E) = \mu^\ast(E \cap (A \cap B)) + \mu^\ast(E \cap (A \cap B)^c)
-   .\end{align*} Следовательно, $ A \cap B \in \A^\ast $
+    \mua(E \cap (A \cap B)) + \mua(E \cap (A \cap B)^{c}) \leqslant \mua(E)
+   .\end{align*} Равенство проверено, и следовательно, $ A \cap B \in \A^\ast $.
  \end{enumerate} 
  Значит, $ \A^\ast $ --- алгебра.
 \end{proof}
 \begin{lm}
- $ \mu^\ast $ --- конечно-аддитивна на $ \A^\ast $:
+ $ \mu^\ast $ конечно-аддитивна на $ \A^\ast $:
  \begin{align*}
   \mu^\ast(A \sqcup B) = \mu^\ast(A) + \mu^\ast(B)
  \end{align*} для любых $ A, B \in \A^\ast,\; A \cap B = \varnothing $. Более того, для любого $ E \subset X $ верно
- \begin{align*}
+ \begin{align}
+  \label{equation:outer_measure_strong_finite_additivity}
   \mu^\ast(E \cap (A \sqcup B)) = \mu^\ast(E \cap A) + \mu^\ast(E \cap B)
- .\end{align*}
+ .\end{align}
 \end{lm}
 \begin{proof}
- Так как $ A \in \A^\ast $, то
+ Достаточно доказать только равенство \eqref{equation:outer_measure_strong_finite_additivity}: конечную аддитивность можно получить из \eqref{equation:outer_measure_strong_finite_additivity}, подставив $E = X$. Так как $A \in \A^{\ast}$, то
  \begin{align*}
-  \mu^\ast(A \sqcup B) = \mu^\ast((A \sqcup B) \cap A) + \mu^\ast((A \sqcup B) \cap A^c) = \\
-  = \mu^\ast(A) + \mu^\ast(B)
- .\end{align*} Теперь к <<более того>>:
- \begin{align*}
-  \mu^\ast(E \cap (A \sqcup B)) = \mu^\ast(E \cap (A \sqcup B) \cap A) + \mu^\ast(E \cap (A \sqcup B) \cap A^c) = \\
-  = \mu^\ast(E \cap A) + \mu^\ast(E \cap B)
- .\end{align*}
+  \mua(E \cap (A \sqcup B)) &= \mua(E \cap (A \sqcup B) \cap A) + \mua(E \cap (A \sqcup B) \cap A^{c}) = \\
+  &= \mua(E \cap A) + \mua(E \cap B)
+ .\end{align*} 
 \end{proof}
 \begin{lm}
+ \label{lemma:caratheodory_sigma_algebra_is_sigma_algebra}
  $ \A^\ast $ --- это $ \sigma $-алгебра.
 \end{lm}
 \begin{proof}
- Нужно доказать только свойство с счетным пересечением. Возьмём любой набор $ \left\{ A_k \right\}_{k=1}^\infty \subset \A^\ast $. Достаточно доказать, что
+ По лемме \ref{lemma:caratheodory_sigma_algebra_is_set_algebra} мы уже знаем, что $\A^{\ast}$ --- алгебра. Поэтому, нужно доказать только аксиому \ref{enum:sigma_algebra_axiom_2} со счётным пересечением. Возьмём любой набор $ \left\{ A_k \right\}_{k=1}^\infty \subset \A^\ast $. По предложению \ref{proposition:axiom_2_in_set_algebras_equiv_to_union} достаточно доказать, что
  \begin{align*}
 	 \bigcup_{k=1}^{\infty} A_k \in \A^\ast
- .\end{align*} (для этого нужно воспользоваться формулами де Моргана). Рассмотрим такие множества $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 = A_2 \cap A_1^c$, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2) = A_3 \cap A_1^c \cap A_2^c$. Можно видеть, что
+ .\end{align*} Рассмотрим префиксные разности множеств: $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 = A_2 \cap A_1^c$, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2) = A_3 \cap A_1^c \cap A_2^c$, $\ldots$ Видно, что
  \begin{align*}
   \bigcup_{k=1}^\infty A_k = \bigsqcup_{k=1}^\infty \tilde A_k
- .\end{align*} При этом все $ \tilde A_k \in \A^\ast $, так как $ \A^\ast $ это алгебра. Вывод: можно считать, $ A_k $ --- дизъюнктны и проверять, что $ \displaystyle \bigsqcup_{k=1}^\infty A_k \in \A^\ast $. Давайте проверим это по определению $\A^\ast$, доказав равенство:
+ .\end{align*} При этом все $ \tilde A_k \in \A^\ast $, так как $ \A^\ast $ --- алгебра. Вывод: можно считать, $ A_k $ --- дизъюнктны и проверять, что $ \bigsqcup_{k=1}^\infty A_k \in \A^\ast $.
+
+ Давайте проверим это по определению $\A^\ast$: возьмём произвольное $E \subset X$ и докажем равенство
  \begin{align*}
    \mu^\ast(E) = \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right)
  .\end{align*}
- Возьмём произвольное $ E \subset X $.
+ По полуаддитивности внешней меры сразу получаем неравенство в одну сторону:
  \begin{align*}
-  \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right) \leqslant \\
-  \leqslant \sum_{k=1}^{\infty} \mu^\ast(E \cap A_k) + \mu^\ast\left( E \cap \left( \bigsqcup_1^N A_k \right)^c \right)
- .\end{align*} Неравенство по определению внешней меры. Неравенство для второго слагаемого: если $ C_1 \subset C_2 $, то $ \mu^\ast(C_1) \leqslant \mu^\ast(C_2) $ (по полуаддитивности внешней меры).
- Далее,
+  \mu^\ast(E) &\leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right)
+ .\end{align*} Теперь докажем в другую сторону. В правой части применим к первому слагаемому полуаддитивность, а ко второму --- монотонность внешней меры:
  \begin{align*}
-	 \mu^\ast(E) \leqslant \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^N A_k \right)^c\right) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) = \\
-  = \mu^\ast(E) + \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k)
- \end{align*} по усиленной конечной аддитивности. Осталось проверить, что
+  &\mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k \right) \right) + \mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k \right)^{c} \right) \leqslant \\
+  \leqslant \; &\mua \left( E \cap \left( \bigsqcup_{k=1}^{N} A_k \right) \right) + \mua \left( E \cap \left( \bigsqcup_{k=N+1}^{\infty} A_k \right) \right)  + \mua \left( E \cap \left( \bigsqcup_{k=1}^{N} A_k \right)^{c} \right)
+ \end{align*} для любого $N \in \N$. Теперь снова применим полуаддитивность ко второму слагаемому:
  \begin{align*}
+  &\mua \left( E \cap \left( \bigsqcup_{k=1}^{N} A_k \right) \right) + \mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k \right)^{c} \right) + \mua \left( E \cap \left( \bigsqcup_{k=N+1}^{\infty} A_k \right) \right) \leqslant \\
+  \leqslant \;& \mua \left( E \cap \left( \bigsqcup_{k=1}^{N} A_k \right) \right) + \mua \left( E \cap \left( \bigsqcup_{k=1}^{N} A_k \right)^{c} \right) + \sum_{k=N+1}^{\infty} \mua(E \cap A_k)
+ .\end{align*}  Далее, заметим, что так как $\A^{\ast}$ -- алгебра, то $\bigsqcup_{k=1}^{N} A_k \in \A^{\ast}$. Поэтому, можно сгруппировать первые два слагаемые, воспользовавшись определением $\A^{\ast}$, и получить неравенство
+ \begin{align*}
+  \mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k \right) \right) + \mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k \right)^{c} \right) \leqslant \mua(E) + \sum_{k=N+1}^{\infty} \mua(E \cap A_k)
+ .\end{align*} 
+ Осталось проверить, что остаток стремится к нулю:
+ \begin{align}
+  \label{equation:caratheodory_sigma_algebra_is_sigma_algebra_proof1}
   \sum_{k=N+1}^{\infty} \mu^\ast(E \cap A_k) \to 0 \text{ при } N \to \infty
- .\end{align*} Это эквивалентно тому, что ряд
+ .\end{align} Если мы проверим \eqref{equation:caratheodory_sigma_algebra_is_sigma_algebra_proof1}, то можно устремить $N \to \infty$ и получить неравенства в обе стороны. \eqref{equation:caratheodory_sigma_algebra_is_sigma_algebra_proof1} будет следовать из того, что ряд
  \begin{align*}
-  \sum_{k=1}^{\infty}  \mu^\ast (E \cap A_k) < \infty \iff \sup_{N \geqslant 1} \sum_1^N \mu^\ast(E \cap A_k) < \infty
- .\end{align*} Но
+  \sum_{k=1}^{\infty}  \mu^\ast (E \cap A_k) < \infty \iff \sup_{N \geqslant 1} \sum_{k=1}^N \mu^\ast(E \cap A_k) < \infty
+ .\end{align*} Но по <<усиленной>> конечной аддитивности $\mua$ на $\A^{\ast}$ (равенство \eqref{equation:outer_measure_strong_finite_additivity}) и монотонности $\mua$ имеем:
  \begin{align*}
-  \sum_{1}^{N} \mu^\ast(E \cap A_k) = \mu^\ast\left(E \cap \left(\bigsqcup_{k=1}^N A_k\right)\right) \leqslant \mu^\ast(E)
- \end{align*} по монотонности внешней меры. Если $ \mu^\ast(E) $ конечно, то всё ОК, а иначе доказывать и нечего ($ \mu^\ast(E) = +\infty \then \displaystyle \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)\right)  + \mu^\ast\left(E \cap \left( \bigsqcup A_k \right)^c\right) \leqslant \mu^\ast(E)$).
+  \sum_{k=1}^{N} \mu^\ast(E \cap A_k) = \mu^\ast\left(E \cap \left(\bigsqcup_{k=1}^N A_k\right)\right) \leqslant \mu^\ast(E)
+ .\end{align*} Таким образом, если $ \mu^\ast(E) $ конечно, то всё доказано. А иначе доказывать и нечего: если $\mua(E) = \infty$, то
+ \begin{align*}
+  \mua(E) \leqslant \mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k \right) \right) + \mua \left( E \cap \left( \bigsqcup_{k=1}^{\infty} A_k  \right)^{c} \right) \leqslant \infty = \mua(E)
+ .\end{align*} 
 \end{proof}
-Самое сложное техническое место мы прошли.
+Самое сложное техническое место в построении длины мы прошли.
 \begin{lm}
+ \label{lemma:outer_measure_on_caratheodory_sigma_algebra_is_measure}
  $ \mu^\ast \rvert_{\A^\ast} $ --- это мера.
 \end{lm}
 \begin{proof}
- Нужно доказать счётную аддитивность. Пусть $ A_k \in \A^\ast $, $ A = \bigsqcup_{k=1}^\infty A_k $. Напишем:
+ Нужно доказать только счётную аддитивность. Пусть $ A_k \in \A^\ast $, $ A = \bigsqcup_{k=1}^\infty A_k $. Пользуясь конечной аддитивностью, монотонностью и полуаддитивностью, напишем:
  \begin{align*}
   \sum_{k=1}^{N} \mu^\ast(A_k) = \mu^\ast\left( \bigsqcup_{k=1}^N A_k \right) \leqslant \mu^\ast(A) \leqslant \sum_{k=1}^{\infty}  \mu^\ast(A_k)
- .\end{align*} Переходя в левой части к пределу по $ N \to \infty $, получаем равенство.
-\end{proof}
-\section{Теорема Каратеодори о стандартном продолжении}
-\begin{thm}[Каратеодори о стандартном продолжении]\
- \label{theorem:caratheodory}
- Пусть $ \p $ --- полукольцо подмножеств $ X $, $ \mu_0 \colon\; \p \to [0, \infty] $ --- счётно-аддитивная функция на $ \p $, а $ \mu^\ast $ --- порождённая ей внешняя мера:
+ .\end{align*} Переходя в левой части к пределу по $ N \to \infty $, получаем равенство
  \begin{align*}
-  \mu^\ast(E) = \inf \left\{ \sum \mu_0(P_k) \mid E \subset \bigcup P_k,\; P_k \in \p \right\}, \quad E \subset X
- .\end{align*} Пусть $ \A^\ast $ --- $ \sigma $-алгебра Каратеодори, порождённая внешней мерой $ \mu^\ast $. Обозначим за $ \mu $ меру $ \mu^\ast \rvert_{\A^\ast} $ на $ \sigma $-алгебре $ \A^\ast $. Тогда:
+  \mua(A) = \sum_{k=1}^{\infty} \mua(A_k)
+ .\end{align*} 
+\end{proof}
+
+\section{Теорема Каратеодори о стандартном продолжении}
+
+Имея под рукой леммы из предыдущего параграфа, мы, наконец, готовы сформулировать теорему Каратеодори --- общий инструмент, позволяющий продолжить счётно-аддитивную неотрицательную функцию с полукольца на некоторую $\sigma$-алгебру.
+
+\begin{thm}[Каратеодори о стандартном продолжении]
+ \label{theorem:caratheodory}
+ Пусть $ \p $ --- полукольцо подмножеств $ X $, $ \mu_0 \colon\, \p \to [0, \infty] $ --- счётно-аддитивная функция на $ \p $, а $ \mu^\ast \colon\, 2^{X} \to [0,\infty] $ --- порождённая ей внешняя мера:
+ \begin{align*}
+  \mu^\ast(E) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \Mid E \subset \bigcup_{k=1}^{\infty}  P_k,\; P_k \in \p \right\}, \quad E \subset X
+ .\end{align*} Пусть $ \A^\ast $ --- $ \sigma $-алгебра Каратеодори, порождённая внешней мерой $ \mu^\ast $. Обозначим за $ \mu $ меру $ \mu^\ast \rvert_{\A^\ast} $ на $ \sigma $-алгебре $ \A^\ast $, называемую \textbf{стандартным продолжением}. Тогда:
  \begin{enumerate}
-  \item $ \p \subset \A^\ast $
+  \item $ \p \subset \A^\ast $.
+   \label{enum1:theorem:caratheodory}
   \item $ \mu(P) = \mu_0(P) $ для каждого $ P \in \p $.
-  \item Если $ \nu $ --- мера на $ \sigma $-алгебре $ \A_\nu \supset \p $, такая что $ \nu(P) = \mu_0(P) $ для любого $ P \in \p $, то для любого $ A \in \A^\ast \cap \A_\nu $ такого, что $ \mu(A) < +\infty $ имеет место равенство
+   \label{enum2:theorem:caratheodory}
+  \item Если $ \nu $ --- мера на $ \sigma $-алгебре $ \A_\nu \supset \p $, такая что $ \nu(P) = \mu_0(P) $ для любого $ P \in \p $, то для любого $ A \in \A^\ast \cap \A_\nu $ такого, что $ \mu(A) < \infty $ имеет место равенство
+   \label{enum3:theorem:caratheodory}
    \begin{align*}
     \mu(A) = \nu(A)
    .\end{align*}
  \end{enumerate}
 \end{thm}
-Про что говорит нам теорема Каратеодори? $ \mu_0 $ может быть продолжена до меры единственным образом.
-\begin{proof}\
+Теорема Каратеодори говорит нам, что счётно-аддитивная неотрицательная функция $\mu_0$ на полукольце $\p$ может быть единственным образом продолжена до меры $\mu$ на $\sigma$-алгебре Каратеодори $\A^{\ast}$.
+\begin{proof}
+ Многие составляющие теоремы уже доказаны предыдущем параграфе: пример \ref{example:outer_measure_formed_by_a_set_function} обосновывает, что $\mua$ --- внешняя мера; лемма \ref{lemma:caratheodory_sigma_algebra_is_sigma_algebra} говорит, что $\A^{\ast}$ --- $\sigma$-алгебра; лемма \ref{lemma:outer_measure_on_caratheodory_sigma_algebra_is_measure} говорит, что $\mua \rvert_{\A^{\ast}}$ --- мера. Осталось проверить три новых пункта.
  \begin{enumerate}
   \item Пусть $ P \in \p $. Чтобы показать, что $ P \in \A^\ast $, необходимо и достаточно проверить, что для каждого $ E \subset X $:
    \begin{align*}
     \mu^\ast(E) = \mu^\ast(E \cap P) + \mu^\ast(E \cap P^c)
-   .\end{align*} У нас $ \leqslant $ есть. Если $ \mu^\ast(E) = +\infty $ то и $ \geqslant $ есть. Пусть теперь $ \mu^\ast(E) < +\infty $. Тогда для любого $ \varepsilon > 0 $ существуют $ P_k \in \p $ такие, что
+   .\end{align*} Неравенство в сторону ($ \leqslant $) есть по полуаддитивности внешней меры. Если $ \mu^\ast(E) = \infty $ то есть и неравенство в обратную сторону. Пусть теперь $ \mu^\ast(E) < \infty $. Тогда для любого $ \varepsilon > 0 $ существуют $ P_k \in \p $ такие, что
    \begin{align*}
     E \subset \bigcup_{k=1}^\infty P_k
    \end{align*} и верно
    \begin{align*}
-     \mu^\ast(E) + \varepsilon \geqslant \sum_{k=1}^{\infty} \mu_0(P_k)
-   .\end{align*} Напишем
-   \begin{align}
-    \nonumber
-    \mu^\ast(E) &\leqslant \mua(E \cap P) + \mua(E \cap P^c) \leqslant \\
-    \label{equation:caratheodory_thm:1}
-    &\leqslant \sum_{k=1}^\infty \mu_0(P_k \cap P) + \sum_{k=1}^\infty \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \\
-    \label{equation:caratheodory_thm:2}
-    & \leqslant \sum_{k=1}^\infty \mu_0(P_k) \leqslant \\
-    \nonumber
-    &\leqslant \mu(E) + \varepsilon 
-   .\end{align} Неравенство \eqref{equation:caratheodory_thm:1} выполнено, так как $E \subset \bigcup P_k$ и $\bigsqcup Q_{kj} = E \setminus P$. Неравенство \eqref{equation:caratheodory_thm:2} выполнено, так как $\bigsqcup_{j=1}^{N_k} \left(Q_{kj} \sqcup (P_k \cap P)\right) \subset P_k$.
-
-  \item Докажем, что $ \mu(P) = \mu_0(P) $ для $ P \in \p $. Нужно проверить, верно ли, что
+    \mua(E) \leqslant \sum_{k=1}^{\infty} \mu_0(P_k) < \mua(E) + \eps
+   .\end{align*} 
+   В таком случае оба множества $E \cap P$ и $E \cap P^{c}$ покрываются объединением ячеек:
    \begin{align*}
-    \mu_0(P) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \mid P \subset \bigcup_{P_k \in \p} P_k \right\} = \mu(P)
-   .\end{align*} Так как $ P \subset P \in \p $, то $ \mu(P) \leqslant \mu_0(P) $. Пусть $ P \subset \displaystyle\bigcup_{k=1}^\infty P_k $, тогда $$  
+    E \cap P &\subset \bigcup_{k=1}^{\infty} (P_k \cap P), \\
+    E \cap P^{c} &\subset \bigcup_{k=1}^{\infty} (P_k \setminus P) = \bigcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj}
+   ,\end{align*} где $P_k \setminus P = \bigsqcup_{j=1}^{N_k} Q_{kj}$  --- разбиение, полученное по аксиоме \ref{enum3:definition:semiring} полукольца. Применим теперь к правой части определение $\mua$, взяв вышеуказанные покрытия ячейками:
+   \begin{align*}
+    \mua(E \cap P) + \mua(E \cap P^{c}) &\leqslant \sum_{k=1}^{\infty} \mu_0(P_k \cap P) + \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \mu_0(Q_{kj}) = \\
+    &= \sum_{k=1}^{\infty} \left( \mu_0(P_k \cap P) + \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \right) = \\
+    &= \sum_{k=1}^{\infty} \mu_0(P_k) < \\
+    &< \mua(E) + \eps
+   .\end{align*} Предпоследний переход верен по конечной аддитивности $\mu_0$ на полукольце, ведь $P_k = (P_k \cap P) \sqcup Q_{k_1} \sqcup \ldots \sqcup Q_{k N_k}$. Устремив $\eps \to 0$ получаем неравенство в обратную сторону.
+
+  \item Докажем, что $ \mu(P) = \mu_0(P) $ для любого $ P \in \p $. Нужно проверить равенство
+   \begin{align*}
+    \mu_0(P) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \Mid P \subset \bigcup_{k=1}^{\infty} P_k,\; P_k \in \p \right\} = \mu(P)
+   .\end{align*} Неравенство $\mu(P) \leqslant \mu_0(P)$ очевидно: есть покрытие $P \subset P$. Докажем теперь в другую сторону: проверим, что число $\mu_0(P)$ является нижней гранью вышеуказанного множества. Пусть есть покрытие 
+\begin{align*}
+ P \subset \displaystyle\bigcup_{k=1}^\infty P_k, \quad P_k \in \p
+.\end{align*} Тогда по лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении $$  
    P = \bigcup_{k=1}^\infty (P_k \cap P) = \bigsqcup_{k=1}^\infty \bigsqcup_{j=1}^{N_k} Q_{kj}
-   $$ по лемме о подчинённом разбиении. Теперь применим $ \mu_0 $ и воспользуемся её счётно-аддитивностью:
+   .$$ Применим $ \mu_0 $ к левой и правой части; воспользуемся её счётно-аддитивностью и следствием \ref{corollary:downward_monotonicity_of_finite_additive_set_function}:
    \begin{align*}
     \mu_0(P) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \mu_0(P_k)
-   .\end{align*} Перейдём к инфимуму и получим, что 
-   \begin{align*}
-    \mu_0(P) \leqslant \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \right\}  = \mua(P) = \mu(P)
-   .\end{align*}
+   .\end{align*} Таким образом, $\mu_0(P)$  является точной нижней гранью множества 
+\begin{align*}
+\left\{ \sum_{k=1}^{\infty}  \mu_0(P_k) \mid P \subset \bigcup_{k=1}^{\infty} P_k, \; P_k \in \p \right\}
+,\end{align*} что и требовалось доказать.
 
-  \item На следующей лекции.
+ \item Пусть $A \in \A^{\ast} \cap \A_{\nu}$ (пока не предполагаем $\mu(A) < \infty$). Докажем сначала неравенство $\nu(A) \leqslant \mu(A)$. По определению $\mu$
+ \begin{align*}
+  \mu(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu(P_k) \Mid A \subset \bigcup_{k=1}^{\infty} P_k,\; P_k \in \p \right\}
+  .\end{align*} Поэтому достаточно проверить, что $\nu(A)$ --- нижняя грань этого множества. Возьмём любое покрытие  $A \subset \bigcup_{k=1}^{\infty} P_k$, $P_k \in \p$. По лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении есть $Q_{kj} \in \p$ такие, что \begin{align*}
+ \bigcup_{k=1}^{\infty} P_k = \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj}, \quad Q_{kj} \subset P_k
+ .\end{align*}  Тогда по счётной аддитивности $\nu$
+ \begin{align*}
+  \nu(A) &\leqslant \nu \left( \bigcup_{k=1}^{\infty} P_k \right) = \nu \left( \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj} \right) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \nu(Q_{kj})
+ .\end{align*} Отметим, что $\nu$ определена на  $A$  и $\bigcup_{k=1}^{\infty} P_k$, так как $A, P_k \in \A_{\nu}$. По следствию \ref{corollary:downward_monotonicity_of_finite_additive_set_function}:
+ \begin{align*}
+  \nu(A) &\leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \nu(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \nu(P_k)
+ .\end{align*} Так как меры $\mu$ и  $\nu$ совпадают на полукольце $\p$, то 
+ \begin{align*}
+  \nu(A) \leqslant \sum_{k=1}^{\infty} \mu(P_k)
+ .\end{align*} Неравенство $\nu(A) \leqslant \mu(A)$ обосновано для любого $A \in \A^{\ast} \cap \A_{\nu}$.
+
+ Теперь пусть $A \in \A^{\ast} \cap \A_{\nu}$, $\mu(A) < \infty$. Нужно показать $\mu(A) \leqslant \nu(A)$.
+
+ Возьмём $P \in \p$ такое, что $\mu(P) < \infty$. По аддитивности $\mu$, $\nu$ и уже доказанному неравенству $\mu \geqslant \nu$ (на любом $A' \in \A^{\ast} \cap \A_{\nu}$) можно записать
+ \begin{align*}
+  \mu(P) = \mu(P \cap A) + \mu(P \cap A^{c}) \geqslant \nu(P \cap A) + \nu(P \cap A^{c}) = \nu(P)
+ .\end{align*} Но $\nu(P) = \mu(P)$, поэтому есть равенство \begin{align*}
+  \mu(P) = \mu(P \cap A) + \mu(P \cap A^{c}) = \nu(P \cap A) + \nu(P \cap A^{c})
+ .\end{align*} С учётом того, что $\mu(P)$ конечно, и, следовательно, все слагаемые конечны, то ни одно из неравенств
+ \begin{align*}
+  \mu(P \cap A) &\geqslant \nu(P \cap A), \\
+  \mu(P \cap A^{c}) &\geqslant \nu(P \cap A^{c})
+ \end{align*} не может быть строгим. Поэтому, для любого $P \in \p$ такого, что $\mu(P) < \infty$ есть равенство
+ \begin{align}
+  \label{equation:theorem:caratheodory:mu_nu_equality_on_intersection_with_semiring_element}
+  \mu(P \cap A) &= \nu(P \cap A)
+ .\end{align} 
+
+ Так как $\mu(A) < \infty$, то существует некоторое счётное покрытие $A \subset \bigsqcup_{k=1}^{\infty} Q_k$, $Q_k \in \p$, причём $\mu(Q_k) < \infty$. Это покрытие можно получить, взяв $\eps = 1$ и покрытие $A \subset \bigcup_{k=1}^{\infty} P_k$  такое, что $\sum_{k=1}^{\infty} \mu(P_k) \leqslant \mu(A) + \eps$. Дизъюнктность можно обеспечить, применив лемму \ref{lemma:about_subordinate_partition} о подчинённом разбиении. При этом все $\mu(Q_j) < \infty$, так как все $\mu(P_k) < \infty$.
+
+ Тогда разобьём $A$ по этому покрытию, применив счётную аддитивность $\mu$ и $\nu$, и применим равенство \eqref{equation:theorem:caratheodory:mu_nu_equality_on_intersection_with_semiring_element} в каждом слагаемом:
+ \begin{align*}
+  \mu(A) = \sum_{k=1}^{\infty} \mu(Q_k \cap A) = \sum_{k=1}^{\infty} \nu(Q_k \cap A) = \nu(A)
+ .\end{align*} 
  \end{enumerate}
 \end{proof}
-
