@@ -34,14 +34,14 @@
  .\end{align*} Для непрерывных функций теорема доказана, более того, в случае непрерывной функции абсолютно все точки $X$ являются точками Лебега (а не $\mu$-почти все).
 
  Пусть теперь  $f \in L^{1}(X, \mu)$ --- любая. Можно считать, что $X$ ограниченное (например, $X = B_1$), так как утверждение теоремы локально. Возьмём любое $\eps > 0$ и рассмотрим множество <<плохих>> точек \begin{align*}
-  A(\eps) = \left\{ x \in X \Mid \varlimsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r}  \left| f(y) - f(x) \right| \, d\mu(y) > \eps   \right\}
+  A(\eps) = \left\{ x \in X \Mid \limsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r}  \left| f(y) - f(x) \right| \, d\mu(y) > \eps   \right\}
  .\end{align*} Возьмём любую непрерывную функцию $g \in C(X)$. Сделаем <<$\frac{\eps}{3}$-приём>>: запишем неравенство \begin{align*}
  &\frac{1}{\mu(B_r)} \int\limits_{B_r} \left| f(x) - f(y) \right| \, d\mu(y) \leqslant \\
  \leqslant &\frac{1}{\mu(B_r)} \left( \int\limits_{B_r} \left| f(x) - g(x) \right| \, d\mu(y)  + \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y)  + \int\limits_{B_r} \left| g(y) - f(y) \right| \, d\mu(y) \right) \\
  \leqslant &\left| f(x) - g(x) \right| + \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) + (M^{\ast}(g-f))(x)
  .\end{align*} Значит, множество $A(\eps)$ укладывается в три множества $A(\eps) \subset A_1(\eps) \cup A_2(\eps) \cup A_3(\eps)$, где \begin{align*}
  A_1(\eps) &= \left\{ x \in X \Mid \left| f(x) - g(x) \right| > \frac{\eps}{3} \right\}, \\
- A_2(\eps) &= \left\{ x \in X \Mid \varlimsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) > \frac{\eps}{3}   \right\}, \\
+ A_2(\eps) &= \left\{ x \in X \Mid \limsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) > \frac{\eps}{3}   \right\}, \\
  A_3(\eps) &= \left\{ x \in X \Mid (M^{\ast}(f-g))(x) > \frac{\eps}{3} \right\}
  .\end{align*} Хотим доказать $\mu(A(\eps)) = 0$. Имеем:  \begin{align*}
   \mu(A(\eps)) \leqslant \mu(A_1(\eps)) + \mu(A_2(\eps)) + \mu(A_3(\eps))

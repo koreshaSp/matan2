@@ -24,14 +24,14 @@
  \label{example:outer_measure_formed_by_a_set_function}
  Пусть $ S \subset 2^X $ --- любое семейство подмножеств, $ \varnothing \in S $ и есть $ \mu_0 \colon\; S \to [0, \infty] $ --- любое отображение, $ \mu_0(\varnothing) = 0 $. Тогда функция $\mua \colon\, 2^{X} \to [0,\infty]$
  \begin{align*}
-  \mu^\ast(A) = \inf \left\{ \sum_{k=1}^\infty \mu_0(A_k) \mid A \subset \bigcup_{k=1}^\infty A_k  \right\} 
+  \mu^\ast(A) = \inf \left\{ \sum_{k=1}^\infty \mu_0(A_k) \Mid A \subset \bigcup_{k=1}^\infty A_k  \right\} 
  \end{align*} является внешней мерой. При этом, предполагается, что $ \inf \varnothing = +\infty $, то есть, если не существуют такие $ A_k \in S $, что $ A \subset \bigcup A_k $, то $ \mu^\ast (A) = +\infty $.
 \end{exmpl}
 \begin{proof}\
  \begin{enumerate}
   \item $ \mu^\ast(\varnothing) = 0 $ --- ясно
   \item Пусть $ E \subset \bigcup_{k=1}^{\infty} E_k $.
-      Тогда нужно проверить, что 
+   Тогда нужно проверить, что 
    \begin{align*}
     \mu^\ast\left( E \right) \leqslant
     \mu^\ast\left( \bigcup_{k=1}^{\infty} E_k \right) \leqslant \sum_{k=1}^{\infty} \mu^\ast(E_k)
@@ -121,7 +121,7 @@
 \begin{proof}
  По лемме \ref{lemma:caratheodory_sigma_algebra_is_set_algebra} мы уже знаем, что $\A^{\ast}$ --- алгебра. Поэтому, нужно доказать только аксиому \ref{enum:sigma_algebra_axiom_2} со счётным пересечением. Возьмём любой набор $ \left\{ A_k \right\}_{k=1}^\infty \subset \A^\ast $. По предложению \ref{proposition:axiom_2_in_set_algebras_equiv_to_union} достаточно доказать, что
  \begin{align*}
-	 \bigcup_{k=1}^{\infty} A_k \in \A^\ast
+  \bigcup_{k=1}^{\infty} A_k \in \A^\ast
  .\end{align*} Рассмотрим префиксные разности множеств: $ \tilde A_1 = A_1 $, $ \tilde A_2 = A_2 \setminus A_1 = A_2 \cap A_1^c$, $ \tilde A_3 = A_3 \setminus (A_1 \cup A_2) = A_3 \cap A_1^c \cap A_2^c$, $\ldots$ Видно, что
  \begin{align*}
   \bigcup_{k=1}^\infty A_k = \bigsqcup_{k=1}^\infty \tilde A_k
@@ -129,7 +129,7 @@
 
  Давайте проверим это по определению $\A^\ast$: возьмём произвольное $E \subset X$ и докажем равенство
  \begin{align*}
-   \mu^\ast(E) = \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right)
+  \mu^\ast(E) = \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right) \right) + \mu^\ast\left( E \cap \left( \bigsqcup_{k=1}^\infty A_k \right)^c \right)
  .\end{align*}
  По полуаддитивности внешней меры сразу получаем неравенство в одну сторону:
  \begin{align*}
@@ -228,56 +228,56 @@
    \begin{align*}
     \mu_0(P) = \inf \left\{ \sum_{k=1}^{\infty} \mu_0(P_k) \Mid P \subset \bigcup_{k=1}^{\infty} P_k,\; P_k \in \p \right\} = \mu(P)
    .\end{align*} Неравенство $\mu(P) \leqslant \mu_0(P)$ очевидно: есть покрытие $P \subset P$. Докажем теперь в другую сторону: проверим, что число $\mu_0(P)$ является нижней гранью вышеуказанного множества. Пусть есть покрытие 
-\begin{align*}
- P \subset \displaystyle\bigcup_{k=1}^\infty P_k, \quad P_k \in \p
-.\end{align*} Тогда по лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении $$  
+   \begin{align*}
+    P \subset \displaystyle\bigcup_{k=1}^\infty P_k, \quad P_k \in \p
+   .\end{align*} Тогда по лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении $$  
    P = \bigcup_{k=1}^\infty (P_k \cap P) = \bigsqcup_{k=1}^\infty \bigsqcup_{j=1}^{N_k} Q_{kj}
    .$$ Применим $ \mu_0 $ к левой и правой части; воспользуемся её счётно-аддитивностью и следствием \ref{corollary:downward_monotonicity_of_finite_additive_set_function}:
    \begin{align*}
     \mu_0(P) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \mu_0(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \mu_0(P_k)
    .\end{align*} Таким образом, $\mu_0(P)$  является точной нижней гранью множества 
-\begin{align*}
-\left\{ \sum_{k=1}^{\infty}  \mu_0(P_k) \mid P \subset \bigcup_{k=1}^{\infty} P_k, \; P_k \in \p \right\}
-,\end{align*} что и требовалось доказать.
+   \begin{align*}
+    \left\{ \sum_{k=1}^{\infty}  \mu_0(P_k) \mid P \subset \bigcup_{k=1}^{\infty} P_k, \; P_k \in \p \right\}
+   ,\end{align*} что и требовалось доказать.
 
- \item Пусть $A \in \A^{\ast} \cap \A_{\nu}$ (пока не предполагаем $\mu(A) < \infty$). Докажем сначала неравенство $\nu(A) \leqslant \mu(A)$. По определению $\mu$
- \begin{align*}
-  \mu(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu(P_k) \Mid A \subset \bigcup_{k=1}^{\infty} P_k,\; P_k \in \p \right\}
-  .\end{align*} Поэтому достаточно проверить, что $\nu(A)$ --- нижняя грань этого множества. Возьмём любое покрытие  $A \subset \bigcup_{k=1}^{\infty} P_k$, $P_k \in \p$. По лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении есть $Q_{kj} \in \p$ такие, что \begin{align*}
- \bigcup_{k=1}^{\infty} P_k = \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj}, \quad Q_{kj} \subset P_k
- .\end{align*}  Тогда по счётной аддитивности $\nu$
- \begin{align*}
-  \nu(A) &\leqslant \nu \left( \bigcup_{k=1}^{\infty} P_k \right) = \nu \left( \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj} \right) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \nu(Q_{kj})
- .\end{align*} Отметим, что $\nu$ определена на  $A$  и $\bigcup_{k=1}^{\infty} P_k$, так как $A, P_k \in \A_{\nu}$. По следствию \ref{corollary:downward_monotonicity_of_finite_additive_set_function}:
- \begin{align*}
-  \nu(A) &\leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \nu(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \nu(P_k)
- .\end{align*} Так как меры $\mu$ и  $\nu$ совпадают на полукольце $\p$, то 
- \begin{align*}
-  \nu(A) \leqslant \sum_{k=1}^{\infty} \mu(P_k)
- .\end{align*} Неравенство $\nu(A) \leqslant \mu(A)$ обосновано для любого $A \in \A^{\ast} \cap \A_{\nu}$.
+  \item Пусть $A \in \A^{\ast} \cap \A_{\nu}$ (пока не предполагаем $\mu(A) < \infty$). Докажем сначала неравенство $\nu(A) \leqslant \mu(A)$. По определению $\mu$
+   \begin{align*}
+    \mu(A) = \inf \left\{ \sum_{k=1}^{\infty} \mu(P_k) \Mid A \subset \bigcup_{k=1}^{\infty} P_k,\; P_k \in \p \right\}
+    .\end{align*} Поэтому достаточно проверить, что $\nu(A)$ --- нижняя грань этого множества. Возьмём любое покрытие  $A \subset \bigcup_{k=1}^{\infty} P_k$, $P_k \in \p$. По лемме \ref{lemma:about_subordinate_partition} о подчинённом разбиении есть $Q_{kj} \in \p$ такие, что \begin{align*}
+    \bigcup_{k=1}^{\infty} P_k = \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj}, \quad Q_{kj} \subset P_k
+   .\end{align*}  Тогда по счётной аддитивности $\nu$
+   \begin{align*}
+    \nu(A) &\leqslant \nu \left( \bigcup_{k=1}^{\infty} P_k \right) = \nu \left( \bigsqcup_{k=1}^{\infty} \bigsqcup_{j=1}^{N_k} Q_{kj} \right) = \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \nu(Q_{kj})
+   .\end{align*} Отметим, что $\nu$ определена на  $A$  и $\bigcup_{k=1}^{\infty} P_k$, так как $A, P_k \in \A_{\nu}$. По следствию \ref{corollary:downward_monotonicity_of_finite_additive_set_function}:
+   \begin{align*}
+    \nu(A) &\leqslant \sum_{k=1}^{\infty} \sum_{j=1}^{N_k} \nu(Q_{kj}) \leqslant \sum_{k=1}^{\infty} \nu(P_k)
+   .\end{align*} Так как меры $\mu$ и  $\nu$ совпадают на полукольце $\p$, то 
+   \begin{align*}
+    \nu(A) \leqslant \sum_{k=1}^{\infty} \mu(P_k)
+   .\end{align*} Неравенство $\nu(A) \leqslant \mu(A)$ обосновано для любого $A \in \A^{\ast} \cap \A_{\nu}$.
 
- Теперь пусть $A \in \A^{\ast} \cap \A_{\nu}$, $\mu(A) < \infty$. Нужно показать $\mu(A) \leqslant \nu(A)$.
+   Теперь пусть $A \in \A^{\ast} \cap \A_{\nu}$, $\mu(A) < \infty$. Нужно показать $\mu(A) \leqslant \nu(A)$.
 
- Возьмём $P \in \p$ такое, что $\mu(P) < \infty$. По аддитивности $\mu$, $\nu$ и уже доказанному неравенству $\mu \geqslant \nu$ (на любом $A' \in \A^{\ast} \cap \A_{\nu}$) можно записать
- \begin{align*}
-  \mu(P) = \mu(P \cap A) + \mu(P \cap A^{c}) \geqslant \nu(P \cap A) + \nu(P \cap A^{c}) = \nu(P)
- .\end{align*} Но $\nu(P) = \mu(P)$, поэтому есть равенство \begin{align*}
-  \mu(P) = \mu(P \cap A) + \mu(P \cap A^{c}) = \nu(P \cap A) + \nu(P \cap A^{c})
- .\end{align*} С учётом того, что $\mu(P)$ конечно, и, следовательно, все слагаемые конечны, то ни одно из неравенств
- \begin{align*}
-  \mu(P \cap A) &\geqslant \nu(P \cap A), \\
-  \mu(P \cap A^{c}) &\geqslant \nu(P \cap A^{c})
- \end{align*} не может быть строгим. Поэтому, для любого $P \in \p$ такого, что $\mu(P) < \infty$ есть равенство
- \begin{align}
-  \label{equation:theorem:caratheodory:mu_nu_equality_on_intersection_with_semiring_element}
-  \mu(P \cap A) &= \nu(P \cap A)
- .\end{align} 
+   Возьмём $P \in \p$ такое, что $\mu(P) < \infty$. По аддитивности $\mu$, $\nu$ и уже доказанному неравенству $\mu \geqslant \nu$ (на любом $A' \in \A^{\ast} \cap \A_{\nu}$) можно записать
+   \begin{align*}
+    \mu(P) = \mu(P \cap A) + \mu(P \cap A^{c}) \geqslant \nu(P \cap A) + \nu(P \cap A^{c}) = \nu(P)
+    .\end{align*} Но $\nu(P) = \mu(P)$, поэтому есть равенство \begin{align*}
+    \mu(P) = \mu(P \cap A) + \mu(P \cap A^{c}) = \nu(P \cap A) + \nu(P \cap A^{c})
+   .\end{align*} С учётом того, что $\mu(P)$ конечно, и, следовательно, все слагаемые конечны, то ни одно из неравенств
+   \begin{align*}
+    \mu(P \cap A) &\geqslant \nu(P \cap A), \\
+    \mu(P \cap A^{c}) &\geqslant \nu(P \cap A^{c})
+   \end{align*} не может быть строгим. Поэтому, для любого $P \in \p$ такого, что $\mu(P) < \infty$ есть равенство
+   \begin{align}
+    \label{equation:theorem:caratheodory:mu_nu_equality_on_intersection_with_semiring_element}
+    \mu(P \cap A) &= \nu(P \cap A)
+   .\end{align} 
 
- Так как $\mu(A) < \infty$, то существует некоторое счётное покрытие $A \subset \bigsqcup_{k=1}^{\infty} Q_k$, $Q_k \in \p$, причём $\mu(Q_k) < \infty$. Это покрытие можно получить, взяв $\eps = 1$ и покрытие $A \subset \bigcup_{k=1}^{\infty} P_k$  такое, что $\sum_{k=1}^{\infty} \mu(P_k) \leqslant \mu(A) + \eps$. Дизъюнктность можно обеспечить, применив лемму \ref{lemma:about_subordinate_partition} о подчинённом разбиении. При этом все $\mu(Q_j) < \infty$, так как все $\mu(P_k) < \infty$.
+   Так как $\mu(A) < \infty$, то существует некоторое счётное покрытие $A \subset \bigsqcup_{k=1}^{\infty} Q_k$, $Q_k \in \p$, причём $\mu(Q_k) < \infty$. Это покрытие можно получить, взяв $\eps = 1$ и покрытие $A \subset \bigcup_{k=1}^{\infty} P_k$  такое, что $\sum_{k=1}^{\infty} \mu(P_k) \leqslant \mu(A) + \eps$. Дизъюнктность можно обеспечить, применив лемму \ref{lemma:about_subordinate_partition} о подчинённом разбиении. При этом все $\mu(Q_j) < \infty$, так как все $\mu(P_k) < \infty$.
 
- Тогда разобьём $A$ по этому покрытию, применив счётную аддитивность $\mu$ и $\nu$, и применим равенство \eqref{equation:theorem:caratheodory:mu_nu_equality_on_intersection_with_semiring_element} в каждом слагаемом:
- \begin{align*}
-  \mu(A) = \sum_{k=1}^{\infty} \mu(Q_k \cap A) = \sum_{k=1}^{\infty} \nu(Q_k \cap A) = \nu(A)
- .\end{align*} 
+   Тогда разобьём $A$ по этому покрытию, применив счётную аддитивность $\mu$ и $\nu$, и применим равенство \eqref{equation:theorem:caratheodory:mu_nu_equality_on_intersection_with_semiring_element} в каждом слагаемом:
+   \begin{align*}
+    \mu(A) = \sum_{k=1}^{\infty} \mu(Q_k \cap A) = \sum_{k=1}^{\infty} \nu(Q_k \cap A) = \nu(A)
+   .\end{align*} 
  \end{enumerate}
 \end{proof}

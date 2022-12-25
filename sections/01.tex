@@ -18,9 +18,9 @@
 \newcommand{\I}{\ensuremath \mathcal{I}}
 \begin{df}
  Пусть $ \I $ --- это множество (любое, возможно несчётное), и для каждого $ i \in \I $ сопоставлено неотрицательное число $ a_i \in [0, \infty] $. Определим
-\begin{align*}
- \sum_{i \in \I} a_i = \sup \left\{ \sum_{j \in F} a_j \Mid F \subset \I,\; F \text{ --- конечноe }\right\}
-.\end{align*}
+ \begin{align*}
+  \sum_{i \in \I} a_i = \sup \left\{ \sum_{j \in F} a_j \Mid F \subset \I,\; F \text{ --- конечноe }\right\}
+ .\end{align*}
 \end{df}
 
 \begin{thm}\
@@ -35,30 +35,30 @@
 \end{thm}
 \begin{proof}\
  \begin{itemize}
-     \item Пусть $ \sum_{i\in \I} a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in \I $ таких, что $ a_i \geqslant 1/N $, ведь иначе из них можно составить множество с неограниченной суммой. Тогда
- \begin{align*}
-  E = \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N=1}^{\infty} \left\{ i \in I \mid a_i \geqslant 1/N \right\}
- .\end{align*} Получается, множество $ E $ не более, чем счётное (как счётное объединение конечных множеств).
-\item Докажем неравенство в обе стороны. Для любого $N$ верно  \begin{align*}
-  \sum_{k=1}^{N} a_{i_k} \leqslant \sum_{i \in \I} a_i,
-\end{align*} потому что левая часть --- сумма по конечному подмножеству. Взяв предел при $N \to \infty$ получаем неравенство в одну сторону:
-\begin{align*}
- \sum_{k=1}^{\infty} a_{i_k} \leqslant \sum_{i \in \I} a_i
-.\end{align*}
+  \item Пусть $ \sum_{i\in \I} a_i < \infty $. Тогда для любого $ N \in \N $ существует лишь конечное число $ i \in \I $ таких, что $ a_i \geqslant 1/N $, ведь иначе из них можно составить множество с неограниченной суммой. Тогда
+   \begin{align*}
+    E = \left\{ i \in I \mid a_i > 0 \right\} = \bigcup_{N=1}^{\infty} \left\{ i \in I \mid a_i \geqslant 1/N \right\}
+   .\end{align*} Получается, множество $ E $ не более, чем счётное (как счётное объединение конечных множеств).
+  \item Докажем неравенство в обе стороны. Для любого $N$ верно  \begin{align*}
+    \sum_{k=1}^{N} a_{i_k} \leqslant \sum_{i \in \I} a_i,
+   \end{align*} потому что левая часть --- сумма по конечному подмножеству. Взяв предел при $N \to \infty$ получаем неравенство в одну сторону:
+   \begin{align*}
+    \sum_{k=1}^{\infty} a_{i_k} \leqslant \sum_{i \in \I} a_i
+   .\end{align*}
 
- Теперь докажем в обратную сторону. Пусть $ F \subset \I $ конечноe. Тогда 
- \begin{align*}
-     \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k = 1}^{\infty} a_{i_k}
- \end{align*} для некоторого $ N \in \N $ (например, максимальный номер индекса из $F$). Перейдя к супремуму в левой части, получаем нужное:
- \begin{align*}
-  \sum_{i \in \I} a_i = \sup_{\substack{F \subset \I \\ F \text{ --- конечное }}} \sum_{i \in F} a_i \leqslant \sum_{k = 1}^{\infty} a_{i_k}
- .\end{align*}
+   Теперь докажем в обратную сторону. Пусть $ F \subset \I $ конечноe. Тогда 
+   \begin{align*}
+    \sum_{i \in F} a_i \leqslant \sum_{k=1}^N a_{i_k} \leqslant \sum_{k = 1}^{\infty} a_{i_k}
+   \end{align*} для некоторого $ N \in \N $ (например, максимальный номер индекса из $F$). Перейдя к супремуму в левой части, получаем нужное:
+   \begin{align*}
+    \sum_{i \in \I} a_i = \sup_{\substack{F \subset \I \\ F \text{ --- конечное }}} \sum_{i \in F} a_i \leqslant \sum_{k = 1}^{\infty} a_{i_k}
+   .\end{align*}
  \end{itemize}
 \end{proof}
 \begin{crly}
-    Пусть $ \I $ счётное множество, $ \{i_k\}_{k \in \N} = \{i_{\varphi(k)}\}_{k\in\N} = \I$ --- его нумерации двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
+ Пусть $ \I $ счётное множество, $ \{i_k\}_{k \in \N} = \{i_{\varphi(k)}\}_{k\in\N} = \I$ --- его нумерации двумя разными способами ($ \varphi \colon\; \N \to \N $ --- биекция). Тогда
  \begin{align*}
-     \sum_{k = 1}^{\infty} a_{i_k} = \sum_{k = 1}^{\infty} a_{i_{\varphi(k)}}
+  \sum_{k = 1}^{\infty} a_{i_k} = \sum_{k = 1}^{\infty} a_{i_{\varphi(k)}}
  .\end{align*}
 \end{crly}
 \begin{proof}
@@ -112,7 +112,7 @@
  \begin{align*}
   x_{J_1} - x_{J_2} = q_2 - q_1 \in \Q
  .\end{align*} Следовательно, $ x_{J_1} = x_{J_2} \;\Longrightarrow q_1 = q_2$. Значит, если они пересеклись, то они совпадают.
- 
+
  Мы доказали два полезных включения:
  \begin{align*}
   [0, 1) \subset \bigsqcup_{q \in [-1, 1] \cap \Q} (q + E) \subset [-1, 2)
@@ -150,7 +150,7 @@
 \begin{df}
  Пусть $ X $ --- множество. Набор подмножеств $ \mathcal{P} \subset 2^X $ --- \textit{полукольцо}, если
  \begin{enumerate}
-     \item $ \varnothing \in \mathcal{P} $
+  \item $ \varnothing \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \cap P_2 \in \mathcal{P} $
   \item $ P_1, P_2 \in \mathcal{P} \;\Longrightarrow\; P_1 \setminus P_2 = \bigsqcup_{j=1}^N Q_j$ для некоторых $ Q_1, \ldots, Q_N \in \mathcal{P} $.
    \label{enum3:definition:semiring}
@@ -218,9 +218,9 @@
 
 \begin{df}
  \textit{Полукольцом ячеек} в $\R$ называется семейство 
-\begin{align*}
- \mathcal{P}_1 = \left\{ [a, b) \mid a \leqslant b,\; a, b \in \R \right\} 
-.\end{align*} Полуинтервал $[a, b) \in \p_1$ называется (одномерной) \textit{ячейкой}.
+ \begin{align*}
+  \mathcal{P}_1 = \left\{ [a, b) \mid a \leqslant b,\; a, b \in \R \right\} 
+ .\end{align*} Полуинтервал $[a, b) \in \p_1$ называется (одномерной) \textit{ячейкой}.
 \end{df}
 \begin{lm}
  $ \mathcal{P}_1 $ --- полукольцо.
@@ -240,8 +240,8 @@
  \end{enumerate}
 \end{proof}
 \begin{remrk*}
-Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй.
-Например, $ [0, 1)^c = (-\infty, 0) \cup [1, +\infty) \not \in  \mathcal{P}_1 $.
+ Полукольцо ячеек $ \mathcal{P}_1 $ не является алгеброй.
+ Например, $ [0, 1)^c = (-\infty, 0) \cup [1, +\infty) \not \in  \mathcal{P}_1 $.
 \end{remrk*}
 \begin{lm}
  Пересечение любого числа $\sigma$-алгебр есть $\sigma$-алгебра: если $\left\{\A_i\right\}_{i \in \I}$  --- семейство $\sigma$-алгебр множеств из $X$, то
@@ -253,7 +253,7 @@
  \begin{enumerate}
   \item $ \varnothing \in \A $, так как $ \varnothing \in \A_i $ для всех $ i \in \I $.
   \item $ A_j \in \A \;\Longrightarrow\; A_j \in \A_i, \forall i, j  \;\Longrightarrow\; \bigcap_j A_j \in 
-  \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
+   \A_i \;\Longrightarrow\; \bigcap_j A_j \in \A$
   \item $ A \in \A \;\Longrightarrow\; A \in \A_i,  \forall i \in \I \;\Longrightarrow\; A^c \in \A_i, \forall i \in \I \;\Longrightarrow\; A^c \in \bigcap_{i \in \I} \A_i = \A$ 
  \end{enumerate}
 \end{proof}
@@ -382,9 +382,9 @@
 \end{crly}
 \begin{proof}
  По лемме \ref{lemma:about_subordinate_partition} 
-\begin{align*}
- P \setminus \bigsqcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j 
-.\end{align*} Тогда:
+ \begin{align*}
+  P \setminus \bigsqcup_{k=1}^N P_k = \bigsqcup_{j=1}^M Q_j 
+ .\end{align*} Тогда:
  \begin{align*}
   P &= \bigsqcup_{k=1}^N P_k \sqcup \bigsqcup_{j=1}^M Q_j \\
   \implies \mu(P) &= \sum_{k=1}^{N} \mu(P_k) + \sum_{j=1}^{M} \mu(Q_j) \geqslant \sum_{k=1}^{N} \mu(P_k)

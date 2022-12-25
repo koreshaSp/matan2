@@ -67,9 +67,10 @@
 \begin{proof}
  Распилим $f$ на две части: $f_+ = \max(f, 0)$, $f_- = \max(-f, 0)$. Тогда $f_+ - f_- = f$ и  $f_+, f_- \geqslant 0$. Функции $f_{\pm}$ измеримы как максимумы измеримых. По теореме \ref{theorem:approximation} существуют простые функции $\{f_{\pm,n}\}_{n=1}^{\infty} $ такие, что $f_{\pm} = \lim f_{\pm,n}$. Тогда \begin{align*}
   f = \lim_{n \to \infty} \underbrace{(f_{+,n} - f_{-,n})}_{\text{ простые по следствию \ref{corollary:simple_operations_with_simple_functions_result_in_simple_function} }}
-  .\end{align*}
- \end{proof}
+ .\end{align*}
+\end{proof}
 \begin{crly}
+ \label{corollary:linear_combination_of_measurable_functions_is_measurable}
  Если функции $f_1,f_2 \colon\, X \to [-\infty, +\infty] $ измеримы, $\lambda_1, \lambda_2 \in \R$, то и функции $\lambda_1 f_1 + \lambda_2 f_2$ и $f_1 \cdot f_2$ измеримы, если определены.
 \end{crly}
 <<Если определены>> означает, что мы не складываем бесконечности разных знаков (см. определение \ref{definition:extended_reals}).
@@ -114,9 +115,9 @@
 \end{remrk}
 \begin{proof}
  Если есть другое разбиение $f = \sum_{k=1}^{N'} c_k' \chi_{A_k'}$, то рассмотрим общее мелкое разбиение (лемма \ref{lemma:common_small_partition_of_simple_functions}). Сведём вопрос к совпадению 
-\begin{align*}
-\sum_{k=1}^{N} c_k \mu (A_k \cap E) = \sum_{k=1}^{N'} c_k' \mu (A_k' \cap E)
-\end{align*} при условии, что $\bigsqcup_{k=1}^{N'} A_k' $ --- подразбиение $\bigsqcup_{k=1}^{N} A_k$.
+ \begin{align*}
+  \sum_{k=1}^{N} c_k \mu (A_k \cap E) = \sum_{k=1}^{N'} c_k' \mu (A_k' \cap E)
+ \end{align*} при условии, что $\bigsqcup_{k=1}^{N'} A_k' $ --- подразбиение $\bigsqcup_{k=1}^{N} A_k$.
  А тут по конечной аддитивности меры все понятно.
 \end{proof}
 \begin{remrk}
@@ -196,14 +197,14 @@
  По монотонности интеграла Лебега существует предел 
  \begin{align*}
   L = \lim_{n \to \infty} \int\limits_E f_n \, d\mu \in [0, \infty]
-  ,\end{align*} при этом также по монотонности $L \leqslant \int_E f\,d\mu$. Нам нужно доказать, что это равенство.
+ ,\end{align*} при этом также по монотонности $L \leqslant \int_E f\,d\mu$. Нам нужно доказать, что это равенство.
 
-  Возьмём любое число $\Theta \in (0, 1)$. Возьмём любую простую функцию $g$ такую, что $0 \leqslant g \leqslant f$ на $E$. Теперь такой трюк: рассмотрим множества \begin{align*}
+ Возьмём любое число $\Theta \in (0, 1)$. Возьмём любую простую функцию $g$ такую, что $0 \leqslant g \leqslant f$ на $E$. Теперь такой трюк: рассмотрим множества \begin{align*}
   E_n = \left\{ x \in E \mid f_n(x) \geqslant \Theta g(x) \right\}
-  .\end{align*}
-  Множество $E_n$ можно выразить как
-  \begin{align*}
-   E_n = (f_n - \Theta g)([0, \infty])
+ .\end{align*}
+ Множество $E_n$ можно выразить как
+ \begin{align*}
+  E_n = (f_n - \Theta g)([0, \infty])
   .\end{align*} Функция $f_n - \Theta g$ измерима (и определена, так как $g < \infty$), поэтому $E_n \in \A$. По возрастанию функций $f_n$ эти множества вложены: $E_n \subset E_{n+1}$ для любого $n \geqslant 1$. Кроме того, \begin{align*}
   \bigcup_{n=1}^{\infty} E_n = E
  .\end{align*} Действительно, если $x \in E$ и $f(x) > 0$, то при больших $n$ неравенство $f_n(x) \geqslant \Theta g(x)$ будет выполнятся, так как $f_n(x)$ будет сколь угодно близким к $f(x)$, и $\Theta < 1$. Если же  $x \in E$ и $f(x) = 0$, то  $g(x) = 0$, и $f_n(x) = 0$ для любого  $n$.
@@ -213,20 +214,22 @@
   \int\limits_E f_n \, d\mu \geqslant \int\limits_{E} f_n \cdot \chi_{E_n} \, d\mu \geqslant \Theta \int\limits_E g \cdot \chi_{E_n} \, d\mu
   .\end{align*} Так как $g = \sum_{k=1}^{N} c_k \chi_{A_k}$, $A_k \in \A$, $c_k \geqslant 0$, то по определению \ref{definition:integral_simple_positive} интеграла Лебега простой функции \begin{align*}
   \int\limits_E f_n \, d\mu \geqslant \Theta \sum_{k=1}^{N} c_k \mu (A_k \cap E_n)
-  .\end{align*} Перейдём к пределу при $n \to \infty$ в обеих частях:
-  \begin{align*}
-   L \geqslant \Theta \sum_{k=1}^{N} c_k \cdot \lim_{n \to \infty} \mu(A_k \cap E_n)
-  .\end{align*} Но по непрерывности меры сверху (утверждение \ref{claim:upward_continuity_of_measure}) $\lim_{n \to \infty} \mu(A_k \cap E_n) = \mu(A_k \cap E) $, поэтому
-  \begin{align*}
-   L \geqslant \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap E) = \Theta \int\limits_{E} g \, d\mu 
-  .\end{align*} Так как это верно для любого $\Theta < 1$, то
-  \begin{align*}
-   L \geqslant \int\limits_{E} g \, d\mu 
-  .\end{align*} А раз уж это верно для любой простой функции $g$, при условии $0 \leqslant g \leqslant f$, то
-  \begin{align*}
-   L \geqslant \int\limits_{E} f \, d\mu 
-  .\end{align*} 
+ .\end{align*} Перейдём к пределу при $n \to \infty$ в обеих частях:
+ \begin{align*}
+  L \geqslant \Theta \sum_{k=1}^{N} c_k \cdot \lim_{n \to \infty} \mu(A_k \cap E_n)
+ .\end{align*} Но по непрерывности меры сверху (утверждение \ref{claim:upward_continuity_of_measure}) $\lim_{n \to \infty} \mu(A_k \cap E_n) = \mu(A_k \cap E) $, поэтому
+ \begin{align*}
+  L \geqslant \Theta \sum_{k=1}^{N} c_k \mu(A_k \cap E) = \Theta \int\limits_{E} g \, d\mu 
+ .\end{align*} Так как это верно для любого $\Theta < 1$, то
+ \begin{align*}
+  L \geqslant \int\limits_{E} g \, d\mu 
+ .\end{align*} А раз уж это верно для любой простой функции $g$, при условии $0 \leqslant g \leqslant f$, то
+ \begin{align*}
+  L \geqslant \int\limits_{E} f \, d\mu 
+ .\end{align*} 
 \end{proof}
+
+В оставшейся части параграфа мы рассмотрим несколько полезных утверждений об интеграле Лебега, непосредственно следующих из теоремы \ref{theorem:levi}  Леви.
 
 Очень много утверждений в теории меры будут доказываться по следующей схеме: сначала мы проверяем утверждение на простых функциях (обычно нужно рассмотреть общее мелкое разбиение по лемме \ref{lemma:common_small_partition_of_simple_functions}), затем по теореме \ref{theorem:approximation} об аппроксимации и теореме \ref{theorem:levi} Леви доказываем его для неотрицательных измеримых  функций, и наконец, проверяем утверждение на суммируемых функциях любого знака (обычно это делается рассмотрением функций $f_{\pm} = \max(\pm f, 0)$). Яркий пример --- доказательство линейности интеграла Лебега. 
 
@@ -289,6 +292,7 @@
 Продолжим определение интеграла Лебега на комплексно-значные функции. 
 
 \begin{df}
+ \label{definition:complex_lebesgue_integral}
  Комплексно-значная функция $f \colon\, X \to \mathbb{C} $ называется \textit{измеримой}, если функции $\Real f$, $\Imaginary f$ измеримы. $f$ называется \textit{суммируемой}, если $\Real f$ и $\Imaginary f$ суммируемые; в этом случае \textit{интеграл Лебега} равен
  \begin{align*}
   \int\limits_E f \, d\mu = \int\limits_E \mathrm{Re} f \, d\mu + i \int\limits_E \mathrm{Im} f \,d\mu
@@ -322,6 +326,7 @@
 \end{proof}
 
 \begin{claim}[основная оценка интеграла]\
+ \label{claim:basic_estimation_of_integral}
  Пусть $f \colon\, X \to \mathbb{C} $ измерима, $E \in \A$. Тогда \begin{align*}
   \left| \int\limits_E f \, d\mu \right| \leqslant \int\limits_E \left| f \right| \,d\mu
  .\end{align*} 
