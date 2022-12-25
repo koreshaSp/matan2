@@ -1,0 +1,107 @@
+%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'function_sequence_converges_by_measure_but_not_in_any_point.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{680.31496063bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.5)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.1259874,0.45712999){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_1$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.04526149,0.26365299){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.19892627,0.26148427){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.36438869,0.4580862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.2836628,0.26460921){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.43732754,0.26244049){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.3670887,0.25861829){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.84481462,0.45725218){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_4$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.76408876,0.26377519){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.91775347,0.26160647){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.84751466,0.25778427){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.61038411,0.45725225){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_3$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.52965822,0.26377525){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.68332297,0.26160653){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.61308409,0.25778433){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 2$\end{tabular}}}}%
+    \put(0.80808512,0.25747528){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 4$\end{tabular}}}}%
+    \put(0.88749262,0.25735067){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 3 4$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.12598739,0.20891736){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_5$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.04526153,0.01393827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.19892624,0.01176961){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.12868743,0.00794741){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 2$\end{tabular}}}}%
+    \put(0.0892579,0.00763842){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 4$\end{tabular}}}}%
+    \put(0.16866539,0.00751381){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 3 4$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.36483914,0.2089173){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_6$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.28411331,0.01393827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.43777803,0.01176961){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.36753918,0.00794741){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 2$\end{tabular}}}}%
+    \put(0.32810968,0.00763842){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 4$\end{tabular}}}}%
+    \put(0.40751718,0.00751381){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 3 4$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.61258755,0.2089173){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_7$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{function_sequence_converges_by_measure_but_not_in_any_point.pdf}}%
+    \put(0.53186178,0.01393827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.68552647,0.01176961){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.61528759,0.00794741){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 2$\end{tabular}}}}%
+    \put(0.57585812,0.00763842){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 1 4$\end{tabular}}}}%
+    \put(0.65526562,0.00751381){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\frac 3 4$\end{tabular}}}}%
+    \put(0.83850803,0.10263316){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\ldots$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

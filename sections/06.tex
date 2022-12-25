@@ -2,210 +2,353 @@
 
 \begin{thm}[лемма Фату]
  \label{theorem:lemma_fatoo}
- Пусть $(X, \A, \mu)$ --- пространство с мерой, есть функции $f_n \geqslant 0$ --- измеримые и неотрицательные. Тогда \begin{align*}
-  \int\limits_{X} \varliminf_{n\to \infty} f_n \, d\mu   \leqslant \varliminf_{n\to \infty} \int\limits_{X} f_n \, d\mu  
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, $\{f_{n}\}_{n=1}^{\infty} $ --- последовательность измеримых неотрицательных функций $f_n \colon\, X \to [0,\infty]$. Тогда \begin{align*}
+  \int\limits_{X} \liminf_{n\to \infty} f_n \, d\mu   \leqslant \liminf_{n\to \infty} \int\limits_{X} f_n \, d\mu  
  .\end{align*} 
 \end{thm}
 \begin{proof}
- Пусть $g_n = \inf_{k \geqslant n} f_k$ --- измеримые неотрицательные функции такие, что $g_{n+1} \geqslant g_n$ для любого $n$. Значит, по теореме Леви \ref{theorem:levi} выполнено \begin{align*}
-  \int\limits_{X} \lim_{n \to \infty} g_n \, d\mu  = \lim_{n \to \infty} \int\limits_{X} g_n \, d\mu   
- .\end{align*} Левая часть по определению равна \begin{align*}
- \mathrm{LHS} = \int\limits_{X} \varliminf_{n\to \infty} f_n \, d\mu  
- .\end{align*} Правую часть можно оценить так: \begin{align*}
- \mathrm{RHS} \leqslant \lim_{n \to \infty} \inf_{k\geqslant n} \int\limits_{X} f_n \, d\mu  = \varliminf_{n \to \infty} \int\limits_{X} f_n \, d\mu  
-.\end{align*} Здесь мы воспользовались неравенством $\int_{X} \inf_{k\geqslant n} f_k \, d\mu  \leqslant \inf_{k \geqslant n} \int_{X} f_k \, d\mu  $, так как $\inf_{k \geqslant n} f_k \leqslant f_j$ для любого $j \leqslant n$.
+ Рассмотрим функции 
+ \begin{align*}
+  g_n(x) = \inf_{k \geqslant n} f_k(x)
+ .\end{align*} Тогда $g_n \geqslant 0$ --- измеримые неотрицательные функции такие, что $g_n \leqslant g_{n+1}$ для любого $n$. Значит, можно применить теорему \ref{theorem:levi} Леви:
+ \begin{align*}
+  \int\limits_{X} \liminf_{n\to \infty}  f_n \, d\mu &= \int\limits_{X} \lim_{n \to \infty} g_n \, d\mu  = \lim_{n \to \infty} \int\limits_{X} g_n \, d\mu  = \lim_{n \to \infty} \int\limits_{X} \inf_{k\geqslant n}   f_k \, d\mu
+ .\end{align*} Далее воспользуемся неравенством 
+ \begin{align*}
+  \int\limits_{X} \inf_{k \geqslant n}  f_k \, d\mu \leqslant \inf_{k \geqslant n} \int\limits_{X} f_k \, d\mu 
+ ,\end{align*} которое верно в силу того, что $\int_{X}  \inf_{k \geqslant n} f_k \, d\mu \leqslant \int_{X} f_j \, d\mu $  для любого $j \geqslant n$. Получаем
+ \begin{align*}
+  \int\limits_{X} \liminf_{n \to \infty}  f_n \, d\mu \leqslant \lim_{n \to \infty} \inf_{k \geqslant n} \int\limits_{X} f_k \, d\mu = \liminf_{n \to \infty}  \int\limits_{X} f_n \, d\mu 
+ .\end{align*} 
 \end{proof}
 \begin{remrk}
- Неравенство в лемме Фату \ref{theorem:lemma_fatoo} бывает строгим: $\mu = \lao$, $f_n = \chi_{[n, n + 1]}$, $X = \R$. Тогда \begin{align*}
-  \mathrm{LHS} &= \int\limits_{X} \varliminf_{n \to \infty} f_n \, d\mu  = \int\limits_{X} 0 \, d\mu  = 0, \\
-  \mathrm{RHS} &= \varliminf_{n \to \infty} \int\limits_{X} f_n \, d\mu  = \varliminf_{n \to \infty} 1 = 1
+ Неравенство в лемме \ref{theorem:lemma_fatoo} Фату бывает строгим: рассмотрим $X = \R$, $\mu = \lao$, $f_n = \chi_{[n, n + 1]}$. Тогда \begin{align*}
+  \int\limits_{X} \liminf_{n \to \infty} f_n \, d\mu  &= \int\limits_{X} 0 \, d\mu  = 0, \\
+  \liminf_{n \to \infty} \int\limits_{X} f_n \, d\mu  &= \liminf_{n \to \infty} 1 = 1
  .\end{align*} 
 \end{remrk}
-\begin{exmpl}
- Занумеруем рациональные числа $\{x_{k}\}_{k=1}^{\infty} = \Q $. Посмотрим на последовательность $\{a_{k}\}_{k=1}^{\infty} $ такую, что \begin{align*}
+\begin{exmpl}[применение леммы Фату]
+ Занумеруем рациональные числа $\{x_{k}\}_{k=1}^{\infty} = \Q $. Рассмотрим последовательность чисел $\{a_{k}\}_{k=1}^{\infty} $ такую, что \begin{align*}
   \sum_{k=1}^{\infty} \left| a_k \right| < \infty
- .\end{align*} Утверждается, что ряд \begin{align*}
- \sum_{k=1}^{\infty} \frac{a_k}{\sqrt{\left| x - x_k \right|}}
- \end{align*} сходится при почти всех $x \in \R$.
+  .\end{align*} Доказать, что ряд \begin{align}
+  \label{equation:example:fatoo_lemma:series_to_converge}
+  \sum_{k=1}^{\infty} \frac{a_k}{\sqrt{\left| x - x_k \right|}}
+ \end{align} сходится при почти всех $x \in \R$.
 \end{exmpl}
 \begin{proof}
- Пусть $c > 0$. Рассмотрим ряд \begin{align*}
-  \int\limits_{-c}^{c} \sum_{k=1}^{\infty} \frac{\left| a_k \right|}{\sqrt{\left| x - x_k \right|}} \, dx &= \int\limits_{-c}^{c} \varliminf_{N \to \infty} \sum_{k=1}^{N} \frac{\left| a_k \right|}{\sqrt{\left| x - x_k \right|}}  \, dx  \leqslant \\ &\leqslant \varliminf_{N \to \infty} \sum_{k=1}^{N}  \int\limits_{-c}^{c} \frac{\left| a_k \right|}{\sqrt{\left| x - x_k \right|}} \, dx \leqslant \\ &\leqslant \sum_{k=1}^{\infty} \left| a_k \right| \cdot \delta(c)
- ,\end{align*} где \begin{align*}
- \delta(c) = \sup_{a \in \R} \int\limits_{-c}^{c} \frac{1}{\sqrt{\left| x - a \right|}}  \, dx  < \infty
- .\end{align*} Значит, $f$ конечна почти всюду на $(-c, c)$ для любого  $c > 0$. Следовательно, $f$ конечна почти всюду. Следовательно, ряд абсолютно сходится при почти всех $x \in \R$.
+ Проинтегрируем ряд \eqref{equation:example:fatoo_lemma:series_to_converge} (взятый по модулю) по интервалу $(-c, c)$ для некоторого $c > 0$, и оценим интеграл, применив лемму Фату:
+ \begin{align*}
+  \int\limits_{-c}^{c} \sum_{k=1}^{\infty} \frac{\left| a_k \right|}{\sqrt{\left| x - x_k \right|}} \, dx &= \int\limits_{-c}^{c} \liminf_{n \to \infty} \sum_{k=1}^{n} \frac{\left| a_k \right|}{\sqrt{\left| x - x_k \right|}}  \, dx  \leqslant \\ &\leqslant \liminf_{n \to \infty} \sum_{k=1}^{n}  \int\limits_{-c}^{c} \frac{\left| a_k \right|}{\sqrt{\left| x - x_k \right|}} \, dx = \\
+  &= \sum_{k=1}^{\infty} \left| a_k \right| \int\limits_{-c}^{c} \frac{dx}{\sqrt{\left| x-x_k \right|}} \leqslant  \\
+  &\leqslant \sum_{k=1}^{\infty} \left| a_k \right| \cdot \delta(c)
+  ,\end{align*} где \begin{align*}
+  \delta(c) = \sup_{a \in \R} \int\limits_{-c}^{c} \frac{1}{\sqrt{\left| x - a \right|}}  \, dx  < \infty
+ .\end{align*} Раз интеграл конечен, то подынтегральная функция конечна почти всюду на $(-c, c)$. Следовательно, она конечна почти всюду, то есть ряд \eqref{equation:example:fatoo_lemma:series_to_converge} абсолютно сходится при почти всех $x \in \R$.
 \end{proof}
+
 \section{Интегральные неравенства}
 \begin{thm}[неравенство Чебышева]
  \label{theorem:chebishev_inequality}
- Пусть $(X, \A, \mu)$ --- пространство с мерой, функция $f$ измерима, а число $\eps > 0$. Тогда \begin{align*}
-  \mu \left( \left\{ x \mid \left| f(x) \right| \geqslant \eps \right\} \right) \leqslant \frac{1}{\eps} \int\limits_{X} \left| f \right| \, d\mu  
- \end{align*} 
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, неотрицательная функция $f \colon\, X \to [0,\infty]$ измерима, и $\eps > 0$. Тогда \begin{align*}
+  \mu  \left\{ x \in X \mid f(x) \geqslant \eps \right\}  \leqslant \frac{1}{\eps} \int\limits_{X} f \, d\mu  
+ .\end{align*} 
 \end{thm}
+Неравенство Чебышева имеет приложение в теории вероятностей: оно позволяет оценить вероятность того, что случайная величина окажется большой.
 \begin{proof}
- Пусть $E_{\eps}$ --- то множество. Тогда \begin{align*}
-  \mu(E_{\eps}) = \int\limits_{X} \chi_{E_{\eps}} \, d\mu  \leqslant \int\limits_{X} \frac{1}{\eps} \left| f \right| \chi_{E_{\eps}} \, d\mu  \leqslant \frac{1}{\eps} \int\limits_{X} \left| f \right| \, d\mu  
+ Пусть $E_{\eps} = \left\{ x \in X \mid f(x) \geqslant \eps \right\}$. Тогда \begin{align*}
+  \mu(E_{\eps}) = \int\limits_{X} \chi_{E_{\eps}} \, d\mu  \leqslant \int\limits_{X} \frac{1}{\eps} f \chi_{E_{\eps}} \, d\mu  \leqslant \frac{1}{\eps} \int\limits_{X} f \, d\mu  
  .\end{align*} 
 \end{proof}
+
+Далее, вспомним и обобщим неравенства (Юнга, Гёльдера, Минковского, Йенсена), доказанные в дискретном виде в первом семестре.
+
 \begin{thm}[неравенство Юнга]
- Пусть $a, b \in \R$, $p,q \geqslant 1$ такие, что $\frac{1}{p} + \frac{1}{q} = 1$. Тогда \begin{align*}
-  \left| a \right| \cdot \left| b \right| \leqslant \frac{\left| a \right|^{p}}{p} + \frac{\left| b \right|^{q}}{q}
- .\end{align*} 
+ Пусть $a, b \geqslant 0$ и $p,q > 1$ такие, что $\frac{1}{p} + \frac{1}{q} = 1$. Тогда
+ \begin{align}
+  \label{equation:theorem:young_inequality}
+  ab \leqslant \frac{a^{p}}{p} + \frac{b^{q}}{q}
+ .\end{align} 
 \end{thm}
 \begin{proof}
- Функция $\varphi = \log x$ вогнута на $(0, +\infty)$, так как $\varphi'' = -\frac{1}{x^{2}} < 0$ на $(0, +\infty)$. Тогда \begin{align*}
-  \log \left( \frac{1}{p}\left| \tilde a \right| + \frac{1}{q} \left| b \right| \right) \geqslant \frac{1}{p}\log \left| \tilde a \right| + \frac{1}{q}\left| q \right| = \log \left| \tilde a \right|^{\frac{1}{p}} \cdot \left| b \right|^{\frac{1}{q}}
- .\end{align*} Тогда \begin{align*}
-  \left| \tilde a \right|^{\frac{1}{p}} \cdot \left| \tilde b \right|^{\frac{1}{q}} \leqslant \frac{1}{p}\left| \tilde a \right| + \frac{1}{q} \left| \tilde b \right|
- .\end{align*} Осталось взять $\tilde a = \left| a \right|^{p}$ и $\tilde b = \left| b \right|^{q}$.
-\end{proof}
-\begin{thm}[неравенство Гёльдера]
+ Если $a = 0$ или $b = 0$, то левая часть равна нулю, поэтому считаем $a,b > 0$. Функция $\varphi = \log x$ вогнута на $(0, +\infty)$, так как $\varphi'' = -\frac{1}{x^{2}} < 0$ на $(0, +\infty)$. Воспользуемся вогнутостью в точках $a^{p}$ и $b^{q}$, взяв их выпуклую комбинацию с коэффициентами $\frac{1}{p}$ и $\frac{1}{q}$:
  \begin{align*}
-  \int\limits_{X} \left| fg \right| \, d\mu  \leqslant \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \cdot \left( \int\limits_{X} \left| g \right|^{q} \, d\mu   \right)^{\frac{1}{q}}
- ,\end{align*}  где $1 \leqslant p, q \leqslant \infty$, $\frac{1}{p} + \frac{1}{q} = 1$.
+  \log \left( \frac{a^{p}}{p} + \frac{b^{q}}{q} \right) \geqslant \frac{\log(a^{p})}{p} + \frac{\log(b^{q})}{q} = \log a + \log b = \log ab
+ .\end{align*} Из этого непосредственно следует \eqref{equation:theorem:young_inequality}, коль скоро функция $\varphi = \log x$  возрастает на $(0, +\infty)$.
+\end{proof}
+
+\begin{thm}[неравенство Гёльдера]
+ Пусть $(X, \A, \mu)$ --- пространство с мерой, функции $f, g \colon\, X \to \CC$ измеримы, числа $p$ и $q$ таковы, что $1 \leqslant p, q \leqslant \infty$ и $\frac{1}{p} + \frac{1}{q} = 1$. Тогда
+ \begin{align}
+  \label{equation:theorem:holder_inequality}
+  \int\limits_{X} \left| fg \right| \, d\mu  \leqslant \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \left( \int\limits_{X} \left| g \right|^{q} \, d\mu   \right)^{\frac{1}{q}}
+ .\end{align}
 \end{thm}
 \begin{proof}
  Обозначим \begin{align*}
-  A &= \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \\
-  B &= \left( \int\limits_{X} \left| g \right|^{q} \, d\mu   \right)^{\frac{1}{q}}
- \end{align*} 
- Пусть $1 < p, q < \infty$ и $A, B < \infty$. Тогда неравенство равносильно тому, что \begin{align*}
-  \int\limits_{X} \frac{\left| f \right|}{A} \cdot \frac{\left| g \right|}{B} \, d\mu   \leqslant 1
- .\end{align*} Применим неравенство Юнга под интегралом: \begin{align*}
- \int\limits_{X} \frac{\left| f \right|}{A} \cdot \frac{\left| g \right|}{B} \, d\mu \leqslant \frac{1}{p}\int\limits_{X} \frac{\left| f \right|^{p}}{A^{p}} \, d\mu   + \frac{1}{q} \int\limits_{X} \frac{\left| g \right|^{p}}{B^{q}} \, d\mu   = \frac{1}{p} + \frac{1}{q} = 1
- .\end{align*} При $p = 1$ и $q = \infty$ неравенство Гёльдера интерпретируем как \begin{align*}
- \int\limits_{X} \left| f g\right| \, d\mu  \leqslant \left( \int\limits_{X} \left| f \right| \, d\mu   \right) \cdot \sup_{x \in X} \left| g(x) \right|
-.\end{align*} Это очевидно, так как $\left| fg \right| \leqslant \left| f \right| \cdot \sup_{x \in X} \left| g \right|$. Интегрируя неравенство получаем то, что нужно.
+  \left\| f \right\|_p = \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}}, \quad\quad \left\| g \right\|_q = \left( \int\limits_{X} \left| g \right|^{q} \, d\mu   \right)^{\frac{1}{q}}.
+ \end{align*}
 
-Пусть $A = 0$. Это означает, что  $f$ почти всюду равна нулю. Тогда и в левой части, и в правой части будет ноль. (для $B = 0$ то же самое)
+ \begin{itemize}
+  \item Если $\left\| f \right\|_p = 0$ (или $\left\| g \right\|_q = 0$), то $\left| f \right|$ (или $\left| g \right|$) $\mu$-почти всюду равна нулю. Тогда тем более $\left| fg \right|$ $\mu$-почти всюду равна нулю, и, следовательно, обе части равны нулю.
+  \item Если $\left\| f \right\|_p = \infty$ или $\left\| b \right\|_q = \infty$, и при этом другой множитель больше нуля, то в правой части будет $\infty$, и доказывать нечего.
+  \item Теперь считаем $0 < \left\| f \right\|_p, \left\| g \right\|_q < \infty$. Рассмотрим сначала случай $1 < p, q < \infty$. Тогда неравенство \eqref{equation:theorem:holder_inequality} эквивалентно
+   \begin{align*}
+    \int\limits_{X} \frac{\left| f \right|}{\left\| f \right\|_p} \cdot \frac{\left| g \right|}{\left\| g \right\|_{q}}  \, d\mu \leqslant 1
+   .\end{align*} Применим неравенство \eqref{equation:theorem:young_inequality} Юнга под интегралом:
+   \begin{align*}
+    \int\limits_{X} \frac{\left| f \right|}{\left\| f \right\|_p}  \cdot \frac{\left| g \right|}{\left\| g \right\|_q} \, d\mu &\leqslant \frac{1}{p} \int\limits_{X}  \frac{\left| f \right|^{p}}{(\left\| f \right\|_p)^{p}}   \, d\mu + \frac{1}{q} \int\limits_{X} \frac{\left| b \right|^{q}}{(\left\| b \right\|_q)^{q}}  \, d\mu = \frac{1}{p} + \frac{1}{q} = 1
+   .\end{align*} 
+
+  \item При $p = 1$ и $q = \infty$ неравенство \eqref{equation:theorem:holder_inequality} Гёльдера интерпретируем так:
+   \begin{align*}
+    \int\limits_{X} \left| fg \right| \, d\mu \leqslant \int\limits_{X} \left| f \right| \, d\mu \cdot \sup_{x \in X}   \left| g \right|
+   .\end{align*} Это очевидно, так как $\left| fg \right| \leqslant \left| f \right| \cdot \sup_{x \in X} \left| g \right|$ в любой точке $x \in X$. При $p = \infty$ и $q = 1$ аналогично.
+ \end{itemize}
 \end{proof}
+\begin{remrk*}
+ На самом деле, при $p = 1$ и $q = \infty$ неравенство \eqref{equation:theorem:holder_inequality} Гёльдера можно интерпретировать более сильным образом:
+ \begin{align*}
+  \int\limits_{X} \left| fg \right| \, d\mu \leqslant \int\limits_{X} \left| f \right| \, d\mu \cdot \esssup  \left| g \right|
+ ,\end{align*} где $\esssup \left| g \right|$ ---  \textit{cущественный супремум} --- наименьшее число $a$ такое, что $\left| g \right| \leqslant a$ верно $\mu$-почти всюду. Это тоже верно, так как неравенство $\left| fg \right| \leqslant \left| f \right| \cdot \esssup \left| g \right|$ верно $\mu$-почти всюду.
+\end{remrk*}
+
 \begin{thm}[неравенство Минковского]
- \begin{align*}
+ Пусть $(X,\A,\mu)$ --- пространство с мерой, функции $f,g \colon\, X \to \CC$ измеримы, и число $p$ таково, что $1 \leqslant p \leqslant \infty$. Тогда
+ \begin{align}
+  \label{equation:theorem:minkowski_inequality}
   \left( \int\limits_{X} \left| f+g \right|^{p} \, d\mu \right)^{\frac{1}{p}} \leqslant \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} + \left( \int\limits_{X} \left| g \right|^{p} \, d\mu   \right)^{\frac{1}{p}}
- ,\end{align*} где $1 \leqslant p \leqslant \infty$.
+ .\end{align}
 \end{thm}
-Это неравенство очень похоже на неравенство треугольника. В каком только пространстве?
+Неравенство \eqref{equation:theorem:minkowski_inequality} очень похоже на неравенство треугольника. В каком только пространстве?
 \begin{proof}
- Пусть $p > 1$. Тогда
+ Пусть сначала $p > 1$. Тогда
  \begin{align*}
-  \int\limits_{X} \left| f+g \right|^{p} \, d\mu  &\leqslant \int\limits_{X} \left| f \right| \cdot \left| f + g \right|^{p - 1} \, d\mu  + \int\limits_{X} \left| g \right| \cdot \left| f+g \right|^{p-1} \, d\mu  \leqslant \\
-  &\leqslant \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \cdot \underbrace{\left( \int\limits_{X} \left| f+g \right|^{(p-1)q} \, d\mu   \right)^{\frac{1}{q}}}_{C} + \left( \int\limits_{X} \left| g \right|^{p} \, d\mu \right)^{\frac{1}{p}}\underbrace{\left( \int\limits_{X} \left| f+g \right|^{(p-1)q} \, d\mu   \right)^{\frac{1}{q}}}_{C} \leqslant \\
-  &\leqslant \left( \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} + \left( \int\limits_{X} \left| g \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \right)C
- .\end{align*} Но $(p-1)q = p$ (легко проверить). Поделим неравенство на  $C$: \begin{align*}
-  \left( \int\limits_{X} \left| f+g \right|^{p} \, d\mu   \right)^{1 - \frac{1}{q}} \leqslant \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}} + \left( \int\limits_{X} \left| g \right|^{p} \, d\mu   \right)^{\frac{1}{p}}
- ,\end{align*} и $1 - \frac{1}{q} = \frac{1}{p}$.
+  \int\limits_{X} \left| f+g \right|^{p} \, d\mu \leqslant \int\limits_{X} \left| f \right| \cdot \left| f+g \right|^{p-1} \, d\mu + \int\limits_{X} \left| g \right| \cdot \left| f+g \right|^{p-1}\,d\mu.
+ \end{align*} Применим в каждом слагаемом неравенство \eqref{equation:theorem:holder_inequality} Гёльдера с $p = p$ и подходящим $q$:
+ \begin{align}
+  \label{equation1:proof:theorem:minkowski_inequality}
+  \int\limits_{X} \left| f+g \right|^{p}\,d\mu\leqslant \left( \left( \int\limits_{X} \left| f \right|^{p} \, d\mu  \right)^{\frac{1}{p}} + \left( \int\limits_{X} \left| g \right|^{p}\,d\mu  \right)^{\frac{1}{p}} \right) \cdot C 
+ ,\end{align} где
+ \begin{align*}
+  C = \left( \int\limits_{X} \left| f+g \right|^{(p-1)q} \, d\mu \right) ^{\frac{1}{q}}
+ .\end{align*} Поделим неравенство \eqref{equation1:proof:theorem:minkowski_inequality} на $C$, пользуясь тем, что $(p-1)q=p$:
+ \begin{align*}
+  \left( \int\limits_{X} \left| f+g \right|^{p}\,d\mu  \right)^{1 - \frac{1}{q}} \leqslant \left( \int\limits_{X} \left| f \right|^{p}\,d\mu  \right)^{\frac{1}{p}} + \left( \int\limits_{X} \left| g \right|^{p}\,d\mu  \right)^{\frac{1}{p}}
+ .\end{align*} Учитывая $1 - \frac{1}{q} = \frac{1}{p}$, неравенство \eqref{equation:theorem:minkowski_inequality} доказано.
 
- При $p = 1$ все тривиально  \begin{align*}
+ При $p = 1$ неравенство \eqref{equation:theorem:minkowski_inequality} вырождается в неравенство треугольника на числах: \begin{align*}
   \int\limits_{X} \left| f + g \right| \, d\mu   \leqslant \int\limits_{X} \left| f \right| \, d\mu  + \int\limits_{X} \left| g \right| \, d\mu  
- .\end{align*}  При $p=\infty$ \begin{align*}
+ .\end{align*} 
+
+ При $p=\infty$: \begin{align*}
   \sup \left| f+g \right| \leqslant \sup \left| f \right| + \sup \left| g \right|
- ,\end{align*} что тоже верно.
+ ,\end{align*} что тоже верно по неравенству треугольника на числах.
 \end{proof}
-\begin{exmpl}
+\begin{remrk}
+ \label{remark:minkowski_inequality_on_L_infinity}
+ Как и в неравенстве \eqref{equation:theorem:holder_inequality} Гёльдера, при $p=\infty$ неравенство \eqref{equation:theorem:minkowski_inequality} Минковского можно интерпретировать более сильным образом:
+ \begin{align*}
+  \esssup \left| f+g \right| \leqslant \esssup \left| f \right| + \esssup \left| g \right|
+ ,\end{align*} что тоже верно.
+\end{remrk}
+\begin{proof}
+ Действительно, если $\left| f \right| \leqslant \esssup \left| f \right|$ на множестве $E_1$ полной меры, и $\left| g \right| \leqslant \esssup \left| g \right|$ на множестве $E_2$ полной меры, то
+ \begin{align*}
+  \left| f+g \right| \leqslant \left| f \right| + \left| g \right| \leqslant \esssup \left| f \right| + \esssup \left| g \right|
+ \end{align*} на множестве $E_1 \cap E_2$ полной меры. Поэтому, существенный супремум $\left| f+g \right|$ уж точно не превосходит $\esssup \left| f \right| + \esssup \left| g \right|$.
+\end{proof}
+
+Рассмотрим дискретные случаи неравенств Гёльдера и Минковского.
+
+\begin{exmpl}[дискретизация неравенства Гёльдера]
+ \label{example:discrete_holder_inequality}
  Пусть $a_k, b_k \in \CC$, $k \geqslant 1$. Докажем неравенство \begin{align*}
-  \sum_{k=1}^{\infty} \left| a_{k} b_k \right| \leqslant \left( \sum_{k=1}^{\infty} \left| a_k \right|^{p} \right)^{\frac{1}{p}} \cdot \left( \sum_{k=1}^{\infty} \left| b_k \right|^{q} \right)^{\frac{1}{q}}
- \end{align*} 
+  \sum_{k=1}^{\infty} \left| a_{k} b_k \right| \leqslant \left( \sum_{k=1}^{\infty} \left| a_k \right|^{p} \right)^{\frac{1}{p}} \left( \sum_{k=1}^{\infty} \left| b_k \right|^{q} \right)^{\frac{1}{q}}
+ ,\end{align*} где $1 < p, q < \infty$ и $\frac{1}{p} + \frac{1}{q} = 1$.
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство средствами теории меры}]
- Возьмём дискретную меру \begin{align*}
+ Рассмотрим считающую меру $\mu$ на  пространстве $X = \N$ с тривиальной $\sigma$-алгеброй $\A = 2^{\N}$:
+ \begin{align*}
   \mu = \sum_{k=1}^{\infty} \delta_{\left\{ k \right\}}
- \end{align*} --- считающая мера на $\N = X$. Тогда для любой функции  $f$ верно \begin{align*}
-  \int\limits_{X} \left| f \right| \, d\mu = \sum_{k=1}^{\infty} \int\limits_{\left\{ k \right\}} \left| f \right| \, d\mu  = \sum_{k=1}^{\infty} \left| f(k) \right|
- .\end{align*} Вернёмся к неравенству. Рассмотрим функции $f \colon\, k \mapsto a_k $ и $g_k \colon\, k \mapsto b_k$. Тогда по неравенству Гёльдера \begin{align*}
- &\int\limits_{\N} \left| fg \right| \, d\mu \leqslant \left( \int\limits_{\N} \left| f \right|^{p} \, d\mu   \right) ^{\frac{1}{p}} \cdot \left( \int\limits_{\N} \left| g \right|^{q} \, d\mu   \right)^{\frac{1}{q}} \iff \\ 
- \iff & \sum_{k=1}^{\infty} \left| a_k b_k \right| \leqslant \left( \sum_{k=1}^{\infty} \left| a_k \right|^{p} \right)^{\frac{1}{p}} \cdot \left( \sum_{k=1}^{\infty} \left| b_k \right|^{q} \right)^{\frac{1}{q}}
+ .\end{align*} Тогда интеграл любой функции $f \colon\, \N \to \CC$ представляет из себя сумму ряда:
+ \begin{align*}
+  \int\limits_{X} \left| f \right| \, d\mu = \sum_{k=1}^{\infty} \int\limits_{\left\{ k \right\}}  \left| f \right| \, d\mu = \sum_{k=1}^{\infty} \left| f(k) \right|
+ .\end{align*} Пользуясь тем, что последовательности $\{a_{k}\}_{k=1}^{\infty} $ и $\{b_{k}\}_{k=1}^{\infty} $ --- это функции $\N \to \CC$, применим интегральное неравенство Гёльдера \eqref{equation:theorem:holder_inequality}:
+ \begin{align*}
+  &\int\limits_{\N} \left| ab \right| \, d\mu \leqslant \left( \int\limits_{\N} \left| a \right|^{p} \, d\mu   \right) ^{\frac{1}{p}} \left( \int\limits_{\N} \left| b \right|^{q} \, d\mu   \right)^{\frac{1}{q}} \iff \\ 
+  \iff & \sum_{k=1}^{\infty} \left| a_k b_k \right| \leqslant \left( \sum_{k=1}^{\infty} \left| a_k \right|^{p} \right)^{\frac{1}{p}} \left( \sum_{k=1}^{\infty} \left| b_k \right|^{q} \right)^{\frac{1}{q}}
  .\end{align*} 
 \end{proof}
 
-Ряды --- это интегралы по считающим мерам. Вся теория рядов --- это очень частный случай теории меры.
+Пример \ref{example:discrete_holder_inequality} дискретизации иллюстрирует крайне важную идею: очень многие утверждения про последовательности чисел --- это на самом деле утверждения из теории меры, взятые в дискретном частном случае. Например, вся теория рядов --- это очень частный случай теории меры --- интегралы по считающей мере на $\N$. По этой причине, при попытке что-то доказать в теории меры крайне полезно сначала рассмотреть дискретный частный случай того же утверждения: заменить интегралы на ряды.
+
+\begin{exmpl*}
+ Ограничив пример \ref{example:discrete_holder_inequality} на конечные суммы и положительные числа получаем в точности вариант неравенства Гёльдера, доказанный в первом семестре:
+ \begin{align*}
+  x_1 y_1 + \ldots + x_n y_n \leqslant (x_1^{p} + \ldots + x_n^{p})^{\frac{1}{p}} (y_1^{q} + \ldots + y_n^{q})^{\frac{1}{q}}
+ ,\end{align*} где $x_1, \ldots, x_n, y_1, \ldots, y_n > 0$, $1 < p, q < \infty$, $\frac{1}{p} + \frac{1}{q} = 1$. Взяв $p=q=2$, получаем неравенство Коши-Буняковского-Шварца в евклидовом пространстве $\R^{n}$:
+ \begin{align*}
+  x_1 y_1 + \ldots + x_n y_n \leqslant \sqrt{x_1^{2} + \ldots + x_n^{2}} \cdot \sqrt{y_1^{2} + \ldots + y_n^{2}}
+ .\end{align*} 
+\end{exmpl*}
+
+\begin{exmpl*}[дискретный случай неравенства Минковского]
+ Для любых чисел $x_k, y_k \in \CC$ и любого $p \geqslant 1$:
+ \begin{align*}
+  \left(\sum_{k=1}^{\infty} \left| x_k + y_k \right|^{p}\right)^{\frac{1}{p}} \leqslant \left(\sum_{k=1}^{\infty} \left| x_k \right|^{p}\right)^{\frac{1}{p}} + \left(\sum_{k=1}^{\infty} \left| y_k \right|^{p}\right)^{\frac{1}{p}}
+ .\end{align*} Ограничив неравенство на конечные суммы и вещественные числа, мы в точности получаем вариант неравенства Минковского, доказанный в первом семестре --- неравенство треугольника в $\R^{n}$ с $p$-метрикой:
+ \begin{align*}
+  (\left| x_1+y_1 \right|^{p} + \ldots \left| x_n+y_n \right|^{p})^{\frac{1}{p}} \leqslant (\left| x_1 \right|^{p} + \ldots + \left| x_n \right|^{p})^{\frac{1}{p}} + (\left| y_1 \right|^{p} + \ldots + \left| y_n \right|^{p})^{\frac{1}{p}}
+ .\end{align*} 
+\end{exmpl*}
+
+Закончим параграф неравенством Йенсена в наиболее общей формулировке.
 
 \begin{thm}[неравенство Йенсена]
- Пусть $\varphi$ --- выпуклая функция на  $\R$, $f$ --- измерима и суммируема на $X$, $\mu$ --- мера на $\A$. Пусть  $\mu(X) = 1$. Тогда  \begin{align*}
+ Пусть $\varphi \colon\, \R \to \R$ --- выпуклая измеримая по Борелю функция. Пусть $(X, \A, \mu)$ --- пространство с мерой такое, что $\mu(X) = 1$. Пусть $f \colon\, X \to \R $ --- суммируемая функция. Тогда
+ \begin{align}
+  \label{equation:theorem:jensen_inequality}
   \varphi \left( \int\limits_{X} f \, d\mu   \right) \leqslant \int\limits_{X} \varphi(f(x)) \, d\mu  
- .\end{align*} 
+ .\end{align} 
 \end{thm}
-Упражнение: попробовать подставить считающую меру и получить обычное неравенство Йенсена.
+Для доказательства нам потребуется вспомнить некоторый факт про выпуклые функции.
+\begin{lm}[полупроизводная выпуклой функции]
+ \label{lemma:half_derivative_of_convex_function}
+ Пусть $\varphi \colon\, \R \to \R $  --- выпуклая функция, $x_0 \in \R$ --- точка. Тогда для любого $x \in \R$ выполнено
+ \begin{align*}
+  \varphi(x) \geqslant \varphi(x_0) + a(x - x_0)
+ ,\end{align*} где $a \in \R$ зависит лишь от $x_0$.
+\end{lm}
 \begin{proof}
- Для любой выпуклой функции выполнено неравенство \begin{align*}
-   \frac{\varphi(x_1) - \varphi(x_2)}{x_1 - x_2} \leqslant \frac{\varphi(x_2) - \varphi(x_3)}{x_2 - x_3}, \quad \forall x_1 < x_2 < x_3
- .\end{align*} Зафиксируем $x_2$. Тогда \begin{align*}
-  \frac{\varphi(x_1) - \varphi(x_2)}{x_1 - x_2} \leqslant a \leqslant \frac{\varphi(x_{2}) - \varphi(x_3)}{x_2 - x_3}
- .\end{align*} В качестве $a$ можно взять  \begin{align*}
- a = \inf_{x_3 > x_2} \frac{\varphi(x_2) - \varphi(x_3)}{x_2 - x_3}
- .\end{align*} Тогда \begin{align*}
- &\varphi(x_1) - \varphi(x_2) \leqslant a (x_2 - x_1) \\
-  \implies &\varphi(x_1) \geqslant \varphi(x_2) + a(x_1 - x_2) \\
-  &\varphi(x) \geqslant \varphi(x_2) + a(x - x_2) \quad \forall x < x_2
- .\end{align*} С другой стороны, \begin{align*}
- &\varphi(x_3) - \varphi(x_2) \geqslant a(x_3 - x_2) \\
- \implies &\varphi(x_3) \geqslant \varphi(x_2) + a(x_3 - x_2) \\
-  \implies &\varphi(x) \geqslant \varphi(x_2) + a(x - x_2) \quad \forall x > x_2
- .\end{align*} Вывод: $\varphi(x) \geqslant \varphi(y) + a(x - y)$ для любого $x \in \R$, и некоторого $a$, которое зависит лишь от $y$ ($a$ это оценка на производную в точке $y$). Это называется что-то в духе <<полупроизводная>>.
-
- Докажем теперь неравенство Йенсена. Возьмём \begin{align*}
-  y = \int\limits_{X} f \, d\mu  
- .\end{align*} Тогда существует $a \in \R$ такое, что \begin{align*}
-  \varphi(f(x)) \geqslant \varphi \left( \int\limits_{X} f \, d\mu   \right) + a \left( f(x) - \int\limits_{X} f \, d\mu   \right)
- \end{align*}. Проинтегрируем обе части: \begin{align*}
-  \int\limits_{X} \varphi(f(x)) \, d\mu   \geqslant \int\limits_{X} \varphi \left( \int\limits_{X} f \, d\mu   \right) \, d\mu  + a \left( \int\limits_{X} f \, d\mu - \int\limits_{X} \left( \int\limits_{X} f \, d\mu   \right) \, d\mu    \right)
- .\end{align*} Используя тот факт, что \begin{align*}
-  \int\limits_{X} c \, d\mu  = c \mu(X) = c
- ,\end{align*} получаем требование.
+ Для выпуклой функции и для точки $x_0 \in \R$ выполнено неравенство
+ \begin{align*}
+  \frac{\varphi(x_1) - \varphi(x_0)}{x_1 - x_0} \leqslant \frac{\varphi(x_0) - \varphi(x_2)}{x_0 - x_2}
+ \end{align*} для любых $x_1 < x_0 < x_2$. Тогда
+ \begin{align*}
+  \frac{\varphi(x_1) - \varphi(x_0)}{x_1 - x_0} \leqslant a \leqslant  \frac{\varphi(x_0) - \varphi(x_2)}{x_0 - x_2}
+ .\end{align*} В качестве $a$ можно взять
+ \begin{align*}
+  a = \inf_{x_2 > x_0} \frac{\varphi(x_0) - \varphi(x_2)}{x_0 - x_2}
+ .\end{align*} Развернём первое неравенство:
+ \begin{align*}
+  &\varphi(x_1) - \varphi(x_0) \geqslant a(x_1 - x_0) \\
+  \implies &\varphi(x_1) \geqslant \varphi(x_0) + a(x_1 - x_0)
+ \end{align*} для любого $x_1 < x_0$. Развернём второе неравенство:
+ \begin{align*}
+  &a(x_0 - x_2) \geqslant \varphi(x_0) - \varphi(x_2) \\
+  \implies &\varphi(x_2) \geqslant \varphi(x_0) + a(x_2 - x_0)
+ \end{align*} для любого $x_2 > x_0$. Таким образом, для любого $x \in \R$ выполнено
+ \begin{align*}
+  \varphi(x) \geqslant \varphi(x_0) + a(x - x_0)
+ .\end{align*} 
 \end{proof}
-Сформулируем дискретный случай неравенства Йенсена. $X = \N$, $w_k \geqslant 0$ такие, что $\sum_{k=1}^{\infty} w_k = 1$. $\mu = \sum_{k=1}^{\infty} w_k \delta_{\left\{ w_k \right\}}$, $f(k) = a_k$ и  $\sum_{k=1}^{\infty} \left| a_k \right| \cdot w_k < \infty$. Пусть $\varphi$ выпуклая, тогда левая часть равна \begin{align*}
- \varphi \left( \int\limits_{X} f \, d\mu   \right) &= \varphi \left( \int\limits_{\bigcup_{k=1}^{\infty} \left\{ k \right\}} f \, d\mu   \right) = \varphi \left( \sum_{k=1}^{\infty} \int\limits_{\left\{ k \right\}} f \, d\mu   \right) = \varphi \left( \sum_{k=1}^{\infty} a_k w_k \right)
-.\end{align*} А правая часть равна \begin{align*}
- \int\limits_{\N} \varphi(f(x)) \, d\mu  = \sum_{k=1}^{\infty} \int\limits_{\left\{ k \right\}} \varphi(f(x)) \, d\mu   = \sum_{k=1}^{\infty} \varphi(f(k)) w_k = \sum_{k=1}^{\infty} \varphi(a_k)w_k
-.\end{align*} Получаем неравенство \begin{align*}
- \varphi \left( \sum_{k=1}^{\infty} a_k w_k \right) \leqslant \sum_{k=1}^{\infty} w_k \varphi(a_k)
-.\end{align*} 
-
-Мотивация: когда мы хотим доказать что-то интегральное, первое, что надо сделать --- проверить соответствующее утверждение в дискретном случае. Там получится теория рядов, и там, обычно, всё понятно.
+\begin{proof}[\normalfont \textsc{Доказательство неравенства Йенсена \eqref{equation:theorem:jensen_inequality}}]
+ Рассмотрим число
+ \begin{align*}
+  x_0 = \int\limits_{X} f \, d\mu  \in \R
+ .\end{align*} По лемме \ref{lemma:half_derivative_of_convex_function} существует $a \in \R$ такое, что
+ \begin{align*}
+  \varphi(y) \geqslant \varphi(x_0) + a(y - x_0)
+ .\end{align*} В частности, для любого $x \in X$ верно
+ \begin{align*}
+  \varphi(f(x)) \geqslant \varphi \left( \int\limits_{X} f \, d\mu   \right) + a \left( f(x) - \int\limits_{X} f \, d\mu   \right)
+  .\end{align*} Проинтегрируем обе части по $x$ и воспользуемся тем фактом, что $\int_{X}  c \, d\mu = c \mu(X) = c$: \begin{align*}
+  \int\limits_{X} \varphi(f(x)) \, d\mu   &\geqslant \int\limits_{X} \varphi \left( \int\limits_{X} f \, d\mu   \right) \, d\mu  + a \left( \int\limits_{X} f \, d\mu - \int\limits_{X} \left( \int\limits_{X} f \, d\mu   \right) \, d\mu    \right) = \\
+  &= \varphi \left( \int\limits_{X} f \, d\mu  \right) + a \left( \int\limits_{X} f \, d\mu - \int\limits_{X} f \, d\mu   \right) = \\
+  &= \varphi \left( \int\limits_{X} f \, d\mu  \right)
+ .\end{align*}
+\end{proof}
+\begin{exmpl}[дискретный случай неравенства Йенсена]
+ Пусть $\varphi \colon\, \R \to \R$ --- выпуклая функция. Пусть числа $\lambda_k \geqslant 0$ таковы, что
+ \begin{align*}
+  \sum_{k=1}^{\infty} \lambda_k = 1
+ .\end{align*} Пусть есть точки $x_k \in \R$ такие, что
+ \begin{align*}
+  \sum_{k=1}^{\infty} \lambda_k \left| x_k \right| < \infty
+ .\end{align*} Тогда
+ \begin{align*}
+  \varphi \left( \sum_{k=1}^{\infty} \lambda_k x_k \right) \leqslant \sum_{k=1}^{\infty} \lambda_k \varphi(x_k)
+ .\end{align*} В частности, ограничиваясь конечными суммами, получаем классический вариант неравенства Йенсена, доказанный в первом семестре:
+ \begin{align*}
+  \varphi(\lambda_1 x_1 + \ldots + \lambda_k x_k) \leqslant \lambda_1 \varphi(x_1) + \ldots + \lambda_k \varphi(x_k)
+ .\end{align*} 
+\end{exmpl}
+\begin{proof}
+ Пусть $X = \N$, $\A = 2^{\N}$. Рассмотрим дискретную меру $\mu$, считающую целые точки с весами $\lambda_k$:
+ \begin{align*}
+  \mu = \sum_{k=1}^{\infty} \lambda_k \delta_{\left\{ k \right\}}
+ .\end{align*} 
+ Тогда для любой функции $f \colon\, \N \to \R  $
+ \begin{align*}
+  \int\limits_{X} f \, d\mu = \sum_{k=1}^{\infty}  \int\limits_{\left\{ k \right\}}  f \, d\mu = \sum_{k=1}^{\infty} \lambda_k f(k)
+ .\end{align*} Будем смотреть на последовательность $\{x_{k}\}_{k=1}^{\infty} $ как на функцию $x \colon\, \N \to \R$. Условие $\sum_{k=1}^{\infty} \lambda_k $ означает $\mu(X) = 1$, а условие $\sum_{k=1}^{\infty} \lambda_k \left| x_k \right| < \infty$ означает суммируемость функции $x$. Поэтому, можно применить интегральное неравенство Йенсена \eqref{equation:theorem:jensen_inequality}:
+ \begin{align*}
+  &\varphi \left( \int\limits_{\N} x \, d\mu \right) \leqslant \int\limits_{\N} \varphi(x)  \, d\mu \iff \\
+  \iff &\varphi \left( \sum_{k=1}^{\infty} \lambda_k x_k \right) \leqslant \sum_{k=1}^{\infty} \lambda_k \varphi(x_{k})
+ .\end{align*} 
+\end{proof} 
 
 \section{Пространства Лебега}
-Пусть $(X, \A, \mu)$ --- пространство с мерой и $1 \leqslant p \leqslant \infty$ --- число. Зафиксируем их на весь параграф.
-\begin{df}
- Пусть $f,g$ --- измеримы. Будем писать $f \sim g$, если $f = g$  $\mu$-почти всюду.
-\end{df}
-\begin{remrk}
- $f \sim g$ --- отношение эквивалентности.
-\end{remrk}
-\begin{df}
- Пространство Лебега 
-\begin{align*}
- L^{p}(X, \mu) = \left\{ [f] \mid f \colon\, X \to [-\infty, +\infty],  \left( \int\limits_{X} \left| f \right|^{p} \, d\mu \right)^{\frac{1}{p}} < \infty  \right\}
-\end{align*} для $p < \infty$, где $[f]$ --- класс эквивалентности $f$. Далее, \begin{align*}
-L^{\infty}(X, \mu) = \left\{ [f] \mid \mathrm{ess} \sup \left| f \right|< \infty \right\}
-,\end{align*} где существенный (essential) супремум определяется следующим образом: \begin{align*}
-\mathrm{ess} \sup g &= \inf \left\{ c \in \R \mid g(x) \leqslant c \text{ $\mu$-почти всюду} \right\} \\
-\mathrm{ess} \sup g &= +\infty, \text{ если таких $c$ нет. }
-\end{align*} 
-\end{df}
-\begin{remrk}
- Запись $f \in L^{p}(X, \mu)$ означает, что выбран некоторый представитель его класса эквивалентности.
-\end{remrk}
-\begin{claim}
- $L^{p}(X,\mu)$ --- это линейное пространство относительно нормы \begin{align*}
-  \|f\|_p = \begin{cases}
-   \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}}, \text{ если } p \geqslant 1  \\
-   \mathrm{ess} \sup \left| f \right|, \text{ если } p=\infty
-  \end{cases} 
- .\end{align*} 
-\end{claim}
-\begin{proof}
- Если $\|f\|_p = 0$, то  $\left| f \right| = 0$ $\mu$-почти всюду. Тогда $f = 0$ как элемент $L^{p}(X, \mu)$.
 
+Пространства Лебега представляют из себя важный класс пространств в функциональном анализе.
+
+Зафиксируем на весь параграф пространство с мерой $(X,\A,\mu)$.
+
+\begin{df*}
+ Пусть функция $f \colon\, X \to \CC$ (или $\R$) измерима. \textit{Существенным супремумом} функции $\left| f \right|$ (по множеству $X$) называется инфимум
  \begin{align*}
-  \| \alpha f \|_p = \left| \alpha \right| \cdot \| f \|_p \quad \forall \alpha \in \CC (\alpha \in \R)
- \end{align*} Если $f,g \in L^{p}(X,\mu)$, то $f + g \in L^{p}(X, \mu)$ и выполнено неравенство треугольника: \begin{align*}
-  \| f + g \|_p \leqslant \|f \|_p + \|g\|_p
- \end{align*}  --- это неравенство Минковского. При $p=\infty$ нужно показать \begin{align*}
- \mathrm{ess} \sup \left| f+g \right| \leqslant \mathrm{ess} \sup \left| f \right| + \mathrm{ess} \sup \left| g \right|
-.\end{align*} Заметим, что $\inf$ в определении  $\mathrm{ess} \sup$ достигается: если $\mathrm{ess} \sup h = C$, то существует множество $E$ такое, что $\mu(X \setminus E) = 0$ и $h \leqslant C$ на $E$. Докажем это: существуют множества $E_n$ полной меры, такие, что $h \leqslant C + \frac{1}{n}$ на $E_n$ (по определению нижней грани). Тогда  $E = \bigcap_{n=1}^{\infty} E_n $ подходит,  оно полной меры.
-\end{proof}
+  \esssup \left| f \right| = \inf \left\{ c \geqslant 0 \mid \left| f(x) \right| \leqslant c \;\mu\text{-почти всюду}\right\}
+ .\end{align*} При этом, если такого $c \in \R$ нет, то $\esssup \left| f \right| = \infty$.
+\end{df*}
+
+Для числа $1 \leqslant p \leqslant \infty$ мы хотим построить пространство Лебега как нормированное пространство измеримых функций $f \colon\, X \to \CC $ (или $\R$) с нормой, равной $\left( \int_{X}  \left| f \right|^{p} \, d\mu \right)^{\frac{1}{p}}$ (или $\esssup \left| f \right|$, если $p = \infty$). Однако возникает некоторое затруднение: есть две различные функции $f_1, f_2$ (с конечной нормой), норма разности которых равна нулю. Например, $f_1 = 0$ и $f_2 = \chi_{\left\{ 0 \right\}}$ ($X = \R$, $\mu = \lao$, $p = 1$). Однако, это можно обойти стандартным способом: ослабить условие на равенство функций. Более формально, нужно рассмотреть классы эквивалентности относительно некоторого отношения эквивалентности.
+
+\begin{df*}
+ Пусть $f,g \colon\, X \to \CC$ (или $\R$) --- измеримые функции. Будем говорить, что $f$ \textit{эквивалентна} $g$ и писать $f \sim g$, если $f = g$  $\mu$-почти всюду.
+\end{df*}
+\begin{remrk*}
+ Тривиально проверяется, что $ \sim $ --- действительно отношение эквивалентности. Класс эквивалентности функции $f$ будем обозначать $[f]$. 
+\end{remrk*}
 \begin{df}
- $X$ --- \textit{банахово пространство}, если $X$ --- линейное нормированное пространство, и $X$ полно относительно своей нормы.
+ Пусть $1 \leqslant p < \infty$. \textit{Пространством Лебега} $L^{p}(X,\mu)$ называется семейство всех классов эквивалентности $[f]$  по всем измеримым функциям $f \colon\, X \to \CC $ (или $\R$), $p$-я степень модуля которых суммируема, или, эквивалентно
+ \begin{align*}
+  \left( \int\limits_{X} \left| f \right|^{p} \,d\mu  \right)^{\frac{1}{p}} < \infty
+ .\end{align*} 
+
+ \textit{Пространством Лебега} $L^{\infty}(X,\mu)$  называется семейство всех классов эквивалентности $[f]$ по всем измеримым функциям  $f \colon\, X \to \CC $ (или $\R$), существенный супремум модуля которых конечен:
+ \begin{align*}
+  \esssup \left| f \right| < \infty
+ .\end{align*} 
 \end{df}
+\begin{remrk*}
+ Запись $f \in L^{p}(X, \mu)$ означает, что выбран некоторый представитель класса эквивалентности $[f]$.
+\end{remrk*}
+\begin{claim}
+ Пространство Лебега $L^{p}(X,\mu)$ является линейным нормированным пространством над $\CC$ (или $\R$) относительно нормы \begin{align*}
+  \|f\|_p = \begin{cases}
+   \left( \int\limits_{X} \left| f \right|^{p} \, d\mu   \right)^{\frac{1}{p}}, \text{ если } 1 \leqslant p < \infty,  \\
+   \mathrm{ess} \sup \left| f \right|, \text{ если } p=\infty.
+  \end{cases} 
+ \end{align*} 
+\end{claim}
+\begin{proof}\
+ \begin{itemize}
+  \item Формально, нужно сначала проверить, что операции сложения классов $[f] + [g] = [f + g]$ и умножения класса на число $\alpha [f] = [\alpha f]$ определены корректно. Это действительно так, потому что любые две функции из одного класса совпадут на множестве полной меры, значит, и результат операции тоже.
+
+  \item Очевидно, $0 \leqslant \left\| f \right\|_p < \infty$. Если $\left\| f \right\|_p = 0$, то $f = 0$ $\mu$-почти всюду. Это означает, что $f = 0$ как элемент $L^{p}(X,\mu)$.
+  \item Если $f \in L^{p}(X,\mu)$ и $\alpha \in \CC$ ($\R$), то $\alpha f \in L^{p}(X,\mu)$ и $\left\| \alpha f \right\|_p = \left| \alpha \right| \cdot \left\| f \right\|_p$. Действительно, по линейности:
+   \begin{align*}
+    \left( \int\limits_{X} \left| \alpha f \right|^{p}\,d\mu  \right)^{\frac{1}{p}} &= \left| \alpha \right| \left( \int\limits_{X} \left| f \right|^{p} \,d\mu  \right)^{\frac{1}{p}} < \infty, \\
+    \esssup \left| \alpha f \right| &= \left| \alpha \right| \esssup \left| f \right| < \infty
+   .\end{align*}
+  \item Если $f,g \in L^{p}(X,\mu)$, то $f + g \in L^{p}(X, \mu)$ и выполнено неравенство треугольника: \begin{align*}
+    \| f + g \|_p \leqslant \|f \|_p + \|g\|_p
+   .\end{align*} Действительно, это просто неравенство Минковского \eqref{equation:theorem:minkowski_inequality} (при $p =\infty$ это замечание \ref{remark:minkowski_inequality_on_L_infinity}).
+ \end{itemize}
+\end{proof}
+\begin{df*}
+ Линейное нормированное пространство $X$ называется \textit{банаховым}, если $X$ полно относительно своей нормы.
+\end{df*}
 \begin{thm}
  \label{theorem:lebesgue_space_is_banach}
  $L^{p}(X, \mu)$ --- банахово пространство (оно полное).
@@ -213,54 +356,62 @@ L^{\infty}(X, \mu) = \left\{ [f] \mid \mathrm{ess} \sup \left| f \right|< \infty
 \begin{lm}
  Пусть $L$ --- линейное нормированное пространство. $L$ полно тогда и только тогда, когда для любых $x_n \in L$ таких, что \begin{align*}
   \sum_{k=1}^{\infty} \|x_n\| < \infty
- \end{align*}  существует предел \begin{align*}
-  \lim_{N \to \infty} \sum_{n=1}^{\infty} x_n
+  \end{align*}  существует предел \begin{align*}
+  \lim_{n \to \infty} \sum_{k=1}^{n} x_k
  \end{align*} в $X$. То есть любой абсолютно сходящийся ряд сходится в $X$.
 \end{lm}
 \begin{proof}
  Пусть $L$ полно и $\sum_{n=1}^{\infty} \|x_n\| < \infty$. Положим \begin{align*}
-  S_N = \sum_{n=1}^{\infty} x_n
- .\end{align*} Тогда \begin{align*}
-  \| S_N - S_M \| \leqslant \sum_{n=N}^{M} \|x_n\|
- .\end{align*} По критерию Коши для числовых рядов \begin{align*}
-  \lim_{N \to \infty} \sum_{n=N}^{M} \| x_n \| = 0 
- .\end{align*} Значит, $\{S_{N}\}_{N=1}^{\infty} $ --- фундаментальная последовательность. Так как пространство $L$ полное, то она сходится, то есть существует предел \begin{align*}
-  \sum_{n=1}^{\infty} x_n := \lim_{N \to \infty} S_N 
+  S_n = \sum_{k=1}^{n} x_k
+ .\end{align*} Тогда для любых $n < m$
+ \begin{align*}
+  \| S_n - S_m \| \leqslant \sum_{k=n}^{m} \|x_k\|
+  .\end{align*} По критерию Коши для числовых рядов правая часть стремится к нулю при $n, m \to \infty$. Значит, $\{S_{n}\}_{n=1}^{\infty} $ --- фундаментальная последовательность. Так как пространство $L$ полное, то она сходится, то есть существует предел \begin{align*}
+  \sum_{k=1}^{\infty} x_k := \lim_{n \to \infty} S_n 
  .\end{align*} 
 
- В обратную сторону: пусть любой абсолютно сходящийся ряд сходится и пусть дана последовательность $\{x_{k}\}_{k=1}^{\infty} $ --- фундаментальная в $L$. Тогда существует подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty} $ такая, что \begin{align*}
+ Наоборот, пусть любой абсолютно сходящийся ряд сходится и пусть дана фундаментальная последовательность $\{x_{k}\}_{k=1}^{\infty} $ в $L$. Тогда существует подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty} $ такая, что \begin{align*}
   \|x_s - x_{n_k}\| \leqslant \frac{1}{2^{k}} \quad \forall s \geqslant n_k
- \end{align*} Построим последовательность $\{y_{k}\}_{k=1}^{\infty} $:  \begin{align*}
- y_1 &= x_{n_1} \\
- y_1 + y_2 &= x_{n_2} \\
- y_1 + y_2 +y_3 &= x_{n_3} \\
- &\vdots
-\end{align*} Положим ещё $x_{n_0} = 0$. Тогда будет верна формула \begin{align*}
-\sum_{k=1}^{\infty} \| y_k \| = \sum_{k=1}^{\infty} \| x_{n_k} - x_{n_{k-1}} \| \leqslant \sum_{k=1}^{\infty} \frac{1}{2^{k-1}} < \infty
-.\end{align*} Следовательно, ряд $\sum_{k=1}^{\infty} y_k$ сходится, то есть существует предел \begin{align*}
-\lim_{N \to \infty} \sum_{k=1}^{N} y_k = \lim_{N \to \infty} x_{n_N}  
-.\end{align*} Значит, фундаментальная последовательность $\{x_{n}\}_{n=1}^{\infty} $ содержит сходящуюся подпоследовательность. Значит она сама сходится.
+  \end{align*} Построим последовательность $\{y_{k}\}_{k=1}^{\infty} $:  \begin{align*}
+  y_1 &= x_{n_1} \\
+  y_1 + y_2 &= x_{n_2} \\
+  y_1 + y_2 +y_3 &= x_{n_3} \\
+  &\vdots
+  \end{align*} Тогда будет верна формула \begin{align*}
+  \sum_{k=1}^{\infty} \| y_k \| = \left\| x_{n_1} \right\| + \sum_{k=2}^{\infty} \| x_{n_k} - x_{n_{k-1}} \| \leqslant \left\| x_{n_1} \right\| + \sum_{k=2}^{\infty} \frac{1}{2^{k-1}} < \infty
+  .\end{align*} Следовательно, ряд $\sum_{k=1}^{\infty} y_k$ сходится, то есть существует предел \begin{align*}
+  \lim_{N \to \infty} \sum_{k=1}^{N} y_k = \lim_{N \to \infty} x_{n_N}  
+ .\end{align*} Значит, фундаментальная последовательность $\{x_{n}\}_{n=1}^{\infty} $ содержит сходящуюся подпоследовательность. Значит она сама сходится.
 \end{proof}
 \begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:lebesgue_space_is_banach}}]
- Пусть $f_n \in L^{p}(X, \mu)$ такие, что $\sum_{n=1}^{\infty} \|f_n\|_p < \infty$. Нужно проверить, что ряд 
-\begin{align*}
- F(x) = \sum_{n=1}^{\infty} f_n(x)
-\end{align*} сходится при $\mu$-почти всех $x \in X$ и \begin{align*}
- \lim_{N \to \infty} \left\| \sum_{n=1}^{N} f_n - F \right\| = 0
-.\end{align*} Докажем. \begin{align*}
-\left( \int\limits_{X} \left( \sum_{n=1}^{\infty} \left| f_n(x) \right| \right)^{p} \, d\mu \right) ^{\frac{1}{p}} &= \left( \int\limits_{X} \varliminf_{N \to \infty} \left( \sum_{n=1}^{N} \left| f_n(x) \right| \right)^{p} \, d\mu \right)  ^{\frac{1}{p}} \leqslant \\
-&\underbrace{\leqslant}_{\text{ лемма Фату }} \varliminf_{N\to \infty} \left( \int\limits_{X} \left( \sum_{n=1}^{N} \left| f_n(x) \right| \right)^{p} \, d\mu   \right)^{\frac{1}{p}} \leqslant \\
-&\leqslant \varliminf_{N\to \infty} \sum_{n=1}^{N} \| f_n \|_p = \sum_{n=1}^{\infty} \|f_n\|_p < \infty \\
-\implies &\sum_{n=1}^{\infty} \left| f_n(x) \right| < \infty \text{ $\mu$-почти всюду } \\
-\implies &F(x) = \sum_{n=1}^{\infty} f_n(x) \text{ --- сходится $\mu$-почти всюду.}
-\end{align*} Осталось оценить \begin{align*}
- \left\| F - \sum_{n=1}^{N} f_n(x) \right\|_p = \left\| \sum_{N+1}^{\infty} f_n \right\| \leqslant \sum_{N+1}^{\infty} \| f_n \|_p \to 0
-\end{align*} 
+ Пусть $f_n \in L^{p}(X, \mu)$ такие, что $\sum_{n=1}^{\infty} \|f_n\|_p < \infty$. Нужно проверить, что функция
+ \begin{align*}
+  F(x) = \sum_{n=1}^{\infty} f_n(x)
+  \end{align*} принадлежит $L^{p}(X,\mu)$ и \begin{align*}
+  \lim_{N \to \infty} \left\| \sum_{n=1}^{N} f_n - F \right\|_p = 0
+ .\end{align*}
+ Проверим принадлежность с помощью леммы Фату (теорема \ref{theorem:lemma_fatoo}) и неравенства треугольника для конечных сумм:
+ \begin{align*}
+  \left( \int\limits_{X} \left| \sum_{n=1}^{\infty} f_n(x) \right|^{p}  \,d\mu\right)^{\frac{1}{p}} &= \left( \int\limits_{X} \liminf_{N \to \infty} \left| \sum_{n=1}^{N} f_n(x) \right|^{p} \, d\mu   \right)^{\frac{1}{p}} \leqslant \\
+  &\leqslant \left( \liminf_{N \to \infty} \int\limits_{X} \left| \sum_{n=1}^{N} f_n(x) \right|^{p} \, d\mu \right)^{\frac{1}{p}} = \\
+  &= \liminf_{N \to \infty} \left\| \sum_{n=1}^{N} f_n \right\|_p \leqslant \\
+  &\leqslant \lim_{N \to \infty} \sum_{n=1}^{N} \left\| f_n \right\| _p = \\
+  &= \sum_{n=1}^{\infty} \left\| f_n \right\|_p < \\
+  &< \infty
+ .\end{align*} Для $p = \infty$:
+ \begin{align*}
+  \esssup \left| \sum_{n=1}^{\infty} f_n(x) \right| \leqslant \esssup \sum_{n=1}^{\infty} \left| f_n(x) \right| \leqslant \sum_{n=1}^{\infty} \esssup \left| f_n \right| < \infty
+ .\end{align*} 
+ Осталось оценить \begin{align*}
+  \left\| F - \sum_{n=1}^{N} f_n(x) \right\|_p = \left\| \sum_{N+1}^{\infty} f_n \right\| \leqslant \sum_{N+1}^{\infty} \| f_n \|_p \to 0
+ \end{align*} 
 \end{proof}
-\begin{remrk}
+\begin{remrk*}
  Пусть $\mu$ --- считающая мера на  $\N$, тогда  
-\begin{align*}
- L^{p}(\N, \mu) = \left\{ \{x_{k}\}_{k=1}^{\infty} \mid \left( \sum_{k=1}^{\infty} \left| x_k \right|^{p} \right)^{\frac{1}{p}} < \infty  \right\} = \ell^{p}
-.\end{align*}
-
-\end{remrk}
+ \begin{align*}
+  L^{p}(\N, \mu) = \left\{ \{x_{k}\}_{k=1}^{\infty} \subset \R \Mid \left( \sum_{k=1}^{\infty} \left| x_k \right|^{p} \right)^{\frac{1}{p}} < \infty  \right\} = \ell^{p}
+ .\end{align*} В частности, при $p = \infty$:
+ \begin{align*}
+  L^{\infty}(\N,\mu) = \left\{ \{x_{k}\}_{k=1}^{\infty} \subset \R \Mid \sup_{k \geqslant 1} \left| x_k \right| < \infty  \right\} = \ell^{\infty}
+ .\end{align*} 
+\end{remrk*}
