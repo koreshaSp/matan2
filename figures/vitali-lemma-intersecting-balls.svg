@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.084813"
-     inkscape:cx="456.29983"
-     inkscape:cy="172.37994"
+     inkscape:zoom="1.3790757"
+     inkscape:cx="456.82771"
+     inkscape:cy="214.63651"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -68,98 +68,117 @@
      id="layer1"
      transform="translate(0,-177)">
     <circle
-       style="fill:#0000ff;fill-opacity:0.287444;stroke:#0000ff;stroke-width:0.264999"
+       style="fill:#0000ff;fill-opacity:0.287444;stroke:#0000ff;stroke-width:0.410664"
        id="path847"
-       cx="92.10025"
-       cy="244.01677"
-       r="18.385893" />
+       cx="71.110687"
+       cy="244.10208"
+       r="28.492334" />
     <circle
-       style="fill:#0000ff;fill-opacity:0.287444;stroke:#0000ff;stroke-width:0.264999"
+       style="fill:#0000ff;fill-opacity:0.287444;stroke:#0000ff;stroke-width:0.410664"
        id="path851"
-       cx="136.1909"
-       cy="239.58211"
-       r="37.008392" />
+       cx="139.43732"
+       cy="237.22975"
+       r="57.351334" />
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="68.105766"
-       y="233.87009"
+       style="font-size:6.01364px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.41002"
+       x="37.63097"
+       y="227.84875"
        id="text3077"><tspan
          sodipodi:role="line"
          id="tspan3075"
-         style="stroke-width:0.264583"
-         x="68.105766"
-         y="233.87009">$B$</tspan></text>
+         style="stroke-width:0.41002"
+         x="37.63097"
+         y="227.84875">$B$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="164.10545"
-       y="210.31206"
+       style="font-size:6.01364px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.41002"
+       x="182.69608"
+       y="191.87041"
        id="text4767"><tspan
          sodipodi:role="line"
          id="tspan4765"
-         style="stroke-width:0.264583"
-         x="164.10545"
-         y="210.31206">$\tilde B$</tspan></text>
+         style="stroke-width:0.41002"
+         x="182.69608"
+         y="191.87041">$\tilde B$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 90.887827,244.33474 45.973293,-4.48546"
+       style="fill:none;stroke:#000000;stroke-width:0.41002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 69.231813,244.59485 140.4759,237.6438"
        id="path6428" />
     <circle
        id="path6500"
-       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.264583"
-       cx="91.100662"
-       cy="243.98346"
-       r="0.032538086" />
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.41002"
+       cx="69.561646"
+       cy="244.05045"
+       r="0.050423767" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 90.887827,244.33474 -17.45338,1.26369"
+       style="fill:none;stroke:#000000;stroke-width:0.41002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 69.231813,244.59485 -27.047234,1.95833"
        id="path6537" />
     <circle
        id="path6539"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="90.887833"
-       cy="244.33475"
-       r="0.39687499" />
+       style="fill:#000000;stroke:none;stroke-width:0.41002"
+       cx="69.231819"
+       cy="244.59485"
+       r="0.61503106" />
     <circle
        id="path6654"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="136.86111"
-       cy="239.84927"
-       r="0.39687499" />
-    <circle
-       id="path6656"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="73.434448"
-       cy="245.59843"
-       r="0.39687499" />
-    <circle
-       id="path6658"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="110.49249"
-       cy="242.12843"
-       r="0.39687499" />
+       style="fill:#000000;stroke:none;stroke-width:0.41002"
+       cx="140.47594"
+       cy="237.64377"
+       r="0.61503106" />
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="78.430717"
-       y="250.75699"
+       style="font-size:6.01364px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.41002"
+       x="51.514725"
+       y="255.60561"
        id="text11257"><tspan
          sodipodi:role="line"
          id="tspan11255"
-         style="stroke-width:0.264583"
-         x="78.430717"
-         y="250.75699">$\rho(B)$</tspan></text>
+         style="stroke-width:0.41002"
+         x="51.514725"
+         y="255.60561">$\rho(B)$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="112.63214"
-       y="250.02151"
+       style="font-size:6.01364px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.41002"
+       x="103.40128"
+       y="229.88071"
        id="text17809"><tspan
          sodipodi:role="line"
          id="tspan17807"
+         style="stroke-width:0.41002"
+         x="103.40128"
+         y="229.88071"
+         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 270 0">$\rho(\tilde B) &gt; \frac{\rho(B)}{2}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="66.970291"
+       y="240.82573"
+       id="text5198"><tspan
+         sodipodi:role="line"
+         id="tspan5196"
          style="stroke-width:0.264583"
-         x="112.63214"
-         y="250.02151">$\rho(\tilde B) \geqslant \frac{\rho(B)}{2}$</tspan></text>
+         x="66.970291"
+         y="240.82573">$y$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="142.40524"
+       y="242.09543"
+       id="text5593"><tspan
+         sodipodi:role="line"
+         id="tspan5591"
+         style="stroke-width:0.264583"
+         x="142.40524"
+         y="242.09543">$\tilde y$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458299;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.26458299,0.26458299;stroke-dashoffset:0"
+       d="m 81.995102,242.77659 c 0,0 28.140228,-17.78604 58.480798,-5.13279"
+       id="path6063" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458299;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.26458299,0.26458299;stroke-dashoffset:0"
+       d="m 42.184579,246.55318 c 0,0 12.822608,7.16703 27.047234,-1.95833"
+       id="path7754" />
   </g>
 </svg>

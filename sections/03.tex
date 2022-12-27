@@ -122,47 +122,51 @@
      \lambda_1 \left( \bigcup_{k=1}^{\infty} E_k \right) \leqslant \sum_{k=1}^{\infty} \lambda_1(E_k) = 0
     .\end{align*}
    \end{proof}
-  \item Обобщённое Канторово множество.
-   \begin{figure}[ht]
-    \centering
-    \incfig{пояснение-обобщенного-канторова-множества}
-    \caption{Пояснение обобщенного канторова множества}
-    \label{fig:пояснение-обобщенного-канторова-множества}
-   \end{figure}
-
-   \begin{enumerate}[start=0,label={Шаг \arabic*:}]
-    \item  из отрезка $[0,1]$ выкинем серединный интервал длины $a_0$.
-    \item из оставшихся двух отрезков выкинем $2$ серединных интервала длины $a_1$.
-    \item из оставшихся четырёх отрезков выкинем $2^{2}$  серединных интервала длины $a_2$.
-   \end{enumerate} И так далее.
-
-   Длины $a_0, a_1, a_2, \ldots \geqslant 0$ должны быть достаточно маленькими чтобы можно их было выкидывать. Для этого необходимо и достаточно условие
-   \begin{align}
-    \label{equation:example:cantor_set_length_restriction}
-    \sum_{n=0}^{\infty} 2^{n} a_n \leqslant 1
-   .\end{align} Для стандартного канторова множества $a_n = \frac{1}{3^{n+1}}$ --- каждый раз из отрезков выкидываем среднюю треть. Проверим \eqref{equation:example:cantor_set_length_restriction}:
-   \begin{align*}
-    \sum_{n=0}^{\infty} \frac{2^{n}}{3^{n+1}} = \frac{1}{3} \sum_{n=0}^{\infty} \left( \frac{2}{3} \right)^{n} = \frac{1}{3} \cdot \frac{1}{1 - \frac{2}{3}} = 1
-   .\end{align*} Можно, например, взять $a_n = \frac{1}{4^{n+1}}$ (каждый раз выкидывать среднюю четверть из отрезков). Тогда
-   \begin{align*}
-    \sum_{n=0}^{\infty} \frac{2^{n}}{4^{n+1}} = \frac{1}{4} \sum_{n=0}^{\infty} \left(\frac{2}{4}\right)^{n} = \frac{1}{4} \cdot \frac{1}{1 - \frac{2}{4}} = \frac{1}{2}
-   .\end{align*}
-
-   Обобщённое канторово множество с последовательностью $\left\{ a_n \right\}_{n=0}^{\infty}$ обозначим $C_{\left\{ a_n \right\}}$. Оно \textit{измеримо по Борелю}: $C_{\left\{ a_n \right\}} \in \B_1$, так как оно замкнуто (или, например, мы счётное число раз выкидываем интервалы из отрезка).
-
-   Вычислим длину обобщённого канторова множества $C_{\left\{ a_n \right\}}$:
-   \begin{align*}
-    \lambda_1 \left( C_{\left\{ a_n \right\}} \right)
-    & = \lambda_{1} \left( [0, 1] \setminus \bigsqcup_{n=0}^{\infty} \bigsqcup_{k=1}^{2^{n}} I_{n,k} \right) = \\
-    &=  1 - \sum_{n=0}^{\infty} \sum_{k=1}^{2^{n}} \lambda_1(I_{n,k}) = \\
-    &= 1 - \sum_{n=0}^{\infty} 2^{n} a_n
-   .\end{align*} Таким образом, стандартное Канторово множество несчётное, но его длина равна нулю!
-
-   Длина канторова множества с $a_n = \frac{1}{4^{n+1}}$ равна
-   \begin{align*}
-    \lambda_1 \left( C_{\left\{ \frac{1}{4^{n+1}} \right\}} \right) = \frac{1}{2}
-   .\end{align*} Канторовы множества с ненулевой длиной называются \textit{толстыми канторовыми множествами}. Интересный факт: толстое канторово множество не содержит интервалов, но имеет положительную длину, в отличие от $\Q$!
  \end{enumerate}
+\end{exmpl}
+\begin{exmpl}[общее канторово множество]
+ \label{example:general_cantor_set}
+ Построим обобщённое канторово множество следующей процедурой:
+
+ \begin{enumerate}[start=0,label={Шаг \arabic*:},leftmargin=2cm]
+  \item  из отрезка $[0,1]$ выкинем серединный интервал длины $a_0$.
+  \item из оставшихся двух отрезков выкинем $2$ серединных интервала длины $a_1$.
+  \item из оставшихся четырёх отрезков выкинем $2^{2}$  серединных интервала длины $a_2$, и так далее...
+ \end{enumerate}
+
+ \begin{figure}[ht]
+  \centering
+  \incfig{пояснение-обобщенного-канторова-множества}
+  \caption{Построение общего канторова множества}
+  \label{fig:пояснение-обобщенного-канторова-множества}
+ \end{figure}
+
+ Длины $a_0, a_1, a_2, \ldots \geqslant 0$ должны быть достаточно маленькими чтобы можно их было выкидывать. Для этого необходимо и достаточно, чтобы
+ \begin{align}
+  \label{equation:example:cantor_set_length_restriction}
+  \sum_{n=0}^{\infty} 2^{n} a_n \leqslant 1
+ .\end{align} Для стандартного канторова множества $a_n = \frac{1}{3^{n+1}}$ --- каждый раз из отрезков выкидываем среднюю треть. Проверим \eqref{equation:example:cantor_set_length_restriction}:
+ \begin{align*}
+  \sum_{n=0}^{\infty} \frac{2^{n}}{3^{n+1}} = \frac{1}{3} \sum_{n=0}^{\infty} \left( \frac{2}{3} \right)^{n} = \frac{1}{3} \cdot \frac{1}{1 - \frac{2}{3}} = 1
+ .\end{align*} Можно, например, взять $a_n = \frac{1}{4^{n+1}}$ (каждый раз выкидывать среднюю четверть из отрезков). Тогда
+ \begin{align*}
+  \sum_{n=0}^{\infty} \frac{2^{n}}{4^{n+1}} = \frac{1}{4} \sum_{n=0}^{\infty} \left(\frac{2}{4}\right)^{n} = \frac{1}{4} \cdot \frac{1}{1 - \frac{2}{4}} = \frac{1}{2}
+ .\end{align*}
+
+ Обобщённое канторово множество с последовательностью $\left\{ a_n \right\}_{n=0}^{\infty}$ обозначим $C_{\left\{ a_n \right\}}$. Оно \textit{измеримо по Борелю}: $C_{\left\{ a_n \right\}} \in \B_1$, так как оно замкнуто (или, например, мы счётное число раз выкидываем интервалы из отрезка).
+
+ Вычислим длину обобщённого канторова множества $C_{\left\{ a_n \right\}}$:
+ \begin{align*}
+  \lambda_1 \left( C_{\left\{ a_n \right\}} \right)
+  & = \lambda_{1} \left( [0, 1] \setminus \bigsqcup_{n=0}^{\infty} \bigsqcup_{k=1}^{2^{n}} I_{n,k} \right) = \\
+  &=  1 - \sum_{n=0}^{\infty} \sum_{k=1}^{2^{n}} \lambda_1(I_{n,k}) = \\
+  &= 1 - \sum_{n=0}^{\infty} 2^{n} a_n
+ .\end{align*} Таким образом, стандартное Канторово множество несчётное, но его длина равна нулю!
+
+ Длина канторова множества с $a_n = \frac{1}{4^{n+1}}$ равна
+ \begin{align*}
+  \lambda_1 \left( C_{\left\{ \frac{1}{4^{n+1}} \right\}} \right) = \frac{1}{2}
+ .\end{align*} Канторовы множества с ненулевой длиной называются \textit{толстыми канторовыми множествами}. Интересный факт: толстое канторово множество не содержит интервалов, но имеет положительную длину, в отличие от $\Q$!
 \end{exmpl}
 
 Есть ещё одно важное свойство мер, которое, к счастью, выполняется для меры-стандартного продолжения.
@@ -171,6 +175,7 @@
  Мера $\mu$ на $\sigma$-алгебре $\A$ называется \textit{полной}, если для любого множества $A \in \A$ такого, что $\mu(A) = 0$ и для любого  $B \subset A$ имеет место $B \in \A$.
 \end{df}
 \begin{remrk}
+ \label{remark:standard_continuation_measure_is_complete}
  Мера $\mu$ в теореме Каратеодори полна.
 \end{remrk}
 \begin{proof}

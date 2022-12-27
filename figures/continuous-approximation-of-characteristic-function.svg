@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.94334165"
-     inkscape:cx="426.14465"
-     inkscape:cy="349.82024"
+     inkscape:cx="475.96754"
+     inkscape:cy="250.17447"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -68,71 +68,96 @@
      id="layer1"
      transform="translate(0,-177)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 75.852035,283.66604 C -0.54945213,220.63726 276.08702,141.6582 158.36945,280.02085 c -12.88004,15.13891 -65.551382,3.61198 -82.517415,3.64519 z"
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.34099998;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.0516753;stroke-miterlimit:4;stroke-dasharray:0.34099998, 0.34099998;stroke-dashoffset:0"
+       d="M 54.007541,285.53606 C -44.380745,204.36888 311.86598,102.66124 160.27168,280.84185 143.68502,300.33744 75.856059,285.49329 54.007541,285.53606 Z"
        id="path860" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.216828px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 100.35811,269.44974 c 16.38926,-121.6165 145.34009,43.69143 -1.404556,-0.39902"
-       id="path864" />
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="71.133514"
-       y="248.0269"
+       style="font-size:4.99731px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.341;stroke-miterlimit:4;stroke-dasharray:none;fill:#0000ff;fill-opacity:1"
+       x="173.74367"
+       y="193.82898"
        id="text9802"><tspan
          sodipodi:role="line"
          id="tspan9800"
-         style="stroke-width:0.264583"
-         x="71.133514"
-         y="248.0269">$U_\eps$</tspan></text>
+         style="stroke-width:0.341;stroke-miterlimit:4;stroke-dasharray:none;fill:#0000ff;fill-opacity:1"
+         x="173.74367"
+         y="193.82898">$U_\eps$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="106.30202"
-       y="257.65665"
-       id="text12680"><tspan
-         sodipodi:role="line"
-         id="tspan12678"
-         style="stroke-width:0.264583"
-         x="106.30202"
-         y="257.65665">$A$</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="134.17754"
-       y="249.51369"
-       id="text16122"><tspan
-         sodipodi:role="line"
-         id="tspan16120"
-         style="stroke-width:0.264583"
-         x="134.17754"
-         y="249.51369">$C_\eps$</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="122.78716"
-       y="259.41162"
-       id="text2836"><tspan
-         sodipodi:role="line"
-         id="tspan2834"
-         style="stroke-width:0.264583"
-         x="122.78716"
-         y="259.41162">$h_\eps = \chi_A = 1$</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.323083px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 114.09561,271.77909 c 2.34177,-71.43064 117.36163,-9.35631 0,0 z"
-       id="path7301" />
-    <text
-       xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="62.974396"
-       y="207.5641"
+       style="font-size:4.99731px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.340724"
+       x="19.752506"
+       y="193.23399"
        id="text8464"><tspan
          sodipodi:role="line"
          id="tspan8462"
+         style="stroke-width:0.340724"
+         x="19.752506"
+         y="193.23399">$h_\eps = \chi_A = 0$</tspan></text>
+    <path
+       style="fill:#000000;stroke:#212121;stroke-width:0.30899999;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.97607142;fill-opacity:0.12775353;stroke-miterlimit:4;stroke-dasharray:1.23599996, 0.61799998;stroke-dashoffset:0"
+       d="m 53.239287,253.82355 c 4.800179,0.88199 9.595243,1.21115 14.499779,1.21115 5.635754,0 13.819247,1.53965 19.152456,-0.24223 5.518496,-1.84379 7.995637,-26.33943 8.205312,-31.73007 0.06696,-1.72158 -1.230146,-9.6487 0,-10.923 1.125361,-1.16575 2.250265,-2.2997 3.040279,-3.93622 0.665613,-1.37883 0.793231,-3.22954 2.046347,-4.23901 3.63474,-2.92804 8.5305,4.48011 11.78983,4.67869 2.46211,0.14999 6.76234,-17.67631 9.46964,-11.17235 1.5294,3.67418 2.5486,7.54192 3.78656,11.32499 0.53069,1.62171 1.24144,5.67776 2.41322,7.49816 0.21503,0.33406 1.71273,-4.84458 6.48984,-4.84458 1.40412,0 4.88475,8.11557 6.66994,3.77154 2.00265,-4.87317 3.58551,-9.90955 5.37765,-14.86456 0.87919,-2.43081 0.8661,-6.30505 3.35088,-6.99135 3.38121,-0.93389 4.62215,14.73074 9.51595,17.8987 1.54989,1.0033 4.01749,-9.90311 5.10304,-8.29359 4.12823,6.12084 5.43718,24.95304 6.00723,25.10064 1.38051,0.35741 3.0861,-4.16189 4.38502,-5.08683 2.8297,-2.01498 2.0019,0.84782 4.03421,0.84782 1.23945,0 3.23339,-2.61742 3.44954,-1.39283 0.73282,4.15184 0,8.43289 0,12.64935 0,21.83207 -13.59113,35.48869 -36.1261,36.82236 -4.51756,0.26735 -9.12356,0.93083 -13.57574,0.11722 -3.08393,-0.56357 -6.18179,-1.31874 -9.03175,-2.62845 -2.53355,-1.16431 -7.62892,-6.69286 -11.75692,-4.55507 -3.59355,1.86102 -5.89259,5.97869 -9.93817,7.11354 -4.376432,1.22766 -31.982391,2.42958 -37.308593,-1.33225 -2.753786,-1.94498 -10.101093,-14.23307 -10.608668,-14.4959 -1.038076,-0.53752 -0.594085,2.27854 -0.697027,3.4461 -0.286801,3.25278 -0.543531,6.50816 -0.818333,9.76198 -0.161491,1.91214 -0.06649,7.59871 -0.516639,5.73361 -1.078596,-4.46886 0,-10.50272 0,-15.36602 0,-2.17811 -1.158893,-6.53627 1.591217,-5.88154 z"
+       id="path874" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="103.0146"
+       y="214.56903"
+       id="text4276"><tspan
+         sodipodi:role="line"
+         id="tspan4274"
          style="stroke-width:0.264583"
-         x="62.974396"
-         y="207.5641">$h_\eps = \chi_A = 0$</tspan></text>
+         x="103.0146"
+         y="214.56903">$A$</tspan></text>
+    <rect
+       style="fill:#ff0000;fill-opacity:0.15969156;stroke:#ff0000;stroke-width:0.441;stroke-dasharray:none;stroke-opacity:1;stroke-miterlimit:4;stroke-dashoffset:0"
+       id="rect12842"
+       width="49.637268"
+       height="39.477444"
+       x="114.85589"
+       y="222.62108" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#b30000;fill-opacity:1;stroke-width:0.264583"
+       x="153.62343"
+       y="230.67345"
+       id="text16754"><tspan
+         sodipodi:role="line"
+         id="tspan16752"
+         style="fill:#b30000;fill-opacity:1;stroke-width:0.264583"
+         x="153.62343"
+         y="230.67345">$C_\eps$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="122.92586"
+       y="243.56779"
+       id="text32988"><tspan
+         sodipodi:role="line"
+         id="tspan32986"
+         style="stroke-width:0.264583"
+         x="122.92586"
+         y="243.56779">$h_\eps = \chi_A = 1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="51.474037"
+       y="240.41425"
+       id="text37750"><tspan
+         sodipodi:role="line"
+         id="tspan37748"
+         style="stroke-width:0.264583"
+         x="51.474037"
+         y="240.41425">$0 \leqslant h_\eps \leqslant 1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="68.893272"
+       y="264.15836"
+       id="text37750-3"><tspan
+         sodipodi:role="line"
+         id="tspan37748-6"
+         style="stroke-width:0.264583"
+         x="68.893272"
+         y="264.15836">$0 \leqslant h_\eps \leqslant 1$</tspan></text>
   </g>
 </svg>

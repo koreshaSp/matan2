@@ -1,27 +1,29 @@
 % 2022.11.15 Lecture 11
 
-\newcommand{\lan}{\ensuremath \lambda_n}
-\newcommand{\alan}{\ensuremath \A_{\lan}}
-
 \begin{lm}
  \label{lemma:lebesgue_measure_closed_sets_below}
  Пусть $E \in \A_{\lambda_n}$. Тогда существует замкнутое множество $F \subset \R^{n}$ такое, что $F \subset E$ и $\lambda_n(E \setminus F) < \eps$.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Перейдём к дополнению. По лемме \ref{lemma:lebesgue_measure_open_sets_above} мы знаем, что существует открытое $G \subset \R^{n}$ такое, что $E^{c} \subset G$ и $\mu(G \setminus E^{c}) < \eps$. Запишем: \begin{align*}
+ Перейдём к дополнению. По лемме \ref{lemma:lebesgue_measure_open_sets_above} мы знаем, что существует открытое $G \subset \R^{n}$ такое, что $E^{c} \subset G$ и $\mu(G \setminus E^{c}) < \eps$. Перепишем оценку
+ \begin{align*}
   \lambda_n(G \setminus E^{c}) = \lambda_n(G \cap E) = \lambda_n(E \setminus G^{c}) < \eps
  ,\end{align*} при этом $G^{c}$ замкнутое. Берём $F = G^{c}$.
 \end{proof}
+
+Казалось, что мы уже доказали и вторую половину, но нам нужны не замкнутые, а компактные множества. В связи с этим есть ещё одна, полезная сама по себе, лемма.
+
 \begin{lm}
  \label{lemma:lebesgue_measure_compact_union}
- Пусть $E \in \A_{\lambda_n}$. Тогда существуют компакты $\{K_{j}\}_{j=1}^{\infty} \subset \R^{n}$ и  $e \in \A_{\lambda_n}$ такие, что $K_1 \subset K_2 \subset \ldots$ и \begin{align*}
-  E = \bigcup_{j=1}^{\infty} K_j \sqcup e, \quad \lan(e) = 0
+ Пусть $E \in \A_{\lambda_n}$. Тогда существуют возрастающие компакты $\{K_{j}\}_{j=1}^{\infty} \subset \R^{n}$, $K_1 \subset K_2 \subset \ldots$ и измеримое множество  $e \in \A_{\lambda_n}$ нулевой меры $(\lan(e) = 0)$ такие, что
+ \begin{align*}
+  E = \bigcup_{j=1}^{\infty} K_j \sqcup e.
  \end{align*} 
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Можно считать, что $E \subset [0, 1)^{n}$ (напилим всё на счётное число кубов, получим счётное число компактов и счётное число множеств нулевой меры). Возьмём $\eps = \frac{1}{j}$ и пусть $F_j$ --- множества из предыдущей леммы \ref{lemma:lebesgue_measure_closed_sets_below}. $F_j$ замкнуты и ограничены, и $\lan(E \setminus F_j) < \frac{1}{j}$. Значит, $F_j$ компактны. Можно считать, что они вложены: \begin{align*}
+ Можно считать, что $E \subset [0, 1)^{n}$ (напилим всё на счётное число кубов, получим счётное число компактов и счётное число множеств нулевой меры). По лемме \ref{lemma:lebesgue_measure_closed_sets_below} приблизим множество $E$ снизу замкнутым множеством $F_j$ с точностью $\eps = 1 / j$: $\lan(E \setminus F_j) < 1 / j$. $F_j$ замкнуты и ограничены, значит $F_j$ компактны. Можно считать, что они вложены: \begin{align*}
   F_1 \subset F_2 \subset \ldots
- \end{align*} потому что можно взять префиксные объединения (они всё ещё будут компактны). Тогда $ \lan(F_j) \to \lan(E) $ при $j \to \infty$. Значит, \begin{align*}
+  \end{align*} потому что можно взять префиксные объединения (они всё ещё будут компактны, а мера разности станет только меньше). Тогда $ \lan(F_j) \to \lan(E) $ при $j \to \infty$. Значит, \begin{align*}
   \lan \left( \bigcup_{j=1}^{\infty} F_j \right) = \lan(E)
  \end{align*} по непрерывности меры сверху. Возьмём $K_j = F_j$  и $e = E \setminus \bigcup_{j=1}^{\infty} K_j $.
 \end{proof}
@@ -29,18 +31,19 @@
 
  Надо проверить, что для любого $E \in \alan$ \begin{align}
   \label{eq1:theorem:lebesgue_measure_is_regular}
-  \lan(E) &= \inf \left\{ \lan(G) \Mid E \subset G \text{ --- открыто} \right\} \\
+  \lan(E) &= \inf \left\{ \lan(G) \Mid E \subset G \text{ --- открыто} \right\}, \\
   \label{eq2:theorem:lebesgue_measure_is_regular}
   \lan(E) &= \sup \left\{ \lan(K) \Mid K \subset E \text{ --- компактно} \right\}
- \end{align} Посмотрим на \eqref{eq1:theorem:lebesgue_measure_is_regular}. Если $\lan(E) = \infty$, то всё понятно ($\infty = \inf \left\{ \infty \right\}$). Если $\lan(E) < \infty$, то по \eqref{eq1:theorem:lebesgue_measure_is_regular} следует из леммы \ref{lemma:lebesgue_measure_open_sets_above} про открытые множества.
-
- Равенство \eqref{eq1:theorem:lebesgue_measure_is_regular} --- это в точности лемма $\ref{lemma:lebesgue_measure_open_sets_above}$. Равенство \eqref{eq2:theorem:lebesgue_measure_is_regular} выводится из леммы \ref{lemma:lebesgue_measure_compact_union}: \begin{align*}
+  .\end{align} Равенство \eqref{eq1:theorem:lebesgue_measure_is_regular} --- это в точности лемма $\ref{lemma:lebesgue_measure_open_sets_above}$. Равенство \eqref{eq2:theorem:lebesgue_measure_is_regular} выводится из леммы \ref{lemma:lebesgue_measure_compact_union}: \begin{align*}
   E = \bigcup_{j=1}^{\infty} K_j \sqcup e
- ,\end{align*} причём компакты возрастают, и $\lan(e) = 0$. Тогда по непрерывности меры сверху
+ ,\end{align*} причём компакты возрастают: $K_1 \subset K_2 \subset \ldots$, и $\lan(e) = 0$. Тогда по непрерывности меры сверху
  \begin{align*}
-  \lan(E) = \lan \left( \bigcup_{j=1}^{\infty} K_j \right) = \lim_{s \to \infty} \lan \left( \bigcup_{j=1}^{s} K_j \right) 
- .\end{align*} Тогда можно взять $K = \bigcup_{j=1}^{s} K_j$  для достаточно большого $s$ --- это будет компактом как конечное объединение компактов.
+  \lan(E) = \lan \left( \bigcup_{j=1}^{\infty} K_j \right) = \lim_{j \to \infty} \lan(K_j)
+ .\end{align*} Тогда можно взять $K_j$ при большом $j$. Регулярность меры Лебега доказана.
 \end{proof}
+
+У меры Лебега есть ещё одно хорошее свойство --- инвариантность относительно сдвига. Более того, оказывается, что любая инвариантная относительно сдвига мера в $\R^{n}$ является мерой Лебега (с точностью до константы).
+
 \begin{thm}
  \label{theorem:lebesgue_measure_shift_invariance_uniqueness}
  Для любого множества $E \in \alan$ и вектора $v \in \R^{n}$ выполнено
@@ -48,20 +51,19 @@
   \lan(E + v) = \lan(E)
  .\end{align*} Кроме того, если $\mu$ --- некоторая мера на $\alan$ такая, что $\mu(E + v) = \mu(E)$ для любых $E \in \alan$, $v \in \R^{n}$, то существует число $a \geqslant 0$ такое, что $\mu = a\lambda_n$.
 \end{thm}
-Теорема \ref{theorem:lebesgue_measure_shift_invariance_uniqueness} утверждает, что мера Лебега инварианта относительно сдвига, и при этом любая инвариантная относительно сдвига мера на $\alan$ является мерой Лебега с точностью до константы.
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Проверим инвариантность относительно сдвига:
-  \begin{align*}
-   \lan(E+v) &= \inf \left\{ \sum_{k=1}^{\infty} \lan(P_k) \Mid \{P_{k}\}_{k=1}^{\infty} \subset \p_n, \bigcup_{k=1}^{\infty} P_k \supset E + v  \right\} = \\
-   &= \inf \left\{ \sum_{k=1}^{\infty} \lan(P_k - v) \Mid \{P_{k}\}_{k=1}^{\infty}  \subset \p_n, \bigcup_{k=1}^{\infty} P_k \subset E+v \right\} = \\
-   &= \inf \left\{ \sum_{k=1}^{\infty} \lan(Q_k) \Mid \{Q_{k}\}_{k=1}^{\infty} \subset \p_n, \bigcup_{k=1}^{\infty} Q_k \supset E   \right\} = \\
-   &= \lan(E)
+ Проверим инвариантность относительно сдвига с помощью явной формулы меры-стандартного продолжения (замечание \ref{remark:measure_explicit_formula}):
+ \begin{align*}
+  \lan(E+v) &= \inf \left\{ \sum_{k=1}^{\infty} \lan(P_k) \Mid \{P_{k}\}_{k=1}^{\infty} \subset \p_n,\; \bigcup_{k=1}^{\infty} P_k \supset E + v  \right\} = \\
+  &= \inf \left\{ \sum_{k=1}^{\infty} \lan(P_k - v) \Mid \{P_{k}\}_{k=1}^{\infty}  \subset \p_n, \bigcup_{k=1}^{\infty} (P_k - v) \supset E \right\} = \\
+  &= \inf \left\{ \sum_{k=1}^{\infty} \lan(Q_k) \Mid \{Q_{k}\}_{k=1}^{\infty} \subset \p_n, \bigcup_{k=1}^{\infty} Q_k \supset E   \right\} = \\
+  &= \lan(E)
  ,\end{align*} где $Q_k = P_k - v$.
 
  Докажем единственность. Достаточно показать, что существует $a \geqslant 0$ такое, что \begin{align}
   \label{equation:theorem:lebesgue_measure_shift_invariance_uniqueness}
   \mu(P) = a \lan(P) 
- \end{align} для любой ячейки $P \in \p_n$ --- по теореме \ref{theorem:caratheodory} Каратеодори и следствию \ref{corollary:sigma-finite-caratheodory-continuation-is-unique} последует единственность на $\alan$, ведь меры $\sigma$-конечны. Но равенство \eqref{equation:theorem:lebesgue_measure_shift_invariance_uniqueness} достаточно доказать только для некоторого специального вида ячеек, для которых мы заведём отдельное определение. 
+ \end{align} для любой ячейки $P \in \p_n$ --- по теореме \ref{theorem:caratheodory} Каратеодори и следствию \ref{corollary:sigma-finite-caratheodory-continuation-is-unique} последует единственность на $\alan$, ведь меры $\sigma$-конечны. {\color{red} Что если $\mu$ не $\sigma$-конечна?} Но равенство \eqref{equation:theorem:lebesgue_measure_shift_invariance_uniqueness} достаточно доказать только для некоторого специального вида ячеек, для которых мы заведём отдельное определение. 
  \begin{df}
   \label{definition:diadic_cell}
   \textit{Диадической ячейкой} в $\R^{n}$  называется ячейка вида $\left[0, 2^{k}\right)^{n} + v$, где $k \in \Z$ --- целое число, $v = 2^{k}w$, $w \in \Z^{n}$ --- вектор с целыми координатами.
@@ -76,43 +78,68 @@
    Действительно, рассмотрим двоичные записи длин сторон ячейки: найдём такие множества $Z_j \subset \Z$, что для всех $j$ выполнено
    \begin{align*}
     a_j = \sum_{k \in Z_j} 2^{k}
-   .\end{align*} Для $k \in Z_j$ обозначим  \begin{align*}
-   b_{j,k} = \sum_{\substack{k' \in \Z \\ k' > k}} 2^{k}
-   \end{align*} Можно показать, что тогда диадические ячейки вида \begin{align*}
-   \bigtimes_{j=1}^{n} \left[b_{j, k_j}, 2^{k_j}\right)
-   ,\end{align*} для всех $k_1 \in Z_1, \ldots, k_n \in Z_n$ образуют искомое разбиение ячейки $P$.
+    .\end{align*} Для $k \in Z_j$ обозначим  \begin{align*}
+    b_{j,k} = \sum_{\substack{k' \in \Z \\ k' > k}} 2^{k}
+    \end{align*} Можно показать, что тогда диадические ячейки вида \begin{align*}
+    \bigtimes_{j=1}^{n} \left[b_{j, k_j}, 2^{k_j}\right)
+   \end{align*} для всех $k_1 \in Z_1, \ldots, k_n \in Z_n$ образуют искомое счётное разбиение ячейки $P$.
  \end{itemize}
 
  Из третьего пункта видно, что достаточно доказать равенство \eqref{equation:theorem:lebesgue_measure_shift_invariance_uniqueness} только для диадических ячеек.
 
- Возьмём $a = \mu(\left[0, 1\right)^{n})$. Проверим, что $a$ подходит для всех диадических ячеек индукцией в обе стороны по $k$.
+ Возьмём $a = \mu(\left[0, 1\right)^{n})$. Проверим, что $a$ подходит для всех диадических ячеек индукцией в обе стороны по $k \in \Z$.
  \begin{itemize}
-  \item База: $k = 0$ --- по построению $a$.
-  \item Переход $k \mapsto k + 1$: диадическая ячейка с углом в нуле $\left[0, 2^{k+1}\right)^{n}$ собирается из $2^{n}$ диадических ячеек со стороной $2^{k}$, для которых по предположению индукции уже доказано, что их мера равна $a_2^{kn}$ . По конечной аддитивности меры имеем
+  \item База: $k = 0$ --- по построению $a$ и по инвариантности относительно сдвига.
+  \item Переход $k \mapsto k + 1$: диадическая ячейка $P$ со стороной $2^{k+1}$ собирается из $2^{n}$ диадических ячеек со стороной $2^{k}$, для которых по предположению индукции уже доказано, что их мера равна $a 2^{kn}$. По конечной аддитивности $\mu$:
    \begin{align*}
-    \mu(\left[0, 2^{k+1}\right)^{n}) = 2^{n} \cdot a2^{kn} = a2^{(k+1)n}
-   ,\end{align*} такая же мера будет у всех сдвигов.
-  \item Переход $k \mapsto k - 1$ . Точно так же, ячейка $\left[0, 2^{k}\right)^{n}$ собирается из $2^{n}$  диадических ячеек со стороной $2^{k-1}$. Каждая из этих ячеек измерима, и они все имеют одинаковую меру $m$. Решая уравнение
+    \mu(P) = 2^{n} \cdot a 2^{kn} = a 2^{(k+1)n}
+   .\end{align*} 
+  \item Переход $k \mapsto k - 1$. Диадическая ячейка со стороной $2^{k}$, имеющая по предположению индукции меру $a 2^{kn}$, собирается из $2^{n}$ диадических ячеек со стороной $2^{k-1}$, каждая из которых имеет меру $m$, одинаковую для всех ячеек. Решая уравнение
    \begin{align*}
-    2^{n}m = \mu(\left[0, 2^{k}\right)^{n}) = a 2^{kn}
-   ,\end{align*} получаем, что мера диадических ячеек со стороной $2^{k-1}$ равна $m = a 2^{(k-1)n}$.
+    2^{n}m = a 2^{kn}
+   ,\end{align*} которое верно по конечной аддитивности $\mu$, получаем, что мера диадических ячеек со стороной $2^{k-1}$ равна $m = a 2^{(k-1)n}$.
  \end{itemize}
  Итак, равенство \eqref{equation:theorem:lebesgue_measure_shift_invariance_uniqueness} верно для всех диадических ячеек; следовательно, оно верно для всех ячеек; и, следовательно, оно верно для всех измеримых по Лебегу множеств.
 \end{proof}
 
+Понятие диадических ячеек, введённое в определении \ref{definition:diadic_cell}, бывает очень удобным при дискретизации некоторых непрерывных явлений в $\R^{n}$. В частности, для нас будет удобным следующее следствие.
+
+\begin{crly}
+ \label{corollary:cubic_cells_approximation}
+ Пусть $E \in \alan$ --- измеримое по Лебегу множество. Тогда для любого $\eps > 0$ существует счётный набор кубических ячеек $\{S_{k}\}_{k=1}^{\infty} \subset \p_n $  такой, что
+ \begin{align*}
+  E \subset \bigcup_{k=1}^{\infty} S_k, & & \sum_{k=1}^{\infty} \lan(S_k) < \lan(E) + \eps
+ .\end{align*}
+\end{crly}
+
+\textit{Кубической} ячейкой называется ячейка из $\p_n$, имеющая равные стороны. Следствие \ref{corollary:cubic_cells_approximation} говорит о том, что в явной формуле меры Лебега (замечание \ref{remark:measure_explicit_formula}) измеримое множество можно приближать сверху не произвольными ячейками, а кубическими.
+
+\begin{proof}[\normalfont\textsc{Доказательство следствия \ref{corollary:cubic_cells_approximation}}]
+ В доказательстве теоремы \ref{theorem:lebesgue_measure_shift_invariance_uniqueness} мы смогли разбить любую ячейку $P \in \p_n$ с углом в нуле на счётное число диадических ячеек, используя двоичную запись длин сторон ячейки $P$. Тогда любую ячейку из $\p_n$ можно разбить на счётное число кубических ячеек, сделав параллельный перенос угла в $0$. Следовательно, можно взять покрытие ячейками $E \subset \bigcup_{k=1}^{\infty} P_k$, $P_k \in \p_n$ такое, что
+ \begin{align*}
+  \sum_{k=1}^{\infty} \lan(P_k) < \lan(E) + \eps
+ ,\end{align*} и разбить каждую ячейку $P_k$ на счётное число кубических ячеек.
+\end{proof}
+
 Дальнейшие рассуждения будут тесно связаны с алгеброй, а точнее, с линейными операторами. Нам понадобятся несколько лемм, некоторые из которых были доказаны в курсе алгебры. 
+
 \begin{df}
  \label{definition:orthogonal_operator}
- Линейный оператор $U \in \LL(\R^{n})$ называется \textit{ортогональным}, если он сохраняет норму: $\left\| Ux \right\| = \left\| x \right\|$.
+ Линейный оператор $U \in \LL(\R^{n})$ называется \textit{ортогональным}, если он сохраняет норму: $\left\| Ux \right\| = \left\| x \right\|$. Здесь $\LL(\R^{n})$ --- пространство линейных операторов $\R^{n} \to \R^{n}$.
 
- Это условие эквивалентно тому, что $U$ сохраняет метрику, или скалярное произведение, или что столбцы (строки) матрицы оператора $U$ образуют ортонормированный базис.
-
- Здесь $\LL(\R^{n})$ --- пространство линейных операторов над $\R^{n}$.
+ Эквивалентные определения:
+ \begin{itemize}
+  \item $U$ сохраняет метрику.
+  \item $U$ сохраняет скалярное произведение.
+  \item Столбцы (строка) матрицы $U$ (в стандартном базисе) образуют ортонормированный базис.
+  \item $U^{\top}U = E_n$.
+ \end{itemize}
 \end{df}
 \begin{remrk}
  Определитель ортогональной матрицы равен $\pm 1$.
 \end{remrk}
 \begin{lm}
+ \label{lemma:ball_image_of_orthogonal_operator_is_ball}
  Если $U \in \LL(\R^{n})$ --- ортогональный оператор, то \begin{align*}
   U(B(0, R)) = B(0, R)
  .\end{align*} 
@@ -127,8 +154,9 @@
  \end{align*} где $D \in \LL(\R^{n})$ --- линейный оператор, матрица которого диагональна (в стандартном базисе $\R^{n}$).
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Факт считаем известным из курса алгебры.
+ Факт считаем известным из курса алгебры. На алгебре это называлось \textit{SVD-разложение матрицы}.
 \end{proof}
+
 \begin{thm}
  \label{theorem:measure_of_linear_image}
  Пусть $T \in \mathcal{L}(\R^{n})$ --- линейный оператор, $E \in \alan$ --- измеримое по Лебегу множество. Тогда \begin{align*}
@@ -140,20 +168,20 @@
  Общее замечание: если $\det T \neq 0$, то функция \begin{align*}
   \mu &\colon\, E \mapsto \lan(T(E)), \\
   \mu &\colon\, \alan \to [0, \infty]
- \end{align*}  является мерой. Действительно, так как $T$ --- биекция, то счётное дизъюнктное объединение $\bigcup_{k=1}^{\infty} E_k$ измеримых множеств под действием $T$ переходит в счётное дизъюнктное объединение $\bigcup_{k=1}^{\infty} T(E_k)$ измеримых множеств (в измеримость линейного образа мы пока верим), поэтому $\mu$ счётно-аддитивна. Более того, эта мера $\mu$ инвариантна относительно сдвига:
+ \end{align*}  является мерой. Действительно, так как $T$ --- биекция, то счётное дизъюнктное объединение $\bigsqcup_{k=1}^{\infty} E_k$ измеримых множеств под действием $T$ переходит в счётное дизъюнктное объединение $\bigsqcup_{k=1}^{\infty} T(E_k)$ измеримых множеств (в измеримость линейного образа мы пока верим), поэтому $\mu$ счётно-аддитивна. Более того, эта мера $\mu$ инвариантна относительно сдвига:
  \begin{align*}
   \mu(E + v) = \lan(T(E + v)) = \lan(T(E) + Tv) = \lan(T(E)) = \mu(E)
  .\end{align*} Тогда по теореме \ref{theorem:lebesgue_measure_shift_invariance_uniqueness} существует число $a \geqslant 0$ такое, что $\mu = a \lan$.
 
- Далее мы докажем сначала для простых случаев, и из них выведем общий случай.
+ Далее мы докажем теорему сначала для простых случаев относительно оператора $T$, и из них выведем общий случай.
 
  \begin{enumerate}
-  \item Сначала рассмотрим случай, когда $T = U$ --- ортогональный оператор. Тогда $\left| \det U \right| = 1$, но раз определитель не нуль, то $\mu = a \lan$. Найдём число $a$: подставим конкретное множество $E = B(0, R)$:
+  \item Сначала рассмотрим случай, когда $T = U$ --- ортогональный оператор. Тогда $\left| \det U \right| = 1$, но раз определитель ненулевой, то $\mu = a \lan$. Найдём число $a$: подставим конкретное множество $E = B(0, R)$:
    \begin{align*}
-    \mu(B(0, R)) = \lan(U(B(0, R))) = \mu(B(0, R)) \implies a = 1
-   ,\end{align*} ведь по теореме \ref{theorem:measure_of_linear_image} $U(B(0, R)) = B(0, R)$. Таким образом, для ортогонального оператора $U$ мы показали
+    \mu(B(0, R)) = \lan(U(B(0, R))) = \lan(B(0, R)) \implies a = 1
+   ,\end{align*} ведь по лемме \ref{lemma:ball_image_of_orthogonal_operator_is_ball} $U(B(0, R)) = B(0, R)$. Таким образом, для ортогонального оператора $U$ мы показали
    \begin{align*}
-    \lan(U(E)) = \mu(E)
+    \lan(U(E)) = \lan(E)
    .\end{align*} 
    \label{enum1:theorem:measure_of_linear_image}
   \item Теперь рассмотрим случай, когда $T = D$ --- оператор, матрица которого в стандартном базисе $\R^{n}$ диагональна: $D = \mathrm{diag}\left\{ d_1, \ldots, d_n \right\}$. При этом $\det D = d_1 \cdot \ldots \cdot d_n$. Также, образ вектора $x = (x_1, \ldots, x_n)$ равен
@@ -163,12 +191,12 @@
    \begin{enumerate}
     \item Если $\det D = 0$, то $d_i = 0$ для некоторого $i = 0$. Тогда образ всего пространства $D(\R^{n})$ вкладывается в гиперплоскость $x_i = 0$. Покажем, что мера такой гиперплоскости равна нулю --- из этого сразу же последует
      \begin{align*}
-      \lan(D(E)) \leqslant \lan(D(\R)) = 0 \implies \lan(D(E)) = 0
-     .\end{align*} Воспользуемся уже доказанным пунктом \ref{enum1:theorem:measure_of_linear_image}: поменяем местами оси $x_i$ и $x_n$ с помощью ортогонального оператора и сведём к случае $i = n$. Заметим, что гиперплоскость $x_n = 0$ можно сложить из счётного числа <<ячеек>> меры $0$:
+      \lan(D(E)) \leqslant \lan(D(\R^{n})) = 0 \implies \lan(D(E)) = 0
+     \end{align*} для любого $E \in \alan$. Воспользуемся уже доказанным пунктом \ref{enum1:theorem:measure_of_linear_image}: поменяем местами оси $x_i$ и $x_n$ с помощью ортогонального оператора и сведём к случаю $i = n$. Заметим, что гиперплоскость $x_n = 0$ можно сложить из счётного числа <<ячеек>> меры $0$:
      \begin{align*}
       \left\{ x \in \R^{n} \Mid x_i = 0 \right\} = \bigsqcup_{k_1, \ldots, k_{n-1} \in \Z}  &[k_1, k_1 + 1) \times \ldots \times \left[k_{n-1}, k_{n-1} + 1\right) \times [0, 0]
      .\end{align*} Поэтому, гиперплоскость тоже имеет меру $0$.
-    \item Теперь пусть $\det D \neq 0$, то есть $d_i \neq 0$ для всех $i$. В таком случае тоже $\mu = a \lan$. Найдём $a$: возьмём в качестве $E$ ячейку $\left[0, 1\right)^{n}$. Тогда
+    \item Теперь пусть $\det D \neq 0$, то есть $d_i \neq 0$ для всех $i$. В таком случае тоже $\mu = a \lan$. Найдём $a$, подставим ячейку $\left[0, 1\right)^{n}$:
      \begin{align*}
       D(\left[0, 1\right)^{n}) = \left[0, d_1\right) \times \ldots \times \left[0, d_n\right)
      ,\end{align*} причём если $d_i < 0$, то за  $\left[0, d_i\right)$  мы понимаем $\left(d_i, 0\right]$. Тогда мера равна
@@ -179,7 +207,7 @@
   \item Наконец, пусть $T \in \LL(\R^{n})$ --- произвольный линейный оператор. Тогда по лемме \ref{lemma:UDW_decomposition} $T = UDW$, где $U$, $W$ ортогональные, а $D$ --- диагональная. Так как по предыдущим пунктам для них теорема уже доказана, то
    \begin{align*}
     \lan(UDW(E)) = \lan(DW(E)) = \left| \det D \right| \lan(W(E)) = \left| \det T \right| \lan(E)
-   .\end{align*} При этом $\left| \det D \right| = \left| \det T \right|$, так как $\left| \det U \right| = \left| \det W \right| = 1 $, и $\det (UDW) = \det U \det D \det W$. Теорема доказана.
+   .\end{align*} При этом $\left| \det D \right| = \left| \det T \right|$, так как $\left| \det U \right| = \left| \det W \right| = 1 $.
  \end{enumerate}
 \end{proof}
 
@@ -187,63 +215,84 @@
 
 \begin{thm}
  \label{theorem:smooth_image_of_measurable_is_measurable}
- Пусть $\Phi \in C^{1}(\Omega, \R^{n})$ --- гладкое отображение, где $\Omega \subset \R^{n}$ --- область. Пусть $E \in \alan$, $E \subset \Omega$ --- измеримое по Лебегу множество.
-
- Тогда образ $\Phi(E) \in \alan$ измерим по Лебегу.
+ Пусть $\Phi \in C^{1}(\Omega, \R^{n})$ --- гладкое отображение, где $\Omega \subset \R^{n}$ --- область. Пусть $E \in \alan$, $E \subset \Omega$ --- измеримое по Лебегу множество. Тогда образ $\Phi(E) \in \alan$ измерим по Лебегу.
 \end{thm}
 \begin{remrk*}
- Если $T \in \LL(\R^{n})$ --- линейный оператор, то $T(E) \in \alan$  для любого $E \in \alan$, так как линейные операторы гладкие.
+ Если $T \in \LL(\R^{n})$ --- линейный оператор, то по теореме \ref{theorem:smooth_image_of_measurable_is_measurable} $T(E) \in \alan$  для любого $E \in \alan$, так как линейные операторы гладкие.
 \end{remrk*}
-\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:smooth_image_of_measurable_is_measurable}}]
+
+Для доказательства теоремы \ref{theorem:smooth_image_of_measurable_is_measurable} нам потребуется несколько лемм. 
+
+\begin{lm}
+ \label{lemma:ball_approximation_cover_of_null_measure_set}
+ Пусть $e \in \alan$  --- измеримое по Лебегу множество с нулевой мерой: $\lan(e) = 0$. Тогда для любого $\eps > 0$ существуют открытые шары $\{B_{k}\}_{k=1}^{\infty} $, $B_k = B(x_k, r_k)$, $r_k > 0$, покрывающие $e$: $e \subset \bigcup_{k=1}^{\infty} B_k$, такие, что
+ \begin{align*}
+  \sum_{k=1}^{\infty} \lan(B_k) < \eps
+ .\end{align*} 
+\end{lm}
+Лемма \ref{lemma:ball_approximation_cover_of_null_measure_set} говорит о том, что множество нулевой меры в $\R^{n}$ можно приближать сверху не только ячейками, но и шарами. Приближать таким способом бывает удобно в некоторых ситуациях, например, при доказательстве теоремы \ref{theorem:smooth_image_of_measurable_is_measurable}.
+\begin{proof}[\normalfont\textsc{Доказательство леммы \ref{lemma:ball_approximation_cover_of_null_measure_set}}]
+ Воспользуемся следствием \ref{corollary:cubic_cells_approximation} и приблизим множество $e$ сверху кубическими ячейками $\{S_{k}\}_{k=1}^{\infty}\subset \p_n $, $e \subset \bigcup_{k=1}^{\infty} S_k$,
+ \begin{align*}
+  \sum_{k=1}^{\infty} \lan(S_k) < \eps
+ .\end{align*} Далее приблизим каждую кубическую ячейку сверху шаром. Пусть есть кубическая ячейка $S \in \p_n$ со стороной $l > 0$. Пусть $x \in \R^{n}$ --- центр ячейки $S$. Тогда вся ячейка $S$ укладывается в открытый шар $B$ с центром в точке $x$ и радиусом $\sqrt{n} l$. Действительно, расстояние от $x$ до любой точки $y \in S$ не превосходит
+ \begin{align*}
+  \sqrt{(l / 2)^{2} + \ldots + (l / 2)^{2}} = \sqrt{n \cdot (l / 2)^{2}} = \sqrt{n} l / 2 < \sqrt{n} l
+ .\end{align*} Далее, открытый шар $B$ можно вложить в кубическую ячейку $S'$ с центром в точке  $x$  и стороной $2\sqrt{n}l$. Поэтому, имеется следующая оценка на меру шара:
+ \begin{align*}
+  \lan(B) \leqslant \lan(S') = (2\sqrt{n})^{n} \lan(S) = C \lan(S)
+ ,\end{align*} где $C$  зависит только от $n$.
+
+ Приблизим таким образом каждую кубическую ячейку $S_k$ шаром  $B_k$. Тогда шары $B_k$ образуют покрытие $E \subset \bigcup_{k=1}^{\infty} B_k$ с точностью $C\eps$:
+ \begin{align*}
+  \sum_{k=1}^{\infty} \lan(B_k) \leqslant C \sum_{k=1}^{\infty} \lan(S_k) < C \eps
+ .\end{align*} 
+
+ {\color{red} Хорошо бы тут картинку.}
+\end{proof}
+
+\begin{lm}
+ \label{lemma:ball_measure_linearity}
+ $\lan(B(x,r)) = r^{n} \cdot \lan(B(0,1))$.
+\end{lm}
+\begin{proof}
+ По инвариантности относительно сдвига
+ \begin{align*}
+  \lan(B(x,r)) = \lan(B(0,r))
+ .\end{align*} Далее, линейное отображение $L \colon\, x \mapsto rx$ переводит шар $B(0,1)$ в шар $B(0,r)$. Поэтому, по теореме \ref{theorem:measure_of_linear_image}
+ \begin{align*}
+  \lan(B(0,r)) = \left| \det L \right| \lan(B(0,1)) = r^{n} \lan(B(0,1))
+ .\end{align*} Отметим, что теорему \ref{theorem:measure_of_linear_image} применять можно, так как измеримость $B(0,r)$ заранее известна, ведь это открытое множество.
+\end{proof}
+
+\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:smooth_image_of_measurable_is_measurable} об измеримости гладкого образа}]
  По лемме \ref{lemma:lebesgue_measure_compact_union} о компактах: \begin{align*}
   E = \bigcup_{j=1}^{\infty} K_j \sqcup e
- ,\end{align*} где $K_j$ --- возрастающие компакты, и $\lan(e) = 0$. Так как отображение $\Phi$ непрерывно, то $\Phi(K_j)$ --- компакт, и, следовательно, измерим. Значит, и множество  $\bigcup_{j=1}^{\infty} \Phi(K_j)$ измеримо как счётное объединение измеримых. По этой причине нам достаточно доказать, что образ $\Phi(e)$ измерим.
+ ,\end{align*} где $K_j$ --- возрастающие компакты, и $\lan(e) = 0$. Так как отображение $\Phi$ непрерывно, то по теореме Кантора $\Phi(K_j)$ --- компакт, и, следовательно, измерим по Лебегу. Значит, и множество  $\bigcup_{j=1}^{\infty} \Phi(K_j)$ измеримо как счётное объединение измеримых. В связи с этим нам достаточно доказать $\Phi(e) \in \alan$ --- гладкий образ множества нулевой меры измерим по Лебегу (и имеет нулевую меру).
 
- Докажем, что для любого $\eps > 0$ можно вложить $\Phi(e) \subset F_{\eps}$, где $F_{\eps}$ измеримо и $\lan(F_{\eps}) < \eps$. Тогда можно будет взять $F = \bigcap_{n=1}^{\infty} F_{\frac{1}{n}}$ и сказать $\Phi(e) \subset F$. Но поскольку $\lan(F) = 0$, то по полноте меры Лебега $\Phi(e)$ измеримо и имеет нулевую меру, и мы докажем теорему.
+ Мы покажем, что для любого $\eps > 0$ можно вложить $\Phi(e) \subset W_{\eps}$, где множество $W_{\eps}$ измеримо и $\lan(W_{\eps}) < \eps$. Тогда можно будет взять $W = \bigcap_{n=1}^{\infty} W_{1 / n}$ и сказать $\Phi(e) \subset W$. Но поскольку $\lan(W) = 0$, то по полноте меры Лебега $\Phi(e)$ измеримо и имеет нулевую меру. Теорема тогда будет доказана.
 
- {\color{red} Долг: дооформить}
-
- Можно считать, что $e \subset Q \subset \overline Q \subset \Omega$, где $Q \in \p_n$ --- ячейка, а $\overline Q$ --- её замыкание. Действительно, нарежем область $\Omega$ на счётное число диадических замкнутых квадратов:
+ Можно считать, что $e \subset C \subset \Omega$,  где $C$  --- некоторый замкнутый куб. Действительно, для $m \in \N$  разобьём пространство $\R^{n}$  на счётное число кубических ячеек со стороной $1 / m$ и возьмём замыкания всех ячеек, лежащих полностью внутри $\Omega$.  Затем возьмём объединение по всем $m \in \N$.  Так, мы представим область $\Omega$ в виде счётного объединения замкнутых кубов $\Omega = \bigcup_{k=1}^{\infty} C_k $. При этом каждая точка  $x \in \Omega$ будет покрыта при некотором  $m$, так как $\Omega$  --- открытое множество (можно взять открытый шар с центром в точке $x$, и при достаточно большом $m$ хотя бы один замкнутый куб со стороной $1 / m$ обязан полностью попасть внутрь шара, иначе всё пространство не покрыть). После этого, если для каждого множества $e \cap C_k$ мы сможем предъявить вложение  $\Phi(e \cap C_k) \subset W_k$, где $\lan(W_k) < \eps / 2^{k}$, то мы сразу получим вложение $\Phi(e) \subset W$, где $W = \bigcup_{k=1}^{\infty} W_k$, и
  \begin{align*}
-  \Omega = \bigcup_{l=1}^{\infty} \overline Q_l, \quad Q_l \in \p_n.
- \end{align*} Это можно сделать, взяв все диадические ячейки со стороной $2^{k}$, замыкания которых укладываются в $\Omega$, и затем взяв объединение по всем $k \in \N$. Если для множества $e \cap Q_l$ мы сможем доказать вложение $\Phi(e \cap Q_l) \subset W_l$, $\lan(W_l) < \frac{\eps}{2^{l}}$, то мы сразу получим $\Phi(e) \subset W$, $W = \bigcup_{l=1}^{\infty} W_l $, $\lan(W) < \eps$.
-  
+  \lan(W) \leqslant \sum_{k=1}^{\infty} \lan(W_k) < \eps
+ .\end{align*} 
 
- Итак, считаем, что $e \subset Q \subset \overline Q \subset \Omega$, где $Q \in \p_n$ --- ячейка. Заметим, что отображение $\Phi$ липшецево на $\overline Q$: существует константа $c$ такая, что \begin{align*}
-  \left\| \Phi(x) - \Phi(y) \right\| \leqslant c \left\| x - y \right\|
- \end{align*} для любых $x, y \in \overline Q$. Это так, потому что гладкое отображение на выпуклом компакте липшецево: по теореме о конечном приращении из первого курса можно выбрать \begin{align*}
- c = \sup_{\Theta \in \overline Q} \left\| d_\Theta \Phi \right\|
- .\end{align*}
+ Итак, считаем, что $e \subset C \subset \Omega$, где $C$ --- замкнутый куб. Гладкое отображение $\Phi$ липшицево на выпуклом компакте $C$: существует константа $\Theta > 0$ такая, что
+ \begin{align*}
+  \left\| \Phi(x) - \Phi(y) \right\| \leqslant \Theta \left\| x - y \right\|
+ \end{align*} для любых $x, y \in C$. Это верно по теореме о конечном приращении из второго семестра: в качестве $\Theta$ можно выбрать
+ \begin{align*}
+  \Theta = \sup_{\zeta \in C} \left\| d_{\zeta} \Phi \right\|
+ .\end{align*} Конечность $\Theta$ следует из наличии максимума непрерывной функции  $\left\| d \Phi \right\|$  на компакте.
 
- По условию $\lan(e) = 0$. Значит, по явной формуле меры \ref{remark:measure_explicit_formula} существуют ячейки $\{P_{k}\}_{k=1}^{\infty} \subset \p_n $ такие, что $e \subset \bigcup_{k=1}^{\infty} P_k $, и \begin{align*}
-  \sum_{k=1}^{\infty} \lan(P_k) < \eps
- .\end{align*} В данном случае будут удобнее не ячейки, а шары: мы хотим показать, что существуют шары $\{B_{k}\}_{k=1}^{\infty} $ такие, что $e \subset \bigcup_{k=1}^{\infty} B_k$ и \begin{align*}
+ Теперь, с помощью леммы \ref{lemma:ball_approximation_cover_of_null_measure_set} приблизим множество $e$  сверху открытыми шарами $\{B_{k}\}_{k=1}^{\infty} $, $e \subset \bigcup_{k=1}^{\infty} B_k$   так, что
+ \begin{align*}
   \sum_{k=1}^{\infty} \lan(B_k) < \eps
- .\end{align*} Действительно, 
+ .\end{align*} Далее оценим сверху меру образа каждого шара. Пусть $x_k \in \R^{n}$ --- центр шара $B_k$, а $r_k > 0$ --- его радиус. Заметим, что $\Phi(B_k) \subset R_k$, где $R_k \subset \R^{n}$ --- шар с центром в точке $\Phi(x_k)$ и радиусом $\Theta r_k$. Действительно, по липшицевости отображения, из $\left\| y - x_k \right\| < r_k$ следует $\left\| \Phi(y) - \Phi(x_k) \right\| < \Theta r_k$. При этом по лемме \ref{lemma:ball_measure_linearity} $\lan(R_k) = \Theta^{n} \lan(B_k)$. Таким образом, мы получили покрытие $\Phi(e) \subset \bigcup_{k=1}^{\infty} R_k = R$ такое, что
+ \begin{align*}
+  \lan(R) \leqslant \sum_{k=1}^{\infty} \lan(R_k) = \Theta^{n} \sum_{k=1}^{\infty} \lan(B_k) < \Theta^{n} \eps,
+ \end{align*} причём $\Theta^{n}$ не зависит от $\eps$.
 
+ Таким образом, мы можем вложить образ $\Phi(e)$ в множество сколь угодно малой меры. По полноте меры Лебега образ измерим и имеет нулевую меру. Теорема доказана.
 
- Можно даже считать, что $P_k \subset Q$ (иначе просто пересечём и ничего не ухудшится). Дополнительно потребуем, что $P_k$ --- кубические ячейки.
-
- Запишем
- $
-  \Phi(P_k) \subset R_k \in \p_n
-  $, где $\mathrm{diam}(R_k) \leqslant c \cdot \mathrm{diam}(P_k)$ в силу \ref{}. Значит, 
-\begin{align*}
-\lan(R_k) \leqslant (\mathrm{diam}(R_k))^{n} \leqslant c^{n} \cdot \left( \mathrm{diam}(P_k) \right)^{n} \leqslant C \lan(P_k)
-.\end{align*} Тогда
-\begin{align*}
- \sum_{k=1}^{\infty} \lan(R_k) \leqslant C \sum_{k=1}^{\infty} \lan(P_k) < C \eps
-,\end{align*} где $C$ не зависит от $\eps$. Значит \begin{align*}
-\Phi(e) \subset \bigcup_{k=1}^{\infty} R_k = F_{C \eps}
-,\end{align*}  и $\lan(F_{C\eps}) < C \cdot \eps$. Значит, 
-\begin{align*}
- \Phi(e) \subset \bigcap_{m=1}^{\infty} F_{\frac{1}{m}} = F
-.\end{align*} Так как $F$ измеримо, и $\lan(F) \leqslant \lan(F_{\frac{1}{m}}) < \frac{1}{m}$ для любых $m$, то $\lan(F) = 0$. Значит, $\Phi(e)$ измеримо и $\lan(\Phi(e)) = 0$ по полноте меры Лебега.
-
- {\color{red} Возможно нужно где-то написать $\tilde c$, а не $c$.}
-
- Шар $B(0, R)$ в  $\R^{n}$ содержится в  $[-R, R]^{n}$ , потому что \begin{align*}
-  B(0, R) &= \left\{ (x_1, \ldots, x_n) \Mid \sum_{k=1}^{n} x_k^{2} < R^{2} \right\} \\
-  [- R, R]^{n} &= \left\{ (x_1, \ldots, x_n) \Mid \max_{k} \left| x_k \right| \leqslant R \right\}
- \end{align*} 
 \end{proof}

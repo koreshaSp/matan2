@@ -53,13 +53,25 @@
   \begin{picture}(1,0.5)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.02916335,0.4330658){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Шаг 0:\\\\\\Шаг 1:\\\\\\....\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{пояснение-обобщенного-канторова-множества.pdf}}%
-    \put(0.66650713,0.39741762){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_0$\end{tabular}}}}%
-    \put(0.96186369,0.44245216){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.40928361,0.4430136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.67753058,0.35992987){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_0$\end{tabular}}}}%
+    \put(0.94863437,0.45568155){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1$\end{tabular}}}}%
+    \put(0.42030796,0.45403809){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{пояснение-обобщенного-канторова-множества.pdf}}%
-    \put(0.47865273,0.22321351){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_1$\end{tabular}}}}%
-    \put(0.84454426,0.22271388){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_1$\end{tabular}}}}%
+    \put(0.4951262,0.25381){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_1$\end{tabular}}}}%
+    \put(0.86210765,0.25434815){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_1$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{пояснение-обобщенного-канторова-множества.pdf}}%
+    \put(0.05069294,0.42927539){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Шаг 0:\end{tabular}}}}%
+    \put(0.05050106,0.29620082){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Шаг 1:\end{tabular}}}}%
+    \put(0.0503846,0.1592205){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Шаг 2:\end{tabular}}}}%
+    \put(0.43602015,0.12926496){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{пояснение-обобщенного-канторова-множества.pdf}}%
+    \put(0.55621942,0.12912839){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{пояснение-обобщенного-канторова-множества.pdf}}%
+    \put(0.8025842,0.12926483){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{пояснение-обобщенного-канторова-множества.pdf}}%
+    \put(0.92278347,0.12912827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a_2$\end{tabular}}}}%
+    \put(0.08878969,0.0550326){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vdots$\end{tabular}}}}%
+    \put(0.68445257,0.05310885){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vdots$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

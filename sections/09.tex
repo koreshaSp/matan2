@@ -1,92 +1,106 @@
 % 2022.11.11 Lecture 9
 
 \begin{remrk}
- Если $x$ --- точка Лебега функции $f \in L^{1}(X,\mu)$, то выполнено \begin{align*}
+ Если $x$ --- точка Лебега функции $f \in L^{1}(X,\mu)$, то выполнено
+ \begin{align}
+  \label{equation:remark:lebesgue_point_weaker}
   \lim_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} f(y) \, d\mu(y) = f(x)
- .\end{align*} 
+ .\end{align} 
 \end{remrk}
 \begin{proof}
- Действительно, \begin{align*}
-  &\lim_{r \to 0}  \frac{1}{\mu(B_r)} \int\limits_{B_r} f(y) \, d\mu (y) = f(x) \iff \\
-  \iff &\lim_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} (f(y) - f(x)) \, d\mu  (y) = 0 \impliedby \\
-  \impliedby &\lim_{r \to 0}  \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| f(y) - f(x) \right| \, d\mu(y) = 0
-, \end{align*} а последнее верно, так как $x$ --- точка Лебега.
+ По основной оценке интеграла из \eqref{equation:definition:lebesgue_point} следует
+ \begin{align*}
+  \lim_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_R} (f(y) - f(x)) d\mu(y) = 0
+ .\end{align*} Перенося $f(x)$ в правую часть, получаем \eqref{equation:remark:lebesgue_point_weaker}.
 \end{proof}
 
+\begin{exmpl}
+ Пусть $X = \Z$, $\mu = \sum_{k \in \Z} \delta_{\left\{ k \right\}}$ --- считающая мера. Тогда для точки $x \in \Z$:
+ \begin{align*}
+  \frac{1}{\mu(B_r)} \int\limits_{B_r} f(y) \, d\mu  (y) = \frac{1}{2N + 1} \sum_{\left| k - x \right| \leqslant N} f(k), \quad N = \left\lfloor r \right\rfloor 
+ .\end{align*} В действительности, при $r < 1$ остается только одно слагаемое $f(x)$ --- внутри шара будет одна целая точка. Поэтому, все точки $x \in \Z$ являются точками Лебега любой функции $f$ на $\Z$.
+\end{exmpl}
+
 \begin{thm}[%
-]
-\label{theorem:almost_all_points_are_lebesgue_points}
- Пусть $(X, \rho)$ --- сепарабельное метрическое пространство, $\mu$ --- борелевская регулярная мера на $X$, обладающая условием удвоения: для любого шара $B$ и некоторого $c > 0$ выполнено $\mu(2B) \leqslant c \mu(B)$, причем $\mu(B) < \infty$.
+ ]
+ \label{theorem:almost_all_points_are_lebesgue_points}
+ Пусть $(X, \rho)$ --- сепарабельное метрическое пространство, $\mu$ --- борелевская регулярная мера на $X$, обладающая свойством удвоения.
 
  Пусть $f \in L^{1}(X,\mu)$. Тогда $\mu$-почти все точки $x \in X$ являются точками Лебега функции $f$.
 \end{thm}
-\begin{remrk}
- Пусть $X = \Z$, $\mu = \sum_{k \in \Z} \delta_{\left\{ k \right\}}$ --- считающая мера. Тогда \begin{align*}
-  \frac{1}{\mu(B_r)} \int\limits_{B_r} f(y) \, d\mu  (y) = \frac{1}{N + 1} \sum_{\left| k - x \right| \leqslant \frac{N}{2}} f(k), \quad N = [r]
- .\end{align*} В действительности, при малых $r$ остается только одно слагаемое: $f(x)$. Так как внутри шара будет только одна целая точка.
-\end{remrk}
 
-\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:almost_all_points_are_lebesgue_points}}] 
- Простой случай: пусть $f \in C(X)$  --- непрерывна. Тогда при малых $r$ для любого $y \in B_r = B_r(x)$ \begin{align*}
+\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:almost_all_points_are_lebesgue_points}}]\
+
+ Рассмотрим сначала простой случай: пусть функция $f \in C(X)$ непрерывна. Возьмём любую точку $x \in X$. Тогда при малых $r$ для любого $y \in B_r$
+ \begin{align*}
   \left| f(x) - f(y) \right| \leqslant \delta(r)
- ,\end{align*} где $\delta(r) \to 0$. Поэтому, \begin{align*}
+ ,\end{align*}
+ где $\delta(r) \to 0$ при $r \to 0$. Поэтому,
+ \begin{align*}
   \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| f(x) - f(y) \right| \, d\mu(y) \leqslant \frac{1}{\mu(B_r)} \delta(r) \cdot \int\limits_{B_r} \, d\mu   = \delta(r) \to 0
- .\end{align*} Для непрерывных функций теорема доказана, более того, в случае непрерывной функции абсолютно все точки $X$ являются точками Лебега (а не $\mu$-почти все).
+ .\end{align*} Для непрерывных функций теорема доказана. Более того, в случае непрерывной функции абсолютно все точки $X$ являются точками Лебега (а не $\mu$-почти все).
 
- Пусть теперь  $f \in L^{1}(X, \mu)$ --- любая. Можно считать, что $X$ ограниченное (например, $X = B_1$), так как утверждение теоремы локально. Возьмём любое $\eps > 0$ и рассмотрим множество <<плохих>> точек \begin{align*}
+ Пусть теперь  $f \in L^{1}(X, \mu)$ --- любая суммируемая функция. Будем пока считать, что пространство $X$ ограничено.
+
+ Возьмём любой $\eps > 0$ и рассмотрим множество <<$\eps$-плохих>> точек \begin{align*}
   A(\eps) = \left\{ x \in X \Mid \limsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r}  \left| f(y) - f(x) \right| \, d\mu(y) > \eps   \right\}
- .\end{align*} Возьмём любую непрерывную функцию $g \in C(X)$. Сделаем <<$\frac{\eps}{3}$-приём>>: запишем неравенство \begin{align*}
- &\frac{1}{\mu(B_r)} \int\limits_{B_r} \left| f(x) - f(y) \right| \, d\mu(y) \leqslant \\
- \leqslant &\frac{1}{\mu(B_r)} \left( \int\limits_{B_r} \left| f(x) - g(x) \right| \, d\mu(y)  + \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y)  + \int\limits_{B_r} \left| g(y) - f(y) \right| \, d\mu(y) \right) \\
- \leqslant &\left| f(x) - g(x) \right| + \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) + (M^{\ast}(g-f))(x)
- .\end{align*} Значит, множество $A(\eps)$ укладывается в три множества $A(\eps) \subset A_1(\eps) \cup A_2(\eps) \cup A_3(\eps)$, где \begin{align*}
- A_1(\eps) &= \left\{ x \in X \Mid \left| f(x) - g(x) \right| > \frac{\eps}{3} \right\}, \\
- A_2(\eps) &= \left\{ x \in X \Mid \limsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) > \frac{\eps}{3}   \right\}, \\
- A_3(\eps) &= \left\{ x \in X \Mid (M^{\ast}(f-g))(x) > \frac{\eps}{3} \right\}
- .\end{align*} Хотим доказать $\mu(A(\eps)) = 0$. Имеем:  \begin{align*}
+ .\end{align*} Наша задача --- показать, что $\mu(A(\eps)) = 0$. Возьмём любую непрерывную функцию $g \in C(X)$. Сделаем <<$\eps / 3$-приём>>: запишем неравенство
+ \begin{align*}
+  &\frac{1}{\mu(B_r)} \int\limits_{B_r} \left| f(x) - f(y) \right| \, d\mu(y) \leqslant \\
+  \leqslant &\frac{1}{\mu(B_r)} \left( \int\limits_{B_r} \left| f(x) - g(x) \right| \, d\mu(y)  + \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y)  + \int\limits_{B_r} \left| g(y) - f(y) \right| \, d\mu(y) \right) \\
+  \leqslant &\left| f(x) - g(x) \right| + \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) + (M^{\ast}(g-f))(x)
+ .\end{align*} 
+ Значит, множество $A(\eps)$ укладывается в три множества: $A(\eps) \subset A_1(\eps) \cup A_2(\eps) \cup A_3(\eps)$, где \begin{align*}
+  A_1(\eps) &= \left\{ x \in X \Mid \left| f(x) - g(x) \right| > \eps / 3 \right\}, \\
+  A_2(\eps) &= \left\{ x \in X \Mid \limsup_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| g(x) - g(y) \right| \, d\mu(y) > \eps / 3   \right\}, \\
+  A_3(\eps) &= \left\{ x \in X \Mid (M^{\ast}(f-g))(x) > \eps / 3 \right\}
+  .\end{align*} Поэтому есть оценка  \begin{align*}
   \mu(A(\eps)) \leqslant \mu(A_1(\eps)) + \mu(A_2(\eps)) + \mu(A_3(\eps))
  .\end{align*} Оценим сверху меры каждого из трёх множеств.
+ \begin{itemize}
+  \item Для $A_1(\eps)$ воспользуемся неравенством \ref{theorem:chebishev_inequality} Чебышева: \begin{align*}
+    \mu(A_1(\eps)) \leqslant \frac{3}{\eps} \left\| f-g \right\|_{L^{1}(X,\mu)}
+   .\end{align*}
 
- Для $A_1(\eps)$ воспользуемся неравенством \ref{theorem:chebishev_inequality} Чебышева: \begin{align*}
-  \mu(A_1(\eps)) \leqslant \frac{3}{\eps} \left\| f-g \right\|_{L^{1}(X,\mu)}
- .\end{align*}
+  \item Заметим, что $A_2(\eps) = \varnothing$, потому что мы уже доказали, что все точки являются точками Лебега непрерывной функции. Значит, $\mu(A_2(\eps)) = 0$.
 
- Для $A_2(\eps)$ заметим, что $A_2(\eps) = \varnothing$, потому что для непрерывной функции $g$, как мы уже доказали, все точки являются точками Лебега. Значит, $\mu(A_2(\eps)) = 0$.
+  \item Для $A_3(\eps)$ воспользуемся теоремой \ref{theorem:hardy_littlewood} Харди-Литтлвуда: \begin{align*}
+    \mu(A_3(\eps)) \leqslant \frac{3C}{\eps} \left\| f-g \right\|_{L^{1}(X,\mu)}
+   ,\end{align*} где $C$ --- константа, зависящая лишь от меры. Напомним, что мы пока считаем пространство $X$ ограниченным.
+ \end{itemize}
 
-  Для $A_3(\eps)$ воспользуемся теоремой \ref{theorem:hardy_littlewood} Харди-Литтлвуда: \begin{align*}
-   \mu(A_3(\eps)) \leqslant \frac{3C}{\eps} \left\| f-g \right\|_{L^{1}(X,\mu)}
-  ,\end{align*} где $C$ --- константа, зависящая лишь от меры.
+ Соберём теперь всё вместе:
+ \begin{align*}
+  \mu(A(\eps)) \leqslant \frac{3 + 3C}{\eps} \left\| f - g \right\|_{L^{1}(X,\mu)} = C' \left\| f-g \right\|_{L^{1}(X,\mu)}
+  .\end{align*} Отметим, что эта оценка выполнена для любой непрерывной функции $g \in C(X)$, причём константа $C'$ не зависит от $g$. Так как мера $\mu$ конечна (следует из ограниченности $X$ и свойства удвоения) и регулярна, то по теореме \ref{theorem:continous_functions_dense_set_in_lebesgue_space} $C(X)$ всюду плотно в  $L^{1}(X,\mu)$. Тогда $\left\| f-g \right\|_{L^{1}(X,\mu)}$  можно сделать сколь угодно малым. Отсюда получаем $\mu(A(\eps)) = 0$ для любого  $\eps > 0$. Значит, \begin{align*}
+  \mu(A(0)) = \mu \left( \bigcup_{n=1}^{\infty} A\left(\frac{1}{n}\right) \right) = 0
+ .\end{align*} Следовательно, при $\mu$-почти все точки $x \in X$ являются точками Лебега.
 
-  Соберём всё вместе:
-  \begin{align*}
-   \mu(A(\eps)) \leqslant \frac{3 + 3C}{\eps} \left\| f - g \right\|_{L^{1}(X,\mu)} = C' \left\| f-g \right\|_{L^{1}(X,\mu)}
-   .\end{align*} Отметим, что это выполнено для любой непрерывной функции $g \in C(X)$, причём константа $C'$ не зависит от $g$. Так как по теореме \ref{theorem:continous_functions_dense_set_in_lebesgue_space} $C(X)$ плотно в  $L^{1}(X,\mu)$, то $\left\| f-g \right\|_{L^{1}(X,\mu)}$  можно сделать сколь угодно малым. Отсюда получаем $\mu(A(\eps)) = 0$ для любого  $\eps > 0$. Значит, по непрерывности конечной меры снизу имеем \begin{align*}
-   \mu(A(0)) = \mu \left( \bigcap_{n=1}^{\infty} A\left(\frac{1}{n}\right) \right) = 0
-  .\end{align*} Следовательно, при $\mu$-почти всех $x \in X$  имеем \begin{align*}
-  \lim_{r \to 0} \frac{1}{\mu(B_r)} \int\limits_{B_r} \left| f(x) - f(y) \right| \, d\mu  (y) = 0
-  .\end{align*} Теорема доказана.
-
+ Теперь рассмотрим общий случай, когда пространство $X$ не ограничено. Представим его в виде счётного объединения шаров:
+ \begin{align*}
+  X = \bigcup_{n=1}^{\infty} B(x_0, n), \quad x_0 \in X
+ .\end{align*} На каждом шаре множество $T_n$ точек, не являющихся точками Лебега имеет нулевую меру. Тогда и множество всех не-точек-Лебега имеет меру нуль:
+ \begin{align*}
+  \mu \left( \bigcup_{n=1}^{\infty} T_n \right) = 0
+ ,\end{align*}  поэтому $\mu$-почти все точки пространства --- точки Лебега.
 \end{proof}
-\begin{crly}
- Пусть $E \subset \R$ --- замкнутое подмножество. Тогда для $\lambda_1$-почти всех точек $x \in E$ существует предел \begin{align*}
-  \lim_{\delta \to 0} \frac{\left| E \cap (x - \delta, x + \delta) \right|}{2\delta} = 1
- .\end{align*} Это ответ на мотивационную задачу \ref{problem:motivatinal_problem_good_points_in_closed_subset} в начале параграфа.
-\end{crly}
-\begin{proof}
- Можно считать $E \subset [-R, R]$, потому что всё локально. Мера $\lao \rvert_{\B([-R, R])}$  --- регулярная мера, удовлетворяющая условию удвоения на сепарабельном метрическом пространстве $[-R,R]$. По теореме \ref{theorem:almost_all_points_are_lebesgue_points} для измеримой функции $\chi_E$ и для $\lao$-почти всех $x \in [-R, R]$  имеем \begin{align*}
-  \lim_{\delta \to 0} \frac{1}{\lao(B_{\delta})} \int\limits_{B_{\delta}} \chi_E \, d\mu  = \chi_E(x)
- .\end{align*} Если $x \in E$, то правая часть равна $1$, а левая часть равна \begin{align*}
-  \frac{\left| E \cap B_{\delta} \right|}{\left| B_{\delta} \right|}
- .\end{align*}
 
- Здесь остался один недоказанный момент: \textbf{регулярность меры Лебега}. Пока это отложим.
+\begin{crly*}
+ Пусть $E \subset \R$ --- измеримое множество. Тогда для $\lambda_1$-почти всех точек $x \in E$ существует предел \begin{align*}
+  \lim_{\delta \to 0} \frac{\left| E \cap (x - \delta, x + \delta) \right|}{2\delta} = 1
+ .\end{align*} Это ответ на мотивирующую задачу \ref{problem:motivatinal_problem_good_points_in_closed_subset} в начале параграфа.
+\end{crly*}
+\begin{proof}
+ Рассмотрим характеристическую функцию $\chi_E$. Так как $\R$ --- сепарабельное метрическое пространство, а мера Лебега $\lao$ регулярна и обладает условием удвоения, то $\lao$-почти все точки $x \in \R$ являются точками Лебега функции $\chi_E$. Тогда, $\lao$-почти все точки $x \in E$ являются точками Лебега множества $E$. 
+
+ Здесь остался один недоказанный момент: \textit{регулярность меры Лебега}. Она будет проверена позже, в теореме \ref{theorem:lebesgue_measure_is_regular}, но можно обойтись и без неё: можно локализовать задачу на сколь угодно большой куб $C$. По лемме \ref{lemma:finite_measure_on_compact_space_is_regular}  мера Лебега будет регулярна на компакте, и поэтому $\lao$-почти все точки $x \in E \cap C$ будут точками Лебега множества $E \cap C$. Увеличивая куб $C$, получим нужное.
 \end{proof}
 
 \section{Произведение мер. Теоремы Тонелли и Фубини.}
 
-Есть очень важное геометрическое наблюдение, называемое \textit{принципом Кавальери}: площадь фигуры равна интегралу функции длин сечений по определённой оси. Мы будем изучать аналог этого утверждения в теории меры. Интересно, что дискретная переформулировка этого утверждения --- теорема Тонелли (задача 1 из первого листочка), утверждающая, что если есть ряд по двум параметрам, то не важно, в каком порядке переменных брать сумму. Более общая идея состоит в том, что не важно, по какой переменной сначала интегрировать, результат будет один и тот же.
+Есть очень важное геометрическое наблюдение, называемое \textit{принципом Кавальери}: объём тела равен интегралу $\int_{a}^{b} S(x) \, dx$, где $S(x)$ -- площадь сечения тела плоскостью, перпендикулярной определённой оси, и имеющую координату $x$ по этой оси. Прежде чем мы перейдём к конкретике --- мере Лебега в $\R^{n}$ --- мы изучим аналоги этого утверждения в теории меры. Общая идея состоит в том, что не важно, по какой переменной сначала интегрировать, результат будет один и тот же. Об этом как раз и будут теоремы Тонелли и Фубини.
 
-Но прежде этого, мы вернемся на элементарный уровень, спустимся на землю с вершины теории меры.
+Но прежде этого, мы вернемся на элементарный уровень. Наша текущая задача --- имея два пространства $X$, $Y$ с мерами $\mu$ и $\nu$ построить меру на $X \times Y$. Причём хотелось бы, чтобы на прямоугольнике $A \times B$ ($A \subset X$, $B \subset Y$) эта мера имела естественное значение $\mu(A) \cdot \nu(B)$.
 
 \begin{lm}
  \label{lemma:product_of_semirings_is_semiring}
@@ -108,7 +122,14 @@
     \caption{Общее положение двух множеств из произведения полуколец.}
     \label{fig:semiring-product-set-difference}
    \end{figure}
-   Рассмотрим множества $A = P_1 \setminus P_2, B = P_1 \cap P_2, C = P_2 \setminus P_1$ и $E = Q_1 \setminus Q_2, F = Q_1 \cap Q_2, G = Q_2 \setminus Q_1$. Каждое из множеств $A, B, C, E, F, G$ является дизъюнктным конечным объединением ячеек (в своём полукольце). Значит, каждая из девяти клеток является конечным объединением ячеек. А разность можно выразить явно через три ячейки сетки: \begin{align*}
+   Рассмотрим множества 
+   \begin{align*}
+    A = P_1 \setminus P_2, & &B = P_1 \cap P_2, & &C = P_2 \setminus P_1
+   \end{align*} и 
+   \begin{align*}
+    E = Q_1 \setminus Q_2, & &F = Q_1 \cap Q_2, & &G = Q_2 \setminus Q_1
+   .\end{align*}
+   Каждое из множеств $A, B, C, E, F, G$ является дизъюнктным конечным объединением элементов (своего) полукольца. Значит, каждое из девяти возможных произведений является конечным дизъюнктным объединением множеств из $\p \times \mathcal{Q}$. А разность можно выразить явно через три ячейки сетки: \begin{align*}
     P_1 \times Q_1 \setminus P_2 \times Q_2 = (A \times E) \sqcup (B \times E) \sqcup (A \times F)
    .\end{align*}
  \end{enumerate}
@@ -121,34 +142,42 @@
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item $\varnothing, X \in \A$, так как $\varnothing, X \in \p$.
+  \item $\varnothing \in \A$, так как $\varnothing \in \p$.
   \item Пересечение двух элементов из $\A$ попадает в $\A$: \begin{align*}
-   \bigsqcup_{k=1}^{N} P_k \cap \bigsqcup_{j=1}^{M} Q_j = \bigsqcup_{k=1}^{N} \bigsqcup_{j=1}^{M} (P_k \cap Q_j)
-  .\end{align*} 
- \item Равенство \begin{align*}
-  X \setminus \bigsqcup_{k=1}^{N} P_k = \bigsqcup_{j=1}^{M} Q_j
- \end{align*} для дополнения --- это первый пункт леммы \ref{lemma:about_subordinate_partition} о подчинённом разбиении, доказанной в начале семестра.
+    \bigsqcup_{k=1}^{N} P_k \cap \bigsqcup_{j=1}^{M} Q_j = \bigsqcup_{k=1}^{N} \bigsqcup_{j=1}^{M} (P_k \cap Q_j)
+   .\end{align*} 
+  \item Равенство \begin{align*}
+    X \setminus \bigsqcup_{k=1}^{N} P_k = \bigsqcup_{j=1}^{M} Q_j
+   \end{align*} для дополнения --- это первый пункт леммы \ref{lemma:about_subordinate_partition} о подчинённом разбиении, доказанной в начале семестра.
  \end{enumerate}
 \end{proof}
+\begin{remrk}
+ \label{remark:semiring_to_algebra}
+ Алгебра $\A$ из леммы \ref{lemma:semiring_to_algebra} называется \textit{порождённой полукольцом $\p$}. Ясно, что $\A$ --- минимальная алгебра, содержащая $\p$. Также ясно, что если $\B$ --- минимальная $\sigma$-алгебра, содержащая $\p$, то $\A \subset \B$.
+
+ Также заметим, что условие $X \in \p$ в лемме \ref{lemma:semiring_to_algebra} существенно: без него нельзя доказать аксиому с дополнением. Например, лемму нельзя применить для полукольца ячеек $\p_1$.
+\end{remrk}
+
+Чтобы построить меру на $X \times Y$ нам сначала нужно определится, на какой $\sigma$-алгебре эта мера будет построена. Это приводит нас к следующему определению.
 \begin{df}
  Пусть $\A \subset 2^X$, $\B \subset 2^Y$ --- $\sigma$-алгебры. Введём обозначение для множества \begin{align*}
   \A \times \B = \left\{ A \times B \Mid A \in \A, B \in \B \right\}
  .\end{align*} Это множество является полукольцом над $X \times Y$, но в общем случае не является $\sigma$-алгеброй. Поэтому, \textit{тензорным произведением} $\sigma$-алгебр $\A$ и $\B$ называется множество $\A \otimes \B$  --- наименьшая $\sigma$-алгебра, содержащая полукольцо $\A \times \B$.
 
  Также введём удобные обозначения для \textit{сечений} множества $E \subset X \times Y$ по элементу $x \in X$:
-\begin{align*}
- E_x &= \left\{ y \in Y \Mid (x, y) \in E \right\} \subset Y
-\end{align*} и по элементу $y \in Y$:
-\begin{align*}
- E^{y} &= \left\{ x \in X \Mid (x, y) \in E \right\} \subset X
-.\end{align*} Для понимания см. рис. \ref{fig:projections}.
+ \begin{align*}
+  E_x &= \left\{ y \in Y \Mid (x, y) \in E \right\} \subset Y
+ \end{align*} и по элементу $y \in Y$:
+ \begin{align*}
+  E^{y} &= \left\{ x \in X \Mid (x, y) \in E \right\} \subset X
+ .\end{align*} Для понимания см. рис. \ref{fig:projections}.
 
-\begin{figure}[ht]
-    \centering
-    \incfig{projections}
-    \caption{Сечение $E_x$.}
-    \label{fig:projections}
-\end{figure}
+ \begin{figure}[ht]
+  \centering
+  \incfig{projections}
+  \caption{Сечение $E_x$.}
+  \label{fig:projections}
+ \end{figure}
 
 \end{df}
 
@@ -157,178 +186,284 @@
  Если $E \in \A \otimes \B$, то для любых $x \in X$ и $y \in Y$ множество $E_x$ измеримо в $\B$, а множество $E^y$ измеримо в $\A$.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Заведём $\sigma$-алгебру 
-\begin{align*}
-\mathcal{C} = \left\{ E \subset \A \otimes \B \Mid E_x \in \B, E^{y} \in \A \right\}
-.\end{align*} Достаточно понять, что $\mathcal{C}$ ---  $\sigma$ -алгебра:
-\begin{enumerate}
- \item $\varnothing, X \times Y \in \mathcal{C}$.
- \item Если $\{E_{k}\}_{k=1}^{\infty} \subset \mathcal{C} $, то \begin{align*}
-   \left( \bigcup_{k=1}^{\infty} E_k \right)_x = \bigcup_{k=1}^{\infty} \underbrace{(E_k)_x}_{\in \mathcal{B}} \implies \bigcup_{k=1}^{\infty} (E_k)_x \in \mathcal{B}
- .\end{align*} Для сечения по $y$ проверяется аналогично.
-\item Если $E \in \mathcal{C}$, то
- \begin{align*}
-  (E^{c})_x = Y \setminus E_x \in \B
- .\end{align*} Для сечения по $y$ проверяется аналогично.
-\end{enumerate}
+ Пусть $\mathcal{C}$ --- множество всех таких $E \subset \A \otimes \B$, что $E_x \in \B$ и $E^{y} \in \A$ для любых $x \in X$, $y \in Y$. Поймём, что $\mathcal{C}$ --- $\sigma$-алгебра:
+ \begin{enumerate}
+  \item $\varnothing \in \mathcal{C}$, так как $\varnothing_x = \varnothing^{y} = \varnothing$.
+  \item Если $\{E_{k}\}_{k=1}^{\infty} \subset \mathcal{C} $, то \begin{align*}
+    \left( \bigcup_{k=1}^{\infty} E_k \right)_x = \bigcup_{k=1}^{\infty} \underbrace{(E_k)_x}_{\in \mathcal{B}} \in \mathcal{B}
+   .\end{align*} Для сечения по $y$ проверяется аналогично.
+  \item Если $E \in \mathcal{C}$, то
+   \begin{align*}
+    (E^{c})_x = Y \setminus E_x \in \B
+   .\end{align*} Для сечения по $y$ проверяется аналогично.
+ \end{enumerate}
 
-Значит, $\mathcal{C}$ --- $\sigma$-алгебра. Кроме того, $\mathcal{C} \supset \A \times \B$, так как если $A \in \A$ и $B \in \B$, то \begin{align*}
- (A \times B)_x = \begin{cases}
-  B, \text{ если } x \in A \\
-  \varnothing, \text{ иначе}
- \end{cases} \in \B
-,\end{align*} и \begin{align*}
-(A \times B)^{y} = \begin{cases}
- A, \text{ если } y \in B  \\
- \varnothing, \text{ иначе}
-\end{cases} \in \A
-,\end{align*} Раз $\A \otimes \B$ наименьшая, то $\mathcal{C} = \A \otimes \B$, что завершает доказательство леммы.
+ Значит, $\mathcal{C}$ --- $\sigma$-алгебра. Кроме того, $\mathcal{C} \supset \A \times \B$, так как если $A \in \A$ и $B \in \B$, то \begin{align*}
+  (A \times B)_x = \begin{cases}
+   B, \text{ если } x \in A \\
+   \varnothing, \text{ иначе}
+  \end{cases} \in \B
+  ,\end{align*} и \begin{align*}
+  (A \times B)^{y} = \begin{cases}
+   A, \text{ если } y \in B  \\
+   \varnothing, \text{ иначе}
+  \end{cases} \in \A
+ .\end{align*} Раз $\A \otimes \B$ наименьшая, то $\mathcal{C} = \A \otimes \B$, что завершает доказательство леммы.
 \end{proof}
+
+Теперь начнём построение меры на тензорном произведении $\A \otimes \B$. Естественным путём нужно сначала её задать на полукольце $\A \times \B$.
+
 \begin{lm}
  \label{lemma:continuation_of_measure_on_sigma_algebra_product}
-
- Пусть $\A$ и $\B$ --- $\sigma$-алгебры в $X$, $Y$ соответственно. Пусть $\mu, \nu$ --- меры на $\A$, $\B$ соответственно. Тогда функция \begin{align*}
-  \varphi_0(A \times B) = \mu(A) \cdot \nu(B), \quad A \in \A, B \in \B
+ Пусть $(X, \A, \mu)$ и $(Y, \B, \nu)$ --- пространства с мерами. Тогда функция \begin{align*}
+  A \times B \mapsto \mu(A) \cdot \nu(B), \quad A \in \A, B \in \B
  \end{align*} является счётно-аддитивной на полукольце $\A \times \B$.
 \end{lm}
 \begin{proof}
- Пусть $A \times B = \bigsqcup_{i=1}^{\infty} A_i \times B_i$. Тогда для любых $x \in X$, $y \in Y$ выполняется тривиальное равенство: \begin{align*}
+ Пусть $A \times B = \bigsqcup_{i=1}^{\infty} A_i \times B_i$. Тогда для любых $x \in X$, $y \in Y$ выполняется тривиальное равенство
+ \begin{align}
+  \nonumber
   \chi_A(x) \cdot \chi_B(y) = \chi_{A \times B}(x, y) &= \sum_{i=1}^{\infty} \chi_{A_i \times B_i}(x, y)  = \sum_{i=1}^{\infty} \chi_{A_i}(x) \cdot \chi_{B_i}(y) \\
+  \label{equation:lemma:continuation_of_measure_on_sigma_algebra_product:characteristic_functions_equality}
   \implies \chi_A(x) \cdot \chi_B(y) &= \sum_{i=1}^{\infty} \chi_{A_i}(x) \cdot \chi_{B_i}(y)
-  .\end{align*} Так как по предыдущей лемме \ref{lemma:cross_sections_of_sigma_algebra_product_is_measurable} функции вида $\chi_{\tilde A}$, $\chi_{\tilde B}$ для любых $\tilde A \in \A$, $\tilde B \in \B$ измеримы, то мы можем проинтегрировать равенство по переменной $x$ (и по мере $\mu$), зафиксировав при этом $y$:  \begin{align*}
-  \chi_B(y) \int\limits_{X} \chi_A(x) \, d\mu(x)   &= \int\limits_{X} \left( \lim_{n \to \infty} f_n(x)  \right) \, d\mu(x) \implies \\
- \implies \chi_B(y) \mu(A) &= \int\limits_{X} \left( \lim_{n \to \infty} f_n(x)  \right) \, d\mu(x)
-,\end{align*} где \begin{align*}
-f_n(x) = \sum_{i=1}^{n} \chi_{A_i}(x) \cdot \chi_{B_i}(y)
-.\end{align*} Заметим, что функции $f_n$ простые, неотрицательные, монотонно возрастают и ограничены в каждой точке $x \in X$. Поэтому, по теореме \ref{theorem:levi} Леви можно поменять интеграл и предел местами:
+ .\end{align} Так как по предыдущей лемме \ref{lemma:cross_sections_of_sigma_algebra_product_is_measurable} функции вида $\chi_{\tilde A}$, $\chi_{\tilde B}$ для любых $\tilde A \in \A$, $\tilde B \in \B$ измеримы, то мы можем проинтегрировать равенство \eqref{equation:lemma:continuation_of_measure_on_sigma_algebra_product:characteristic_functions_equality} по переменной $x$, зафиксировав при этом $y$:
+ \begin{align}
+  \nonumber
+  \chi_B(y) \int\limits_{X} \chi_A(x) \, d\mu(x)   &= \int\limits_{X} \left(\sum_{i=1}^{\infty} \chi_{A_i}(x) \cdot \chi_{B_i}(y) \right) \, d\mu(x) \implies \\
+  \nonumber
+  \implies \chi_B(y) \mu(A) &= \sum_{i=1}^{\infty} \int\limits_{X} \chi_{A_i}(x) \cdot \chi_{B_i}(y) \, d\mu(x) \implies \\
+  \label{equation:lemma:continuation_of_measure_on_sigma_algebra_product:equality_integrated_by_x}
+  \implies \mu(A) \chi_B(y) &= \sum_{i=1}^{\infty} \mu(A_i) \chi_{B_i}(y)
+ .\end{align} Менять местами знак интеграла и знак бесконечной суммы можно по теореме \ref{theorem:levi} Леви: нужно рассмотреть неотрицательные функции
  \begin{align*}
-  \chi_B(y) \mu(A) &= \lim_{n \to \infty} \int\limits_{X} f_n(x) \, d\mu(x) = \\
-  &= \lim_{n \to \infty} \int\limits_{X} \left( \sum_{i=1}^{n} \chi_{A_i}(x) \cdot \chi_{B_i}(y) \right) \, d\mu(x) =    \\
-  &= \lim_{n \to \infty} \sum_{i=1}^{n} \int\limits_{X} \chi_{A_i}(x) \cdot \chi_{B_i}(y) \, d\mu(x) =    \\
-  &= \sum_{i=1}^{\infty} \chi_{B_i}(y) \mu(A_i) \implies \\
-  \implies \chi_B(y) \mu(A) &= \sum_{i=1}^{\infty} \mu(A_i) \chi_{B_i}(y)
- .\end{align*} Теперь проинтегрируем по $y$ (по мере $\nu$), и получим то, что нужно: \begin{align*}
- \nu(B) \mu(A) = \sum_{i=1}^{\infty} \mu(A_i) \nu(B_i)
-.\end{align*} 
+  f_n(x) = \sum_{i=1}^{n} \chi_{A_i}(x) \cdot \chi_{B_i}(y)
+  ,\end{align*} возрастающие к сумме ряда. Теперь проинтегрируем \eqref{equation:lemma:continuation_of_measure_on_sigma_algebra_product:equality_integrated_by_x} по $y$ и получим то, что нужно: \begin{align*}
+  \mu(A) \nu(B) &= \int\limits_{Y} \mu(A) \chi_B(y) \, d\nu(y) = \int\limits_{Y} \left( \sum_{i=1}^{\infty} \mu(A_i) \chi_{B_i}(y) \right) d\nu(y) =  \\
+  &= \sum_{i=1}^{\infty} \int\limits_{Y} \mu(A_i)  \chi_{B_i}(y) d\nu(y) = \sum_{i=1}^{\infty} \mu(A_i) \nu(B_i)
+ .\end{align*} 
 \end{proof}
 
-Далее у нас будет \textbf{соглашение}: в этом параграфе все меры $\sigma$-конечны.
+Счётная-аддитивность позволяет продолжить меру-произведение с полукольца $\A \times \B$ на $\sigma$-алгебру $\A \otimes \B$. Чтобы быть абсолютно уверенными в единственности стандартного продолжению, далее у нас будет \textbf{соглашение}: в этом параграфе все меры $\sigma$-конечны.
 
 \begin{df}
  \label{definition:measure_product}
- Пусть $\mu$, $\nu$ --- $\sigma$-конечные меры на $\sigma$-алгебрах $\A$, $\B$ соответственно. Тогда, \textit{произведением мер} $\mu$ и $\nu$ называется мера $\mu \times \nu$ на $\sigma$-алгебре $\A \otimes \B$, являющаяся стандартным продолжением функции множеств $\varphi_0$ на полукольце $\A \times \B$.
+ Пусть $\mu$, $\nu$ --- $\sigma$-конечные меры на $\sigma$-алгебрах $\A$, $\B$ соответственно. Тогда \textit{произведением мер} $\mu$ и $\nu$ называется мера $\mu \times \nu$ на $\sigma$-алгебре $\A \otimes \B$, являющаяся стандартным продолжением функции множеств \begin{align*}
+  A \times B \mapsto \mu(A) \cdot \nu(B)
+ \end{align*}  на полукольце $\A \times \B$.
 \end{df}
 \begin{remrk*}
- Произведение мер $\mu \times \nu$ существует и единственно по теореме Каратеодори, так как меры $\mu$, $\nu$ $\sigma$-конечны.
+ Произведение мер $\mu \times \nu$ существует и единственно по теореме \ref{theorem:caratheodory} Каратеодори, так как меры $\mu$ и $\nu$ $\sigma$-конечны (см. следствие \ref{corollary:sigma-finite-caratheodory-continuation-is-unique}).
 \end{remrk*}
 
-\begin{thm}[%
-Принцип Кавальери]
-\label{theorem:principle_cavalieri} 
+Интуитивно понятно, что не важно, в каком порядке перемножать меры (и $\sigma$-алгебры): меры $\mu \times \nu$ и $\nu \times \mu$ ($\sigma$-алгебры $\A \otimes \B$ и $\B \otimes \A$) должны быть эквивалентными. Это соображение будет удобно тем, что в некоторых случаях мы можем сослаться на симметричность и доказать только один случай. Поэтому, формализуем его.
 
-Пусть $\mu$, $\nu$ --- конечные меры на  $\sigma$-алгебрах $\A$, $\B$  в $X$, $Y$ соответственно. Тогда для любого множества  $E \in \A \otimes \B$  выполнено следующее.
-\begin{enumerate}
- \item Функция $x \mapsto \nu(E_x)$  измерима относительно $\A$.
- \label{enum1:theorem:principle_cavalieri}
- \item Функция $y \mapsto \mu(E^{y})$  измерима относительно $\B$.
- \label{enum2:theorem:principle_cavalieri}
-\item Имеет место равенство \begin{align*}
-   (\mu \times \nu)(E) = \int\limits_{X} \nu(E_x) \, d\mu = \int\limits_{Y} \mu(E^{y}) \, d\nu
+\begin{df*}
+ Пусть $E \subset X \times Y$. Обозначим
+ \begin{align*}
+  E^{\top} = \left\{ (y,x) \mid (x,y) \in E \right\} \subset Y \times X
  .\end{align*} 
- \label{enum3:theorem:principle_cavalieri}
-\end{enumerate}
+\end{df*}
+\begin{remrk*}\
+ \begin{itemize}
+  \item Для множества $A \times B \subset X \times Y$, где $A \subset X$, $B \subset Y$, выполнено
+   \begin{align*}
+    (A \times B)^{\top} = B \times A
+   .\end{align*} 
+
+  \item Для множеств $E, E_1, E_2, \ldots \subset X \times Y$ выполнены равенства
+   \begin{align*}
+    (E^{\top})^{c} &= (E^{c})^{\top}, \\
+    E_1^{\top} \cup E_2^{\top} \cup \ldots &= (E_1 \cup E_2 \cup \ldots)^{\top}, \\
+    E_1^{\top} \cap E_2^{\top} \cap \ldots &= (E_1 \cap E_2 \cap \ldots)^{\top}
+   .\end{align*} 
+ \end{itemize}
+\end{remrk*}
+\begin{lm}
+ \label{lemma:commutativity_of_sigma_algebra_tensor_product}
+ Пусть $\A \subset 2^{X}$, $\B \subset 2^{Y}$ --- $\sigma$-алгебры. Тогда для $E \subset X \times Y$ выполняется
+ \begin{align*}
+  E \in \A \otimes \B \iff E^{\top} \in \B \otimes \A
+ .\end{align*} 
+\end{lm}
+\begin{proof}
+ Понятно, что достаточно доказать только в сторону ($\Longrightarrow$), ведь обратную сторону можно получить, поменяв местами $\A$ и $\B$ и применив прямую сторону. Рассмотрим множество
+ \begin{align*}
+  J = \left\{ E \in \A \otimes \B \Mid E^{\top} \in \B \otimes \A \right\}
+ .\end{align*} Тривиально проверяется, что $J$ --- $\sigma$-алгебра, и что $J$ содержит $\A \times \B$. Значит, $J = \A \otimes \B$.
+\end{proof}
+\begin{lm}
+ \label{lemma:commutativity_of_product_measures}
+ Пусть $(X,\A,\mu)$ и $(Y,\B,\nu)$ --- пространства с мерами. Тогда для любого $E \in \A \otimes \B$ верно
+ \begin{align*}
+  (\mu \times \nu)(E) = (\nu \times \mu)(E^{\top})
+ .\end{align*} 
+\end{lm}
+\begin{proof}
+ Применим явную формулу стандартного продолжения (замечание \ref{remark:measure_explicit_formula}):
+ \begin{align*}
+  (\mu \times \nu)(E) &= \inf \left\{ \sum_{k=1}^{\infty} \mu(A_k) \nu(B_k) \Mid A_k \in \A, B_k \in \B,\; E \subset \bigcup_{k=1}^{\infty} A_k \times B_k \right\} = \\
+  &= \inf \left\{ \sum_{k=1}^{\infty} \nu(B_k) \mu(A_k) \Mid B_k \in \B, A_k \in \A,\; E^{\top} \subset \bigcup_{k=1}^{\infty} B_k \times A_k \right\} = \\
+  &= (\nu \times \mu)(E^{\top})
+ .\end{align*} 
+\end{proof}
+
+Теперь, имея понятие произведения мер, мы можем перейти к аналогу принципа Кавальери в теории меры --- основному способу вычислить меру измеримого множества $E \subset X \times Y$.
+
+\begin{thm}[%
+ Принцип Кавальери]
+ \label{theorem:principle_cavalieri} 
+
+ Пусть $\mu$, $\nu$ --- конечные меры на  $\sigma$-алгебрах $\A$, $\B$  в $X$, $Y$ соответственно. Тогда для любого множества  $E \in \A \otimes \B$  выполнено следующее.
+ \begin{enumerate}
+  \item Функция $x \mapsto \nu(E_x)$  измерима относительно $\A$.
+   \label{enum1:theorem:principle_cavalieri}
+  \item Функция $y \mapsto \mu(E^{y})$  измерима относительно $\B$.
+   \label{enum2:theorem:principle_cavalieri}
+  \item Имеет место равенство
+   \begin{align}
+    \label{equation1:theorem:principle_cavalieri}
+    (\mu \times \nu)(E) &= \int\limits_{X} \nu(E_x) \, d\mu = \\
+    \label{equation2:theorem:principle_cavalieri}
+    &=\int\limits_{Y} \mu(E^{y}) \, d\nu
+   .\end{align} 
+   \label{enum3:theorem:principle_cavalieri}
+ \end{enumerate}
 \end{thm}
 
-\begin{df}
+Для доказательства принципа Кавальери нам потребуется ещё одна структура над множествами.
+
+\begin{df*}
  Пусть $X$  --- множество. Набор подмножеств $C \subset 2^{X}$ называется \textit{монотонным классом}, если для любых $\{E_{k}\}_{k=1}^{\infty} \subset C $ таких, что $ E_1 \subset E_2 \subset \ldots \subset E_k \subset \ldots $ верно $\bigcup_{k=1}^{\infty} E_k \in C$, и для любых $\{F_{k}\}_{k=1}^{\infty} \subset C $  таких, что $ F_1 \supset F_2 \supset \ldots \supset F_k \supset \ldots $ верно $\bigcap_{k=1}^{\infty} F_k \in C$.
-\end{df}
+\end{df*}
 \begin{exmpl*}
  Любая $\sigma$-алгебра является монотонным классом (можно взять счётное объединение, пересечение).
 \end{exmpl*}
-\begin{remrk}
-  Как и для $\sigma$-алгебр, существует понятие \textit{наименьшего монотонного класса}, содержащего семейство $S \subset 2^{X}$: это просто пересечение всех монотонных классов, содержащих $S$. Хотя бы один такой монотонный класс есть ($2^{X}$), а также пересечение любого набора монотонных классов --- монотонный класс.
-\end{remrk}
-\begin{lm}[%
-о монотонном классе]
-\label{lemma:about_monotonous_class}
- 
-Пусть $\A$ --- алгебра, $\B$ --- наименьшая $\sigma$-алгебра, содержащая $\A$, и $C$ --- наименьший монотонный класс, содержащий $\A$. Тогда $\B = C$.
+\begin{remrk*}
+ Как и для $\sigma$-алгебр, существует понятие \textit{наименьшего монотонного класса}, содержащего семейство $S \subset 2^{X}$: это просто пересечение всех монотонных классов, содержащих $S$. Хотя бы один такой монотонный класс есть ($2^{X}$), а также пересечение любого набора монотонных классов --- монотонный класс.
+\end{remrk*}
+
+\begin{lm}
+ \label{lemma:algebra_and_monotonous_class_is_sigma_algebra}
+ Если семейство $\A \subset 2^{X}$ является одновременно алгеброй и монотонным классом, то $\A$ --- $\sigma$-алгебра.
 \end{lm}
 \begin{proof}
- Так как $\B$  --- монотонный класс, то $C \subset \B$ . Надо показать, что $C$  --- $\sigma$-алгебра, и тогда получим $\B \subset C \implies \B = C$.
+ Достаточно проверить только аксиому со счётным объединением. Пусть $\{A_{n}\}_{k=1}^{\infty} \subset \A$. Тогда
+ \begin{align*}
+  \bigcup_{k=1}^{\infty} A_k = \bigcup_{n=1}^{\infty} \left( \bigcup_{k=1}^{n} A_k \right)
+ .\end{align*} Так как множества $\bigcup_{k=1}^{n} $  возрастают, а $\A$  --- монотонный класс, то их объединение $\bigcup_{k=1}^{\infty} A_k$  принадлежит $\A$.
+\end{proof}
 
- Для всякого множества $E \in C$ определим множество
-\begin{align*}
-C(E) = \left\{ F \in C \Mid F \setminus E, F \cap E, E \setminus F \in C \right\}
-.\end{align*} Заметим следующие факты.
+\begin{lm}[%
+ о монотонном классе]
+ \label{lemma:about_monotonous_class}
+
+ Пусть $\A$ --- алгебра, $\B$ --- наименьшая $\sigma$-алгебра, содержащая $\A$, а $C$ --- наименьший монотонный класс, содержащий $\A$. Тогда $\B = C$.
+\end{lm}
+\begin{proof}
+ Так как $\B$  --- монотонный класс, содержащий $\A$, а $C$ --- наименьший монотонный класс, содержащий $\A$, то $C \subset \B$. Теорема автоматически будет доказана, если мы покажем, что $C$ является $\sigma$-алгеброй --- тогда мы аналогичным образом получим $\B \subset C$ и заключим $\B = C$. Но по лемме \ref{lemma:algebra_and_monotonous_class_is_sigma_algebra} достаточно показать, что $C$ --- алгебра. Проверим тогда для $C$ все три аксиомы алгебры. Проверки будут иметь <<структурный>> вид, как обычно бывает в теории меры.
  \begin{enumerate}
-  \item По построению $C(E) \subset C$.
-   \label{С_E_cc_C:lemma:about_monotonous_class}
-  \item $C(E)$ --- монотонный класс. Действительно, если $F_1 \subset F_2 \subset \ldots$ или $F_1 \supset F_2 \supset \ldots$, то каждые из множеств $F \setminus E$, $F \cap E$, $E \setminus F$ вложены, и их <<предел>> принадлежит $C$, из чего следует, что и <<предел>> $F_k$ принадлежит $C$.
-  \item Если $E, F \in C$, то $E \in C(F) \iff F \in C(E)$, так как построение симметрично.
-   \label{С_E_symmetry:lemma:about_monotonous_class}
-  \item Если $E \in \A$, то $C = C(E)$. Докажем: пусть $F \in \A$. Тогда $F \in C(E)$, ведь $F \setminus E, E \cap F, E \setminus F \in \A \subset C$. Значит, $\A \subset C(E)$, и, поскольку $C$ --- наименьший монотонный класс, содержащий $\A$, то $C \subset C(E)$. Отсюда $C = C(E)$ по пункту \ref{С_E_cc_C:lemma:about_monotonous_class}.
-   \label{С_E_eq_C_for_E_in_A:lemma:about_monotonous_class}
-  \item Если $E \in C$, то $C = C(E)$. Докажем: возьмём любое множество $F \in \A$. Тогда по пункту \ref{С_E_symmetry:lemma:about_monotonous_class} $F \in C(E) \iff E \in C(F)$. Так как $F \in \A$, то по пункту \ref{С_E_eq_C_for_E_in_A:lemma:about_monotonous_class} $E \in C(F)$ выполнено для любого $E \in C$. Значит, для любых $E \in C$ и $F \in \A$ выполнено $F \in C(E)$. Это означает, что $\A \subset C(E) \implies C \subset C(E) \implies C = C(E)$.
-  \item $C(X)$ --- это алгебра:
-   \begin{enumerate}
-    \item $\varnothing \in C(X)$, так как $\varnothing \in \A \subset C$, $\varnothing \setminus X = \varnothing \cap X = \varnothing \in C$, $X \setminus \varnothing = X \in \A \subset C$.
-    \item Пусть $F_1, F_2 \in C(X)$. Тогда $F_1 \cap F_2 \in C$. Но по пункту \ref{С_E_eq_C_for_E_in_A:lemma:about_monotonous_class} $C = C(X)$, значит, $F_1 \cap F_2 \in C(X)$.
-    \item Пусть $F \in C(X)$. Тогда $X \setminus F \in C = C(X)$.
-   \end{enumerate}
-   \label{С_E_is_algebra:lemma:about_monotonous_class}
+  \item $\varnothing \in \A \subset C$.
+  \item Докажем, что монотонный класс $C$ замкнут относительно операции пересечения двух множеств. Для каждого множества $E \in C$ определим множество
+   \begin{align*}
+    I_E = \left\{ F \in C \mid E \cap F \in C \right\}
+   .\end{align*} Ясно, что $I_E \subset C$. Нам достаточно показать, что $I_E = C$ для всякого  $E \in C$. Для этого  достаточно проверить следующие два пункта:
+   \begin{itemize}
+    \item $I_E$  --- монотонный класс. Действительно, пусть $\{F_{n}\}_{n=1}^{\infty} \subset I_E$, и
+     \begin{align*}
+      F_1 \subset F_2 \subset \ldots
+     \end{align*} Тогда
+     \begin{align*}
+      E \cap F_1 \subset E \cap F_2 \subset \ldots
+     \end{align*} Но так как все $E \cap F_n \in C$, а $C$ --- монотонный класс, то
+     \begin{align*}
+      E \cap \bigcup_{n=1}^{\infty} F_n = \bigcup_{n=1}^{\infty} (E \cap F_n) \in C
+     .\end{align*} По определению $I_E$:
+     \begin{align*}
+      \bigcup_{n=1}^{\infty} F_n \in C
+     .\end{align*} Мы показали замкнутость $I_E$ относительно взятия объединения возрастающей последовательности множеств, замкнутость относительно взятия пересечения убывающей последовательности множеств проверяется аналогично. 
+    \item $I_E \supset \A$. В случае $E \in \A$ включение $I_E \supset \A$ верно, так как алгебра $\A$ замкнута относительно пересечения. Но тогда включение верно для любого $E \in C$: ведь по симметричности определения $I_E$ имеем $F \in I_E \iff E \in I_F$, а последнее уже проверено для $E \in \A$.
+   \end{itemize} 
+  \item Докажем, что $C$ замкнут относительно взятия дополнения. Рассмотрим множество
+   \begin{align*}
+    J = \left\{ E \in C \mid E^{c} \in C \right\}
+   .\end{align*} Ясно, что $J \subset C$. Нам достаточно показать $J = C$. Для этого достаточно проверить два пункта:
+   \begin{itemize}
+    \item $J$ --- монотонный класс. Действительно, пусть $\{E_{n}\}_{n=1}^{\infty} \subset J$, и
+     \begin{align*}
+      E_1 \subset E_2 \subset \ldots
+     \end{align*} Тогда
+     \begin{align*}
+      E_1^{c} \supset E_2^{c} \supset \ldots
+     \end{align*} Так как все $E_n^{c} \in C$, а $C$ --- монотонный класс, то и
+     \begin{align*}
+      \left(\bigcup_{n=1}^{\infty} E_n\right)^{c} = \bigcap_{n=1}^{\infty} E_n^{c} \in C
+     .\end{align*} По определению $J$  получаем
+     \begin{align*}
+      \bigcup_{n=1}^{\infty} E_n \in J
+     .\end{align*} Для убывающих множеств совершенно аналогично.
+    \item $J \supset \A$ очевидно, так как алгебра $\A$ замкнута относительно взятия дополнения.
+   \end{itemize}
  \end{enumerate}
 
- Мы поняли, что $C = C(E)$ для любого  $E \in C$, в частности для $E = X$. Но тогда, $C$  --- это алгебра, так как $C(X)$ --- это алгебра по пункту \ref{С_E_is_algebra:lemma:about_monotonous_class}. Осталось понять, что $C$ ---  $\sigma$-алгебра.
-
- Это верно, так как, если $\{A_{k}\}_{k=1}^{\infty} \subset C $, то \begin{align*}
-  \bigcup_{k=1}^{\infty} A_k = \bigcup_{k=1}^{\infty} \left( \bigcup_{n=1}^{k} A_k \right) = \bigcup_{k=1}^{\infty} B_k \in C
- ,\end{align*} $B_k \in C$, так как $C$ --- алгебра и $B_k$ вложено возрастают. Значит, $C$ --- $\sigma$-алгебра, и лемма доказана.
 \end{proof}
 
-\begin{proof}[\normalfont\textsc{Доказательство принципа Кавальери \ref{theorem:principle_cavalieri}}]
- Пусть $C$ --- семейство всех множеств $E \in \A \otimes \B$, удовлетворяющих всем трём  свойствам принципа Кавальери.
+\begin{proof}[\normalfont\textsc{Доказательство принципа Кавальери (теорема \ref{theorem:principle_cavalieri})}]\
 
- Докажем, что $C$  --- монотонный класс, содержащий алгебру, порожденную полукольцом $\A \times \B$. Тогда по лемме \ref{lemma:about_monotonous_class} будет $C = \A \otimes \B$, что завершит доказательство.
-
- Шаг 0. Докажем, что квадрат $E = A \times B \in C$, где $A \in \A$, $B \in \B$. Проверим пункт \ref{enum1:theorem:principle_cavalieri}: функция \begin{align*}
-  \nu(E_x) = \begin{cases}
-   \nu(B), \text{ если } x \in A  \\
-   0, \text{ иначе }
-  \end{cases} = \nu(B) \cdot \chi_A(x)
- \end{align*} измерима относительно $\A$, так как $A$ измеримое множество. Пункт \ref{enum2:theorem:principle_cavalieri} проверяется аналогично. Проверим пункт \ref{enum3:theorem:principle_cavalieri}. По определению меры $\mu \times \nu$ имеем \begin{align*}
- (\mu \times \nu)(E) = \mu(A) \nu(B)
-.\end{align*} Возьмём и вычислим оба интеграла из пункта \ref{enum3:theorem:principle_cavalieri}: \begin{align*}
-\int\limits_{X} \nu(E_x) \, d\mu &= \nu(B) \int\limits_{X} \chi_A(x) \, d\mu   = \nu(B) \mu(A) = (\mu \times \nu)(E), \\
-\int\limits_{Y} \mu(E^{y}) \, d\nu &= \mu(A) \int\limits_{Y} \chi_B(y) \, d\nu = \mu(A) \nu(B)  = (\mu \times \nu)(E).
-\end{align*} 
-
- Шаг 1. Докажем, что $\bigsqcup_{i=1}^{N} A_i \times B_i \in C $  для любого $N < \infty$, $A_i \in \A$, $B_i \in \B$. Для любого $x \in X$: \begin{align*}
-  \nu(E_x) = \sum_{i=1}^{N} \nu((E_{i})_x)
- ,\end{align*} где $E_i = A_i \times B_i$. Каждая функция измерима, значит и сумма измерима. Пункт \ref{enum1:theorem:principle_cavalieri} проверем, пункт \ref{enum2:theorem:principle_cavalieri} проверяется аналогично. Третий пункт верен по линейности интеграла: \begin{align*}
- \int\limits_{X} \nu(E_x) \, d\mu  &= \int\limits_{X} \sum_{i=1}^{N} \nu((E_i)_x) \, d\mu  = \\
- &= \sum_{i=1}^{N} \int\limits_{X} \nu((E_i)_x) \, d\mu  = \\
- &= \sum_{i=1}^{N} \nu(B_i) \int\limits_{X} \chi_{A_i}(x) \, d\mu  = \\
- &= \sum_{i=1}^{N} \nu(B_i) \mu(A_i)= \\
- &= (\mu \times \nu)(E)
- .\end{align*} Для $\int_{Y} \mu(E^{y}) \, d\nu $ аналогично.
-
- В результате шага 1 мы показали, что $C$ содержит алгебру из леммы \ref{lemma:semiring_to_algebra}, содержащую полукольцо $\A \times \B$.
-
- Шаг 2. Осталось доказать, что $C$  --- монотонный класс. Проверим по определению. Возьмём $E_1 \subset E_2 \subset \ldots$  или $F_1 \supset F_2 \supset \ldots$  Пусть $E = \bigcup_{k=1}^{\infty} E_k$ и $F = \bigcap_{i=1}^{\infty} F_i $. Проверим пункт \ref{enum1:theorem:principle_cavalieri} для $E$: \begin{align*}
-  \nu (E_x) = \nu \left( \left( \bigcup_{k=1}^{\infty} E_k \right)_x \right) = \lim_{k \to \infty} \nu((E_{k})_x)
-  .\end{align*} Следовательно, функция $\nu(E_x)$ измерима как предел измеримых функций $\nu((E_k)_x)$. Проверим пункт \ref{enum1:theorem:principle_cavalieri} для $F$: всё точно так же, но надо воспользоваться конечностью меры: \begin{align*}
- \nu(F_x) = \nu \left( \bigcap_{i=1}^{\infty} F_i \right) = \lim_{i \to \infty} \nu((F_{i})_x) 
-.\end{align*} Пункт \ref{enum2:theorem:principle_cavalieri} проверяется аналогично.
-
-Осталось проверить пункт \ref{enum3:theorem:principle_cavalieri}. По теореме \ref{theorem:lebesgue-majoring-convergence} Лебега о мажорирующей сходимости можно записать \begin{align*}
-  (\mu \times \nu)(E) &= \lim_{k \to \infty} (\mu \times \nu)(E_k) = \lim_{k \to \infty} \int\limits_{X} \nu((E_{k})_x) \, d\mu   (x) =  \int\limits_{X} \nu(E_x)  \, d\mu  (x)
- \end{align*} так как функции $f_k(x) = \nu((E_k)_x)$ возрастают и ограничены числом $\nu(Y)$. Для $F$ аналогично:
-
+ Сначала покажем, что достаточно доказывать пункт \ref{enum1:theorem:principle_cavalieri} и равенство \eqref{equation1:theorem:principle_cavalieri}: пункт \ref{enum2:theorem:principle_cavalieri} и равенство \eqref{equation2:theorem:principle_cavalieri} можно из них вывести, учитывая симметричность из лемм \ref{lemma:commutativity_of_sigma_algebra_tensor_product} и \ref{lemma:commutativity_of_product_measures}. Действительно, рассмотрим множество $E^{\top} \in \B \otimes \A$. Тогда функция $y \mapsto \mu(E^{\top}_y) = \mu(E_y)$ измерима, что сразу доказывает пункт \ref{enum2:theorem:principle_cavalieri}. Также по лемме \ref{lemma:commutativity_of_product_measures} и равенству \eqref{equation1:theorem:principle_cavalieri} имеем
  \begin{align*}
-  (\mu \times \nu)(F)  = \lim_{k \to \infty} (\mu \times \nu)(F_i) = \lim_{k \to \infty} \int\limits_{X} \nu(F_{ix}) \, d\mu = \int\limits_{X} \nu(F_x) \, d\mu(x)
- .\end{align*} Для $\int_{Y} \mu(E^{y}) \, d\nu  $ аналогично.
+  (\mu \times \nu)(E) = (\nu \times \mu)(E^{\top}) = \int\limits_{Y} \mu(E^{\top}_y) d\nu = \int\limits_{Y} \mu(E^{y}) \, d\nu
+ ,\end{align*} что доказывает \eqref{equation2:theorem:principle_cavalieri}.
 
- Итак, мы показали, что $C$ --- монотонный класс. Тогда $C = \A \otimes \B$, и все множества хорошие. Принцип Кавальери доказан.
+ Как обычно, доказательство будет структурным. Пусть $C$ --- семейство всех множеств $E \in \A \otimes \B$, удовлетворяющих пункту \ref{enum1:theorem:principle_cavalieri} и равенству \eqref{equation1:theorem:principle_cavalieri}. Докажем, что $C$  --- монотонный класс, содержащий алгебру, порожденную полукольцом $\A \times \B$ (см. замечание \ref{remark:semiring_to_algebra}, $X \in Y \in \A \times \B$). Тогда по лемме \ref{lemma:about_monotonous_class} о монотонном классе будет $C \supset \A \otimes \B \implies C = \A \otimes \B$, что завершит доказательство.
+
+ \begin{itemize}
+  \item Шаг 0. Докажем, что квадрат $E = A \times B \in C$, где $A \in \A$, $B \in \B$. Проверим пункт \ref{enum1:theorem:principle_cavalieri}: функция \begin{align*}
+    \nu(E_x) = \begin{cases}
+     \nu(B), \text{ если } x \in A  \\
+     0, \text{ иначе }
+    \end{cases} = \nu(B) \cdot \chi_A(x)
+    \end{align*} измерима относительно $\A$, так как $A$ --- измеримое множество. Проверим равенство \eqref{equation1:theorem:principle_cavalieri}. По определению меры $\mu \times \nu$ имеем \begin{align*}
+    (\mu \times \nu)(E) = \mu(A) \nu(B)
+    .\end{align*} Вычислим интеграл из \eqref{equation1:theorem:principle_cavalieri}: \begin{align*}
+    \int\limits_{X} \nu(E_x) \, d\mu &= \nu(B) \int\limits_{X} \chi_A(x) \, d\mu   = \nu(B) \mu(A) = (\mu \times \nu)(E).
+   \end{align*} 
+
+  \item Шаг 1. Докажем, что $E = \bigsqcup_{i=1}^{N} A_i \times B_i \in C $  для любого $N < \infty$, $A_i \in \A$, $B_i \in \B$. Для любого $x \in X$: \begin{align*}
+    \nu(E_x) = \sum_{i=1}^{N} \nu((E_{i})_x)
+   ,\end{align*} где $E_i = A_i \times B_i$. Каждая функция измерима, значит и сумма измерима. Пункт \ref{enum1:theorem:principle_cavalieri} проверен. Равенство \eqref{equation1:theorem:principle_cavalieri} верно по линейности интеграла:
+   \begin{align*}
+    \int\limits_{X} \nu(E_x) \, d\mu  &= \int\limits_{X} \sum_{i=1}^{N} \nu((E_i)_x) \, d\mu  = \sum_{i=1}^{N} \int\limits_{X} \nu((E_i)_x) \, d\mu  = \\
+    &= \sum_{i=1}^{N} \nu(B_i) \int\limits_{X} \chi_{A_i}(x) \, d\mu  = \sum_{i=1}^{N} \nu(B_i) \mu(A_i) = (\mu \times \nu)(E)
+   .\end{align*}
+
+   В результате этого шага мы показали, что $C$ содержит алгебру из леммы \ref{lemma:semiring_to_algebra}, порождённую полукольцом $\A \times \B$.
+
+  \item Шаг 2. Осталось доказать, что $C$  --- монотонный класс. Проверим по определению: пусть есть последовательности множеств $\{E_{n}\}_{n=1}^{\infty}\subset C $, $\{F_{n}\}_{n=1}^{\infty} \subset C $ такие, что $E_1 \subset E_2 \subset \ldots$ и $F_1 \supset F_2 \supset \ldots$.  Пусть $E = \bigcup_{n=1}^{\infty} E_n$ и $F = \bigcap_{n=1}^{\infty} F_n $. Проверим пункт \ref{enum1:theorem:principle_cavalieri} для $E$: \begin{align*}
+    \nu (E_x) = \nu \left( \left( \bigcup_{n=1}^{\infty} E_n \right)_x \right) = \nu \left( \bigcup_{n=1}^{\infty} (E_n)_x \right) = \lim_{n \to \infty} \nu((E_{n})_x)
+   \end{align*} по непрерывности меры сверху. Следовательно, функция $\nu(E_x)$ измерима как предел измеримых функций $\nu((E_n)_x)$. Аналогично проверим пункт \ref{enum1:theorem:principle_cavalieri} для $F$:
+   \begin{align*}
+    \nu(F_x) = \nu \left( \left( \bigcap_{n=1}^{\infty} F_n \right)_x \right) = \nu \left( \bigcap_{n=1}^{\infty} (F_n)_x \right) = \lim_{n \to \infty} \nu((F_{n})_x) 
+   \end{align*} по непрерывности меры снизу для конечной меры $\nu$.
+
+   Осталось проверить равенство \eqref{equation1:theorem:principle_cavalieri}. По непрерывности меры $\mu \times \nu$ сверху:
+   \begin{align*}
+    (\mu \times \nu)(E) &= \lim_{n \to \infty} (\mu \times \nu)(E_n) = \lim_{n \to \infty} \int\limits_{X} \nu((E_n)_x)  \, d\mu
+   .\end{align*} Далее, так как неотрицательные измеримые функции $\nu((E_n)_x)$ возрастают, то по теореме \ref{theorem:levi} Леви
+   \begin{align*}
+    (\mu \times \nu)(E) &= \lim_{n \to \infty} \int\limits_{X} \nu((E_{n_x}))   \, d\mu = \int\limits_{X} \left( \lim_{n \to \infty} \nu((E_n)_x)  \right) \, d\mu = \int\limits_{X} \nu(E_x) \, d\mu
+   .\end{align*} 
+
+   Для $F$ всё то же самое, но нужно воспользоваться непрерывностью конечной меры $\mu \times \nu$ снизу, и вместо теоремы \ref{theorem:levi} Леви воспользоваться теоремой \ref{theorem:lebesgue-majoring-convergence} Лебега о мажорируемой сходимости:
+   \begin{align*}
+    (\mu \times \nu)(F) &= \lim_{n \to \infty} (\mu \times \nu)(F_n) = \lim_{n \to \infty} \int\limits_{X} \nu((F_n)_x) \, d\mu = \\
+    &= \int\limits_{X} \left( \lim_{n \to \infty} \nu((F_n)_x)  \right) \, d\mu = \int\limits_{X} \nu(F_x) \, d\mu
+   .\end{align*} Здесь константная мажоранта $g = \nu(X)$ с учётом конечности меры $\mu$ (см. замечание \ref{remrk:finite_measure:theorem_lebesgue_majoring_convergence}).
+ \end{itemize}
+
+ Таким образом, $C$ --- монотонный класс, содержащий алгебру, порождённую полукольцом $\A \times \B$. Значит, $C = \A \otimes \B$, что завершает доказательство принципа Кавальери.
 \end{proof}
+
+\begin{remrk*}
+ {\color{red} Принцип Кавальери верен и для $\sigma$-конечных мер, но я уже не успеваю дописать это.}
+\end{remrk*}
 

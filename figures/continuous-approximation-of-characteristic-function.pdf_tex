@@ -54,11 +54,14 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{continuous-approximation-of-characteristic-function.pdf}}%
-    \put(0.29638964,0.20405458){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U_\eps$\end{tabular}}}}%
-    \put(0.44292507,0.16393064){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
-    \put(0.55907307,0.19785964){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_\eps$\end{tabular}}}}%
-    \put(0.51161318,0.15661825){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h_\eps = \chi_A = 1$\end{tabular}}}}%
+    \put(0.72393195,0.42987925){\color[rgb]{0,0,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U_\eps$\end{tabular}}}}%
+    \put(0.08230211,0.43235836){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h_\eps = \chi_A = 0$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{continuous-approximation-of-characteristic-function.pdf}}%
-    \put(0.26239332,0.37264957){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h_\eps = \chi_A = 0$\end{tabular}}}}%
+    \put(0.42922751,0.34346237){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{continuous-approximation-of-characteristic-function.pdf}}%
+    \put(0.64009762,0.27636064){\color[rgb]{0.70196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_\eps$\end{tabular}}}}%
+    \put(0.51219107,0.22263419){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h_\eps = \chi_A = 1$\end{tabular}}}}%
+    \put(0.21447515,0.23577398){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0 \leqslant h_\eps \leqslant 1$\end{tabular}}}}%
+    \put(0.2870553,0.13684018){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0 \leqslant h_\eps \leqslant 1$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

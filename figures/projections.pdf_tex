@@ -54,12 +54,13 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{projections.pdf}}%
-    \put(0.76207536,0.07722867){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
-    \put(0.18828589,0.47026939){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Y$\end{tabular}}}}%
+    \put(0.83424822,0.02859484){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
+    \put(0.17940515,0.47715677){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{projections.pdf}}%
-    \put(0.34532811,0.0711689){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.35863126,0.02167905){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{projections.pdf}}%
-    \put(0.14644383,0.31443965){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E_x$\end{tabular}}}}%
-    \put(0.53880552,0.35502942){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E$\end{tabular}}}}%
+    \put(0.13165244,0.29931437){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E_x$\end{tabular}}}}%
+    \put(0.5794391,0.34563789){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{projections.pdf}}%
   \end{picture}%
 \endgroup%
