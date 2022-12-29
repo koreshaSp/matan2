@@ -293,35 +293,38 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
 \begin{remrk*}
 Физический смысл дивергенции поля $F$ в точке $x$ --- это мощность источника в этой точке, то есть
 \begin{align*}
- \lim_{\eps \to 0}  \frac{1}{\left| S_{\eps}(x) \right|} \int\limits_{S_{\eps}(x)} (F, n) dS
+ \lim_{\eps \to 0}  \frac{1}{\left| B_{\eps}(x) \right|} \int\limits_{S_{\eps}(x)} (F, n) dS
 ,\end{align*} где \begin{align*}
 S_{\eps}(x) = \left\{ y \in \R^{3} \Mid \left\| x - y \right\| = \eps \right\}
-.\end{align*} Интеграл --- это поток $F$ через сферу $S_{\eps}(x)$. Здесь $\left| S_{\eps}(x) \right|$ --- площадь сферы радиуса $\eps$.
+.\end{align*} 
+Указанный интеграл --- это нормированный поток $F$ через сферу $S_{\eps}(x)$. Здесь $\left| B_{\eps}(x) \right|$ --- объем шара радиуса $\eps$. Таким образом, дивергенция $\mathrm{div}$ играет роль мощности точечного источника (стока, если она отрицательна) в точке $x$.
 \end{remrk*}
 
 \begin{thm}
- Пусть $F \in C^{1}(\Omega, \R^{3})$ и $x \in \Omega$.
+ Пусть $F \in C^{1}(\Omega, \R^{3})$ и $x \in \Omega$. Тогда
  \begin{align*}
-  \mathrm{div}\;F(x) = \lim_{\eps \to 0} \frac{1}{\left| S_{\eps}(x) \right|} \int\limits_{S_{\eps}(x)} (F,n) dS
+  \mathrm{div}\;F(x) = \lim_{\eps \to 0} \frac{1}{\left| B_{\eps}(x) \right|} \int\limits_{S_{\eps}(x)} (F,n) dS
  \end{align*} 
 \end{thm}
 \begin{proof}
  Посчитаем
  \begin{align*}
-  (F(y), n(y)) &= \frac{1}{\eps}\left(  \begin{pmatrix}
+  &(F(y), n(y)) = \\
+  &= \frac{1}{\eps}\left(  \begin{pmatrix}
    F_1(x) \\
    F_2(x) \\
    F_3(x)
   \end{pmatrix} + \begin{pmatrix}
-  F'_{1y_1}(x) \cdot \left( y_1-x_1 \right) + F'_{1y_2}(x) \cdot (y_2 -x_2) + F'_{1y_3}(x) \cdot (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
-  F'_{2y_1}(x) \cdot \left( y_1-x_1 \right) + F'_{2y_2}(x) \cdot (y_2 -x_2) + F'_{2y_3}(x) \cdot (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
-  F'_{3y_1}(x) \cdot \left( y_1-x_1 \right) + F'_{3y_2}(x) \cdot (y_2 -x_2) + F'_{3y_3}(x) \cdot (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
+  \scriptstyle F'_{1y_1}(x) \left( y_1-x_1 \right) + F'_{1y_2}(x) (y_2 -x_2) + F'_{1y_3}(x) (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
+  \scriptstyle F'_{2y_1}(x) \left( y_1-x_1 \right) + F'_{2y_2}(x) (y_2 -x_2) + F'_{2y_3}(x) (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
+  \scriptstyle F'_{3y_1}(x) \left( y_1-x_1 \right) + F'_{3y_2}(x) (y_2 -x_2) + F'_{3y_3}(x) (y_3-x_3) + o \left( \left\| x-y \right\| \right) \\
   \end{pmatrix}, \begin{pmatrix}
    x_1 - y_1 \\
    x_2-y_2\\
    x_3-y_3
   \end{pmatrix}\right)
- .\end{align*} Заметим, что $\int_{S_{\eps}(x)} (v, n) = 0  $, потому что функция нечётная. Поэтому, первый член уходит.
+ .\end{align*} 
+Теперь про интегрируем по $|S_\eps(x)|$.  Заметим, что $\int_{S_{\eps}(x)} (v, n) = 0  $, потому что функция нечётная. Поэтому, первый член уходит.
 
  Наблюдение 2: можно считать, что $x = 0$ (иначе сдвинем всё, преобразование $y \mapsto y + x$ --- изометрия, интеграл не поменяется).
 
@@ -333,10 +336,9 @@ S_{\eps}(x) = \left\{ y \in \R^{3} \Mid \left\| x - y \right\| = \eps \right\}
   &= \frac{1}{\eps} \int\limits_{S_{\eps}(0)} F'_{1y_1}(x) \cdot y_1^{2} + F'_{2y_2}(x) \cdot y_2^{2} + F'_{3y_3}(x) \cdot y_3^{2} \, dS = \\
   &= \left( F'_{1y_1}(x) + F'_{2y_2}(x) + F'_{3y_3}(x) \right) \frac{1}{\eps} \int\limits_{S_{\eps}(0)} y_1^{2} = \\
   &= \mathrm{div} F \cdot \frac{1}{3\eps} \int\limits_{S_{\eps}(0)} y_1^{2} + y_2^{2} + y_3^{2} \, dS = \\
-  &= \mathrm{div} F \cdot \eps^{2} \cdot \frac{1}{3\eps} \cdot \left| S_{\eps}(0) \right|
- \end{align*} $\eps$ потерялась!!!!
-
- {\color{red} я сдох}
+  &= \mathrm{div} F \cdot \eps^{2} \cdot \frac{1}{3\eps} \cdot \left| S_{\eps}(0) \right| = \mathrm{div} F(x) \left| B_{\eps}(x) \right|.
+ \end{align*}
+Где было использовано равенство $|B_{\eps}(0)| = \frac{4\pi\eps^3}{3} = \frac{\eps|S_{\eps}(0)|}{3}$. После деления на $|B_{\eps}(0)|$ получаем в пределе $\mathrm{div} F(x)$, что и требовалось.  
 \end{proof}
 
 
