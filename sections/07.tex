@@ -295,7 +295,7 @@
  \nu(E) = \int\limits_{E} f \,d\mu 
 \end{align*} --- мера, причём $\nu \prec \prec \mu$. В этом параграфе мы докажем теорему Радона-Никодима, из которой последует, что все непрерывные относительно $\mu$ меры имеют именно такой вид.
 
-На самом деле теорема будет несколько более общей, нам ещё потребуется определение сингулярных мер.
+На самом деле теорема будет несколько более общей --- нам ещё потребуется определение сингулярных мер.
 
 \begin{df}
  Будем говорить, что мера $\nu$ \textit{cингулярна} относительно меры $\mu$ и писать $\nu \perp \mu$, если существует измеримое множество $S \in \A$ такое, что $\mu(S) = 0$ и  $\nu(X \setminus S) = 0$.
@@ -335,7 +335,29 @@
 \end{thm}
 Доказательство этой теоремы пропитано духом функционального анализа. Ключевая идея в нём --- свести всё к функционалам (так, многие доказательства начинаются со слов <<рассмотрим функционал>>). Как именно это делать зачастую совсем не очевидно.
 \begin{proof}[\normalfont\textsc{Доказательство (фон Нейман)}]
- Рассмотрим новую меру $\omega = \mu + \nu$. Рассмотрим функционал $\varphi \colon\, L^{2}(\omega) \to \CC$ на гильбертовом пространстве $L^{2}(\omega)$, заданный следующим образом:
+ Начнём доказательство с единственности (на лекциях она была оставлена в качестве упражнения). Предположим, что существуют две измеримые неотрицательные функции $f_1, f_2 \in L^{1}(\mu)$ и две меры $\nu_{S_1}, \nu_{S_2}$, сингулярные $\mu$, такие, что для любого $E \in \A$
+ \begin{align}
+  \label{equation:theorem:radon_nikodim:two_certificates}
+  \nu(E) = \int\limits_{E} f_1 \, d\mu + \nu_{S_1}(E), & & \nu(E) = \int\limits_{E} f_2 \, d\mu + \nu_{S_2}(E)
+ .\end{align} По сингулярности существуют измеримые множества $S_1, S_2$ такие, что
+ \begin{align*}
+  \mu(S_1) = \mu(S_2) = 0, & &\nu_{S_1}(X \setminus S_1) = \nu_{S_2}(X \setminus S_2) = 0
+ .\end{align*} Тогда множество $S = S_1 \cup S_2$ обеспечивает сингулярность обоих мер:
+ \begin{align*}
+  \mu(S) = 0, & &\nu_{S_1}(X \setminus S) = \nu_{S_2}(X \setminus S) = 0
+ .\end{align*} Теперь для любого множества $E \in \A$, пользуясь равенствами \eqref{equation:theorem:radon_nikodim:two_certificates}, можно написать:
+ \begin{align}
+  \nonumber
+  \nu(E \setminus S) &= \int\limits_{E \setminus S} f_1 \, d\mu  = \int\limits_{E \setminus S}   f_2 \, d\mu = \\
+  \label{equation:theorem:radon_nikodim:two_f_equality}
+  &= \int\limits_{E} f_1 \, d\mu = \int\limits_{E} f_2 \, d\mu, \\
+  \nonumber
+  \nu(E \cap S) &= \nu_{S_1}(E \cap S) = \nu_{S_2}(E \cap S) = \\
+  \label{equation:theorem:radon_nikodim:two_nu_S_equality}
+  &= \nu_{S_1}(E) = \nu_{S_2}(E)
+ .\end{align} Из \eqref{equation:theorem:radon_nikodim:two_nu_S_equality} непосредственно следует $\nu_{S_1} = \nu_{S_2}$. Из \eqref{equation:theorem:radon_nikodim:two_f_equality} следует $f_1 = f_2$ $\mu$-почти всюду: нужно рассмотреть разность $f_1 - f_2$ и понять, что множества $\left\{ x \mid f_1 - f_2 > 0 \right\}$, $\left\{ x \mid f_1 - f_2 < 0 \right\}$ имеет нулевую меру. Единственность доказана.
+
+ Теперь перейдём к сложной части --- существованию. Здесь начинается функциональный анализ. Рассмотрим новую меру $\omega = \mu + \nu$. Рассмотрим функционал $\varphi \colon\, L^{2}(\omega) \to \CC$ на гильбертовом пространстве $L^{2}(\omega)$, заданный следующим образом:
  \begin{align*}
   \varphi(g) = \int\limits_{X} g \, d\nu 
  ,\end{align*} где $g \in L^{2}(\omega)$. Проверим, что $\varphi$ --- это корректно заданный линейный непрерывный функционал.
@@ -415,7 +437,28 @@
  ,\end{align*} где $\nu_S(E) = \nu(E \cap S)$. Понятно, что $\nu$ --- мера (ведь $\nu_S(E) = \int_{E} \chi_S \, d\nu  $), поэтому осталось проверить только сингулярность $\nu_S \perp \mu$. Действительно, $\mu(S) = 0$, в то время как $\nu_S(X \setminus S) = 0$. Наконец, $f \in L^{1}(\mu)$, так как $\int_{X} f \, d\mu = \nu(G) < \infty$.
 
  Также поясним частный случай $\nu \prec \prec \mu$. В этом случае, так как $\mu(S) = 0$, то $\nu(S) = 0$, и, следовательно, $\nu_S$ --- тождественный нуль. Поэтому верно $\nu(E) = \int_{E} f \,d\mu  $.
-
- Единственность оставлена в качестве упражнения.
 \end{proof}
-
+\begin{remrk}
+ В теореме \ref{theorem:radon_nikodim} Радона-Никодима условие конечности мер $\mu$, $\nu$ можно ослабить до $\sigma$-конечности. Но при этом не будет гарантии, что функция $f \in L^{1}(\mu)$.
+\end{remrk}
+\begin{proof}
+ Действительно, пусть есть измеримое разбиение
+ \begin{align*}
+  X = \bigsqcup_{k=1}^{\infty} X_k
+ ,\end{align*} причём меры $\mu(X_k), \nu(X_k) < \infty$ для всякого $k \geqslant 1$. Тогда можно на каждом индуцированном измеримом пространстве $X_k$ применить теорему в изначальной формулировке: существуют единственные функция $f_k \in L^{1}(X_k, \mu)$, $f_k \geqslant 0$ и мера $\nu_{Sk}$ такие, что
+ \begin{align*}
+  \nu(E) = \int\limits_{E} f_k \, d\mu + \nu_{Sk} (E)
+ \end{align*} для измеримого $E \subset X_k$ . Доопределим нулями $f_k$  и $\nu_{Sk}$  до пространства $X$, возьмём функцию
+ \begin{align*}
+  f = \sum_{k=1}^{\infty} f_k
+ \end{align*} и меру \begin{align*}
+ \nu_S = \sum_{k=1}^{\infty} \nu_{Sk}
+ .\end{align*} Тогда для любого измеримого $E \subset X$:
+ \begin{align*}
+  \nu(E) &= \sum_{k=1}^{\infty} \nu(E \cap X_k) = \sum_{k=1}^{\infty} \left( \int\limits_{E \cap X_k} f_k \, d\mu + \nu_{Sk}(E \cap X_k)  \right) = \\
+  &= \sum_{k=1}^{\infty} \int\limits_{E} f_k \, d\mu + \sum_{k=1}^{\infty} \nu_{Sk}(E) = \int\limits_{E} f \, d\mu + \nu_S(E) 
+ .\end{align*} Функция $f \geqslant 0$. Осталось проверить сингулярность $\nu_S$. Существуют измеримые множества $S_k \subset X_k$  такие, что $\nu_{Sk}(S_k) = 0$ и  $\mu(X_k \setminus S_k) = 0$. Возьмём $S = \bigsqcup_{k=1}^{\infty} S_k$, тогда
+ \begin{align*}
+  \nu_S(S) = \sum_{k=1}^{\infty} \nu_{Sk}(S_k) = 0, & &\mu(X \setminus S) = \sum_{k=1}^{\infty} \mu(X_k \setminus S_k) = 0
+ .\end{align*} 
+\end{proof}
