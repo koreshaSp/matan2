@@ -1,14 +1,14 @@
 % 2022.11.18 Lecture 12
 
+Итак, мы получили измеримость образа под действием гладкого отображения. Как же вычислить меру образа? Для этого нужно воспользоваться основной идеей дифференциального исчисления --- приблизить гладкое линейным. Об этом будет следующая теорема. 
+
 \begin{thm}[%
 ]
 \label{theorem:measure_of_smooth_image}
- Пусть $\Omega_1, \Omega_2$ --- области в $\R^{n}$, $\Phi \colon\; \Omega_1 \to \Omega_2$ --- диффеоморфизм. 
-
- Тогда для любого измеримого множества $E \subset \Omega_1$, $E \in \alan$ верна формула:
+ Пусть $\Omega_1, \Omega_2$ --- области в $\R^{n}$, $\Phi \colon\; \Omega_1 \to \Omega_2$ --- диффеоморфизм. Тогда для любого измеримого множества $E \subset \Omega_1$, $E \in \alan$ верна формула:
  \begin{align*}
   \lan(\Phi(E)) = \int\limits_{E} \left| \det J_{\Phi}(x) \right| \, d\lan(x)  
- ,\end{align*} где $J_{\Phi}(x)$ --- матрица Якоби дифференциала $\Phi$ в точке $x$.
+ ,\end{align*} где $J_{\Phi}(x)$ --- матрица Якоби (дифференциал) $\Phi$ в точке $x$.
 \end{thm}
 \begin{lm}
  \label{lemma:measure_of_smooth_image_leq}
@@ -17,35 +17,51 @@
  .\end{align*} 
 \end{lm}
 \begin{proof}
- $\Psi(E)$ измеримо по теореме \ref{theorem:smooth_image_of_measurable_is_measurable}. Рассмотрим меру
+ Образ $\Psi(E)$ измерим по теореме \ref{theorem:smooth_image_of_measurable_is_measurable}. Рассмотрим меру
  \begin{align*}
-  \nu(E) = \lan(\Psi(E))
- \end{align*} на $\alan$ (это мера, так как $\Psi$ биективна). Кроме того, $\nu(e) = 0$  если $\lan(e) = 0$ (верно, что $\nu \prec \prec \lan$ --- $\nu$ непрерывна относительно $\lan$). По теореме \ref{theorem:radon_nikodim} Радона-Никодима существует функция $f \in L^{1}(\lan)$, $f \geqslant 0$  такая, что \begin{align*}
+  \nu(E) = \lan(\Psi(E \cap \Omega_1))
+ \end{align*} на $\alan$. Это мера, так как $\Psi$ --- биекция:
+ \begin{align*}
+  \nu \left( \bigsqcup_{k=1}^{\infty} E_k \right) &= \lan \left( \Psi \left( \bigsqcup_{k=1}^{\infty} (E_k \cap \Omega_1) \right) \right) = \lan \left( \bigsqcup_{k=1}^{\infty} \Psi (E_k \cap \Omega_1) \right) = \\
+  &= \sum_{k=1}^{\infty} \lan(\Psi(E_k \cap \Omega_1)) = \sum_{k=1}^{\infty} \nu(E_k)
+ .\end{align*} 
+
+ Кроме того, мера $\nu$ непрерывна относительно $\lan$ ($\nu \prec \prec \lan$): если $\lan(e) = 0$, то $\nu(e) = 0$ --- это было показано в доказательстве теоремы \ref{theorem:smooth_image_of_measurable_is_measurable}. {\color{red} TODO: выделить лемму о том, что $\lan(e) = 0 \implies \lan(\Phi(e)) = 0$ и сослаться на неё}. По теореме \ref{theorem:radon_nikodim} Радона-Никодима существует неотрицательная суммируемая функция $f \in L^{1}(\R^{n},\lan)$, $f \geqslant 0$  такая, что \begin{align*}
   \nu(E) = \int\limits_{E} f(x) \, d\lan(x)  
- .\end{align*} Однако в условии теоремы мы требовали конечность мер. Но в силу счётной аддитивности мы можем разбить на кубы, и удовлетворить условие теоремы.
+ .\end{align*} Однако в условии теоремы Радона-Никодима мы требовали конечность мер. Но в силу счётной аддитивности мы можем разбить на кубы, и удовлетворить условие теоремы. {\color{red} Как именно разбить на кубы/приблизить снизу пространство $\R^{n}$? Условие суммируемости удовлетворить нужно, так как мы потом применяем \ref{theorem:almost_all_points_are_lebesgue_points}}.
 
  По теореме \ref{theorem:almost_all_points_are_lebesgue_points} при почти всех $x \in \Omega_1$ \begin{align}
   \label{eq1:theorem:measure_of_smooth_image}
-  f(x) = \lim_{r \to 0} \frac{1}{\lan(B(x, r))} \int\limits_{B(X, r)} f(x) \, d\lan  
- ,\end{align} ведь пространство $\R^{n}$ сепарабельное, а мера Лебега $\lan$ регулярная и удовлетворяет условию удвоения.
+  f(x) = \lim_{r \to 0} \frac{1}{\lan(B(x, r))} \int\limits_{B(X, r)} f(y) \, d\lan(y)
+ ,\end{align} ведь пространство $\R^{n}$ сепарабельное, мера Лебега $\lan$ регулярная и удовлетворяет условию удвоения, а функция $f$ суммируема.
 
- Надо доказать, что $f(x) \leqslant \left| \det J_{\Psi}(x) \right|$ при почти всех $x$. По равенству \eqref{eq1:theorem:measure_of_smooth_image}: \begin{align*}
+ Нам достаточно доказать, что $f(x) \leqslant \left| \det J_{\Psi}(x) \right|$ при почти всех $x \in \Omega_1$. Продолжим \eqref{eq1:theorem:measure_of_smooth_image}:
+ \begin{align}
+  \label{eq2:theorem:measure_of_smooth_image}
   f(x) = \lim_{r \to 0}  \frac{\nu(B(x,r ))}{\lan(B(x,r))} = \lim_{r \to 0} \frac{\lan(\Psi(B(x,r)))}{\lan(B(x,r))}
- .\end{align*} При этом, так как $\Psi$ дифференцируема, то \begin{align*}
-  \Psi(B(x,r)) = \Psi(x) + J_{\Psi}(x) (B(0, r)) + F_r 
- ,\end{align*} где $\mathrm{diam} F_r = o(r)$. Тогда \begin{align*}
- \Psi(B(x,r)) \subset \Psi(x) + J_{\Psi}(x) (B(0, r) + B(0, \delta r))
- \end{align*} при малых $r$, так как $\Psi(B(0, \delta r)) \supset F_r$ при малых $r$. При этом $\delta > 0$ --- любое фиксированное число. Тогда
+ .\end{align} Воспользуемся тем, что отображение $\Psi$ всюду дифференцируемо:
  \begin{align*}
-  \Psi(B(x,r)) &\subset \Psi(x) + J_{\Psi}(x)(B(0, (1+\delta)r)) \\
-  \implies \lan(\Psi(B(x,r))) &\leqslant \lan(\Psi(x) + J_{\Psi}(x) (B(0, (1+\delta)r))) = \\ &= \lan(J_{\Psi}(x) (B(0, (1 + \delta)r)))  = \\
-  &= \left| \det J_{\Psi}(x) \right| \lan(B(0, (1 + \delta)r))
- \end{align*} Тогда при почти всех $x$ \begin{align*}
- f(x) &= \lim_{r \to 0}  \frac{\left| \det J_{\Psi}(x) \right| \lan(B(0, (1 + \delta)r))}{\lan(B(0,r))} \leqslant \\
- &\leqslant \left| \det J_{\Psi}(x) \right| \cdot \lim_{r\to 0} \frac{(1+\delta)^{n} \cdot \lan(B(0,r))}{\lan(B(0,r))} \\
- \implies f(x) &\leqslant \left| \det J_{\Psi}(x) \right| \cdot (1 + \delta)^{n}
- .\end{align*} Переходя к пределу при $\delta \to 0$, получаем доказательство леммы.
+  \Psi(y) = \Psi(x) + J_{\Psi}(x) (y - x) + o(y - x)
+ \end{align*} при $y \to x$. Это можно записать так:
+ \begin{align*}
+  \Psi(B(x,r)) \subset \Psi(x) + J_{\Psi}(x) (B(0, r)) + F_r 
+ \end{align*} при $r \to 0$, где $F_r$ --- некоторое множество такое, что $\diam F_r = o(r)$. При этом здесь сумма понимается в смысле суммы Минковского: каждая точка с каждой точкой. Тогда для любого фиксированного $\delta > 0$ и для достаточно малого $r$ верно
+ \begin{align*}
+  &\Psi(B(x,r)) \subset \Psi(x) + J_{\Psi}(x) (B(0, r) + B(0, \delta r)) \\
+  \implies &\Psi(B(x,r)) \subset \Psi(x) + J_{\Psi}(x)(B(0,(1+\delta)r))
+ .\end{align*} Следовательно, есть неравенство
+ \begin{align*}
+  \lan(\Psi(B(x,r))) &\leqslant \lan(\Psi(x) + J_{\Psi}(x) (B(0, (1+\delta)r))) = \\ &= \lan(J_{\Psi}(x) (B(0, (1 + \delta)r)))  = \\
+  &= \left| \det J_{\Psi}(x) \right| \lan(B(0, (1 + \delta)r)) = \\
+  &= \left| \det J_{\Psi}(x) \right|(1+\delta)^{n} \lan(B(0,r))
+ .\end{align*} Продолжая \eqref{eq2:theorem:measure_of_smooth_image} получаем, что при почти всех $x \in \Omega_1$:
+ \begin{align*}
+ f(x) &\leqslant \lim_{r \to 0}  \frac{\left| \det J_{\Psi}(x) \right|(1+\delta)^{n} \lan(B(0, r))}{\lan(B(0,r))} = \left| \det J_{\Psi}(x) \right| (1 + \delta)^{n}
+.\end{align*} Так как это верно для любого $\delta > 0$, то $f(x) \leqslant \left| \det J_{\Psi}(x) \right|$ для почти всех $x \in \Omega_1$. Лемма доказана.
 \end{proof}
+
+Следующая лемма в некотором смысле обобщит результат предыдущей.
+
 \begin{lm}
  \begin{align}
   \label{eq:lemma:measure_of_smooth_image_weird}
@@ -54,80 +70,96 @@
 \end{lm}
 \begin{proof}\
  \begin{enumerate}
-  \item Возьмём любое измеримое $F \in \alan$. По предыдущей лемме \ref{lemma:measure_of_smooth_image_leq}:
+  \item Докажем лемму для характеристической функции $\chi_F$, $F \in \alan$ и при условии $E = \Omega_1$. По предыдущей лемме \ref{lemma:measure_of_smooth_image_leq}:
    \begin{align*}
-    \lan(\Psi(F)) = \int\limits_{\Omega_2} \chi_{\Psi(F)} \, d\lan(y)  \leqslant \int\limits_{\Omega_1} \chi_F \left| \det J_{\Psi}(x) \right| \, d\lan(x)
-   .\end{align*} Левая часть равна \begin{align*}
-    \lan(\Psi(F))  = \int\limits_{\Omega_2} \chi_F (\Psi^{-1}(y)) \, d\lan(y)  
-   ,\end{align*} потому что $y \in \Psi(F) \iff \Psi^{-1}(y) \in F$. Неравенство \eqref{eq:lemma:measure_of_smooth_image_weird} доказана для $E = \Omega_1$ и $h = \chi_F$, где $F \in \alan$.
+    \lan(\Psi(F)) \leqslant \int\limits_{F}   \left| \det J_{\Psi}(x) \right|\, d\lan
+   .\end{align*}  Левая часть равна
+   \begin{align*}
+    \lan(\Psi(F)) = \int\limits_{\Omega_2}  \chi_{\Psi(F)}(y) \, d\lan(y) = \int\limits_{\Omega_2} \chi_F(\Psi^{-1}(y))  \, d\lan(y)
+   ,\end{align*} так как $\Psi$ --- биекция. Правая часть равна
+   \begin{align*}
+    \int\limits_{F} \left| \det J_{\Psi}(x) \right| \, d\lan(x) = \int\limits_{\Omega_1}  \chi_F(x) \left| \det J_{\Psi}(x) \right| \, d\lan(x)
+   .\end{align*} Неравенство \eqref{eq:lemma:measure_of_smooth_image_weird} доказано для $h = \chi_F$ и $E = \Omega_1$.
 
-  \item Неравенство \eqref{eq:lemma:measure_of_smooth_image_weird} верно для $E = \Omega_1$ и произвольной простой функции $h$ по линейности.
+  \item По линейности неравенство \eqref{eq:lemma:measure_of_smooth_image_weird} верно при $E = \Omega_1$ для любой простой неотрицательной функции $h \geqslant 0$.
 
-  \item Неравенство \eqref{eq:lemma:measure_of_smooth_image_weird} верно для всех измеримых $h \geqslant 0$ по теореме \ref{theorem:approximation} об аппроксимации и теореме \ref{theorem:levi} Леви при $E = \Omega_1$ .
+  \item По теореме \ref{theorem:approximation} об аппроксимации и теореме \ref{theorem:levi} Леви неравенство \eqref{eq:lemma:measure_of_smooth_image_weird} верно для всех неотрицательных измеримых $h \geqslant 0$ при $E = \Omega_1$.
 
-  \item Для произвольного множества $E \in \alan$ , $E \subset \Omega_1$: \begin{align*}
-   \int\limits_{\Omega_2} h(\Psi^{-1}(y)) \, d\lan = \int\limits_{\Omega_1} h(x) \left| \det J_{\Psi} \right|     d\lan \implies \\
-   \implies \int\limits_{\Omega_2} \chi_E (\Psi^{-1}(y)) h(\Psi^{-1}(y)) \, d\lan(y) = \int\limits_{\Omega_1} \chi_E(x) h(x) \left| \det J_{\Psi}(x) \right| \, d\lan(x)
-  .\end{align*} 
+  \item Для произвольного множества $E \in \alan$, $E \subset \Omega_1$ рассмотрим функцию $\hat h = \chi_E \cdot h$:
+   \begin{align*}
+    &\int\limits_{\Omega_2}  \chi_E(\Psi^{-1}(y)) h(\Psi^{-1}(y)) \, d\lan(y) \leqslant \int\limits_{\Omega_1}  \chi_E(x) h(x) \left| \det J_{\Psi}(x) \right| \, d\lan(x) \\
+    \implies & \int\limits_{\Psi(E)}  h(\Psi^{-1}(y))\,d\lan(y) \leqslant \int\limits_{E}  h(x) \left| \det J_{\Psi}(x) \right|\,d\lan(x)
+   .\end{align*} 
  \end{enumerate}
 \end{proof}
-\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:measure_of_smooth_image}}]
- Запишем \begin{align*}
-  \lan(E) &= \lan(\Phi^{-1}(\Phi(E))) \leqslant \\
-  &\leqslant [\Psi = \Phi^{-1}] \leqslant \\
-  &\leqslant \int\limits_{\Phi(E)} \left| \det J_{\Phi^{-1}}(y) \right| \, d\lan \leqslant \\
-  &\leqslant [\Psi = \Phi, h = \left| \det J_{\Phi^{-1}} \right|] \leqslant \\
-  &\leqslant \int\limits_{E} \left| \det J_{\Phi}(x) \right| \cdot \left| \det J_{\Phi^{-1}}(x) \right| \, d\lan  = \\
-  &= \int\limits_{E} 1 \, d\lan = \lan(E)  
- .\end{align*} Значит, все неравенства в действительности равенства. В частности,
+
+\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:measure_of_smooth_image} о мере гладкого образа}]
+ По лемме \ref{lemma:measure_of_smooth_image_leq} сразу есть неравенство в одну сторону:
  \begin{align*}
-  \lan(\Phi^{-1}(\Phi(E))) = \int\limits_{\Phi(E)} \left| \det J_{\Phi^{-1}}(y) \right| \, d\lan(y)
- .\end{align*} Обозначая $F = \Phi(E)$ , мы доказали, что \begin{align*}
- \lan(\Phi^{-1}(F)) = \int\limits_{F} \left| \det J_{\Phi^{-1}}(y) \right| \, d\lan(y)
- .\end{align*} Теорема доказана для $\Phi^{-1}$ (значит и для $\Phi$).
+  \lan(\Phi(E)) \leqslant \int\limits_{E} \left| \det J_{\Phi}(x) \right| d\lan(x)
+ .\end{align*} Докажем в другую сторону. Воспользуемся неравенством \ref{eq:lemma:measure_of_smooth_image_weird} для отображения $\Psi = \Phi^{-1}$ и функции $h \colon\, \Omega_2 \to \Omega_1$, $h(y) = \left| \det J_{\Phi}(\Phi^{-1}(y)) \right|$:
+ \begin{align*}
+  \int\limits_{E} \left| \det J_{\Phi}(x) \right| \, d\lan(x) &= \int\limits_{\Psi(\Phi(E))} h(\Psi^{-1}(x)) \,d\lan(x) \leqslant \int\limits_{\Phi(E)}  h(y) \left| \det J_{\Psi}(y) \right| \,d\lan(y) = \\
+  &= \int\limits_{\Phi(E)} \left| \det J_{\Phi}(\Phi^{-1}(y)) \right| \left| \det J_{\Phi^{-1}}(y) \right| \, d\lan(y) = \int\limits_{\Phi(E)}  d\lan(y) = \\
+  &= \lan(\Phi(E))
+ .\end{align*} Предпоследнее равенство верно, так как дифференциалы взаимно обратны.
 \end{proof}
+
+В качестве примера вычислим объём шара с радиусом $R$.
 
 \begin{exmpl}
  $\lambda_3(B(0, R)) = \frac{4}{3}\pi R^{3}$.
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Возьмём $\Omega = \Phi((0, R) \times (-\frac{\pi}{2}, \frac{\pi}{2}) \times (0, 2\pi))$ , где \begin{align*}
-  \Phi \colon\; (r, \psi, \varphi) \mapsto \begin{pmatrix}
+ Введём сферические координаты. Рассмотрим диффеоморфизм $\Phi \colon\, \Omega_1 \to \Omega_2$, заданный по формуле
+ \begin{align*}
+  \Phi \colon\; (r, \varphi, \psi) \mapsto \begin{pmatrix}
    r \cos \varphi \cos \psi \\
    r \sin \varphi \cos \psi \\
-   r \sin \varphi
+   r \sin \psi
+  \end{pmatrix} = \begin{pmatrix}
+   x(r,\varphi,\psi) \\
+   y(r,\varphi,\psi) \\
+   z(r,\varphi,\psi) \\
   \end{pmatrix}
- .\end{align*} { \color{red} Тут рисунок}.
+ ,\end{align*} где $\Omega_1 = (0, R) \times (0, 2\pi) \times (-\pi / 2, \pi / 2)$. Отображение $\Phi$ параметризует весь шар, за исключением множества меры нуль:
  \begin{align*}
-  \lambda_3(\Omega) = \lambda_3(B(0, R))
- .\end{align*} Продифференцируем: \begin{align*}
- J_{\Phi} &= \begin{pmatrix}
-   \cos \varphi \cos \psi & \sin \varphi \cos \psi & \sin \psi \\
-   -r \cos \varphi \sin \psi & -r \sin \varphi \sin \psi & r \cos \psi \\
-   -r \sin \varphi \cos \psi & r \cos \varphi \cos \psi & 0
-  \end{pmatrix} \\
-  \implies \det J_{\Phi} &= -r\cos \varphi \cdot (r \cos^{2}\varphi \cos^{2}\psi + r \cos^{2}\psi \sin^{2}\varphi) + \\
-  &+ \sin \psi (-r^{2}\cos^{2} \varphi \sin \psi \cos \psi - r^{2}\sin^{2}\varphi \sin \psi \cos \psi) = \\
-  &= -r^{2} \cos^{3} \psi - r^{2} \sin^{2} \psi \cos \psi = \\
-  &= -r^{2} \cos \psi \\
-  \implies \left| \det J_{\Phi} \right| = r^{2} \cos \psi
-  ,\end{align*}  так как $\cos \psi > 0$  на $(-\frac{\pi}{2}, \frac{\pi}{2})$ . Пользуясь формулой из теоремы \ref{theorem:measure_of_smooth_image}, посчитаем: \begin{align*}
- \lambda_3(B(0, R)) &= \int\limits_{\Phi^{-1}(\Omega)} r^{2}\cos \psi \, d\lambda_3 = \\
- &= \int\limits_{0}^{R} \int\limits_{-\frac{\pi}{2}}^{\frac{\pi}{2}}  \int\limits_{0}^{2\pi} r^{2}\cos \psi \, d\varphi  \, d\psi  \, dr = \\
- &= 2\pi \int\limits_{0}^{R} r^{2} \, dr \int\limits_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos \psi \, d\psi = \\
- &= 2\pi \frac{R^{3}}{3} \cdot 2 \int\limits_{0}^{\frac{\pi}{2}}  \cos\psi \, d\psi = \\
- &= \frac{4\pi R^{3}}{3} \cdot \left( -\sin \psi \right) \bigg\rvert_0^{\frac{\pi}{2}} = \\
- &= \frac{4}{3}\pi R^{3}
- .\end{align*} 
+  \lambda_3(\Omega_2) = \lambda_3(B(0, R))
+ .\end{align*} Вычислим якобиан $\Phi$:
+ \begin{align*}
+  \det J_{\Phi} &= \begin{vmatrix}
+   \frac{\partial x}{\partial r} & \frac{\partial x}{\partial \varphi} & \frac{\partial x}{\partial \psi} \\
+   \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \varphi} & \frac{\partial y}{\partial \psi} \\
+   \frac{\partial z}{\partial r} & \frac{\partial z}{\partial \varphi} & \frac{\partial z}{\partial \psi} \\
+   \end{vmatrix} = \begin{vmatrix}
+   \cos\varphi\cos\psi & -r \sin \varphi \cos\psi & -r \cos\varphi\sin\psi \\
+   \sin\varphi\cos\psi & r \cos\varphi\cos\psi & -r\sin\varphi\sin\psi \\
+   \sin\psi & 0 & r \cos\psi
+  \end{vmatrix} = \\
+  &= \sin\psi \begin{vmatrix}
+   -r \sin\varphi\cos\psi & -r\cos\varphi\sin\psi \\
+   r\cos\varphi\cos\psi & -r\sin\varphi\sin\psi
+  \end{vmatrix} + r\cos\psi \begin{vmatrix}
+  \cos\varphi\cos\psi & -r\sin\varphi\cos\psi \\
+  \sin\varphi\cos\psi & r\cos\varphi\cos\psi
+  \end{vmatrix} = \\
+  &= r^{2}(\sin^{2}\varphi + \cos^{2}\varphi)\cos\psi\sin^{2}\psi + r^{2}(\cos^{2}\varphi + \sin^{2}\varphi)\cos^{3}\psi = \\
+  &= r^{2}\cos\psi(\sin^{2}\psi + \cos^{2}\psi) = r^{2}\cos\psi
+ .\end{align*} Так как $\cos \psi > 0$  на $(-\frac{\pi}{2}, \frac{\pi}{2})$, то $\left| \det J_{\Phi} \right| = r^{2}\cos\psi$. Вычислим, наконец, объём шара, пользуясь формулой из теоремы \ref{theorem:measure_of_smooth_image}, а также теоремой \ref{theorem:fubini} Фубини:
+  \begin{align*}
+   \lambda_3(B(0, R)) &= \lambda_3(\Omega_2) =  \int\limits_{\Omega_1} r^{2}\cos \psi \, d\lambda_3 = \int\limits_{0}^{R} \int\limits_{0}^{2\pi} \int\limits_{-\pi / 2}^{\pi / 2} r^{2} \cos\psi \, d\psi\,d\varphi\,dr = \\
+   &= 2\pi \int\limits_{0}^{R} r^{2}\,dr \int\limits_{-\pi / 2}^{\pi / 2} \cos\psi = 2\pi \frac{R^{3}}{3} \sin\varphi \rvert_{-\pi / 2}^{\pi / 2} = \frac{4}{3}\pi R^{3}
+  .\end{align*} 
 \end{proof}
 \begin{crly}[формула замены переменной в интеграле Лебега]
- Пусть $\Phi$ --- диффеоморфизм области $\Omega_1$ на область $\Omega_2$ в $\R^{n}$, а $h$ --- суммируемая измеримая функция на $\Omega_1$. Тогда \begin{align*}
+ Пусть $\Omega_1, \Omega_2 \subset \R^{n}$ --- области, $\Phi \colon\, \Omega_1 \to \Omega_2$ --- диффеоморфизм. Пусть $h \colon\, \Omega_1 \to [-\infty, +\infty]$ --- суммируемая функция. Тогда
+ \begin{align*}
   \int\limits_{\Omega_2} h(\Phi^{-1}(y)) \, d\lan(y) = \int\limits_{\Omega_1} h(x) \left| \det J_{\Phi}(x) \right| \, d\lan(x)  
  .\end{align*} 
 \end{crly}
 \begin{proof}
- На характеристических функциях --- это предыдущая теорема  \ref{theorem:measure_of_smooth_image}. Переход к простым по линейности. Переход к измеримым по теореме об аппроксимации и теореме Леви.
+ На характеристических функциях --- это предыдущая теорема  \ref{theorem:measure_of_smooth_image}. Переход к простым неотрицательным по линейности. Переход к измеримым неотрицательным по теореме \ref{theorem:approximation} об аппроксимации и теореме \ref{theorem:levi} Леви. Переход к функциях любого знака рассмотрением $f_{\pm} = \max(\pm f, 0)$.
 \end{proof}
 
 
- 
+
