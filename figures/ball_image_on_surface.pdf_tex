@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
+%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'ball_image_on_surface.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{680.31496063bp}%
+    \setlength{\unitlength}{659.1020479bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,26 +50,26 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5)%
+  \begin{picture}(1,0.51510027)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{ball_image_on_surface.pdf}}%
-    \put(0.12551962,0.30388883){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(x,r)$\end{tabular}}}}%
+    \put(0.10845819,0.31961612){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(x,r)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ball_image_on_surface.pdf}}%
-    \put(0.15344907,0.12888565){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
-    \put(0.30885,0.39263776){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$S$\end{tabular}}}}%
+    \put(0.13728654,0.13898054){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
+    \put(0.35933994,0.42976991){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$S$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{ball_image_on_surface.pdf}}%
-    \put(0.32842798,0.26089211){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi$\end{tabular}}}}%
+    \put(0.31789707,0.27523557){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{ball_image_on_surface.pdf}}%
-    \put(0.14074019,0.21190395){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.48600308,0.35108007){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(B(x, r))$\end{tabular}}}}%
-    \put(0.56960735,0.23854974){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(x)$\end{tabular}}}}%
+    \put(0.12416862,0.22467075){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.48054365,0.36832619){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(B(x, r))$\end{tabular}}}}%
+    \put(0.56683869,0.25217412){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(x)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{ball_image_on_surface.pdf}}%
-    \put(0.03104342,0.13689117){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(0,r)$\end{tabular}}}}%
+    \put(0.01094132,0.14724372){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(0,r)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{ball_image_on_surface.pdf}}%
-    \put(0.25453825,0.02320671){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d_x \Phi$\end{tabular}}}}%
-    \put(0.0834546,0.04761683){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
-    \put(0.77669264,0.3685283){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{\Phi(x)}$\end{tabular}}}}%
-    \put(0.78077272,0.09575907){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(d_x \Phi)(B(0, r))$\end{tabular}}}}%
+    \put(0.24162923,0.02990037){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d_x \Phi$\end{tabular}}}}%
+    \put(0.06503932,0.05509612){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
+    \put(0.78058893,0.38633599){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{\Phi(x)}$\end{tabular}}}}%
+    \put(0.78480032,0.1047878){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(d_x \Phi)(B(0, r))$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

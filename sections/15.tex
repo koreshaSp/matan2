@@ -43,7 +43,7 @@
   \omega = P \, dx + Q \, dy
  \end{align*} и многообразие $M = \overline \Omega$, $\partial M = \partial \overline \Omega$, где $\partial M$ --- край многообразия, а $\partial \overline \Omega$ --- граница множества (в топологическом смысле). Тогда
  \begin{align*}
-  \int\limits_{\partial \overline \Omega} P\,dx Q\,dy &= \int\limits_{\overline \Omega} d(Pdx+Qdy) = \\
+  \int\limits_{\partial \overline \Omega} P\,dx + Q\,dy &= \int\limits_{\overline \Omega} d(Pdx+Qdy) = \\
   &= \int\limits_{\Omega} (P'_x dx + P'_y dy) \land dx + (Q'_x dx + Q'_y dy) \land dy = \\
   &= \int\limits_{\Omega} (Q'_x - P'_y) dx \land dy = \\
   &= \begin{bmatrix}
@@ -60,8 +60,8 @@
 
 \begin{figure}[ht]
     \centering
-    \incfig{oblast_elementary_on_ox}
-    \caption{oblast_elementary_on_ox}
+	\incfig[0.7]{oblast_elementary_on_ox}
+    \caption{Область, стандартная относительно оси $x$}
     \label{fig:oblast_elementary_on_ox}
 \end{figure}
 
@@ -78,22 +78,23 @@
  &= \int\limits_{a}^{b} \left( -P(x, \varphi_2(x)) + P(x, \varphi_1(x)) \right) \, dx 
 .\end{align*} Итак, для этого частного случая доказали.
 
-Аналогично можно доказать формулу \eqref{equation:green_formula}, если $\Omega$ стандартная относительно оси $y$ и $P = 0$. Значит, формула $\eqref{equation:green_formula}$ верна для любых $P, Q$ и $\Omega$, стандартной области относительно обеих осей $x$ и $y$.
-
-В общем случае, представим $\Omega$ в виде объединения конечного числа областей $\Omega_i$ с кусочно-гладкой границей $\partial \overline \Omega_i$, стандартных относительно обеих осей $x$ и $y$, и конечного числа путей, составляющих границы $\partial \overline \Omega_i$.
+Аналогично можно доказать формулу \eqref{equation:green_formula}, если $\Omega$ стандартная относительно оси $y$ и $P = 0$.
+Значит, формула $\eqref{equation:green_formula}$ верна для любых $P, Q$ и $\Omega$, стандартной области относительно обеих осей $x$ и $y$, рис. \ref{fig:oblast_standard_on_both_axis}.
 
 \begin{figure}[ht]
     \centering
-    \incfig{oblast_union_of_standard_oblasts}
-    \caption{oblast_union_of_standard_oblasts}
-    \label{fig:oblast_union_of_standard_oblasts}
+	\incfig[0.7]{oblast_standard_on_both_axis}
+    \caption{Область, стандартная относительно обеих осей}
+    \label{fig:oblast_standard_on_both_axis}
 \end{figure}
 
+В общем случае, представим $\Omega$ в виде объединения конечного числа областей $\Omega_i$ с кусочно-гладкой границей $\partial \overline \Omega_i$, стандартных относительно обеих осей $x$ и $y$, и конечного числа путей, составляющих границы $\partial \overline \Omega_i$, рис. \ref{fig:oblast_union_of_standard_oblasts}.
+
 \begin{figure}[ht]
     \centering
-    \incfig{oblast_standard_on_both_axis}
-    \caption{oblast_standard_on_both_axis}
-    \label{fig:oblast_standard_on_both_axis}
+	\incfig[0.7]{oblast_union_of_standard_oblasts}
+    \caption{Разбиение области в объединение стандартных областей}
+    \label{fig:oblast_union_of_standard_oblasts}
 \end{figure}
 
 Для всех $\Omega_i$ формула  \eqref{equation:green_formula} верна. Давайте теперь сложим по  $i$  обе части: если $\Gamma_i = \partial \overline \Omega_i$ , то 
@@ -110,12 +111,12 @@
 \end{remrk*}
 
 \begin{exmpl}
- Посчитаем площадь лепестка лемникаты $\left( x^{2} + y^{2} \right) = x^{2} - y^{2}$
+ Посчитаем площадь лепестка лемнискаты $\left( x^{2} + y^{2} \right)^2 = x^{2} - y^{2}$
 
 \begin{figure}[ht]
     \centering
-    \incfig{lepestok_lemniskati}
-    \caption{lepestok_lemniskati}
+	\incfig[0.7]{lepestok_lemniskati}
+    \caption{Лепесток лемнискаты}
     \label{fig:lepestok_lemniskati}
 \end{figure}
 
@@ -136,18 +137,19 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
 \int\limits_{\partial \overline \Omega} x \, dy = \int\limits_{\Omega} dx \, dy = \lambda_2(\Omega)
 .\end{align*} Таким образом, теперь нужно посчитать интеграл по кривой. Он равен
 \begin{align*}
- \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \sqrt{\cos(2\varphi)} \cos \varphi \, d \left( \sqrt{\cos(2\varphi)} \sin\varphi\right)  &= \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \sqrt{\cos(2\varphi)} \cos\varphi \left( -\frac{\sin\varphi \cdot 2\sin(2\varphi)}{2\sqrt{\cos(2\varphi)}} + \sqrt{\cos(2\varphi)} \cdot \cos\varphi \right) \, d\varphi = \\
- &= -\int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \left( \cos\varphi \sin\varphi \sin(2 \varphi) - \cos(2\varphi) \cos^{2}\varphi \right) \, d\varphi  = \\
- &= - \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \frac{\sin^{2}(2\varphi)}{2} - \cos(2\varphi)\cos(2\varphi)+1
- &= \frac{1}{2} \int\limits_{-\pi / 4}^{\pi / 4} \cos(4 \varphi) + \frac{\cos(2\varphi)}{2} \; d\varphi = \\
- &= \frac{1}{2} \left( \frac{\sin(4 \varphi)}{4} + \frac{\sin(2\varphi)}{2} \right)\bigg\rvert_{-\pi / 4}^{\pi / 4} = \\
+ \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \sqrt{\cos(2\varphi)} \cos \varphi \, d \left( \sqrt{\cos(2\varphi)} \sin\varphi\right) = \\
+ = \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \sqrt{\cos(2\varphi)} \cos\varphi \left( -\frac{\sin\varphi \cdot 2\sin(2\varphi)}{2\sqrt{\cos(2\varphi)}} + \sqrt{\cos(2\varphi)} \cdot \cos\varphi \right) \, d\varphi = \\
+ = -\int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \left( \cos\varphi \sin\varphi \sin(2 \varphi) - \cos(2\varphi) \cos^{2}\varphi \right) \, d\varphi  = \\
+ = - \int\limits_{-\frac{\pi}{4}}^{\frac{\pi}{4}} \frac{\sin^{2}(2\varphi)}{2} - \cos(2\varphi)\cos(2\varphi)+1
+ = \frac{1}{2} \int\limits_{-\pi / 4}^{\pi / 4} \cos(4 \varphi) + \frac{\cos(2\varphi)}{2} \; d\varphi = \\
+ = \frac{1}{2} \left( \frac{\sin(4 \varphi)}{4} + \frac{\sin(2\varphi)}{2} \right)\bigg\rvert_{-\pi / 4}^{\pi / 4} = \\
  &= \frac{1}{2}
 .\end{align*} 
 \end{exmpl}
 
 
 \begin{df}
- \textit{Поток постоянного поля} $F$ через параллелограмм, натянутый на вектора $v_1, v_2 \in \R^{3}$ в направлении векторного произведения
+	\textit{Поток постоянного поля $F$ через параллелограмм}, натянутый на вектора $v_1, v_2 \in \R^{3}$ в направлении векторного произведения
  \begin{align*}
   v_1 \times v_2 = \det \begin{pmatrix}
    i & j & k \\
@@ -161,7 +163,7 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
    v_1 \\
     v_2
   \end{pmatrix}
- \end{align*} --- объём параллелепипеда, натянутого на $v_1$, $v_2$ и $F$ (с точностью до знака).  Здесь $F \in \R^{3}$, $F = (F_1, F_2, F_3)$, $i = \begin{pmatrix}
+ \end{align*} --- объём параллелепипеда, натянутого на $v_1$, $v_2$ и $F$ (с точностью до знака).Здесь $F \in \R^{3}$, $F = (F_1, F_2, F_3)$, $i = \begin{pmatrix}
   1 \\ 0 \\ 0
  \end{pmatrix}, j = \begin{pmatrix}
   0 \\ 1 \\ 0
@@ -179,7 +181,7 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
  \end{align*} 
 \end{df}
 \begin{df}
- \textit{Поток постоянного поля} $F$ через параметризованную поверхность $(\Omega, \Phi, S)$ --- это интеграл
+	\textit{Поток постоянного поля $F$ через параметризованную поверхность} $(\Omega, \Phi, S)$ --- это интеграл
  \begin{align*}
   \int\limits_{S} (F(x), n(x)) \, dS
  ,\end{align*}  где $n(x)$ --- единичная нормаль к поверхности $S$ в точке $x \in S$.
@@ -200,13 +202,13 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
   \end{pmatrix}^{2} + \det \begin{pmatrix}
   \Phi'_{1,u} & \Phi'_{2,u} \\
   \Phi'_{1,v} & \Phi'_{2,v} \\
-  \end{pmatrix} }} = \\
+  \end{pmatrix}^2 }} = \\
   &=  \frac{\det \begin{pmatrix}
     i & j & k \\
     & \Phi'_u & \\
     & \Phi'_v & \\
   \end{pmatrix}}{\sqrt{\det G_{\Phi}(x)}}
- ,\end{align*} где последнее равенство верно по формуле Бине-Коши для $J_{\Phi}^{\ast} J_{\Phi}$.
+ ,\end{align*} где последнее равенство верно по формуле Бине-Коши для $J_{\Phi}^{T} J_{\Phi}$.
 
  Посчитаем 
 \begin{align*}
@@ -222,6 +224,8 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
  \end{pmatrix}$ можно интерпретировать как поток через параллелограмм, натянутый на $\Phi'_u$ и $\Phi'_v$.
 \end{remrk}
 
+{\color{red} картинку}
+
 \begin{df}
  \textit{Форма потока поля} --- это
  \begin{align*}
@@ -236,11 +240,11 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
 \begin{proof}
  По определению:
  \begin{align*}
-  \int\limits_{S} \omega_{\Pi} &= \int\limits_{\Omega} F_1(\Phi(u,v)) d\Phi_2 \land d\Phi_3 + \ldots + F_3(\Phi) d \Phi_1 \land d\Phi_2 = \\
-  d\Phi_2 \land d\Phi_3 &= (\Phi'_{2u} du + \Phi'_{2v} dv) \land (\Phi'_{3u} du + \Phi'_{dv} dv) = \\
-  &= \left( \Phi'_{2u} \cdot \Phi'_{3v} - \Phi'_{2v} \Phi'_{3u} \right) du \land dv, \\
-  d\Phi_3 \land d\Phi_1 = \left( \Phi'_{1u} \Phi'_{3v} - \Phi'_{1v} \Phi'_{1v}\Phi'_{3u} \right) du \land dv,
- ,\end{align*} Далее
+  \int\limits_{S} \omega_{\Pi} = \int\limits_{\Omega} F_1(\Phi(u,v)) d\Phi_2 \land d\Phi_3 + \ldots + F_3(\Phi(u, v)) d \Phi_1 \land d\Phi_2\\
+  d\Phi_2 \land d\Phi_3 = (\Phi'_{2u} du + \Phi'_{2v} dv) \land (\Phi'_{3u} du + \Phi'_{3v} dv) = \\
+  = \left( \Phi'_{2u} \cdot \Phi'_{3v} - \Phi'_{2v} \Phi'_{3u} \right) du \land dv, \\
+  d\Phi_3 \land d\Phi_1 = \left( \Phi'_{1u} \Phi'_{3v} - \Phi'_{1v}\Phi'_{3u} \right) du \land dv,
+ ,\end{align*} Продолжим первую строку:
  \begin{align*}
   = \int\limits_{\Omega} \det \begin{pmatrix}
    F \\
@@ -249,26 +253,32 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
   \end{pmatrix} \, du \, dv
  .\end{align*} 
 
+ Ведь по сути у нас написано умножение $F_i(\Phi(u, v))$ на $i$ минор.
+
+
  В правой части:
  \begin{align*}
-  \int\limits_{S} (F, n) dS &= \int\limits \frac{1}{\sqrt{\det G} } \det \begin{pmatrix}
+  \int\limits_{S} (F, n) dS &= \int\limits_S \frac{1}{\sqrt{\det G} } \det \begin{pmatrix}
    F \\
    \Phi'_u \\
    \Phi'_v
   \end{pmatrix} dS = \\
-  &= \int \frac{1}{\sqrt { \det G }} \det \begin{pmatrix}
+  &= \int\limits_\Omega \frac{1}{\sqrt { \det G }} \det \begin{pmatrix}
    F \\
    \Phi'_u \\
    \Phi'_v
   \end{pmatrix} \sqrt{\det G} du dv
- .\end{align*} {\color{red} досчитать}
+ .\end{align*} 
+ Ведь при переходе из поверхностной меры в карту у нас появляется корень из определителя матрицы Грама.
+ {\color{red} досчитать}
 \end{proof}
 
 Сформулируем формулу Стокса в этой ситуации.
 
 \begin{thm}[%
 формула Гаусса-Остроградского]
-Пусть $\Omega \subset \R^{3}$  --- область, её граница $\partial \overline \Omega$  --- кусочно-гладкое многообразие (то есть объединение конечного числа гладких многообразий размерности $2$ и кривых).
+\label{theorem:divergence_theorem}
+Пусть $\Omega \subset \R^{3}$  --- область, её граница $\partial \overline \Omega$  --- кусочно-гладкое многообразие (то есть, объединение конечного числа гладких многообразий размерности $2$ и кривых).
 
 Пусть $F \in C^{1}(\overline \Omega, \R^{3})$.
 
@@ -282,12 +292,12 @@ r^{4} = r^{2} \cos (2 \varphi) \iff r = \sqrt{ \cos (2 \varphi) }
 
 При этом, параметризация $\Omega_{\Pi}$ выбирается так, чтобы нормаль к $\partial \overline \Omega$ соответствующая этой параметризации \eqref{equation:big_scary_formula} была внешней.
 \end{thm}
-\begin{proof}[\normalfont\textsc{Вывод теоремы \ref{} из формулы \eqref{equation:formula_stox} Стокса}]
+\begin{proof}[\normalfont\textsc{Вывод теоремы \eqref{theorem:divergence_theorem} из формулы \eqref{equation:formula_stox} Стокса}]
  \begin{align*}
   \int\limits_{\partial \overline \Omega} \omega_{\Pi} &= \int\limits_{\Omega} d \omega = \int\limits_{\Omega} d(F_1) \land dy \land dz + d(F_2) dz \land dz \land dx + d(F_3) \land dx \land dy = \\
-  &= \int\limits_{\Omega} \mathrm{div} F \cdot dx \land dy \land dz = \\
-  &= \int\limits_{\Omega} \mathrm{div}\; F\; dx \, dy \, dz
+  &= \int\limits_{\Omega} \mathrm{div} F \cdot dx \land dy \land dz = \int\limits_{\Omega} \mathrm{div}\; F\; dx \, dy \, dz
  .\end{align*} 
+ Ведь $d(F_1) = F'_{1x}dx + F'_{1y}dy + F'_{1z}dz$ и тогда $d(F_1) \land dy \land dz = F'_{1x}dx \land dy \land dz$
 \end{proof}
 
 \begin{remrk*}
@@ -324,14 +334,14 @@ S_{\eps}(x) = \left\{ y \in \R^{3} \Mid \left\| x - y \right\| = \eps \right\}
    x_3-y_3
   \end{pmatrix}\right)
  .\end{align*} 
-Теперь про интегрируем по $|S_\eps(x)|$.  Заметим, что $\int_{S_{\eps}(x)} (v, n) = 0  $, потому что функция нечётная. Поэтому, первый член уходит.
+Теперь про интегрируем по $|S_\eps(x)|$.  Заметим, что $\int_{S_{\eps}(x)} (v, n) = \int_{S_{\eps}(0)} (v, n) = 0  $, потому что функция нечётная. Поэтому, первый член уходит.
 
  Наблюдение 2: можно считать, что $x = 0$ (иначе сдвинем всё, преобразование $y \mapsto y + x$ --- изометрия, интеграл не поменяется).
 
  Наблюдение 3:
  \begin{align*}
   \int_{S_{\eps}(0)} y_i \cdot y_j \, dS = 0
- \end{align*} при $i \neq j$. После убирания нулей останется 
+ \end{align*} при $i \neq j$, в силу нечётности. После убирания нулей останется 
  \begin{align*}
   &= \frac{1}{\eps} \int\limits_{S_{\eps}(0)} F'_{1y_1}(x) \cdot y_1^{2} + F'_{2y_2}(x) \cdot y_2^{2} + F'_{3y_3}(x) \cdot y_3^{2} \, dS = \\
   &= \left( F'_{1y_1}(x) + F'_{2y_2}(x) + F'_{3y_3}(x) \right) \frac{1}{\eps} \int\limits_{S_{\eps}(0)} y_1^{2} = \\

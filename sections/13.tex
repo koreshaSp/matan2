@@ -45,14 +45,16 @@
 .\end{align*}
 Если мы рассматриваем $\Phi(B(x, r))$, то результат содержится в 
 \begin{align*}
-\Phi(x) + \left( d_x \Phi \right) (B(0, r)) + B(0, \eps(e)),
+\Phi(x) + \left( d_x \Phi \right) (B(0, r)) + B(0, \eps(r)),
 \end{align*}
- где $\eps(r) = 0(r)$. Тогда
+ где $\eps(r) = o(r)$. Тогда
  \begin{align*}
   \lambda_k\left( \Phi(x) + d_x \Phi (B(0, r)) + B(0, \eps(r)) \right) \approx \\
-  \approx \lambda_k(\Phi(x) + d_x \Phi(B(0, r)))(1 +  \underbrace{\lambda_k(B(0, \eps(r)))}_{\lambda_k(B(0,1))\cdot \eps(e)^{k} = o(r^{k})} ) = \\
+  \approx \lambda_k(\Phi(x) + d_x \Phi(B(0, r)))(1 +  \underbrace{\lambda_k(B(0, \eps(r)))}_{\lambda_k(B(0,1))\cdot \eps(r)^{k} = o(r^{k})} ) = \\
   = \lambda_k(d_x \Phi (B(0, r))) + o(r^{k})
  .\end{align*} 
+
+То есть, если мы берем что-то маленького диаметра, то мера Лебега должна быть плоской $+$ что-то малое от $r$.
 
 \begin{figure}[ht]
     \centering
@@ -75,7 +77,7 @@
 \end{thm}
 \begin{proof}\
  \begin{enumerate}
- \item Сначала покажем, что $\mu$ действительно задана на $\B(S)$. Для этого достаточно показать, что $\Phi(\B(\Omega)) \supset \B(S)$. Действительно, $\B(S)$ --- наименьшая $\sigma$-алгебра, содержащая замкнутые множества пространства $S$, а $\Phi(\B(\Omega))$ --- какая-то $\sigma$-алгебра (так как $\Phi$ --- биекция), содержащая замкнутые множества $S$ ($F \subset S$ замкнуто, то $F = \Phi(E)$, где $E = \Phi^{-1}(F)$ --- замкнутое и принадлежит $\B(\Omega)$ (прообраз замкнутого замкнут)).
+ \item Сначала покажем, что $\mu$ действительно задана на $\B(S)$. Для этого достаточно показать, что $\Phi(\B(\Omega)) \supset \B(S)$. Действительно, $\B(S)$ --- наименьшая $\sigma$-алгебра, содержащая замкнутые множества пространства $S$, а $\Phi(\B(\Omega))$ --- какая-то $\sigma$-алгебра (так как $\Phi$ --- биекция $\Rightarrow \ \Phi(\bigcup A_k) = \bigcup \Phi(A_k), \ \Phi(A^c) = \Phi(A)^c$), содержащая замкнутые множества $S$ ($F \subset S$ замкнуто, то $F = \Phi(E)$, где $E = \Phi^{-1}(F)$ --- замкнутое и принадлежит $\B(\Omega)$ (прообраз замкнутого замкнут при непрерывном отображении)).
 
  \item $\mu(\Phi(e)) = 0$ для любого такого, что  $\lambda_k(e) = 0$. Действительно,
    \begin{align*}
@@ -93,9 +95,9 @@
   \begin{align}
    \label{equation:lebesgue_measure_on_surface_linear}
    \lambda_k^{T_L}(LE) = \sqrt{\det L^{\top}L} \cdot \lambda_k(E)
-  \end{align} для любого $E \in \B(\R^{k})$. Затем мы просто подставим $J_{\Phi}(x_0)$ вместо $L$ и $E = B(x_0, r)$, получим, что
+  \end{align} для любого $E \in \B(\R^{k})$. Затем мы просто подставим $J_{\Phi}(x_0)$ вместо $L$ и $E = B(0, r)$($\lambda_k(B(x_0, r))$ заменили на $\lambda_k(B(0, r))$ по инвариантности сдвига), получим, что
   \begin{align*}
-   \mu(\Phi(B(x_0, r))) = \lambda_k^{T_x} (J_{\Phi}(x_0) B(0, r)) + o(r^{k})
+	  \mu(\Phi(B(x_0, r))) = \lambda_k^{T_{J_\Phi(x_0)}} (J_{\Phi}(x_0) B(0, r)) + o(r^{k})
   .\end{align*}
 
   Доказываем \eqref{equation:lebesgue_measure_on_surface_linear}. Пусть $U$ --- ортогональное линейное отображение, такое, что
@@ -105,7 +107,7 @@
   \begin{align*}
    \lambda_k^{T_L}(LE) &= \lambda_k(ULE) = \left| \det (UL) \right| \lambda_k(E) = \\ &= \sqrt{\det(UL)\det(UL)} \lambda_k(E) = \\
    &= \sqrt{\det(L^{\top}U^{\top}) \det(UL)} \lambda_k(E) = \\
-   &= \sqrt{ \det(L^{\top}U^{\top}UL) } \lambda_k(E) = \\
+   &= \sqrt{ \det(L^{\top}\underbrace{U^{\top}U}_{I}L) } \lambda_k(E) = \\
    &= \sqrt{ \det (L^{\top} L) } \lambda_k(E)
   .\end{align*} 
 
@@ -123,7 +125,7 @@
  \begin{align*}
   f(x) &= \lim_{r \to 0}  \frac{\mu(\Phi(B(x,r)))}{\lambda_k(B(x,r))} = \\
   &= \lim_{r \to 0}  \frac{\lambda_k(J_{\Phi}(x)(B(0,r))) + o(r^{k})}{\lambda_k(B(0,r))} = \\
-  &= \lim_{r \to 0} \frac{\sqrt{\det J_{\Phi}^{\top}J_{\Phi(x)}} \lambda_k(B(0,r)) + o(r^{k})}{\lambda_k(B(0,r))} = \\
+  &= \lim_{r \to 0} \frac{\sqrt{\det J_{\Phi}^{\top}J_{\Phi}(x)} \lambda_k(B(0,r)) + o(r^{k})}{\lambda_k(B(0,r))} = \\
   &= \sqrt{\det G_{\Phi}(x)}
  .\end{align*}  Формула \eqref{equation:lebesgue_measure_on_surface_formula} проверена.
 \end{enumerate}
@@ -313,4 +315,4 @@
  \begin{align*}
   \mu(\Sigma) = \int\limits_{(0, \frac{\pi}{2}) \times (0, \frac{\pi}{2})} R^{2} \cos\psi  \, d\varphi d\psi = R^{2} \cdot \frac{\pi}{2} \cdot 1 = \frac{\pi R^{2}}{2}
  .\end{align*} Таким образом, площадь всей сферы равна $8 \cdot \frac{\pi R^{2}}{2} = 4 \pi R^{2} = \left( \frac{4}{3} \pi R^{3} \right)'$ .
-\end{exmpl}
+ 

@@ -95,7 +95,7 @@
  Любая полилинейная кососимметрическая форма порядка $k$ в $\R^{n}$ имеет вид
  \begin{align*}
   \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k} \cdot dx_{i_1} \land \ldots \land dx_{i_k}
- ,\end{align*} где $c_{i_1,\ldots,i_k} \in \R$.
+ ,\end{align*} где $a_{i_1,\ldots,i_k} \in \R$.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство для $k=1$}]
  Действительно, в этому случае $\omega$ --- линейная форма в  $\R^{n}$ , значит у $\omega$  есть матрица
@@ -114,8 +114,9 @@
   \omega = \sum_{\alpha \in [n]^{k}} c_{\alpha} dx_{i_1} \otimes \ldots \otimes dx_{i_k}
  ,\end{align*}  где $\alpha = (i_1, \ldots, i_k)$. Затем
  \begin{align*}
-  \frac{1}{k!} \sum_{\omega} \omega(\sigma(h)) \,\mathrm{sgn}\;\omega = \omega = \sum_{\alpha} c_{\alpha} \underbrace{\frac{1}{k!} \sum_{\sigma} (dx_{\sigma(i_1) \otimes \ldots \otimes dx_{\sigma(i_k)}})\eps_{\alpha}}_{dx_{i_1} \land \ldots \land dx_{i_k}}
+  \omega = \frac{1}{k!} \sum_{\sigma} \omega(\sigma(h)) \,\mathrm{sgn}\;\sigma = \sum_{\alpha} c_{\alpha} \underbrace{\frac{1}{k!} \sum_{\sigma} (dx_{\sigma(i_1) \otimes \ldots \otimes dx_{\sigma(i_k)}})\eps_{\alpha}}_{dx_{i_1} \land \ldots \land dx_{i_k}}
  \end{align*} 
+ $\sigma$ - перестановка. 
 \end{proof}
 \begin{remrk}
  Если $i_1, \ldots, i_k$ --- набор индексов такой, что существуют $i_s, i_m$ такие, что $i_s = i_m$, но $s \neq m$, то $dx_{i_1} \land \ldots \land dx_{i_k} = 0$.
@@ -139,8 +140,8 @@
 
  Например,
  \begin{align*}
-  (dx \land dy + 2dy \land dx) \land dx &= dx \land dy \land dx + 2 dy \land dz \land dx = \\
-  &= 2 dx \land dy \land dz
+	 (dx \land dy + 2dy \land dz) \land dx &= \underbrace{dx \land dy \land dx}_{=0} + 2 dy \land dz \land dx = \\
+  &= 2 dy \land dz \land dx = 2 dx \land dy \land dz
  .\end{align*} 
 \end{df}
 
@@ -176,7 +177,7 @@
 \begin{exmpl*}
  \begin{align*}
   d((x^{2} + y^{2})dx + z^{2}dz) &= (2x dx + 2y dy) \land dx + 2z dz \land dz = \\
-  &= -2y dz \land dy
+  &= -2y dx \land dy
  .\end{align*} 
 \end{exmpl*}
 
@@ -215,13 +216,13 @@
    R \sin \varphi \cos \psi \\
    R \sin \psi
   \end{pmatrix}
- .\end{align*} Правда, образ $\Phi$ --- это не вся сфера, а сфера минус множество меры нуль, но мы на это забьём.
+ .\end{align*} Правда, образ $\Phi$ --- это не вся сфера, а сфера минус множество меры нуль, но мы на это закроем глаза.
 
  Перенесём:
  \begin{align*}
   \omega^{\ast} &= R \cos \varphi \cos \psi (d (R \sin \varphi \cos \psi)) \land d(R \sin \psi) = \\
   &= R^{3} \cos\varphi \cos\psi (\cos\varphi \cos \psi d\varphi - \sin\varphi\sin\psi d\psi) \land (\cos\psi d \psi) = \\
-  &= R^{3} \cos^{2}\varphi\cos^{3}\psi d\varphi d\psi
+  &= R^{3} \cos^{2}\varphi\cos^{3}\psi d\varphi \land d\psi
  .\end{align*} 
 \end{exmpl}
 
@@ -242,7 +243,7 @@
 
  Тогда
  \begin{align*}
-  \int\limits_{\gamma} \omega = \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma_1'(t) + \ldots f_n(\gamma(t)) \gamma_n'(t) \right) \, dt
+  \int\limits_{\gamma} \omega = \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma_1'(t) + \ldots + f_n(\gamma(t)) \gamma_n'(t) \right) \, dt
  \end{align*} 
 \end{claim}
 \begin{proof}
@@ -251,8 +252,9 @@
   \omega^{\ast} = \sum_{i=1}^{n} f_i(\gamma(t)) d \gamma_i(t) = \sum_{i=1}^{n} f_i(\gamma(t)) \gamma_i'(t) dt
  .\end{align*} По определению
  \begin{align*}
-  \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{1}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)  \, dt
+  \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)  \, dt
  .\end{align*} Проверено.
+ Правда это верно только если $\gamma$ является биекцией, в ином случае можно подразбить на маленькие кусочки и локально на каждом будет биекция.
 \end{proof}
 
 \textbf{Физический смысл}: если $F$ --- постоянное силовое поле в $\R^{n}$, то работа $F$ вдоль вектора $v \in \R^{n}$ --- это скалярное произведение $(F, v)$.
@@ -271,8 +273,8 @@
 
 \begin{figure}[ht]
     \centering
-    \incfig{work_under_a_curve}
-    \caption{work_under_a_curve}
+	\incfig[0.7]{work_under_a_curve}
+    \caption{Работа вдоль кривой}
     \label{fig:work_under_a_curve}
 \end{figure}
 
@@ -281,7 +283,7 @@
   A_{F,\gamma} = \int\limits_{\gamma} \omega
  ,\end{align*} где
  \begin{align*}
-  \omega = f_1 dx_1 + \ldots f_n dx_n
+  \omega = f_1 dx_1 + \ldots + f_n dx_n
  \end{align*} --- форма работы поля $F$.
 \end{claim}
 \begin{proof}
@@ -290,7 +292,7 @@
   v(t) = \frac{\gamma'(t)}{\left\| \gamma'(t) \right\|}
  ,\end{align*} где $\gamma'(t) = (\gamma_1'(t), \ldots, \gamma_n'(t))^{\top}$ . Посмотрим на интеграл
  \begin{align*}
-  \int\limits_{\gamma} (F,v) \, dS &= \int\limits_{a}^{b} (F(\gamma(t)), v(t)) \left\| \gamma' (t) \right\| \, dt = \\ 
+	 A_{f, \gamma} = \int\limits_{\gamma} (F,v) \, dS &= \int\limits_{a}^{b} (F(\gamma(t)), v(t)) \left\| \gamma' (t) \right\| \, dt = \\ 
   &= \int\limits_{a}^{b} \frac{\sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)}{\left\| \gamma'(t) \right\|} \left\| \gamma'(t) \right\| \, dt = \\
   &= \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma'_i(t) \, dt 
  .\end{align*} Правая часть равна
@@ -316,7 +318,7 @@
  В частности, интеграл $\int_{\gamma} \omega  $  зависит лишь от начала и конца $\gamma$.
 \end{claim}
 
-\textbf{Физический смысл}: для потенциального силового поля работа вдоль кривой зависит только от начала и конца и кривой.
+\textbf{Физический смысл}: для потенциального силового поля работа вдоль кривой зависит только от начала и конца кривой.
 
 \begin{proof}[\normalfont\textsc{Доказательство утверждения \ref{claim:integral_of_potential_curve_is_difference_on_ends}}]
  Посчитаем
@@ -344,7 +346,7 @@
  .\end{align*} Тогда
  \begin{align*}
   \int\limits_{\tilde \gamma} \omega &= \int\limits_{a}^{b} \left( f_1(\tilde \gamma(t))\tilde \gamma'_1(t) + \ldots + f_n(\tilde \gamma(t))\tilde \gamma'_n(t) \right) \, dt = \\
-  &= -\int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(b-t-a))\gamma'_i(s) \rvert_{s=b-t+a} \, dt = \\
+  &= -\int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(b-t+a))\gamma'_i(s) \rvert_{s=b-t+a} \, dt = \\
   &= \begin{bmatrix}
    u = b - t + a & du = -dt
   \end{bmatrix} = \\
@@ -373,7 +375,7 @@
 \begin{proof}
  \begin{align*}
   \int\limits_{\gamma_1} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_1(t))\gamma_{1,i}'(t) \, dt. \\
-  \int\limits_{\gamma_2} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_2(t))\gamma_{1,i}'(t) \, dt =  \\
+  \int\limits_{\gamma_2} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_2(t))\gamma_{2,i}'(t) \, dt =  \\
   &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_1(s(t))) \gamma_{1,i}'(y) \rvert_{y = s(t)} \cdot s'(t) \, dt = \\
   &= \begin{bmatrix}
    u = s(t) & du = s'(t) dt
@@ -411,7 +413,7 @@
 \begin{figure}[ht]
     \centering
     \incfig{halfsphere}
-    \caption{halfsphere}
+    \caption{Полусфера}
     \label{fig:halfsphere}
 \end{figure}
 \end{exmpl}
