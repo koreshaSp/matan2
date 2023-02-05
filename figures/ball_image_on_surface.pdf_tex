@@ -56,20 +56,21 @@
     \put(0,0){\includegraphics[width=\unitlength,page=1]{ball_image_on_surface.pdf}}%
     \put(0.12551962,0.30388883){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(x,r)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ball_image_on_surface.pdf}}%
-    \put(0.15344907,0.12888565){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
-    \put(0.30885,0.39263776){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$S$\end{tabular}}}}%
+    \put(0.09897079,0.35031986){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
+    \put(0.48751653,0.45708656){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$S$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{ball_image_on_surface.pdf}}%
     \put(0.32842798,0.26089211){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{ball_image_on_surface.pdf}}%
     \put(0.14074019,0.21190395){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.48600308,0.35108007){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(B(x, r))$\end{tabular}}}}%
-    \put(0.56960735,0.23854974){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(x)$\end{tabular}}}}%
+    \put(0.48600308,0.35989939){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(B(x, r))$\end{tabular}}}}%
+    \put(0.5585832,0.23854974){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi(x)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{ball_image_on_surface.pdf}}%
     \put(0.03104342,0.13689117){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(0,r)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{ball_image_on_surface.pdf}}%
     \put(0.25453825,0.02320671){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d_x \Phi$\end{tabular}}}}%
     \put(0.0834546,0.04761683){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0$\end{tabular}}}}%
-    \put(0.77669264,0.3685283){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{\Phi(x)}$\end{tabular}}}}%
+    \put(0.75464401,0.43687871){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{\Phi(x)}$\end{tabular}}}}%
     \put(0.78077272,0.09575907){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(d_x \Phi)(B(0, r))$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{ball_image_on_surface.pdf}}%
   \end{picture}%
 \endgroup%

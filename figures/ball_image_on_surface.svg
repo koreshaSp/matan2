@@ -9,6 +9,9 @@
    id="svg8"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="ball_image_on_surface.svg"
+   inkscape:export-filename="ball_image_on_surface.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +44,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.9553861"
-     inkscape:cx="439.61284"
-     inkscape:cy="152.8178"
+     inkscape:cx="322.38275"
+     inkscape:cy="263.76771"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -55,7 +58,9 @@
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:pagecheckerboard="0">
+     inkscape:pagecheckerboard="0"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
        id="grid815"
@@ -117,25 +122,25 @@
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="36.827778"
-       y="266.06744"
+       x="23.752991"
+       y="212.92323"
        id="text1711"><tspan
          sodipodi:role="line"
          id="tspan1709"
          style="stroke-width:0.264583"
-         x="36.827778"
-         y="266.06744">$\Omega$</tspan></text>
+         x="23.752991"
+         y="212.92323">$\Omega$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="74.124001"
-       y="202.76694"
+       x="117.00397"
+       y="187.29922"
        id="text2411"><tspan
          sodipodi:role="line"
          id="tspan2409"
          style="stroke-width:0.264583"
-         x="74.124001"
-         y="202.76694">$S$</tspan></text>
+         x="117.00397"
+         y="187.29922">$S$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.328312;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.328312, 0.328312;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 37.492583,239.85186 c 0,0 1.607444,-29.56513 101.951317,-7.3353"
@@ -173,31 +178,27 @@
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
        x="116.64074"
-       y="212.74078"
+       y="210.62415"
        id="text13657"><tspan
          sodipodi:role="line"
          id="tspan13655"
          style="stroke-width:0.264583"
          x="116.64074"
-         y="212.74078">$\Phi(B(x, r))$</tspan></text>
+         y="210.62415">$\Phi(B(x, r))$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="136.70576"
+       x="134.05997"
        y="239.74806"
        id="text15074"><tspan
          sodipodi:role="line"
          id="tspan15072"
          style="stroke-width:0.264583"
-         x="136.70576"
+         x="134.05997"
          y="239.74806">$\Phi(x)$</tspan></text>
     <path
-       style="fill:#0000ff;fill-opacity:0.03795346;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.26499999, 0.52999997;stroke-dashoffset:0"
-       d="m 104.05234,192.18822 50.05634,-13.41256 24.45387,91.26309 -55.65854,14.91366 -24.638591,-91.95244 z"
-       id="path15756" />
-    <path
        style="fill:#0000ff;fill-opacity:0.0785578;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 162.75071,205.45651 50.05634,-13.41256 24.45387,91.26309 -55.65854,14.91366 -24.63859,-91.95244 z"
+       d="m 162.75071,203.869 50.05634,-13.41256 24.45387,91.26309 -55.65854,14.91366 -24.63859,-91.95244 z"
        id="path15756-3" />
     <circle
        style="opacity:1;fill:#ff0000;fill-opacity:0.14179298;stroke:#000000;stroke-width:0.346817;stroke-opacity:1"
@@ -211,10 +212,6 @@
        cx="22.82303"
        cy="278.14478"
        r="11.9136" />
-    <path
-       style="fill:#f60000;fill-opacity:0.14179298;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 124.92653,229.41673 c 0.0184,-7.13323 -2.25724,-16.38837 8.28703,-13.66728 41.7651,10.77803 1.28941,49.70184 1.28941,22.45365 0,-4.33216 -9.82892,-4.46157 -9.57644,-8.78637 z"
-       id="path5284" />
     <circle
        id="path22554"
        style="fill:#000000;stroke:none;stroke-width:0.264583"
@@ -276,14 +273,14 @@
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="186.40623"
-       y="208.55321"
+       x="181.11456"
+       y="192.14911"
        id="text43573"><tspan
          sodipodi:role="line"
          id="tspan43571"
          style="stroke-width:0.264583"
-         x="186.40623"
-         y="208.55321">$T_{\Phi(x)}$</tspan></text>
+         x="181.11456"
+         y="192.14911">$T_{\Phi(x)}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
@@ -295,5 +292,13 @@
          style="stroke-width:0.264583"
          x="187.38545"
          y="274.01782">$(d_x \Phi)(B(0, r))$</tspan></text>
+    <path
+       style="fill:#ff0000;fill-opacity:0.141793;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 138.88669,248.49549 c -10.55754,1.02699 -15.92489,-36.06127 -3.00672,-34.51224 4.04419,0.48494 16.41517,27.07024 13.92019,30.48543 -0.841,1.15118 -9.05289,3.22337 -10.91347,4.02681 z"
+       id="path1092" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.265,0.795;stroke-dashoffset:0"
+       d="m 139.4439,232.51656 60.83415,14.0735"
+       id="path1694" />
   </g>
 </svg>

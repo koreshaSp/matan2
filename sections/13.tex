@@ -2,193 +2,174 @@
 
 \section{Мера Лебега на поверхностях}
 
-{\color{red} Этот и следующий параграфы не были повторно проверены и исправлены. В них может быть много недописанного, непонятного, или даже неверного. Лучше обратиться к записям лекций.}
-
 До этого параграфа в пространстве $\R^{n}$ мы умели измерять только $n$-мерные объекты. Мы не могли посчитать, например, длину кривой на плоскости, или площадь поверхности в пространстве.
 
 В этом параграфе мы построим меру Лебега на поверхностях. С помощью неё мы сможем, например, измерить площадь сферы.
 
 \begin{df}
  \label{definition:surface}
- $(\Omega, \Phi, S)$ --- \textit{поверхность}, если $\Omega \subset \R^{k}$ --- область, $S \subset \R^{n}$, $\Phi \in C^{1}(\Omega, S)$ --- гладкая биекция. Кроме того, $\mathrm{rk}\; d_{x} \Phi = k$ для любой точки $x \in \Omega$ (дифференциал всюду обратим).
+ $(\Omega, \Phi, S)$ --- \textit{поверхность}, если $\Omega \subset \R^{k}$ --- область, $S \subset \R^{n}$, $\Phi \in C^{1}(\Omega, S)$ --- гладкая биекция, а также $\rk d_{x} \Phi = k$ для любой точки $x \in \Omega$ (дифференциал всюду инъективен).
 \end{df}
 \begin{remrk*}
- Часто необходимо интегрировать (вычислять площадь) по многообразиям (например, по сфере), но их всегда можно разбить на поверхности. Поэтому, в этом параграфе изучаем только поверхности.
+ Часто необходимо интегрировать (вычислять площадь) по многообразиям (например, по сфере), но их всегда можно разбить на несколько поверхностей. Поэтому в этом параграфе изучаем только поверхности.
 \end{remrk*}
 
+Прежде чем определять меру Лебега на поверхностях, определим её естественным образом на линейных подпространствах $\R^{n}$.
+
 \begin{df}
- Пусть $V \subset \R^{n}$ --- векторное подпространство размерности $k$. \textit{Мера Лебега} $\lambda_k^{V} \colon\, \B(V) \to [0, \infty]$ в подпространстве $V$ задаётся по формуле
+ Пусть $V \subset \R^{n}$ --- линейное подпространство размерности $k$. \textit{Мера Лебега} $\lambda_k^{V} \colon\, \B(V) \to [0, \infty]$ в подпространстве $V$ задаётся по формуле
  \begin{align*}
   \lambda_k^{V}(E) = \lambda_k(UE)
- ,\end{align*} где $E \in \B(V)$, $U \colon\, \R^{n} \to \R^{n}$ --- ортогональный оператор такой, что $UV = \R^{k}$.
+ ,\end{align*} где $U \colon\, \R^{n} \to \R^{n}$ --- ортогональный линейный оператор такой, что $UV = \R^{k}$. Здесь $\R^{k}$ рассматривается как линейное подпространство $\R^{n}$, состоящее из векторов вида $(x_1, \ldots, x_k, 0, \ldots, 0)$.
 \end{df}
+
+Меру Лебега на подпространстве $V$ можно выразить в терминах обратимого линейного отображения $L \colon\, \R^{k} \to V$.
+
+\begin{lm}
+ \label{lemma:lebesgue_measure_on_subspace}
+ Пусть $L \colon\, \R^{k} \to \R^{n}$ --- линейное отображение, $\rk L = k$, а $V = \Imaginary L$ --- его образ. Тогда для любого $E \in \B(\R^{k})$ верно
+ \begin{align}
+  \label{equation:lebesgue_measure_on_subspace}
+  \lambda_k^{V}(LE) = \sqrt{\det L^{\top}L} \cdot \lambda_k(E)
+ .\end{align} 
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $U \colon\, \R^{n} \to \R^{n}$ --- ортогональный оператор такой, что $UV = \R^{k}$. Тогда
+ \begin{align*}
+  \lambda_k^{V}(LE) &= \lambda_k(ULE) = \left| \det (UL) \right| \cdot \lambda_k(E) = \\
+  &= \sqrt{\det(UL)\det(UL)} \cdot \lambda_k(E) = \\
+  &= \sqrt{\det(L^{\top}U^{\top})\det(UL)} \cdot \lambda_k(E) = \\
+  &= \sqrt{\det(L^{\top}U^{\top}UL)} \cdot \lambda_k(E) = \\
+  &= \sqrt{\det L^{\top}L} \cdot\lambda_k(E)
+ .\end{align*} 
+\end{proof}
+
+Теперь определим меру Лебега на поверхности аксиоматически.
 
 \begin{df}
  \label{definition:lebesgue_measure_on_surface}
- Пусть $(\Omega, \Phi, S)$ --- поверхность, $\B(S)$ --- борелевская $\sigma$-алгебра на поверхности $S$ (как на топологическом пространстве). Пусть $\mu$ --- мера на $\B(S)$, конечная на компактах.
+ Пусть $(\Omega, \Phi, S)$ --- поверхность, $\B(S)$ --- борелевская $\sigma$-алгебра на поверхности $S$ (как на топологическом пространстве). Пусть $\mu$ --- мера на $\B(S)$, {\color{red} конечная на компактах (зачем?)}.
 
  Будем говорить, что $\mu$ --- это \textit{поверхностная мера Лебега} на $S$, если:
  \begin{itemize}
-  \item $\mu(\Phi(e)) = 0$ для любого $e \subset \Omega$ такого, что $\lambda_k(e) = 0$ (для пояснения см. рисунок \ref{fig:small_set_on_surface}).
-  \item Мера образа шара равна 
-\begin{align}
- \label{equation:surface_lebesgue_measure_ball}
-\mu(\Phi(B(x,r))) = \lambda_k^{T_{\Phi(x)}}((d_x \Phi)(B(0, r))) + o(r^{k})
-\end{align}
-при $r \to 0$, где $T_{\Phi(x)}$ --- касательная плоскость к поверхности $S$ в точке $\Phi(x)$, $\lambda_k^{T_{\Phi(x)}}$ --- мера Лебега на $T_{\Phi(x)}$ (как на пространстве, изоморфном $\R^{k}$).
+  \item $\mu(\Phi(e)) = 0$ для любого $e \subset \Omega$ такого, что $\lambda_k(e) = 0$.
+  \item Мера образа шара $B(x,r) \subset \Omega$ равна 
+   \begin{align}
+    \label{equation:surface_lebesgue_measure_ball}
+    \mu(\Phi(B(x,r))) = \lambda_k^{T_{\Phi(x)}}\Bigl((d_x \Phi)(B(0, r))\Bigr) + o(r^{k})
+   \end{align}
+   при $r \to 0$, где $T_{\Phi(x)}$ --- касательное пространство к поверхности $S$ в точке $\Phi(x)$ (оно же есть образ дифференциала $d_x \Phi$). См. рисунок \ref{fig:ball_image_on_surface}.
  \end{itemize}
 \end{df}
 
-Объяснение: пусть $y \in B(x, r)$. Тогда $y = x + h$, где $\left\| h \right\| < r$. Тогда 
-\begin{align*}
- \Phi(y) = \Phi(x) + d_{x} \Phi h + o(r)
-.\end{align*}
-Если мы рассматриваем $\Phi(B(x, r))$, то результат содержится в 
-\begin{align*}
-\Phi(x) + \left( d_x \Phi \right) (B(0, r)) + B(0, \eps(e)),
-\end{align*}
- где $\eps(r) = 0(r)$. Тогда
- \begin{align*}
-  \lambda_k\left( \Phi(x) + d_x \Phi (B(0, r)) + B(0, \eps(r)) \right) \approx \\
-  \approx \lambda_k(\Phi(x) + d_x \Phi(B(0, r)))(1 +  \underbrace{\lambda_k(B(0, \eps(r)))}_{\lambda_k(B(0,1))\cdot \eps(e)^{k} = o(r^{k})} ) = \\
-  = \lambda_k(d_x \Phi (B(0, r))) + o(r^{k})
- .\end{align*} 
-
 \begin{figure}[ht]
-    \centering
-    \incfig{small_set_on_surface}
-    \caption{Образ множества нулевой меры на поверхности.}
-    \label{fig:small_set_on_surface}
+ \centering
+ \incfig{ball_image_on_surface}
+ \caption{Образ шара на поверхности.}
+ \label{fig:ball_image_on_surface}
 \end{figure}
 
 \begin{thm}
+ \label{theorem:lebesgue_measure_on_surface_formula}
  Пусть $(\Omega, \Phi, S)$  --- поверхность.
 
  Тогда мера Лебега на ней существует и задаётся формулой
- \begin{align*}
-  \mu(\Phi(E)) = \int\limits_{E} \sqrt{ \det G_{\Phi}(x) } \, d\lambda_k(x)
- \end{align*} для всех $E \in \B(\Omega)$, где
  \begin{align}
   \label{equation:lebesgue_measure_on_surface_formula}
+  \mu(\Phi(E)) = \int\limits_{E} \sqrt{ \det G_{\Phi}(x) } \, d\lambda_k(x)
+ \end{align} для всех $E \in \B(\Omega)$, где
+ \begin{align*}
   G_{\Phi}(x) = J_{\Phi}^{\top}(x) J_{\Phi}(x)
- .\end{align}  $G_{\Phi}(x)$ называется \textit{матрицей Грама} отображения $\Phi$ в точке $x$.
+ .\end{align*}  $G_{\Phi}(x)$ называется \textit{матрицей Грама} отображения $\Phi$ в точке $x$.
 \end{thm}
+Формула \eqref{equation:lebesgue_measure_on_surface_formula} есть в точности формула \eqref{equation:lebesgue_measure_on_subspace}, проинтегрированная по множеству $E$, где в каждой точке в качестве линейного отображения $L$ мы берём дифференциал $\Phi$ в этой точке.
 \begin{proof}\
  \begin{enumerate}
- \item Сначала покажем, что $\mu$ действительно задана на $\B(S)$. Для этого достаточно показать, что $\Phi(\B(\Omega)) \supset \B(S)$. Действительно, $\B(S)$ --- наименьшая $\sigma$-алгебра, содержащая замкнутые множества пространства $S$, а $\Phi(\B(\Omega))$ --- какая-то $\sigma$-алгебра (так как $\Phi$ --- биекция), содержащая замкнутые множества $S$ ($F \subset S$ замкнуто, то $F = \Phi(E)$, где $E = \Phi^{-1}(F)$ --- замкнутое и принадлежит $\B(\Omega)$ (прообраз замкнутого замкнут)).
+  \item Сначала покажем, что $\mu$ действительно задана на $\B(S)$. Для этого достаточно показать, что $\Phi(\B(\Omega)) \supset \B(S)$. Действительно, $\B(S)$ --- наименьшая $\sigma$-алгебра, содержащая открытые множества пространства $S$, а $\Phi(\B(\Omega))$ --- какая-то $\sigma$-алгебра, содержащая открытые множества $S$. $\Phi(\B(\Omega))$ --- $\sigma$-алгебра, так как $\Phi$ --- биекция ($\Phi(\varnothing) = \varnothing$; $\Phi(\bigcup A_k) = \bigcup \Phi(A_k)$; $ \Phi(A^c) = \Phi(A)^c$). $\Phi(\B(\Omega))$ содержит открытые множества пространства $S$, так как прообраз открытого открыт при непрерывном отображении.
 
- \item $\mu(\Phi(e)) = 0$ для любого такого, что  $\lambda_k(e) = 0$. Действительно,
+  \item $\mu(\Phi(e)) = 0$, если $\lambda_k(e) = 0$. Действительно,
    \begin{align*}
     \mu(\Phi(e)) = \int\limits_{e} \sqrt{\det G_{\Phi}(x)} \, d\lambda_k = 0
-  ,\end{align*} так как $e$ --- множество нулевой меры.
+   ,\end{align*} так как $e$ --- множество нулевой меры.
 
- \item Проверим, что есть равенство \eqref{equation:surface_lebesgue_measure_ball}.
-  \begin{align*}
-   \mu(\Phi(B(x_0,r))) &= \int\limits_{B(x_0, r)} \sqrt{\det G_{\Phi}(x)} \, d\lambda_k(x) = \\
-   &= [G_{\Phi} \text{ --- непрерывное отображение на } \Omega] = \\
-   &= \int\limits_{B(x_0,r)} \left( \sqrt{ \det G_{\Phi}(x_0) } + o(1) \right) \, d\lambda_{k}(x) = \\
-   &= \sqrt{\det G_{\Phi}(x_0)} \lambda_k(B(x_0, r)) + o(\lambda_k(B(x_0, r))) = \\
-   &= \sqrt{ \det G_{\Phi}(x_0)  } \lambda_k(B(x_0, r)) + o(r^{k})
-  .\end{align*} Для того, чтобы доказать \eqref{equation:surface_lebesgue_measure_ball} достаточно проверить, что если $L \colon\, \R^{k} \to \R^{n} $ --- линейное отображение, $T_L = \mathrm{Im}\,L$ --- образ, то
-  \begin{align}
-   \label{equation:lebesgue_measure_on_surface_linear}
-   \lambda_k^{T_L}(LE) = \sqrt{\det L^{\top}L} \cdot \lambda_k(E)
-  \end{align} для любого $E \in \B(\R^{k})$. Затем мы просто подставим $J_{\Phi}(x_0)$ вместо $L$ и $E = B(x_0, r)$, получим, что
-  \begin{align*}
-   \mu(\Phi(B(x_0, r))) = \lambda_k^{T_x} (J_{\Phi}(x_0) B(0, r)) + o(r^{k})
-  .\end{align*}
+  \item Проверим равенство \eqref{equation:surface_lebesgue_measure_ball} для шара $B(x_0, r) \subset \Omega$:
+   \begin{align*}
+    \mu(\Phi(B(x_0,r))) &= \int\limits_{B(x_0, r)} \sqrt{\det G_{\Phi}(x)} \, d\lambda_k(x) = \\
+    &= [G_{\Phi} \text{ --- непрерывное отображение на } \Omega] = \\
+    &= \int\limits_{B(x_0,r)} \left( \sqrt{ \det G_{\Phi}(x_0) } + o(1) \right) \, d\lambda_{k}(x) = \\
+    &= \sqrt{\det G_{\Phi}(x_0)} \lambda_k(B(x_0, r)) + o(\lambda_k(B(x_0, r))) = \\
+    &= \sqrt{ \det G_{\Phi}(x_0)  } \lambda_k(B(0, r)) + o(r^{k})
+   .\end{align*} Теперь применим формулу \eqref{equation:lebesgue_measure_on_subspace} для $L = J_{\Phi}(x_0)$ и $E = B(0,r)$:
+   \begin{align*}
+    \mu(\Phi(B(x_0,r))) = \lambda_k^{T_{\Phi(x_0)}} \Bigl( (J_{\Phi}(x_0))(B(0,r)) \Bigr) + o(r^{k})
+   .\end{align*} 
 
-  Доказываем \eqref{equation:lebesgue_measure_on_surface_linear}. Пусть $U$ --- ортогональное линейное отображение, такое, что
-  \begin{align*}
-   UT_L = \R^{k}
-  ,\end{align*} если $\R^{k}$ рассматривается как подпространство $\R^{n}$, состоящее из векторов вида $(x_1, \ldots, x_k, 0, \ldots, 0)$. Теперь
-  \begin{align*}
-   \lambda_k^{T_L}(LE) &= \lambda_k(ULE) = \left| \det (UL) \right| \lambda_k(E) = \\ &= \sqrt{\det(UL)\det(UL)} \lambda_k(E) = \\
-   &= \sqrt{\det(L^{\top}U^{\top}) \det(UL)} \lambda_k(E) = \\
-   &= \sqrt{ \det(L^{\top}U^{\top}UL) } \lambda_k(E) = \\
-   &= \sqrt{ \det (L^{\top} L) } \lambda_k(E)
-  .\end{align*} 
+  \item Покажем, что мера Лебега на поверхности определяется своими свойствами: то есть если она удовлетворяет определению \ref{definition:lebesgue_measure_on_surface}, то выполняется формула \eqref{equation:lebesgue_measure_on_surface_formula}.
 
- \item Покажем, что мера Лебега на поверхности определяется своими свойствами (из определения \ref{definition:lebesgue_measure_on_surface}): проверим, что выполняется формула \eqref{equation:lebesgue_measure_on_surface_formula}, если выполняется свойства из определения. 
-
-  Заведём меру
-  \begin{align*}
-   \nu(E) = \mu(\Phi(E)), \quad E \in \B(\Omega)
-  .\end{align*} По первому свойству, если $e \in \B(\Omega)$  такая, что $\lambda_k(e) = 0$, то и  $\nu(e) = 0$.  Тогда $\nu \prec \prec \lambda_k$. Тогда по теореме \ref{theorem:radon_nikodim} Радона-Никодима
-  \begin{align*}
-   \nu(E) = \int\limits_{E} f(x) \, d\lambda_k(x)  
-  \end{align*} для некоторой измеримой функции $f \geqslant 0$. При почти всех $x$ мы знаем, что \begin{align*}
-  f(x) = \lim_{r \to 0} \frac{\nu(B(x,r))}{\lambda_k(B(x,r))}
- \end{align*} по теореме \ref{theorem:almost_all_points_are_lebesgue_points}, ведь $\lambda_k$ --- мера с условием удвоения. Но тогда
- \begin{align*}
-  f(x) &= \lim_{r \to 0}  \frac{\mu(\Phi(B(x,r)))}{\lambda_k(B(x,r))} = \\
-  &= \lim_{r \to 0}  \frac{\lambda_k(J_{\Phi}(x)(B(0,r))) + o(r^{k})}{\lambda_k(B(0,r))} = \\
-  &= \lim_{r \to 0} \frac{\sqrt{\det J_{\Phi}^{\top}J_{\Phi(x)}} \lambda_k(B(0,r)) + o(r^{k})}{\lambda_k(B(0,r))} = \\
-  &= \sqrt{\det G_{\Phi}(x)}
- .\end{align*}  Формула \eqref{equation:lebesgue_measure_on_surface_formula} проверена.
-\end{enumerate}
+   Рассмотрим меру
+   \begin{align*}
+    \nu(E) = \mu(\Phi(E)), \quad E \in \B(\Omega)
+   .\end{align*} По первому свойству для множества $e \in \B(\Omega)$ условие $\lambda_k(e) = 0$ влечёт  $\nu(e) = 0$. Иными словами, мера $\nu$ непрерывна относительно $\lambda_k$: $\nu \prec \prec \lambda_k$. Тогда по теореме \ref{theorem:radon_nikodim} Радона-Никодима
+   \begin{align*}
+    \nu(E) = \int\limits_{E} f(x) \, d\lambda_k(x)  
+    \end{align*} для некоторой измеримой функции $f \geqslant 0$. По теореме \ref{theorem:almost_all_points_are_lebesgue_points} для $\lambda_k$-почти всех точек $x \in \Omega$ верно \begin{align*}
+    f(x) = \lim_{r \to 0} \frac{\nu(B(x,r))}{\lambda_k(B(x,r))}
+   .\end{align*} {\color{red}Тут та же проблема, что может оказаться $f \notin L^{1}(\Omega, \lambda_k)$.} Но тогда
+   \begin{align*}
+    f(x) &= \lim_{r \to 0}  \frac{\mu(\Phi(B(x,r)))}{\lambda_k(B(x,r))} = \\
+    &= \lim_{r \to 0}  \frac{\lambda_k^{T_{\Phi(x)}}\Bigl((J_{\Phi}(x))(B(0,r))\Bigr) + o(r^{k})}{\lambda_k(B(0,r))} = \\
+    &= \lim_{r \to 0} \frac{\sqrt{\det J_{\Phi}^{\top}J_{\Phi}(x)} \lambda_k(B(0,r)) + o(r^{k})}{\lambda_k(B(0,r))} = \\
+    &= \sqrt{\det G_{\Phi}(x)}
+   .\end{align*}  Формула \eqref{equation:lebesgue_measure_on_surface_formula} проверена.
+ \end{enumerate}
 \end{proof}
 
-\begin{figure}[ht]
-    \centering
-    \incfig{ball_image_on_surface}
-    \caption{Образ шара на поверхности}
-    \label{fig:ball_image_on_surface}
-\end{figure}
-
 \begin{remrk*}
- Не будем доказывать, что площадь на поверхности не зависит от параметризации (хорошее упражнение).
+ Мы не будем доказывать, что мера Лебега на поверхности не зависит от параметризации (хорошее упражнение).
 \end{remrk*}
 
-Теперь рассмотрим более конкретные примеры.
+Теперь рассмотрим более конкретные примеры --- приложения теоремы \ref{theorem:lebesgue_measure_on_surface_formula}.
 
-\begin{exmpl}
- Пусть $\Phi \colon\; (a, b) \to \R^{n}$ --- гладкая биекция. $\Omega = (a,b)$, $S = \Phi\left( (a, b) \right)$.
-
- Тогда
+\begin{exmpl}[длина гладкой кривой]
+ \label{example:length_of_smooth_curve}
+ Пусть $\Phi \colon\, (a, b) \to \R^{n}$ --- гладкая кривая без самопересечений, $\mu$ --- мера Лебега на этой кривой. Тогда для любого $E \in \B((a,b))$:
  \begin{align*}
   \mu(\Phi(E)) &= \int\limits_{E} \left\| \Phi'(t) \right\| \, d\lambda_1(t) = \\
   &= \int\limits_{E} \sqrt{ \Phi_1'(t)^{2} + \ldots + \Phi_n'(t)^{2} } \, d\lambda_1(t)
- \end{align*}  --- формула для длины кривой из второго семестра.
+ .\end{align*} Это в точности формула длины гладкой кривой из второго семестра.
 \end{exmpl}
 \begin{proof}
  Вычислим матрицу Якоби:
  \begin{align*}
-  J_{\Phi}(x) = \begin{pmatrix}
+  J_{\Phi}(t) = \begin{pmatrix}
    \Phi_1'(t) \\
-   \Phi_2'(t) \\
    \vdots \\
    \Phi_n'(t) 
   \end{pmatrix}
- .\end{align*} Матрица Грама равна:
+ .\end{align*} Вычислим матрицу Грама:
  \begin{align*}
-  G_{\Phi(x)} &= J^{\top}_{\Phi} J_{\Phi} = \\
-  &= \begin{pmatrix}
+  G_{\Phi}(t) &= J^{\top}_{\Phi} J_{\Phi} = \begin{pmatrix}
    \Phi_1'(t) & \ldots & \Phi_n'(t)
-  \end{pmatrix} \cdot \begin{pmatrix}
+   \end{pmatrix} \cdot \begin{pmatrix}
    \Phi_1'(t) \\
-   \Phi_2'(t) \\
    \vdots \\
    \Phi_n'(t) 
-  \end{pmatrix} = \\
-  &= \left( \sum_{k=1}^{n} (\Phi_k'(t)^{2}) \right)
+  \end{pmatrix} = \left(\Phi'_1(t)^{2} + \ldots + \Phi'_n(t)^{2}\right).
  \end{align*} --- матрица $1 \times 1$.
 \end{proof}
 
-\begin{exmpl}
- Пусть $\Phi \colon\; \Omega \to \R^{3}$ --- гладкая биекция, $\Omega \subset \R^{2}$ --- область. $\mathrm{rk}\; \Phi = 2$  в $\Omega$.
-
- Тогда
+\begin{exmpl}[площадь двумерной поверхности в $\R^{3}$]
+ Пусть $(\Omega, \Phi, S)$ --- двумерная поверхность в $\R^{3}$ ($\Omega \subset \R^{2}$ --- область, $\Phi \colon\, \Omega \to S$ --- гладкая биекция, $\rk d_x \Phi = 2$, $S \subset \R^{3}$), а $\mu$ --- мера Лебега на этой поверхности. Тогда для любого $A \in \B(\Omega)$:
  \begin{align*}
-  \mu(\Phi(\tilde E)) = \int\limits_{\tilde E} \sqrt{ EG - F^{2} } \, d\lambda_2
- ,\end{align*}  где \begin{align*}
- E &= \left\langle \Phi'_u, \Phi'_u \right\rangle  = \Phi_{1u}^{'2} + \Phi_{2u}^{'2} + \Phi_{3u}^{'2} \\
- F &= \left\langle \Phi'_u, \Phi'_v \right\rangle = \Phi_{1u}' \Phi_{1v}' + \Phi_{2u}' \Phi_{2v}' + \Phi_{3u}' \Phi_{3v}' \\
- G &= \left\langle \Phi'_v, \Phi'_v \right\rangle  = \Phi_{1v}^{'2} + \Phi_{2v}^{'2} + \Phi_{3v}^{'2}
-\end{align*} 
+  \mu(\Phi(A)) = \int\limits_{A} \sqrt{ EG - F^{2} } \, d\lambda_2
+  ,\end{align*}  где \begin{align*}
+  E &= \left\langle \Phi'_u, \Phi'_u \right\rangle  = \Phi_{1u}^{'2} + \Phi_{2u}^{'2} + \Phi_{3u}^{'2}, \\
+  F &= \left\langle \Phi'_u, \Phi'_v \right\rangle = \Phi_{1u}' \Phi_{1v}' + \Phi_{2u}' \Phi_{2v}' + \Phi_{3u}' \Phi_{3v}', \\
+  G &= \left\langle \Phi'_v, \Phi'_v \right\rangle  = \Phi_{1v}^{'2} + \Phi_{2v}^{'2} + \Phi_{3v}^{'2}.
+ \end{align*} 
 \end{exmpl}
 \begin{proof}
- Посчитаем матрицу Якоби:
+ Вычислим матрицу Якоби:
  \begin{align*}
   J_{\Phi} = \begin{pmatrix}
    \Phi_{1u}' & \Phi_{1v}' \\
@@ -197,98 +178,102 @@
   \end{pmatrix}
  .\end{align*}  Посчитаем матрицу Грама:
  \begin{align*}
-  J^{\top}_{\Phi} J_{\Phi} = \begin{pmatrix}
+  G_{\Phi} = J^{\top}_{\Phi} J_{\Phi} = \begin{pmatrix}
    E & F \\
    F & G
   \end{pmatrix}
  ,\end{align*}  где
  \begin{align*}
- E &= \left\langle \Phi'_u, \Phi'_u \right\rangle  = \Phi_{1u}^{'2} + \Phi_{2u}^{'2} + \Phi_{3u}^{'2} \\
- F &= \left\langle \Phi'_u, \Phi'_v \right\rangle = \Phi_{1u}' \Phi_{1v}' + \Phi_{2u}' \Phi_{2v}' + \Phi_{3u}' \Phi_{3v}' \\
- G &= \left\langle \Phi'_v, \Phi'_v \right\rangle  = \Phi_{1v}^{'2} + \Phi_{2v}^{'2} + \Phi_{3v}^{'2}
- \end{align*} 
+  E &= \left\langle \Phi'_u, \Phi'_u \right\rangle  = \Phi_{1u}^{'2} + \Phi_{2u}^{'2} + \Phi_{3u}^{'2}, \\
+  F &= \left\langle \Phi'_u, \Phi'_v \right\rangle = \Phi_{1u}' \Phi_{1v}' + \Phi_{2u}' \Phi_{2v}' + \Phi_{3u}' \Phi_{3v}', \\
+  G &= \left\langle \Phi'_v, \Phi'_v \right\rangle  = \Phi_{1v}^{'2} + \Phi_{2v}^{'2} + \Phi_{3v}^{'2}.
+ \end{align*} Тогда
+ \begin{align*}
+  \sqrt{\det G_{\Phi}} = \sqrt{EG-F^{2}}
+ .\end{align*} 
 \end{proof}
 
-\begin{exmpl}
- Пусть $\Omega \subset \R^{n-1}$ --- область. $\Phi \colon\, \Omega \to S $  --- гладкая биекция, где $S \subset \R^{n}$, $\mathrm{rk}\; d_x \Phi = n - 1$ в $\Omega$. При этом $\Phi$ имеет вид
+\begin{exmpl}[график функции]
+ Пусть $(\Omega,\Phi,S)$ --- поверхность размерности $n-1$ в $\R^{n}$, где параметризация $\Phi \colon\, \Omega \to \R^{n}$ имеет вид
  \begin{align*}
-  \Phi((x_1, \ldots, x_{n-1})) = (x_1, \ldots, x_{n-1}, g(x_1, \ldots, x_{n-1}))
- .\end{align*} Такое отображение $\Phi$ называется \textit{графиком}.
+  \Phi(x_1,\ldots,x_{n-1}) = (x_1, \ldots, x_{n-1},\; g(x_1,\ldots,x_{n-1}))
+ \end{align*} для некоторой функции $g \colon\, \Omega \to \R$. Такая поверхность называется \textit{графиком функции $g$}. Пусть $\mu$ --- мера Лебега на этой поверхности. Тогда для любого $E \in \B(\Omega)$:
+ \begin{align*}
+  \mu(\Phi(E)) = \int\limits_{E} \sqrt{1 + \left\| \nabla_x g \right\|^{2}} \,d\lambda_{n-1}(x)
+ .\end{align*} 
 
- Тогда
+ Типичный пример: поверхность функции $z = z(x, y)$ двух аргументов (рисунок \ref{fig:plot_z_x_y}). В этом случае
  \begin{align*}
-  \mu(\Phi(E)) = \int\limits_{E} \sqrt{1 + \left\| \nabla_x g \right\|^{2}} \, d\lambda_{n-1}  
+  \mu(\Phi(E)) = \int\limits_{E} \sqrt{1 + g_x^{'2} + g_y^{'2}} \, d\lambda_2
  .\end{align*} 
 \end{exmpl}
 
-Типичный пример: $z = z(x, y)$. В этом случае \begin{align*}
- \Phi \colon\; (x, y) \mapsto (x, y, z(x, y))
-.\end{align*}
-
 \begin{figure}[ht]
-    \centering
-    \incfig{plot_z_x_y}
-    \caption{График функции $z = z(x,y)$ как поверхность.}
-    \label{fig:plot_z_x_y}
+ \centering
+ \incfig{plot_z_x_y}
+ \caption{График функции $z = z(x,y)$ как поверхность.}
+ \label{fig:plot_z_x_y}
 \end{figure}
 
 \begin{proof}
- Вычислим сначала матрицу Якоби:
+ Вычислим матрицу Якоби:
  \begin{align*}
-  J_{\Phi}(x) = \begin{pmatrix}
+  J_{\Phi} = \begin{pmatrix}
    1 & 0 & \ldots & 0 \\
    0 & 1 & \ldots & 0 \\
    \vdots & \vdots & \ddots & \vdots \\
    0 & 0 & \ldots & 1 \\
    g'_{x_1} & g'_{x_2} & \ldots & g'_{x_{n-1}}
   \end{pmatrix}
- .\end{align*} По Формуле Бине-Коши:
+ .\end{align*} По формуле Бине-Коши:
  \begin{align*}
-  \det(J^{\top}_{\Phi}(x) J_{\Phi}(x)) &= \sum_{i = 1}^{n} \left( \det A_i \right)^{2}
- ,\end{align*} где $A_i$ --- это матрица $J_{\Phi}(x)$ с выкинутой $i$-й строчкой. Тогда
+  \det(J^{\top}_{\Phi} J_{\Phi}) &= \sum_{i = 1}^{n} \left( \det A_i \right)^{2}
+ ,\end{align*} где $A_i$ --- это матрица $J_{\Phi}$ с выкинутой $i$-й строчкой. Тогда
  \begin{align*}
-  \det (G_{\Phi}(x)) &= g^{'2}_{x_1} + g^{'2}_{x_2} + \ldots g^{'2}_{x_{n-1}} + 1 = \\ 
-  &= \left\| \nabla_x g \right\|^{2} + 1
+  \det G_{\Phi} &= 1 + g^{'2}_{x_1} + g^{'2}_{x_2} + \ldots + g^{'2}_{x_{n-1}}  = \\ 
+  &= 1 + \left\| \nabla_x g \right\|^{2} 
  .\end{align*} 
 \end{proof}
+
+Мы научились считать меру на поверхностях. Теперь научимся считать интеграл на поверхности.
+
 \begin{thm}
- Пусть $(\Omega, \Phi, S)$ --- поверхность, $f \colon\, S \to \R $  --- измеримая, суммируемая относительно меры Лебега $\mu$  на $S$. Тогда
+ Пусть $(\Omega, \Phi, S)$ --- поверхность, $f \colon\, S \to \R $  --- измеримая функция, суммируемая относительно меры Лебега $\mu$  на $S$. Тогда для любого множества $F \in \B(S)$:
  \begin{align}
   \label{equation:formula_integral_on_surface}
-  \int\limits_{F} f(x) \, d\mu(x)  = \int\limits_{\Phi^{-1}(F)} f(\Phi(x)) \sqrt{\det G_{\Phi}(x)} \, d\lambda_k
- \end{align} для любого $F \in \B(S)$.
+  \int\limits_{F} f \, d\mu  = \int\limits_{\Phi^{-1}(F)} f(\Phi(x)) \sqrt{\det G_{\Phi}(x)} \, d\lambda_k(x)
+ .\end{align}
 \end{thm}
 \begin{proof}
  Левую часть можно переписать так:
  \begin{align*}
-  \int\limits_{F} f \, d\mu = \int\limits_{S} \chi_F(x) f(x) \, d\mu  (x)
+  \int\limits_{F} f \, d\mu = \int\limits_{S} \chi_F f \, d\mu
  ,\end{align*}  а правую часть так:
  \begin{align*}
   \int\limits_{\Phi^{-1}(F)} f(\Phi(x)) \sqrt{\det G_{\Phi}(x)}\, d\lambda_k &= \int\limits_{\Omega} \chi_F(\Phi(x)) f(\Phi(x)) \sqrt{\det G_{\Phi}(x)} \, d\lambda_k(x)
- .\end{align*} Значит, достаточно доказывать для $F = S$  (иначе заменим $f$ на $\chi_F f$).
+ .\end{align*} Поэтому теорему достаточно доказывать для случая $F = S$  (иначе заменим $f$ на $\chi_F f$).
 
- Знаем, что
+ Для характеристических функций $\chi_{\Phi(E)}$, $E \in \B(\Omega)$ формула \eqref{equation:formula_integral_on_surface} --- это в точности равенство \eqref{equation:lebesgue_measure_on_surface_formula}:
  \begin{align*}
-  \mu(\Phi(E)) = \int\limits_{E} \sqrt{\det G_{\Phi}(x)} \, d\lambda_k
- .\end{align*}  Запишем это равенство в интегральном виде ($\tilde F = \Phi(E)$):
- \begin{align*}
-  \int\limits_{S} \chi_{\tilde F} \, d\mu  = \int\limits_{\Omega} \chi_{\tilde F}(\Phi(x)) \sqrt{\det G_{\Phi}(x)}\, d\lambda_k
- .\end{align*} Значит, формула \eqref{equation:formula_integral_on_surface} верна для $F = S$, $f = \chi_{\tilde F}$, $\tilde F \in \B(S)$.
-
- По линейности \eqref{equation:formula_integral_on_surface} верна для неотрицательных простых. По теореме \ref{theorem:levi} Леви и теореме \ref{theorem:approximation} об аппроксимации \eqref{equation:formula_integral_on_surface} верна для любой неотрицательной измеримой. По линейности она верна для любой суммируемой.
+  \int\limits_{S} \chi_{\Phi(E)} \, d\mu &= \mu(\Phi(E)) = \int\limits_{E}  \sqrt{\det G_{\Phi}(x)}\,d\lambda_k(x)=  \\ &= \int\limits_{\Omega} \chi_{\Phi(E)}(\Phi(x)) \sqrt{\det G_{\Phi}(x)}  \, d\lambda_k(x)
+ .\end{align*} По линейности формула \eqref{equation:formula_integral_on_surface} верна для неотрицательных простых. По теореме \ref{theorem:levi} Леви и теореме \ref{theorem:approximation} об аппроксимации \eqref{equation:formula_integral_on_surface} верна для любой неотрицательной измеримой. Рассмотрением функций $f_{\pm} = \max(\pm f, 0)$ обобщаем формулу для суммируемых функций $f$.
 \end{proof}
 
-\begin{exmpl}
- Посчитаем площадь поверхности $\Sigma$, заданной уравнением $x^{2} + y^{2} + z^{2} = R^{2}$, $x, y, z > 0$ --- это $\frac{1}{8}$ часть сферы.
+Наконец, перейдём к каноническому примеру: посчитаем площадь сферы.
 
- Параметризуем поверхность. Введём сферические координаты:
+\begin{exmpl}[площадь сферы]
+ Посчитаем площадь поверхности $\Sigma$, заданной уравнением $x^{2} + y^{2} + z^{2} = R^{2}$, $x, y, z > 0$. Это $1 / 8$ часть сферы.
+
+ Параметризуем поверхность $\Sigma$ сферическими координатами:
  \begin{align*}
-  \Phi(\varphi, \psi) = \begin{pmatrix}
-   R \cos \varphi \cos \psi & R \sin\varphi \cos \psi & R \sin \psi
-  \end{pmatrix}
- ,\end{align*}  $\varphi \in (0, \frac{\pi}{2})$, $\psi \in (0, \frac{\pi}{2})$. Тогда $\Omega = (0, \frac{\pi}{2}) \times (0, \frac{\pi}{2})$. Посчитаем матрицу Якоби:
+  \Phi(\varphi, \psi) = (R \cos \varphi \cos \psi, R \sin\varphi \cos \psi, R \sin \psi)
+ ,\end{align*} где  $\varphi \in (0, \frac{\pi}{2})$, $\psi \in (0, \frac{\pi}{2})$. Тогда $\Omega = (0, \frac{\pi}{2}) \times (0, \frac{\pi}{2})$. Посчитаем матрицу Якоби:
  \begin{align*}
   J_{\Phi} = \begin{pmatrix}
+   \frac{\partial \Phi_1}{\partial \varphi} & \frac{\partial \Phi_1}{\partial \psi} \\
+   \frac{\partial \Phi_2}{\partial \varphi} & \frac{\partial \Phi_2}{\partial \psi} \\
+   \frac{\partial \Phi_3}{\partial \varphi} & \frac{\partial \Phi_3}{\partial \psi} \\
+   \end{pmatrix} = \begin{pmatrix}
    -R \sin \varphi \cos \psi & -R  \cos \varphi \sin \psi \\
    R \cos \varphi \cos \psi & -R \sin \varphi \sin \psi \\
    0 & R \cos \psi
@@ -299,18 +284,26 @@
    -R \sin \varphi \cos \psi & R \cos \varphi \cos \psi & 0 \\
    -R  \cos \varphi \sin \psi & -R \sin \varphi \sin \psi & R \cos \psi 
   \end{pmatrix}
- .\end{align*} Перемножим и вычислим матрицу Грама:
+ .\end{align*} Вычислим матрицу Грама:
  \begin{align*}
-  G_{\Phi} &= J_{\Phi}^{\top} J_{\Phi} = \begin{pmatrix}
-   R^{2} \sin^{2} \varphi \cos^{2} \psi + R^{2} \cos^{2} \varphi \cos^{2} \psi & 0 \\
-   0 & R^{2}\cos^{2}\varphi \sin^{2}\psi + R^{2} \sin^2 \varphi \sin^{2} \psi + R^{2} \cos^{2} \psi
+  &G_{\Phi} = J_{\Phi}^{\top} J_{\Phi} = \\
+  = &\begin{pmatrix}
+   {\scriptstyle R^{2} \sin^{2} \varphi \cos^{2} \psi + R^{2} \cos^{2} \varphi \cos^{2} \psi} & {\scriptstyle R^{2}\cos\varphi\sin\varphi\cos\psi\sin\psi - R^{2}\cos\varphi\sin\varphi\cos\psi\sin\psi} \\
+   {\scriptstyle R^{2}\cos\varphi\sin\varphi\cos\psi\sin\psi - R^{2}\cos\varphi\sin\varphi\cos\psi\sin\psi} & {\scriptstyle R^{2}\cos^{2}\varphi \sin^{2}\psi + R^{2} \sin^2 \varphi \sin^{2} \psi + R^{2} \cos^{2} \psi}
   \end{pmatrix} = \\
   &= \begin{pmatrix}
    R^{2} \cos^{2} \psi & 0 \\
+   0 & R^{2}\sin^{2}\psi + R^{2}\cos^{2}\psi
+   \end{pmatrix} = \begin{pmatrix}
+   R^{2}\cos^{2}\psi & 0 \\
    0 & R^{2}
   \end{pmatrix}
- .\end{align*} Значит, 
+ .\end{align*} Тогда
  \begin{align*}
-  \mu(\Sigma) = \int\limits_{(0, \frac{\pi}{2}) \times (0, \frac{\pi}{2})} R^{2} \cos\psi  \, d\varphi d\psi = R^{2} \cdot \frac{\pi}{2} \cdot 1 = \frac{\pi R^{2}}{2}
+  \sqrt{\det G_{\Phi}}  = R^{2} \cos \psi
+ .\end{align*} Значит,
+ \begin{align*}
+  \mu(\Sigma) &= \int\limits_{(0, \frac{\pi}{2}) \times (0, \frac{\pi}{2})} R^{2} \cos\psi  \, d\lambda_2 = \int\limits_{0}^{\pi / 2} \int\limits_{0}^{\pi / 2} R^{2}\cos\psi \,d\psi\,d\varphi = \\
+  &= R^{2} \cdot \frac{\pi}{2} \cdot \int\limits_{0}^{\pi / 2} \cos\psi \,d\psi = \frac{\pi R^{2}}{2}
  .\end{align*} Таким образом, площадь всей сферы равна $8 \cdot \frac{\pi R^{2}}{2} = 4 \pi R^{2} = \left( \frac{4}{3} \pi R^{3} \right)'$ .
-\end{exmpl}
+\end{exmpl} 

@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'plot_z_x_y.pdf' (pdf, eps, ps)
+%% Accompanies image file 'flow_of_constant_field_through_parallelogramm.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -53,16 +53,11 @@
   \begin{picture}(1,0.5)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{plot_z_x_y.pdf}}%
-    \put(0.75744158,0.1681179){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.24972819,0.06045532){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
-    \put(0.39500977,0.4656346){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$z$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{plot_z_x_y.pdf}}%
-    \put(0.4936223,0.09984156){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(x, y)$\end{tabular}}}}%
-    \put(0.54995689,0.0522541){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
-    \put(0.475571,0.35579624){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(x, y, z(x,y))$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{plot_z_x_y.pdf}}%
-    \put(0.50151558,0.20046425){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Phi$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{plot_z_x_y.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{flow_of_constant_field_through_parallelogramm.pdf}}%
+    \put(0.63196678,0.25233485){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{flow_of_constant_field_through_parallelogramm.pdf}}%
+    \put(0.5545639,0.01185404){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.08514501,0.24824098){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}$F$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{flow_of_constant_field_through_parallelogramm.pdf}}%
   \end{picture}%
 \endgroup%
