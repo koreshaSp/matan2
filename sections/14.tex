@@ -2,13 +2,22 @@
 
 \section{Дифференциальные формы}
 
-{\color{red} Этот и предыдущий параграфы не были повторно проверены и исправлены. В них может быть много недописанного, непонятного, или даже неверного. Лучше обратиться к записям лекций.}
+В последнем параграфе мы перейдём к более изощренной теории интегрирования, являющейся далёким и нетривиальным обобщением формулы Ньютона-Лейбница. Мы будем интегрировать сложные объекты, называемые \textit{дифференциальными формами}, которые ещё нужно определить. Интегрировать мы их будем по поверхностям в $\R^{n}$ (их мы уже определили в предыдущем параграфе). Точнее, интегрировать формы мы будем по <<ориентированным многообразиям с краем>>, однако точного определения этих объектов мы не дадим. В качестве интересного результата мы приблизимся к пониманию, что же \textit{на самом деле} значит запись $\int_{a}^{b} f(x) \, dx $.
 
-Тизер: сегодня мы приблизимся к понимаю, что же \textit{на самом деле} значит запись $\int_{a}^{b} f(x) \, dx $.
+Мы не будем углубляться в эту теорию интегрирования слишком сильно: основная цель параграфа --- скорее познакомиться с ней. В конспекте материалы с лекций были довольно обширно дополнены другим источником: С. М. Львовский <<Лекции по математическому анализу>>, параграф 29 <<Дифференциальные формы>>.
 
-Для начала вспомним определение полилинейных отображений с первого курса. Они были как на анализе, так и на алгебре.
+\subsection{Полилинейные и кососимметрические формы.}
 
-\begin{df}
+Для начала нам нужно погрузиться в линейную алгебру. Точнее, мы будем изучать основы, так называемой, \textit{внешней алгебры}. Для начала вспомним определение полилинейных отображений с первого курса --- они были как на анализе, так и на алгебре.
+
+\begin{notatn*}
+ Для натурального числа $m \in \N$ обозначим $[m] = \left\{ 1,2,\ldots,m \right\}$. Для чисел $m,k \in \N$ обозначим
+ \begin{align*}
+  [m]^{k} = \left\{ (a_1, \ldots, a_k) \Mid a_1, \ldots, a_m \in [m] \right\}
+ .\end{align*} 
+\end{notatn*}
+
+\begin{df*}
  Функция $L \colon\, \underbrace{\R^{n} \times \ldots \times \R^{n}}_{q} \to \R  $ называется \textit{полилинейной формой порядка} $q$ в $\R^{n}$, если она линейна по каждому аргументу. То есть, для любого $i \in [q]$ и для любых векторов $v_1, \ldots, v_q \in \R^{n}$, $\tilde v_i \in \R^{n}$ верно
  \begin{align*}
   L(v_1, \ldots, v_i + \tilde v_i, \ldots, v_q) = L(v_1, \ldots, v_i, \ldots, v_q) + L(v_1, \ldots, \tilde v_i, \ldots, v_q)
@@ -16,296 +25,404 @@
  \begin{align*}
   L(v_1, \ldots, \alpha v_i, \ldots, v_q) = \alpha L(v_1, \ldots, v_i, \ldots, v_q)
  .\end{align*} 
-\end{df}
+\end{df*}
 \begin{prop*}
  Множество полилинейных форм порядка $q$ в $\R^{n}$ образует векторное пространство, обозначаемое $\mathcal{L}(\underbrace{\R^{n}, \ldots, \R^{n}}_{q}, \R)$.
 \end{prop*}
-Более того, пространство полилинейных форм нормированное и полное (то есть банахово) --- это было доказано на первом курсе.
+Более того, пространство полилинейных форм в $\R^{n}$ нормированное и полное (то есть банахово) --- это было доказано на первом курсе.
 
-\begin{claim*}
- Полилинейная форма полностью определяется набором значений на базисных векторах.
-\end{claim*}
+\begin{exmpl*}
+ Линейная форма порядка $0$ --- это просто число из $\R$. Линейная форма порядка $1$ --- это произвольное линейное отображение $\R^{n} \to \R$, также называемое \textit{линейной формой}.
+\end{exmpl*}
+
+\begin{exmpl}\
+ \label{example:dx_polylinear_form}
+ \begin{itemize}
+  \item $dx_i \colon\, \R^{n} \to \R$ --- полилинейная форма порядка $1$ в $\R^{n}$, определяемая формулой
+   \begin{align*}
+    dx_i(h) = h_i, \quad h = (h_1, \ldots, h_n)
+   .\end{align*} 
+  \item $dx_i \otimes dx_j \colon\, \R^{n} \times \R^{n} \to \R^{n}$ --- полилинейная форма порядка $2$ в $\R^{n}$, определяемая формулой
+   \begin{align*}
+    (dx_i \otimes dx_j)(h,g) = dx_i(h) \cdot dx_j(g) = h_i \cdot g_j
+   ,\end{align*} где $h = (h_1,\ldots,h_n)$, $g = (g_1,\ldots,g_n)$.
+  \item Обобщая, если $L_1$, $L_2$ --- полилинейные формы порядка $k$, $l$ в $\R^{n}$, то
+   \begin{align*}
+    (L_1 \otimes L_2)(u_1, \ldots, u_k, v_1, \ldots, v_l) = L_1(u_1, \ldots, u_k) \cdot L_2(v_1,\ldots,v_l)
+   \end{align*} --- полилинейная форма порядка $k+l$ в $\R^{n}$.
+ \end{itemize}
+\end{exmpl}
+
+\begin{claim}
+ \label{claim:polylinear_form_basis}
+ Полилинейная форма порядка $q$ в $\R^{n}$ полностью определяется своими значениями на всевозможных наборах из $q$ стандартных базисных векторов.
+\end{claim}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Действительно, пусть есть полилинейная форма  $L$ порядка  $q$  в $\R^{n}$ . Пусть $e_1, \ldots, e_n$  --- стандартный базис в $\R^{n}$ . Пусть есть произвольный набор векторов $v_1, \ldots, v_q \in \R^{n}$ . Разложим каждый из них по базису:
+ Действительно, пусть есть полилинейная форма  $L$ порядка  $q$  в $\R^{n}$. Пусть $e_1, \ldots, e_n$  --- стандартный базис в $\R^{n}$. Пусть есть произвольный набор векторов $v_1, \ldots, v_q \in \R^{n}$. Разложим каждый из них по базису:
  \begin{align*}
-  v_i = \sum_{j=1}^{n} x_{i,j} e_j, \quad i \in [q]
- .\end{align*} Запишем значения формы на этом наборе векторов и воспользуемся полилинейностью:
+  v_i = \sum_{j=1}^{n} dx_j(v_i)\cdot e_j, \quad i \in [q]
+ .\end{align*} Запишем значение формы на этом наборе векторов и воспользуемся полилинейностью:
  \begin{align}
   \label{equation:formula_polylinear_form}
-  L(v_1, \ldots, v_q) = \sum_{j \in [n]^{q}} x_{1,j_1} \cdot \ldots \cdot x_{q, j_q} L(e_{j_1}, \ldots, e_{j_q})
- .\end{align} Таким образом, $L$ полностью определяется числами $L(e_{j_1}, \ldots, e_{j_q})$ по всем наборам $j \in [n]^{q}$.  Наоборот, легко проверить, что если по произвольным числам $L(e_{j_1}, \ldots, e_{j_q})$ задать функцию по формуле \eqref{equation:formula_polylinear_form}, то функция окажется полилинейной формой порядка $q$ в $\R^{n}$.
+  L(v_1, \ldots, v_q) = \sum_{j \in [n]^{q}} dx_{j_1}(v_1) \cdot \ldots \cdot dx_{j_q}(v_q) \cdot L(e_{j_1}, \ldots, e_{j_q})
+ .\end{align} Таким образом, $L$ полностью определяется числами $L(e_{j_1}, \ldots, e_{j_q})$ по всем наборам $j \in [n]^{q}$.  Наоборот, легко проверить, что если по произвольным числам $L(e_{j_1}, \ldots, e_{j_q})$ задать функцию $L$ по формуле \eqref{equation:formula_polylinear_form}, то $L$ окажется полилинейной формой порядка $q$ в $\R^{n}$.
 \end{proof}
 \begin{crly*}
  Пространство полилинейных форм порядка $q$ в $\R^{n}$ имеет размерность $n^{q}$. Кроме того, набор форм вида
  \begin{align*}
-  L(v_1,\ldots,v_q) = x_{1,j_1} \cdot \ldots \cdot x_{q,j_q}
- \end{align*} по всем $j \in [n]^{q}$ задаёт базис в этом пространстве.
+  L = dx_{j_1} \otimes dx_{j_2} \otimes \ldots \otimes dx_{j_q}
+ \end{align*} по всем $j \in [n]^{q}$ задаёт базис в этом пространстве. 
 \end{crly*}
 
-\begin{exmpl*}
- Линейная форма порядка $0$ --- это просто число из $\R$. Линейная форма порядка $1$ --- это линейное отображение $\R^{n} \to \R$, также называемое \textit{линейной формой} ю
-\end{exmpl*}
-\begin{df}
+Теперь вспомним определение \textit{кососимметрических} полилинейных форм, которое было дано на первом курсе алгебры.
+
+\begin{df*}
  Полилинейная форма $L$ порядка $q$ в $\R^{n}$ называется \textit{кососимметрической}, если
  \begin{align*}
   L(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_q) = -L(v_1, \ldots, v_j, \ldots, v_i, \ldots, v_q)
  \end{align*} для любых векторов $v_1, \ldots, v_q \in \R^{n}$ и любых $1 \leqslant i < j \leqslant q$.
-\end{df}
+\end{df*}
 \begin{prop*}
  Для полилинейных кососимметрических форм верно:
  \begin{itemize}
   \item $ L(v_1, \ldots, v_q) = \sgn \sigma \cdot L(v_{\sigma(1)}, \ldots, v_{\sigma(q)}) $ для любой перестановки $\sigma \in S_{q}$.
-\item $L(v_1, \ldots, v_i, \ldots, v_i, \ldots, v_q) = 0$.
+  \item $L(v_1, \ldots, v_i, \ldots, v_i, \ldots, v_q) = 0$.
  \end{itemize}
 \end{prop*}
-\begin{exmpl}\
-\begin{itemize}
- \item $dx_i$ --- полилинейная кососимметрическая форма порядка $1$ в $\R^{n}$,
-  \begin{align*}
-   ( dx_i )(h) = h_i
-  ,\end{align*} где $h = (h_1, \ldots, h_n)$.
- \item $dx_i \otimes dx_j$ --- форма порядка $2$ в $\R^{n}$:
-  \begin{align*}
-   (dx_i \otimes dx_j)(h, g) = (dx_i)(h) \cdot (dx_j)(g) = h_i \cdot g_j
-  .\end{align*} Форма полилинейная, но не кососимметрическая!
- \item Если $\omega_1$, $\omega_2$ --- полилинейные формы порядка $k_1$ и $k_2$, то
-  \begin{align*}
-   (\omega_1 \otimes \omega_2) (h_1, \ldots, h_{k_1}, g_1, \ldots, g_{k_2}) = \omega_1(h_1, \ldots, h_{k_1}) \cdot \omega_2(g_1, \ldots, g_{k_2})
-  \end{align*}  --- полилинейная форма порядка $k_1 + k_2$.
-\end{itemize} 
-\end{exmpl}
-\begin{exmpl}
- Важный пример полилинейной кососимметрической формы --- это \textit{определитель}:
+\begin{prop*}
+ Множество полилинейных кососимметрических форм порядка $q$ в $\R^{n}$ образует векторное пространство, обозначаемое $\bigwedge^{q} (\R^{n})^{\ast}$.
+\end{prop*}
 
- 
-\begin{align*}
- \left( dx_{i_1} \land \ldots \land dx_{i_k} \right)(h_1, \ldots, h_k) = \det \begin{pmatrix}
-  h_{1,i_1} & \ldots & h_{1,i_k} \\
-  \vdots & \ddots & \vdots \\
-  h_{k,i_{1}} & \ldots & h_{k,i_k}
- \end{pmatrix},
-\end{align*} где $h_{s,i_j}$ --- координата с номером $i_j$ вектора $h_s \in \R^{n}$. Это полилинейная кососимметрическая форма порядка $k$.
+\begin{exmpl*}\
+ \begin{itemize}
+  \item Любая полилинейная форма порядка $0$ или $1$ является кососимметрической. В частности, форма $dx_i$ из примера \ref{example:dx_polylinear_form} является кососимметрической.
+  \item Форма $dx_i \otimes dx_j$ из того же примера не является кососимметрической.
+ \end{itemize}
+\end{exmpl*}
+\begin{exmpl*}
+ Важный пример кососимметрической полилинейной формы --- это \textit{определитель} --- форма $dx_{i_1} \land \ldots \land dx_{i_q} \in \bigwedge^{q} (\R^{n})^{\ast}$ для набора $i \in [n]^{q}$, определяемая по формуле:
+ \begin{align}
+  \label{equation:det_as_alternating_polylinear_form}
+  \left( dx_{i_1} \land \ldots \land dx_{i_q} \right)(v_1, \ldots, v_q) =\det \begin{pmatrix}
+   dx_{i_1}(v_1) & \ldots & dx_{i_q}(v_1) \\
+   \vdots & \ddots & \vdots \\
+   dx_{i_1}(v_q) & \ldots & dx_{i_q}(v_q) \\
+  \end{pmatrix}
+ .\end{align} 
 
-Кососиммтричность обосновывается тем, что при транспозиции двух соседних векторов знак определителя (и, следовательно, знак формы) меняется.
+ Полилинейность понятна. Кососиммтричность обосновывается тем, что при транспозиции двух соседних векторов знак определителя (и, следовательно, знак формы) меняется.
 
-\end{exmpl}
+ Для кососимметрических полилинейных форм вида \eqref{equation:det_as_alternating_polylinear_form} верны следующие полезные свойства:
+ \begin{itemize}
+  \item $dx_{i_1} \land \ldots \land dx_{r} \land \ldots \land dx_r \land \ldots \land dx_{i_q} = 0$.
+  \item $dx_{i_1} \land \ldots \land dx_r \land \ldots \land dx_s \land \ldots \land dx_{i_q} = - dx_{i_1} \land \ldots \land dx_s \land \ldots \land dx_r \land \ldots \land dx_{i_q}$.
+ \end{itemize}
+\end{exmpl*}
+
+Оказывается, кососимметрические полилинейные формы вида \eqref{equation:det_as_alternating_polylinear_form}, взятые по возрастающим наборам $i_1 < \ldots < i_q$ образуют базис в пространстве $\bigwedge^{q}(\R^{n})^{\ast}$.
+
 \begin{thm}[%
-из алгебры]
-\label{theoream:determinant_is_only_polylinear_antisymmetric_form}
- Любая полилинейная кососимметрическая форма порядка $k$ в $\R^{n}$ имеет вид
- \begin{align*}
-  \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k} \cdot dx_{i_1} \land \ldots \land dx_{i_k}
- ,\end{align*} где $a_{i_1,\ldots,i_k} \in \R$.
+ из алгебры]
+ Любая полилинейная кососимметрическая форма порядка $q$ в $\R^{n}$ имеет вид
+ \begin{align}
+  \label{equation:general_alternating_form_formula}
+  L = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n} a_{i_1,\ldots,i_q} \cdot dx_{i_1} \land \ldots \land dx_{i_q}
+ ,\end{align} где $a_{i_1,\ldots,i_q} \in \R$ --- числа.
 \end{thm}
-\begin{proof}[\normalfont\textsc{Доказательство для $k=1$}]
- Действительно, в этому случае $\omega$ --- линейная форма в  $\R^{n}$ , значит у $\omega$  есть матрица
- \begin{align*}
-  (\omega)(h) = \begin{pmatrix}
-   a_1 & \ldots & a_n
-  \end{pmatrix} \begin{pmatrix}
-   h_1 \\
-   \vdots \\
-   h_n
-  \end{pmatrix} = \sum_{i=1}^{n} a_i h_i = \sum_{i=1}^{n} a_i dx_i(h)
- .\end{align*}
-
- В общем случае $k \geqslant 2$ идея такая:
- \begin{align*}
-  \omega = \sum_{\alpha \in [n]^{k}} c_{\alpha} dx_{i_1} \otimes \ldots \otimes dx_{i_k}
- ,\end{align*}  где $\alpha = (i_1, \ldots, i_k)$. Затем
- \begin{align*}
-  \omega = \frac{1}{k!} \sum_{\sigma} \omega(\sigma(h)) \,\mathrm{sgn}\;\sigma = \sum_{\alpha} c_{\alpha} \underbrace{\frac{1}{k!} \sum_{\sigma} (dx_{\sigma(i_1) \otimes \ldots \otimes dx_{\sigma(i_k)}})\eps_{\alpha}}_{dx_{i_1} \land \ldots \land dx_{i_k}}
- \end{align*} 
- $\sigma$ - перестановка. 
-\end{proof}
-\begin{remrk}
- Если $i_1, \ldots, i_k$ --- набор индексов такой, что существуют $i_s, i_m$ такие, что $i_s = i_m$, но $s \neq m$, то $dx_{i_1} \land \ldots \land dx_{i_k} = 0$.
-\end{remrk}
 \begin{proof}
- Можно считать, что $s$ и $m$ соседние. Тогда, меняя их местами, с одной стороны меняется знак, а с другой --- ничего не происходит.
-
- Ещё можно сказать, что в матрице есть два одинаковых столбца, следовательно, определитель равен нулю.
-\end{proof}
-\begin{crly}
- В частности, единственная полилинейная кососимметрическая форма порядка $k > n$ на $\R^{n}$ --- это $0$.
-
- А единственная полилинейная кососимметрическая форма порядка $n$ на $\R^{n}$ --- это $C \det$ --- определитель, умноженный на константу $C \in \R$.
-\end{crly}
-\begin{df}[%
-внешнее умножение дифференциальных форм]
-Пусть есть две полилинейные кососимметрические формы $dx_{i_1} \land \ldots \land dx_{i_k}$  и $dx_{j_1} \land \ldots \land dx_{j_m}$. Тогда их \textit{внешним произведением} называется
+ Пусть $L \in \bigwedge^{q}(\R^{n})^{\ast}$. Так как $L$ полилинейна, то по утверждению \ref{claim:polylinear_form_basis} её можно записать в виде
  \begin{align*}
-  (dx_{i_1} \land \ldots \land dx_{i_k}) \land (dx_{j_1} \land \ldots \land dx_{j_m}) = dx_{i_1} \land \ldots \land dx_{i_k} \land dx_{j_1} \land \ldots \land dx_{j_m}
- .\end{align*} Для общих форм определение продолжается по линейности.
+  L(v_1, \ldots, v_q) = \sum_{j \in [n]^{q}} L(e_{j_1}, \ldots, e_{j_q}) \cdot dx_{j_1}(v_1) \cdot \ldots \cdot dx_{j_q}(v_q)
+ .\end{align*} Теперь воспользуемся кососимметричностью: в каждом множителе $L(e_{j_1}, \ldots, e_{j_q})$ можно упорядочить аргументы по возрастанию индексов $j$, возможно поменяв при этом знак. При этом, если среди индексов $j_1, \ldots, j_q$ есть совпадающие, то $L(e_{j_1}, \ldots, e_{j_q}) = 0$. Поэтому,
+ \begin{align*}
+  L(v_1,\ldots,v_q) = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n} L(e_{i_1}, \ldots, e_{i_q}) \cdot \left( \sum_{\sigma \in S_{q}} \sgn \sigma \cdot dx_{i_{\sigma(1)}}(v_1) \cdot \ldots \cdot dx_{i_{\sigma(q)}}(v_q) \right)
+ .\end{align*} Осталось заметить, что внутренняя сумма --- это в точности определитель $(dx_{i_1} \land \ldots \land dx_{i_q})(v_1,\ldots,v_q)$. Поэтому,
+ \begin{align*}
+  L = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n} a_{i_1,\ldots,i_q} \cdot dx_{i_1} \land \ldots \land dx_{i_q}
+ ,\end{align*} где $a_{i_1,\ldots,i_q} = L(e_{i_1},\ldots,e_{i_q})$.
+\end{proof}
+\begin{crly*}
+ Пространство $\bigwedge^{q}(\R^{n})^{\ast}$ имеет размерность $\binom n q$.
+
+ В случае $q > n$ пространство имеет размерность $0$, и поэтому $0$ --- единственная кососимметрическая полилинейная форма порядка $q > n$ в $\R^{n}$.
+
+ В случае $q = n$ пространство имеет размерность $1$, поэтому единственная кососимметрическая полилинейная форма порядка $n$ в $\R^{n}$ --- это $C \cdot \det$ --- определитель, умноженный на константу.
+\end{crly*}
+
+\begin{df}[%
+ внешнее произведение кососимметрических форм]
+ Пусть есть две кососимметрические полилинейные формы $dx_{i_1} \land \ldots \land dx_{i_q} \in \bigwedge^{q}(\R^{n})^{\ast}$  и $dx_{j_1} \land \ldots \land dx_{j_r} \in \bigwedge^{r}(\R^{n})^{\ast}$. Тогда их \textit{внешним произведением} называется форма
+ \begin{align*}
+  (dx_{i_1} \land \ldots \land dx_{i_q}) \land (dx_{j_1} \land \ldots \land dx_{j_r}) = dx_{i_1} \land \ldots \land dx_{i_q} \land dx_{j_1} \land \ldots \land dx_{j_r}
+ \end{align*} порядка $q + r$ в $\R^{n}$. Для общих форм определение продолжается по линейности.
 
  Например,
  \begin{align*}
-	 (dx \land dy + 2dy \land dz) \land dx &= \underbrace{dx \land dy \land dx}_{=0} + 2 dy \land dz \land dx = \\
-  &= 2 dy \land dz \land dx = 2 dx \land dy \land dz
+  &(dx \land dy + 2 \, dy \land dz) \land dx = \underbrace{dx \land dy \land dx}_{=0} + 2 \, dy \land dz \land dx = \\
+  =\; &2 \, dy \land dz \land dx = -2 \, dy \land dx \land dz = 2 \, dx \land dy \land dz
  .\end{align*} 
 \end{df}
 
-\begin{df}
- \textit{Внешняя форма} в области $\Omega \subset \R^{n}$ порядка $k$ -- это отображение из $\Omega$ в пространство полилинейных кососимметрических форм порядка $k$.
+Внешнее произведение можно определить более аккуратно, независимо от представления формы в виде \eqref{equation:general_alternating_form_formula}, однако мы этого делать не будем. Также не будем доказывать корректность определения.
+
+\subsection{Дифференциальные формы.}
+
+Теперь мы готовы определить дифференциальные формы.
+
+\begin{df}[дифференциальная форма]
+ Пусть $\Omega \subset \R^{n}$ --- область. \textit{Дифференциальной формой} порядка $q$ на $\Omega$ называется отображение $\omega \colon\, \Omega \to \bigwedge^{q}(\R^{n})^{\ast}$, которое каждой точке $x \in \Omega$ сопоставляет кососимметрическую полилинейную форму $\omega(x)$ порядка $q$ в $\R^{n}$.
+
+ Дифференциальные формы порядка $q$ также называют \textit{$q$-формами}. 
 \end{df}
-\begin{exmpl}
- $x dx \land dy + (x + z) dy \land dz$ --- пример внешней формы порядка $2$ на $\Omega = \R^{3}$. В точке $(1,2,3)$ эта внешняя форма равна $ dx \land dy + 4 dy \land dz $.
-\end{exmpl}
 
-В этой науке принято \textbf{соглашение}: функции --- это формы порядка $0$.
+\begin{exmpl*}
+ $x \, dx \land dy + (x + z)\, dy \land dz$ ---  $2$-форма на $\Omega = \R^{3}$. В точке $(1,2,3)$ эта дифференциальная форма принимает значение $ dx \land dy + 4 \, dy \land dz $.
+\end{exmpl*}
+\begin{exmpl*}
+ Дифференциальными формами порядка $0$ являются всевозможные функции $f \colon\, \Omega \to \R$.
+\end{exmpl*}
 
-\begin{exmpl}
+Как и обычные кососимметрические формы, дифференциальные формы можно перемножать внешним образом.
+
+\begin{df}[внешнее произведение дифференциальных форм]
+ Пусть $\omega$, $\eta$ --- дифференциальные формы порядков $q$, $r$ на $\Omega$. Тогда \textit{внешним произведением} форм $\omega$ и $\eta$ называется дифференциальная форма $\omega \land \eta$ порядка $q + r$ на $\Omega$, определённая по правилу
+ \begin{align*}
+  (\omega \land \eta)(x) = \omega(x) \land \eta(x)
+ .\end{align*} Умножение функции на форму можно также рассматривать как внешнее произведение ($0$-формы с $q$-формой).
+\end{df}
+
+Крайне важный пример $1$-формы --- это дифференциал функции.
+
+\begin{exmpl}[дифференциал функции как $1$-форма]
+ \label{example:differential_of_function_as_1_form}
  Пусть $f \colon\, \Omega \to \R  $  --- гладкая функция, где $\Omega \subset \R^{n}$ --- область. Тогда дифференциал функции $f$
  \begin{align*}
   df = \frac{\partial f}{\partial x_1} dx_1 + \ldots + \frac{\partial f}{\partial x_n} dx_n
- \end{align*} --- это внешняя форма порядка порядка $1$.
+ \end{align*} является дифференциальной формой порядка $1$ на $\Omega$. Действительно, в каждой точке $x \in \Omega$ дифференциал  $f$  в точке $x$  --- это линейная форма, равная
+ \begin{align*}
+  d_x f =  \frac{\partial f}{\partial x_1}(x) dx_1 + \ldots + \frac{\partial f}{\partial x_n}(x) dx_n
+ .\end{align*} 
 \end{exmpl}
-\begin{df}
- Общая внешняя форма 
-\begin{align*}
- \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k}(x) \cdot dx_{i_1} \land \ldots \land dx_{i_k}
-\end{align*} называется \textit{$C^{m}(\Omega)$-гладкой}, если все $a_{i_1, \ldots, i_k} \in C^{m}(\Omega, \R)$.
 
-Это определение эквивалентно тому, что внешняя форма как отображение гладкая (по Фреше, то есть по определению из второго семестра).
-\end{df}
-\begin{df}
- \textit{Дифференциал} гладкой внешней формы $\omega$ равен
+Имея в виду формулу \eqref{equation:general_alternating_form_formula} --- общий вид кососимметрической формы, можно записать следующее.
+
+\begin{crly*}[общий вид дифференциальной формы]
+ Всякая $q$-форма $\omega$ на $\Omega \subset \R^{n}$ имеет вид
+ \begin{align}
+  \label{equation:general_differential_form_formula}
+  \omega(x) = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n} a_{i_1,\ldots,i_q}(x) \, dx_{i_1} \land \ldots \land dx_{i_q}
+ ,\end{align} где $a_{i_1,\ldots,i_q} \colon\, \Omega \to \R$ --- функции.
+\end{crly*}
+
+\begin{df*}
+ $q$-форма $\omega$, представленная в виде \eqref{equation:general_differential_form_formula}, называется \textit{$C^{m}(\Omega)$-гладкой}, если все $a_{i_1, \ldots, i_k} \in C^{m}(\Omega, \R)$. Неформально, это означает, что кососимметрическая форма $\omega(x)$ $C^{m}$-гладким образом зависит от $x$.
+\end{df*}
+
+Теперь мы должны связать дифференциальные формы (объекты, которые мы будем интегрировать) с поверхностями (объекты, по которым мы будем интегрировать). Для дифференциальных форм, заданных на поверхности, существует понятие \textit{переноса} дифференциальной формы в карту. 
+
+\begin{df}[перенос формы]
+ Пусть $(\Omega,\Phi,S)$ --- поверхность размерности $k$ в $\R^{n}$. Пусть $\omega \colon\, S \to \bigwedge^{q}(\R^{n})^{\ast}$ --- $q$-форма в $\R^{n}$, определённая на поверхности $S$ (или на области, содержащей поверхность $S$). Тогда \textit{переносом} формы $\omega$ называется $q$-форма $\omega^{\ast} \colon\, \Omega \to \bigwedge^{q}(\R^{k})^{\ast}$ в $\R^{k}$, заданная формулой
  \begin{align*}
-   d \omega = \sum_{i \in [n]^{k}} (d a_{i_1,\ldots,i_k}) \land dx_{i_1} \land \ldots \land dx_{i_k}
+  \omega^{\ast}(x)(v_1,\ldots,v_q) = \omega(\Phi(x))(d_x \Phi v_1, \ldots, d_x \Phi v_q)
  .\end{align*} 
+
+ Легко видеть, что $\omega^{\ast}$ действительно является дифференциальной формой порядка $q$ на $\Omega$. Кроме того, форму $\omega^{\ast}$ можно выразить формулой в терминах координатных функций $\Phi_i \colon\, \Omega \to \R$, $i \in [n]$ отображения  $\Phi$. Если форма $\omega$ представлена в виде \eqref{equation:general_differential_form_formula}, то
+ \begin{align*}
+  \omega^{\ast}(x) = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n}  a_{i_1,\ldots,i_q}(\Phi(x)) \cdot d_x\Phi_{i_1} \land \ldots \land d_x\Phi_{i_q}
+ ,\end{align*} где $d_x\Phi_j$ --- дифференциал координатной функции $\Phi_j$ в точке $x$ как линейная форма.
 \end{df}
+
 \begin{exmpl*}
- \begin{align*}
-  d((x^{2} + y^{2})dx + z^{2}dz) &= (2x dx + 2y dy) \land dx + 2z dz \land dz = \\
-  &= -2y dx \land dy
- .\end{align*} 
-\end{exmpl*}
-
-\begin{df}
- Пусть $(\Omega, \Phi, S)$ --- поверхность порядка $k$, где $\Omega \subset \R^{k}$ --- область, $S \subset \R^{n}$, $\Phi \colon\; \Omega \to S$ --- гладкая биекция, $\mathrm{rk}\;\Phi(x) = k$ для любого $x \in \Omega$. Пусть
- \begin{align*}
-  \Phi(x_1, \ldots, x_k) = \begin{pmatrix}
-   \Phi_1(x_1, \ldots, x_k) \\
-   \vdots \\
-   \Phi_n(x_1, \ldots, x_k) \\
-  \end{pmatrix}
- .\end{align*} 
-
- Пусть на $\R^{n}$ (или в окрестности $S$) задана внешняя форма
- \begin{align*}
-  \omega = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k}(x) \cdot dx_{i_1} \land \ldots \land dx_{i_k}
- .\end{align*} Тогда \textit{перенос} этой формы в $\Omega$ задаётся формулой
- \begin{align*}
-  \omega^{\ast}(y) = \sum_{i \in [n]^{k}} a_{i_1,\ldots,i_k} (\Phi(y)) d\Phi_{i_1} \land \ldots \land d \Phi_{i_k}
- \end{align*}  --- это внешняя форма порядка $k$ в $\Omega$.
-\end{df}
-\begin{figure}[ht]
-    \centering
-    \incfig{surface_outer_form}
-    \caption{surface_outer_form}
-    \label{fig:surface_outer_form}
-\end{figure}
-\begin{exmpl}
- Найдём перенос формы
- \begin{align*}
-  \omega = x dy \land dz
- \end{align*} со сферы в прямоугольник $(0, 2\pi) \times (-\pi / 2, \pi / 2) = \Omega$. Здесь $R$ --- фиксированный радиус сферы,
+ Найдём перенос $2$-формы $ \omega = x \, dy \land dz $ со сферы $S$ радиуса $R > 0$ в $\R^{3}$ в прямоугольник $(0, 2\pi) \times (-\pi / 2, \pi / 2) = \Omega \subset \R^{2}$, где карта задана отображением $\Phi \colon\, \Omega \to S$:
  \begin{align*}
   \Phi(\varphi, \psi) = \begin{pmatrix}
+   x(\varphi,\psi)\\
+   y(\varphi,\psi)\\
+   z(\varphi,\psi)\\
+   \end{pmatrix} = \begin{pmatrix}
    R \cos \varphi \cos \psi \\
    R \sin \varphi \cos \psi \\
    R \sin \psi
   \end{pmatrix}
- .\end{align*} Правда, образ $\Phi$ --- это не вся сфера, а сфера минус множество меры нуль, но мы на это закроем глаза.
+ .\end{align*} По правде, образ $\Phi$ --- это не вся сфера, а сфера минус множество меры нуль, но мы на это закроем глаза.
 
  Перенесём:
  \begin{align*}
-  \omega^{\ast} &= R \cos \varphi \cos \psi (d (R \sin \varphi \cos \psi)) \land d(R \sin \psi) = \\
-  &= R^{3} \cos\varphi \cos\psi (\cos\varphi \cos \psi d\varphi - \sin\varphi\sin\psi d\psi) \land (\cos\psi d \psi) = \\
-  &= R^{3} \cos^{2}\varphi\cos^{3}\psi d\varphi \land d\psi
+  \omega^{\ast}(\varphi,\psi) &= x(\varphi,\psi) \cdot d(R\sin \varphi \cos\psi) \land d(R \sin \psi) = \\
+  &= R \cos \varphi \cos \psi \cdot (R \cos \varphi \cos \psi \, d\varphi - R \sin \varphi \sin \psi \, d\psi ) \land (R \cos \psi \, d\psi) = \\
+  &= R^{3} \cos\varphi \cos\psi \cdot(\cos\varphi \cos \psi \,d\varphi) \land (\cos\psi \, d \psi) = \\
+  &= R^{3} \cos^{2}\varphi\cos^{3}\psi \, d\varphi \land d\psi
  .\end{align*} 
-\end{exmpl}
+\end{exmpl*}
 
-\begin{df}
- Пусть $\omega = f(x) \cdot dx_1 \land \ldots \land dx_k$  --- внешняя форма порядка $k$ на области $\Omega \subset \R^{k}$, где $f \in C(\Omega)$ . Тогда \textit{интегралом} внешней формы $\omega$ по измеримому подмножеству $E \subset \Omega$ называется
+В примере \ref{example:differential_of_function_as_1_form} был рассмотрен дифференциал функции как отображение $d$, которое каждой (гладкой) $0$-форме ставит в соответствие $1$-форму. Следующее определение обобщает это отображение на $q$-формы для произвольного $q$.
+
+\begin{df}[внешнее дифференцирование форм]
+ Пусть $\omega \colon\, \Omega \to \bigwedge^{q}(\R^{n})^{\ast}$ --- гладкая дифференциальная форма порядка $q$ в $\R^{n}$, представленная в виде \eqref{equation:general_differential_form_formula}:
  \begin{align*}
-  \int\limits_{E} \omega = \int\limits_{E} f(x) \, dx_1 dx_2 \ldots dx_k
- .\end{align*} 
+  \omega(x) = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n}  a_{i_1,\ldots,i_q}(x) \, dx_{i_1} \land \ldots \land dx_{i_q}.
+ \end{align*} \textit{Внешним дифференциалом} (или просто \textit{дифференциалом}) формы $\omega$ называется дифференциальная форма $d \omega \colon\, \Omega \to \bigwedge^{q + 1}(\R^{n})^{\ast}$ порядка $q + 1$, заданная по формуле
+ \begin{align}
+  \label{equation:differential_of_form}
+  d \omega = \sum_{1 \leqslant i_1 < \ldots < i_q \leqslant n} d a_{i_1,\ldots,i_k} \land dx_{i_1} \land \ldots \land dx_{i_q}
+ ,\end{align} где $d a_{i_1,\ldots,i_q}$ --- дифференциал функции $a_{i_1,\ldots,i_q}$ как $1$-форма.
 
- Для форм $\omega$  порядка $k$  на поверхности $(\Omega, \Phi, S)$  интеграл $\omega$
-  \begin{align*}
-  \int\limits_{\Phi(E)} \omega = \int\limits_{E} \omega^{\ast}
- ,\end{align*} где $E \subset \Omega \subset \R^{k}$. Правая часть уже определена, так как $\omega^{\ast}$ --- форма порядка $k$.
+ Отображение $d$ называется \textit{оператором внешнего дифференцирования}.
 \end{df}
-
-\begin{claim}
- Пусть $\omega = f_1(x) dx_1 + f_2(x) dx_2 + \ldots + f_{n}(x) dx_n$  --- внешняя форма порядка $1$  на гладкой кривой $\gamma = (\gamma_1, \ldots, \gamma_n )$ , $\gamma = \gamma(t)$ , $t \in (a,b)$ , $\left\| \gamma'(t) \right\|_{\R^{n}} \neq 0$ .
-
- Тогда
+\begin{exmpl*}
  \begin{align*}
-  \int\limits_{\gamma} \omega = \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma_1'(t) + \ldots + f_n(\gamma(t)) \gamma_n'(t) \right) \, dt
- \end{align*} 
+  d((x^{2} + y^{2})\,dx + z^{2}\,dz) &= (2x \,dx + 2y \,dy) \land dx + 2z \,dz \land dz = \\
+  &= 2y\,dy\land dx = -2y \, dx \land dy
+ .\end{align*} 
+\end{exmpl*}
+
+\begin{remrk*}
+ Существует более замысловатое, аксиоматическое определение внешнего дифференциала форм. Оператор $d$ внешнего дифференцирования $q$-форм --- это линейное отображение, сопоставляющее каждой гладкой $q$-форме $\omega \colon\, \Omega \to \bigwedge^{q}(\R^{n})^{\ast}$ $(q+1)$-форму $d\omega \colon\, \Omega \to \bigwedge^{q+1}(\R^{n})^{\ast}$, обладающее следующими свойствами.
+ \begin{itemize}
+  \item \textit{Естественность:} для всякого гладкого отображения $\Phi \colon\, X \to Y$ (при условии $\Omega \subset Y$) верно
+   \begin{align*}
+    (d \omega)^{\ast} = d(\omega^{\ast})
+   ,\end{align*} то есть дифференциал коммутирует с переносом формы в карту.
+  \item \textit{Нормировка:} дифференциал $0$-форм совпадает с дифференциалом функции в смысле примера \ref{example:differential_of_function_as_1_form}.
+  \item \textit{Тождество Лейбница:}
+   \begin{align*}
+    d(\omega \land \eta) = d\omega \land \eta + \omega \land (-1)^{q}\,d\eta
+   ,\end{align*} где $q$ --- порядок формы $\omega$.
+  \item \textit{Нулевой квадрат:} $d(d\omega) = 0$.
+ \end{itemize}
+ Такое линейное отображение существует и единственно: оно совпадает с определением по формуле \eqref{equation:differential_of_form}.
+
+ Мы не будем доказывать эквивалентность этих определений ни в одну из сторон и не будем пользоваться ею, но тем не менее её полезно иметь в виду.
+\end{remrk*}
+
+Наконец, мы готовы определить интеграл от дифференциальной формы. Интегрировать мы будем $k$-формы по поверхностям размерности $k$: порядок формы должен совпадать с размерностью поверхности.
+
+\begin{df}[интеграл дифференциальной формы по поверхности]
+ Пусть $(\Omega, \Phi, S)$ --- $k$-мерная поверхность в $\R^{n}$: $\Omega \subset \R^{k}$ --- область, $\Phi \colon\, \Omega \to S$ --- гладкая биекция с всюду невырожденным дифференциалом, $S \subset \R^{n}$.
+
+ Пусть $\omega \colon\, S \to \bigwedge^{k}(\R^{n})^{\ast}$ --- дифференциальная форма порядка $k$ в $\R^{n}$, заданная на поверхности $S$. Пусть форма $\omega^{\ast} \colon\, \Omega \to \bigwedge^{k}(\R^{k})^{\ast}$ --- перенос формы $\omega$ в карту $(\Omega, \Phi)$ --- выражается формулой
+ \begin{align*}
+  \omega^{\ast} = f \, dx_1 \land \ldots \land dx_k
+ ,\end{align*} где $f \colon\, \Omega \to \R$ --- непрерывная функция (так как $\omega^{\ast}$ имеет порядок $k$, то форма обязательно так выражается).
+
+ Тогда \textit{интегралом} от дифференциальной формы $\omega$ по поверхности $S$ называется число
+ \begin{align*}
+  \int\limits_{S} \omega = \int\limits_{\Omega} f \, dx_1 \, \ldots \, dx_k
+ ,\end{align*} где в правой части стоит обычный интеграл Лебега.
+\end{df}
+\begin{remrk*}
+ Интегрировать форму $\omega$ можно не по всей поверхности $S$, а по её измеримому подмножеству $\Phi(E) \subset S$, где $E \subset \Omega$ --- измеримое по Лебегу множество. В таком случае интеграл равен
+ \begin{align*}
+  \int\limits_{\Phi(E)} \omega = \int\limits_{E} f \, dx_1 \, \ldots \, dx_k 
+ .\end{align*} 
+\end{remrk*}
+\begin{remrk*}
+ Рассмотрим крайне важный частный случай: рассматриваемая поверхность $S$ просто является областью $\Omega \subset \R^{n}$ (то есть $n = k$ и отображение $\Phi$ тождественно). В таком случае дифференциальная форма $\omega \colon\, \Omega \to \bigwedge^{n}(\R^{n})^{\ast}$ обязательно имеет вид
+ \begin{align*}
+  \omega = f \, dx_1 \land \ldots \land dx_n
+ ,\end{align*} где $f \colon\, \Omega \to \R$ --- непрерывная функция. Тогда перенос формы просто совпадает с самой формой, и интеграл равен
+ \begin{align*}
+  \int\limits_{\Omega}   \omega = \int\limits_{\Omega} f \, dx_1 \, \ldots \, dx_n
+ .\end{align*}
+
+ Таким образом, определение интеграла дифференциальной формы порядка $n$ по области в $\R^{n}$ полностью эквивалентно определению обычного интеграла Лебега от функции по области в $\R^{n}$: каждая $n$-форма соответствует функции $\Omega \to \R$, домноженной на $dx_1 \land \ldots \land dx_n$.
+\end{remrk*}
+\begin{remrk}
+ \label{remark:surface_orientation_along_form_integreation}
+ Определённый таким образом интеграл почти не зависит от выбора параметризации $\Phi$ поверхности $S$. Формально, если $\Psi \colon\, \Omega' \to \Omega$ --- диффеоморфизм со всюду положительным якобианом, то интегралы всякой $k$-формы $\omega$ по поверхности $S$ с картами $(\Omega, \Phi)$ и $(\Omega', \Phi \circ \Psi)$ совпадают. Это непосредственно следует из теоремы о замене переменной в интеграле Лебега, но доказывать мы это не будем.
+
+ Условие <<со всюду положительным якобианом>> существенно, и, более того, скрывает за собой понятие \textit{ориентации} поверхности $S$. Если параметризовать поверхность $S$ по-другому, проведя замену переменной диффеоморфизмом со всюду отрицательным якобианом, то интеграл сменит свой знак на противоположный. Таким образом, интеграл от дифференциальной формы по поверхности определён \textbf{с точностью до знака}, который зависит от \textbf{ориентации} поверхности. Здесь мы намеренно опускаем формальное определение ориентации.
+\end{remrk}
+\begin{remrk}
+ \label{remark:no_definition_for_objects_in_stox_theorem}
+ На самом деле, интеграл от дифференциальной формы определяется не по $k$-мерным поверхностям, а по некоторым более общим объектам. Таких обобщений есть по крайней мере два: <<гладкие сингулярные цепи>> и <<ориентированные многообразия с краем>>. Соответственно, получаются две теории интегрирования дифференциальных форм.
+
+ Необходимость этого обобщения вызвана тем, что в основном результате теории интегрирования дифференциальных форм --- теореме Стокса --- необходимо понятие \textit{края}, или \textit{границы} поверхности. По всей видимости, общее определение границы $k$-мерной поверхности в смысле определения \ref{definition:surface} дать невозможно.
+
+ Тем не менее, мы не будем сильно углубляться в теорию: эти уточнения рассмотрены не будут.
+\end{remrk}
+
+\subsection{Интегрирование $1$-форм по гладким кривым.}
+
+Сейчас мы рассмотрим частный случай этой теории: интегрирование $1$-форм по гладким кривым в $\R^{n}$. Этот случай имеет много приложений (в том числе в физике).
+
+\begin{claim}[интеграл $1$-формы по кривой]
+ Пусть $\gamma \colon (a,b) \to \R^{n}$, $\gamma(t) = (\gamma_1(t), \ldots, \gamma_n(t))$ --- гладкая кривая, $\left| \gamma'(t) \right| \neq 0$ для всех $t \in (a,b)$. Пусть
+ \begin{align*}
+  \omega(x) = f_1(x) \, dx_1 + \ldots + f_n(x) \, dx_n
+ \end{align*} --- дифференциальная форма порядка $1$ в $\R^{n}$, определённая на кривой $\gamma$. Тогда
+ \begin{align*}
+  \int\limits_{\gamma} \omega = \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma_1'(t) + \ldots + f_n(\gamma(t))\gamma_n'(t) \right)  dt
+ .\end{align*} 
 \end{claim}
 \begin{proof}
- Найдём перенос внешней формы в интервал $(a, b)$:
-  \begin{align*}
-  \omega^{\ast} = \sum_{i=1}^{n} f_i(\gamma(t)) d \gamma_i(t) = \sum_{i=1}^{n} f_i(\gamma(t)) \gamma_i'(t) dt
- .\end{align*} По определению
+ Найдём перенос формы $\omega$ в интервал $(a, b)$:
  \begin{align*}
-  \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)  \, dt
- .\end{align*} Проверено.
- Правда это верно только если $\gamma$ является биекцией, в ином случае можно подразбить на маленькие кусочки и локально на каждом будет биекция.
+  \omega^{\ast} = \sum_{i=1}^{n} f_i(\gamma(t)) d \gamma_i(t) = \sum_{i=1}^{n} f_i(\gamma(t)) \gamma_i'(t) \, dt
+ .\end{align*} Тогда по определению интеграла
+ \begin{align*}
+  \int\limits_{\gamma} \omega = \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)  \, dt
+ .\end{align*} Проверено. По правде, это рассуждение верно только если $\gamma$ является биекцией (не имеет самопересечений). В противном случае можно разбить кривую на маленькие кусочки так, чтобы на каждом из кусочков кривая была биекцией.
 \end{proof}
 
-\textbf{Физический смысл}: если $F$ --- постоянное силовое поле в $\R^{n}$, то работа $F$ вдоль вектора $v \in \R^{n}$ --- это скалярное произведение $(F, v)$.
+У интеграла $1$-формы по кривой есть следующий \textbf{физический смысл}.
 
-Если
-\begin{align*}
- F = \begin{pmatrix}
+Рассмотрим постоянное силовое поле в $\R^{n}$: к каждой точке $p \in \R^{n}$ применяется сила, равная вектору $F \in \R^{n}$ (одна и та же для всех точек). Тогда работа постоянного поля $F$ вдоль вектора $v \in \R^{n}$ --- это скалярное произведение $(F,v) \in \R$.
+
+Рассмотрим теперь переменное силовое поле $F \colon\, \R^{n} \to \R^{n}$:
+\begin{align}
+ \label{equation:changing_work_field}
+ F(x) = \begin{pmatrix}
   f_1(x) \\
   \vdots \\
   f_n(x)
  \end{pmatrix}
-\end{align*}  --- переменное силовое поле в $\R^{n}$ , а $\gamma$  --- это кривая в $\R^{n}$ , $\gamma = \gamma(t)$ , $t \in (a, b)$ . Тогда работа $F$  вдоль $\gamma$ --- это интеграл
+.\end{align} Пусть $\gamma = \gamma(t) \colon (a,b) \to \R^{n}$  --- кривая, $\left| \gamma'(t) \right| \neq 0$. Тогда работа переменного поля $F$  вдоль кривой $\gamma$ --- это интеграл
 \begin{align*}
  A_{F,\gamma} = \int\limits_{\gamma} (F,v) \, dS
-,\end{align*} где $v(t)$ --- единичный касательный вектор к кривой $\gamma$  в точке $\gamma(t)$.
+,\end{align*} где $v(t)$ --- единичный касательный вектор к кривой $\gamma$  в точке $\gamma(t)$. При этом интеграл берётся по поверхностной мере Лебега на $\gamma$ (формула \eqref{equation:formula_integral_on_surface}), что обозначается символом $dS$.
+
+Как мы сейчас выясним, интеграл $A_{F,\gamma}$ можно представить как интеграл некоторой $1$-формы $\omega$ по кривой $\gamma$. Эту форму называют \textit{формой работы} поля $F$.
 
 \begin{figure}[ht]
-    \centering
-	\incfig[0.7]{work_under_a_curve}
-    \caption{Работа вдоль кривой}
-    \label{fig:work_under_a_curve}
+ \centering
+ \incfig[0.7]{work_under_a_curve}
+ \caption{Работа переменного поля $F$ вдоль кривой $\gamma$.}
+ \label{fig:work_under_a_curve}
 \end{figure}
 
 \begin{claim}
+ Пусть $F$ --- переменное силовое поле в $\R^{n}$, заданное координатными функциями как в \eqref{equation:changing_work_field}. Пусть $\gamma \colon (a,b) \to \R^{n}$ --- гладкая кривая, $\left| \gamma'(t) \right| \neq 0$. Тогда работа поля $F$ вдоль кривой $\gamma$ равна
  \begin{align*}
   A_{F,\gamma} = \int\limits_{\gamma} \omega
  ,\end{align*} где
  \begin{align*}
-  \omega = f_1 dx_1 + \ldots + f_n dx_n
- \end{align*} --- форма работы поля $F$.
+  \omega = f_1 \, dx_1 + \ldots + f_n \, dx_n
+ \end{align*} --- \textit{форма работы} переменного силового поля $F$.
 \end{claim}
 \begin{proof}
- Вычислим единичный касательный вектор к кривой $\gamma$ в точке $\gamma(t)$:
+ Вычислим единичный касательный вектор  к кривой $\gamma$ в точке $\gamma(t)$:
  \begin{align*}
-  v(t) = \frac{\gamma'(t)}{\left\| \gamma'(t) \right\|}
- ,\end{align*} где $\gamma'(t) = (\gamma_1'(t), \ldots, \gamma_n'(t))^{\top}$ . Посмотрим на интеграл
+  v(t) = \frac{\gamma'(t)}{\left| \gamma'(t) \right|}
+ ,\end{align*} где $\gamma'(t) = (\gamma_1'(t), \ldots, \gamma_n'(t)) \in \R^{n}$. Учитывая равенство $G_{\gamma}(t) = (\left| \gamma'(t) \right|^{2})$ (пример \ref{example:length_of_smooth_curve}) вычислим работу:
  \begin{align*}
-	 A_{f, \gamma} = \int\limits_{\gamma} (F,v) \, dS &= \int\limits_{a}^{b} (F(\gamma(t)), v(t)) \left\| \gamma' (t) \right\| \, dt = \\ 
-  &= \int\limits_{a}^{b} \frac{\sum_{i=1}^{n} f_i(\gamma(t))\gamma_i'(t)}{\left\| \gamma'(t) \right\|} \left\| \gamma'(t) \right\| \, dt = \\
+  A_{F, \gamma} &= \int\limits_{\gamma} (F,v) \, dS = \int\limits_{a}^{b} (F(\gamma(t)), v(t)) \sqrt{\det G_{\gamma}(t)} \, dt = \\ 
+  &= \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\frac{\gamma_i'(t)}{\left| \gamma'(t) \right|} \left| \gamma'(t) \right| \, dt = \\
   &= \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma'_i(t) \, dt 
- .\end{align*} Правая часть равна
+ .\end{align*} Полученное есть в точности интеграл формы работы по кривой:
  \begin{align*}
   \int\limits_{\gamma} \omega = \int\limits_{(a,b)} \omega^{\ast} = \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(t))\gamma'_i(t) \, dt
  .\end{align*} 
 \end{proof}
-\begin{df}
- Пусть $\omega$ --- внешняя форма порядка $k$ с непрерывными коэффициентами в области $\Omega$. $\omega$ называется \textit{точной} формой, если существует внешняя форма $\kappa$ порядка $k - 1$ такая, что $d \kappa = \omega$.
 
- Для $1$-форм это означает, что существует функция $F \colon\; \Omega \to \R$ ($0$-форма) такая, что
+Рассмотрим аналог неопределённого интеграла для дифференциальных форм.
+
+\begin{df}
+ Пусть $\omega \colon\, \Omega \to \bigwedge^{q}(\R^{n})^{\ast}$ --- дифференциальная форма порядка $q$ с непрерывными коэффициентами. Дифференциальная форма $\omega$ называется \textit{точной}, если существует гладкая дифференциальная форма $\eta \colon\, \Omega \to \bigwedge^{q-1}(\R^{n})^{\ast}$ порядка $q - 1$ такая, что $d \eta = \omega$.
+
+ Для $1$-форм это означает, что существует функция $F \colon\, \Omega \to \R$ ($0$-форма) такая, что
  \begin{align*}
-  dF = f_1 dx_1 + \ldots f_n dx_n = \omega
+  dF = f_1 \, dx_1 + \ldots f_n \, dx_n = \omega
  .\end{align*} 
 \end{df}
 \begin{claim}
@@ -313,113 +430,119 @@
  Пусть $\omega$  --- точная $1$-форма в $\Omega$. Пусть $\gamma$  --- гладкая кривая в $\Omega$. Тогда
  \begin{align*}
   \int\limits_{\gamma} \omega = F(\gamma(b)) - F(\gamma(a))
- ,\end{align*} где $F$ --- функция, такая, что $dF = \omega$.
+ ,\end{align*} где $F \colon\, \Omega \to \R$ --- функция, такая, что $dF = \omega$.
 
- В частности, интеграл $\int_{\gamma} \omega  $  зависит лишь от начала и конца $\gamma$.
+ Иными словами, интеграл $\int_{\gamma} \omega  $  зависит лишь от начала и конца кривой $\gamma$.
 \end{claim}
 
-\textbf{Физический смысл}: для потенциального силового поля работа вдоль кривой зависит только от начала и конца кривой.
+\textbf{Физический смысл}: для потенциального силового поля (форма работы которого точная) работа вдоль кривой зависит только от начала и конца кривой. Таким образом, поднявшись с первого этажа на второй мы совершим точно такую же работу, если бы мы поднялись с первого этажа на шестой, а затем спустились бы на второй.
 
 \begin{proof}[\normalfont\textsc{Доказательство утверждения \ref{claim:integral_of_potential_curve_is_difference_on_ends}}]
- Посчитаем
  \begin{align*}
   \int\limits_{\gamma} \omega &= \int\limits_{a}^{b} \left( f_1(\gamma(t)) \gamma'_1(t) + \ldots + f_n(\gamma(t))\gamma_n'(t) \right) \, dt = \\
   &= \int\limits_{a}^{b} \left( F(\gamma(t)) \right)'_t \, dt
  \end{align*}  в силу того, что
  \begin{align*}
-  F'_1 = f_1, \ldots, F'_n = f_n
+  F'_1 = f_1, \; \ldots, \; F'_n = f_n
  .\end{align*} Тогда по формуле Ньютона-Лейбница
  \begin{align*}
   \int\limits_{\gamma} \omega = F(\gamma(b)) - F(\gamma(a))
  .\end{align*} 
 \end{proof}
 
-\begin{claim}
+Теперь обсудим момент ориентации поверхности в рассматриваемом случае интегрирования $1$-форм по кривым. \textit{Ориентация} кривой --- это попросту направление, в котором мы идем по кривой: либо от $\gamma(a)$ до $\gamma(b)$, либо наоборот. Проверим для этого случая утверждения ориентации, которые мы голословно объявили верными в замечании \ref{remark:surface_orientation_along_form_integreation}.
+
+\begin{claim*}
+ Пусть $\gamma \colon (a,b) \to \R^{n}$ --- гладкая кривая, $\omega$ --- $1$-форма в $\R^{n}$, определённая на носителе кривой $\gamma$. Пусть $\tilde \gamma \colon (a,b) \to \R^{n}$ --- кривая $\gamma$, проходимая в обратном направлении. Тогда
  \begin{align*}
   \int\limits_{\gamma} \omega = - \int\limits_{\tilde \gamma} \omega
- ,\end{align*} где $\tilde \gamma$ --- это кривая $\gamma$, проходимая в обратном направлении.
-\end{claim}
+ .\end{align*} Таким образом, смена ориентации кривой влечёт смену знака интеграла.
+\end{claim*}
 \begin{proof}
-  Пусть $\gamma \colon\, (a,b) \to \R^{n}$ . Тогда $\tilde \gamma \colon\, (a, b) \to \R^{n}$  задаётся формулой
+ Кривая $\tilde \gamma$ задаётся формулой
  \begin{align*}
   \tilde \gamma (t) = \gamma(b - t + a)
  .\end{align*} Тогда
  \begin{align*}
-  \int\limits_{\tilde \gamma} \omega &= \int\limits_{a}^{b} \left( f_1(\tilde \gamma(t))\tilde \gamma'_1(t) + \ldots + f_n(\tilde \gamma(t))\tilde \gamma'_n(t) \right) \, dt = \\
-  &= -\int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(b-t+a))\gamma'_i(s) \rvert_{s=b-t+a} \, dt = \\
+  \int\limits_{\tilde \gamma} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\tilde \gamma (t)) \tilde \gamma'_i(t)\, dt = \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(b-t+a)) \cdot (-\gamma'_i(s) \rvert_{s=b-t+a}) \, dt = \\
   &= \begin{bmatrix}
    u = b - t + a & du = -dt
-  \end{bmatrix} = \\
-  &= - \int\limits_{a}^{b} \sum_{i=1}^{n} f_i(\gamma(u))\gamma'_i(u) \, du = \\
-  &= -\int\limits_{\gamma} \omega
+  \end{bmatrix} = \int\limits_{b}^{a} \sum_{i=1}^{n} f_i(\gamma(u))\gamma'_i(u) \, du = -\int\limits_{\gamma} \omega
  .\end{align*} 
 \end{proof}
 
-Когда мы писали $\int_{a}^{b} f(x) \, dx $ --- это интеграл дифференциальной формы $f(x) dx$  по кривой --- отрезку $[a,b]$ в направлении от $a$ к $b$.
-
-\begin{df}
- $\gamma_1, \gamma_2 \colon\, (a, b) \to \R^{n}$ --- \textit{эквивалентные кривые}, если существует гладкая биекция $s \colon\, (a,b) \to (a,b) $  такая, что $\gamma_2(t) = \gamma_1(s(t))$.
-\end{df}
+\begin{df*}
+ Гладкие кривые $\gamma_1 \colon (a, b) \to \R^{n}$, $\gamma_2 \colon (c,d) \to \R^{n}$ \textit{эквивалентные}, если существует гладкая биекция $\varphi \colon (c,d) \to (a,b) $  такая, что $\gamma_2(t) = \gamma_1(\varphi(t))$.
+\end{df*}
 
 \begin{remrk*}
- Геометрически $\gamma_1$ и $\gamma_2$ --- одна и та же кривая, но по-разному параметризованная.
+ Геометрически $\gamma_1$ и $\gamma_2$ --- это одна и та же кривая, но по-разному параметризованная. При этом, эти параметризации \textit{согласованы:} кривая проходится в одном и том же направлении.
 \end{remrk*}
-\begin{claim}
- Для $1$-форм с непрерывными коэффициентами интеграл по гладкой кривой не зависит от выбора параметризации.  
-
- То есть
+\begin{claim*}
+ Для $1$-форм с непрерывными коэффициентами интеграл по гладкой кривой не зависит от параметризации. То есть
  \begin{align*}
   \int\limits_{\gamma_1} \omega = \int\limits_{\gamma_2} \omega
- ,\end{align*} если $\gamma_1$ эквивалентна $\gamma_2$.
-\end{claim}
+ ,\end{align*} если $\omega$ --- $1$-форма, и гладкая кривая $\gamma_1$ эквивалентна гладкой кривой $\gamma_2$.
+\end{claim*}
 \begin{proof}
+ Пусть $\varphi \colon (c,d)\to(a,b)$ --- гладкая биекция такая, что $\gamma_2(t) = \gamma_1(\varphi(t))$. Тогда
  \begin{align*}
-  \int\limits_{\gamma_1} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_1(t))\gamma_{1,i}'(t) \, dt. \\
-  \int\limits_{\gamma_2} \omega &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_2(t))\gamma_{2,i}'(t) \, dt =  \\
-  &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma_1(s(t))) \gamma_{1,i}'(y) \rvert_{y = s(t)} \cdot s'(t) \, dt = \\
+  \int\limits_{\gamma_2} \omega &= \int\limits_{c}^{d} \sum_{i=1}^{n} f(\gamma_2(t))\gamma_{2,i}'(t) \, dt = \int\limits_{c}^{d} \sum_{i=1}^{n} f(\gamma_1(\varphi(t))) \gamma_{1,i}'(y) \rvert_{y = \varphi(t)} \cdot \varphi'(t) \, dt = \\
   &= \begin{bmatrix}
-   u = s(t) & du = s'(t) dt
-  \end{bmatrix} = \\
-  &= \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma(u)) \gamma_{1,i}'(u) \, du = \\
-  &= \int\limits_{\gamma_1} \omega
+   u = \varphi(t) & du = \varphi'(t)\, dt
+  \end{bmatrix} = \int\limits_{a}^{b} \sum_{i=1}^{n} f(\gamma(u)) \gamma_{1,i}'(u) \, du = \int\limits_{\gamma_1} \omega
  .\end{align*}
 \end{proof}
-\begin{thm}[%
-Стокса]
-\label{theorem:stox}
- Пусть $M$  --- гладкое компактное ориентируемое многообразие с краем $\partial M$,  $\omega$  --- $C^{1}$ -гладкая дифференциальная форма на $M$; ориентации $M$  и $\partial M$  согласованы; порядок $\omega$ равен размерности $M$  минус $1$ и не меньше $0$.
 
- Тогда
+Замечание \ref{remark:surface_orientation_along_form_integreation} обосновано для $1$-форм, интегрируемых по гладким кривым.
+
+\begin{remrk*}
+ Запись $\int_{a}^{b} f(x) \, dx $ можно понимать как интеграл дифференциальной формы $f(x) \, dx$ порядка $1$ в $\R$ по кривой --- интервалу $(a,b)$, проходимому по направлению от $a$ к $b$.
+\end{remrk*}
+
+\subsection{Теорема Стокса (формулировка).}
+
+Сформулируем теперь основной результат теории интегрирования дифференциальных форм --- теорему Стокса --- то самое далёкое и нетривиальное обобщение формулы Ньютона-Лейбница. На данный момент мы не сможем в абсолютной строгости понять её формулировку, так как у нас не хватает некоторых определений (см. замечание \ref{remark:no_definition_for_objects_in_stox_theorem}). Тем более, мы не сможем сейчас её доказать. Мы всё же сформулируем теорему и дадим несколько комментариев к ней, дабы установить интуитивное понимание этого красивого утверждения.
+
+\begin{thm}[%
+ Стокса]
+ \label{theorem:stox}
+ Пусть $M$  --- гладкое $n$-мерное ориентированное многообразие с краем $\partial M$ ($n \geqslant 1$). Пусть ориентации $M$ и $\partial M$ согласованы. Пусть $\omega$  --- $C^{1}$-гладкая дифференциальная форма порядка $n-1$ на $M$ с компактным носителем. Тогда верна \textbf{формула Стокса:}
  \begin{align}
   \label{equation:formula_stox}
   \int\limits_{\partial M} \omega = \int\limits_{M} d \omega
  .\end{align} 
 \end{thm}
 
-Формула \eqref{equation:formula_stox} называется \textit{формулой Стокса}.
+Дадим несколько комментариев к теореме \ref{theorem:stox}.
 
-Дадим несколько комментариев к теореме \ref{theorem:stox}. $\partial M$ --- это многообразие размерности  $\dim M - 1$.  Соответственно, $d \omega$  имеет порядок, равный $\dim M$.
+\begin{remrk*}
+ \textit{Край} многообразия $M$ --- это многообразие $\partial M$. Оно имеет размерность $n-1$. Соответственно, форма $d\omega$ имеет порядок $n$, поэтому размерности многообразий и порядки форм в формуле \eqref{equation:formula_stox} согласованы. Понятие \textit{края} многообразия похоже на понятие \textit{границы} (замыкание минус внутренность), но это разные вещи. Пример многообразия с краем --- полусфера --- показан на рисунке \ref{fig:halfsphere}.
+ \begin{figure}[ht]
+  \centering
+  \incfig{halfsphere}
+  \caption{Полусфера. Её край --- окружность.}
+  \label{fig:halfsphere}
+ \end{figure}
+\end{remrk*}
+\begin{remrk*}
+ \textit{Ориентированное} многообразие --- это многообразие на котором задана ориентация. \textit{Ориентируемое} многообразие --- это многообразие, на котором возможно задать ориентацию. Общее определение этих понятий мы не сможем дать, однако мы обсудим частные случаи.
 
-Многообразия размерности $1$  ориентируемы и ориентация соответствует выбору начала и конца кривой.
+ Как мы обсуждали ранее, все многообразия размерности $1$ (то есть кривые) ориентируемы. Ориентация кривой соответствует выбору начала и конца кривой.
 
-\begin{df}
- Многообразие размерности $2$ в $\R^{3}$ называется \textit{оринтеируемым}, если на нём есть непрерывное поле единичных нормалей.
-\end{df}
+ Многообразие размерности $2$ в $\R^{3}$ называется \textit{оринтеируемым}, если на нём есть непрерывное поле единичных нормалей. Ориентации соответствует выбор такого поля. Например, сфера $S^{2}$ ориентируема (можно выбрать поле единичных нормалей, которые <<торчат наружу>>), а лента Мёбиуса неориентируема (при попытке задать непрерывное поле единичных нормалей мы можем обойти ленту по кругу, и прийти в ту же точку с нормалью, торчащей в другую сторону, чем было изначально).
+\end{remrk*}
+
 \begin{exmpl*}
- Сфера $S^{2}$ ориентируема, а лента Мёбиуса неориентируема.
-\end{exmpl*}
-\begin{exmpl}
- Пример многообразия с краем: полусфера
-\begin{figure}[ht]
-    \centering
-    \incfig{halfsphere}
-    \caption{Полусфера}
-    \label{fig:halfsphere}
-\end{figure}
-\end{exmpl}
-
-Частный случай формулы Стокса: $M = [a,b]$,  $\partial M = \left\{ a,b \right\}$, форма $\omega = F$. Тогда
+ Рассмотрим частный случай формулы Стокса: пусть $M = [a,b]$ --- отрезок с направлением от $a$ до $b$, $\partial M = \left\{ a,b \right\}$ --- край отрезка. Пусть $\omega = F \colon\, [a,b] \to \R$ --- гладкая $0$-форма (функция). Тогда
  \begin{align*}
-  \int\limits_{M} d\omega &= \int\limits_{M} d F \\
- \int\limits_{\partial M} F &= F(b) - F(a)
-.\end{align*} Мы получили формулу Ньютона-Лейбница.
+  \int\limits_{\partial M} F = \int\limits_{M} dF
+ .\end{align*} Правая часть равна
+ \begin{align*}
+  \int\limits_{a}^{b} \frac{\partial F}{\partial x} \, dx = \int\limits_{a}^{b} F' \, dx
+ ,\end{align*} а левая часть равна
+ \begin{align}
+  \label{equation:example:zero_deg_form_integral}
+  \int\limits_{\partial M} F = F(b) - F(a)
+ .\end{align} Мы получили формулу Ньютона-Лейбница. Равенство \eqref{equation:example:zero_deg_form_integral} выглядит странно, но оно верно по той причине, что ориентации многообразий $[a,b]$  и $\left\{ a,b \right\}$ согласованы.
+\end{exmpl*}

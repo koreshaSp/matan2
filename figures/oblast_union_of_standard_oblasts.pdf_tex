@@ -54,7 +54,10 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{oblast_union_of_standard_oblasts.pdf}}%
-    \put(0.54518134,0.26592878){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega_i$\end{tabular}}}}%
-    \put(0.54148254,0.21932532){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega_{i+1}$\end{tabular}}}}%
+    \put(0.56658592,0.16121991){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega_i$\end{tabular}}}}%
+    \put(0.76616173,0.16298777){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega_j$\end{tabular}}}}%
+    \put(0.67618758,0.0436189){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_1$\end{tabular}}}}%
+    \put(0.68838278,0.28258858){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{oblast_union_of_standard_oblasts.pdf}}%
   \end{picture}%
 \endgroup%

@@ -54,6 +54,8 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{halfsphere.pdf}}%
-    \put(0.6893575,0.36685956){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M$\end{tabular}}}}%
+    \put(0.75751387,0.45267588){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M$\end{tabular}}}}%
+    \put(0.77438094,0.03731677){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}$\partial M$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{halfsphere.pdf}}%
   \end{picture}%
 \endgroup%
