@@ -27,6 +27,8 @@
 \usepackage{pdfpages}
 \pgfplotsset{compat=1.16}
 
+\hfuzz=6.41pt 
+
 \newcommand{\incfig}[2][1]{%
  \def\svgwidth{#1\columnwidth}
  \import{./figures/}{#2.pdf_tex}
@@ -38,6 +40,10 @@
 \newcounter{theoremCnt}
 \counterwithin{theoremCnt}{section}
 \counterwithin{equation}{section}
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
 
 % numbered theorems
 \theoremstyle{definition}
@@ -121,11 +127,11 @@
 \DeclareMathOperator{\diverg}{div}
 
 \title{Матан СП 2 курс (набор 2021). \\ Конспект лекций}
-\author{Набор в \TeX: Усачев Данила. \\ Правки, ревью: Николай Чухин, \\ Всеволод Васькин, Кирилл Митькин. \\ CI: Максим Хабаров, Андрей Хорохорин.}
+\author{Набор в \TeX: Усачев Данила. \\ Правки, ревью: Николай Чухин, \\ Всеволод Васькин, Кирилл Митькин, \\ Андрей Петрухин. \\ CI: Максим Хабаров, Андрей Хорохорин.}
 
 \begin{document}
 \maketitle
-Конспект лекций по математическому анализу во втором курсе СПбГУ МКН <<Современное программирование>> (набор 2021 года).
+Конспект лекций по математическому анализу на втором курсе (третий и четвертый семестры) СПбГУ МКН <<Современное программирование>> (набор 2021 года).
 \subsubsection*{Лектор}
 Роман Викторович Бессонов.
 \subsubsection*{Как читать}
@@ -138,21 +144,28 @@
 \tableofcontents
 \newpage
 
-\import{sections/}{01.tex}
-\import{sections/}{02.tex}
-\import{sections/}{03.tex}
-\import{sections/}{04.tex}
-\import{sections/}{05.tex}
-\import{sections/}{06.tex}
-\import{sections/}{07.tex}
-\import{sections/}{08.tex}
-\import{sections/}{09.tex}
-\import{sections/}{10.tex}
-\import{sections/}{11.tex}
-\import{sections/}{12.tex}
-\import{sections/}{13.tex}
-\import{sections/}{14.tex}
-\import{sections/}{15.tex}
+\part{Третий семестр}
+
+\import{lectures/semester3/}{01.tex}
+\import{lectures/semester3/}{02.tex}
+\import{lectures/semester3/}{03.tex}
+\import{lectures/semester3/}{04.tex}
+\import{lectures/semester3/}{05.tex}
+\import{lectures/semester3/}{06.tex}
+\import{lectures/semester3/}{07.tex}
+\import{lectures/semester3/}{08.tex}
+\import{lectures/semester3/}{09.tex}
+\import{lectures/semester3/}{10.tex}
+\import{lectures/semester3/}{11.tex}
+\import{lectures/semester3/}{12.tex}
+\import{lectures/semester3/}{13.tex}
+\import{lectures/semester3/}{14.tex}
+\import{lectures/semester3/}{15.tex}
+
+\newpage
+\part{Четвёртый семестр}
+
+\import{lectures/semester4/}{01.tex}
 
 \end{document}
 
