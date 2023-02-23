@@ -1,6 +1,15 @@
 В этом семестре будет \textit{комплексный анализ}. Эта наука в первую очередь изучает \textit{аналитические функции} --- то есть те функции, которые совпадают со своим рядом Тейлора в окрестности любой точки (где определена функция).
 
-Рассмотрим две вещественные бесконечно гладкие функции $\frac{1}{1+x^{2}}$ и $e^{-x^{2}}$ {\color{red} рисунок графика!} Запишем ряды Тейлора этих функций в точке $0$:
+Рассмотрим две вещественные бесконечно гладкие функции $\frac{1}{1+x^{2}}$ и $e^{-x^{2}}$
+
+\begin{figure}[ht]
+    \centering
+    \incfig{similar-plots}
+    \caption{}
+    \label{fig:similar-plots}
+\end{figure}
+
+Запишем ряды Тейлора этих функций в точке $0$:
 \begin{align}
  \label{equation:introduction:taylor_series_of_1_over_1_plus_x_squared}
  \frac{1}{1+x^{2}} &= \sum_{k=0}^{\infty} (-x^{2})^{k}, \\
@@ -34,7 +43,9 @@
  Плоскость $\R^{2}$ мы часто будем отождествлять с комплексной плоскостью $\CC$ и будем писать $\R^{2} \cong \CC$ (так, вектор $ \begin{psmallmatrix}
   h_1 \\ h_2
  \end{psmallmatrix}$ отождествляется с комплексным числом $h_1 + i h_2 \in \CC$). Таким образом, можно считать, что $dx, dy \colon\, \CC \to \CC$ ($dx$ соответствует функции $\Real$ --- вещественной части, а $dy$ --- функции $\Imaginary$ --- мнимой части).
+ \end{df*}
 
+ \begin{df*}
  \textit{Дифференциальной формой} порядка $1$ в $\R^{2}$ (\textit{$1$-формой}) называется отображение $\omega$ из области $\Omega \subset \R^{2}$ в пространство линейных форм $\LL(\R^{2}, \CC)$. Каждая $1$-форма в $\R^{2}$ имеет вид
  \begin{align}
   \label{equation:1-form}
@@ -44,6 +55,7 @@
   \omega = P(z)\,dx + Q(z)\,dy, \quad z \in \Omega \subset \CC
  .\end{align*} 
 \end{df*}
+
 \begin{exmpl*}
  $\omega = x \, dy$ --- $1$-форма. В точке $2 \in \CC$ на векторе $ \begin{psmallmatrix}
   1 \\ 3
@@ -68,8 +80,10 @@
  $1$-форма $\omega$, представленная в виде \eqref{equation:1-form}, называется \textit{непрерывной}, если функции $P,Q \colon\, \Omega \to \CC$ непрерывны. $\omega$ называется $C^{k}$-гладкой, если $P$ и $Q$ --- $C^{k}$-гладкие ($k \in \N \cup \left\{ \infty \right\}$).
 \end{df*}
 \begin{df*}
- \textit{Путём} в $\CC$ называется непрерывная функция $\gamma \colon [a,b] \to \CC$. Путь $\gamma$ называется \textit{кусочно-гладким}, если $\gamma$ --- кусочно-гладкая функция, то есть $\gamma = \gamma = \gamma_1 + \ldots \gamma_n$, где $\gamma_i$ --- гладкие пути.
+ \textit{Путём} в $\CC$ называется непрерывная функция $\gamma \colon [a,b] \to \CC$. Путь $\gamma$ называется \textit{кусочно-гладким}, если $\gamma$ --- кусочно-гладкая функция, то есть $\gamma = \gamma_1 + \ldots \gamma_n$, где $\gamma_i$ --- гладкие пути.
+\end{df*}
 
+\begin{df*}
  Если $\gamma_1 \colon [a,b] \to \CC$ и $\gamma_2 \colon [b,c] \to \CC$ --- пути, то суммой путей $\gamma_1$ и $\gamma_2$ называется путь $(\gamma_1 + \gamma_2)\colon\, [a,c] \to \CC$, определённый по формуле
  \begin{align*}
   (\gamma_1 + \gamma_2)(t) = \begin{cases}
@@ -78,6 +92,7 @@
   \end{cases} 
  \end{align*} 
 \end{df*}
+
 \begin{notatn*}
  Если $\gamma \colon\, [a,b] \to \CC$ --- путь, то путь $-\gamma \colon [a,b] \to \CC$ определяется по формуле:
  \begin{align*}
@@ -122,15 +137,29 @@
  \end{align*} 
 \end{df}
 \begin{exmpl}
-{\color{red} рисунок}
+	Пути и гомотопия между ними на рисунке \eqref{fig:path-homptopy}	
 \end{exmpl}
+
+\begin{figure}[ht]
+    \centering
+		\incfig[0.5]{path-homptopy}
+    \caption{Пути и гомотопия между ними}
+    \label{fig:path-homptopy}
+\end{figure}
 
 Фактически, пути гомотопны, если один можно переделать в другой непрерывным образом.
 
 Область в определениях $\Omega$ важна.
 
 \begin{exmpl}
- {\color{red} рисунок} $\gamma_0$ --- верхняя полуокружность, $\gamma_1$ ---  нижняя полуокружность. Пути $\gamma_0$ и $\gamma_1$ гомотопны в $\CC$, но не гомотопны $\CC \setminus \left\{ 0 \right\}$.
+ $\gamma_0$ --- верхняя полуокружность, $\gamma_1$ ---  нижняя полуокружность. Пути $\gamma_0$ и $\gamma_1$ гомотопны в $\CC$, но не гомотопны $\CC \setminus \left\{ 0 \right\}$.
+
+\begin{figure}[ht]
+    \centering
+		\incfig[0.7]{paths-without-homptopy}
+		\caption{Слева пути гомотопны в $\CC$. Справа пути не гомотопны в $\CC \setminus \{0\}$}
+    \label{fig:paths-without-homptopy}
+\end{figure}
 
  Интуитивное объяснение: мы не можем непрерывно перевести один путь в другой, миновав выколотую точку $0$. Формальное доказательство давать не будем (см. фундаментальную группу единичной окружности).
 \end{exmpl}
@@ -151,8 +180,9 @@
    .\end{align*} То есть, интеграл формы по пути зависит лишь от начала и от конца пути.
  \end{enumerate}
 \end{thm}
-\begin{proof}
- Пусть
+\begin{proof}\
+
+	$1 \implies 2$. Пусть
  \begin{align*}
   \omega = d F = F'_x \, dx + F'_y \, dy
  .\end{align*} Возьмём любой путь $\gamma$ и проинтегрируем, используя формулу Ньютона-Лейбница:
@@ -161,10 +191,10 @@
    &= \int\limits_{0}^{1} \left( F(\gamma(t)) \right)'_t dt = F(\gamma(1)) - F(\gamma(0)) = F(e(\gamma)) - F(b(\gamma))
  .\end{align*} Полученное зависит только от начала и конца пути.
 
- Наоборот, пусть верен второй пункт. Выберем произвольную точку $p_0 \in \Omega$. Для любой точки $p \in \Omega$ зададим
+ $2 \implies 1$. Пусть верен второй пункт. Выберем произвольную точку $p_0 \in \Omega$. Для любой точки $p \in \Omega$ зададим
   \begin{align*}
   F(p) = \int\limits_{\gamma(p_0,p)}  \omega
- ,\end{align*} где $\gamma(p_0,p)$ --- произвольный путь в  $\Omega$, соединяющий $p_0$ и $p$.   Определение корректно, так интеграл формы не зависит от выбора пути. Кроме того, путь между $p_0$ и $p$ существует, так как $\Omega$ --- связное множество.
+ ,\end{align*} где $\gamma(p_0,p)$ --- произвольный путь в  $\Omega$, соединяющий $p_0$ и $p$.   Определение корректно, так как интеграл формы не зависит от выбора пути. Кроме того, путь между $p_0$ и $p$ существует, так как $\Omega$ --- связное множество.
 
  Проверим, что $F$  подходит. Запишем $\omega = P(z)\,dx + Q(z)\,dy$. Возьмём малое приращение $h \in \CC$, $h \to 0$:
  \begin{align*}
@@ -191,7 +221,12 @@
  \begin{itemize}
   \item $\omega$ замкнута в $\Omega$.
   \item Если пути $\gamma_0, \gamma_1 \colon [0,1] \to \Omega$ гомотопны в $\Omega$, то $\int_{\gamma_0} \omega = \int_{\gamma_1} \omega $.
-  \item $\int_{\partial \Pi} \omega = 0$, если $\Pi$ --- замкнутый прямоугольник в $\Omega$. {\color{red} картинка}.
+  \item $\int_{\partial \Pi} \omega = 0$, если $\Pi$ --- замкнутый прямоугольник в $\Omega$. 
+	\begin{figure}[ht]
+    \centering
+		\incfig[0.5]{closed-rectangle-and-its-border}
+    \label{fig:closed-rectangle-and-its-border}
+	\end{figure}
  \end{itemize}
 \end{thm}
 \begin{proof}\
@@ -203,6 +238,7 @@
  \begin{align*}
   p \in B(p_k,\eps(p_k)) \implies B(p,\eps_0) \subset B(p_k,2\eps(p_k))
  .\end{align*} 
+	
  {\color{red} рисунок.}
 
  Гомотопия $H$ равномерно непрерывна на компакте $[0,1]\times[0,1]$ (по теореме Кантора с первого курса): для любого $\eps > 0$ существует число $\delta(\eps)$, такое, что для любых двух точек $w_1,w_2 \in [0,1] \times [0,1]$ условие $\left\| w_1 - w_2 \right\| < \delta(\eps)$ влечёт $\left| H(w_1)-H(w_2) \right| < \eps$.
@@ -232,3 +268,4 @@
   \int\limits_{\eta - \rho}  \omega = 0
  .\end{align*} 
 \end{proof}
+
