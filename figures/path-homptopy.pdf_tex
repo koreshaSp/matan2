@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
+%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'path-homptopy.pdf' (pdf, eps, ps)
 %%
@@ -54,9 +54,9 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{path-homptopy.pdf}}%
-    \put(0.23252287,0.30834955){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_1$\end{tabular}}}}%
-    \put(0.46542199,0.13548406){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_2$\end{tabular}}}}%
+    \put(0.23307837,0.36062247){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_0$\end{tabular}}}}%
+    \put(0.56543751,0.08610102){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_1$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{path-homptopy.pdf}}%
-    \put(0.63572871,0.14998919){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H(\cdot, t) \text{ при разных } t$\end{tabular}}}}%
+    \put(0.76946532,0.13688087){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H(\cdot, t) \text{ при разных } t$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
