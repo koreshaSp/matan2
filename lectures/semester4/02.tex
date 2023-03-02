@@ -1,0 +1,158 @@
+\begin{df}
+ Область $\Omega \subset \CC$ называется \textit{односвязной}, если любые два пути с одинаковыми началом и концом гомотопны.
+\end{df}
+
+Гомотопия соединяет глобальную и локальную картины.
+
+\begin{crly}
+ Пусть $\Omega$ --- односвязная область. Тогда любая замкнутая $1$-форма в $\Omega$ точна в $\Omega$.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Следует из теоремы \ref{theorem:closed_1_form} и теоремы \ref{theorem:exact_1_form}.
+\end{proof}
+
+\begin{thm}
+ Пусть $\omega = P(x,y)\,dx + Q(x,y)\,dy$ --- $1$-форма с гладкими коэффициентами ($P, Q \in C^{1}(\Omega, \CC)$). Тогда $\omega$ замкнута тогда и только тогда, когда $d \omega = 0$.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $\omega$ замкнута. Тогда для любой точки $z_0 \in \Omega$  существует $\eps > 0$ такое, что $\omega = dF$ в $B(z_0, \eps) \subset \Omega$. Найдём второй дифференциал формы:
+ \begin{align*}
+  d \omega &= d(P\,dx + Q\,dy) = (P'_x \, dx + P'_y\,dy) \land dx + (Q'_x \, dx + Q'_y \, dy) \land dy = \\
+  &= P'_y \, dy \land dx + Q'_x \, dx \land dy = (Q'_x - P'_y) \, dx \land dy.
+ \end{align*} Но $P\,dx = Q \, dy = dF = F'_x \, dx + F'_y \, dy$. Продолжим:
+ \begin{align*}
+  d \omega = (-F''_{xy} + F''_{yx})\,dx \land dy = 0
+ .\end{align*} Равенство $F''_{xy} = F''_{yx}$ верно, так как $P$ и $Q$ гладкие. Это верно в любом шаре, значит это верно всюду.
+
+
+ Теперь пусть $d \omega = 0$ в $\Omega$. Проверим, что если $\Pi \subset \Omega$, то $\int_{\partial\Pi} \omega = 0 $. Действительно, по формуле Стокса \eqref{equation:formula_stox} (или формуле Грина \eqref{equation:green_formula})
+ \begin{align*}
+  \int\limits_{\partial\Pi} \omega = \int\limits_{\Pi} d\omega = 0.  
+ \end{align*} Можно и руками проверить.
+\end{proof}
+
+\begin{exmpl}
+ Рассмотрим форму $\omega = (a + bz)\,dz$, $\Omega = \CC$. Эта форма точна: так как $\CC$ односвязна, можно проверить лишь $d\omega = 0$.
+ \begin{align*}
+  d (a+bz)\,dz = (b\,dx + ib\,dy) \land (dx + i\,dy) = b (dx + i\,dy) \land (dx + i\,dy) = 0.
+ \end{align*} 
+\end{exmpl}
+
+Односвязность выпуклых областей проверяется гомотопией $H(s,t) = (1-t)\gamma_0(s) + t \gamma_1(s)$ пути $\gamma_0$ в $\gamma_1$.
+
+\begin{exmpl}
+ \label{example:form_2}
+ Пусть $a \in \CC$. Рассмотрим форму $\omega = \frac{1}{z - a}\,dz$ в области $\Omega = \CC \setminus \left\{ a \right\}$. Проверим, что $\omega$ замкнута в $\Omega$:
+ \begin{align*}
+  d \omega &= d \left( \frac{1}{z-a} \right) \land dz = \left( -\frac{1}{(z-a)^{2}}\,dx - \frac{i}{(z-a)^{2}}\,dy \right) \land dz = \\
+  &= - \frac{1}{(z-a)^{2}}\,dz \land dz = 0.
+ \end{align*} 
+\end{exmpl}
+
+\begin{exmpl}
+ Пусть $\omega$, $\Omega$ --- как в предыдущем примере \ref{example:form_2}, а $\gamma$ --- это окружность в $\CC$, ориентированная против часовой стрелки. Тогда
+ \begin{align*}
+  \int\limits_{\gamma} \omega = \int\limits_{\gamma} \frac{dz}{z-a} = \begin{cases}
+   0, \text{ если $a$ не лежит внутри $\gamma$;}  \\
+   2\pi i, \text{ иначе. }
+  \end{cases} 
+ \end{align*} Здесь предполагается, что $a \notin \gamma$.
+\end{exmpl}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Если $a$ не лежит внутри $\gamma$, тогда $\gamma$ гомотопна точке в $\Omega$. Значит, $\int_{\gamma} \omega = 0 $  в силу замкнутости.
+
+Пусть теперь $a$  лежит внутри $\gamma$. Изменим контур интегрирования:
+
+\begin{figure}[ht]
+    \centering
+    \incfig{gamma_with_tilde}
+    \caption{gamma_with_tilde}
+    \label{fig:gamma_with_tilde}
+\end{figure}
+
+\begin{align*}
+ \int\limits_{\tilde\gamma}  \omega = 0,
+\end{align*} так как $\tilde\gamma$ можно стянуть в точку.
+
+С другой стороны,
+ \begin{align*}
+ 0 = \int\limits_{\tilde\gamma}  \omega = \int\limits_{\gamma}  \omega + \int\limits_{I}  \omega + \int\limits_{-I}   \omega + \int\limits_{\gamma_r}  \omega = \\
+ \implies \int\limits_{\gamma} \omega = -\int\limits_{\gamma_r}   \omega.
+\end{align*}
+
+Теперь посчитаем по $\gamma_r$:
+ \begin{align*}
+ \int\limits_{\gamma_r} \frac{dz}{z - a}  = \int\limits_{0}^{2\pi}   \frac{d(re^{it} + a)}{r e^{it} + a - a} = \int\limits_{0}^{2\pi} r i e^{it}\,dt \frac{}{r e^{it}} = i \int\limits_{0}^{2\pi} = 2\pi i.
+\end{align*} 
+
+\end{proof}
+
+Мгновенный вывод: форма $\frac{dz}{z - a}$ не точна в $\CC \setminus \left\{ a \right\}$.
+
+\begin{lm}[%
+об устранении особенности]
+ Пусть $\Omega$ --- область, $\omega$ --- непрерывная $1$-форма в $\Omega$. Пусть $\omega$ замкнута  в $\Omega \setminus \left\{ a \right\}$. Тогда $\omega$ замкнута в $\Omega$.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Докажем, что для любого прямоугольника $\Pi \subset \Omega$
+ \begin{align*}
+  \int\limits_{\partial\Pi} \omega = 0. 
+ \end{align*} Пусть $\Pi$ --- прямоугольника в $\Omega$.
+
+ Если $a \notin \Pi$, то всё доказано, потому что $\Pi \subset \Omega \setminus \left\{ a \right\}$.
+
+ Если $a \in \Pi$.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{special_point_in_rectangle}
+    \caption{special_point_in_rectangle}
+    \label{fig:special_point_in_rectangle}
+\end{figure}
+
+\begin{align*}
+ \int\limits_{\gamma_+}  \omega + \int\limits_{\gamma_-}  \omega &= \int\limits_{\partial\Pi} + \int\limits_{I_1}   + \int\limits_{-I_1}   + \int\limits_{I_2}  + \int\limits_{-I_2}   + \int\limits_{C_+}   + \int\limits_{C_-}   = \\
+ &= \int\limits_{\partial\Pi} \omega + \underbrace{\int\limits_{\left\{ \left| z-a \right|=\eps \right\}}   }_{A_{\eps}}
+\end{align*} 
+
+\begin{align*}
+ \omega = P\,dx + Q\,dy
+\end{align*} 
+
+\begin{align*}
+ \left| A_{\eps} \right| \leqslant 2\pi\eps \cdot \max_{\left\{ \left| z-a \right|=\eps \right\}} \sqrt{\left| P \right|^{2} + \left| Q \right|^{2}} \leqslant 2\pi\eps B,
+\end{align*} где $B$ не зависит от $\eps$ (непрерывная функция на компакте ограничена). Переходя к пределу, получаем 
+\begin{align*}
+ \int\limits_{\partial\Pi}   \omega = 0.
+\end{align*} 
+ 
+\end{proof}
+
+Базовый принцип комплексного анализа: если у функции есть особенность, то её нужно локализовывать.
+
+\begin{lm}
+ Пусть $\Omega$ --- область, непрерывная $1$-форма $f\,dz$ точна в $\Omega$. Тогда существует функция $g \colon\,\Omega\to\CC$ такая, что для любого есть $z_0 \in \Omega$:
+ \begin{align*}
+  \lim_{z \to z_0} \frac{g(z)-g(z_0)}{z-z_0} = f(z_0)
+ .\end{align*} 
+
+ Иначе, говоря, $g'(z_0) = f(z_0)$ (в смысле комплексной производной).
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Раз форма $\omega = f\, dz$ точна, то существует $F \colon\, \Omega \to \CC $, $\omega = dF$. Построим с помощью $F$ функцию $g$. Для $z = x+iy \in \Omega$ положим
+ \begin{align*}
+  g(z) = F(x,y).
+ \end{align*} Проверим, что такой выбор нам подходит: по определению дифференциала
+ \begin{align}
+  F(x,y) = F(x_0, y_0) + (x-x_0) F'_x(x_0, y_0) + (y-y_0)F'_y(x_0,y_0) + o(\sqrt{\left| x-x_0 \right| + \left| y-y_0 \right|})
+ \end{align} Заметим, что (*) равносильна
+ \begin{align*}
+  g(z) - g(z_0) = (x-x_0)g'(z_0) + (y-y_0)g'(z_0) \cdot i + o(\left| z-z_0 \right|)
+ \end{align*} 
+ \begin{align*}
+  F'_x = g'_z, F'_y = g'_z \cdot i
+ \end{align*} 
+ \begin{align*}
+  = ((x-x_0) + i(y-y_0))g'(z_0) + o(\left| z-z_0 \right|) = (z-z_0)g'(z_0) + o(\left| z-z_0 \right|).
+ \end{align*} 
+\end{proof}
