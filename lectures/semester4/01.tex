@@ -330,7 +330,41 @@
    \begin{align*}
     \int\limits_{\eta} \omega = \int\limits_{\rho} \omega,  
    \end{align*} что и требовалось доказать.
+  \item Из пункта \ref{enum2:theorem:closed_1_form} в пункт \ref{enum3:theorem:closed_1_form}. Если весь прямоугольник $\Pi \subset \Omega$, то его границу $\partial \Pi$ можно стянуть в точку в $\Omega$. То есть, $\partial\Pi$ гомотопна постоянному пути $\gamma_{z_0}(t) = z_0$. Значит,
+   \begin{align*}
+    \int\limits_{\partial\Pi} \omega = \int\limits_{\gamma_{z_0}}   \omega = 0.
+   \end{align*} 
+\begin{figure}[ht]
+    \centering
+    \incfig{rectangle_into_point}
+    \caption{rectangle_into_point}
+    \label{fig:rectangle_into_point}
+\end{figure}
 
+\item Из пункта \ref{enum3:theorem:closed_1_form} в пункт \ref{enum1:theorem:closed_1_form}. Возьмём любую точку $z_0 \in \Omega$. Нужно найти функция $F \colon\, \R^{2} \to \CC$ такую, что $dF = \omega$ в $B(z_0,\eps)$ для некоторого $\eps > 0$. Положим
+ \begin{align*}
+  F(x,y) = \int\limits_{\gamma(x,y)} \omega,
+ \end{align*} где $\gamma(x,y)$ --- это путь из двух отрезков, параллельных осям $x$ и $y$ с началом в точке $z_0 = (x_0, y_0)$ и концом в точке $(x,y)$.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{parrallel_path_in_oblast}
+    \caption{parrallel_path_in_oblast}
+    \label{fig:parrallel_path_in_oblast}
+\end{figure}
+
+ Как и раньше, проверяется, что $dF = \omega$.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{differential_of_parallel_path_f}
+    \caption{differential_of_parallel_path_F}
+    \label{fig:differential_of_parallel_path_f}
+\end{figure}
+
+  \begin{align*}
+   \int\limits_{\gamma(z+h)}  \omega - \int\limits_{\gamma(z)}  \omega = \int\limits_{\Gamma} \omega. 
+  \end{align*} Далее так же.
  \end{itemize}
 \end{proof}
 
