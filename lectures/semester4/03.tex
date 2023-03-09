@@ -1,0 +1,258 @@
+% 2023.03.09 lecture 02
+
+\section{Степенные ряды}
+
+\begin{df}
+ \textit{Степенным рядом} с центром в точке $ z_0 \in \CC $ и коэффициентами $\{c_{n}\}_{n=0}^{\infty} \subset \CC $  называется формальное выражение
+ \begin{align*}
+  F(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}.
+ \end{align*} 
+\end{df}
+
+Так как слагаемых в ряду бесконечно много, то встаёт вопрос о сходимости степенного ряда. В одной точке ряд уж точно сходится (в точке $z_0$), а в других --- априори не ясно.
+
+\newcommand{\Rconv}{\ensuremath R_{\text{сх}}}
+
+\begin{df}
+ \textit{Радиусом сходимости} степенного ряда $ F(z) = \sum_{n=0}^{\infty} c_n(z-z_0)^{n}$ называется число
+ \begin{align*}
+  \Rconv = \sup \left\{ \rho \geqslant 0 \mid \text{ряд $ F(z) $ сходится в $ B(z_0, \rho) $} \right\}.
+ \end{align*} 
+\end{df}
+
+\begin{thm}[Адамара]
+ \label{theorem:adamar}
+ Пусть $ F(z) = \sum_{n=0}^{\infty} c_n(z - z_0)^{n} $ --- степенной ряд. Тогда
+ \begin{align*}
+  \Rconv = \frac{1}{\limsup\limits_{n \to \infty} \left| c_n \right|^{1 / n} }.
+ \end{align*} 
+\end{thm}
+
+\begin{exmpl}
+ Рассмотрим степенной ряд
+ \begin{align*}
+  e^{z} = \sum_{n=0}^{\infty} \frac{z^{n}}{n!}.
+ \end{align*} Перепишем коэффициент $ c_n $, пользуясь формулой Стирлинга:
+ \begin{align*}
+  c_n = \frac{1}{n!} = \left( \frac{e}{n} \right)^{n} \cdot \frac{1}{\sqrt{2\pi n}}(1 + o(1))
+ \end{align*} 
+
+ Найдём радиус сходимости, пользуясь теоремой \ref{theorem:adamar} Адамара и формулой Стирлинга:
+ \begin{align*}
+  \Rconv &= \frac{1}{\limsup\limits_{n \to \infty} \left( \frac{1}{n!} \right)^{1 / n} } = \frac{1}{\limsup\limits_{n \to \infty} \left( \left( \frac{e}{n} \right)^{n} \cdot \frac{1}{\sqrt{2\pi n}}(1+o(1)) \right)^{1 / n} } = \\
+  &= \frac{1}{\limsup\limits_{n \to \infty} \frac{e}{n} \cdot \left( \frac{1}{\sqrt{2\pi n}(1+o(1))} \right) } = \frac{1}{\limsup\limits_{n \to \infty} 0 } = +\infty,
+ \end{align*} что и ожидалось.
+\end{exmpl}
+
+\begin{exmpl}
+ $e^{z} = \sum_{n=0}^{\infty} \frac{z^{n}}{n!} $. Должно быть $R_{\text{сх}} = +\infty$. Проверим с помощью формулы Стирлинга:
+ \begin{align*}
+  R_{\text{сх}} = \frac{1}{\limsup\limits_{n\to \infty} \left( \frac{1}{n!} \right)^{\frac{1}{n}}} = \begin{bmatrix}
+   n! = \left( \frac{n}{e} \right)^{n} \sqrt{2\pi n} \cdot (1 + o(1))
+  \end{bmatrix} = \\
+  = [(n!)^{\frac{1}{n}} = \frac{n}{e} \underbrace{e^{\frac{2}{n}\log(2\pi n)}}_{\to 1}(1+o(1))^{n}]
+ \end{align*}
+ \begin{align*}
+  \R_{\text{сх}} = \frac{1}{\limsup\limits_{n \to \infty} \frac{e}{n}} = +\infty
+ \end{align*} 
+\end{exmpl}
+\begin{exmpl}
+ Рассмотрим ряд
+ \begin{align*}
+  \sum_{n=0}^{\infty} z^{n} = \frac{1}{1 - z}
+ \end{align*} Должно быть $R_{\text{сх}} = 1$. Проверим с помощью теоремы Адамара:
+
+ \begin{align*}
+  R_{\text{сх}} = \frac{1}{\limsup\limits_{n\to \infty} 1^{\frac{1}{n}}} = 1.
+ \end{align*} 
+\end{exmpl}
+\begin{exmpl}
+ Рассмотрим многочлен $ \sum_{k=0}^{N} c_{k} z^{k}$. Тогда
+ \begin{align*}
+  R_{\text{сх}} = \frac{1}{\limsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}} = \frac{1}{\limsup\limits_{n \to \infty} 0} = +\infty.
+ \end{align*} 
+\end{exmpl}
+
+Красота теоремы \ref{theorem:adamar} в том, что в нём можно подставлять всё, что угодно и получить радиус сходимости.
+
+\begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:adamar} Адамара}]
+ Пусть $0 < \rho < \frac{1}{\limsup_{n \to \infty}\left| c_n \right|^{1 / n}}$. Тогда существует $\eps > 0$ такое, что
+ \begin{align*}
+  \rho \leqslant \frac{1 - \eps}{\limsup\limits_{n\to \infty} \left| c_n \right|^{\frac{1}{n}}}.
+ \end{align*} Перепишем её:
+ \begin{align*}
+  \limsup\limits_{n\to \infty} \rho \left| c_n \right|^{1 / n} \leqslant 1 - \eps.
+ \end{align*} Тогда
+ \begin{align*}
+  \rho \left| c_n \right|^{1 / n} \leqslant 1 - \frac{\eps}{2}.
+ \end{align*} для достаточно больших $n$. Перепишем:
+ \begin{align*}
+  \left| c_n \right| \rho^{n} \leqslant \left( 1 - \frac{\eps}{2} \right)^{n}.
+ \end{align*} Значит для любого $z \in B(z_0, \rho)$
+ \begin{align*}
+  \sum_{n=N}^{\infty} \left| c_n(z - z_0)^{n} \right| \leqslant \sum_{n=N}^{\infty} \left(1 - \frac{\eps}{2}\right)^{n} < \infty
+ \end{align*} Значит, $R_{\text{сх}} \geqslant \rho$. Так как это верно для всех $\rho$, то
+ \begin{align*}
+  R_{\text{сх}} \geqslant \frac{1}{\limsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}}.
+ \end{align*} Это неравенство верно и для случая, когда $\frac{1}{\limsup_{n\to \infty} \left| c_n \right|^{1 / n}} = 0$ (оно тривиально).
+
+ Осталось доказать в другую сторону. Нужно доказать, что если ряд \begin{align*}
+  \sum_{n=0}^{\infty} c_n(z - z_0)^{n}
+ \end{align*} сходится в $B(z_0, \rho)$ для $\rho > \frac{1}{\limsup_{n\to \infty} \left| c_n \right|^{1 / n}}$, то это приводит к противоречию.
+
+Пусть есть сходимость для такого $\rho$. Тогда
+\begin{align*}
+ \rho \geqslant \frac{1 + \eps}{\limsup\limits_{n \to \infty} \left| c_n \right|^{1 / n} }
+\end{align*} для некоторого $\eps > 0$. Тогда
+\begin{align*}
+ \limsup\limits_{ n \to \infty } \rho \left| c_n \right|^{1/ n} \geqslant 1 + \eps \implies \rho \left| c_n \right|^{1 / n} \geqslant 1 + \frac{\eps}{2}
+\end{align*} при $n \geqslant N$. Тогда
+\begin{align*}
+ \rho^{n} \left| c_n \right| \geqslant \left( 1 + \frac{\eps}{2} \right)^{n}.
+\end{align*} Значит,
+\begin{align*}
+ \left| c_n (z - z_0)^{n} \right| \geqslant \left( 1 + \frac{\eps}{2} \right)^{n}
+\end{align*} Но правая часть не стремится к нулю, а это противоречие.
+\end{proof}
+
+Покажем, что у степенных рядов есть комплексная дифференцируемость.
+
+\begin{crly}[комплексная дифференцируемость степенных рядов]
+ \label{corollary:complex_differential_of_}
+ Пусть
+ \begin{align*}
+  f(z) = \sum_{n=0}^{\infty} c_n(z - z_0)^{n}.
+ \end{align*} Тогда для любой точки $w \in B(z_0, R_{\text{сх}})$ существует предел
+ \begin{align*}
+  \lim_{z \to w} \frac{f(z) - f(w)}{z - w} = \sum_{n=1}^{\infty} c_n \cdot n (w - z_0)^{n-1},
+ \end{align*} причём ряд в правой части имеет тот же радиус сходимости $R_{\text{сх}}$.
+\end{crly}
+\begin{lm}
+ \label{lemma:complex_n_w_inequality}
+ Для любых $z, w \in \CC$, $z \neq w$ и для любого $n \geqslant 1$ верно неравенство
+ \begin{align*}
+  \left|\frac{z^{n} - w^{n}}{z - w} \right| \leqslant n \cdot \left| z \right|^{n-1} \cdot \left| w \right|^{n-1}
+ \end{align*} 
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ В силу симметрии можно считать, что $\left| z \right| \geqslant \left| w \right|$. Вынесем главный член асимптотики:
+ \begin{align*}
+  \mathrm{LHS} &= \left| z \right|^{n-1} \cdot \frac{1 - \left( \frac{w}{z} \right)^{n}}{1 - \frac{w}{z}} = \left| z \right|^{n-1} \left| 1 + \frac{w}{z} + \ldots + \left( \frac{w}{z} \right)^{n-1} \right| \leqslant \\
+  &\leqslant n \cdot \left| z \right|^{n-1} \leqslant n \left( \left| z \right|^{n-1} + \left| w \right|^{n-1} \right).
+ \end{align*} 
+\end{proof}
+\begin{proof}[\normalfont\textsc{Доказательство следствия \ref{corollary:complex_differential_of_}}]
+ Давайте считать $z_0 = 0$ для простоты (иначе сдвинем).
+  \begin{align*}
+  \frac{f(z)-f(w)}{z-w} = \sum_{n=1}^{\infty} c_n \frac{z^{n}-w^{n}}{z-w}.
+ \end{align*} Тогда
+ \begin{align*}
+  \lim_{z \to w} \frac{f(z) - f(w)}{z-w} = \lim_{z \to w} \sum_{n=1}^{\infty} c_n \frac{z^{n}-w^{n}}{z-w} =^{(\ast)} \sum_{n=0}^{\infty} c_n \lim_{z \to w} \frac{z^{n} - w^{n}}{z-w} = \sum_{n=1}^{\infty} c_n \cdot n w^{n-1}.
+ \end{align*} Нужно лишь теперь обосновать (*). Из пушки по воробьям: это теорема \ref{theorem:lebesgue-majoring-convergence} Лебега о мажорируемой сходимости. Есть функция $h_z(n) = c_n \frac{z^{n}-w^{n}}{z-w}$. Мы хотим найти такую функцию $g$  такую, что $\left| h_z(n) \right| \leqslant \left| g(n) \right|$  и $ \sum_{n=0}^{\infty} \left| g(n) \right| < \infty$. Найдём по лемме \ref{lemma:complex_n_w_inequality}:
+ \begin{align*}
+  \left| h_z(n) \right| \leqslant \left| c_n \right| \cdot \left( \left| z \right|^{n-1} + \left| w \right|^{n-1} \right) \leqslant 2 \left| c_n \right| \cdot n \cdot \rho^{n-1},
+ \end{align*} где $\rho=(1 - \eps)R_{\text{сх}}$. Тогда положим  $g(n) = 2 \left| c_n \right| \cdot n \cdot \rho^{n-1}$ . Осталось проверить суммируемость $g(n)$:
+  \begin{align*}
+   \iff \sum_{n=1}^{\infty} n \left| c_n \right| \cdot \rho^{n - 1} < \infty.
+  \end{align*} Проверим по теореме \ref{theorem:adamar}:
+  \begin{align*}
+   \rho < \frac{1}{\limsup\limits_{n \to \infty} \left( n \left| c_n \right|\rho^{n-1} \right)^{n+1}} = \frac{1}{\limsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
+  \end{align*} так как $ \lim_{n \to \infty} (n+1)^{\frac{1}{n}} = 1 $.
+\end{proof}
+
+\section{Аналитические функции}
+
+Следующая теорема фундаментальная.
+
+\begin{thm}[%
+Коши-Гурса-Морера]
+ Пусть $\Omega$  --- область, $f\colon\,\Omega \to \CC$  --- функция. Следующие условия равносильны.
+ \begin{enumerate}
+  \item \label{enum1:theorem:cauchy_gurs_morer} Для любой точки $z_0 \in \Omega$ существует предел
+   \begin{align*}
+    f'(z_0) := \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}.
+   \end{align*} 
+  \item Функция $f$ непрерывна на $\Omega$ и $1$-форма $f\,dz$  замкнута на $\Omega$ .
+  \item Для любой точки $ z_0 \in \Omega$ существует число $r(z_0) > 0$ такое, что
+    \begin{align*}
+    f(z) = \sum_{n=0}^{\infty} c_n(z-z_0)^{n},
+   \end{align*} где вышеуказанный ряд сходится в $B(z_0, r(z_0)) \subset \Omega$.
+ \end{enumerate}
+ Более того,  если 1-3 выполнены, то в пункте 3 можно взять $r(z_0) = \mathrm{dist}(z_0, \CC \setminus \Omega).$
+\end{thm}
+\begin{df}
+ Функция, удовлетворяющая условиям 1-3 называется \textit{аналитической}.
+\end{df}
+\begin{proof}[\normalfont\textsc{Доказательство}]\
+ \begin{itemize}
+  \item $1 \implies 2$. Функция $f$ непрерывна на $\Omega$, потому что $f(z) = f(z_0) + f'(z_0)(z-z_0)(1+o(1))$. Значит, если $z \to z_0$, то $f(z) \to f(z_0)$.
+
+ Для того, чтобы проверить замкнутость $f \, dz$, проверим, что для любого замкнутого прямоугольника $\Pi \subset \Omega$ имеет место $\int_{\partial\Pi} f\,dz =0 $. От противного: предположим, что это не так: существует $\eps > 0$ такое, что 
+\begin{align*}
+ \left|\int_{\partial\Pi} f\,dz  \right|  \geqslant \eps^{2}\left( \diam \Pi \right)^{2} > 0. \qquad ( \ast\ast )
+\end{align*}
+\begin{figure}[ht]
+    \centering
+    \incfig{theorem_cauchy_gurs_morer_rect}
+    \caption{theorem_cauchy_gurs_morer_rect}
+    \label{fig:theorem_cauchy_gurs_morer_rect}
+\end{figure}
+
+ Обозначим $\Pi_0 = \Pi$, $\Pi_1 = Q_i$, где $Q_i$ такое, что 
+ \begin{align*}
+  \left| \int\limits_{\partial Q}  f\,dz \right| \geqslant \eps^{2} \left( \diam Q_i \right)^{2}.
+ \end{align*} Такой $Q_i$ обязательно есть, потому что
+ \begin{align*}
+  4\eps^{2}(\diam Q_i)^{2} \leqslant \eps^{2} \left( \diam \Pi \right)^{2} \leqslant \left| \int\limits_{\partial \Pi} f\,dz   \right| = \left| \sum_{i=1}^{4} \int\limits_{\partial Q_i} f\,dz    \right| \leqslant 4 \max_{i=1}^{k} \left| \int\limits_{\partial Q_i} f\,dz   \right|.
+ \end{align*} Мы получили (**).
+
+ По $\Pi_1$ так же построим $\Pi_2$, затем $\Pi_3$ и так далее. Мы получим последовательность вложенных компактов  $\Pi_0, \Pi_1, \ldots$ , с уменьшающимися диаметрами. Поэтому существует точка $z_0 \in \Omega$ такое, что,
+ \begin{align*}
+  \left\{ z_0 \right\} = \bigcup_{n=0}^{\infty} \Pi_n.
+ \end{align*} Для большого $n$ запишем
+ \begin{align*}
+  \int\limits_{\partial \Pi_n}  f\,dz &= \int\limits_{\partial\Pi_n}  \left( f(z_0) + f'(z_0)(z-z_0) + o(z - z_0) \right)\,dz = \\
+  &= \int\limits_{\partial\Pi_n}  \left( a+bz \right)\,dz + \int\limits_{\partial\Pi_n}  o(z-z_0)\,dz
+ \end{align*} для некоторых комплексных чисел $a,b \in \CC$. Но по примеру \ref{example:form_a_plus_b_times_z_dz} это ноль:
+ \begin{align*}
+  \int\limits_{\partial\Pi_n} f\,dz  = o(\left| z-z_0 \right| \diam \Pi_n) = o(\left( \diam \Pi_n \right)^{2}).
+ \end{align*} С другой стороны,
+ \begin{align*}
+  \int\limits_{\partial\Pi_n} f\,dz  \geqslant \eps^{2}\left( \diam \Pi_n \right)^{2},
+ \end{align*} а это противоречие!
+
+\item $1 \implies 3$. Пусть $z_0 \in \Omega$, $B(z_0, \rho) \subset \Omega$, $\zeta \in B(z_0, \rho)$
+\begin{figure}[ht]
+    \centering
+    \incfig{theorem_cauchy_gurs_morer_1_to_3}
+    \caption{theorem_cauchy_gurs_morer_1_to_3}
+    \label{fig:theorem_cauchy_gurs_morer_1_to_3}
+\end{figure}
+
+ Рассмотрим форму
+ \begin{align*}
+  \omega = \frac{f(z) - f(\zeta)}{z-\zeta}\,dz.
+ \end{align*} Форма $\omega$ замкнута в $B(z_0, \rho) \setminus \left\{ \zeta \right\}$. Используем из $1$ в 2 для функции $\frac{f(z) - f(\zeta)}{z-\zeta}$. Кроме того, $\omega$ имеет непрерывные коэффициенты в $B(z_0, \rho)$. По лемме \ref{lemma:ob_ustranenii_osobennosti} об устранении особенности $\omega$ замкнута в $B(z_0, \rho)$. Возьмём и проинтегрируем по хорошему контуру. Возьмём $\rho' < \rho$ такое, что $\zeta \in B(z_0, \rho')$. Возьмём контур
+ \begin{align*}
+  C = \left\{ \left| z_0 - z \right| = \rho' \right\}.
+ \end{align*} И проинтегрируем по нему:
+ \begin{align*}
+  0=\frac{1}{2\pi i} \int\limits_{C} \omega  = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{z - \zeta}  - \frac{1}{2\pi i} f(\zeta) \int\limits_{C} \frac{dz}{z - \zeta} = \\
+  \implies f(\zeta) = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{z - \zeta}.
+ \end{align*} Но
+ \begin{align*}
+  \frac{1}{1 - \zeta} = \frac{1}{z - z_0 + z_0 - \zeta} = \frac{1}{z - z_0} \cdot \frac{1}{1 -  \frac{\zeta - z_0}{z - z_0}} = \\
+  = \frac{1}{z-z_0} \sum_{n=0}^{\infty} \left( \frac{\zeta-z_0}{z-z_0} \right)^{n}.
+ \end{align*} Ряд сходится для $z \in C$, ведь
+ \begin{align*}
+  \left| \frac{\zeta - z_0}{z-z_0} \right| < 1.
+ \end{align*}
+ Степенной ряд готов.
+ \begin{align*}
+  f(\zeta) = \sum_{n=0}^{\infty} c_n \left( \zeta - z_0 \right)^{n},
+ \end{align*} где
+ \begin{align*}
+  c_n = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{(z - z_0)^{n + 1}}.
+ \end{align*} 
+ \end{itemize}
+\end{proof}
