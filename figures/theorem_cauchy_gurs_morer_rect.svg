@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="theorem_cauchy_gurs_morer_rect.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7039927"
+     inkscape:cx="397.7314"
+     inkscape:cy="142.75716"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="840"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.635;stroke-linejoin:bevel;fill-opacity:0"
+       id="rect845"
+       width="179.33154"
+       height="91.539322"
+       x="26.693729"
+       y="190.3593" />
+    <rect
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.635;stroke-linejoin:bevel"
+       id="rect935"
+       width="90.604546"
+       height="45.302273"
+       x="26.693729"
+       y="190.3593" />
+    <rect
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.635;stroke-linejoin:bevel"
+       id="rect937"
+       width="88.72699"
+       height="46.237041"
+       x="117.29828"
+       y="235.66158" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="71.812218"
+       y="215.98883"
+       id="text1109"><tspan
+         sodipodi:role="line"
+         id="tspan1107"
+         style="stroke-width:0.264583"
+         x="71.812218"
+         y="215.98883">$Q_1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="160.5219"
+       y="216.41586"
+       id="text2377"><tspan
+         sodipodi:role="line"
+         id="tspan2375"
+         style="stroke-width:0.264583"
+         x="160.5219"
+         y="216.41586">$Q_2$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="79.353745"
+       y="273.72385"
+       id="text3569"><tspan
+         sodipodi:role="line"
+         id="tspan3567"
+         style="stroke-width:0.264583"
+         x="79.353745"
+         y="273.72385">$Q_3$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="166.11429"
+       y="260.40585"
+       id="text4587"><tspan
+         sodipodi:role="line"
+         id="tspan4585"
+         style="stroke-width:0.264583"
+         x="166.11429"
+         y="260.40585">$Q_4$</tspan></text>
+  </g>
+</svg>
