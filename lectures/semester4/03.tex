@@ -166,7 +166,7 @@
 
 \begin{thm}[%
 Коши-Гурса-Морера]
- Пусть $\Omega$  --- область, $f\colon\,\Omega \to \CC$  --- функция. Следующие условия равносильны.
+ Пусть $\Omega$  --- область, $f\colon\,\Omega \to \CC$  --- функция. Тогда следующие условия равносильны.
  \begin{enumerate}
   \item \label{enum1:theorem:cauchy_gurs_morer} Для любой точки $z_0 \in \Omega$ существует предел
    \begin{align*}
@@ -221,7 +221,7 @@
   \int\limits_{\partial\Pi_n} f\,dz  \geqslant \eps^{2}\left( \diam \Pi_n \right)^{2},
  \end{align*} а это противоречие!
 
-\item $1 \implies 3$. Пусть $z_0 \in \Omega$, $B(z_0, \rho) \subset \Omega$, $\zeta \in B(z_0, \rho)$
+\item $1,2 \implies 3$. Пусть $z_0 \in \Omega$, $B(z_0, \rho) \subset \Omega$, $\zeta \in B(z_0, \rho)$
 \begin{figure}[ht]
     \centering
     \incfig{theorem_cauchy_gurs_morer_1_to_3}
@@ -254,5 +254,21 @@
  \begin{align*}
   c_n = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{(z - z_0)^{n + 1}}.
  \end{align*} 
+
+\item $ (3 \implies 1) $ . У ряда 
+ \begin{align*}
+  f(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}
+ \end{align*} существует производная в любой точке $ w \in B(z_0, r(z_0))$:
+ \begin{align*}
+  f'(w) = \sum_{n=1}^{\infty} c_n \cdot n(w - z_0)^{n-1},
+ \end{align*} в частности это верно в точке  $ w = z_0 $.
+ 
+\item $ (2 \implies 1, 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $. Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $. Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (следствие). Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит, $ g $ удовлетворяет условию $ 3 $, значит
+ \begin{align*}
+  g = \sum_{k=0}^{\infty}a_k(z-z_0)^{k}.
+ \end{align*} Поэтому,
+ \begin{align*}
+  f = g' = \sum_{k=1}^{\infty}a_k \cdot k \cdot (z-z_0)^{k-1}.
+ \end{align*} Значит, $ f $ удовлетворяет условию 3. 
  \end{itemize}
 \end{proof}
