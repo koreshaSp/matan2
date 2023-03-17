@@ -12,3 +12,4 @@ matan2.pdf
 *.synctex(busy)
 *.out
 .DS_Store
+lectures/semester*/*.pdf

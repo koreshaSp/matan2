@@ -19,6 +19,7 @@
 \usepackage{microtype}
 \usepackage{pdfpages}
 \usepackage{pgfplots}
+\usepackage{subfiles}
 \usepackage{systeme,mathtools}
 \usepackage{textcomp}
 \usepackage{transparent}
@@ -33,6 +34,7 @@
  \def\svgwidth{#1\columnwidth}
  \import{./figures/}{#2.pdf_tex}
 }
+\graphicspath{{figures/}}
 
 \pdfsuppresswarningpagegroup=1
 
@@ -120,6 +122,7 @@
 \newcommand{\lan}{\ensuremath \lambda_n}
 \newcommand{\alan}{\ensuremath \A_{\lan}}
 \newcommand{\LF}{\ensuremath \LL(\R^2, \CC)}
+\newcommand{\lao}{\ensuremath \lambda_{1}}
 
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Real}{Re}
@@ -150,29 +153,29 @@
 
 \part{Третий семестр}
 
-\import{lectures/semester3/}{01.tex}
-\import{lectures/semester3/}{02.tex}
-\import{lectures/semester3/}{03.tex}
-\import{lectures/semester3/}{04.tex}
-\import{lectures/semester3/}{05.tex}
-\import{lectures/semester3/}{06.tex}
-\import{lectures/semester3/}{07.tex}
-\import{lectures/semester3/}{08.tex}
-\import{lectures/semester3/}{09.tex}
-\import{lectures/semester3/}{10.tex}
-\import{lectures/semester3/}{11.tex}
-\import{lectures/semester3/}{12.tex}
-\import{lectures/semester3/}{13.tex}
-\import{lectures/semester3/}{14.tex}
-\import{lectures/semester3/}{15.tex}
+\subfile{lectures/semester3/01.tex}
+\subfile{lectures/semester3/02.tex}
+\subfile{lectures/semester3/03.tex}
+\subfile{lectures/semester3/04.tex}
+\subfile{lectures/semester3/05.tex}
+\subfile{lectures/semester3/06.tex}
+\subfile{lectures/semester3/07.tex}
+\subfile{lectures/semester3/08.tex}
+\subfile{lectures/semester3/09.tex}
+\subfile{lectures/semester3/10.tex}
+\subfile{lectures/semester3/11.tex}
+\subfile{lectures/semester3/12.tex}
+\subfile{lectures/semester3/13.tex}
+\subfile{lectures/semester3/14.tex}
+\subfile{lectures/semester3/15.tex}
 
 \newpage
 \part{Четвёртый семестр}
 
-\import{lectures/semester4/}{01.tex}
-\import{lectures/semester4/}{02.tex}
-\import{lectures/semester4/}{03.tex}
-\import{lectures/semester4/}{04.tex}
+\subfile{lectures/semester4/01.tex}
+\subfile{lectures/semester4/02.tex}
+\subfile{lectures/semester4/03.tex}
+\subfile{lectures/semester4/04.tex}
 
 \end{document}
 
