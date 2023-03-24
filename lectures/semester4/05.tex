@@ -1,0 +1,196 @@
+% 2023.03.23 lecture 05
+\documentclass[../../main.tex]{subfiles}
+\begin{document}
+
+\section{Логарифм и аргумент.}
+
+\begin{df}[%
+аналитическая ветвь логарифма]
+ Пусть $ \Omega  \subset \CC$ --- область, $ f \colon\, \Omega \to \CC   $ --- аналитическая функция. Тогда функция $ g \colon\, \Omega \to \CC   $ называется \textit{аналитической ветвью} $ \log f $, если $ g $ аналитична и
+ \begin{align*}
+  e^{g(z)} = f(z)
+ \end{align*} для всех $ z \in \Omega $.
+\end{df}
+\begin{remrk}
+ Если существует точка $ z_0 $ такая, что $ f(z_0) = 0 $, то у функции $ f $ нет аналитической ветви логарифма. 
+\end{remrk}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $ e^{z} \neq 0 $ для $ z \in \CC $.
+\end{proof}
+
+\begin{exmpl}
+ Пусть $ \Omega = \CC \setminus \left\{ 0 \right\} $, и функция $ f(z) = z $. Предположим, что у $ f $ есть аналитическая ветвь логарифма --- функция $ g $. Продифференцируем:
+ \begin{align*}
+  g' \cdot e^{g} = 1 \implies g' = \frac{1}{e^{g}} = \frac{1}{z}.
+ \end{align*} Проинтегрируем
+ \begin{align*}
+  \int\limits_{\left| z \right|=1} g'\,dz = 0,
+ \end{align*} так как $ g'\,dz = dg $ --- точная форма.
+
+ С другой стороны,
+ \begin{align*}
+  \int\limits_{\left| z \right|=1}   \frac{dz}{z} = 2\pi i.
+ \end{align*}
+\end{exmpl}
+
+\begin{thm}[%
+]
+ Если $ \Omega \subset \CC $ --- односвязная область, и $ f(z) \neq 0 $ для любой $ z \in \Omega $, то существует аналитическая ветвь $ \log f $. Более того, любые две аналитические ветви $ \log f $ отличаются на $ 2\pi k i $, $ k \in \Z $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Рассмотрим функцию $h = \frac{f'}{f}$. Функция $ h $ аналитична в $ \Omega $. Значит, форма  $ h\,dz $ замкнута в  $ \Omega $ . Значит, $ h\,dz $ точна в  $ \Omega $, потому что  $ \Omega $  односвязна. Тогда существует аналитическая в $ \Omega $  функция $ g $  такая, что $ g' = h $ в  $ \Omega $. Наша цель: показать, что $ g $  почти-что и есть логарифм $ f $.
+
+ Докажем, что существует $ c $  такая, что $ e^{g+c} = f $.
+ \begin{align*}
+  \left( \frac{e^{g+c}}{f} \right)' = \frac{g' e^{g+c} \cdot f - e^{g+c} \cdot f'}{f^{2}} = \frac{\frac{f'}{f} \cdot e^{g+c} \cdot f - f' \cdot e^{g+c}}{f^{2}} = 0.
+ \end{align*} Значит, $ \frac{e^{g+c}}{f} $  --- аналитическая функция на $ \Omega $, со всюду нулевой производной. Значит, по неравенству Лагранжа $ e^{g+c} = \tilde c f $ всюду в $ \Omega $. Выберем $ \tilde {\tilde c} $ так, что $ \frac{e^{g(z_0) + \tilde {\tilde c}}}{f(z_0)} = \tilde c $, и тогда $ e^{g+c} = f $ всюду в $ \Omega $. Значит, $ g + c $ --- аналитическая ветвь логарифма $ f $.
+ \begin{align*}
+  e^{\tilde {\tilde c}} = \frac{\tilde c \cdot f(z_0)}{e^{g(z_0)}}
+ \end{align*} в какой-то точке $ z_0 \in \Omega $.
+
+ Осталось доказать единственность. Пусть $ e^{g_1} = e^{g_2} = f $ в $ \Omega $. Тогда
+ \begin{align*}
+  e^{g_1 - g_2} = 1
+ \end{align*} в $ \Omega $. Тогда $ (g_1-g_2)(z) = 2\pi i k (z) $, где $ k(z) \in \Z$. Так как функция $k$ непрерывна, то $ k $ --- это константа в $ \Omega $.
+\end{proof}
+\begin{remrk*}
+ $ e^{\lambda} = 1 $, $ \lambda = a + ib $, тогда
+ \begin{align*}
+  \left|e^{a} \cdot e^{ib} \right| = 1
+ \end{align*} $ e^{a} = 1 $, $ a \in \R $. $ a = 0 $, $ e^{ib} = 1 \implies \cos b + i \sin b = 1$. Значит, $ \sin b = 0 \implies \cos b = 1 $, $ b = 2\pi k $.
+\end{remrk*}
+
+\begin{df}
+ Пусть $ f $ --- аналитическая в $ \Omega $. \textit{Непрерывной ветвью} аргумента $ f $ называется непрерывная функция $ \arg f \colon\, \Omega \to \R $ такая, что
+ \begin{align*}
+  \left| f(z) \right| \cdot e^{i \arg f(z)} = f(z).
+ \end{align*}
+\end{df}
+\begin{thm}
+ Если область $ \Omega \subset \CC  $ односвязна, $ f \neq 0 $ в $ \Omega $, то существует непрерывная ветвь аргумента $ f $, причём любые две такие ветви отличаются на $ 2\pi k $, $ k \in \Z $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $ \arg f(z) = \Imaginary (\log f) $, где $ \log f $ --- аналитическая ветвь логарифма $ f $. Тогда
+ \begin{align*}
+ f = e^{\log f} = e^{\Real \log f} \cdot e^{i \Imaginary (\log f)} = \left| f \right| e^{i \arg f}.
+ \end{align*} Если $ A_1, A_2 $ --- непрерывные ветви аргумента, то
+ \begin{align*}
+  e^{i(A_1 - A_2)} = \frac{\left| f \right|e^{i(A_1)}}{\left| f \right|e^{iA_2}} = \frac{\left| f \right|}{\left| f \right|} = 1.
+ \end{align*} Значит, $ A_1 - A_2 = 2\pi k(z) $, где $ k(z) \in \Z $. Так как $ k $ непрерывна, то $ k \equiv k_0 $, $ k_0 \in \Z $.
+\end{proof}
+\begin{remrk}
+ В ходе доказательства мы проверили, что $ e^{\Real f} = \left| f \right| = e^{\ln \left| f \right|} $, где $ \ln \left| f \right| $ --- вещественный логарифм в старом смысле. Иными словами,
+ \begin{align*}
+  \Real (\log f) &= \ln \left| f \right|, \\
+  \Imaginary (\log f) &= \arg f.
+ \end{align*}
+\end{remrk}
+
+\begin{df}
+ Пусть $ \alpha \in\CC $, $ f \colon\, \Omega \to \CC   $ --- аналитическая функция, существует $ \log f $  --- аналитическая ветвь логарифма функции $ f $. Тогда
+ \begin{align*}
+  f^{\alpha} = e^{\alpha \log f}.
+ \end{align*} В частности, в $ \CC \setminus \left\{ \left(-\infty, 0\right]   \right\} $  определена степень $ z^{\alpha} = e^{\alpha \log z} $, где $ \log z $ --- какая-то ветвь логарифма $ z $.
+\end{df}
+
+\begin{df}
+ \textit{Главная ветвь} $ \log z $ --- это такая аналитическая ветвь логарифма $ z $, что $ \log 1 = 0 $.
+\end{df}
+\begin{exmpl}
+ Вычислим $ i^{i} $, если степень понимается заданной с помощью главной ветви логарифма.
+
+\begin{align*}
+ i^{i} = e^{i \log i} = e^{i \cdot \left( \Real \log f + \Imaginary \log f \right)} = e^{i \cdot \left( \ln \left| i \right| + i \arg i \right)} = e^{-\arg i} = e^{-\pi / 2}.
+\end{align*} Почему же $ \arg i = \pi / 2 $?  $ i = e^{i \frac{\pi}{2}} $ , и в области $ \CC \setminus \left(-\infty, 0\right]   $  полярные координаты задают непрерывную ветвь аргумента. 
+\end{exmpl}
+
+\newpage
+\section{Принцип максимума.}
+
+\begin{df}
+ Пусть $ (X_1,\rho_1) $, $ (X_2,\rho_2) $ --- метрические пространства.
+ $ f \colon\, (X_1,\rho_1) \to (X_2, \rho_2)   $ --- \textit{открытое отображение}, если оно переводит открытые множества в открытые.
+\end{df}
+\begin{remrk}
+ Композиция открытых отображений --- открытое отображение.
+\end{remrk}
+\begin{thm}
+ Пусть $ \Omega \subset \CC$ --- область, $ f \colon\, \Omega \to \CC  $  --- аналитическая функция, $ f \not\equiv \mathrm{const} $. Тогда $ f $ --- открытое отображение.
+\end{thm}
+\begin{thm}[принцип максимума]
+ Если $ f \colon\, \Omega \to \CC $ --- аналитическая и существует $ z_0 \in \Omega $ такая, что $ \left| f(z_0) \right| \geqslant \left| f(z) \right| $ для любой $ z \in \Omega $, то $ f \equiv \mathrm{const} $.
+\end{thm}
+\begin{prop}
+ Из теоремы 1 следует теорема 2.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Так как $ f(B(z_0, \eps)) $ содержит точку $ f(z_0) $ в предположении теоремы 2, но не содержит точки $ w $ такие, что $ \left| w \right| > \left| f(z_0) \right| $. Значит $ f $ не открытое, и значит $ f \equiv \mathrm{const} $.
+\end{proof}
+\begin{lm}
+ Рассмотрим $ F(x, y) = (u(x,y), v(x,y)) $, где $ u(x,y) = \Real f(x + iy) $, $ v(x,y) = \Imaginary f(x +iy) $. Тогда
+ \begin{align*}
+  \det J_F (x_0, y_0) = \left| f'(z_0) \right|^{2}.
+ \end{align*}
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ \begin{align*}
+  \det J_F = \det \begin{pmatrix}
+   u'_x & u'_y \\
+   v'_x & v'_y \\
+  \end{pmatrix} = [\text{усл. Коши-Римана}] = \det \begin{pmatrix}
+  u'_x & u'_y \\
+  -u'_y & u'_x
+  \end{pmatrix} = u^{'2}_x + u^{'2}_y.
+ \end{align*} С другой стороны,
+ \begin{align*}
+  \left| f'(z_0) \right|^{2} = \left| \left. \frac{\partial}{\partial x}f(x + iy_0) \right|_{\substack{x = x_0}}  \right|^{2} = \left| u'_x(x_0 + iy_0) + iv'_x(x_0 + iy_0) \right| = \\
+   = u^{'2}_x + v^{'2}_x = u{'2}_x + u^{'2}_y,
+ \end{align*} снова по условию Коши-Римана.
+\end{proof}
+\begin{crly}
+ Если $ z_0 $: $ f'(z_0) \neq 0 $, то в малой окрестности $ z_0 $ отображение $ f $ открыто.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Если $ f'(z_0) \neq 0 $, то по непрерывности $ \left| f'(z) \right|^{2} \neq 0 $ для $ z \in B(z_0, \eps) $, и значит $ \det J_F \neq 0 $ в шаре, и по теореме об открытости отображения с ненулевым якобианом $ f $ открыто как отображение из $ B(z_0, \eps) \subset \R^{2} $ в $ \R^{2} $.
+\end{proof}
+\begin{lm}
+ $ z^{n} $ --- открытое отображение в $ \CC $ для любого $ n \in \N $.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Производная $(z^{n})' = nz^{n-1} $  --- не обнуляется в $ \CC \setminus \left\{ 0 \right\} $. Значит $ \forall z_0 \in \CC \setminus \left\{ 0 \right\} \colon\; \exists  \eps > 0 \colon\; f=z^{n}, f(B(z_0, \eps))  $ открыто по предыдущему следствию.
+ \begin{align*}
+  f(B(0,r)) = F(B(0, r^{n}))
+ \end{align*} --- открытое множество. Значит, $ f $ открыто.
+\end{proof}
+\begin{proof}[\normalfont\textsc{Доказательство теоремы один}]
+ $ f = h_1 \circ h_2 \circ h_3 $, где $ h_1 $, $ h_2 $, $ h_3 $ --- открытые в окрестности $ z_0 \in \Omega $.
+ \begin{align}
+  \label{equation:proof:theorem_open_representation}
+  f(z) = f(z_0) + \left((z - z_0) \cdot g \right)^{n},
+ \end{align} где $ g $ --- аналитическая в окр. $ z_0 $ и $ n \in \N $, $ g(z_0) \neq 0 $. Докажем \eqref{equation:proof:theorem_open_representation}. По лемме о кратности нуля
+ \begin{align*}
+  Q(z) = f(z) - f(z_0) = (z - z_0)^{n} \cdot P(z),
+ \end{align*} где $ P $ --- аналитическая. Теперь
+ \begin{align*}
+  Q(z) = (z - z_0)^{n} \cdot e^{\log P}
+ \end{align*} в односвязной окрестности $ z_0 $, и $ P \neq 0 $ в этой окрестности. Тогда
+ \begin{align*}
+  \left((z-z_0)e^{\frac{\log P}{n}}\right)^{n}.
+ \end{align*} Итого
+ \begin{align*}
+  g = e^{\frac{\log P}{n}}.
+ \end{align*} Формула \eqref{equation:proof:theorem_open_representation} доказана.
+
+ \begin{align*}
+  &h_3 \colon\, z \mapsto (z-z_0)(g(z)) \\
+  &h_2 \colon z \mapsto z^{n} \\
+  &h_1 \colon z \mapsto z + f(z_0)
+ \end{align*} $ h_1 $ и $ h_2 $ открытые (по лемме ). Почему $ h_3 $ открытое?
+ \begin{align*}
+  h_3'(z_0) = g(z_0) + z_0 g'(z_0) - z_0 g'(z_0) = g(z_0) \neq 0
+ \end{align*} По другой лемме $ h_3 $ открыто в малой окрестности $ z_0 \in \Omega $.
+
+\end{proof}
+
+
+\end{document}
