@@ -26,36 +26,20 @@
  \label{theorem:adamar}
  Пусть $ F(z) = \sum_{n=0}^{\infty} c_n(z - z_0)^{n} $ --- степенной ряд. Тогда
  \begin{align*}
-  \Rconv = \frac{1}{\limsup\limits_{n \to \infty} \left| c_n \right|^{1 / n} }.
+  \Rconv = \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_n \right|^{1 / n} }.
  \end{align*} 
 \end{thm}
 
 \begin{exmpl}
- Рассмотрим степенной ряд
- \begin{align*}
-  e^{z} = \sum_{n=0}^{\infty} \frac{z^{n}}{n!}.
- \end{align*} Перепишем коэффициент $ c_n $, пользуясь формулой Стирлинга:
- \begin{align*}
-  c_n = \frac{1}{n!} = \left( \frac{e}{n} \right)^{n} \cdot \frac{1}{\sqrt{2\pi n}}(1 + o(1))
- \end{align*} 
-
- Найдём радиус сходимости, пользуясь теоремой \ref{theorem:adamar} Адамара и формулой Стирлинга:
- \begin{align*}
-  \Rconv &= \frac{1}{\limsup\limits_{n \to \infty} \left( \frac{1}{n!} \right)^{1 / n} } = \frac{1}{\limsup\limits_{n \to \infty} \left( \left( \frac{e}{n} \right)^{n} \cdot \frac{1}{\sqrt{2\pi n}}(1+o(1)) \right)^{1 / n} } = \\
-  &= \frac{1}{\limsup\limits_{n \to \infty} \frac{e}{n} \cdot \left( \frac{1}{\sqrt{2\pi n}(1+o(1))} \right) } = \frac{1}{\limsup\limits_{n \to \infty} 0 } = +\infty,
- \end{align*} что и ожидалось.
-\end{exmpl}
-
-\begin{exmpl}
  $e^{z} = \sum_{n=0}^{\infty} \frac{z^{n}}{n!} $. Должно быть $R_{\text{сх}} = +\infty$. Проверим с помощью формулы Стирлинга:
  \begin{align*}
-  R_{\text{сх}} = \frac{1}{\limsup\limits_{n\to \infty} \left( \frac{1}{n!} \right)^{\frac{1}{n}}} = \begin{bmatrix}
+  R_{\text{сх}} = \frac{1}{\varlimsup\limits_{n\to \infty} \left( \frac{1}{n!} \right)^{\frac{1}{n}}} = \begin{bmatrix}
    n! = \left( \frac{n}{e} \right)^{n} \sqrt{2\pi n} \cdot (1 + o(1))
   \end{bmatrix} = \\
   = [(n!)^{\frac{1}{n}} = \frac{n}{e} \underbrace{e^{\frac{2}{n}\log(2\pi n)}}_{\to 1}(1+o(1))^{n}]
  \end{align*}
  \begin{align*}
-  \R_{\text{сх}} = \frac{1}{\limsup\limits_{n \to \infty} \frac{e}{n}} = +\infty
+  \R_{\text{сх}} = \frac{1}{\varlimsup\limits_{n \to \infty} \frac{e}{n}} = +\infty
  \end{align*} 
 \end{exmpl}
 \begin{exmpl}
@@ -65,25 +49,25 @@
  \end{align*} Должно быть $R_{\text{сх}} = 1$. Проверим с помощью теоремы Адамара:
 
  \begin{align*}
-  R_{\text{сх}} = \frac{1}{\limsup\limits_{n\to \infty} 1^{\frac{1}{n}}} = 1.
+  R_{\text{сх}} = \frac{1}{\varlimsup\limits_{n\to \infty} 1^{\frac{1}{n}}} = 1.
  \end{align*} 
 \end{exmpl}
 \begin{exmpl}
  Рассмотрим многочлен $ \sum_{k=0}^{N} c_{k} z^{k}$. Тогда
  \begin{align*}
-  R_{\text{сх}} = \frac{1}{\limsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}} = \frac{1}{\limsup\limits_{n \to \infty} 0} = +\infty.
+  R_{\text{сх}} = \frac{1}{\varlimsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}} = \frac{1}{\varlimsup\limits_{n \to \infty} 0} = +\infty.
  \end{align*} 
 \end{exmpl}
 
 Красота теоремы \ref{theorem:adamar} в том, что в нём можно подставлять всё, что угодно и получить радиус сходимости.
 
 \begin{proof}[\normalfont\textsc{Доказательство теоремы \ref{theorem:adamar} Адамара}]
- Пусть $0 < \rho < \frac{1}{\limsup_{n \to \infty}\left| c_n \right|^{1 / n}}$. Тогда существует $\eps > 0$ такое, что
+ Пусть $0 < \rho < \frac{1}{\varlimsup_{n \to \infty}\left| c_n \right|^{1 / n}}$. Тогда существует $\eps > 0$ такое, что
  \begin{align*}
-  \rho \leqslant \frac{1 - \eps}{\limsup\limits_{n\to \infty} \left| c_n \right|^{\frac{1}{n}}}.
+  \rho \leqslant \frac{1 - \eps}{\varlimsup\limits_{n\to \infty} \left| c_n \right|^{\frac{1}{n}}}.
  \end{align*} Перепишем её:
  \begin{align*}
-  \limsup\limits_{n\to \infty} \rho \left| c_n \right|^{1 / n} \leqslant 1 - \eps.
+  \varlimsup\limits_{n\to \infty} \rho \left| c_n \right|^{1 / n} \leqslant 1 - \eps.
  \end{align*} Тогда
  \begin{align*}
   \rho \left| c_n \right|^{1 / n} \leqslant 1 - \frac{\eps}{2}.
@@ -95,19 +79,19 @@
   \sum_{n=N}^{\infty} \left| c_n(z - z_0)^{n} \right| \leqslant \sum_{n=N}^{\infty} \left(1 - \frac{\eps}{2}\right)^{n} < \infty
  \end{align*} Значит, $R_{\text{сх}} \geqslant \rho$. Так как это верно для всех $\rho$, то
  \begin{align*}
-  R_{\text{сх}} \geqslant \frac{1}{\limsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}}.
- \end{align*} Это неравенство верно и для случая, когда $\frac{1}{\limsup_{n\to \infty} \left| c_n \right|^{1 / n}} = 0$ (оно тривиально).
+  R_{\text{сх}} \geqslant \frac{1}{\varlimsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}}.
+ \end{align*} Это неравенство верно и для случая, когда $\frac{1}{\varlimsup_{n\to \infty} \left| c_n \right|^{1 / n}} = 0$ (оно тривиально).
 
  Осталось доказать в другую сторону. Нужно доказать, что если ряд \begin{align*}
   \sum_{n=0}^{\infty} c_n(z - z_0)^{n}
- \end{align*} сходится в $B(z_0, \rho)$ для $\rho > \frac{1}{\limsup_{n\to \infty} \left| c_n \right|^{1 / n}}$, то это приводит к противоречию.
+ \end{align*} сходится в $B(z_0, \rho)$ для $\rho > \frac{1}{\varlimsup_{n\to \infty} \left| c_n \right|^{1 / n}}$, то это приводит к противоречию.
 
 Пусть есть сходимость для такого $\rho$. Тогда
 \begin{align*}
- \rho \geqslant \frac{1 + \eps}{\limsup\limits_{n \to \infty} \left| c_n \right|^{1 / n} }
+ \rho \geqslant \frac{1 + \eps}{\varlimsup\limits_{n \to \infty} \left| c_n \right|^{1 / n} }
 \end{align*} для некоторого $\eps > 0$. Тогда
 \begin{align*}
- \limsup\limits_{ n \to \infty } \rho \left| c_n \right|^{1/ n} \geqslant 1 + \eps \implies \rho \left| c_n \right|^{1 / n} \geqslant 1 + \frac{\eps}{2}
+ \varlimsup\limits_{ n \to \infty } \rho \left| c_n \right|^{1/ n} \geqslant 1 + \eps \implies \rho \left| c_n \right|^{1 / n} \geqslant 1 + \frac{\eps}{2}
 \end{align*} при $n \geqslant N$. Тогда
 \begin{align*}
  \rho^{n} \left| c_n \right| \geqslant \left( 1 + \frac{\eps}{2} \right)^{n}.
@@ -133,7 +117,7 @@
  \label{lemma:complex_n_w_inequality}
  Для любых $z, w \in \CC$, $z \neq w$ и для любого $n \geqslant 1$ верно неравенство
  \begin{align*}
-  \left|\frac{z^{n} - w^{n}}{z - w} \right| \leqslant n \cdot \left| z \right|^{n-1} \cdot \left| w \right|^{n-1}
+  \left|\frac{z^{n} - w^{n}}{z - w} \right| \leqslant n \cdot \left(\left| z \right|^{n-1} + \left| w \right|^{n-1}\right)
  \end{align*} 
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -158,13 +142,13 @@
    \iff \sum_{n=1}^{\infty} n \left| c_n \right| \cdot \rho^{n - 1} < \infty.
   \end{align*} Проверим по теореме \ref{theorem:adamar}:
   \begin{align*}
-   \rho < \frac{1}{\limsup\limits_{n \to \infty} \left( n \left| c_n \right|\rho^{n-1} \right)^{n+1}} = \frac{1}{\limsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
+	\rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left( (n + 1) \left| c_{n + 1} \right|\rho^{n-1} \right)^{1 / n}} = \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
   \end{align*} так как $ \lim_{n \to \infty} (n+1)^{\frac{1}{n}} = 1 $.
 \end{proof}
 
 \section{Аналитические функции}
 
-Следующая теорема фундаментальная.
+Следующая теорема фундаментальна.
 
 \begin{thm}[%
 Коши-Гурса-Морера]
@@ -196,13 +180,13 @@
 \begin{figure}[ht]
     \centering
     \incfig{theorem_cauchy_gurs_morer_rect}
-    \caption{theorem_cauchy_gurs_morer_rect}
+    \caption{Разбиение прямоугольника на 4 меньших.}
     \label{fig:theorem_cauchy_gurs_morer_rect}
 \end{figure}
 
  Обозначим $\Pi_0 = \Pi$, $\Pi_1 = Q_i$, где $Q_i$ такое, что 
  \begin{align*}
-  \left| \int\limits_{\partial Q}  f\,dz \right| \geqslant \eps^{2} \left( \diam Q_i \right)^{2}.
+  \left| \int\limits_{\partial Q_i}  f\,dz \right| \geqslant \eps^{2} \left( \diam Q_i \right)^{2}.
  \end{align*} Такой $Q_i$ обязательно есть, потому что
  \begin{align*}
   4\eps^{2}(\diam Q_i)^{2} \leqslant \eps^{2} \left( \diam \Pi \right)^{2} \leqslant \left| \int\limits_{\partial \Pi} f\,dz   \right| = \left| \sum_{i=1}^{4} \int\limits_{\partial Q_i} f\,dz    \right| \leqslant 4 \max_{i=1}^{k} \left| \int\limits_{\partial Q_i} f\,dz   \right|.
@@ -243,7 +227,7 @@
   \implies f(\zeta) = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{z - \zeta}.
  \end{align*} Но
  \begin{align*}
-  \frac{1}{1 - \zeta} = \frac{1}{z - z_0 + z_0 - \zeta} = \frac{1}{z - z_0} \cdot \frac{1}{1 -  \frac{\zeta - z_0}{z - z_0}} = \\
+  \frac{1}{z - \zeta} = \frac{1}{z - z_0 + z_0 - \zeta} = \frac{1}{z - z_0} \cdot \frac{1}{1 -  \frac{\zeta - z_0}{z - z_0}} = \\
   = \frac{1}{z-z_0} \sum_{n=0}^{\infty} \left( \frac{\zeta-z_0}{z-z_0} \right)^{n}.
  \end{align*} Ряд сходится для $z \in C$, ведь
  \begin{align*}
