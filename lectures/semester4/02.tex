@@ -28,10 +28,10 @@
  .\end{align*} Равенство $F''_{xy} = F''_{yx}$ верно, так как $P$ и $Q$ гладкие. Это верно в любом шаре, значит это верно всюду.
 
 
- Теперь пусть $d \omega = 0$ в $\Omega$. Проверим, что если $\Pi \subset \Omega$, то $\int_{\partial\Pi} \omega = 0 $. Действительно, по формуле Стокса \eqref{equation:formula_stox} (или формуле Грина \eqref{equation:green_formula})
+ Теперь пусть $d \omega = 0$ в $\Omega$. Проверим \ref{enum3:theorem:closed_1_form} пункт теоремы \ref{theorem:exact_1_form}: если $\Pi \subset \Omega$, то $\int_{\partial\Pi} \omega = 0 $. Действительно, по формуле Стокса \eqref{equation:formula_stox} (или формуле Грина \eqref{equation:green_formula})
  \begin{align*}
   \int\limits_{\partial\Pi} \omega = \int\limits_{\Pi} d\omega = 0.  
- \end{align*} Можно и руками проверить.
+ \end{align*} Можно и руками проверить (В прямоугольнике всё элементарно сведётся к формуле Ньютона-Лейбница).
 \end{proof}
 
 \begin{exmpl}
@@ -42,7 +42,9 @@
  \end{align*} 
 \end{exmpl}
 
-Односвязность выпуклых областей проверяется гомотопией $H(s,t) = (1-t)\gamma_0(s) + t \gamma_1(s)$ пути $\gamma_0$ в $\gamma_1$.
+\begin{remrk}
+	Односвязность выпуклых областей проверяется гомотопией $H(s,t) = (1-t)\gamma_0(s) + t \gamma_1(s)$ пути $\gamma_0$ в $\gamma_1$.
+\end{remrk}
 
 \begin{exmpl}
  \label{example:form_2}
