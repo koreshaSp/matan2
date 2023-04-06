@@ -1,0 +1,236 @@
+% 2023.04.06 lecture 07
+\documentclass[../../main.tex]{subfiles}
+\begin{document}
+\begin{df}[полюс]
+ Пусть $ \Omega $ --- область, $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $, $ a \in \Omega $. Тогда $ a $ называется \textit{полюсом}, если
+ \begin{align*}
+  f(z) = O \left( \frac{1}{(z-a)^{N}} \right),
+ \end{align*} и $ f $ не ограничена в проколотой окрестности точки $ a $. \textit{Порядком} полюса называется минимальное такое $ N \geqslant 1 $ (если оно, конечно, существует).
+\end{df}
+\begin{exmpl}\
+ \begin{itemize}
+  \item Для функции $ \frac{1}{z^{2}} $ число $ 0 $ --- это полюс порядка $ 2 $.
+  \item Для функции $ \frac{\sin z}{z^{2}} $ точка $ 0 $ --- это полюс порядка $ 1 $.
+ \end{itemize}
+\end{exmpl}
+\begin{thm}
+ Следующие условия равносильны:
+ \begin{enumerate}
+  \item $ a $ --- это полюс порядка $ N \geqslant 1$.
+  \item Функция $ f $ раскладывается в ряд Лорана
+   \begin{align*}
+    f(z) = \sum_{-N}^{\infty} c_n(z-a)^{n},
+   \end{align*} в проколотой окрестности точки $ a $ где $ c_{-N} \neq 0 $.
+ \end{enumerate}
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $  1 \implies 2 $. Пусть $ f(z) = O (\frac{1}{(z-a)^{N}}) $. Рассмотрим функцию
+ \begin{align*}
+  g = (z-a)^{N} f.
+ \end{align*} $ g $ аналитична в $ \Omega \setminus \left\{ a \right\} $. $ a $ --- устранимая особая точка $ g $, поэтому
+ \begin{align*}
+  g(z) = \sum_{j=0}^{\infty} b_j(z-a)^{j}
+ \end{align*} в окрестности точки $ a $. Значит в проколотой окрестности точки $ a $ имеем
+ \begin{align*}
+  f(z) = \sum_{k=-N}^{\infty} c_k (z-a)^{k},
+ \end{align*} где $ c_k = b_{k+N} $. При этом $ c_{-N} = b_0 \neq 0 $, так как получилось бы $ f = O \left( \frac{1}{(z-a)^{N-1}} \right) $.
+
+ Теперь $ 2 \implies 1 $ очевидно:
+ \begin{align*}
+  f = \left(\frac{1}{z-a} \right)^{N} \underbrace{\left( \sum_{k=0}^{\infty} c_{k} (z-a)^{k} \right)}_{O(1)}.
+ \end{align*} То есть
+ \begin{align*}
+  f \sim \frac{c_{-N}}{(z-a)^{N}}
+ \end{align*} при $ z \to a $. Так как $ c_{-N} \neq 0 $, то порядок полюса равен $ N $.
+\end{proof}
+
+\begin{df}
+ Пусть $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $, где $ a \in \Omega $, $ \Omega $ --- область. Точка $ a $ называется \textit{существенной особой точкой}, если для любого $ N \geqslant 1 $
+ \begin{align*}
+  \limsup_{z \to a} \left|(z-a)^{N}f(z) \right| = +\infty.
+ \end{align*}
+\end{df}
+\begin{thm}
+ Следующие условия равносильны:
+ \begin{enumerate}
+  \item $ a $ --- существенная особая точка.
+  \item
+   \begin{align*}
+    f = \sum_{n \in \Z} c_n(z-a)^{n},
+   \end{align*} где для любого $ N \geqslant 1 $ существует $ k \geqslant N $ такое, что $ c_{-k} \neq 0 $.
+ \end{enumerate}
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $ 1 \implies 2 $. $ a $ --- это не устранимая особая точка и не полюс. Значит, в ряде Лорана бесконечно много отрицательных ненулевых коэффициентов.
+
+ $ 2 \implies 1 $. Если существует существует $ N $ такое, что
+ \begin{align*}
+  \limsup_{z \to a} \left| (z-a)^{N}f(z) \right| < +\infty,
+ \end{align*} то $ f = O(\frac{1}{(z-a)^{N}}) $, и $ a $ --- полюс.
+\end{proof}
+
+\begin{exmpl}
+ У функции $ e^{1 / z} $ точка $ 0 $ --- это существенная особая точка, так как
+ \begin{align*}
+  \limsup_{z \to 0} \left| z \right|^{k} \left| e^{1/z} \right| \geqslant \limsup_{\eps \to 0+} \eps^{k} e^{1 / \eps} = +\infty
+ \end{align*} для любого $ k \geqslant 1 $.
+\end{exmpl}
+
+\begin{df}
+ Пусть $ a $ --- изолированная особая точка функции $ f \colon\, \Omega \setminus \left\{ a \right\} \to \CC$. \textit{Вычетом} функции $ f $ в точке $ a $ называется коэффициент $ c_{-1} $ её ряда Лорана
+ \begin{align*}
+  f(z) = \sum_{n \in \Z} c_n (z-a)^{n}
+ \end{align*} Обозначение: $ \mathrm{res}_a f = c_{-1} $.
+\end{df}
+\begin{exmpl*}
+ Пусть $ a $ --- устранимая особая точка функции $ f $. Тогда $ \res_a f = 0 $.
+\end{exmpl*}
+\begin{exmpl*}
+ Пусть $ f $ аналитична в $ \Omega $, $ a \in \Omega $.
+ \begin{align*}
+  h = \frac{f(z)}{z - a}
+ \end{align*} в $ \Omega \setminus \left\{ a \right\} $. Тогда 
+ \begin{align*}
+  \res_a h = f(a),
+ \end{align*} ведь $ h = \frac{1}{z-a}(f(a)+O(z-a)) \implies c_{-1} = f(a) $ (сравниваем асимптотики $ \frac{c_{-1}}{z-a} + c_0 + \ldots $ и $ \frac{f(a)}{z-a} + O(1) $ при $ z\to a $).
+\end{exmpl*}
+\begin{exmpl*}
+ Пусть $ h = \frac{f}{(z-a)^{k}} $, где $ k \geqslant 1 $. Найдём $ \res_a f $.
+ \begin{align*}
+ h = \frac{1}{(z-a)^{k}}\sum_{j=0}^{\infty} \frac{f^{(j)}(a)}{j!}(z-a)^{j} = \sum_{n \geqslant -k}^{\infty} c_n(z-a)^{n},
+ \end{align*} где
+ \begin{align*}
+  c_n = \frac{f^{(n+k)}(a)}{(n+k)!}.
+ \end{align*} Тогда
+ \begin{align*}
+  \res_a h = c_{-1} = \frac{f^{(k-1)}(a)}{(k-1)!}.
+ \end{align*}
+\end{exmpl*}
+\begin{exmpl}
+ \label{example:logarithmic_derivative1}
+ Пусть $ f $ аналитична в $ \Omega $, $ f(a) = 0 $, и $ a $ --- корень кратности $ N \geqslant 1$ функции $ f $. Тогда
+ \begin{align*}
+  \res_a \frac{f'}{f} = N.
+ \end{align*}
+
+ Функция $ \frac{f'}{f} $  называется \textit{логарифмической производной} функции $ f $.
+\end{exmpl}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По лемме о кратности нуля:
+ \begin{align*}
+  f=(z-a)^{N}g,
+ \end{align*} где $ g(a) \neq 0 $. Тогда
+ \begin{align*}
+  \frac{f'}{f} &= \frac{N(z-a)^{N-1}g + (z-a)^{N}g'}{(z-a)^{N}g} = \frac{N}{z-a} + O(1)
+ \end{align*} при $ z \to a $. Значит, $ a $  --- полюс первого порядка функции $ \frac{f'}{f} $, и
+ \begin{align*}
+  \res_a \frac{f'}{f} = N.
+ \end{align*}
+\end{proof}
+
+\begin{exmpl}
+ \label{example:logarithmic_derivative2}
+ Пусть $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $ и $ a $ --- полюс порядка $ N \geqslant 1$. Тогда
+ \begin{align*}
+  \res_a \frac{f'}{f} = -N.
+ \end{align*}
+\end{exmpl}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $ f = \frac{g}{(z-a)^{N}} $, $ g(a) \neq 0 $. Поэтому
+ \begin{align*}
+  \frac{f'}{f} = \frac{ \frac{g' \cdot (z-a)^{N} - N(z-a)^{N-1}g}{(z-a)^{2N}} }{\frac{g}{(z-a)^{N}}} = -\frac{N}{z-a} + O(1).
+ \end{align*} Далее всё так же.
+\end{proof}
+
+\newpage
+\section{Теорема Коши о вычетах.}
+
+\begin{df*}
+ Путь $ \gamma \colon\,[0,1] \to \CC $ называется \textit{замкнутым}, если $ \gamma(0) = \gamma(1) $.
+\end{df*}
+
+\begin{df*}
+ Замкнутый путь $ \gamma\colon\,[0,1] \to \CC $ называется \textit{простым}, если $\gamma |_{[0, 1)}$ --- инъективное отображение (без самопересечений).
+\end{df*}
+
+\begin{df*}
+ Кусочно-гладкий замкнутый путь --- конечная сумма гладких путей, образующая замкнутый путь.
+\end{df*}
+
+\begin{df}
+ \textit{Стандартная область}: это область  $ \Omega \subset \CC $ такая, что
+ \begin{enumerate}
+  \item $ \Omega $ ограничена.
+  \item $ \overline \Omega \setminus \Omega $ состоит из конечного числа непересекающихся кусочно-гладких замкнутых путей.
+ \end{enumerate}
+\end{df}
+\begin{df*}
+ $ \overline \Omega \setminus \Omega $ называется \textit{границей} стандартной области $ \Omega $. Обозначение: $ \partial \Omega $.
+\end{df*}
+
+\begin{conventn*}
+ Запись $ \oint_{\partial \Omega} f \, dz $ означает, что граница $ \partial \Omega $ ориентированна так, чтобы область оставалась слева при обходе.
+
+ <<Слева>> означает, что вектор $ \gamma'(t_0) + \gamma(t_0) $ и $ \gamma(t_0) + i\gamma'(t_0) \cdot \eps \in \Omega $ при малых $ \eps > 0 $ --- это можно записать математически строго.
+
+ Существование такой параметризации --- вопрос сложный, но его можно строго доказать.
+\end{conventn*}
+
+\begin{thm}[%
+Коши о вычетах]
+Пусть $ \Omega $ --- стандартная область, $ f\colon\,\Omega \setminus E \to \CC $ --- аналитическая функция, где $ E \subset \Omega $  --- конечное число точек. Пусть также $ f \in C(\overline{\Omega} \setminus E) $. Тогда
+\begin{align*}
+ \oint_{\partial \Omega} f\,dz = 2\pi i \sum_{a \in E} \res_{a} f.
+\end{align*}
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Доказательство будет по модулю формулы Стокса. 
+
+ Рассмотрим область $ \tilde \Omega = \Omega \setminus \bigcup_{a \in E} B(a,\eps) $, где $ \eps > 0 $ достаточно маленькое, чтобы все круги $ B(a,\eps) $ все лежали в $ \Omega $ и не пересекались.  Тогда
+ \begin{align*}
+  \int\limits_{\partial \tilde \Omega}   f\,dz = \oint\limits_{\tilde \Omega} d(f\,dz) = 0.
+ \end{align*} Но
+ \begin{align*}
+  \oint\limits_{\partial \tilde \Omega} f\,dz = \oint\limits_{\partial \Omega} f\,dz - \sum_{a \in E} \underbrace{\oint\limits_{C(a,\eps)}f\,dz}_{=2\pi i \cdot \res_a f}.
+ \end{align*} Здесь
+ \begin{align*}
+  \oint\limits_{C(a,\eps)}f(z)\,dz = \oint\limits_{C(a,\eps)} \left( \sum_{k \in \Z} c_k(z-a)^{k} \right)dz = 2\pi i \cdot c_{-1} = 2\pi r \cdot \res_a f.
+ \end{align*}
+\end{proof}
+
+\begin{crly}
+ Пусть область $ \Omega $ стандартная, $ f \in C(\overline \Omega) $ и $ f $ аналитична в $ \Omega $. Тогда
+ \begin{align*}
+  f(w) = \frac{1}{2\pi i} \oint\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz,\quad w \in \Omega.
+ \end{align*}
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По теореме Коши
+ \begin{align*}
+  \oint\limits_{\partial \Omega} \frac{f(z)}{z-w}\,dz = 2\pi i \res_w \frac{f}{z-w} = 2\pi i f(w).
+ \end{align*}
+\end{proof}
+
+\begin{thm}
+ Пусть функции $ f $, $ g_n $ аналитичны в стандартной области $ \Omega $, непрерывны в $ \overline \Omega $, и
+ \begin{align*}
+  \lim_{n \to \infty} \max_{\partial\Omega} \left| f-g_n \right| = 0.
+ \end{align*} Тогда $ g'_n $ сходится к $ f' $ равномерно на компактах в $ \Omega $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По предыдущему следствию:
+ \begin{align*}
+  f(w) = \frac{1}{2\pi i} \oint\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz.
+ \end{align*} Аналогичная формула верна для $ g_n $. Тогда
+ \begin{align}
+  f'(w) = \frac{1}{2\pi i} \oint\limits_{\partial\Omega} \frac{f(z)}{(z-w)^{2}}\,dz.
+ \end{align} Почему можно дифференцировать?
+ \begin{align*}
+  \frac{f(w+\xi)-f(w)}{\xi} = \frac{1}{2\pi i} \oint\limits_{\partial \Omega} f(z) \underbrace{\frac{1}{\xi} \left( \frac{1}{z-(w+\xi)} - \frac{1}{z - w} \right)}_{\frac{1}{(z-w-\xi)(z-w)} = O(\frac{1}{(z-w)^{2}}) = O(1)}\,dz
+ \end{align*} По теореме Лебега можно переходить к пределу и получим (*). Тогда
+ \begin{align*}
+  \left| f'(w) - g'(w) \right| \leqslant \frac{1}{2\pi} \oint\limits_{\partial\Omega} \frac{\max_{\partial\Omega} \left| f-g_n \right|}{\left| z-w \right|^{2}}\,dz \to 0,
+ \end{align*} равномерно по $ w \in K $, где $ K $ --- компакт в $ \Omega $.
+\end{proof}
+
+\end{document}
