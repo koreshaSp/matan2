@@ -36,7 +36,7 @@
   R_{\text{сх}} = \frac{1}{\varlimsup\limits_{n\to \infty} \left( \frac{1}{n!} \right)^{\frac{1}{n}}} = \begin{bmatrix}
    n! = \left( \frac{n}{e} \right)^{n} \sqrt{2\pi n} \cdot (1 + o(1))
   \end{bmatrix} = \\
-  = [(n!)^{\frac{1}{n}} = \frac{n}{e} \underbrace{e^{\frac{2}{n}\log(2\pi n)}}_{\to 1}(1+o(1))^{n}]
+	= [(n!)^{\frac{1}{n}} = \frac{n}{e} \underbrace{e^{\frac{1}{2n}\log(2\pi n)}}_{\to 1}\underbrace{(1+o(1))^{n}}_{\to 1}]
  \end{align*}
  \begin{align*}
   \R_{\text{сх}} = \frac{1}{\varlimsup\limits_{n \to \infty} \frac{e}{n}} = +\infty
@@ -71,7 +71,7 @@
  \end{align*} Тогда
  \begin{align*}
   \rho \left| c_n \right|^{1 / n} \leqslant 1 - \frac{\eps}{2}.
- \end{align*} для достаточно больших $n$. Перепишем:
+\end{align*} Для $n \ge N_{\eps}$. Перепишем:
  \begin{align*}
   \left| c_n \right| \rho^{n} \leqslant \left( 1 - \frac{\eps}{2} \right)^{n}.
  \end{align*} Значит для любого $z \in B(z_0, \rho)$
@@ -82,7 +82,7 @@
   R_{\text{сх}} \geqslant \frac{1}{\varlimsup\limits_{n\to \infty} \left| c_n \right|^{1 / n}}.
  \end{align*} Это неравенство верно и для случая, когда $\frac{1}{\varlimsup_{n\to \infty} \left| c_n \right|^{1 / n}} = 0$ (оно тривиально).
 
- Осталось доказать в другую сторону. Нужно доказать, что если ряд \begin{align*}
+ Осталось доказать в другую сторону. Нужно показать, что если ряд \begin{align*}
   \sum_{n=0}^{\infty} c_n(z - z_0)^{n}
  \end{align*} сходится в $B(z_0, \rho)$ для $\rho > \frac{1}{\varlimsup_{n\to \infty} \left| c_n \right|^{1 / n}}$, то это приводит к противоречию.
 
@@ -92,7 +92,7 @@
 \end{align*} для некоторого $\eps > 0$. Тогда
 \begin{align*}
  \varlimsup\limits_{ n \to \infty } \rho \left| c_n \right|^{1/ n} \geqslant 1 + \eps \implies \rho \left| c_n \right|^{1 / n} \geqslant 1 + \frac{\eps}{2}
-\end{align*} при $n \geqslant N$. Тогда
+\end{align*} при $n \geqslant N_{\rho, \eps}$. Тогда
 \begin{align*}
  \rho^{n} \left| c_n \right| \geqslant \left( 1 + \frac{\eps}{2} \right)^{n}.
 \end{align*} Значит,
@@ -142,7 +142,7 @@
    \iff \sum_{n=1}^{\infty} n \left| c_n \right| \cdot \rho^{n - 1} < \infty.
   \end{align*} Проверим по теореме \ref{theorem:adamar}:
   \begin{align*}
-	\rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left( (n + 1) \left| c_{n + 1} \right|\rho^{n-1} \right)^{1 / n}} = \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
+	\rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left( (n + 1) \left| c_{n + 1} \right|\right)^{1 / n}} = \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
   \end{align*} так как $ \lim_{n \to \infty} (n+1)^{\frac{1}{n}} = 1 $.
 \end{proof}
 
@@ -187,25 +187,25 @@
 
  Обозначим $\Pi_0 = \Pi$, $\Pi_1 = Q_i$, где $Q_i$ такое, что 
  \begin{align*}
-  \left| \int\limits_{\partial Q_i}  f\,dz \right| \geqslant \eps^{2} \left( \diam Q_i \right)^{2}.
+  \left| \varointctrclockwise\limits_{\partial Q_i}  f\,dz \right| \geqslant \eps^{2} \left( \diam Q_i \right)^{2}.
  \end{align*} Такой $Q_i$ обязательно есть, потому что
  \begin{align*}
-  4\eps^{2}(\diam Q_i)^{2} \leqslant \eps^{2} \left( \diam \Pi \right)^{2} \leqslant \left| \int\limits_{\partial \Pi} f\,dz   \right| = \left| \sum_{i=1}^{4} \int\limits_{\partial Q_i} f\,dz    \right| \leqslant 4 \max_{i=1}^{k} \left| \int\limits_{\partial Q_i} f\,dz   \right|.
+  4\eps^{2}(\diam Q_i)^{2} \leqslant \eps^{2} \left( \diam \Pi \right)^{2} \leqslant \left| \varointctrclockwise\limits_{\partial \Pi} f\,dz   \right| = \left| \sum_{i=1}^{4} \varointctrclockwise\limits_{\partial Q_i} f\,dz    \right| \leqslant 4 \max_{i=1}^{k} \left| \varointctrclockwise\limits_{\partial Q_i} f\,dz   \right|.
  \end{align*} Мы получили (**).
 
  По $\Pi_1$ так же построим $\Pi_2$, затем $\Pi_3$ и так далее. Мы получим последовательность вложенных компактов  $\Pi_0, \Pi_1, \ldots$ , с уменьшающимися диаметрами. Поэтому существует точка $z_0 \in \Omega$ такое, что,
  \begin{align*}
-  \left\{ z_0 \right\} = \bigcup_{n=0}^{\infty} \Pi_n.
+  \left\{ z_0 \right\} = \bigcap_{n=0}^{\infty} \Pi_n.
  \end{align*} Для большого $n$ запишем
  \begin{align*}
-  \int\limits_{\partial \Pi_n}  f\,dz &= \int\limits_{\partial\Pi_n}  \left( f(z_0) + f'(z_0)(z-z_0) + o(z - z_0) \right)\,dz = \\
-  &= \int\limits_{\partial\Pi_n}  \left( a+bz \right)\,dz + \int\limits_{\partial\Pi_n}  o(z-z_0)\,dz
- \end{align*} для некоторых комплексных чисел $a,b \in \CC$. Но по примеру \ref{example:form_a_plus_b_times_z_dz} это ноль:
+  \varointctrclockwise\limits_{\partial \Pi_n}  f\,dz &= \varointctrclockwise\limits_{\partial\Pi_n}  \left( f(z_0) + f'(z_0)(z-z_0) + o(z - z_0) \right)\,dz = \\
+  &= \varointctrclockwise\limits_{\partial\Pi_n}  \left( a+bz \right)\,dz + \varointctrclockwise\limits_{\partial\Pi_n}  o(z-z_0)\,dz
+ \end{align*} для некоторых комплексных чисел $a,b \in \CC$. Но по примеру \ref{example:form_a_plus_b_times_z_dz} левое слагаемое равно нулю, тогда
  \begin{align*}
-  \int\limits_{\partial\Pi_n} f\,dz  = o(\left| z-z_0 \right| \diam \Pi_n) = o(\left( \diam \Pi_n \right)^{2}).
+  \varointctrclockwise\limits_{\partial\Pi_n} f\,dz  = o(\left| z-z_0 \right| \diam \Pi_n) = o(\left( \diam \Pi_n \right)^{2}).
  \end{align*} С другой стороны,
  \begin{align*}
-  \int\limits_{\partial\Pi_n} f\,dz  \geqslant \eps^{2}\left( \diam \Pi_n \right)^{2},
+  \varointctrclockwise\limits_{\partial\Pi_n} f\,dz  \geqslant \eps^{2}\left( \diam \Pi_n \right)^{2},
  \end{align*} а это противоречие!
 
 \item $1,2 \implies 3$. Пусть $z_0 \in \Omega$, $B(z_0, \rho) \subset \Omega$, $\zeta \in B(z_0, \rho)$
@@ -219,13 +219,16 @@
  Рассмотрим форму
  \begin{align*}
   \omega = \frac{f(z) - f(\zeta)}{z-\zeta}\,dz.
- \end{align*} Форма $\omega$ замкнута в $B(z_0, \rho) \setminus \left\{ \zeta \right\}$. Используем из $1$ в 2 для функции $\frac{f(z) - f(\zeta)}{z-\zeta}$. Кроме того, $\omega$ имеет непрерывные коэффициенты в $B(z_0, \rho)$. По лемме \ref{lemma:ob_ustranenii_osobennosti} об устранении особенности $\omega$ замкнута в $B(z_0, \rho)$. Возьмём и проинтегрируем по хорошему контуру. Возьмём $\rho' < \rho$ такое, что $\zeta \in B(z_0, \rho')$. Возьмём контур
+ \end{align*} Форма $\omega$ замкнута в $B(z_0, \rho) \setminus \left\{ \zeta \right\}$ (используя $1 \implies 2$ для функции $\frac{f(z) - f(\zeta)}{z-\zeta}$). Кроме того, $\omega$ имеет непрерывные коэффициенты в $B(z_0, \rho)$. По лемме \ref{lemma:ob_ustranenii_osobennosti} об устранении особенности $\omega$ замкнута в $B(z_0, \rho)$. Возьмём и проинтегрируем по хорошему контуру. Возьмём $\rho' < \rho$ такое, что $\zeta \in B(z_0, \rho')$. Возьмём контур
  \begin{align*}
   C = \left\{ \left| z_0 - z \right| = \rho' \right\}.
  \end{align*} И проинтегрируем по нему:
  \begin{align*}
-  0=\frac{1}{2\pi i} \int\limits_{C} \omega  = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{z - \zeta}  - \frac{1}{2\pi i} f(\zeta) \int\limits_{C} \frac{dz}{z - \zeta} = \\
-  \implies f(\zeta) = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{z - \zeta}.
+  0=\frac{1}{2\pi i} \varointctrclockwise\limits_{C} \omega  = \frac{1}{2\pi i} \varointctrclockwise\limits_{C} \frac{f(z)\,dz}{z - \zeta}  - \frac{1}{2\pi i} f(\zeta) \varointctrclockwise\limits_{C} \frac{dz}{z - \zeta} 
+ \end{align*}
+ По примеру \ref{example:form_dz_div_z_minus_a} знаем, что $\varointctrclockwise_{C} \frac{dz}{z - \zeta} = 2 \pi i$, тогда 
+ \begin{align*}
+  f(\zeta) = \frac{1}{2\pi i} \varointctrclockwise\limits_{C} \frac{f(z)\,dz}{z - \zeta}.
  \end{align*} Но
  \begin{align*}
   \frac{1}{z - \zeta} = \frac{1}{z - z_0 + z_0 - \zeta} = \frac{1}{z - z_0} \cdot \frac{1}{1 -  \frac{\zeta - z_0}{z - z_0}} = \\
@@ -239,10 +242,10 @@
   f(\zeta) = \sum_{n=0}^{\infty} c_n \left( \zeta - z_0 \right)^{n},
  \end{align*} где
  \begin{align*}
-  c_n = \frac{1}{2\pi i} \int\limits_{C} \frac{f(z)\,dz}{(z - z_0)^{n + 1}}.
+  c_n = \frac{1}{2\pi i} \varointctrclockwise\limits_{C} \frac{f(z)\,dz}{(z - z_0)^{n + 1}}.
  \end{align*} 
 
-\item $ (3 \implies 1) $ . У ряда 
+\item $ 3 \implies 1 $. У ряда 
  \begin{align*}
   f(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}
  \end{align*} существует производная в любой точке $ w \in B(z_0, r(z_0))$:
