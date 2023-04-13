@@ -1,0 +1,165 @@
+% 2023.04.13 lecture 08
+\documentclass[../../main.tex]{subfiles}
+\begin{document}
+ 
+\newpage
+\section{Принцип аргумента.}
+
+Неформально, принцип аргумента говорит о том, что изменение аргумента на границе равно $ 2\pi(N - P) $, где $ N $ --- число нулей, а $ P $ --- число полюсов (с учётом кратности) у функции.
+
+Например, для функции $ z^{n} $ имеем $ \arg e^{int} = nt $, $ t \in [0,2\pi] $. Обходя по окружности $ \gamma $ точку $ 0 $, изменение аргумента равно
+\begin{align*}
+ \Delta_\gamma \arg z^{n} = n \cdot 2\pi - n \cdot 0 = 2\pi n,
+\end{align*} так как $ 0 $ --- нуль функции $ z^{n} $ кратности $ n $.
+
+\begin{df}
+ Пусть $ \gamma \in C([0, 1], \Omega) $ --- путь в области $ \Omega \subset \CC $. Пусть функция $ f $ аналитична в $ \Omega $. Тогда отображение $ \psi \in C([0,1], \R) $ называется \textit{непрерывной ветвью аргумента функции $ f $ вдоль пути $ \gamma $}, если
+ \begin{align*}
+  \left| f(\gamma(t)) \right| \cdot e^{i\psi(t)} = f(\gamma(t))
+ \end{align*}
+ для любого $ t \in [0,1] $, причём $ f(\gamma(t)) \neq 0 $ для любого $ t \in [0, 1] $.
+\end{df}
+\begin{thm}
+ В условиях определения 10.1 существует непрерывная ветвь аргумента функции $ f $ вдоль пути $ \gamma $, причём две любые такие ветви отличаются на $ 2\pi k $, $ k \in \Z $.
+\end{thm}
+Доказывать теорему 10.2 будем только для кусочно-гладких путей. План доказательства будет такой: определим непрерывный логарифм вдоль пути, и тогда аргумент будет равен его мнимой части.
+\begin{proof}[\normalfont\textsc{Доказательство теоремы}]
+ Пусть путь $ \gamma $ кусочно гладкий. Рассмотрим функцию $ g \colon\,[0, 1] \to \CC $:
+ \begin{align*}
+  g(t) = \int\limits_{0}^{t} \frac{f'(\gamma(t))}{f(\gamma(t))} \gamma'(t)\,dt.
+ \end{align*} Проверим, что $ g $ --- это логарифм:
+ \begin{align*}
+  \left(\frac{e^{g(t)}}{f(\gamma(t))}\right)' &= \frac{g'(t)e^{g(t)}f(\gamma(t)) - f'(\gamma(t)) \cdot \gamma'(t) \cdot e^{g(t)}}{f^{2}(\gamma(t))} = \\
+  g'(t) - f(\gamma(t)) - f'(\gamma(t))\gamma'(t) = \frac{f'(\gamma(t))}{g(\gamma(t))} \gamma'(t) f(\gamma(t)) - f'(\gamma(t)) \gamma'(t) = 0.
+ \end{align*}. Значит, $ \frac{e^{g}}{f} $ --- кусочно постоянная функция, и она непрерывна на $ [0,1] $. Значит
+ \begin{align*}
+  \frac{e^{g}}{f} = e^{-c}, 
+ \end{align*} где $ c \in \CC $. Тогда $ e^{g+c} = f $. Логарифм $ g $ построен. Теперь рассмотрим $ \psi(t) = \Imaginary (g(t) + c) $, $ t \in [0,1] $. Функция $ \psi $ непрерывна, действует в $ \R $, и
+ \begin{align*}
+  &\left| f(\gamma(t)) \right| \cdot e^{i\psi(t)} = f(\gamma(t)) \iff \\
+  \iff &\left| f(\gamma(t)) \right|e^{i\psi(t)} = e^{g(t) + c},
+ \end{align*} причём так как $ f(\gamma(t)) = e^{g(t)+c} $ имеем $ \left| f(\gamma(t)) \right|  = e^{\Real(g(t)+c)}$. Тогда (*) равносильно
+ \begin{align*}
+  e^{\Real(g(t)+c) + i\psi(t)} = e^{g(t) + c},
+ \end{align*} а это выполнено по построению $ \psi $.
+
+ Докажем единственность. Пусть $ \psi_1 $, $ \psi_2 $ --- непрерывные ветви аргумента функции $ f $ вдоль пути $ \gamma $. Тогда
+ \begin{align*}
+  \left| f(\gamma(t)) \right|e^{i\psi_1(t)} = \left| f(\gamma(t)) \right|e^{i\psi_2(t)} \implies e^{i(\psi_1(t)-\psi_2(t))}  \equiv 1
+ \end{align*} Следовательно, $ \psi_1(t) - \psi_2(t) \equiv 2\pi k(t)$, где $ k(t) $ --- непрерывная функция со значениями в $ \Z $, то есть $ k $ --- целое число.
+\end{proof}
+
+\begin{df}
+ \textit{Изменение аргумента $ f $ вдоль пути $ \gamma $}  --- это число
+ \begin{align*}
+  \Delta_\gamma \arg f := \psi(1) - \psi(0).
+ \end{align*} По теореме 10.2 оно не зависит от выбора ветви аргумента!
+\end{df}
+\begin{remrk}
+ Пусть функции $ f,g $ аналитичны в области $ \Omega  $, $ \psi_f $, $ \psi_g $ --- их аргументы вдоль пути $ \gamma $, а $ \psi_{f\cdot g} $ --- аргумент функции $ f \cdot g $ вдоль $ \gamma $. Тогда
+ \begin{align*}
+  \psi_{f\cdot g} = \psi_f + \psi_g + 2\pi k, \qquad k \in \Z.
+ \end{align*}
+\end{remrk}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По явной формуле аргументы гладкие. Тогда (**) равносильно
+ \begin{align*}
+  \psi_{f \cdot g}'  = \psi'_f + \psi'_g \iff \\
+  \iff \gamma'(t) \frac{(fg)'(\gamma(t))}{(fg)(\gamma(t))} = \gamma'(t) \frac{f'(\gamma(t))}{f(\gamma(t))} +  \gamma'(t)\frac{g'(\gamma(t))}{g(\gamma(t))} \leqslant \\
+  \leqslant \frac{(fg)'(\gamma(t))}{(fg)(\gamma(t))} = \frac{f'(\gamma(t))}{f(\gamma(t))} + \frac{g'(\gamma(t))}{g(\gamma(t))},
+ \end{align*} а это верно по правилу Лейбница.
+\end{proof}
+
+\begin{remrk*}
+ Мы не пользовались аналитичностью функции на границе, только $ C^{1} $-гладкостью.
+\end{remrk*}
+
+\begin{df}
+ Пусть $ \Omega $ --- стандартная область, $ \partial \Omega  = \bigcup_{k=1}^{N} \gamma_k $  --- её граница, у которой $ \gamma_k $ --- простые замкнутые кусочно-гладкие пути  $ \gamma_k \colon\, [0,1] \to \CC $, проходимые в таком направлении, чтобы область оставалась слева. Пусть функция $ f $ $ C^{1} $-гладкая на $ \overline \Omega $ и аналитична в $ \Omega $.
+ \begin{align*}
+  \Delta_{\partial \Omega} \arg f = \sum_{k=1}^{N}\Delta_{\gamma_k} \arg f.
+ \end{align*}
+\end{df}
+
+\begin{thm}[%
+принцип аргумента]
+ Пусть $ \Omega $ --- стандартная область, $ f \in C^{1}(\overline \Omega \setminus E) $, $ f $ аналитична в $ \Omega \setminus E $. Здесь $ E $ --- конечное подмножество в $ \Omega $, $ f $ имеет полюса в точках из $ E $. Тогда
+ \begin{align*}
+  \Delta_{\partial \Omega} \arg f = 2\pi(N - P),
+ \end{align*} где $ N $ --- суммарное количество нулей $ f $ в $ \Omega $ (с учётом кратности), а $ P $ --- суммарное количество  полюсов $ f $ в $ \Omega $ (с учётом кратности).
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По теореме Коши
+ \begin{align*}
+  \int\limits_{\partial\Omega} \frac{f'(z)}{f(z)} \,dz = 2\pi i \sum_{a \in E} \res_a \frac{f'}{f}.
+ \end{align*} Левая часть по определению интеграла равна
+ \begin{align*}
+  \sum_{k=1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt.
+ \end{align*} Припишем $ \Imaginary$ к обоим частям:
+ \begin{align*}
+  \Imaginary \sum_{1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt = \Imaginary \left( 2\pi i \sum_{a \in E}\res_a \frac{f'}{f} \right)
+ \end{align*} Левая часть равна
+ \begin{align*}
+  \sum_{1}^{\tilde N} \psi_k(1) - \psi_k(0) = \Delta_{\partial \Omega} \arg f,
+ \end{align*} где $ \psi_k $ --- аргумент $ f $ вдоль $ \gamma_k $ Правая часть равна
+ \begin{align*}
+  2\pi \sum_{a \in E} \Real \left( \res_a \frac{f'}{f} \right).
+ \end{align*} Пусть $ a $ --- ноль функции $ f $ кратности $ k(a) $. Тогда
+ \begin{align*}
+  \res_a \frac{f'}{f} = k(a).
+ \end{align*} Пусть теперь $ a $ --- полюс порядка $ p(a) $, то
+ \begin{align*}
+  \res_a \frac{f'}{f} = -p(a).
+ \end{align*} У нас были два примера на это. Просуммировав всё, правая часть равна
+ \begin{align*}
+  2\pi (N-P),
+ \end{align*} что и требовалось доказать.
+\end{proof}
+
+\begin{exmpl}
+ Пусть $ \Omega = \CC \setminus [-1, 1] $. Существует аналитическая в $ \Omega $ функция $ f $ такая, что $ f^{2} = z^{2} - 1 $, $ h = z^{2}-1 $.
+
+ Действительно,  рассмотрим сначала такую функцию $ f $ в области $ \tilde \Omega  = \CC \setminus [-1, +\infty)$:
+ \begin{align*}
+  f = e^{\frac{1}{2}\log(z^{2} - 1)},
+ \end{align*} где $ \log(z^{2} - 1) $ --- аналитическая ветвь логарифма функции $ z^{2}-1 $ в односвязной области $ \tilde \Omega $.
+
+ Определим функцию $ f $ на луче $ (1, +\infty) $ как предельные значения сверху и снизу. Почему существуют и одинаковы? Зафиксируем точку $ x_0 \in (1, +\infty) $. Значение сверху в точке $ x_0 $ --- это
+ \begin{align*}
+  \lim_{\eps \to 0} f(x_0 + i\eps) = \lim_{\eps \to 0} e^{\frac{1}{2}\log \left| (x_0+i\eps)^{2} - 1 \right| + \frac{i}{2}\arg h(x_0 + i\eps)} = e^{\frac{1}{2}\log \left| x_0^{2}-1 \right|}.
+ \end{align*} Предел снизу:
+ \begin{align*}
+  \lim_{\eps \to 0} f(x_0 - i\eps) = \lim_{\eps \to 0} e^{\frac{1}{2} \log \left| (x_0 -i\eps)^{2}-1 \right| + \frac{i}{2}\arg h(x_0-\eps)} = e^{\frac{1}{2} \log \left| x_0^{2}-1 \right|} \cdot e^{\frac{i}{2} \Delta_\gamma \arg h}.
+ \end{align*} Есть принцип аргумента! $ \Delta_{\gamma} \arg h = 4\pi $, так как два корня кратности $ 1 $, и полюсов нет. Тогда
+ \begin{align*}
+  = e^{\frac{1}{2}\log \left| x_0^{2}-1 \right|} \cdot e^{2\pi} = e^{\frac{1}{2} \log \left| x_0^{2}-1 \right|}.
+ \end{align*} Более того, функция получилась непрерывной.
+
+ Продолженная функция $ f $ аналитична, так как см тест на прямоугольниках.
+\end{exmpl}
+
+\newpage
+\section{Теорема Руше.}
+
+\begin{thm}[Руше]
+ Пусть $ \Omega $ --- стандартная область, функции $ f,g \in C^{1}(\overline\Omega) $, $ f $ и $ g $ аналитичны в $ \Omega $, и $ \left| g \right| < \left| f \right| $ всюду на $ \partial \Omega $. Тогда $ f + g $ и $ f $ имеют одинаковое количество нулей в $ \Omega $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По принципу аргумента
+ \begin{align*} 2\pi N_f = \Delta_{\partial\Omega} \arg f, && 2\pi N_{f+g} = \Delta_{\partial\Omega}\arg(f+g).
+ \end{align*} Поэтому, достаточно доказать, что $ \Delta_{\gamma_k} \arg f = \Delta_{\gamma_k} \arg (f+g) $ для всех путей $ \gamma_k $, из которых состоит граница $ \partial\Omega $. Распишем правую часть:
+ \begin{align*}
+  \Delta_{\gamma_k} \arg (f+g)  = \Delta{\gamma_k} \arg f + \Delta{\gamma_k} \arg \left( 1 + \frac{g}{f}\right)
+ \end{align*} так как аргумент произведения равен сумме аргументов. Значит, достаточно доказать, что
+ \begin{align*}
+  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0
+ \end{align*} для всех $ k $. Рассмотрим 
+ \begin{align*}
+  \Real \left(1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))}\right) \geqslant 1 - \left| \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right| > 0
+ \end{align*} по условию. Так как вещественная часть положительна, то
+ \begin{align*}
+  1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} = \left| 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right|e^{i\Psi(t)}
+ \end{align*} на $ \gamma_k $, где $ \Psi(t) \in (-\pi / 2, \pi / 2) + k(t)  $, где $ k(t) $ --- непрерывная функция со значениями в $ \Z $. $ k $ --- константа. Тогда $ \left|\psi(1) - \psi(0) \right| < \pi $. С другой стороны, $ \psi(1) - \psi(0) $ --- это число, кратное $ 2\pi $. Поэтому $ \psi(1) - \psi(0) = 0 $.
+\end{proof}
+
+\end{document}
