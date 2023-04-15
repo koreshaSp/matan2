@@ -13,10 +13,10 @@
  Пусть $ f \colon\, \mathbb D \to \mathbb D $ --- аналитическая функция, причём $ f(0) = 0 $. Тогда $ \left| f(z) \right| \leqslant \left| z \right| $ в $ \mathbb D $, и равенство достигается в какой-то точке $ z \in \mathbb D $ тогда и только тогда, когда $f = \alpha z$, $ \left| \alpha  \right| = 1 $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Применим принцип максимума. Рассмотрим функцию $ g=\frac{f}{z} $. Функция аналитическая в $ \mathbb D $ (так как ряд не имеет свободного члена ($ f(0) = 0 $), и его можно поделить на $ z $). Найдём
+Применим принцип максимума \eqref{theorem:maximum_principle}. Рассмотрим функцию $ g=\frac{f}{z} $. Функция аналитическая в $ \mathbb D $ (так как ряд не имеет свободного члена ($ f(0) = 0 $), и его можно поделить на $ z $). Найдём
  \begin{align*}
   \sup_{\left| z \right| < 1} \left| g(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| \leqslant r} \left| g(z) \right| = [\text{принцип максимума}] = \lim_{r\to 1} \sup_{\left| z \right| = r} \left| g(z) \right| = \\
-  &= \lim_{r \to 1} r^{-1} \sup_{\left| z \right| = r} \left| f(z) \right| \leqslant \lim_{r \to 1} r^{-1} = 1.
+  &= \lim_{r \to 1} r^{-1} \sup_{\left| z \right| = r} \underbrace{\left| f(z) \right|}_{\leq 1} \leqslant \lim_{r \to 1} r^{-1} = 1.
  \end{align*} Значит, $ \left| g \right| \leqslant 1 $ в $ \mathbb D $, то есть $ \left| f \right| \leqslant \left| z \right| $ в $ \mathbb D $.
 
  Пусть $ \left|f(z_0) \right| = \left| z_0 \right| $ в точке $ z_0 \in \mathbb D $. Тогда $ g(z_0) = 1 $, и по принципу максимума функция $ g $ --- константа в $ \mathbb D $, то есть $ f = \alpha \cdot z $, где $ \alpha = g(z_0) $, $ \left| \alpha \right|=1 $.
@@ -29,7 +29,7 @@
  \end{align*} где $ g $ аналитична в $ \Omega $ и $ g(z_0) \neq 0 $.
 \end{df}
 
-По лемме о кратности нуля у каждой функции (кроме тождественного нуля) есть кратность во всех нулях.
+По лемме \eqref{lemma:zero_multiplicity} о кратности нуля у каждой функции (кроме тождественного нуля) есть кратность во всех нулях.
 
 \begin{thm}
  Пусть аналитическая функция $ f\colon\,\mathbb D \to \CC $  ограничена. Пусть $\{\lambda_{k}\}_{k=1}^{N} $,  где $ N \in \N \cup \left\{ \infty \right\} $ последовательность всех её нулей с учётом кратности (каждый нуль встречается в этой последовательности столько раз, какова его кратность).
@@ -54,7 +54,7 @@
 
  Рассмотрим функцию $ g_n = \frac{f}{\B_n} $, эта функция также аналитична в $ \mathbb D $ по построению (нужно сравнить кратности нулей у $ f $ и у $ \mathcal B_n $ и воспользоваться леммой о кратности нуля).
  \begin{align*}
-  \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} = \lim_{r \to 1}  \sup_{\left| z \right| = r} \frac{\left| f(z) \right|}{1 + o(1)} \leqslant 1.
+	 \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} = \lim_{r \to 1} \frac{\left| f(z) \right|}{1 + o(1)} \leqslant 1.
  \end{align*} Значит,
  \begin{align*}
   \left| f \right| = \left| \mathcal B_n \cdot g_n \right| \leqslant \left| \B_n \right|
@@ -97,12 +97,29 @@
  \begin{align}
   \label{equation:loran_series}
   f(w) = \sum_{z \in \Z} c_k(w - a)^{k}
- \end{align} где ряды $ \sum_{k \geqslant 0} $ и $ \sum_{k < 0} $ сходятся равномерно на компактах в $ \Omega_{R,r} $. Более того, коэффициенты $ c_k $ определены единственным образом:
+\end{align} где ряды $ \sum_{k \geqslant 0} $ и $ \sum_{k < 0} $ сходятся равномерно на компактах в $ \Omega_{R,r} $. См. рисунок \eqref{fig:laurent-series-compacts}. Более того, коэффициенты $ c_k $ определены единственным образом:
  \begin{align*}
-  c_k = \frac{1}{2\pi i} \int\limits_{C_\rho}   \frac{f(z)}{(z-a)^{k+1}}\,dz,
- \end{align*} где $ r < \rho < R $, $ C_\rho = \left\{ z \in \CC \mid \left| z-a \right|=\rho \right\} $. Интеграл против часовой.
+  c_k = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho}   \frac{f(z)}{(z-a)^{k+1}}\,dz,
+ \end{align*} где $ r < \rho < R $, $ C_\rho = \left\{ z \in \CC \mid \left| z-a \right|=\rho \right\} $.
 \end{thm}
-{\color{red} картинка}
+
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+	\incfig[0.7]{laurent-series-compacts-limited}
+    \caption{Ограниченный случай.}
+    \label{fig:laurent-series-compacts-limited}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+	\incfig[0.8]{laurent-series-compacts-not-limited}
+	\caption{Неограниченный случай.}
+    \label{fig:laurent-series-compacts-not-limited}
+\end{subfigure}
+
+\caption{Пример компактов внутри кольца.}
+\label{fig:laurent-series-compacts}
+\end{figure}
+
 \begin{df}
  Ряд \eqref{equation:loran_series} называется \textit{рядом Лорана} функции $ f $ в кольце $ \Omega_{R,r} $.
 \end{df}
@@ -115,7 +132,7 @@
   \int\limits_{C_\rho} \frac{f(w)}{w^{j}} \,dw = \sum_{k \in \Z} c_k \int\limits_{C_\rho} w^{k-j}\,dw,
  \end{align*} потому что $ C_\rho $ --- компакт внутри $ \Omega_{R,r} $, и ряд сходится равномерно. Тогда
  \begin{align*}
-  \int\limits_{C_\rho} w^{n}  \, dw = \int\limits_{0}^{2\pi}  \rho^{n} e^{int} \cdot \rho i e^{it}\,dt = \rho^{n+1} \cdot i \cdot \int\limits_{0}^{2\pi} e^{i(n+1)t}\,dt = \begin{cases}
+  \int\limits_{C_\rho} w^{n}  \, dw = \int\limits_{0}^{2\pi}  \rho^{n} e^{i \cdot n \cdot t} \cdot \rho \cdot i e^{it}\,dt = \rho^{n+1} \cdot i \cdot \int\limits_{0}^{2\pi} e^{i(n+1)t}\,dt = \begin{cases}
    2\pi i, \text{ если } n+1=0 \\
    0, \text{ иначе }
   \end{cases} 
@@ -124,14 +141,22 @@
   = 2\pi i \cdot c_{j-1}.
  \end{align*} Тогда
  \begin{align*}
-  C_j = \frac{1}{2\pi i} \int\limits_{C_\rho}   \frac{f(w)}{w^{j+1}}\,dw.
+  c_j = \frac{1}{2\pi i} \int\limits_{C_\rho}   \frac{f(w)}{w^{j+1}}\,dw.
  \end{align*}
 
  Единственность проверена.
 
  Докажем существование.
 
- {\color{red} картинка} Сделаем хирургию: расширим кольцо, $ r < \tilde r < \tilde R < R $, нарисуем контур. $ w \in \Omega_{\tilde R, \tilde r} $.
+ Сделаем хирургию: расширим кольцо, $ r < \tilde r < \tilde R < R $, нарисуем контур. $ w \in \Omega_{\tilde R, \tilde r} $.
+
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{laurent-series-point-surgery}
+    \caption{Вырезание точки}
+    \label{fig:laurent-series-point-surgery}
+\end{figure}
+
  \begin{align*}
   \Gamma = C_{\tilde R} \cup C_{\tilde r} \cup \gamma_\eps^{+} \cup I_1 \cup I_2 \cup I_3 \cup I_4 \cup \gamma_\eps^{-}.
  \end{align*} Проинтегрируем по нему функцию
@@ -139,23 +164,24 @@
   \frac{1}{2\pi i} \int\limits_{\Gamma} \frac{f(z)}{z - w}  \, dz = 0,
  \end{align*} так как контур стягиваем в области $ \Omega_{R,r} \setminus \left\{ w \right\} $. С другой стороны,
  \begin{align*}
-  \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}  - \frac{1}{2\pi i} \int\limits_{\gamma_\eps}   = 0.
+  \frac{1}{2\pi i} \int\limits_{\Gamma} = \frac{1}{2\pi i} \varointctrclockwise \limits_{C_{\tilde R}}   - \frac{1}{2\pi i} \varointctrclockwise\limits_{C_{\tilde r}}  - \frac{1}{2\pi i} \varointctrclockwise\limits_{\gamma_\eps}   = 0.
  \end{align*} Тогда
  \begin{align*}
-  \frac{1}{2\pi i} \int\limits_{\gamma_\eps} \frac{f(z)}{z-w}\,dz = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i}\int\limits_{c_{\tilde r}}.
- \end{align*} Интеграл мы считали, когда доказывали теорему Коши-Гурса-Морера.
+  \frac{1}{2\pi i} \int\limits_{\gamma_\eps} \frac{f(z)}{z-w}\,dz = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i}\int\limits_{C_{\tilde r}}.
+\end{align*} Интеграл мы считали, когда доказывали теорему Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}.
  \begin{align*}
   \frac{1}{2\pi i} \int\limits_{\gamma_\eps}   \frac{f(z)}{z-w}\,dz = f(w)
  \end{align*}
  \begin{align*}
-  f(w) = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i} \int\limits_{c_{\tilde r}}  = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z(1 - \frac{w}{z})}\,dz - \frac{1}{2\pi i} \int\limits_{c_{\tilde r}}   \frac{f(z)}{w(\frac{z}{w}-1)}\,dz = \\
-  = \frac{1}{2\pi i}  \int\limits_{C_{\tilde R}} f(z) \cdot \sum_{k=0}^{\infty} \frac{w^{k}}{z^{k+1}}   + \frac{1}{2\pi i} \int\limits_{c_{\tilde r}}  f(z) \sum_{j=0}^{\infty}\frac{z^{j}}{w^{j+1}} = \\
-  = \sum_{k \geqslant 0} w^{k} \cdot \left(\frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z^{k+1}}\,dz \right) + \sum_{j \geqslant 0} w^{-(j+1)} \left( \frac{1}{2\pi i} \int\limits_{C_{\tilde r}} \frac{f(z)}{z^{-j}}\,dz   \right).
- \end{align*} С точностью до перенумерования индексов все получилось. 
+  f(w) = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}  = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z(1 - \frac{w}{z})}\,dz - \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}   \frac{f(z)}{w(\frac{z}{w}-1)}\,dz = \\
+  = \frac{1}{2\pi i}  \int\limits_{C_{\tilde R}} f(z) \cdot \sum_{k=0}^{\infty} \frac{w^{k}}{z^{k+1}}   + \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}  f(z) \sum_{j=0}^{\infty}\frac{z^{j}}{w^{j+1}} = \\
+  = \sum_{k \geqslant 0} w^{k} \cdot \left(\frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z^{k+1}}\,dz \right) + \sum_{j \geqslant 0} w^{-(j+1)} \left( \frac{1}{2\pi i} \int\limits_{C_{\tilde r}} \frac{f(z)}{z^{-j}}\,dz   \right) = \\
+  = \sum_{k \geqslant 0} w^{k} \cdot \left(\frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z^{k+1}}\,dz \right) + \sum_{k \leqslant -1} w^{k} \left( \frac{1}{2\pi i} \int\limits_{C_{\tilde r}} \frac{f(z)}{z^{k + 1}}\,dz   \right)
+ \end{align*} Получили что и требовалось.
 
- Ряды сходятся равномерно на $ \Omega_{\tilde\tilde R, \tilde\tilde r} $, где $ \tilde r < \tilde\tilde r < \tilde \tilde R < \tilde R $, так как $ w \in \Omega_{\tilde\tilde R, \tilde\tilde r} $, то
+ Ряды сходятся равномерно на $ \Omega_{\tilde{\tilde R}, \tilde{\tilde r}} $, где $ \tilde r < \tilde{\tilde r} < \tilde {\tilde R} < \tilde R $, так как если $ w \in \Omega_{\tilde{\tilde R}, \tilde{\tilde r}} $, то
  \begin{align*}
-  \left| \frac{w}{z} \right| < [z \in C_{\tilde R}] \frac{\tilde{\tilde R}}{\tilde R} < 1
+  \left| \frac{w}{z} \right| < [z \in C_{\tilde R}] < \frac{\tilde{\tilde R}}{\tilde R} < 1
  \end{align*} аналогично
  \begin{align*}
   \left| \frac{z}{w} \right| < \frac{\tilde r}{\tilde{\tilde r}} < 1
@@ -180,7 +206,16 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Форма $ \omega = (z-a)f\,dz $ (доопределим $ 0 $ в точке $ a $) замкнута в $ \Omega_{\eps,0} $, имеет ограниченные коэффициенты в $ \Omega_{\eps,0} $ и непрерывно продолжается в $ \left| z-a \right| < \eps $.
 
- Значит форма $ \omega $ замкнутая в $ \left| z-a \right| < \eps $ (по лемме об устранении особенности). Значит, $ h = (z-a)f(z), z \neq a; 0 , z = a$ аналитична по теореме Коши-Гурса-Морера. Кроме того, $ h(a) = 0 $. Значит, по лемме о кратности нуля $ h = (z-a)^{k}\tilde g $, где $ k \geqslant 1 $. Значит, $ (z-a)f = (z-a)^{k}\tilde g \implies f = (z-a)^{k-1}\tilde g $. Тогда $ g = (z-a)^{k-1}\tilde g $.
+ Значит форма $ \omega $ замкнутая в $ \left| z-a \right| < \eps $ (по лемме об устранении особенности \eqref{lemma:ob_ustranenii_osobennosti}). Значит,
+
+ \begin{align*}
+	 h(z) = \begin{cases}
+		 (z - a) f(z), &z \neq a \\
+		 0, &z = a
+	 \end{cases}
+ \end{align*} аналитична по теореме Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}. Кроме того, $ h(a) = 0 $. Значит, по лемме о кратности нуля $ h = (z-a)^{k}\tilde g $, где $ k \geqslant 1 $. Значит, $ (z-a)f = (z-a)^{k}\tilde g \implies f = (z-a)^{k-1}\tilde g $. Тогда $ g = (z-a)^{k-1}\tilde g $ нам подойдет.
+
+ В обратную сторону очевидно, т.к. аналитическая функция в $C_\varepsilon$ ограничена. 
 \end{proof}
 
 \end{document}
