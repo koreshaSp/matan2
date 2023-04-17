@@ -1,0 +1,174 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{breqn}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{import}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{microtype}
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\usepackage{subfiles}
+\usepackage{systeme,mathtools}
+\usepackage{textcomp}
+\usepackage{transparent}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{xifthen}
+\usepackage{esint}
+\usepackage{subcaption}
+\pgfplotsset{compat=1.16}
+
+\hfuzz=6.41pt 
+
+\newcommand{\incfig}[2][1]{%
+ \def\svgwidth{#1\columnwidth}
+ \import{./figures/}{#2.pdf_tex}
+}
+\graphicspath{{figures/}}
+
+\pdfsuppresswarningpagegroup=1
+
+% counters and theorems
+\newcounter{theoremCnt}
+\counterwithin{theoremCnt}{section}
+\counterwithin{equation}{section}
+\counterwithin{figure}{section}
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+
+% numbered theorems
+\theoremstyle{definition}
+\newtheorem{df}[theoremCnt]{Определение}
+\theoremstyle{plain}
+\newtheorem{thm}[theoremCnt]{Теорема}
+\theoremstyle{plain}
+\newtheorem{lm}[theoremCnt]{Лемма}
+\theoremstyle{plain}
+\newtheorem{crly}[theoremCnt]{Следствие}
+\theoremstyle{plain}
+\newtheorem{prop}[theoremCnt]{Предложение}
+\theoremstyle{definition}
+\newtheorem{exmpl}[theoremCnt]{Пример}
+\theoremstyle{definition}
+\newtheorem{remrk}[theoremCnt]{Замечание}
+\theoremstyle{definition}
+\newtheorem{claim}[theoremCnt]{Утверждение}
+\theoremstyle{definition}
+\newtheorem{algorithm}[theoremCnt]{Алгоритм}
+\theoremstyle{definition}
+\newtheorem{problem}[theoremCnt]{Задача}
+\theoremstyle{definition}
+\newtheorem{exercise}[theoremCnt]{Упражнение}
+
+% non-numbered theorems
+\theoremstyle{definition}
+\newtheorem*{df*}{Определение}
+\theoremstyle{definition}
+\newtheorem*{notatn*}{Обозначение}
+\theoremstyle{definition}
+\newtheorem*{conventn*}{Соглашение}
+\theoremstyle{plain}
+\newtheorem*{thm*}{Теорема}
+\theoremstyle{plain}
+\newtheorem*{lm*}{Лемма}
+\theoremstyle{plain}
+\newtheorem*{crly*}{Следствие}
+\theoremstyle{plain}
+\newtheorem*{prop*}{Предложение}
+\theoremstyle{definition}
+\newtheorem*{exmpl*}{Пример}
+\theoremstyle{definition}
+\newtheorem*{remrk*}{Замечание}
+\theoremstyle{definition}
+\newtheorem*{claim*}{Утверждение}
+\theoremstyle{definition}
+\newtheorem*{algorithm*}{Алгоритм}
+\theoremstyle{definition}
+\newtheorem*{problem*}{Задача}
+\theoremstyle{definition}
+\newtheorem*{exercise*}{Упражнение}
+
+% small caps "proof" label
+\addto\captionsrussian{\renewcommand\proofname{\normalfont\textsc{Доказательство}}}
+
+% some aliases
+\newcommand{\R}{\ensuremath \mathbb{R}}
+\newcommand{\Q}{\ensuremath \mathbb{Q}}
+\newcommand{\CC}{\ensuremath \mathbb{C}}
+\newcommand{\Z}{\ensuremath \mathbb{Z}}
+\newcommand{\N}{\ensuremath \mathbb{N}}
+\newcommand{\eps}{\ensuremath \varepsilon}
+\newcommand{\then}{\ensuremath \implies}
+\newcommand{\Mid}{\ensuremath \;\middle|\;}
+
+% project-local aliases
+\newcommand{\A}{\ensuremath \mathfrak{A}}
+\newcommand{\B}{\ensuremath \mathcal{B}}
+\newcommand{\p}{\ensuremath \mathcal{P}}
+\newcommand{\mua}{\ensuremath \mu^\ast}
+\newcommand{\LL}{\ensuremath \mathcal{L}}
+\newcommand{\lan}{\ensuremath \lambda_n}
+\newcommand{\alan}{\ensuremath \A_{\lan}}
+\newcommand{\LF}{\ensuremath \LL(\R^2, \CC)}
+\newcommand{\lao}{\ensuremath \lambda_{1}}
+\newcommand{\res}{\ensuremath \mathrm{res}}
+
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imaginary}{Im}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\diverg}{div}
+
+\title{Матан СП 3 семестр. \\ Теория меры. \\ Конспект лекций.}
+\author{Набор в \TeX: Усачев Данила. \\ Правки, ревью: Николай Чухин, \\ Всеволод Васькин, Кирилл Митькин, \\ Андрей Петрухин. \\ CI: Максим Хабаров, Андрей Хорохорин.}
+
+\begin{document}
+\maketitle
+Конспект лекций по математическому анализу в третьем семестре (второй курс, осень) СПбГУ МКН <<Современное программирование>> (набор 2021 года).
+\subsubsection*{Лектор}
+Роман Викторович Бессонов.
+\subsubsection*{Как читать}
+Последнюю версию конспекта можно найти в Releases.
+\subsubsection*{Как контрибьютить}
+Об опечатках и ошибках можно сообщать, создав новую Issue на GitHub.
+Добавить в/улучшить конспект можно через Pull Request: нужно создать ветку/форк, внести правки, а затем создать Pull Request в ветку main.
+Можно ревьювить Pull Request'ы, отмечая ошибки.
+\newpage
+\tableofcontents
+\newpage
+
+\subfile{lectures/01.tex}
+\subfile{lectures/02.tex}
+\subfile{lectures/03.tex}
+\subfile{lectures/04.tex}
+\subfile{lectures/05.tex}
+\subfile{lectures/06.tex}
+\subfile{lectures/07.tex}
+\subfile{lectures/08.tex}
+\subfile{lectures/09.tex}
+\subfile{lectures/10.tex}
+\subfile{lectures/11.tex}
+\subfile{lectures/12.tex}
+\subfile{lectures/13.tex}
+\subfile{lectures/14.tex}
+\subfile{lectures/15.tex}
+
+\end{document}
+

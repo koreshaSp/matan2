@@ -16,11 +16,19 @@ jobs:
           utcOffset: "+03:00"
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
+
+      - name: Compile measure-theory.pdf LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
-          args: -jobname=matan2 -output-format=pdf
+          root_file: measure-theory.tex
+          working_directory: measure-theory
+          args: -jobname=measure-theory -output-format=pdf
+      - name: Compile complex-analysis.pdf LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: complex-analysis.tex
+          working_directory: complex-analysis
+          args: -jobname=complex-analysis -output-format=pdf -f
 
       - name: Delete
         uses: ame-yu/action-delete-latest-release@v2
@@ -38,23 +46,26 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Asset
-        id: upload-release-asset 
+      - name: Upload measure-theory.pdf release asset
+        id: upload-measure-theory-release-asset 
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./matan2.pdf
-          asset_name: matan2.pdf
+          asset_path: measure-theory/measure-theory.pdf
+          asset_name: measure-theory.pdf
           asset_content_type: pdf
 
-#      - name: Upload to gdrive
-#        uses: adityak74/google-drive-upload-git-action@main
-#        with:
-#          credentials: "eyAidHlwZSI6ICJzZXJ2aWNlX2FjY291bnQiLCAicHJvamVjdF9pZCI6ICJubG9nbi0zNDAwMTEiLCAicHJpdmF0ZV9rZXlfaWQiOiAiYTliNjdlODY5YmY2NDQ2NDY1M2JmZGRkZjNkOGU2ZTUzZjQwYjAzYyIsICJwcml2YXRlX2tleSI6ICItLS0tLUJFR0lOIFBSSVZBVEUgS0VZLS0tLS1cbk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRREFENGpNb0hFNHEzU0JcbjZaNjVXVmp1NlFra3VGamJzWTJibjhOYk5OTEV4eTRHTWxFRVRhOTZ4Y1liYnlqSHIyWUtmT2xmOS9OT2pCQStcbmkxUFRteXRWSkZFbG8xTDZvcFhzenBsRVJzZkZ1ejgyTG1oSHBSVVR5WitlQ09QZTEzQXB4NWVhQlAza0tkWlNcbnpINkkyZEJjcDRHVjJOUmkyM3BqSzNNcGVOYVVMT0NVV1h3NWJadWVURmRQcUhJUGlOdk5RN2ZCV0tYbWhValBcbmtORW5kWWlwYUpYc1UzMW1qSEEvU2pjbTJGL3lMZUFnTWFONFpGck5vS3kreFNHM0FCZzA4WGRZRklEbGU3ZEFcbnlsYUhuOCtxb1YwL1Z2cUNzbU03ZVk2R0FqVWpmTnUvOVJuM1Ezd2J6VXVFZlRyM2twMUNJWmpmV0hwa2FOYUZcbjlzcUw3TVNCQWdNQkFBRUNnZ0VBQ1AxUkpsN0dIZVJzamg0Y3QwazJ6K3ZwYVNZVnhxYXZYWjdqT25Ray8xL2hcblNCbjN6ODlCRE9xUDVMM1Z0MDcrNURQSGlwM2s3Z0xCU2VRa2xzMTNBRU8wWnFJWDRySlVlU0tNYXZVektZNmpcbm5Vb2J5R3F5SzF4dkU2c1AyMkRURjZtSGI0YVhTYVFwcTNOMTRycnJOVU1EM2pzcGFiMGpJOXduUmtRcEt3TS9cbjdUaVN0U1JuaFRYUlBMQ2xTU085KzFOUEVaKytDWVFHcmM4ZkFMUjVqWU1VTmRHT0RuZVI4dHJYaitXOXEvSXVcbmV5aTRHMElEWWhvYTBhc251a1N1WmRFZ3NNZW9hejNiY2tSYzFSWlFtSTZ6bU44S09icVhZRkUrMXhwQ2dyb3lcbkRVcTB6cWM1c05pazRyZmxXSVRzZ29OeGZlZXlNbGxjSWpiZUdJMTZod0tCZ1FEc05xdVJBR2QraWhGTXFaRmxcbmh4RHhPSGQ2R2FVVTd1Mmd0SW1xcXlKZUEvdE42VGRvSEhIYnlJdW5MRENHcUtPYjc0NWNEOUNaNExEdGczWlpcbnZIbkNIdHNBUU5jaUd0OXIyUjQ2VWxGWi9uR2RHZWVtcWptSEY1dEVoOHJIeVFGaXpGSmpVZTcyd3V2RkVmbWtcblkrVXJOSjQvQkVTbWFIWllIdjdoMERpV0F3S0JnUURRSmc1bVFwSDR1WHg1cE9QRWZMTG95QVBxSHlSaWdLbTFcblk0YWFTM2FueWZnc3NHSVNNeVNhQlJob3h0aWZiOXZFVHIraHRaaS95ZzJXeGs0ZlI0L1dHM2Z3MFlaMTlYRWhcbjRCMVo0dGNQcUtnVW81RUpGclFheC9rN1pxY2ZmWTdrOGJ4K015a0RCbnQ3TytrYlIwQmQzSnl0NkgrRTNWQjNcbldCSk1BcUtHS3dLQmdRQzRmZjdFa3k5Q2F5NFYxWDhsY0Rmd1grMFpaYnhGUEZSSEo1czZ2TTFyNXVvNk1RUkFcbmdhOEFQWU90LzFxcllqM2ZSbHpIVk9iVnVPUVhybzBhaTVZQjR6MmoxZ0R4dDFGM2w2My9XVm9HMHpBRHh6N2lcbk1xUVorbnNnTEh0YVRZbVNsQWxwWDQ0b0Y1ZzBaTlM1Ni9nTEpkN1BVMU1YTWhIMHc4akpzR3J4NXdLQmdHbDlcblFBTDNiZjgrRWlXY09ZclZIOTcxcjNZeC9rQ2xzRnlyYWdZOGhKQVl2ZHY0TUZ2RTY2SGJQem1xdlJKZ29HSm1cbi9wdTM2d2dZSUxidkhaeWdxZmI2eU5pVmQ2M0VqR2Q4cTZOb1lWSWdTYjdiL3A4NmtHQ2FSR2VrYU1KKzRiS0tcbkNOdDBsaTVnVktocC9vUENvbzV2UmtDaytpdWQ5aS9seExBZERiMHRBb0dCQU5yL3hvd3RHYitqbjJaWHI0VlZcbm9JenZWWlUraVBCOGxEcmJMMnlXZGpwbnllTmlRWDNVTmtCVVA3VUxIQWVwRHh4R2dMTXAwdVJQOG9KSXpQOVFcbk1kUHN4ckZJWkhpZmgvZFVucjNGZGNBdW1Pb09hWTB0RkExU1pubFBqQmVDRCtreUd4L3c2Ty8xRU41cjhLVHBcbkN1b2xmSUh3Z3R1RG9ZT0R4bGF4QWpzQVxuLS0tLS1FTkQgUFJJVkFURSBLRVktLS0tLVxuIiwgImNsaWVudF9lbWFpbCI6ICJhY2MtNTY2QG5sb2duLTM0MDAxMS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsICJjbGllbnRfaWQiOiAiMTA5ODg5MTk2MDkwMjA0MTE2ODYwIiwgImF1dGhfdXJpIjogImh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoIiwgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsICJhdXRoX3Byb3ZpZGVyX3g1MDlfY2VydF91cmwiOiAiaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vb2F1dGgyL3YxL2NlcnRzIiwgImNsaWVudF94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3YxL21ldGFkYXRhL3g1MDkvYWNjLTU2NiU0MG5sb2duLTM0MDAxMS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIgfQ=="
-#          filename: "matan2.pdf"
-#          folderId: "1RKblit-BBTRVrtOb7_ZAm14YBE0qR1_i"
-#          name: "matan.pdf" # optional string
-#          overwrite: "true" # optional boolean
+      - name: Upload complex-analysis.pdf release asset
+        id: upload-complex-analysis-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: complex-analysis/complex-analysis.pdf
+          asset_name: complex-analysis.pdf
+          asset_content_type: pdf
+
 

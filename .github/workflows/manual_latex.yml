@@ -26,14 +26,26 @@ jobs:
         with:
           ref: ${{ inputs.branch }}
 
-      - name: Compile LaTeX document
+      - name: Compile measure-theory.pdf LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
-          args: -jobname=matan2 -output-format=pdf
+          root_file: measure-theory.tex
+          working_directory: measure-theory
+          args: -jobname=measure-theory -output-format=pdf
+      - name: Compile complex-analysis.pdf LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: complex-analysis.tex
+          working_directory: complex-analysis
+          args: -jobname=complex-analysis -output-format=pdf
 
-      - name: Upload PDF
+      - name: Upload measure-theory.pdf
         uses: actions/upload-artifact@v3
         with:
-          name: Compiled PDF
-          path: matan2.pdf
+          name: measure-theory.pdf
+          path: measure-theory/measure-theory.pdf
+      - name: Upload complex-analysis.pdf
+        uses: actions/upload-artifact@v3
+        with:
+          name: complex-analysis.pdf
+          path: complex-analysis/complex-analysis.pdf
