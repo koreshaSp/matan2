@@ -47,7 +47,7 @@
 \begin{df}
  Пусть $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $, где $ a \in \Omega $, $ \Omega $ --- область. Точка $ a $ называется \textit{существенной особой точкой}, если для любого $ N \geqslant 1 $
  \begin{align*}
-  \limsup_{z \to a} \left|(z-a)^{N}f(z) \right| = +\infty.
+  \varlimsup_{z \to a} \left|(z-a)^{N}f(z) \right| = +\infty.
  \end{align*}
 \end{df}
 \begin{thm}
@@ -65,14 +65,14 @@
 
  $ 2 \implies 1 $. Если существует существует $ N $ такое, что
  \begin{align*}
-  \limsup_{z \to a} \left| (z-a)^{N}f(z) \right| < +\infty,
- \end{align*} то $ f = O(\frac{1}{(z-a)^{N}}) $, и $ a $ --- полюс.
+  \varlimsup_{z \to a} \left| (z-a)^{N}f(z) \right| < +\infty,
+ \end{align*} то $ f = O(\frac{1}{(z-a)^{N}}) \implies a $ --- полюс.
 \end{proof}
 
 \begin{exmpl}
  У функции $ e^{1 / z} $ точка $ 0 $ --- это существенная особая точка, так как
  \begin{align*}
-  \limsup_{z \to 0} \left| z \right|^{k} \left| e^{1/z} \right| \geqslant \limsup_{\eps \to 0+} \eps^{k} e^{1 / \eps} = +\infty
+  \varlimsup_{z \to 0} \left| z \right|^{k} \left| e^{1/z} \right| \geqslant \varlimsup_{\eps \to 0+} \eps^{k} e^{1 / \eps} = +\infty
  \end{align*} для любого $ k \geqslant 1 $.
 \end{exmpl}
 
@@ -121,7 +121,7 @@
   f=(z-a)^{N}g,
  \end{align*} где $ g(a) \neq 0 $. Тогда
  \begin{align*}
-  \frac{f'}{f} &= \frac{N(z-a)^{N-1}g + (z-a)^{N}g'}{(z-a)^{N}g} = \frac{N}{z-a} + O(1)
+  \frac{f'}{f} &= \frac{N(z-a)^{N-1}g + (z-a)^{N}g'}{(z-a)^{N}g} = \frac{N (z-a)^{N - 1} g}{(z - a)^{N} g} + \frac{(z-a)^{N} g'}{(z-a)^{N} g}= \frac{N}{z-a} + O(1)
  \end{align*} при $ z \to a $. Значит, $ a $  --- полюс первого порядка функции $ \frac{f'}{f} $, и
  \begin{align*}
   \res_a \frac{f'}{f} = N.
@@ -164,50 +164,74 @@
   \item $ \overline \Omega \setminus \Omega $ состоит из конечного числа непересекающихся кусочно-гладких замкнутых путей.
  \end{enumerate}
 \end{df}
+
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{standart-region}
+    \caption{Пример стандартной области.}
+    \label{fig:standart-region}
+\end{figure}
+
 \begin{df*}
  $ \overline \Omega \setminus \Omega $ называется \textit{границей} стандартной области $ \Omega $. Обозначение: $ \partial \Omega $.
 \end{df*}
 
 \begin{conventn*}
- Запись $ \oint_{\partial \Omega} f \, dz $ означает, что граница $ \partial \Omega $ ориентированна так, чтобы область оставалась слева при обходе.
+ Запись $\varointctrclockwise_{\partial \Omega} f \, dz $ означает, что граница $ \partial \Omega $ ориентированна так, чтобы область оставалась слева при обходе.
 
  <<Слева>> означает, что вектор $ \gamma'(t_0) + \gamma(t_0) $ и $ \gamma(t_0) + i\gamma'(t_0) \cdot \eps \in \Omega $ при малых $ \eps > 0 $ --- это можно записать математически строго.
 
  Существование такой параметризации --- вопрос сложный, но его можно строго доказать.
 \end{conventn*}
 
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{region-traversal-direction}
+    \caption{Направление обхода контура.}
+    \label{fig:region-traversal-direction}
+\end{figure}
+
 \begin{thm}[%
 Коши о вычетах]
 Пусть $ \Omega $ --- стандартная область, $ f\colon\,\Omega \setminus E \to \CC $ --- аналитическая функция, где $ E \subset \Omega $  --- конечное число точек. Пусть также $ f \in C(\overline{\Omega} \setminus E) $. Тогда
 \begin{align*}
- \oint_{\partial \Omega} f\,dz = 2\pi i \sum_{a \in E} \res_{a} f.
+ \varointctrclockwise_{\partial \Omega} f\,dz = 2\pi i \sum_{a \in E} \res_{a} f.
 \end{align*}
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Доказательство будет по модулю формулы Стокса. 
 
- Рассмотрим область $ \tilde \Omega = \Omega \setminus \bigcup_{a \in E} B(a,\eps) $, где $ \eps > 0 $ достаточно маленькое, чтобы все круги $ B(a,\eps) $ все лежали в $ \Omega $ и не пересекались.  Тогда
+ Рассмотрим область $ \tilde \Omega = \Omega \setminus \bigcup_{a \in E} B(a,\eps) $, где $ \eps > 0 $ достаточно маленькое, чтобы все круги $ \overline {B(a,\eps)} $ все лежали в $ \Omega $ и не пересекались.
+
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{theorem_cauchy_omega_tilde}
+    \caption{$\tilde \Omega$ .}
+    \label{fig:theorem_cauchy_omega_tilde}
+\end{figure}
+
+ Тогда
  \begin{align*}
-  \int\limits_{\partial \tilde \Omega}   f\,dz = \oint\limits_{\tilde \Omega} d(f\,dz) = 0.
+  \varointctrclockwise \limits_{\partial \tilde \Omega}   f\,dz = \varointctrclockwise\limits_{\tilde \Omega} d(f\,dz) = 0.
  \end{align*} Но
  \begin{align*}
-  \oint\limits_{\partial \tilde \Omega} f\,dz = \oint\limits_{\partial \Omega} f\,dz - \sum_{a \in E} \underbrace{\oint\limits_{C(a,\eps)}f\,dz}_{=2\pi i \cdot \res_a f}.
- \end{align*} Здесь
+  \varointctrclockwise\limits_{\partial \tilde \Omega} f\,dz = \varointctrclockwise\limits_{\partial \Omega} f\,dz + \sum_{a \in E} \underbrace{\varointclockwise\limits_{C(a,\eps)}f\,dz}_{=-2\pi i \cdot \res_a f}.
+ \end{align*} Т.к.
  \begin{align*}
-  \oint\limits_{C(a,\eps)}f(z)\,dz = \oint\limits_{C(a,\eps)} \left( \sum_{k \in \Z} c_k(z-a)^{k} \right)dz = 2\pi i \cdot c_{-1} = 2\pi r \cdot \res_a f.
+  \varointctrclockwise\limits_{C(a,\eps)}f(z)\,dz = \varointctrclockwise\limits_{C(a,\eps)} \left( \sum_{k \in \Z} c_k(z-a)^{k} \right)dz = 2\pi i \cdot c_{-1} = 2\pi i \cdot \res_a f.
  \end{align*}
 \end{proof}
 
-\begin{crly}
+\begin{crly}[Интегральное следствие Коши]
  Пусть область $ \Omega $ стандартная, $ f \in C(\overline \Omega) $ и $ f $ аналитична в $ \Omega $. Тогда
  \begin{align*}
-  f(w) = \frac{1}{2\pi i} \oint\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz,\quad w \in \Omega.
+  f(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz,\quad w \in \Omega.
  \end{align*}
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  По теореме Коши
  \begin{align*}
-  \oint\limits_{\partial \Omega} \frac{f(z)}{z-w}\,dz = 2\pi i \res_w \frac{f}{z-w} = 2\pi i f(w).
+  \varointctrclockwise\limits_{\partial \Omega} \frac{f(z)}{z-w}\,dz = 2\pi i \cdot \res_w \frac{f}{z-w} = 2\pi i f(w).
  \end{align*}
 \end{proof}
 
@@ -220,17 +244,20 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  По предыдущему следствию:
  \begin{align*}
-  f(w) = \frac{1}{2\pi i} \oint\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz.
+  f(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz.
  \end{align*} Аналогичная формула верна для $ g_n $. Тогда
  \begin{align}
-  f'(w) = \frac{1}{2\pi i} \oint\limits_{\partial\Omega} \frac{f(z)}{(z-w)^{2}}\,dz.
+  \label{equation:proof:theorem_equal_diff_also_equal}
+	 f'(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial\Omega} \frac{f(z)}{(z-w)^{2}}\,dz.
  \end{align} Почему можно дифференцировать?
  \begin{align*}
-  \frac{f(w+\xi)-f(w)}{\xi} = \frac{1}{2\pi i} \oint\limits_{\partial \Omega} f(z) \underbrace{\frac{1}{\xi} \left( \frac{1}{z-(w+\xi)} - \frac{1}{z - w} \right)}_{\frac{1}{(z-w-\xi)(z-w)} = O(\frac{1}{(z-w)^{2}}) = O(1)}\,dz
- \end{align*} По теореме Лебега можно переходить к пределу и получим (*). Тогда
+  \frac{f(w+\xi)-f(w)}{\xi} = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial \Omega} f(z) \underbrace{\frac{1}{\xi} \left( \frac{1}{z-(w+\xi)} - \frac{1}{z - w} \right)}_{\frac{1}{(z-w-\xi)(z-w)} = O(\frac{1}{(z-w)^{2}}) = O(1)}\,dz
+ \end{align*}, т.к. $(z - w) = O(1)$ ведь $w$ фиксированна и мы живем на компакте.  
+
+ По теореме Лебега можно переходить к пределу и получим \eqref{equation:proof:theorem_equal_diff_also_equal}. Тогда
  \begin{align*}
-  \left| f'(w) - g'(w) \right| \leqslant \frac{1}{2\pi} \oint\limits_{\partial\Omega} \frac{\max_{\partial\Omega} \left| f-g_n \right|}{\left| z-w \right|^{2}}\,dz \to 0,
- \end{align*} равномерно по $ w \in K $, где $ K $ --- компакт в $ \Omega $.
+	 \left| f'(w) - g'(w) \right| \leqslant \frac{1}{2\pi} \varointctrclockwise\limits_{\partial\Omega} \frac{\max_{\partial\Omega} \left| f-g_n \right|}{\left| z-w \right|^{2}}\,dz \overset{n \to \infty}{\rightrightarrows} 0,
+ \end{align*} равномерно по $ w \in K $(т.к. точки $z$ берутся на границе ), где $ K $ --- компакт в $ \Omega $.
 \end{proof}
 
 \end{document}
