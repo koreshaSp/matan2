@@ -1,5 +1,11 @@
 main.pdf
 matan2.pdf
+measure-theory.pdf
+measure-theory/measure-theory.pdf
+measure-theory/lectures/*.pdf
+complex-analysis.pdf
+complex-analysis/complex-analysis.pdf
+complex-analysis/lectures/*.pdf
 *.fdb_latexmk
 *.fls
 *.log
@@ -12,4 +18,3 @@ matan2.pdf
 *.synctex(busy)
 *.out
 .DS_Store
-lectures/semester*/*.pdf
