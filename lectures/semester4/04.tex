@@ -6,7 +6,7 @@
   f = \sum_{n=0}^{\infty}c_n(z-z_0)^{n},
  \end{align*} где
  \begin{align*}
-  c_n = \frac{1}{2\pi i} \int\limits_{C_\rho} \frac{f(z)\,dz}{(z-z_0)^{n+1}},
+  c_n = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho} \frac{f(z)\,dz}{(z-z_0)^{n+1}},
  \end{align*} где $ C_\rho = \left\{ \left| z-z_0 \right| = \rho \right\} $, и $ 0 < \rho < r(z_0) $.
 \end{crly}
 \begin{crly}
@@ -15,10 +15,13 @@
 \begin{crly}
  Если $ B(z_0, r(z_0)) \subset \Omega $ и $ w \in B(z_0,r(z_0)) $, то
  \begin{align*}
-  f(w) = \frac{1}{2\pi i} \int\limits_{C_\rho} \frac{f(z)\,dz}{z - w},
+  f(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho} \frac{f(z)\,dz}{z - w},
  \end{align*} где $ C_\rho = \left\{ \left| z-z_0 \right| = \rho \right\} $, и $ \left| w - z_0 \right| < \rho < r(z_0) $.
 \end{crly}
 
+\begin{df}
+	Функция $f: \CC \to \CC$ называется целой, если она аналитическая в $\CC$.
+\end{df}
 \begin{thm}[Лиувилля]
  \label{theorem:liuvill}
  Пусть $ f \colon\, \CC \to \CC $ --- целая функция и существует $ M \geq 0 $ такое, что $ \left| f(z) \right| \leqslant M $ для любого $ z \in \CC $. Тогда $ f \equiv \mathrm{const} $.
@@ -47,6 +50,7 @@
 \end{proof}
 
 \begin{lm}[лемма о кратности нуля]
+\label{lemma:zero_multiplicity}
  Пусть $ f\colon\,\Omega \to \CC $ --- аналитическая, $ f \not\equiv 0 $ в шаре $ B(z_0,r(z_0)) \subset \Omega $. Пусть $ z_0 \in \Omega $ такая, что $ f(z_0) = 0 $. Тогда существует число $ n_0 \geqslant 1 $ такое, что $ f = (z - z_0)^{n_0}g $, где $ g $ --- аналитическая на $ \Omega $ такая, что $ g(z_0) \neq 0 $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -99,7 +103,7 @@
  Если $ f \not\equiv 0 $ --- аналитическая в $ \Omega $, то множество $ \left\{ z \colon f(z) = 0 \right\} $ --- дискретное подмножество $ \Omega $.
 \end{crly}
 
-\begin{thm}[условие Коши-Римана]
+\begin{thm}[условия Коши-Римана]
 \label{theorem:cauchy_riman}
  Пусть $ \Omega \subset \CC $ --- область, $ f $--- функция в $ \Omega $. Функции $ u, v \colon \Omega \to \R $ такие, что $ f(x + iy) = u(x, y) + iv(x,y) $. Следующие условия равносильны.
  \begin{enumerate}
@@ -136,7 +140,7 @@ d(f\,dz) = 0 \iff d((u+iv)dz) = 0 &\iff (u'_x\,dx+u'_y\,dy+iv'_x\,dx+iv'_y\,dy) 
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Проверим $ df = f'(z) \, dz$:
  \begin{align*}
-  d(f(x+iy)) = f'(x+iu) \frac{\partial}{\partial x}(x+iy)\,dx + f'(x +iy) \frac{\partial}{\partial y}(x+iy)\,dy = \\
+  d(f(x+iy)) = f'(x+iy) \frac{\partial}{\partial x}(x+iy)\,dx + f'(x +iy) \frac{\partial}{\partial y}(x+iy)\,dy = \\
   =f'(x+iy)\,(dx + i\,dy) = f'(z)\,dz.
  \end{align*} Следовательно, $ f'(z)\,dz $ --- точная форма с первообразной $ f $. Таким образом,
  \begin{align*}
