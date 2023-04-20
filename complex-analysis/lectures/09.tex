@@ -1,0 +1,151 @@
+% 2023.04.20 lecture 09
+\documentclass[../complex-analysis.tex]{subfiles}
+\begin{document}
+ Более подробно о доказательстве теоремы Руше. Функции $ f $ и $ g $ аналитичны в $ \Omega $, $ \left| g \right| < \left| f \right| $ на $ \partial\Omega $, $ f, g \in C^{1}(\overline\Omega) $. Нужно было доказать для всех $ k $
+ \begin{align*}
+  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0.
+ \end{align*} Мы заметили, что
+ \begin{align*}
+  \Real\left(1 + \frac{g}{f}\right) = 1 + \Real \frac{g}{f} > 1 - \left| \frac{g}{f} \right| > 0 
+ \end{align*} на $ \partial\Omega $. Отсюда вывод
+ \begin{align*}
+  \cos(\psi(t)) > 0
+ \end{align*} если $ \psi $ такая, что  $ 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} = \left| 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right|e^{i\psi(t)} $. Поэтому, $ \psi(t) \in (- \pi / 2, \pi / 2) + 2\pi k (t) $ для любого  $ t $ . Здесь $ k(t) \in \Z $. Поэтому
+  \begin{align*}
+  \psi([0,1]) \subset \bigcup_{k \in \Z} (-\pi / 2, \pi / 2) + 2\pi k.
+ \end{align*} Слева стоит связное множество (как непрерывный образ связного). Второе множество можно нарисовать {\color{red} рисунок}. Значит, весь образ лежит только в одном интервале: существует $ k_0 \in \Z $: $ \psi([0,1]) \subset (-\pi / 2, \pi / 2) + 2\pi k_0 $. Тогда
+ \begin{align*}
+  \left|\psi(1) - \psi(0) \right| < \pi,
+ \end{align*} а с другой стороны,
+ \begin{align*}
+  \left( 1+ \frac{g}{f} \right)(\gamma_k(0)) = \left(1 + \frac{g} f\right)(\gamma_k(1)) \\
+  \implies e^{i\psi(0)} = e^{i\psi(1)}.
+ \end{align*} См (*). Значит, $ \psi(1) - \psi(0) = 2\pi N $, $ N \in \Z $. Значит
+ \begin{align*}
+  \left|2\pi N \right| < \pi \implies N = 0.
+ \end{align*} Значит $ \psi(1) -\psi(0)=0 $, поэтому
+ \begin{align*}
+  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0.
+ \end{align*}
+
+ \begin{exmpl}
+  Найдём число корней многочлена $ 0.1+2z^{3} + z^{10} = 0 $ в кольце $ 1 < \left| z \right|  < 2 $. Рассмотрим область $ \Omega = B(0,1) $. Рассмотрим функцию
+  \begin{align*}
+   f = 2z^{3}, &&g = 0.1 + z^{10}.
+  \end{align*} Тогда $ \left| g \right| \leqslant 1.1 $ на $ \left| z \right|=1 $, а $ \left| f \right| = 2 > \left| g \right| $ на $ \left| z \right|=1 $. Значит, $f + g$
+  имеет столько же нулей, сколько и $ f $: то есть три штуки (с учётом кратности). Кроме того, на $ \left| z \right| = 1 $ нет нулей.
+
+  А теперь посчитаем сколько нулей в $ \Omega=B(0,2) $. Но выберем там другие буквы $ f $ и $ g $:
+  \begin{align*}
+   f = z^{10}, && g = 0.1  + 2z^{3}.
+  \end{align*} Тогда $ \left| f \right| = 1024 $ на $ \left| z \right|=2 $, а $ \left| g \right| < 0.1 + 16 $ на $ \left| z \right| = 2 $. По теореме Руше у $ f+g $ столько же нулей, сколько и у $ f $. То есть $ 10 $ нулей (с учётом кратности) в круге $ B(0, 2) $. 
+
+  Итого, в кольце $ 1 < \left| z \right| < 2 $ будет $ 10-3 = 7 $ нулей.
+ \end{exmpl}
+
+ Теорема Руше часто используется в задачах теории возмущений. Другой пример: оператор Шрёдингера, про частицу в потенциальном поле.
+
+ \begin{crly}[теорема Гурвица]
+  Пусть $ f_k $ --- аналитические функции в области $ \Omega $, и пусть $ f_k $ сходятся на компактах в $ \Omega $ к функции $ f $. Пусть $ z_0 \in \Omega $: $ f(z_0)=0 $. Тогда либо $ f \equiv 0 $ в $ \Omega $, либо $ z_0 $ --- корень кратности $ k_0 \in \N $, и существует $ \eps > 0 $ и $ N \in \N $ такие, что
+  \begin{itemize}
+   \item $ B(z_0, \eps) \subset \Omega $.
+   \item $ f_k $ имеет ровно $ k_0 $ нулей в $ B(z_0, \eps) $ с учётом кратности для любого $ k > N $.
+  \end{itemize}
+ \end{crly}
+ \begin{proof}[\normalfont\textsc{Доказательство}]
+  Поймём, что $ f $ аналитична в $ \Omega $ (очевидный тест на прямоугольниках). Считаем, что $ f \not\equiv 0 $ в $ \Omega $. Тогда по лемме о кратности нуля $ f = g\cdot(z - z_0)^{k_0} $, где $ g $ аналитична в $ \Omega $, $ g(z_0) \neq 0 $. Значит, существует $ \eps > 0 $ такое, что $ B(z, 2\eps) \subset \Omega $, и $ \left| g(z) \right| > \delta > 0 $ для любого $ z $: $ \left| z - z_0 \right| = \eps $ (по непрерывности $ \delta = \left| g(z_0) \right| / 2 $). Значит
+  \begin{align*}
+   \left|f(z) \right| > \delta \eps^{k_0}, \qquad \left| z-z_0 \right|=\eps.
+  \end{align*} Напишем
+  \begin{align*}
+   f_k = f + (f_k - f) = f + g_k.
+  \end{align*} Так как $ f_k \rightrightarrows f $ равномерно на $ \left| z \right| = \eps $, то существует число $ N $ такое, что
+  \begin{align*}
+   \left|g_k(z) \right| < \frac{\delta \cdot \eps^{k_0}}{2}
+  \end{align*} для любого $ \left| z-z_0 \right|=\eps $ и $ k \geqslant N $. По теореме Руше $ f $ и $ f + g_k $ имеет одинаковое число нулей в $ B(z_0,\eps) $ при $ k \geqslant N $.
+ \end{proof}
+
+ Мы доказали чуть больше: $ \exists \eps_0 > 0 \colon\; \forall \eps \in (0, \eps_0) \colon\; B(z,\eps) \in \Omega \colon\; \exists N \colon\;\ldots  $ и так далее.
+
+ \begin{thm}
+  Пусть $ f_k $ --- аналитические функции а $ \Omega $, $ f_k $ сходятся равномерно на компактах к функции $ f $. Пусть $ f_k $ инъективны а $ \Omega $. Тогда либо $ f \equiv \mathrm{const} $, либо $ f $ инъективна.
+ \end{thm}
+ \begin{proof}[\normalfont\textsc{Доказательство}]
+  \begin{align*}
+   f = \lim f_k
+  \end{align*} --- аналитическая функция в $ \Omega $ (тест на прямоугольниках). Пусть существуют точки $ z_0,w_0 \in \Omega $ такие, что $ f(z_0) - f(w_0) = 0 $. Рассмотрим функции $ F_k \colon\, z \mapsto f_k(z) - f_k(w_0) $, а
+  \begin{align*}
+   F := f(z) - f(w_0)
+  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $. Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $. Пусть $ N $ --- пострили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $. Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $. Но так как $ f_n $ инъективны, то $ z_n \in w_0 $. Но $ z_n \in B(z_0, \eps) $. То есть $ \left|z_n - w_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие. Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
+ \end{proof}
+ 
+ \begin{thm}
+  Пусть $ f $ --- инъективная аналитическая функция в $ \Omega $. Тогда $ f'(z) \neq 0 $ для всех $ z \in \Omega $.
+ \end{thm}
+ Можно доказать вещественными методами ($ f \colon \R^{2}\to\R^{2} $).
+ \begin{proof}[\normalfont\textsc{Доказательство}]
+  Рассмотрим функции
+  \begin{align*}
+   f_n = \left(f(z + \frac{1}{n}) - f(z) \right)n, \qquad n \in \N. 
+  \end{align*} заданы при больших $ n $ в шаре $ B(z_0, \eps) $ таком, что $ B(z_0, 2\eps) \subset \Omega $. Кроме того, $ f_n $ равномерно на всём шаре $ \overline B(z_0,\eps) $ к $ f' $. Равномерность оценим
+  \begin{align*}
+   f_n(z) = \frac{f\left(z + \frac{1}{n}\right) - f(z)}{z + \frac{1}{n} - z} = g_z \left( \frac{1}{n} \right),
+  \end{align*} где \begin{align*}
+   g_z(w) = \frac{f(z+w)-f(z)}{w}
+  \end{align*} $ g_z(0) = f'(z) $. Поэтому,
+  \begin{align*}
+   \left|f_n(z) - f'(z) \right| = \left|g_z(1 / n) - g_z(0) \right| \leqslant \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| \cdot \left| 1 / n - 0 \right|.
+  \end{align*}
+  \begin{align*}
+   g'_z(w) = \frac{f'(z + w)w - f(z + w)f(z)}{w^{2}}
+  \end{align*}
+  \begin{align*}
+   \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| = \max_{\left| \lambda \right|=\eps} \left| g'_z(\lambda) \right| <= \frac{1}{\eps^{2}} \max_{\zeta \in B(z_0,2\eps)} \left| f'(\zeta) \right| \eps + \left| f(\zeta) \right| \cdot 2 < C.
+  \end{align*}
+
+  \begin{align*}
+   f_n = n\int\limits_{z}^{z+1 / n} f'\,dz.
+  \end{align*}
+  \begin{align*}
+   \left|f_n(z) - f'(z) \right| \leqslant n \int\limits_{z}^{z + 1 / n} \left| f'(\xi) -f'(z)\right| \left| d\xi \right|
+  \end{align*}
+
+  Доказали равномерность. Если $ \exists z_0 \colon\; f'(z_0) = 0  $, то при больших $ n $
+  \begin{align*}
+   n(f(z + 1 / n) - f(z))
+  \end{align*} имеет корень по теореме Гурвица. Тогда $ f $ не инъективна!
+ \end{proof}
+
+
+ На этом немного остановимся в теории аналитических функций. Наша цель --- самая красивая теорема Римана.
+
+ Сегодня будем заниматься компактностью, и докажем классическую теорему из функционального анализа.
+
+ \newpage
+ \section{Теорема Арцело-Асколи.}
+
+ \begin{df}
+  Пусть $ (X,\rho) $ --- метрическое пространство, $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- семейство комплекснозначных, непрерывных на $ X $ функций. Говорят, что семейство $ \left\{f_\alpha\right\}_{\alpha\in A}  $ \textit{равностепенно непрерывно}, если для любого $ \eps > 0 $ существует $ \delta > 0 $ такое, что из $ \rho(x_1, x_2) < \delta $ следует
+  \begin{align*}
+   \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps
+  \end{align*} для любого $ \alpha \in A $.
+ \end{df}
+ \begin{df}
+  Семейство $ \left\{f_\alpha\right\}_{\alpha \in A}  $ \textit{равномерно ограничено}, если
+  \begin{align*}
+   \sup_{x \in X, \alpha \in A} \left| f_\alpha(x) \right| < \infty.
+  \end{align*}
+ \end{df}
+
+ \begin{thm}[Арцело-Асколи]
+  Пусть $ (X,\rho) $ --- метрический компакт.  $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- равномерно ограниченное равностепенно непрерывное семейство функций. Тогда $ \left\{f_\alpha\right\}_{\alpha \in A} $ предкомпактно, то есть существует $ \exists \left\{\alpha_k\right\} \colon\;  $ --- набор различных элементов $ A $ такой, что
+  \begin{align*}
+   f_{\alpha_k} \rightrightarrows_X f,
+  \end{align*} где $ f $ непрерывна на $ X $.
+ \end{thm}
+ \begin{proof}[\normalfont\textsc{Доказательство}]
+  Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}_{k}  $ --- счётное всюду плотное множество (метрические компакты сепарабельные). {\color{red} Дописать}
+ \end{proof}
+
+\end{document}
+
