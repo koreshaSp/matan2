@@ -6,31 +6,32 @@
  \left\{f_{\alpha_{k}}(x_j) \right\}_{k=1}^{\infty}
 \end{align*} сходится для любой точки $ x_j $ из некоторого счётного всюду плотного подмножества $ X $.
 
-Шаг 2. Нужно доказать, что теперь эта же самая последовательность сходится всюду. Мы докажем, что последовательность $ \{f_{\alpha_k}(x)\}_{}^{\infty}   $ фундаментальна в $ \CC $ любой точке $ x \in X $.
+Шаг 2. Нужно доказать, что теперь эта же самая последовательность сходится всюду(а не только во всюду плотном подмножестве). Мы докажем, что последовательность $ \{f_{\alpha_k}(x)\}_{}^{\infty}   $ фундаментальна в $ \CC $ любой точке $ x \in X $.
 
-Возьмём $ x \in X $, $ \eps > 0 $. Найдём $ \delta $ такое, что выполняется (*) для любого $ y \in X $, $ \rho(x, y) < \delta $ и для любого $ \alpha \in A $. Пусть $ k, m \in \N $. Воспользуемся $ \eps / 3 $-приёмом:
+Возьмём $ x \in X $, $ \eps > 0 $. Найдём $ \delta $ такое, что $\forall \alpha \in A, x, x : \rho(x, y) < \delta \implies | f_\alpha(x) - f_\alpha(y)| < \eps$(из условия равностепенной непрерывности $f_\alpha$ ). Пусть $ k, m \in \N $. Воспользуемся $ \eps / 3 $-приёмом:
 \begin{align*}
  \left| f_{k}(x) - f_{m}(x) \right|\leqslant \left| f_k(x) - f_k(x_j) \right| + \left| f_k(x_j) - f_m(x_j) \right| + \left| f_m(x_j) - f_m(x) \right|,
-\end{align*} где $ x_j $ выбрана так, чтобы $ \rho(x, x_j) < \delta $. Тогда в силу равностепенной непрерывности можно оценить первое и третье слагаемые:
+\end{align*} где $ x_j $ выбрана так, чтобы $ \rho(x, x_j) < \delta $(такое $x_j$ найдётся в силу всюду плотности $\{ x_j\}$). Тогда в силу равностепенной непрерывности можно оценить первое и третье слагаемые:
 \begin{align*}
  \left| f_k(x)-f_m(x) \right| \leqslant 2\eps + \left| f_k(x_j) - f_m(x_j) \right| \leqslant 3\eps
 \end{align*} при $ k, m \geqslant N(\eps) $, ведь последовательность $ f_k(x_j) $ фундаментальна.
 
 Значит, $ f_{\alpha_k}(x) $ сходится для любой точки $ x \in X $, обозначим её предел через $ f(x) $.
 
-Шаг 3. Обоснуем, что сходимость равномерная. Для любого $ \eps > 0 $ и для любого $ x \in X $ существует $ N_x $:
+Шаг 3. Обоснуем, что сходимость равномерная. Хотим показать что для любого $ \eps > 0 $ и для любого $ x \in X $ существует $ N_x $:
 \begin{align*}
  \left|f_{\alpha_k}(y) - f(y) \right| \leqslant 3\eps
-\end{align*} при $ k \geqslant N_x $, $ y \in B(x, \delta(x)) $. Действительно,
+\end{align*} при $ k \geqslant N_x $, $ y \in B(x, \delta(x)) $(но этого критерия недостаточно для равномерной сходимости). Действительно,
 \begin{align*}
- \left| f_{\alpha_k}(y) - f(y) \right| \leqslant \left| f_{\alpha_k}(y) - f_{\alpha_k}(x) \right| + \left| f_{\alpha_k}(x) - f(x) \right| + \left| f(x) - f(y) \right| \leqslant \\ \leqslant 2\eps + \left| f_{\alpha_k}(x) - f(x) \right|
+ \left| f_{\alpha_k}(y) - f(y) \right| \leqslant \left| f_{\alpha_k}(y) - f_{\alpha_k}(x) \right| + \left| f_{\alpha_k}(x) - f(x) \right| + \left| f(x) - f(y) \right| \leqslant \\ \leqslant 2\eps + \left| f_{\alpha_k}(x) - f(x) \right| \leqslant 3\eps
 \end{align*}  для любого $ y $, $ \rho(x, y) \leqslant \delta $, так как
 \begin{align*}
  \left| f(x) - f(y) \right| = \lim_{n \to \infty} \left|f_{\alpha_n}(x) - f_{\alpha_n}(y) \right| \leqslant \eps.
-\end{align*} Далее
-\begin{align*}
- \leqslant 3\eps,
-\end{align*} при $ N \geqslant N_x $. $ \delta $ даже не зависит от $ x $!
+\end{align*} 
+
+И $|f_{\alpha_k}(x) - f(x)| \leqslant \eps$ при $N > N_x$, т.к. $f_{\alpha_k}(x) \to f(x)$ .  
+
+Заметим что $\delta $ даже не зависит от $ x $!
 
 Так как $ X $ компактно, то из открытого покрытия $ X = \bigcup_{x \in X} B(x, \delta(x))$ можно выделить конечное подпокрытие
 \begin{align*}
@@ -38,10 +39,10 @@
 \end{align*} Возьмём $ N = \max(N_{z_1}, \ldots, N_{z_M}) $ и победим.
 
 
-Шаг 4. Предел --- непрерывная функция: если $ \eps > 0 $, $ \delta $ --- из (*), то
+Шаг 4. Покажем что полученная функция $f$ непрерывна. Предел --- непрерывная функция: если $ \eps > 0 $, $ \delta $ --- из \eqref{eq:equicontinuity}, то
 \begin{align*}
  \left| f(x) - f(y) \right| = \lim_{k \to \infty} \left| f_{\alpha_k}(x) - f_{\alpha_k}(y) \right| \leqslant \eps,
-\end{align*} в силу (*) для любых $ x,y \in X $ таких, что $ \rho(x,y)<\delta $.
+\end{align*} в силу \eqref{eq:equicontinuity} для любых $ x,y \in X $ таких, что $ \rho(x,y)<\delta $.
 
 Шаги 3 и 4 --- были в первом семестре (пространство непрерывных функций на компакте).
 
@@ -51,7 +52,7 @@
  \end{align*} с нормой
  \begin{align*}
   \left\| f \right\| = \max_{x \in X} \left| f(x) \right|.
- \end{align*} Это множество --- банахово пространство непрерывных функций на компакте $ X $.
+ \end{align*} Это множество --- Банахово пространство непрерывных функций на компакте $ X $.
 \end{remrk}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Нужно доказать, что любой абсолютно сходящийся ряд сходится:
@@ -76,21 +77,29 @@
   K_n = \left\{ z \in \Omega \mid \mathrm{dist}(z, \CC \setminus \Omega) \geqslant 1 / n, \left| z \right| \leqslant n \right\},
  \end{align*} причём $ K_1 \subset K_2 \subset \ldots $ Для каждого $ n $ существует $ \{z_{j}\}_{j=1}^{N_n}   $ такое, что
  \begin{align*}
-  K_n \subset \bigcup_{j=1}^{N_n} B(z_j, \eps(z_j) / 2),
+	 K_n \subset \bigcup_{j=1}^{N_n} B\left(z_j, \frac{\eps(z_j)}{2}\right),
  \end{align*} где $ \eps(z_j) $ --- из условия теоремы. Следовательно, существует счётный набор точек $ a_j $ такой, что
  \begin{align*}
-  \Omega = \bigcup_{j=1}^{\infty} B(a_j, \eps(a_j) / 2).
+	\Omega = \bigcup_{j=1}^{\infty} B\left(a_j, \frac{\eps(a_j)}{2}\right).
  \end{align*} Достаточно показать, что для любого $ a \in \Omega $ существует последовательность $ f_{\alpha_k} $, сходящаяся равномерно на  $ B(a, \eps(a) / 2) $. Тогда в силу диагонального аргумента Кантора существует подпоследовательность  $ \{f_{\alpha_k}\}_{\alpha_k=1}^{\infty}   $, которая сходится равномерно на всех $ B(a_j, \eps(a_j) / 2) $. Эта последовательность сходится равномерно на любом компакте $ K \subset \Omega $, так как любой компакт можно покрыть конечным числом шаров вида $ B(a, \eps(a) / 2) $.
 
- Возьмём $ a \in \Omega $ и рассмотрим $ \left\{f_{\alpha} \right\}_{\alpha \in A} $ в замкнутом шаре $ \overline{B}(a, \eps(a) / 2) = X $. Это семейство функций равномерно ограничено по условию (*). Проверим, что оно равностепенно непрерывно.
+ Возьмём $ a \in \Omega $ и рассмотрим $ \left\{f_{\alpha} \right\}_{\alpha \in A} $ в замкнутом шаре $ \overline{B(a, \eps(a) / 2)} = X $. Это семейство функций равномерно ограничено по условию. Проверим, что оно равностепенно непрерывно.
  \begin{align*}
   \left|f_\alpha'(w) \right| = \left|\frac{1}{2\pi i} \int\limits_{\left| z - a \right| = \frac{3}{4} \eps(a)}   \frac{f_\alpha(z)}{(z-w)^{2}}\,dz \right| \leqslant \\
-  \leqslant [\left| a-w \right| = \eps(a) / 2] \leqslant \\
+  \leqslant [\text{возьмем $w$: }\left| a-w \right| = \eps(a) / 2] \leqslant \\
   \leqslant \frac{\frac{3}{4} \cdot 2\pi \cdot \eps(a)}{2\pi} \cdot \sup_{\alpha \in A} \left|f_\alpha(z) \right| \cdot \frac{1}{(\eps(a) / 4)^{2}} = C < \infty
- \end{align*} Мы поняли, что $ \left| f'_\alpha(w) \right| \leqslant C $ для любого $ \alpha \in A $ и $ w $ такого, что  $ \left| a-w \right| = \eps(a) / 2 $. По принципу максимума $ \left| f_\alpha'(w) \right| \leqslant C $ для любого $ w  $ $ \left| w-a \right| \leqslant \eps / 2 $. Тогда по неравенству Лагранжа есть равностепенная непрерывность семейства $ \{f_{\alpha}\}_{\alpha \in A}   $ на $ \overline B(a, \eps(a) / 2) $.
+\end{align*} См. рис. \eqref{fig:montel_theorem_location_of_points}. Мы поняли, что $ \left| f'_\alpha(w) \right| \leqslant C $ для любого $ \alpha \in A $ и $ w $ такого, что  $ \left| a-w \right| = \eps(a) / 2 $. По принципу максимума \eqref{theorem:maximum_principle} $ \left| f_\alpha'(w) \right| \leqslant C $ для любого $ w  $ : $ \left| w-a \right| \leqslant \eps / 2 $. Тогда по неравенству Лагранжа \eqref{theorem:Lagrange_inequality} есть равностепенная непрерывность семейства $ \{f_{\alpha}\}_{\alpha \in A}   $ на $ \overline {B(a, \eps(a) / 2) }$.
  \begin{align*}
   \left| f_{\alpha}(w_1) - f_{\alpha}(w_2) \right| \leqslant C \left| w_1 - w_2 \right|
  \end{align*} По теореме Арцела-Асколи существует нужная подпоследовательность.
+
+\begin{figure}[ht]
+    \centering
+	\incfig[0.3]{montel_theorem_location_of_points}
+    \caption{Расположение точек относительно друг друга.}
+    \label{fig:montel_theorem_location_of_points}
+\end{figure}
+
 \end{proof}
 
 \begin{remrk}
@@ -117,7 +126,7 @@
  $ \CC $ и $ \mathbb D $ не являются конформно эквивалентными.
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Теорема Лиувилля.
+  Теорема Лиувилля \eqref{theorem:liuvill}.
 \end{proof}
 \begin{exmpl}
  $ \mathbb D $ и $ \mathbb D \setminus \left\{ 0 \right\} $ не являются конформно эквивалентными, так как односвязность сохраняется при конформных отображениях.
@@ -135,15 +144,22 @@
   1 - \left| f(z) \right|^{2} &= \frac{\left| z+\overline a \right|^{2} - \left| z-a \right|^{2}}{\left| z+\overline a \right|^{2}} = \frac{\left| z \right|^{2} + \left| a \right|^{2} + 2 \Real(za) -\left| z \right|^{2} - \left| a \right|^{2} + 2 \Real(z \overline a)}{\left| z+\overline a \right|^{2}} = \\
   &= \frac{2 \Real(z(a+\overline a))}{\left| z+\overline a \right|^{2}} = \frac{4\Real(a)\Real(z)}{\left| z+\overline a \right|^{2}} > 0.
  \end{align*}
-\end{proof} То есть $ \left| f(z) \right|< 1 $ для любого $ z \in \left\{ \Real z < 0 \right\}$, то есть $ f $ действует из $ \left\{ \Real z < 0 \right\} $ в подмножество $ \mathbb D $. Докажем, что $ f $ обратима: пусть $ w \in \mathbb D $. Найдём точку $ z $ такое, что
+То есть $ \left| f(z) \right|< 1 $ для любого $ z \in \left\{ \Real z < 0 \right\}$, то есть $ f $ действует из $ \left\{ \Real z < 0 \right\} $ в подмножество $ \mathbb D $. Докажем, что $ f $ обратима: пусть $ w \in \mathbb D $. Найдём точку $ z $ такое, что
 \begin{align*}
- \frac{z-a}{z+\overline a} = w \iff (z-a) = wz + \overline a w \iff \\ \iff z(1-w) = a + \overline a w \iff z = \frac{a + \overline a w}{1 - w}.
-\end{align*} Утверждается, что $ \Real  < 0 $.
+ \frac{z-a}{z+\overline a} = w \iff z-a = wz + \overline a w \iff \\ \iff z(1-w) = a + \overline a w \iff z = \frac{a + \overline a w}{1 - w} = g(z).
+\end{align*} Утверждается, что $ \Real z < 0 $.
 \begin{align*}
- \Real z = \frac{\Real((1 - \overline w)(a + \overline a w))}{\left| 1-w \right|^{2}} =_{\mathrm sgn} \Real(a + \overline a w - \overline w a - \overline a \left| w \right|^{2}) =_{sgn} \\
- =_{sgn} (\Real a)(1 - \left| w \right|^{2}) < 0.
+  \Real z &= \frac{\Real((1 - \overline w)(a + \overline a w))}{\left| 1-w \right|^{2}} =_{\mathrm sgn} \Real(a + \overline a w - \overline w a - \overline a \left| w \right|^{2}) =_{sgn} \\
+  &=_{sgn} \Real(a - \overline a |w|^2) =_{sgn} (\Real a)(1 - \left| w \right|^{2}) < 0.
 \end{align*}
 
+Тогда инъективность легко получается из обратной функции:
+
+\begin{align*}
+	f(z_1) = f(z_2) \implies g(f(z_1)) = g(f(z_2)) \implies z_1 = z_2.
+\end{align*}
+
+\end{proof} 
 
 \end{document}
 

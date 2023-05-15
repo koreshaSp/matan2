@@ -68,7 +68,7 @@
  Мы доказали чуть больше: $ \exists \eps_0 > 0 \colon\; \forall \eps \in (0, \eps_0) \colon\; B(z,\eps) \in \Omega \colon\; \exists N \colon\;\ldots  $ и так далее.
 
  \begin{thm}
-  Пусть $ f_k $ --- аналитические функции а $ \Omega $, $ f_k $ сходятся равномерно на компактах к функции $ f $. Пусть $ f_k $ инъективны а $ \Omega $. Тогда либо $ f \equiv \mathrm{const} $, либо $ f $ инъективна.
+  Пусть $ f_k $ --- аналитические функции в $ \Omega $, $ f_k $ сходятся равномерно на компактах к функции $ f $. Пусть $ f_k $ инъективны в $ \Omega $. Тогда либо $ f \equiv \mathrm{const} $, либо $ f $ инъективна.
  \end{thm}
  \begin{proof}[\normalfont\textsc{Доказательство}]
   \begin{align*}
@@ -76,7 +76,7 @@
   \end{align*} --- аналитическая функция в $ \Omega $ (тест на прямоугольниках). Пусть существуют точки $ z_0,w_0 \in \Omega $ такие, что $ f(z_0) - f(w_0) = 0 $. Рассмотрим функции $ F_k \colon\, z \mapsto f_k(z) - f_k(w_0) $, а
   \begin{align*}
    F := f(z) - f(w_0)
-  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $. Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $. Пусть $ N $ --- пострили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $. Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $. Но так как $ f_n $ инъективны, то $ z_n \in w_0 $. Но $ z_n \in B(z_0, \eps) $. То есть $ \left|z_n - w_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие. Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
+  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $. Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $. Пусть $ N $ --- построили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $. Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $. Но так как $ f_n $ инъективны, то $ z_n \in w_0 $. Но $ z_n \in B(z_0, \eps) $. То есть $ \left|z_n - w_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие. Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
  \end{proof}
  
  \begin{thm}
@@ -87,7 +87,7 @@
   Рассмотрим функции
   \begin{align*}
    f_n = \left(f(z + \frac{1}{n}) - f(z) \right)n, \qquad n \in \N. 
-  \end{align*} заданы при больших $ n $ в шаре $ B(z_0, \eps) $ таком, что $ B(z_0, 2\eps) \subset \Omega $. Кроме того, $ f_n $ равномерно на всём шаре $ \overline B(z_0,\eps) $ к $ f' $. Равномерность оценим
+\end{align*} заданы при больших $ n $ в шаре $ B(z_0, \eps) $ таком, что $ B(z_0, 2\eps) \subset \Omega $. Кроме того, $ f_n $ равномерно на всём шаре $ \overline {B(z_0,\eps)} $ сходится к $ f' $. Равномерность оценим
   \begin{align*}
    f_n(z) = \frac{f\left(z + \frac{1}{n}\right) - f(z)}{z + \frac{1}{n} - z} = g_z \left( \frac{1}{n} \right),
   \end{align*} где \begin{align*}
@@ -97,17 +97,10 @@
    \left|f_n(z) - f'(z) \right| = \left|g_z(1 / n) - g_z(0) \right| \leqslant \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| \cdot \left| 1 / n - 0 \right|.
   \end{align*}
   \begin{align*}
-   g'_z(w) = \frac{f'(z + w)w - f(z + w)f(z)}{w^{2}}
+   g'_z(w) = \frac{f'(z + w)w - f(z + w) + f(z)}{w^{2}}
   \end{align*}
   \begin{align*}
-   \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| = \max_{\left| \lambda \right|=\eps} \left| g'_z(\lambda) \right| <= \frac{1}{\eps^{2}} \max_{\zeta \in B(z_0,2\eps)} \left| f'(\zeta) \right| \eps + \left| f(\zeta) \right| \cdot 2 < C.
-  \end{align*}
-
-  \begin{align*}
-   f_n = n\int\limits_{z}^{z+1 / n} f'\,dz.
-  \end{align*}
-  \begin{align*}
-   \left|f_n(z) - f'(z) \right| \leqslant n \int\limits_{z}^{z + 1 / n} \left| f'(\xi) -f'(z)\right| \left| d\xi \right|
+   \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| = \max_{\left| \lambda \right|=\eps} \left| g'_z(\lambda) \right| \leqslant \frac{1}{\eps^{2}} \max_{\zeta \in B(z_0,2\eps)} \left| f'(\zeta) \right| \eps + \left| f(\zeta) \right| \cdot 2 < C.
   \end{align*}
 
   Доказали равномерность. Если $ \exists z_0 \colon\; f'(z_0) = 0  $, то при больших $ n $
@@ -126,9 +119,9 @@
 
  \begin{df}
   Пусть $ (X,\rho) $ --- метрическое пространство, $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- семейство комплекснозначных, непрерывных на $ X $ функций. Говорят, что семейство $ \left\{f_\alpha\right\}_{\alpha\in A}  $ \textit{равностепенно непрерывно}, если для любого $ \eps > 0 $ существует $ \delta > 0 $ такое, что из $ \rho(x_1, x_2) < \delta $ следует
-  \begin{align*}
-   \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps
-  \end{align*} для любого $ \alpha \in A $.
+  \begin{align}
+	  \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps \label{eq:equicontinuity}
+  \end{align} для любого $ \alpha \in A $.
  \end{df}
  \begin{df}
   Семейство $ \left\{f_\alpha\right\}_{\alpha \in A}  $ \textit{равномерно ограничено}, если
@@ -137,6 +130,18 @@
   \end{align*}
  \end{df}
 
+ \begin{lm}
+ 	Пусть $(X, \rho)$ --- метрический компакт, то тогда $X$ --- сепарабельное.
+ \end{lm}
+
+ \begin{proof}[\normalfont\textsc{Доказательство}]
+	 Возьмем покрытие $X$ шарами радиуса $\frac{1}{2}$, извлечем конечное подпокрытие.
+	 После этого проделаем такую же процедуру для покрытия $X$ шарами радиуса $\frac{1}{3}$  и опять извлечем конечное подпокрытие.
+	 Продолжаем по аналогии для всякого $n \in N$ .
+
+	 Тогда центры этих шаров будут счетным всюду плотным множеством, т.к. для каждой точки и любого $\eps$ найдется шар радиуса $< \eps$ в котором эта точка лежит, следовательно найдется центр на расстоянии $< \eps$. 
+ \end{proof}
+
  \begin{thm}[Арцела-Асколи]
   Пусть $ (X,\rho) $ --- метрический компакт.  $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- равномерно ограниченное равностепенно непрерывное семейство функций. Тогда $ \left\{f_\alpha\right\}_{\alpha \in A} $ предкомпактно, то есть существует $ \exists \left\{\alpha_k\right\} \colon\;  $ --- набор различных элементов $ A $ такой, что
   \begin{align*}
@@ -144,8 +149,22 @@
   \end{align*} где $ f $ непрерывна на $ X $.
  \end{thm}
  \begin{proof}[\normalfont\textsc{Доказательство}]
-  Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}_{k}  $ --- счётное всюду плотное множество (метрические компакты сепарабельные). {\color{red} Дописать}
- \end{proof}
+  Шаг 1. Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
+
+  Т.к. $\{ f_\alpha \}$ равномерно ограничены, значит можно выделить сходящуюся подпоследовательность $f_{n_1}, f_{n_2}, \ldots $ сходящуюся в точке $x_1$.
+  Но это подпоследовательность тоже будет равномерно ограничена, поэтому из нее можно выделить подпоследовательность сходящуюся в точке $x_2$.
+  Продолжая эту процедуру мы получаем семейство последовательностей где каждая вложена в предыдущую и сходится в конкретной точке.
+  
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{cantor_diagonalization_theorem_arcel_askol}
+    \caption{Диагональный метод Кантора.}
+    \label{fig:cantor_diagonalization_theorem_arcel_askol}
+\end{figure}
+
+  Теперь мы можем взять диагональные элементы из каждой подпоследовательности и получить последовательность которая сходится во всех точках $x_i$.
+  См. рис \eqref{fig:cantor_diagonalization_theorem_arcel_askol}. 
+\end{proof}
 
 \end{document}
 
