@@ -119,9 +119,9 @@
 
  \begin{df}
   Пусть $ (X,\rho) $ --- метрическое пространство, $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- семейство комплекснозначных, непрерывных на $ X $ функций. Говорят, что семейство $ \left\{f_\alpha\right\}_{\alpha\in A}  $ \textit{равностепенно непрерывно}, если для любого $ \eps > 0 $ существует $ \delta > 0 $ такое, что из $ \rho(x_1, x_2) < \delta $ следует
-  \begin{align*}
-   \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps
-  \end{align*} для любого $ \alpha \in A $.
+  \begin{align}
+	  \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps \label{eq:equicontinuity}
+  \end{align} для любого $ \alpha \in A $.
  \end{df}
  \begin{df}
   Семейство $ \left\{f_\alpha\right\}_{\alpha \in A}  $ \textit{равномерно ограничено}, если
@@ -149,7 +149,7 @@
   \end{align*} где $ f $ непрерывна на $ X $.
  \end{thm}
  \begin{proof}[\normalfont\textsc{Доказательство}]
-  Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
+  Шаг 1. Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
 
   Т.к. $\{ f_\alpha \}$ равномерно ограничены, значит можно выделить сходящуюся подпоследовательность $f_{n_1}, f_{n_2}, \ldots $ сходящуюся в точке $x_1$.
   Но это подпоследовательность тоже будет равномерно ограничена, поэтому из нее можно выделить подпоследовательность сходящуюся в точке $x_2$.
@@ -157,7 +157,7 @@
   
 \begin{figure}[ht]
     \centering
-	\incfig[0.7]{cantor_diagonalization_theorem_arcel_askol}
+	\incfig[0.5]{cantor_diagonalization_theorem_arcel_askol}
     \caption{Диагональный метод Кантора.}
     \label{fig:cantor_diagonalization_theorem_arcel_askol}
 \end{figure}
