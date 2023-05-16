@@ -1,0 +1,228 @@
+% 2023.05.16 lecture 12
+\documentclass[../complex-analysis.tex]{subfiles}
+\begin{document}
+ 
+\section{Ряды Фурье в гильбертовом пространстве.}
+
+Напомним, что \textit{гильбертовом пространством} называется линейное пространство $ H $ над полем $ \CC $, на котором задано отображение $ (\cdot,\cdot) \colon\, H \times H \to \CC $, называемое \textit{скалярным произведением}, обладающие свойствами
+\begin{itemize}
+ \item $ (x,x) \geqslant 0 $
+ \item $ (x,x) = 0 \iff x = 0 $
+ \item $ (x,y) = \overline{(y,x)} $
+ \item $ (\alpha x, y) = \alpha(x,y) $
+ \item $ (x + y, z) = (x,z) + (y,z) $
+\end{itemize} и кроме того, $ H $ является банаховым пространством относительно нормы $ \left\| x \right\|  = \sqrt{(x,x)}$.
+
+\begin{exmpl}\
+\begin{enumerate}
+ \item Пространство Лебега $ L^{2}(X,\mu) $ , где
+  \begin{align*}
+   (f,g) = \int_{X} f\overline g\,d\mu. 
+  \end{align*}
+
+  Есть дискретный вариант этого пространства
+   \begin{align*}
+   \ell^{2}(\Z) = \left\{ \{a_{k}\}_{k=1}^{\infty} \Mid \sum_{k=1}^{\infty}\left| a_k \right|^{2} < \infty  \right\},
+  \end{align*} где
+  \begin{align*}
+   \left( \{a_{k}\}_{k=1}^{\infty}, \{b_{k}\}_{k=1}^{\infty}   \right) = \sum_{k \in\Z}^{\infty} a_k \overline{b_k}.
+  \end{align*}
+ \item 
+  \begin{align*}
+   W_2^{1} [0,1] = \left\{ c + \int_{0}^{x} f(t)\,dt \Mid c \in \CC, x \in [0,1],\; f \in L^{2}[0,1] \right\}
+  \end{align*} --- \textit{пространство Соболева} функций, заданных на $ [0,1] $ и имеющих производную из пространства $ L^{2}[0,1] $. Скалярное произведение здесь задано так:
+  \begin{align*}
+   \left( c + \int_{0}^{x} f\,dt,\; b + \int_{0}^{x} g\,dt \right)_{W_2^{1}[0,1]} = c \overline b + \int_{0}^{1} f\overline g\,dt.
+  \end{align*}
+
+ \item $ S_2(\CC^{n}) $ --- конечномерное пространство Гильберта-Шмидта,
+  \begin{align*}
+   S_2(\CC^{n}) = \left\{ A \in \CC^{n \times n} \right\},
+  \end{align*} где скалярное произведение задано так:
+  \begin{align*}
+   (A,B) = \tr (B^{\ast}A),
+  \end{align*} где $ B^{\ast} = \overline{B^{\top}} $.
+\end{enumerate} 
+\end{exmpl}
+
+\textit{Ортогональное проектирование} в гильбертовых пространствах --- очень важная и удобная операция. Все любят и охотятся за скалярным произведением.
+
+\begin{df}
+ Пусть $ H $ --- гильбертово пространство. Множество $ \left\{e_k\right\}_{k \in \Z} \subset H  $ называется \textit{ортогональной системой}, если $ e_k \neq 0 $ для любого $ k \in \Z $ и $ (e_k, e_m) = 0 $ при $ k \neq m $.
+\end{df}
+\begin{df}
+ Система $ \left\{e_k\right\}_{k \in \Z} \subset H  $ называется \textit{ортонормированной}, если она ортогональна, и $\left\| e_k \right\|=1$ для любого $ k \in \Z $.
+\end{df}
+Любую ортогональную систему легко превратить в ортонормированную: нужно поделить каждое $ e_k $ на норму $ \left\| e_k \right\| $.
+\begin{df}
+ Множество $ \left\{e_k\right\}_{k\in\Z}  \subset H $ --- \textit{ортонормированный базис}, если линейная оболочка этого множества
+ \begin{align*}
+  \left\{ \sum_{k=-N}^{N} c_k e_k \Mid c_k \in \CC \right\}
+ \end{align*} плотна в $ H $.
+\end{df}
+
+\begin{claim}
+ В гильбертовом пространстве $ H $ существует ортонормированный базис тогда и только тогда, когда $ H $ сепарабельно.
+\end{claim}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $ \left\{e_k\right\}_{k \in \Z}  $ --- ортонормированный базис. Тогда \begin{align*}
+  \left\{ \sum_{k=-N}^{N} c_ke_k \Mid c_k \in \Q + i\Q,\, N \in\N \right\}
+ \end{align*} --- это счётное всюду плотное подмножество $ H $.
+
+Обратно, если $ E \subset H $ --- счётное всюду плотное подмножество $ E = \left\{ h_k \right\}_{k \in \Z_+} $. Можно считать, что $ h_k \neq 0 $ для любого $ k $, и $ h_k \notin \mathrm{span}\{h_0, \ldots, h_{k-1}\} $. Далее
+ \begin{align*}
+  e_0 = \frac{h_0}{\left\| h_0 \right\|}, \\
+  e_1 \in \mathrm{span} \left\{ h_0,h_1 \right\} \colon e_1 \perp e_0, \left\| e_1 \right\| = 1.
+ \end{align*} \begin{align*}
+  e_1 = \frac{h_1 - (h_1, e_0)e_0}{\left\| h_1 - (h_1, e_0)e_0 \right\|}
+ \end{align*}
+ \begin{align*}
+  e_2 \in \mathrm{span} \left\{ h_0, h_1, h_2 \right\}, \quad e_2 \perp e_0, e_2 \perp e_1, \left\| e_2 \right\| = 1.
+ \end{align*}
+ \begin{align*}
+  e_2 = \frac{h_2 - (h_2, e_0)e_0 - (h_2, e_1)e_1}{\left\| h_2 - (h_2, e_0)e_0 - (h_2, e_1)e_1  \right\|}.
+ \end{align*} Продолжая процедуру получаем ортогональную систему $ \{e_{n}\}_{n=0}^{\infty}   $, причём
+ \begin{align*}
+  \mathrm{span} \left\{ e_0, e_1, \ldots \right\} \supset \left\{ h_0, h_1, \ldots \right\}.
+ \end{align*} Правая часть плотна в $ H $.
+\end{proof}
+
+\begin{df}
+ \textit{Ряд Фурье элемента $ h \in H $} по ортонормированной системе $ \left\{e_k\right\}_{k \in \Z}  $ --- это
+ \begin{align*}
+  \sum_{k\in\Z} c_ke_k, 
+ \end{align*} где $c_k = (h,e_k)$.
+\end{df}
+\begin{remrk*}
+ В дальнейшем мы покажем, что ряд $ \sum (h, e_k)e_k $ сходится в $ H $ для любого $ h \in H $ и любой ортонормированной системы в $ H $.
+\end{remrk*}
+
+\begin{claim}[неравенство Бесселя]
+ Пусть $ \left\{e_k\right\}_{k \in \Z}  $ --- ортонормированная система, $ c_k = (h,e_k) $. Тогда 
+ \begin{align}
+  \label{eq:bessel_inequality}
+  \sum_{k \in\Z} \left| c_k \right|^{2} \leqslant \left\| h \right\|^{2}.
+ \end{align} В частности, ряд $ \sum_{k \in \Z} \left| c_k \right|^{2} $ сходится.
+\end{claim}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Определим
+ \begin{align*}
+  g_1 = \sum_{-N}^{N}c_ke_k, && g_2 = h - \sum_{-N}^{N}c_ke_k = h - g_1.
+ \end{align*} Тогда
+ \begin{align*}
+  \left\| h \right\|^{2} &= \left\| g_1 + g_2 \right\|^{2} = (g_1+g_2,g_1+g_2) = \\
+  &= (g_1,g_1) + (g_1,g_2) + (g_2,g_1) + (g_2,g_2) = \\
+  &= \left\| g_1 \right\|^{2} + (g_1, g_2) + \overline{(g_1,g_2)} + \left\| g_2 \right\|^{2} = \\
+  &= \left\| g_1 \right\|^{2} + 2 \Real (g_1,g_2) + \left\| g_2 \right\|^{2}.
+ \end{align*}
+ Вычислим скалярное произведение $ g_1 $ и $ g_2 $:
+ \begin{align*}
+  (g_1,g_2) &= \left( \sum_{-N}^{N}c_ke_k,\; h - \sum_{-N}^{N} c_je_j \right) = \\
+  &=  \sum_{-N}^{N}c_k(e_k,h)  - \sum_{-N}^{N} \sum_{-N}^{N} c_k \overline c_j (e_k, e_j) = \\
+  &= \sum_{-N}^{N} c_k \overline{c_k} - \sum_{-N}^{N}c_k \overline{c_k} = 0.
+ \end{align*} Но тогда
+ \begin{align*}
+  \left\| h \right\|^{2} = \left\| g_1 \right\|^{2} + \left\| g_2 \right\|^{2} \geqslant \left\| g_1 \right\|^{2} = \sum_{-N}^{N}\left| c_k \right|^{2}.
+ \end{align*} Так как это верно для любого $ N \geqslant 0 $, то неравенство \eqref{eq:bessel_inequality} доказано.
+\end{proof}
+
+\begin{claim}
+ Ряд Фурье по ортонормированной системе сходится в $ H $ для любого $ h \in H $.
+\end{claim}
+
+Пока не сказано, куда сходится этот ряд Фурье! Более того, он не обязательно сходится к $ h $ (если ортонормированная система не является базисом, то вместо $ h $ ряд Фурье будет сходится к его проекции на линейную оболочку этой системы).
+
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Обозначим
+ \begin{align*}
+  S_N = \sum_{-N}^{N} c_ke_k,
+ \end{align*} где $ c_k = (h,e_k) $.
+ \begin{align*}
+  \left\| S_N-S_M \right\|^{2} &= [M > N] = \left\|\sum_{N < \left| k \right| \leqslant M} c_k e_k \right\|^{2} = \sum_{N < \left| k \right| \leqslant M} \left| c_k \right|^{2} \to 0
+ \end{align*} при $ N,M \to \infty $, где ряд $ \sum_{k \in \Z} \left| c_k \right|^{2} \leqslant \left\| h \right\|^{2}  <  \infty $ по неравенству Бесселя. Значит, последовательность частичных сумм $ S_N $  фундаментальна, и, следовательно, сходится (ведь $ H $ полное).
+\end{proof}
+
+\begin{thm}[Рисса-Фишера]
+ Если $ \left\{e_k\right\}_{k \in \Z}  $ --- ортонормированный базис в гильбертовом пространстве $ H $, то для любого $ h \in H$ ряд Фурье $ h $ относительно базиса $ \left\{e_k\right\}_{k\in\Z}  $ сходится к $ h $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Обозначим
+ \begin{align*}
+  g = \sum_{k\in\Z}c_ke_k,\qquad c_k=(h,e_k),
+ \end{align*} где ряд сходится по утверждению 15.8. Наша цель: показать $ g=h $. Рассмотрим
+ \begin{align*}
+  (g-h,e_k) &= (g,e_k) - c_k = \left(\sum_{-N}^{N}c_je_j + g_N,\; e_k \right) - c_k = \\
+  &= \left( \sum_{-N}^{N}c_je_j,\;e_k \right) - c_k + (g_N,e_k) = c_k - c_k + (g_N,e_k) = \\
+  &= (g_N,e_k).
+ \end{align*} Но
+ \begin{align*}
+  \left| (g_N,e_k) \right|^{2} \leqslant \left\| g_N \right\|^{2} \cdot \left\| e_k \right\|^{2} = \left\| g_N \right\|^{2} = \left\| \underbrace{\sum_{k\in\Z}c_ke_k - \sum_{\left| k \right| \leqslant N} c_ke_k}_{\to_0} \right\|^{2},
+ \end{align*} так как
+ \begin{align*}
+  \lim_{N \to \infty} \sum_{-N}^{N}c_ke_k = \sum_{k\in\Z}c_ke_k.
+ \end{align*} Таким образом,
+ \begin{align*}
+  (g-h,e_k) = 0
+ \end{align*} для любого $ k $. Значит,
+ \begin{align*}
+  (g-h,f) = 0
+ \end{align*} для любого $ f $ вида $ f = \sum_{-N}^{N}a_je_j$, где $ N\geqslant 0 $ и $ a_j \in \CC $. $ g-h $ ортогонален плотному подмножеству $ \implies g-h=0 $.
+
+ Пусть $ f_n \to g-h $ в $ H $ и $ f_n $ лежат в линейной оболочке $ \left\{e_j\right\} $. Тогда
+ \begin{align*}
+  0 = (g-h,f_n) = (g-h,g-h) + \underbrace{(g-h,f_n - (g-h))}_A
+ \end{align*}, 
+ \begin{align*}
+  \left| A \right| \leqslant \left\| g-h \right\| \cdot \left\| f_n - (g-h) \right\| \to 0.
+ \end{align*} Тогда
+ \begin{align*}
+  \left\| g-h \right\|^{2} = 0 \implies g = h.
+ \end{align*}
+\end{proof}
+
+\begin{df}
+ Пусть $ H $ --- гильбертово пространство, $ E, F \subset H $ --- замкнутые линейные подпространства такие, что для любых $ h \in E $, $ g \in F $ верно $ h \perp g $ (это условие записывают $ E \perp F $), и для любого $ p \in H $ существуют $ h \in E $ и $ g \in F $ такие, что $ p = h + g $. Тогда разложение $ p = h + g $ единственно, а оператор $ P_E \colon\, p \mapsto h $ называется \textit{ортогональным проектором} на $ E $.
+ \begin{align*}
+  P_E + P_F = I
+ \end{align*} --- тождественный оператор.
+\end{df}
+\begin{remrk}
+ Пусть $ p = h_1 + g_1 = h_2 + g_2 $. Тогда
+ \begin{align*}
+  \underbrace{(h_1 - h_2)}_h + \underbrace{(g_1-g_2)}_g = 0
+ \end{align*} $ h \in E $, $ g \in F $.
+ \begin{align*}
+  0 = \left\| h+g \right\|^{2} = \left\| h \right\|^{2} + 2 \Real (h,g) + \left\| g \right\|^{2} = \left\| h \right\|^{2} + \left\| g \right\|^{2}
+ \end{align*} Следовательно, $ h=g=0 $.
+\end{remrk}
+
+\begin{thm}
+ Пусть $ E,F $ --- как в определении 15.12. Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{e_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
+  P \colon\, h \mapsto \sum_{k\in I_1} c_ke_k, \qquad c_k=(h,e_k)
+ \end{align*} совпадает с $ P_E $. А
+ \begin{align*}
+  Q \colon\, h \mapsto \sum_{k \in I_2} c_kf_k, \qquad f_k=(h,f_k)
+ \end{align*} совпадает с $ P_F $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $ \left\{e_k\right\}_{k \in I_1} \sqcup \left\{f_k\right\}_{k \in I_2}  $ --- ОНБ в $ H $. Значит,
+ \begin{align*}
+  h = \underbrace{\sum_{k\in I_1}c_k e_k}_{\in E} + \underbrace{\sum_{k \in I_2} a_k e_k}_{\in F}.
+ \end{align*} Здесь $ \sum_{k\in I_1}c_ke_k  $ лежит в $ E $, так как это предел, а $ E $ --- замкнуто. Аналогично для $ F $. Продолжим равенство:
+ \begin{align*}
+  h = P h + Q h = P_E h + P_F h.
+ \end{align*} Осталось воспользоваться единственностью разложения.
+\end{proof}
+
+Есть алгебраическое описание проекторов.
+
+\begin{thm}
+ Линейный непрерывный оператор $ P \colon\,H \to H$  --- это ортогональный проектор на некоторое подпространство $ E \subset H $ тогда и только тогда, когда
+ \begin{enumerate}
+  \item $ P^{2} = P $.
+  \item $ (Ph, g) = (h,Pg) $ для любых $ h,g \in H $.
+ \end{enumerate} Более того, $ E = P(H) $.
+\end{thm}
+
+\end{document}
+
