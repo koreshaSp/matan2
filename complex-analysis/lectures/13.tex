@@ -1,0 +1,273 @@
+% 2023.05.18 lecture 13
+\documentclass[../complex-analysis.tex]{subfiles}
+\begin{document}
+
+\section{Ряды Фурье по тригонометрической системе.}
+
+\begin{claim}
+ $ \left\{ \frac{e^{int}}{\sqrt{2\pi}} \right\}_{n \in \Z} $ --- ортонормированная система в $ L^{2}[-\pi,\pi] $.
+\end{claim}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ \begin{align*}
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{int} \cdot e^{-imt}\,dt = \begin{cases}
+   1, \text{ если } n = m, \\
+   0, \text{ если } n \neq m.
+  \end{cases} 
+ \end{align*}
+\end{proof}
+
+\begin{thm}[Фейера]
+ Пусть непрерывная функция $ f \in C(\R) $ $ 2\pi $-периодична. Обозначим частичные суммы Фурье
+ \begin{align*}
+  S_{N} (f,t) = \sum_{-N}^{N} c_ne^{int}
+ \end{align*} где
+ \begin{align*}
+  c_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{-inx}\,dx.
+ \end{align*} Тогда ряд сходится по Чезаре к функции $ f $:
+ \begin{align*}
+  \frac{1}{M+1} \sum_{N=0}^{M} S_N(f,t) \rightrightarrows f(t), \qquad t \in \R
+ \end{align*} при $ M \to + \infty$.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]\
+ \begin{enumerate}
+  \item Докажем, что $ S_N(f,t) = S_N(g, 0) $ для функции
+    \begin{align*}
+    g(x) = f(x + t).
+   \end{align*} Действительно,
+   \begin{align*}
+    S_N(f,t) &= \sum_{-N}^{N} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{in(x-t)}\,dx =  \\
+    &= \sum_{-N}^{N} \frac{1}{2\pi} \int_{-\pi - t}^{\pi - t} f(y + t)e^{-iny}\,dy = \\
+    &= \sum_{-N}^{N}\frac{1}{2\pi} \int_{-\pi}^{\pi} f(y+t)e^{-iny}\,dy.
+   \end{align*}
+  \item Рассмотрим функции $ p_N \colon\, [-\pi,\pi] \to \R $ такие, что
+   \begin{itemize}
+    \item $ p_N \geqslant 0 $.
+    \item $ \int_{-\pi}^{\pi} p_N\,dx = 1  $.
+    \item $ \max_{\pi \geqslant \left| x \right| > \eps} p_N(x) \to 0 $ для любого $ \eps > 0 $ при $ N \to \infty $.
+   \end{itemize} Тогда 
+   \begin{align*}
+    \int_{-\pi}^{\pi} g(s)p_N(s)\,ds \to g(0)
+   \end{align*} при $ N \to \infty $. Докажем:
+   \begin{align*}
+    &\left|\int_{-\pi}^{\pi} g(s)p_N(s)\,ds - g(0) \right| \leqslant \int_{-\pi}^{\pi} \left| g(s) - g(0) \right|p_N(s)\,ds = \\
+    &= \int_{\left| x \right| < \eps}   + \int_{\pi \geqslant \left| x \right| \geqslant \eps}  \leqslant \\
+    &\leqslant \underbrace{\sup_{\left| x-y \right| < \eps} \left| g(x)-g(y) \right|}_{\to 0} \cdot \underbrace{\int_{\left| x \right| < \eps}   p_N(s)\,ds}_{\leqslant 1} + \underbrace{\sup_{\pi \geqslant \left| x \right| > \eps} p_N(x)}_{\to 0} \cdot \underbrace{\int_{\pi \geqslant \left| x \right|\geqslant \eps}  \left| g(s)-g(0) \right|\,ds}_{\leqslant 2\pi \cdot 2 \max \left| g \right|}
+   \end{align*}Кроме того, оценка на скорость сходимости зависит лишь от
+ \begin{align*}
+  \max_{\left| x-y \right| \leqslant \eps} \left| g(x)-g(y) \right| =: \delta(\eps).
+ \end{align*} В частности, оценка равномерная по $ t $ из шага 1.
+
+\item Рассмотрим 
+ \begin{align*}
+  \frac{1}{M+1}\sum_{0}^{M} S_N(g,0) = \int_{-\pi}^{\pi}g(s)p_M(s)\,ds,
+ \end{align*} где
+ \begin{align*}
+  p_M(s) = 
+ \end{align*} Действительно, (*) верна по определению для
+ \begin{align*}
+  p_M(s) &= \frac{1}{2\pi (M+1)} \sum_{N=0}^{M} \sum_{-N}^{N} e^{-ins} = \\
+  &= \frac{1}{2\pi (M+1)} \left| 1 + e^{is} + \ldots + e^{iMs} \right|^{2}
+ \end{align*} Проверим (**) по индукции:
+ \begin{align*}
+  M = 0 \implies 1 = 1
+ \end{align*} $ M \to M +1 $
+ \begin{align*}
+  \left| 1+\ldots+e^{iMs} + e^{i(M+1)s} \right|^{2} = \\
+  = \left| 1+\ldots+e^{iMs} \right|^{2} + \left| e^{i(M+1)s} \right|^{2} + (1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s} + (1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s} = \\
+  = \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M+1}^{M+1} e^{-ins},
+ \end{align*} переход проверен. Но при $ s \neq 2\pi k $.
+ \begin{align*}
+  p_M(s) &= \frac{1}{M+1} \left| \frac{1-e^{i(M+1)s}}{1-e^{is}} \right|^{2} = \\
+  &= \frac{1}{M+1}  \left|\frac{\frac{e^{-i(M+1) / 2 \cdot s} - e^{i(M+1) / 2s}}{2i}}{\frac{e^{-is / 2} - e^{is / 2}}{2i}} \right|^{2} = \frac{1}{M+1} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
+ \end{align*} --- ядро Фейера (очень известная функция). {\color{red} вставить картинку}
+
+ Проверим свойства $ p_M $.
+   \begin{itemize}
+  \item $ p_M \geqslant 0 $   очевидно.
+  \item $ \int_{-\pi}^{\pi} p_M\,ds = 1 $, легче проверить по формуле с суммой
+   \begin{align*}
+    \frac{1}{M+1} \sum_{0}^{M+1} \int_{-\pi}^{\pi} \sum_{-N}^{N} e^{-ins}\,ds = \frac{1}{M+1} \sum_{0}^{M+1} 2\pi = 2\pi = 1.
+   \end{align*} Забыли $ 2\pi $.
+  \item
+   \begin{align*}
+    \max_{\left| s \right| > \eps} \frac{1}{2\pi(M+1)} \frac{\sin^{2} \left( \frac{M+1}{2} s \right)}{\sin^{2} \frac{s}{2}} \leqslant \frac{1}{2\pi(M+1)} \max_{\left| s \right|  > \eps, \left| s \right| \leqslant \pi} \frac{1}{\sin^{2} \frac{s}{2}} \leqslant \frac{C_\eps}{2\pi (M+1)} \to 0.
+   \end{align*} По шагу 2 
+   \begin{align*}
+    \frac{1}{M+1} \sum_{0}^{M} S_N(g,0) \to g(0),
+   \end{align*} причём равномерно по букве $ t $, потому что все оценки были равномерные по $ t $.
+ \end{itemize}
+ \end{enumerate}
+\end{proof}
+
+Аппроксимативная единица.
+
+\begin{crly}
+ \begin{align*}
+  \mathrm{span} \left\{ e^{int} \right\}
+ \end{align*} плотна в $ C_p([-\pi,\pi]) = \left\{ f \in C[-\pi,\pi] \mid f(-\pi) = f\pi \right\} $
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Для любой $ f \in C_p [-\pi,\pi] $ совпадает с сужением $ \tilde f \in C(\R) $ периодической с периодом $ 2\pi $.
+ \begin{align*}
+  \frac{1}{M+1} \sum_{n=0}^{M} S_N(\tidle f, t) = \rightrightarrows \tilde f(t) = f(t), \qquad t \in [-\pi,\pi]
+ \end{align*} Но левая часть лежит в $ \mathrm{span} \left\{ e^{int} \right\}_{n \in \Z} $.
+\end{proof}
+
+\begin{crly}
+ Система $ \left\{e^{int}\right\}_{n \in \Z}  $ плотна в $ L^{2}[-\pi,\pi] $.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть не так. Тогда существует $ f \in L^{2}[-\pi,\pi] $:
+ \begin{align*}
+  \int f p \,dx = 0
+ \end{align*} Тогда 
+ \begin{align*}
+  \int\limits_{-\pi}^{\pi} f \cdot g_\eps \, dx = 0,
+ \end{align*} где $ g_\eps $ такая , что {\color{red} картинка}. Тогда
+ \begin{align*}
+  \int\limits_{-\pi}^{\pi} f(x) \chi_{[a,b]}(x) \,dx = 0
+ \end{align*} перешли к пределу по $ \eps $ (теорема Лебега о мажорируемой сходимости). Мажоранта $ \left| f \right| $. Ну и получилось, что 
+ \begin{align*}
+  \frac{1}{b-a} \int_a^{b} f(x)\,dx = 0
+ \end{align*} для любых $ a,  b \in(-\pi,\pi)$. Следовательно, $ f(a) = 0 $ в любой точке Лебега $ a \in [-\pi,\pi] $. А они почти везде. Значит, $ f = 0 $ как элемент $ L^{2}[-\pi,\pi] $.
+\end{proof}
+
+\begin{crly}
+ $ \left\{\frac{e^{int}}{\sqrt{2\pi}}\right\}_{n \in \Z} $ --- это ОНБ в $ L^{2}[-\pi,\pi] $.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно, ортогональность проверили, а полнота системы --- это предыдущее следствие.
+\end{proof}
+
+\begin{crly}
+ Система $ T = \left\{\cos(nt)\right\}_{n \geqslant 0} \cup \left\{\sin(nt)\right\}_{n \geqslant 1}  $ --- это ортогональный базис в $ L^{2}[-\pi,\pi] $.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ \begin{align*}
+  \mathrm{span}T = \mathrm{span} \left\{ e^{int} \right\}_{n \in \Z},
+ \end{align*} а вторая система полна. Ортогональность:
+ \begin{align*}
+  \int\limits_{-\pi}^{\pi} \cos(nt) \cdot \cos(mt) \,dt = \begin{cases}
+   0, \text{ если } n \neq m \\
+   1, \text{ иначе }
+  \end{cases} 
+ \end{align*}
+ \begin{align*}
+  \int\limits_{-\pi}^{\pi} \cos(nt)\sin(kt)\,dt = 0
+ \end{align*}
+ \begin{align*}
+  \int \sin(nt)\sin(mt)\,dt = 0,
+ \end{align*} если $ m \neq n $.
+
+ $ \cos \cdot \sin $ --- нечётная функция.
+
+ Упражнение доказать (триг. формулы).
+\end{proof}
+
+\begin{crly}
+ Для любой функции $ f \in L^{2}[-\pi,\pi] $
+ \begin{align*}
+  f = \sum_{n \in \Z} c_k e^{ikt},
+ \end{align*} где \begin{align*}
+  c_k = \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)e^{-ikt}\,dt
+ \end{align*}а также
+ \begin{align*}
+  f = \frac{a_0}{2}+ \sum_{k=1}^{\infty} a_k \cos(kt) + \sum_{k=1}^{\infty} b_k\sin(kt),
+ \end{align*} где
+ \begin{align*}
+  a_k = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t)\cos(kt)\,dt, \qquad k \geqslant 0, \\
+  b_k = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t)\sin(kt)\,dt, \qquad k \geqslant 1.
+ \end{align*} И ряды сходятся в $ L^{2}[-\pi,\pi] $.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ \begin{align*}
+  \frac{e^{int}}{\sqrt{2\pi}}
+ \end{align*} -- ОНБ
+ \begin{align*}
+  f = \sum_{k\in\Z} c_k e^{ikt},
+ \end{align*} где $ c_k $ такие, какие надо.
+
+ $ T $ --- ортогональный базис. 
+ \begin{align*}
+  \tilde T = \left\{ \frac{1}{\sqrt{2\pi}} \right\} \cup \left\{ \frac{\cos kt}{\sqrt \pi} \right\} \cup \left\{ \frac{\sin kt}{\sqrt \pi} \right\}
+ \end{align*} --- тоже ОНБ.
+
+ \begin{align*}
+  \int\limits_{-\pi}^{\pi} \left( \frac{1}{\sqrt{2\pi}} \right)^{2}\,dx = 1.
+ \end{align*}
+ \begin{align*}
+  \frac{1}{\pi} \int\limits_{-\pi}^{\pi} \cos^{2}(kt)\,dt = \frac{1}{\pi}\int\limits_{-\pi}^{\pi} \frac{1+\cos(2kt)}{2}\,dt = \frac{1}{\pi} \cdot \frac{2\pi}{2} = 1.
+ \end{align*} при $ k \neq 0 $. Аналогично с синусом:
+ \begin{align*}
+  \frac{1}{\pi} \int\limits_{-\pi}^{\pi} \sin^{2}kt\,dt=1.
+ \end{align*}
+\end{proof}
+
+\begin{df}
+ Пусть $ f \in L^{2}[-\pi,\pi] $. Число
+ \begin{align*}
+  \hat f(k) = c_k = \frac{1}{\sqrt{2\pi}} \int\limits_{-\pi}^{\pi} f \cdot e^{-ikt}\,dt
+ \end{align*} --- коэффициент Фурье функции $ f $.
+\end{df}
+
+\begin{thm}
+ Если $ f \in C^{n}(\R) $ --- $ 2\pi $-периодическая, $ n \geqslant 1 $, то 
+ \begin{align*}
+  \hat f(k) = \mathcal O\left( \frac{1}{\left| k \right|^{n}}\right)
+ \end{align*} при $ k \to \infty $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ \begin{align*}
+  \int\limits_{-\pi}^{\pi} f(t)e^{-ikt}\,dt = \underbrace{f(t) \left.\frac{e^{-ikt}}{-ik}\right|_{-\pi}^{\pi}}_{0} + \int\limits_{-\pi}^{\pi} f'(t) \frac{e^{-ikt}}{ik}\,dt.
+ \end{align*} Далее сколько производных есть, столько и получится
+ \begin{align*}
+  = \ldots = \int\limits_{-\pi}^{\pi} f^{(n)}(t) \frac{ e^{-ikt}}{(ik)^{n}}\,dt.
+ \end{align*}
+ \begin{align*}
+  \left| \hat f(k) \right| \leqslant \max_{t \in [-\pi,\pi]} \left| f^{(n)}(t) \right| \cdot 2\pi \cdot \frac{1}{k^{n}}.
+ \end{align*}
+\end{proof}
+
+\begin{thm}[Харди]
+ Пусть функция $ f \in C^{1}(\R) $ $ 2\pi $-периодична. Тогда ряд Фурье $ f $ сходится к ней самой всюду на $ \R $ (без усреднения!)
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Ряд Фурье
+ \begin{align*}
+  \sum_{k \in \Z}c_k e^{-ikt}
+ \end{align*} сходится по Чезаро к $ f $ всюду по теореме Фейера. Кроме того,
+ \begin{align*}
+  \left| c_ke^{ikt} \right| = \mathcal O(1 / k).
+ \end{align*} По предыдущей теореме. Следовательно, нам достаточно доказать теорему Харди для числовых рядов: если $ \sum_{n=1}^{\infty} a_n $ сходится по Чезаро, и $ a_n = \mathcal O(1 / n) $, то ряд сходится и в обычном смысле. (Тауберовой теорема, она просто для чисел)
+\end{proof}
+
+\begin{proof}[\normalfont\textsc{Доказательство тау}]
+ Для простоты считаем что занумеровано всё натуральными
+ \begin{align*}
+  s_n = a_1 + \ldots + a_n, \\
+  \sigma_n = \frac{s_1 + \ldots + s_n}{n},\\
+  \sigma_{n,l} = \frac{s_{n+1} + \ldots + s_{n+l}}{l}.
+ \end{align*} Нам дано $ \sigma_n \to S $. Хотим $ s_n \to S $.
+
+ Шаг 1. Если $ l = [n \cdot \eps] $, то 
+ \begin{align*}
+  \varlimsup \left| \sigma_n - \sigma_{n,l} \right| = 0
+ \end{align*}
+
+ Шаг 2. $ \limsup \left| S_n - \sigma_{n,l} \right| \leqslant C \cdot \eps $.
+
+ Шаг 1:
+ \begin{align*}
+  \sigma_{n,l} = \frac{1}{l}(\sigma_{n+l}(n+l) - \sigma_n \cdot n) =  \underbrace{(\sigma_{n+l} - \sigma_n)}_{\to \text{ по Коши}}\underbrace{\frac{n+l}{l}}_{O(1)} + \underbrace{\sigma_n \left( \frac{n+l}{l} - \frac{n}{l} \right)}_{=\sigma_n}.
+ \end{align*}
+
+ Шаг 2: надо рассмотреть разность 
+ \begin{align*}
+  \left|\sigma_{n,l} - s \right| \leqslant \frac{\left|s_{n+1} - s \right| + \left| s_{n+2} - s \right| + \ldots + \left| s_{n+l} - s \right|}{l} \leqslant \\
+  \leqslant \left| a_{n+1} \right| + (\left| a_{n+1} \right| + \left| a_{n+2} \right|) + \ldots + \left( \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right| \right)/l \leqslant \\
+  \leqslant \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right|. \leqslant \sum_{k=n+1}^{n+l} \frac{C}{k} \leqslant \frac{C\cdot l}{n+1} = \frac{c[n\eps]}{n} \leqslant \tilde C \cdot \eps.
+ \end{align*} Тауберово условие
+\end{proof}
+
+\end{document}
+
