@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
+%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'parrallel_path_in_oblast.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{680.31496063bp}%
+    \setlength{\unitlength}{537.19392712bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,10 +50,14 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5)%
+  \begin{picture}(1,0.61068607)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{parrallel_path_in_oblast.pdf}}%
-    \put(0.33022016,0.14386978){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$z_0$\end{tabular}}}}%
+    \put(0.44190627,0.2348177){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$z_0$\end{tabular}}}}%
+    \put(0.51674625,0.41812406){\color[rgb]{0,0,0}\transparent{0.99622601}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(x,y)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{parrallel_path_in_oblast.pdf}}%
+    \put(0.71033681,0.30004632){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B(z_0,\varepsilon)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{parrallel_path_in_oblast.pdf}}%
   \end{picture}%
 \endgroup%

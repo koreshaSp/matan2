@@ -22,7 +22,7 @@
  \begin{align*}
   d \omega &= d(P\,dx + Q\,dy) = (P'_x \, dx + P'_y\,dy) \land dx + (Q'_x \, dx + Q'_y \, dy) \land dy = \\
   &= P'_y \, dy \land dx + Q'_x \, dx \land dy = (Q'_x - P'_y) \, dx \land dy.
- \end{align*} Но $P\,dx = Q \, dy = dF = F'_x \, dx + F'_y \, dy$. Продолжим:
+ \end{align*} Но $P\,dx + Q \, dy = dF = F'_x \, dx + F'_y \, dy$. Продолжим:
  \begin{align*}
   d \omega = (-F''_{xy} + F''_{yx})\,dx \land dy = 0
  .\end{align*} Равенство $F''_{xy} = F''_{yx}$ верно, так как $P$ и $Q$ гладкие. Это верно в любом шаре, значит это верно всюду.
@@ -68,12 +68,12 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Если $a$ не лежит внутри $\gamma$, тогда $\gamma$ гомотопна точке в $\Omega$. Значит, $\int_{\gamma} \omega = 0 $  в силу замкнутости.
 
-Пусть теперь $a$  лежит внутри $\gamma$. Изменим контур интегрирования:
+Пусть теперь $a$  лежит внутри $\gamma$. Изменим контур интегрирования \eqref{fig:gamma_with_tilde} на $\tilde\gamma$:
 
 \begin{figure}[ht]
     \centering
-    \incfig{gamma_with_tilde}
-    \caption{gamma_with_tilde}
+	\incfig[0.5]{gamma_with_tilde}
+    \caption{Точка $a$ внутри $\gamma$. }
     \label{fig:gamma_with_tilde}
 \end{figure}
 
@@ -113,14 +113,14 @@
 
 \begin{figure}[ht]
     \centering
-    \incfig{special_point_in_rectangle}
-    \caption{special_point_in_rectangle}
+	\incfig[0.9]{special_point_in_rectangle}
+    \caption{Устранение особенности в прямоугольнике.}
     \label{fig:special_point_in_rectangle}
 \end{figure}
 
 \begin{align*}
  \int\limits_{\gamma_+}  \omega + \int\limits_{\gamma_-}  \omega &= \int\limits_{\partial\Pi} + \int\limits_{I_1}   + \int\limits_{-I_1}   + \int\limits_{I_2}  + \int\limits_{-I_2}   + \int\limits_{C_+}   + \int\limits_{C_-}   = \\
- &= \int\limits_{\partial\Pi} \omega + \underbrace{\int\limits_{\left\{ \left| z-a \right|=\eps \right\}} \omega}_{A_{\eps}} 
+ &= \int\limits_{\partial\Pi} \omega + \underbrace{\varointctrclockwise\limits_{\left\{ \left| z-a \right|=\eps \right\}} \omega}_{A_{\eps}} 
 \end{align*} 
 
 \begin{align*}
@@ -133,10 +133,13 @@
 \begin{align*}
  \int\limits_{\partial\Pi}   \omega = 0.
 \end{align*} 
+
+В случае если точка $a$ лежит на границе прямоугольника, то надо по аналогии делать путь который ее огибает.
  
 \end{proof}
 
 Базовый принцип комплексного анализа: если у функции есть особенность, то её нужно локализовывать.
+
 
 \begin{lm}
  Пусть $\Omega$ --- область, непрерывная $1$-форма $f\,dz$ точна в $\Omega$. Тогда существует функция $g \colon\,\Omega\to\CC$ такая, что для любого есть $z_0 \in \Omega$:
@@ -149,19 +152,18 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Раз форма $\omega = f\, dz$ точна, то существует $F \colon\, \Omega \to \CC $, $\omega = dF$. Построим с помощью $F$ функцию $g$. Для $z = x+iy \in \Omega$ положим
  \begin{align*}
-  g(z) = F(x,y).
+	 g(z) &= F(x,y) \implies g(z)dz = F(x, y)dz \\
+	 \implies g'(z) &= (g(z)) d(x + i \cdot y) = g'(z)dx + i \cdot g'(z)dy = F'_x(x,y)dx + F'_y(x,y)dy \implies \\
+	 \implies F'_x(x, y) &= g'(z), F'_y(x, y) = g'(z) \cdot i
  \end{align*} Проверим, что такой выбор нам подходит: по определению дифференциала
  \begin{align}
-	 (*) \ F(x,y) = F(x_0, y_0) + (x-x_0) F'_x(x_0, y_0) + (y-y_0)F'_y(x_0,y_0) + o(\sqrt{\left| x-x_0 \right| + \left| y-y_0 \right|})
- \end{align} Заметим, что (*) равносильна
+	 (*) \ F(x,y) = F(x_0, y_0) + (x-x_0) F'_x(x_0, y_0) + (y-y_0)F'_y(x_0,y_0) + o(\sqrt{\left| x-x_0 \right|^2 + \left| y-y_0 \right|^2})
+ \end{align}
+
+ Заметим, что (*) равносильна
  \begin{align*}
-  g(z) - g(z_0) = (x-x_0)g'(z_0) + (y-y_0)g'(z_0) \cdot i + o(\left| z-z_0 \right|)
- \end{align*} 
- \begin{align*}
-  F'_x = g'_z, F'_y = g'_z \cdot i
- \end{align*} 
- \begin{align*}
-  = ((x-x_0) + i(y-y_0))g'(z_0) + o(\left| z-z_0 \right|) = (z-z_0)g'(z_0) + o(\left| z-z_0 \right|).
+	 g(z) - g(z_0) &= (x-x_0)g'(z_0) + (y-y_0)g'(z_0) \cdot i + o(\left| z-z_0 \right|) = \\
+				   & = ((x-x_0) + i(y-y_0))g'(z_0) + o(\left| z-z_0 \right|) = (z-z_0)g'(z_0) + o(\left| z-z_0 \right|).
  \end{align*} 
 \end{proof}
 
