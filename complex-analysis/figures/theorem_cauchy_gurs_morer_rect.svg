@@ -7,7 +7,7 @@
    viewBox="0 0 240 120"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    sodipodi:docname="theorem_cauchy_gurs_morer_rect.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7039927"
-     inkscape:cx="397.7314"
-     inkscape:cy="142.75716"
+     inkscape:zoom="2.13142"
+     inkscape:cx="464.47908"
+     inkscape:cy="226.60949"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,12 +35,14 @@
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1440"
-     inkscape:window-height="840"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:pagecheckerboard="0">
+     inkscape:pagecheckerboard="0"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
        id="grid815"
@@ -91,46 +93,46 @@
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="71.812218"
-       y="215.98883"
+       x="65.795258"
+       y="214.02699"
        id="text1109"><tspan
          sodipodi:role="line"
          id="tspan1107"
          style="stroke-width:0.264583"
-         x="71.812218"
-         y="215.98883">$Q_1$</tspan></text>
+         x="65.795258"
+         y="214.02699">$Q_1$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="160.5219"
-       y="216.41586"
+       x="155.46103"
+       y="214.02699"
        id="text2377"><tspan
          sodipodi:role="line"
          id="tspan2375"
          style="stroke-width:0.264583"
-         x="160.5219"
-         y="216.41586">$Q_2$</tspan></text>
+         x="155.46103"
+         y="214.02699">$Q_2$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="79.353745"
-       y="273.72385"
+       x="65.795258"
+       y="259.79666"
        id="text3569"><tspan
          sodipodi:role="line"
          id="tspan3567"
          style="stroke-width:0.264583"
-         x="79.353745"
-         y="273.72385">$Q_3$</tspan></text>
+         x="65.795258"
+         y="259.79666">$Q_3$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="166.11429"
-       y="260.40585"
+       x="155.46103"
+       y="259.79666"
        id="text4587"><tspan
          sodipodi:role="line"
          id="tspan4585"
          style="stroke-width:0.264583"
-         x="166.11429"
-         y="260.40585">$Q_4$</tspan></text>
+         x="155.46103"
+         y="259.79666">$Q_4$</tspan></text>
   </g>
 </svg>
