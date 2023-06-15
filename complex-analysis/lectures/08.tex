@@ -177,10 +177,29 @@
  \end{align*} для всех $ k $. Рассмотрим 
  \begin{align*}
   \Real \left(1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))}\right) \geqslant 1 - \left| \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right| > 0
- \end{align*} по условию. Так как вещественная часть положительна, то
+ \end{align*} по условию. 
+
+Отсюда вывод
  \begin{align*}
-  1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} = \left| 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right|e^{i\Psi(t)}
- \end{align*} на $ \gamma_k $, где $ \Psi(t) \in (-\pi / 2, \pi / 2) + k(t)  $, где $ k(t) $ --- непрерывная функция со значениями в $ \Z $. $ k $ --- константа. Тогда $ \left|\psi(1) - \psi(0) \right| < \pi $. С другой стороны, $ \psi(1) - \psi(0) $ --- это число, кратное $ 2\pi $. Поэтому $ \psi(1) - \psi(0) = 0 $.
+  \cos(\psi(t)) > 0
+ \end{align*} если $ \psi $ такая, что  $ 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} = \left| 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right|e^{i\psi(t)} $. Поэтому, $ \psi(t) \in (- \pi / 2, \pi / 2) + 2\pi k (t) $ для любого  $ t $ . Здесь $ k(t) \in \Z $. Поэтому
+  \begin{align*}
+  \psi([0,1]) \subset \bigcup_{k \in \Z} (-\pi / 2, \pi / 2) + 2\pi k.
+ \end{align*} Слева стоит связное множество (как непрерывный образ связного). Второе множество можно нарисовать {\color{red} рисунок}. Значит, весь образ лежит только в одном интервале: существует $ k_0 \in \Z $: $ \psi([0,1]) \subset (-\pi / 2, \pi / 2) + 2\pi k_0 $. Тогда
+ \begin{align*}
+  \left|\psi(1) - \psi(0) \right| < \pi,
+ \end{align*} а с другой стороны, в силу замкнутости $\gamma$ ,
+ \begin{align*}
+  \left( 1+ \frac{g}{f} \right)(\gamma_k(0)) = \left(1 + \frac{g} f\right)(\gamma_k(1)) \\
+  \implies e^{i\psi(0)} = e^{i\psi(1)}.
+ \end{align*} Значит, $ \psi(1) - \psi(0) = 2\pi N $, $ N \in \Z $. Значит
+ \begin{align*}
+  \left|2\pi N \right| < \pi \implies N = 0.
+ \end{align*} Значит $ \psi(1) -\psi(0)=0 $, поэтому
+ \begin{align*}
+  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0.
+ \end{align*}
+
 \end{proof}
 
 \end{document}

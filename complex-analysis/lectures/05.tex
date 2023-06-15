@@ -129,7 +129,7 @@
 Из теоремы \eqref{theorem:analytic_implies_open} следует теорема \eqref{theorem:maximum_principle} .
 \end{prop}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Так как $ f(B(z_0, \eps)) $ содержит точку $ f(z_0) $ в предположении теоремы 2, но не содержит точки $ w $ такие, что $ \left| w \right| > \left| f(z_0) \right| $. Значит $ f $ не открытое, и значит $ f \equiv \mathrm{const} $.
+ Так как $ f(B(z_0, \eps)) $ содержит точку $ f(z_0) $, но не содержит точки $ w $ такие, что $ \left| w \right| > \left| f(z_0) \right| $, значит $ f $ не открытое, и значит $ f \equiv \mathrm{const} $.
 \end{proof}
 \begin{lm}
  Рассмотрим $ F(x, y) = (u(x,y), v(x,y)) $, где $ u(x,y) = \Real f(x + iy) $, $ v(x,y) = \Imaginary f(x +iy) $. Тогда
@@ -153,12 +153,14 @@
  \end{align*} снова по условию Коши-Римана.
 \end{proof}
 \begin{crly}
+\label{corollary:open_map_derivative}
  Если $ z_0 $: $ f'(z_0) \neq 0 $, то в малой окрестности $ z_0 $ отображение $ f $ открыто.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Если $ f'(z_0) \neq 0 $, то по непрерывности $ \left| f'(z) \right|^{2} \neq 0 $ для $ z \in B(z_0, \eps) $, и значит $ \det J_F \neq 0 $ в шаре, и по теореме об открытости отображения с ненулевым якобианом. $ f $ открыто как отображение из $ B(z_0, \eps) \subset \R^{2} $ в $ \R^{2} $.
 \end{proof}
 \begin{lm}
+\label{lemma:open_map_z_n}
  $ z^{n} $ --- открытое отображение в $ \CC $ для любого $ n \in \N $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -169,10 +171,8 @@
 \end{proof}
 \begin{proof}[\normalfont\textsc{Доказательство \eqref{theorem:analytic_implies_open}}]
   Подберем так, чтобы $ f = h_1 \circ h_2 \circ h_3 $, где $ h_1 $, $ h_2 $, $ h_3 $ --- открытые в окрестности $ z_0 \in \Omega $.
- \begin{align}
-  \label{equation:proof:theorem_open_representation}
-  f(z) = f(z_0) + \left((z - z_0) \cdot g(z) \right)^{n},
- \end{align} где $ g $ --- аналитическая в окр. $ z_0 $ и $ n \in \N $, $ g(z_0) \neq 0 $. Докажем \eqref{equation:proof:theorem_open_representation}. По лемме о кратности нуля
+
+ По лемме о кратности нуля
  \begin{align*}
   Q(z) = f(z) - f(z_0) = (z - z_0)^{n} \cdot P(z),
  \end{align*} где $ P $ --- аналитическая. Теперь
@@ -183,17 +183,19 @@
   Q(z) = \left((z-z_0) \cdot e^{\frac{\log P}{n}}\right)^{n}.
  \end{align*} Итого
  \begin{align*}
-  g = e^{\frac{\log P}{n}}.
- \end{align*} Формула \eqref{equation:proof:theorem_open_representation} доказана.
+  f(z) &= f(z_0) + \left((z - z_0) \cdot g(z) \right)^{n}, \\
+  g &= e^{\frac{\log P}{n}}.
+ \end{align*} где $ g $ --- аналитическая в окр. $ z_0 $ и $ n \in \N $, $ g(z_0) \neq 0 $.
 
  \begin{align*}
   &h_3 \colon\, z \mapsto (z-z_0)(g(z)) \\
   &h_2 \colon z \mapsto z^{n} \\
   &h_1 \colon z \mapsto f(z_0) + z
- \end{align*} $ h_1 $ и $ h_2 $ открытые (по лемме ). Почему $ h_3 $ открытое?
+ \end{align*} $ h_1 $ и $ h_2 $ открытые ($h_2$ открыто по лемме \eqref{lemma:open_map_z_n}). Почему $ h_3 $ открытое?
  \begin{align*}
   h_3'(z_0) = g(z_0) + (z_0 - z_0) g'(z_0) = g(z_0) \neq 0
- \end{align*} По другой лемме $ h_3 $ открыто в малой окрестности $ z_0 \in \Omega $.
+\end{align*} По лемме \eqref{corollary:open_map_derivative} получаем что $ h_3 $ открыто в малой окрестности $ z_0 \in \Omega $.
+А значит $ f $ открыто в $ \Omega $.
 
 \end{proof}
 
