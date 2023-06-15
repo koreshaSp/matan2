@@ -1,33 +1,6 @@
 % 2023.04.20 lecture 09
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
- Более подробно о доказательстве теоремы Руше. Функции $ f $ и $ g $ аналитичны в $ \Omega $, $ \left| g \right| < \left| f \right| $ на $ \partial\Omega $, $ f, g \in C^{1}(\overline\Omega) $. Нужно было доказать для всех $ k $
- \begin{align*}
-  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0.
- \end{align*} Мы заметили, что
- \begin{align*}
-  \Real\left(1 + \frac{g}{f}\right) = 1 + \Real \frac{g}{f} > 1 - \left| \frac{g}{f} \right| > 0 
- \end{align*} на $ \partial\Omega $. Отсюда вывод
- \begin{align*}
-  \cos(\psi(t)) > 0
- \end{align*} если $ \psi $ такая, что  $ 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} = \left| 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right|e^{i\psi(t)} $. Поэтому, $ \psi(t) \in (- \pi / 2, \pi / 2) + 2\pi k (t) $ для любого  $ t $ . Здесь $ k(t) \in \Z $. Поэтому
-  \begin{align*}
-  \psi([0,1]) \subset \bigcup_{k \in \Z} (-\pi / 2, \pi / 2) + 2\pi k.
- \end{align*} Слева стоит связное множество (как непрерывный образ связного). Второе множество можно нарисовать {\color{red} рисунок}. Значит, весь образ лежит только в одном интервале: существует $ k_0 \in \Z $: $ \psi([0,1]) \subset (-\pi / 2, \pi / 2) + 2\pi k_0 $. Тогда
- \begin{align*}
-  \left|\psi(1) - \psi(0) \right| < \pi,
- \end{align*} а с другой стороны,
- \begin{align*}
-  \left( 1+ \frac{g}{f} \right)(\gamma_k(0)) = \left(1 + \frac{g} f\right)(\gamma_k(1)) \\
-  \implies e^{i\psi(0)} = e^{i\psi(1)}.
- \end{align*} См (*). Значит, $ \psi(1) - \psi(0) = 2\pi N $, $ N \in \Z $. Значит
- \begin{align*}
-  \left|2\pi N \right| < \pi \implies N = 0.
- \end{align*} Значит $ \psi(1) -\psi(0)=0 $, поэтому
- \begin{align*}
-  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0.
- \end{align*}
-
  \begin{exmpl}
   Найдём число корней многочлена $ 0.1+2z^{3} + z^{10} = 0 $ в кольце $ 1 < \left| z \right|  < 2 $. Рассмотрим область $ \Omega = B(0,1) $. Рассмотрим функцию
   \begin{align*}
@@ -59,7 +32,7 @@
   \end{align*} Напишем
   \begin{align*}
    f_k = f + (f_k - f) = f + g_k.
-  \end{align*} Так как $ f_k \rightrightarrows f $ равномерно на $ \left| z \right| = \eps $, то существует число $ N $ такое, что
+  \end{align*} Так как $ f_k \rightrightarrows f $ равномерно на $ \left| z - z_0 \right| = \eps $, то существует число $ N $ такое, что
   \begin{align*}
    \left|g_k(z) \right| < \frac{\delta \cdot \eps^{k_0}}{2}
   \end{align*} для любого $ \left| z-z_0 \right|=\eps $ и $ k \geqslant N $. По теореме Руше $ f $ и $ f + g_k $ имеет одинаковое число нулей в $ B(z_0,\eps) $ при $ k \geqslant N $.
@@ -76,7 +49,7 @@
   \end{align*} --- аналитическая функция в $ \Omega $ (тест на прямоугольниках). Пусть существуют точки $ z_0,w_0 \in \Omega $ такие, что $ f(z_0) - f(w_0) = 0 $. Рассмотрим функции $ F_k \colon\, z \mapsto f_k(z) - f_k(w_0) $, а
   \begin{align*}
    F := f(z) - f(w_0)
-  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $. Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $. Пусть $ N $ --- построили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $. Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $. Но так как $ f_n $ инъективны, то $ z_n \in w_0 $. Но $ z_n \in B(z_0, \eps) $. То есть $ \left|z_n - w_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие. Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
+  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $. Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $. Пусть $ N $ --- построили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $. Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $. Но так как $ f_n $ инъективны, то $ z_n = w_0 $. Но $ z_n \in B(z_0, \eps) $. То есть $ \left|z_n - w_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие. Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
  \end{proof}
  
  \begin{thm}
@@ -131,7 +104,7 @@
  \end{df}
 
  \begin{lm}
- 	Пусть $(X, \rho)$ --- метрический компакт, то тогда $X$ --- сепарабельное.
+ 	Пусть $(X, \rho)$ --- метрический компакт, тогда $X$ --- сепарабельное.
  \end{lm}
 
  \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -152,7 +125,7 @@
   Шаг 1. Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
 
   Т.к. $\{ f_\alpha \}$ равномерно ограничены, значит можно выделить сходящуюся подпоследовательность $f_{n_1}, f_{n_2}, \ldots $ сходящуюся в точке $x_1$.
-  Но это подпоследовательность тоже будет равномерно ограничена, поэтому из нее можно выделить подпоследовательность сходящуюся в точке $x_2$.
+  Но эта подпоследовательность тоже будет равномерно ограничена, поэтому из нее можно выделить подпоследовательность сходящуюся в точке $x_2$.
   Продолжая эту процедуру мы получаем семейство последовательностей где каждая вложена в предыдущую и сходится в конкретной точке.
   
 \begin{figure}[ht]
