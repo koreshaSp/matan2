@@ -349,22 +349,24 @@
   F(x,y) = \int\limits_{\gamma(x,y)} \omega,
  \end{align*} где $\gamma(x,y)$ --- это путь из двух отрезков, параллельных осям $x$ и $y$ с началом в точке $z_0 = (x_0, y_0)$ и концом в точке $(x,y)$. См. рис. \eqref{fig:parrallel_path_in_oblast}.
 
-\begin{figure}[ht]
-    \centering
-	\incfig[0.5]{parrallel_path_in_oblast}
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+	\incfig{parrallel_path_in_oblast}
     \caption{Параллельный путь в области.}
     \label{fig:parrallel_path_in_oblast}
-\end{figure}
-
- Как и раньше, проверяется, что $dF = \omega$.
-
-\begin{figure}[ht]
-    \centering
-    \incfig{differential_of_parallel_path_f}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+	\incfig[0.8]{differential_of_parallel_path_f}
     \caption{Дифференциал параллельного пути.}
     \label{fig:differential_of_parallel_path_f}
+\end{subfigure}
+
+\caption{Доказательство теоремы \eqref{theorem:closed_1_form}, из пункта \ref{enum3:theorem:closed_1_form} в пункт \ref{enum1:theorem:closed_1_form}.}
 \end{figure}
 
+
+ Как и раньше, проверяется, что $dF = \omega$.
   \begin{align*}
    \int\limits_{\gamma(z+h)}  \omega - \int\limits_{\gamma(z)}  \omega = \int\limits_{\Gamma} \omega. 
   \end{align*} Далее так же, смотря на рисунок \eqref{fig:differential_of_parallel_path_f}.
