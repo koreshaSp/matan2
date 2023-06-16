@@ -45,7 +45,7 @@
  Если $ p \in \CC[z] $ --- многочлен, $ \mathrm{deg}\;p \geqslant 1 $, то существует точка $ z_0 \in \CC $ такая, что $ p(z_0) = 0 $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Пусть нет корней. Рассмотрим функцию $ f = \frac{1}{p} $ , она аналитична в $ \CC $  по условию ($ f'(z) = -\frac{p'(z)}{p^{2}(z)} $). Но при $ \left| z \right| \leqslant R $ $ \left| f(z) \right| \leqslant M_R < \infty $ по непрерывности. С другой стороны, если $ \mathrm{deg}\;p \geqslant 1 $, то $ p = c_n z^{n} + \ldots + c_0 $, $ c_n \neq 0 $, и 
+ Пусть нет корней. Рассмотрим функцию $ f = \frac{1}{p} $ , она аналитична в $ \CC $  по условию ($ f'(z) = -\frac{p'(z)}{p^{2}(z)} $). Но при $ \left| z \right| \leqslant R \implies \left| f(z) \right| \leqslant M_R < \infty $ по непрерывности. С другой стороны, если $ \mathrm{deg}\;p \geqslant 1 $, то $ p = c_n z^{n} + \ldots + c_0 $, $ c_n \neq 0 $, и 
  \begin{align*}
   \lim_{z \to \infty} \frac{1}{\left| p(z) \right|} = \lim_{z \to \infty} \frac{1}{\left| c_n \right| \cdot \left| z \right|^{n}} = 0.
  \end{align*} Поэтому существует $ R $ такое, что $ \left| f(z) \right| \leqslant 1 $ для всех $ \left| z \right| \geqslant R $. Тогда $ \left| f \right| \leqslant M_R + 1 $ всюду в $ \CC $. По теореме \ref{theorem:liuvill} $ f \equiv \mathrm{const} $, а это противоречие!
@@ -74,12 +74,19 @@
  \begin{align}
   \label{equation:uniqueness_thm}
   h(z) = (z - z_\ast)^{n_0} \cdot \zeta(z),
- \end{align} где $ \zeta $ --- аналитическая функция, такая, что $ \zeta(z_\ast) \neq 0 $, либо  $ h \equiv 0 $ в $ B(z_\ast,r) $ (а тут доказывать нечего). В первом случае существует такое число  $ \eps > 0 $, что $ \left|\zeta(z) \right| > \frac{\left| \zeta(z_\ast) \right|}{2} $ в $ B(z_\ast,\eps) $. Тогда $ B(z_\ast,\eps) \setminus \left\{ z_\ast \right\} \cap E = \varnothing $, а это противоречит \eqref{equation:uniqueness_thm}. Мы доказали $ f \equiv g $ в $ B(z_\ast,r) $.
+\end{align} где $ \zeta $ --- аналитическая функция, такая, что $ \zeta(z_\ast) \neq 0 $, либо  $ h \equiv 0 $ в $ B(z_\ast,r) $ (а тут доказывать нечего). В первом случае существует такое число  $ \eps > 0 $, что $ \left|\zeta(z) \right| > \frac{\left| \zeta(z_\ast) \right|}{2} $ в $ B(z_\ast,\eps) $. Тогда $ B(z_\ast,\eps) \setminus \left\{ z_\ast \right\} \cap E = \varnothing $, т.к. $\left|h(z)\right| > 0$ на $B(z_\ast, \eps) \setminus \{z_\ast\}$  , а это противоречит тому, что $z_\ast$ предельная точка. Мы доказали $ f \equiv g $ в $ B(z_\ast,r) $.
+
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{uniqueness_thm_f}
+    \caption{Обобщение равенства на все $\Omega$. }
+    \label{fig:uniqueness_thm_f}
+\end{figure}
 
  Рассмотрим $ F = \mathrm{int} \left\{ z \mid h(z) = 0 \right\} $. $ F \neq \varnothing $ ведь $ F \supset B(z_\ast,r) $. $ F $ открыто. Докажем, что $ F = \Omega $. Пусть $ w \in \Omega \setminus F$. Соединим $ z_\ast $ и $ w $ некоторым путём $ \gamma\colon[0,1] \to \Omega $ (так можно, потому что $ \Omega $ линейно связно). Рассмотрим
  \begin{align*}
   t_\ast = \sup \left\{ t \in [0,1] \mid \gamma(t) \in F \right\}.
- \end{align*}  Положим $ \xi = \gamma(t_\ast) $. $ \xi $ --- это предельная точка $ F $ ($ \xi = \lim_{n \to \infty} \gamma(t_n) $, где $ t_n \to t_\ast $)  и $ \xi \in \Omega $. Воспользуемся уже доказанной частью рассуждения: тогда существует шар, содержащий $ \xi $, и лежащий в $ \Omega $, а это противоречие!
+\end{align*}  Положим $ \xi = \gamma(t_\ast) $), см. рис. \eqref{fig:uniqueness_thm_f}. $ \xi $ --- это предельная точка $ F $ ($ \xi = \lim_{n \to \infty} \gamma(t_n) $, где $ t_n \to t_\ast $)  и $ \xi \in \Omega $. Воспользуемся уже доказанной частью рассуждения: тогда существует шар, содержащий $ \xi $, и лежащий в $ \Omega $, а это противоречие!
 
  Можно было сказать, что $ F $ открытое и замкнутое множество в связном пространстве. Здесь скрыт некоторый топологический аргумент.
 \end{proof}
@@ -158,5 +165,7 @@ d(f\,dz) = 0 \iff d((u+iv)dz) = 0 &\iff (u'_x\,dx+u'_y\,dy+iv'_x\,dx+iv'_y\,dy) 
   \left| f(z_1) - f(z_2) \right| \leqslant \max_{z \in [z_1, z_2]} \left| f'(z) \right| \cdot \left| z_1 - z_2 \right|.
  \end{align*} 
 \end{remrk}
-
+\begin{remrk}[Аналитические функции с нулевой производной]
+	Если $f'(z) \equiv 0$, то $f(z) \equiv$ const.  
+\end{remrk}
 \end{document}

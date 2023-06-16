@@ -8,7 +8,7 @@
 
 Шаг 2. Нужно доказать, что теперь эта же самая последовательность сходится всюду(а не только во всюду плотном подмножестве). Мы докажем, что последовательность $ \{f_{\alpha_k}(x)\}_{}^{\infty}   $ фундаментальна в $ \CC $ любой точке $ x \in X $.
 
-Возьмём $ x \in X $, $ \eps > 0 $. Найдём $ \delta $ такое, что $\forall \alpha \in A, x, x : \rho(x, y) < \delta \implies | f_\alpha(x) - f_\alpha(y)| < \eps$(из условия равностепенной непрерывности $f_\alpha$ ). Пусть $ k, m \in \N $. Воспользуемся $ \eps / 3 $-приёмом:
+Возьмём $ x \in X $, $ \eps > 0 $. Найдём $ \delta $ такое, что $\forall \alpha \in A, x, y : \rho(x, y) < \delta \implies | f_\alpha(x) - f_\alpha(y)| < \eps$(из условия равностепенной непрерывности $f_\alpha$ ). Пусть $ k, m \in \N $. Воспользуемся $ \eps / 3 $-приёмом:
 \begin{align*}
  \left| f_{k}(x) - f_{m}(x) \right|\leqslant \left| f_k(x) - f_k(x_j) \right| + \left| f_k(x_j) - f_m(x_j) \right| + \left| f_m(x_j) - f_m(x) \right|,
 \end{align*} где $ x_j $ выбрана так, чтобы $ \rho(x, x_j) < \delta $(такое $x_j$ найдётся в силу всюду плотности $\{ x_j\}$). Тогда в силу равностепенной непрерывности можно оценить первое и третье слагаемые:
@@ -67,6 +67,7 @@
 \section{Теорема Монтеля.}
 
 \begin{thm}[Монтеля]
+\label{theorem:montel}
 Пусть $ \Omega \subset \CC $ --- область, $ \left\{f_{\alpha}\right\}_{\alpha \in A}  $ --- бесконечное семейство аналитических в $ \Omega $ функций такое, что для любого $ z \in \Omega $ существует число $ \eps(z) > 0 $ такое, что $ B(z, \eps(z)) \subset \Omega $, и \begin{align*}
   \sup_{\substack{w \in B(z, \eps(z)) \\ \alpha \in A}} \left| f_\alpha(w) \right| < \infty
  \end{align*} --- \textit{локальная равномерная ограниченность.} Тогда существует подпоследовательность $ f_{\alpha_k} $ с различными индексами такая, что $f_{\alpha_k} \to f$ равномерно на любом компакте $ K \subset \Omega $.

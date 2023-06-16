@@ -35,10 +35,11 @@
     g(x) = f(x + t).
    \end{align*} Действительно,
    \begin{align*}
-    S_N(f,t) &= \sum_{-N}^{N} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{in(x-t)}\,dx =  \\
+    S_N(f,t) &= \sum_{-N}^{N} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{-in(x-t)}\,dx =  \\
+	&= [y = x - t] = \\
     &= \sum_{-N}^{N} \frac{1}{2\pi} \int_{-\pi - t}^{\pi - t} f(y + t)e^{-iny}\,dy = \\
     &= \sum_{-N}^{N}\frac{1}{2\pi} \int_{-\pi}^{\pi} f(y+t)e^{-iny}\,dy.
-   \end{align*}
+\end{align*} Т.к. функция $f$ имеет период $2 \pi$.  
   \item Рассмотрим функции $ p_N \colon\, [-\pi,\pi] \to \R $ такие, что
    \begin{itemize}
     \item $ p_N \geqslant 0 $.
@@ -58,40 +59,49 @@
  \end{align*} В частности, оценка равномерная по $ t $ из шага 1.
 
 \item Рассмотрим 
- \begin{align*}
+ \begin{align}
+  \label{eq:feyera_S_N}
   \frac{1}{M+1}\sum_{0}^{M} S_N(g,0) = \int_{-\pi}^{\pi}g(s)p_M(s)\,ds,
- \end{align*} где
+ \end{align} где
  \begin{align*}
-  p_M(s) = 
- \end{align*} Действительно, (*) верна по определению для
+  p_M(s) = \frac{1}{2 \pi (M+1)} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
+ \end{align*} Действительно, \eqref{eq:feyera_S_N} верна по определению для
+ {
+	 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
  \begin{align*}
-  p_M(s) &= \frac{1}{2\pi (M+1)} \sum_{N=0}^{M} \sum_{-N}^{N} e^{-ins} = \\
-  &= \frac{1}{2\pi (M+1)} \left| 1 + e^{is} + \ldots + e^{iMs} \right|^{2}
- \end{align*} Проверим (**) по индукции:
+	 p_M(s) &= \frac{1}{2\pi (M+1)} \sum_{N=0}^{M} \sum_{-N}^{N} e^{-ins} \circled{$=$} \\
+			&\circled{$=$} \frac{1}{2\pi (M+1)} \left| 1 + e^{is} + \ldots + e^{iMs} \right|^{2}
+ \end{align*} Проверим \circled{$=$} по индукции, база $ M = 0 $ очевидна, проверим переход $M \to M + 1$: 
  \begin{align*}
-  M = 0 \implies 1 = 1
- \end{align*} $ M \to M +1 $
- \begin{align*}
-  \left| 1+\ldots+e^{iMs} + e^{i(M+1)s} \right|^{2} = \\
-  = \left| 1+\ldots+e^{iMs} \right|^{2} + \left| e^{i(M+1)s} \right|^{2} + (1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s} + (1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s} = \\
-  = \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M+1}^{M+1} e^{-ins},
+  &\left| 1+\ldots+e^{iMs} + e^{i(M+1)s} \right|^{2} = \left[|a + b|^2 = |a|^2 + |b|^2 + a \overline b + \overline a b, \, \forall a, b \in \mathbb C\right] = \\
+  &= \left| 1+\ldots+e^{iMs} \right|^{2} + \underbrace{\left| e^{i(M+1)s} \right|^{2}}_{=1} + \\ 
+  &+ \underbrace{(1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s}}_{\sum_{-M + 1}^{-1} e^{-ins}} + \underbrace{(1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s}}_{\sum_{1}^{M + 1} e^{-ins}} = \\
+  &= \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M+1}^{M+1} e^{-ins},
  \end{align*} переход проверен. Но при $ s \neq 2\pi k $.
  \begin{align*}
-  p_M(s) &= \frac{1}{M+1} \left| \frac{1-e^{i(M+1)s}}{1-e^{is}} \right|^{2} = \\
-  &= \frac{1}{M+1}  \left|\frac{\frac{e^{-i(M+1) / 2 \cdot s} - e^{i(M+1) / 2s}}{2i}}{\frac{e^{-is / 2} - e^{is / 2}}{2i}} \right|^{2} = \frac{1}{M+1} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
- \end{align*} --- ядро Фейера (очень известная функция). {\color{red} вставить картинку}
+  p_M(s) &= \frac{1}{2 \pi (M+1)} \left| \frac{1-e^{i(M+1)s}}{1-e^{is}} \right|^{2} = \\
+  &= \frac{1}{2 \pi (M+1)}  \left|\frac{\frac{e^{-i(M+1)s / 2} - e^{i(M+1)s / 2}}{2i}}{\frac{e^{-is / 2} - e^{is / 2}}{2i}} \right|^{2} = \frac{1}{2 \pi (M+1)} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
+ \end{align*} --- ядро Фейера (очень известная функция), график на рисунке \ref{fig:feyer_kernel_plot}.
+\begin{figure}[ht]
+    \centering
+	\incfig[0.5]{feyer_kernel_plot}
+    \caption{График ядра Фейера.}
+    \label{fig:feyer_kernel_plot}
+\end{figure}
+}
 
- Проверим свойства $ p_M $.
+ Проверим свойства $ p_M $:
    \begin{itemize}
   \item $ p_M \geqslant 0 $   очевидно.
   \item $ \int_{-\pi}^{\pi} p_M\,ds = 1 $, легче проверить по формуле с суммой
    \begin{align*}
-    \frac{1}{M+1} \sum_{0}^{M+1} \int_{-\pi}^{\pi} \sum_{-N}^{N} e^{-ins}\,ds = \frac{1}{M+1} \sum_{0}^{M+1} 2\pi = 2\pi = 1.
-   \end{align*} Забыли $ 2\pi $.
+    \frac{1}{2 \pi (M+1)} \sum_{0}^{M+1} \int_{-\pi}^{\pi} \sum_{-N}^{N} e^{-ins}\,ds = \frac{1}{2 \pi (M+1)} \sum_{0}^{M+1} 2\pi = 1.
+   \end{align*}
   \item
    \begin{align*}
     \max_{\left| s \right| > \eps} \frac{1}{2\pi(M+1)} \frac{\sin^{2} \left( \frac{M+1}{2} s \right)}{\sin^{2} \frac{s}{2}} \leqslant \frac{1}{2\pi(M+1)} \max_{\left| s \right|  > \eps, \left| s \right| \leqslant \pi} \frac{1}{\sin^{2} \frac{s}{2}} \leqslant \frac{C_\eps}{2\pi (M+1)} \to 0.
-   \end{align*} По шагу 2 
+   \end{align*} Теперь по шагу 2
    \begin{align*}
     \frac{1}{M+1} \sum_{0}^{M} S_N(g,0) \to g(0),
    \end{align*} причём равномерно по букве $ t $, потому что все оценки были равномерные по $ t $.
@@ -104,12 +114,12 @@
 \begin{crly}
  \begin{align*}
   \mathrm{span} \left\{ e^{int} \right\}
- \end{align*} плотна в $ C_p([-\pi,\pi]) = \left\{ f \in C[-\pi,\pi] \mid f(-\pi) = f\pi \right\} $
+ \end{align*} плотна в $ C_p([-\pi,\pi]) = \left\{ f \in C[-\pi,\pi] \mid f(-\pi) = f(\pi) \right\} $
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Для любой $ f \in C_p [-\pi,\pi] $ совпадает с сужением $ \tilde f \in C(\R) $ периодической с периодом $ 2\pi $.
  \begin{align*}
-  \frac{1}{M+1} \sum_{n=0}^{M} S_N(\tilde f, t) = \rightrightarrows \tilde f(t) = f(t), \qquad t \in [-\pi,\pi]
+  \frac{1}{M+1} \sum_{n=0}^{M} S_N(\tilde f, t) \rightrightarrows \tilde f(t) = f(t), \qquad t \in [-\pi,\pi]
  \end{align*} Но левая часть лежит в $ \mathrm{span} \left\{ e^{int} \right\}_{n \in \Z} $.
 \end{proof}
 
@@ -117,13 +127,22 @@
  Система $ \left\{e^{int}\right\}_{n \in \Z}  $ плотна в $ L^{2}[-\pi,\pi] $.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Пусть не так. Тогда существует $ f \in L^{2}[-\pi,\pi] $:
+	Пусть не так. Тогда существует, значит замыкание $\mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}$ не совпадает со всем пространством, а тогда найдется ортогональный элемент к этому подпространству, пусть $ f \in L^{2}[-\pi,\pi] $:
  \begin{align*}
-  \int f p \,dx = 0
+  \int\limits_{-\pi}^{\pi} f p \,dx = 0, \, \forall p \in \mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}.
  \end{align*} Тогда 
  \begin{align*}
   \int\limits_{-\pi}^{\pi} f \cdot g_\eps \, dx = 0,
- \end{align*} где $ g_\eps $ такая , что {\color{red} картинка}. Тогда
+\end{align*} где $ g_\eps $ как на картинке \eqref{fig:eint_full_in_l2_g_eps}(т.к. $g_{\eps}$ лежит в $\mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}$  ).
+
+\begin{figure}[ht]
+    \centering
+	\incfig[0.8]{eint_full_in_l2_g_eps}
+	\caption{График функции $g_{\eps}$. }
+    \label{fig:eint_full_in_l2_g_eps}
+\end{figure}
+
+ Тогда
  \begin{align*}
   \int\limits_{-\pi}^{\pi} f(x) \chi_{[a,b]}(x) \,dx = 0
  \end{align*} перешли к пределу по $ \eps $ (теорема Лебега о мажорируемой сходимости). Мажоранта $ \left| f \right| $. Ну и получилось, что 
@@ -156,7 +175,7 @@
   \int\limits_{-\pi}^{\pi} \cos(nt)\sin(kt)\,dt = 0
  \end{align*}
  \begin{align*}
-  \int \sin(nt)\sin(mt)\,dt = 0,
+  \int\limits_{-\pi}^{\pi} \sin(nt)\sin(mt)\,dt = 0,
  \end{align*} если $ m \neq n $.
 
  $ \cos \cdot \sin $ --- нечётная функция.
@@ -167,16 +186,13 @@
 \begin{crly}
  Для любой функции $ f \in L^{2}[-\pi,\pi] $
  \begin{align*}
-  f = \sum_{n \in \Z} c_k e^{ikt},
- \end{align*} где \begin{align*}
-  c_k = \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)e^{-ikt}\,dt
+  f &= \sum_{n \in \Z} c_k e^{ikt}, \\
+  c_k &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)e^{-ikt}\,dt
  \end{align*}а также
  \begin{align*}
-  f = \frac{a_0}{2}+ \sum_{k=1}^{\infty} a_k \cos(kt) + \sum_{k=1}^{\infty} b_k\sin(kt),
- \end{align*} где
- \begin{align*}
-  a_k = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t)\cos(kt)\,dt, \qquad k \geqslant 0, \\
-  b_k = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t)\sin(kt)\,dt, \qquad k \geqslant 1.
+	 f &= \frac{a_0}{2}+ \sum_{k=1}^{\infty} a_k \cos(kt) + \sum_{k=1}^{\infty} b_k\sin(kt), \\
+	 a_k &= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t)\cos(kt)\,dt, \qquad k \geqslant 0, \\
+	 b_k &= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t)\sin(kt)\,dt, \qquad k \geqslant 1.
  \end{align*} И ряды сходятся в $ L^{2}[-\pi,\pi] $.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -238,7 +254,7 @@
  \end{align*} сходится по Чезаро к $ f $ всюду по теореме Фейера. Кроме того,
  \begin{align*}
   \left| c_ke^{ikt} \right| = \mathcal O(1 / k).
- \end{align*} По предыдущей теореме. Следовательно, нам достаточно доказать теорему Харди для числовых рядов: если $ \sum_{n=1}^{\infty} a_n $ сходится по Чезаро, и $ a_n = \mathcal O(1 / n) $, то ряд сходится и в обычном смысле. (Тауберовой теорема, она просто для чисел)
+ \end{align*} По предыдущей теореме. Следовательно, нам достаточно доказать теорему Харди для числовых рядов: если $ \sum_{n=1}^{\infty} a_n $ сходится по Чезаро, и $ a_n = \mathcal O(1 / n) $, то ряд сходится и в обычном смысле. (Тауберовая теорема, она просто для чисел)
 \end{proof}
 
 \begin{proof}[\normalfont\textsc{Доказательство тау}]
@@ -247,26 +263,22 @@
   s_n = a_1 + \ldots + a_n, \\
   \sigma_n = \frac{s_1 + \ldots + s_n}{n},\\
   \sigma_{n,l} = \frac{s_{n+1} + \ldots + s_{n+l}}{l}.
- \end{align*} Нам дано $ \sigma_n \to S $. Хотим $ s_n \to S $.
+ \end{align*} Нам дано $ \sigma_n \to S $, $a_n = O(\frac 1 n)$(Тауберово условие) . Хотим $ s_n \to S $.
 
- Шаг 1. Если $ l = [n \cdot \eps] $, то 
+ Шаг 1: Пусть $l = [n \cdot \eps]$: 
  \begin{align*}
-  \varlimsup \left| \sigma_n - \sigma_{n,l} \right| = 0
+  \sigma_{n,l} = \frac{1}{l}(\sigma_{n+l}(n+l) - \sigma_n \cdot n) =  \underbrace{(\sigma_{n+l} - \sigma_n)}_{\to 0 \text{ по Коши}}\underbrace{\frac{n+l}{l}}_{O(1)} + \underbrace{\sigma_n \left( \frac{n+l}{l} - \frac{n}{l} \right)}_{=\sigma_n} \implies \\
+  \implies \varlimsup \left| \sigma_n - \sigma_{n,l} \right| = 0
  \end{align*}
 
- Шаг 2. $ \limsup \left| S_n - \sigma_{n,l} \right| \leqslant C \cdot \eps $.
-
- Шаг 1:
+ Шаг 2: Обозначим $s = s_n$, тогда:
  \begin{align*}
-  \sigma_{n,l} = \frac{1}{l}(\sigma_{n+l}(n+l) - \sigma_n \cdot n) =  \underbrace{(\sigma_{n+l} - \sigma_n)}_{\to \text{ по Коши}}\underbrace{\frac{n+l}{l}}_{O(1)} + \underbrace{\sigma_n \left( \frac{n+l}{l} - \frac{n}{l} \right)}_{=\sigma_n}.
+	 \left|\sigma_{n,l} - s \right| &\leqslant \frac{\left|s_{n+1} - s \right| + \left| s_{n+2} - s \right| + \ldots + \left| s_{n+l} - s \right|}{l} \leqslant \\
+	&\leqslant \frac{\left| a_{n+1} \right| + (\left| a_{n+1} \right| + \left| a_{n+2} \right|) + \ldots + \left( \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right| \right)} {l} \leqslant \\
+	&\leqslant \frac{l |a_{n+1}| + (l - 1) |a_{n + 2}| + \ldots + |a_{n + l}|}{l} \leqslant |a_{n + 1}| + |a_{n + 2}| + \ldots + |a_{n + l}| \leqslant \\
+	&\leqslant \sum_{k=n+1}^{n+l} \frac{C}{k} \leqslant \frac{C\cdot l}{n+1} = \frac{c[n\eps]}{n} \leqslant \tilde C \cdot \eps \implies \\
+	&\implies \varlimsup \left| s_n - \sigma_{n,l} \right| \leqslant C \cdot \eps 
  \end{align*}
-
- Шаг 2: надо рассмотреть разность 
- \begin{align*}
-  \left|\sigma_{n,l} - s \right| \leqslant \frac{\left|s_{n+1} - s \right| + \left| s_{n+2} - s \right| + \ldots + \left| s_{n+l} - s \right|}{l} \leqslant \\
-  \leqslant \left| a_{n+1} \right| + (\left| a_{n+1} \right| + \left| a_{n+2} \right|) + \ldots + \left( \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right| \right)/l \leqslant \\
-  \leqslant \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right|. \leqslant \sum_{k=n+1}^{n+l} \frac{C}{k} \leqslant \frac{C\cdot l}{n+1} = \frac{c[n\eps]}{n} \leqslant \tilde C \cdot \eps.
- \end{align*} Тауберово условие
 \end{proof}
 
 \end{document}

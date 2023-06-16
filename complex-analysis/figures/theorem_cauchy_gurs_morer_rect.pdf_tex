@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
+%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'theorem_cauchy_gurs_morer_rect.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{680.31496063bp}%
+    \setlength{\unitlength}{510.14138162bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5)%
+  \begin{picture}(1,0.51217477)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{theorem_cauchy_gurs_morer_rect.pdf}}%
-    \put(0.29921757,0.33754654){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_1$\end{tabular}}}}%
-    \put(0.66884123,0.33576724){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_2$\end{tabular}}}}%
-    \put(0.3306406,0.09698397){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_3$\end{tabular}}}}%
-    \put(0.69214287,0.15247561){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_4$\end{tabular}}}}%
+    \put(0.21903531,0.37889891){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_1$\end{tabular}}}}%
+    \put(0.7172711,0.37889891){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_2$\end{tabular}}}}%
+    \put(0.21903531,0.12457571){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_3$\end{tabular}}}}%
+    \put(0.7172711,0.12457571){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q_4$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

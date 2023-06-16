@@ -6,41 +6,43 @@
  Пусть $ \Omega \subset \CC $ --- односвязная область  $ \Omega \neq \CC $ и $ \Omega \neq \varnothing $. Тогда существует конформное отображение $ \varphi \colon\,\Omega\to\mathbb D $.
 \end{thm}
 \begin{crly}
- Для любых односвязных областей $ \Omega_1,\Omega_2 \subset \CC $, $ \Omega_i \neq \CC $ существует конформное отображение $ \varphi \colon\, \Omega_1 \to \Omega_2 $.
+ Для любых односвязных областей $ \Omega_1,\Omega_2 \subset \CC $, $ \Omega_i \neq \CC, \Omega_i \neq \varnothing $ существует конформное отображение $ \varphi \colon\, \Omega_1 \to \Omega_2 $.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  $ \varphi = \varphi_2^{-1} \circ \varphi_1 $.
 \end{proof}
 \begin{proof}[\normalfont\textsc{Доказательство теоремы Римана}]\
  \begin{enumerate}
-  \item Покажем, что не умаляя общности можно считать $ \Omega \subset \mathbb D $ и $ \Omega \ni 0 $. Так как существует некоторая точка $ z_0 \in \CC \setminus \Omega $, то определена аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $. Покажем, что отображение $ h $ инъективно. Пусть $ h(z_1) = h(z_2) $. Тогда
+  \item Покажем, что не умаляя общности можно считать $ \Omega \subset \mathbb D $ и $ 0 \in \Omega$. Так как существует некоторая точка $ z_0 \in \CC \setminus \Omega $, то определена аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $. Покажем, что отображение $ h $ инъективно. Пусть $ h(z_1) = h(z_2) $. Тогда
    \begin{align*}
     e^{h(z_1)} = e^{h(z_2)} \implies z_1 - z_0 = z_2 - z_0 \implies z_1 = z_2.
    \end{align*} Кроме того, $ h(\Omega) \cap (h(\Omega) + 2\pi i) = \varnothing $. Действительно, если $ h(z_1) = h(z_2) + 2\pi i $, то
    \begin{align*}
-    e^{h(z_1)} = e^{h(z_2) + 2\pi} = e^{h(z_2)} \implies z_1 = z_2,
-   \end{align*} а это противоречие.
+    e^{h(z_1)} = e^{h(z_2) + 2\pi i} = e^{h(z_2)} \implies z_1 = z_2 \implies h(z_1) = h(z_1) + 2 \pi i
+   \end{align*} а это противоречие, а значит $h$ --- конформна.
 
-   Наконец, покажем, что $ h(\Omega) + 2\pi i $ --- область, так как аналитические отображния открыты. Значит, существует точка $ a \in \CC $ такая, что
+   Наконец, покажем, что $ h(\Omega) + 2\pi i $ --- область, это верно так как аналитические отображения открыты.
+
+   Значит, существует точка $ a \in \CC $ такая, что
    \begin{align*}
     \mathrm{dist}(a, h(\Omega)) > 0,
-   \end{align*} годится любая точка $ a \in h(\Omega) + 2\pi i $, так как существует $ \eps > 0 $: $ B(a,\eps) \subset h(\Omega) + 2\pi i \implies B(a, \eps) \cap h(\Omega) = \varnothing$.
+   \end{align*} ведь годится любая точка $ a \in h(\Omega) + 2\pi i $, так как существует $ \eps > 0 $: $ B(a,\eps) \subset h(\Omega) + 2\pi i \implies B(a, \eps) \cap h(\Omega) = \varnothing$.
 
-   Рассмотрим отображение $ z \mapsto \frac{1}{h(z) - a} $ --- это конформное отображение на свой образ $ \Omega' $. Так как $ h(\Omega) $ отделено от $ a $, то область $ \Omega' $ ограничена. Сожмём её отображением $ z \mapsto cz + d $ и получим область $ \Omega'' \subset \mathbb ' $, и $ 0 \in \Omega'' $ (выберем маленькое $ c > 0 $ и какое-нибудь $ d \in \CC $).
+   Теперь рассмотрим отображение $ z \mapsto \frac{1}{h(z) - a} $ --- это конформное отображение на свой образ $ \Omega' $. Так как $ h(\Omega) $ отделено от $ a $, то область $ \Omega' $ ограничена. Сожмём её отображением $ z \mapsto cz + d $ и получим область $ \Omega'' \subset \mathbb D $, и $ 0 \in \Omega'' $ (выберем маленькое $ c > 0 $ и какое-нибудь $ d \in \CC $).
 
    Теперь считаем, что $ \Omega \subset \mathbb D $ и $ \Omega \ni 0 $.
 
   \item Рассмотрим множество функций
    \begin{align*}
     \mathcal R = \left\{ f \colon\,\Omega \to \mathbb D \mid f \text{ инъективна аналитична, } f(0) = 0  \right\} \sqcup \left\{ 0 \right\}.
-   \end{align*} Если $ f_n \in \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $  на компактах в $ \Omega $ . По теореме Монтеля существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, ведь функции $ f_n $ ограничены и функция $ f $ аналитична. Но по теореме Гурвица $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $. Таким образом, множество $ \mathcal R $ компактно.
+\end{align*} Если $ f_n \in \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $  на компактах в $ \Omega $ . По теореме Монтеля \eqref{theorem:montel} существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, ведь функции $ f_n $ ограничены и аналитичны, тогда функция $ f $ аналитична. Но по следствию теоремы Гурвица \eqref{theorem:analytic_injective} $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $. Таким образом, множество $ \mathcal R $ компактно.
 
-  \item Если $ f \in \mathcal R $ и $ f(\Omega) \neq \mathbb D $, то существует отображения $ \varphi $ и $ g $ такое, что $ g \in \mathcal R $, и $ \varphi\colon\,\mathbb D \to \mathbb D $,
+  \item Если $ f \in \mathcal R $ и $ f(\Omega) \neq \mathbb D $(если получилось что равен, то мы уже нашли требуемое отображение), то существует отображения $ \varphi $ и $ g $ такое, что $ g \in \mathcal R $, и $ \varphi\colon\,\mathbb D \to \mathbb D $,
    \begin{align*}
     \left| \varphi'(0) \right| < 1, \qquad f = \varphi \circ g.
    \end{align*} В частности,
    \begin{align*}
-    \left| f'(0) \right| = \left| \varphi'(g(0)) \right| \cdot \left| g'(0) \right| = \left| \varphi'(0) \right| \cdot \left| g'(0) \right| < \left| g'(0) \right|.
+	\left| f'(0) \right| = \left| \varphi'(\underbrace{g(0)}_{0}) \right| \cdot \left| g'(0) \right| = \left| \varphi'(0) \right| \cdot \left| g'(0) \right| < \left| g'(0) \right|.
    \end{align*}
 
    Докажем. Пусть $ f \in \mathcal R $ и существует точка $ w \in \mathbb D \setminus f(\Omega) $. Рассмотрим функцию
@@ -48,46 +50,45 @@
     T_1(z) = \frac{z-w}{1 - \overline w z}
    \end{align*} Определена ветвь логарифма
    \begin{align*}
-    \log (T_1 \circ f) = \log \frac{f(z) - w}{1 - \overline w f(z)}
-   \end{align*}. Заметим, что
+    \log (T_1 \circ f) = \log \frac{f(z) - w}{1 - \overline w f(z)}.
+   \end{align*} Т.к. функция не обнуляется. Заметим, что
    \begin{align*}
     \Real \log (T_1 \circ f) = \log \left| T_1 \circ f \right| < 0,
-   \end{align*} так как $ f \colon\,\Omega \to \mathbb D $, а $ T_1 \colon\,\mathbb D \to \mathbb D $ --- конформное отображение ({\color{red} упражнение, надо руками проверять}). Пусть
+\end{align*} так как $ f \colon\,\Omega \to \mathbb D $, а $ T_1 \colon\,\mathbb D \to \mathbb D $ --- конформное отображение (упражнение \eqref{exercise:T1_conformal}). Пусть
    \begin{align*}
     T_2(z) = \frac{z-a}{z+a},
-   \end{align*} где $ a = (\log (T_1 \circ f))(0) $. $ T_2 $ --- конформное отображение из полуплоскость $ \left\{ \Real z < 0 \right\} $ в $ \mathbb D $. Соберём то, что у нас есть:
+   \end{align*} где $ a = (\log (T_1 \circ f))(0) $. $ T_2 $ --- конформное отображение из полуплоскости $ \left\{ \Real z < 0 \right\} $ в $ \mathbb D $(было на практике). Соберём то, что у нас есть:
    \begin{align*}
     g = T_2 \circ \log (T_1 \circ f)\colon\,\Omega \to \mathbb D
    \end{align*} $ g $ аналитическая, $ g(0) = T_2(a) = 0 $. $ g $ инъективна как композиция инъективных:
    \begin{align*}
-    g(z_1) = g(z_2) \implies (\log(T_1 \circ f))(z_1) = (\log(T_1 \circ f))(z_2) \implies \\ \implies (T_1 \circ f) (z_1) = (T_2 \circ f)(z_2) \implies f(z_1) = f(z_2) \implies z_1 = z_2.
+	   g(z_1) = g(z_2) \implies (\log(T_1 \circ f))(z_1) = (\log(T_1 \circ f))(z_2) &\implies \\
+	   \implies (T_1 \circ f) (z_1) = (T_2 \circ f)(z_2) \implies f(z_1) = f(z_2) &\implies z_1 = z_2.
    \end{align*} То есть $ g \in \mathcal R $. Тогда
    \begin{align*}
     \log(T_1 \circ f) = T_2^{-1} \circ g \\
     T_1 \circ f = \exp (T_2^{-1} \circ g) \\
     f = T_1^{-1} \circ \exp (T_2^{-1} \circ g),
-   \end{align*} $ \varphi = T_1^{-1} \circ \exp \circ T_2^{-1} $. Осталось убедиться, что $ \varphi \colon\,\mathbb D \to \mathbb D \iff T_1 \circ \varphi \colon\,\mathbb D \to \mathbb D $ iff
+   \end{align*} $ \varphi = T_1^{-1} \circ \exp \circ T_2^{-1} $. Осталось убедиться, что $ \varphi \colon\,\mathbb D \to \mathbb D$ 
    \begin{align*}
-    T_1 \circ \varphi \circ T_2 \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D.
-   \end{align*} iff
-   \begin{align*}
-    \exp \colon\,\left\{ \real z < 0 \right\} \to \mathbb D,
-   \end{align*} а это верно.
+	\varphi \colon\,\mathbb D \to \mathbb D &\iff T_1 \circ \varphi \colon\,\mathbb D \to \mathbb D \iff \\
+	&\iff T_1 \circ \varphi \circ T_2 \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D \iff \exp \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D.
+   \end{align*} А это верно.
 
    Осталось доказать, что $ \left| \varphi'(0) \right| < 1 $. Действительно, $ \varphi\colon\,\mathbb D \to \mathbb D $, $ \varphi(0) = 0 $, значит
    \begin{align*}
-    \left| \varphi(z) \right| < \left| z \right|, \left| z \right| < 1
-   \end{align*} или $ \varphi(z) \equiv \alpha z $ для некоторого $ \alpha $, $ \left| \alpha \right| = 1 $. Это лемма Шварца.
+    \left| \varphi(z) \right| < \left| z \right|, \ \forall z \in \mathbb D
+   \end{align*} или $ \varphi(z) \equiv \alpha z $ для некоторого $ \alpha $, $ \left| \alpha \right| = 1 $. Это лемма Шварца \eqref{lemma:schwarz}.
 
    Если $ \left| \varphi(z) \right| < \left| z \right| $, то
    \begin{align*}
     \left| \frac{\varphi(z)}{z} \right| < 1
    \end{align*} для любого $ z \in \mathbb D $, в частности по принципу максимума
    \begin{align*}
-    \max{\left| z \right| \leqslant \eps} \left| \frac{\varphi(z)}{z} \right| = \max_{\left| z \right| = \eps} \left| \frac{\varphi(z)}{z} \right| < 1
+    \sup_{\left| z \right| \leqslant \eps} \left| \frac{\varphi(z)}{z} \right| = \sup_{\left| z \right| = \eps} \left| \frac{\varphi(z)}{z} \right| < 1
    \end{align*} по компактности. Значит,
    \begin{align*}
-    \varphi'(0) = \lim_{z \to 0} \frac{\varphi(z)}{z} < 1
+    |\varphi'(0)| = \left| \lim_{z \to 0} \frac{\varphi(z)}{z} \right| < 1
    \end{align*} здесь мы победили.
 
    Остался случай $ \varphi(z) \equiv \alpha z $. Докажем, что такого не может быть, ведь $ \varphi $ не инъективна. Инъективность $ \varphi $ равносильна инъективности $ \exp \colon\, \left\{ \Real z < 0 \right\} \to \mathbb D $, а тут инъективности нет. А отображение $ \alpha z $ инъективно!
@@ -95,11 +96,34 @@
   \item Завершение доказательства. Рассмотрим функции $ f_n \in \mathcal R $ такие, что
    \begin{align*}
     \lim_{n \to \infty} \left| f'_n(0) \right| = \sup_{\psi \in \mathcal R} \left| \psi'(0) \right|.
-   \end{align*} Пусть $ f_{n_k} $ --- подпоследовательность, которая сходится к $ f \in \mathcal R $ равномерно на компактах в $ \Omega $. Тогда $ f'_{n_k} \to f' $ равномерно на компактах в $ \Omega $. Поэтому $ \left| f'_{n_k}(0) \right| \to \left| f'(0) \right| $. Значит $ f $ такова, что
+   \end{align*} Пусть $ f_{n_k} $ --- подпоследовательность, которая сходится к $ f \in \mathcal R $ равномерно на компактах в $ \Omega $. Тогда $ f'_{n_k} \rightrightarrows f' $ равномерно на компактах в $ \Omega $. Поэтому $ \left| f'_{n_k}(0) \right| \to \left| f'(0) \right| $. Значит $ f $ такова, что
    \begin{align*}
     \left| f'(0) \right| \geqslant \left| g'(0) \right|
    \end{align*} для любой $ g \in \mathcal R $. Значит $ f(\Omega) = \mathbb D $ (иначе можно увеличить по шагу 3). Ура!
  \end{enumerate}
+\end{proof}
+
+\begin{exercise}
+	\label{exercise:T1_conformal}
+	$T_1(z) = \frac{z - w}{1 - \overline w z}, \ w \in \mathbb D$ является конформным отображением из $\mathbb D$ в $\mathbb D$. 
+\end{exercise}
+\begin{proof}
+	Если $|z| = 1$, то
+	\begin{align*}
+		\left|\frac{z - w}{1 - \overline w z}\right| = \left|\frac{1 - w \overline z}{1 - \overline w z}\right| = 1.
+	\end{align*}
+
+	А значит по принципу максимума $|T_1(z)| < 1, \forall z \in \mathbb D$(т.к. функция $T_1$ не константа ). 
+
+	Теперь покажем инъективность, выберем произвольное $a : |a| < 1$ и покажем что найдется $z : |z| < 1, T_1(z) = a$:
+
+	\begin{align*}
+		\frac{z - w}{1 - \overline w z} = a \implies z - w = a - \overline w a z \implies z = \frac{a + w}{1 + \overline w a}
+	\end{align*}
+
+	Но функция $\frac{a + w}{1 + \overline w a}$ по модулю не превосходит 1, когда $|a| < 1, |w| < 1$ по соображениям выше(подставляем $|a| = 1$, домножаем на $\overline a$ и далее используем принцип максимума).
+
+	А значит функция $T_1: \mathbb D \to \mathbb D$ является конформной. 
 \end{proof}
 
 \end{document}

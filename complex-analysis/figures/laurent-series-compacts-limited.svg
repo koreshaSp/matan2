@@ -27,8 +27,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.99437388"
-     inkscape:cx="354.49443"
-     inkscape:cy="183.53258"
+     inkscape:cx="171.96751"
+     inkscape:cy="183.02975"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36,8 +36,8 @@
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="1286"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -70,20 +70,20 @@
      id="layer1"
      transform="translate(0, -177)">
     <circle
-       style="fill:#ff00ff;fill-opacity:0;fill-rule:evenodd;stroke:#2b0000;stroke-width:0.526136;stroke-dasharray:0.52613598,0.52613598;stroke-dashoffset:0"
+       style="fill:#ff00ff;fill-opacity:0;fill-rule:evenodd;stroke:#2b0000;stroke-width:0.408;stroke-dasharray:0.408,0.408;stroke-dashoffset:0"
        id="path183"
        cx="110.73723"
        cy="230.49254"
        r="23.142427" />
     <ellipse
-       style="fill:#ff00ff;fill-opacity:0;fill-rule:evenodd;stroke:#2b0000;stroke-width:0.602;stroke-dasharray:0.602, 0.602;stroke-dashoffset:0"
+       style="fill:#ff00ff;fill-opacity:0;fill-rule:evenodd;stroke:#2b0000;stroke-width:0.408;stroke-dasharray:0.408,0.408;stroke-dashoffset:0"
        id="circle901"
        ry="48.463863"
        rx="48.464096"
        cy="232.25113"
        cx="109.6297" />
     <path
-       style="fill:#81797e;fill-opacity:0.39143646;fill-rule:evenodd;stroke:#2b0000;stroke-width:0.602001;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:#81797e;fill-opacity:0.39143646;fill-rule:evenodd;stroke:#2b0000;stroke-width:0.408;stroke-dasharray:none;stroke-dashoffset:0"
        d="m 141.04336,200.46288 c -4.83102,15.53348 -4.87051,20.86444 -2.67951,30.65432 2.19101,9.78989 0.88451,11.37806 6.00448,10.58813 5.11997,-0.78992 10.43949,-2.72732 10.43949,-5.16674 0,-2.43941 3.01419,-8.64865 -0.77329,-10.33971 -3.78749,-1.69107 -0.0333,-7.04801 -4.44541,-13.31129 -4.41216,-6.26329 -8.54576,-12.42471 -8.54576,-12.42471 z"
        id="path2409" />
     <g

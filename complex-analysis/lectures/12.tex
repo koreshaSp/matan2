@@ -127,6 +127,7 @@
 \end{proof}
 
 \begin{claim}
+ \label{claim:fourier_series_convergence}
  Ряд Фурье по ортонормированной системе сходится в $ H $ для любого $ h \in H $.
 \end{claim}
 
@@ -138,7 +139,7 @@
   S_N = \sum_{-N}^{N} c_ke_k,
  \end{align*} где $ c_k = (h,e_k) $.
  \begin{align*}
-  \left\| S_N-S_M \right\|^{2} &= [M > N] = \left\|\sum_{N < \left| k \right| \leqslant M} c_k e_k \right\|^{2} = \sum_{N < \left| k \right| \leqslant M} \left| c_k \right|^{2} \to 0
+  \left\| S_N-S_M \right\|^{2} &= [M > N] = \left\|\sum_{N < \left| k \right| \leqslant M} c_k e_k \right\|^{2} \leqslant \sum_{N < \left| k \right| \leqslant M} \left| c_k \right|^{2} \to 0
  \end{align*} при $ N,M \to \infty $, где ряд $ \sum_{k \in \Z} \left| c_k \right|^{2} \leqslant \left\| h \right\|^{2}  <  \infty $ по неравенству Бесселя. Значит, последовательность частичных сумм $ S_N $  фундаментальна, и, следовательно, сходится (ведь $ H $ полное).
 \end{proof}
 
@@ -149,7 +150,7 @@
  Обозначим
  \begin{align*}
   g = \sum_{k\in\Z}c_ke_k,\qquad c_k=(h,e_k),
- \end{align*} где ряд сходится по утверждению 15.8. Наша цель: показать $ g=h $. Рассмотрим
+\end{align*} где ряд сходится по утверждению \eqref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
  \begin{align*}
   (g-h,e_k) &= (g,e_k) - c_k = \left(\sum_{-N}^{N}c_je_j + g_N,\; e_k \right) - c_k = \\
   &= \left( \sum_{-N}^{N}c_je_j,\;e_k \right) - c_k + (g_N,e_k) = c_k - c_k + (g_N,e_k) = \\
@@ -166,14 +167,12 @@
  \end{align*} для любого $ k $. Значит,
  \begin{align*}
   (g-h,f) = 0
- \end{align*} для любого $ f $ вида $ f = \sum_{-N}^{N}a_je_j$, где $ N\geqslant 0 $ и $ a_j \in \CC $. $ g-h $ ортогонален плотному подмножеству $ \implies g-h=0 $.
+ \end{align*} для любого $ f $ вида $ f = \sum_{-N}^{N}a_je_j$, где $ N\geqslant 0 $ и $ a_j \in \CC $. $ g-h $ ортогонален плотному подмножеству, тогда покажем что $g-h=0 $ следующим образом:
 
  Пусть $ f_n \to g-h $ в $ H $ и $ f_n $ лежат в линейной оболочке $ \left\{e_j\right\} $. Тогда
  \begin{align*}
-  0 = (g-h,f_n) = (g-h,g-h) + \underbrace{(g-h,f_n - (g-h))}_A
- \end{align*}, 
- \begin{align*}
-  \left| A \right| \leqslant \left\| g-h \right\| \cdot \left\| f_n - (g-h) \right\| \to 0.
+	 0 = (g-h,f_n) &= (g-h,g-h) + \underbrace{(g-h,f_n - (g-h))}_A, \\
+	 \left| A \right| &\leqslant \left\| g-h \right\| \cdot \left\| f_n - (g-h) \right\| \to 0.
  \end{align*} Тогда
  \begin{align*}
   \left\| g-h \right\|^{2} = 0 \implies g = h.
@@ -181,6 +180,7 @@
 \end{proof}
 
 \begin{df}
+ \label{definition:orthogonal_projection}
  Пусть $ H $ --- гильбертово пространство, $ E, F \subset H $ --- замкнутые линейные подпространства такие, что для любых $ h \in E $, $ g \in F $ верно $ h \perp g $ (это условие записывают $ E \perp F $), и для любого $ p \in H $ существуют $ h \in E $ и $ g \in F $ такие, что $ p = h + g $. Тогда разложение $ p = h + g $ единственно, а оператор $ P_E \colon\, p \mapsto h $ называется \textit{ортогональным проектором} на $ E $.
  \begin{align*}
   P_E + P_F = I
@@ -197,7 +197,7 @@
 \end{remrk}
 
 \begin{thm}
- Пусть $ E,F $ --- как в определении 15.12. Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{e_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
+  Пусть $ E,F $ --- как в определении \eqref{definition:orthogonal_projection}. Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{e_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
   P \colon\, h \mapsto \sum_{k\in I_1} c_ke_k, \qquad c_k=(h,e_k)
  \end{align*} совпадает с $ P_E $. А
  \begin{align*}

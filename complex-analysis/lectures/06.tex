@@ -10,6 +10,7 @@
 \end{df*}
 
 \begin{lm}[Шварца]
+\label{lemma:schwarz}
  Пусть $ f \colon\, \mathbb D \to \mathbb D $ --- аналитическая функция, причём $ f(0) = 0 $. Тогда $ \left| f(z) \right| \leqslant \left| z \right| $ в $ \mathbb D $, и равенство достигается в какой-то точке $ z \in \mathbb D $ тогда и только тогда, когда $f = \alpha z$, $ \left| \alpha  \right| = 1 $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -50,11 +51,11 @@
  \end{align*} для любого $ \xi \in \CC $, $ \left| \xi \right| = 1 $, потому что
  \begin{align*}
   \left| \frac{\lambda_k - \xi}{1 - \overline{\lambda_k}\xi} \right| = \left| \frac{\overline \xi \lambda_k - 1}{1 - \overline{\lambda_k} \xi} \right| = 1.
- \end{align*} По принципу максимума $ \left| \B_n(z) \right| Б= 1$ в $ \mathbb D $.
+ \end{align*} По принципу максимума $ \left| \B_n(z) \right| \leqslant 1$, для любого $z \in \mathbb D $.
 
- Рассмотрим функцию $ g_n = \frac{f}{\B_n} $, эта функция также аналитична в $ \mathbb D $ по построению (нужно сравнить кратности нулей у $ f $ и у $ \mathcal B_n $ и воспользоваться леммой о кратности нуля).
+ Рассмотрим функцию $ g_n = \frac{f}{\B_n} $, эта функция также аналитична в $ \mathbb D $ по построению (т.к. кратность нуля у $f$ во всех точках не меньше чем кратность нуля у $\mathcal B_n$, значит по лемме о кратности нуля получаем что отношение это аналитическая функция).
  \begin{align*}
-	 \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} = \lim_{r \to 1} \frac{\left| f(z) \right|}{1 + o(1)} \leqslant 1.
+	 \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} =  \frac{ \lim_{r \to 1}\left| f(z) \right|}{1 + o(1)} \leqslant 1.
  \end{align*} Значит,
  \begin{align*}
   \left| f \right| = \left| \mathcal B_n \cdot g_n \right| \leqslant \left| \B_n \right|
@@ -63,9 +64,9 @@
   \left| f(0) \right| \leqslant \left| \B_n(0) \right| = \prod_{k=1}^{n}\left| \lambda_k \right|.
  \end{align*} Пусть сначала $ f(0) \neq 0 $. Тогда
  \begin{align*}
-  -\infty < \log \left| f(0) \right| = \sum_{k=1}^{n} \log \left| \lambda_k \right| = \sum_{k=1}^{n} \log (1 + (\left| \lambda_k \right| - 1)) \leqslant \\
-  \leqslant [\log(1+x) \leqslant x \; \forall  x \in (-1, +\infty)  ] \leqslant \\
-  \leqslant \sum_{k=1}^{n}\left( \left| \lambda_k \right| - 1 \right).
+	-\infty < \log \left| f(0) \right| &\leqslant \sum_{k=1}^{n} \log \left| \lambda_k \right| = \sum_{k=1}^{n} \log (1 + (\left| \lambda_k \right| - 1)) \leqslant \\
+	&\leqslant [\log(1+x) \leqslant x, \; \forall  x \in (-1, +\infty)  ] \leqslant \\
+	&\leqslant \sum_{k=1}^{n}\left( \left| \lambda_k \right| - 1 \right).
  \end{align*} Умножая на $ -1 $, получаем
  \begin{align*}
   \sum_{k=1}^{n} \left( 1 - \left| \lambda_k \right| \right) \leqslant \log \frac{1}{\left| f(0) \right|}
@@ -83,7 +84,7 @@
  Пусть $ c_k $ такие, что $ \sum \left| c_k \right| < \infty $. Тогда
  \begin{align*}
   f = \sum_{k=0}^{\infty} c_k z^{k}
- \end{align*} если $ f\left(1 - \frac{1}{n}\right) = 0 $, то $ c_k = 0 $ для любого $ k $.
+ \end{align*} если $ f\left(1 - \frac{1}{n}\right) = 0 $, то $ c_k = 0 $ для любого $ k $, т.к. нули не удовлетворяют условию Бляшке.
 \end{exmpl*}
 
 \newpage

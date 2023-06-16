@@ -180,12 +180,12 @@
 \end{align*}
 \begin{figure}[ht]
     \centering
-    \incfig{theorem_cauchy_gurs_morer_rect}
+	\incfig[0.5]{theorem_cauchy_gurs_morer_rect}
     \caption{Разбиение прямоугольника на 4 меньших.}
     \label{fig:theorem_cauchy_gurs_morer_rect}
 \end{figure}
 
- Обозначим $\Pi_0 = \Pi$, $\Pi_1 = Q_i$, где $Q_i$ такое, что 
+ Разобьем весь прямоугольник на четыре меньших(см. рис. \eqref{fig:theorem_cauchy_gurs_morer_rect}), далее обозначим $\Pi_0 = \Pi$, $\Pi_1 = Q_i$, где $Q_i$ такое, что 
  \begin{align*}
   \left| \varointctrclockwise\limits_{\partial Q_i}  f\,dz \right| \geqslant \eps^{2} \left( \diam Q_i \right)^{2}.
  \end{align*} Такой $Q_i$ обязательно есть, потому что
@@ -211,8 +211,8 @@
 \item $1,2 \implies 3$. Пусть $z_0 \in \Omega$, $B(z_0, \rho) \subset \Omega$, $\zeta \in B(z_0, \rho)$
 \begin{figure}[ht]
     \centering
-    \incfig{theorem_cauchy_gurs_morer_1_to_3}
-    \caption{theorem_cauchy_gurs_morer_1_to_3}
+	\incfig[0.4]{theorem_cauchy_gurs_morer_1_to_3}
+    \caption{Расположение объектов в ипликации $1, 2 \implies 3$. }
     \label{fig:theorem_cauchy_gurs_morer_1_to_3}
 \end{figure}
 
@@ -248,12 +248,12 @@
 \item $ 3 \implies 1 $. У ряда 
  \begin{align*}
   f(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}
- \end{align*} существует производная в любой точке $ w \in B(z_0, r(z_0))$:
+\end{align*} существует производная в любой точке $ w \in B(z_0, r(z_0))$ по \eqref{corollary:complex_differential_of_}:
  \begin{align*}
   f'(w) = \sum_{n=1}^{\infty} c_n \cdot n(w - z_0)^{n-1},
  \end{align*} в частности это верно в точке  $ w = z_0 $.
  
-\item $ (2 \implies 1, 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $. Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $. Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (следствие). Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит, $ g $ удовлетворяет условию $ 3 $, значит
+\item $ (2 \implies 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $. Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $. Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (следствие). Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит, $ g $ удовлетворяет условию $ 3 $, значит
  \begin{align*}
   g = \sum_{k=0}^{\infty}a_k(z-z_0)^{k}.
  \end{align*} Поэтому,

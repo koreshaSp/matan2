@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
+%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'special_point_in_rectangle.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{680.31496063bp}%
+    \setlength{\unitlength}{338.06816981bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,12 +50,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5)%
+  \begin{picture}(1,0.47408878)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{special_point_in_rectangle.pdf}}%
-    \put(0.31542555,0.18206393){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
-    \put(0.12816806,0.1230484){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\partial\Pi$\end{tabular}}}}%
+    \put(0.28251488,0.23190278){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(-0.0027009,0.00676813){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\partial\Pi$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{special_point_in_rectangle.pdf}}%
+    \put(0.56315907,0.2433581){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_2$\end{tabular}}}}%
+    \put(0.56315907,0.2433581){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_2$\end{tabular}}}}%
+    \put(0.54424618,0.1843453){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-I_2$\end{tabular}}}}%
+    \put(0.10545792,0.24979437){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_1$\end{tabular}}}}%
+    \put(0.07968667,0.18852326){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-I_1$\end{tabular}}}}%
+    \put(0.26536509,0.28954263){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_+$\end{tabular}}}}%
+    \put(0.26536509,0.15951168){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_-$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{special_point_in_rectangle.pdf}}%
   \end{picture}%
 \endgroup%
