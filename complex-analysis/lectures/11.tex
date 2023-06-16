@@ -6,34 +6,36 @@
  Пусть $ \Omega \subset \CC $ --- односвязная область  $ \Omega \neq \CC $ и $ \Omega \neq \varnothing $. Тогда существует конформное отображение $ \varphi \colon\,\Omega\to\mathbb D $.
 \end{thm}
 \begin{crly}
- Для любых односвязных областей $ \Omega_1,\Omega_2 \subset \CC $, $ \Omega_i \neq \CC $ существует конформное отображение $ \varphi \colon\, \Omega_1 \to \Omega_2 $.
+ Для любых односвязных областей $ \Omega_1,\Omega_2 \subset \CC $, $ \Omega_i \neq \CC, \Omega_i \neq \varnothing $ существует конформное отображение $ \varphi \colon\, \Omega_1 \to \Omega_2 $.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  $ \varphi = \varphi_2^{-1} \circ \varphi_1 $.
 \end{proof}
 \begin{proof}[\normalfont\textsc{Доказательство теоремы Римана}]\
  \begin{enumerate}
-  \item Покажем, что не умаляя общности можно считать $ \Omega \subset \mathbb D $ и $ \Omega \ni 0 $. Так как существует некоторая точка $ z_0 \in \CC \setminus \Omega $, то определена аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $. Покажем, что отображение $ h $ инъективно. Пусть $ h(z_1) = h(z_2) $. Тогда
+  \item Покажем, что не умаляя общности можно считать $ \Omega \subset \mathbb D $ и $ 0 \in \Omega$. Так как существует некоторая точка $ z_0 \in \CC \setminus \Omega $, то определена аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $. Покажем, что отображение $ h $ инъективно. Пусть $ h(z_1) = h(z_2) $. Тогда
    \begin{align*}
     e^{h(z_1)} = e^{h(z_2)} \implies z_1 - z_0 = z_2 - z_0 \implies z_1 = z_2.
    \end{align*} Кроме того, $ h(\Omega) \cap (h(\Omega) + 2\pi i) = \varnothing $. Действительно, если $ h(z_1) = h(z_2) + 2\pi i $, то
    \begin{align*}
-    e^{h(z_1)} = e^{h(z_2) + 2\pi} = e^{h(z_2)} \implies z_1 = z_2,
-   \end{align*} а это противоречие.
+    e^{h(z_1)} = e^{h(z_2) + 2\pi i} = e^{h(z_2)} \implies z_1 = z_2 \implies h(z_1) = h(z_1) + 2 \pi i
+   \end{align*} а это противоречие, а значит $h$ --- конформна.
 
-   Наконец, покажем, что $ h(\Omega) + 2\pi i $ --- область, так как аналитические отображния открыты. Значит, существует точка $ a \in \CC $ такая, что
+   Наконец, покажем, что $ h(\Omega) + 2\pi i $ --- область, это верно так как аналитические отображения открыты.
+
+   Значит, существует точка $ a \in \CC $ такая, что
    \begin{align*}
     \mathrm{dist}(a, h(\Omega)) > 0,
-   \end{align*} годится любая точка $ a \in h(\Omega) + 2\pi i $, так как существует $ \eps > 0 $: $ B(a,\eps) \subset h(\Omega) + 2\pi i \implies B(a, \eps) \cap h(\Omega) = \varnothing$.
+   \end{align*} ведь годится любая точка $ a \in h(\Omega) + 2\pi i $, так как существует $ \eps > 0 $: $ B(a,\eps) \subset h(\Omega) + 2\pi i \implies B(a, \eps) \cap h(\Omega) = \varnothing$.
 
-   Рассмотрим отображение $ z \mapsto \frac{1}{h(z) - a} $ --- это конформное отображение на свой образ $ \Omega' $. Так как $ h(\Omega) $ отделено от $ a $, то область $ \Omega' $ ограничена. Сожмём её отображением $ z \mapsto cz + d $ и получим область $ \Omega'' \subset \mathbb ' $, и $ 0 \in \Omega'' $ (выберем маленькое $ c > 0 $ и какое-нибудь $ d \in \CC $).
+   Теперь рассмотрим отображение $ z \mapsto \frac{1}{h(z) - a} $ --- это конформное отображение на свой образ $ \Omega' $. Так как $ h(\Omega) $ отделено от $ a $, то область $ \Omega' $ ограничена. Сожмём её отображением $ z \mapsto cz + d $ и получим область $ \Omega'' \subset \mathbb D $, и $ 0 \in \Omega'' $ (выберем маленькое $ c > 0 $ и какое-нибудь $ d \in \CC $).
 
    Теперь считаем, что $ \Omega \subset \mathbb D $ и $ \Omega \ni 0 $.
 
   \item Рассмотрим множество функций
    \begin{align*}
     \mathcal R = \left\{ f \colon\,\Omega \to \mathbb D \mid f \text{ инъективна аналитична, } f(0) = 0  \right\} \sqcup \left\{ 0 \right\}.
-   \end{align*} Если $ f_n \in \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $  на компактах в $ \Omega $ . По теореме Монтеля существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, ведь функции $ f_n $ ограничены и функция $ f $ аналитична. Но по теореме Гурвица $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $. Таким образом, множество $ \mathcal R $ компактно.
+\end{align*} Если $ f_n \in \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $  на компактах в $ \Omega $ . По теореме Монтеля \eqref{theorem:montel} существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, ведь функции $ f_n $ ограничены и аналитичны, тогда функция $ f $ аналитична. Но по следствию теоремы Гурвица \eqref{theorem:analytic_injective} $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $. Таким образом, множество $ \mathcal R $ компактно.
 
   \item Если $ f \in \mathcal R $ и $ f(\Omega) \neq \mathbb D $, то существует отображения $ \varphi $ и $ g $ такое, что $ g \in \mathcal R $, и $ \varphi\colon\,\mathbb D \to \mathbb D $,
    \begin{align*}
