@@ -305,7 +305,7 @@
     \eta = \eta_0 + \eta_1 + \ldots + \eta_{N-1}, & &\rho = \rho_0 + \rho_1 + \ldots + \rho_{N-1},
    \end{align*} где
    \begin{align*}
- \eta_j = \eta \left\rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]}\right., & &\rho_j = \rho\left\rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]}\right.,
+    \eta_j = \eta \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  }, & &\rho_j = \rho \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  },
    \end{align*} для всех $j \in \left\{ 0, \ldots, N - 1 \right\}$. Теперь для каждого $j$ соединим концы и начала путей $\eta_j$, $\rho_j$ отрезками $I_j$, $J_j$ соответственно. Отрезок $I_j$ направим от $\eta_j$ к $\rho_j$, а отрезок $J_j$ направим от $\rho_j$ к $\eta_j$. Получим направленный контур $C_j = \eta_j + I_j + (-\rho_j) + J_j$, изображённый на рисунке \ref{fig:closed_1_form_small_contur}.
 
    \begin{figure}[ht]
@@ -349,14 +349,23 @@
   F(x,y) = \int\limits_{\gamma(x,y)} \omega,
  \end{align*} где $\gamma(x,y)$ --- это путь из двух отрезков, параллельных осям $x$ и $y$ с началом в точке $z_0 = (x_0, y_0)$ и концом в точке $(x,y)$. См. рис. \eqref{fig:parrallel_path_in_oblast}.
 
-\begin{figure}[ht]
-    \centering
-	\incfig[0.5]{parrallel_path_in_oblast}
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+	\incfig{parrallel_path_in_oblast}
     \caption{Параллельный путь в области.}
     \label{fig:parrallel_path_in_oblast}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+	\incfig[0.8]{differential_of_parallel_path_f}
+    \caption{Дифференциал параллельного пути.}
+    \label{fig:differential_of_parallel_path_f}
+\end{subfigure}
+
+\caption{Доказательство теоремы \eqref{theorem:closed_1_form}, из пункта \ref{enum3:theorem:closed_1_form} в пункт \ref{enum1:theorem:closed_1_form}.}
 \end{figure}
 
-	Далее действуем аналогично доказательству из пункта \ref{enum2:theorem:exact_1_form} в пункт \ref{enum1:theorem:exact_1_form} теоремы \ref{theorem:exact_1_form}. Хотим проверить. что $df = \omega$. 
+	Далее действуем аналогично доказательству из пункта \ref{enum2:theorem:exact_1_form} в пункт \ref{enum1:theorem:exact_1_form} теоремы \ref{theorem:exact_1_form}. Хотим проверить. что $dF = \omega$. 
 
 	Пользуясь тем, что $\int_{\partial\Pi} \omega = 0$ и смотря на рисунок \eqref{fig:differential_of_parallel_path_f} получаем, что 
 
@@ -365,34 +374,34 @@
    \int\limits_{\gamma(z+h)}  \omega - \int\limits_{\gamma(z)}  \omega = \int\limits_{\Gamma} \omega. 
  \end{align*}
 
- Обозначим $h_x = (h_1, 0), \ h_y = (0, h_y), \  \Gamma_x(s) = z + s \cdot h_x, \ \Gamma_y(s) = z + h_x + s \cdot h_y$, тогда
+ Обозначим $h_x = (h_1, 0), \ h_y = (0, h_y)$, тогда
 
  \begin{align*}
-	 \Gamma(s) = (\Gamma_x + \Gamma_y)(s) = \begin{cases} 
-		 z + s h_x & s < 1 \\ 
-		 z + h_x + (s - 1) h_y & s \geqslant 1
-	 \end{cases}
+	 \Gamma : [0, 2] \to \Omega, \ \Gamma(s) &= \begin{cases} 
+																						 z + s h_x & 0 \leqslant s < 1 \\ 
+																						 z + h_x + (s - 1) h_y & 1 \leqslant s \leqslant 2
+																					 \end{cases} \\
+																					 &= [\rho(s) = z + s h_x, \ \zeta(s) = z + h_x + s h_y] \\
+																					 &= \begin{cases}
+																							\rho(s) & 0 \leqslant s < 1 \\
+																							\zeta(s - 1) & 1 \leqslant s \leqslant 2
+																					 \end{cases}
  \end{align*}
 
- Далее, как и в прошлой теореме расписыванием
+ Тогда
 
+{\allowdisplaybreaks
  \begin{align*}
-	 \int_{\Gamma} \omega = & \int\limits_0^2 P(\Gamma(t))\Gamma_1'(t) + Q(\Gamma(t)) \Gamma_2'(t) \ dt \\
-													&= \int\limits_{0}^{1} P(\Gamma_x(t)) h_1 \ dt + \int\limits_1^2 Q(\Gamma_y(t - 1)) h_2 \ dt \\
-													&= \int\limits_0^1 P(z + th_x) h_1 + Q(z + h_x + t h_y) h_2 \ dt \\
-													&= \int\limits_0^1 P(z) h_1 + Q(z) h_2 + o(h) \ dt = \\
-													&= P(z) h_1 + Q(z) h_2 + o(h)
+	 \int_{\Gamma} \omega &= \int\limits_0^2 P(\Gamma(t))\Gamma_1'(t) + Q(\Gamma(t)) \Gamma_2'(t) \ dt \\
+												&= \int\limits_0^1 P(\rho(t))\underbrace{\rho_1'(t)}_{=h_1} + Q(\rho(t)) \underbrace{\rho_2'(t)}_{=0} \ dt \ + \\ 
+												&\ \ +  \int\limits_1^2 P(\zeta(t-1))\underbrace{\zeta_1'(t-1)}_{=0} + Q(\zeta(t-1)) \underbrace{\zeta_2'(t-1)}_{=h_2} \ dt \\
+											  &= \int\limits_{0}^{1} P(\rho(t)) h_1 \ dt + \int\limits_0^1 Q(\zeta(t)) h_2 \ dt \\
+											  &= \int\limits_0^1 P(z + th_x) h_1 + Q(z + h_x + t h_y) h_2 \ dt \\
+											  &= \int\limits_0^1 P(z) h_1 + Q(z) h_2 + o(h) \ dt \\
+											  &= P(z) h_1 + Q(z) h_2 + o(h)
  \end{align*}
-
-
-\begin{figure}[ht]
-    \centering
-    \incfig{differential_of_parallel_path_f}
-    \caption{Дифференциал параллельного пути.}
-    \label{fig:differential_of_parallel_path_f}
-\end{figure}
-
-\end{itemize}
+}
+ \end{itemize}
 \end{proof}
 
 
