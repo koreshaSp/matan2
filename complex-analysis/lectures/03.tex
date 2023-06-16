@@ -123,7 +123,7 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  В силу симметрии можно считать, что $\left| z \right| \geqslant \left| w \right|$. Вынесем главный член асимптотики:
  \begin{align*}
-  \mathrm{LHS} &= \left| z \right|^{n-1} \cdot \frac{1 - \left( \frac{w}{z} \right)^{n}}{1 - \frac{w}{z}} = \left| z \right|^{n-1} \left| 1 + \frac{w}{z} + \ldots + \left( \frac{w}{z} \right)^{n-1} \right| \leqslant \\
+   \left|\frac{z^{n} - w^{n}}{z - w} \right| &= \left| z \right|^{n-1} \cdot \frac{1 - \left( \frac{w}{z} \right)^{n}}{1 - \frac{w}{z}} = \left| z \right|^{n-1} \left| 1 + \frac{w}{z} + \ldots + \left( \frac{w}{z} \right)^{n-1} \right| \leqslant \\
   &\leqslant n \cdot \left| z \right|^{n-1} \leqslant n \left( \left| z \right|^{n-1} + \left| w \right|^{n-1} \right).
  \end{align*} 
 \end{proof}
@@ -140,7 +140,7 @@
  \end{align*} где $\rho=(1 - \eps)R_{\text{сх}}$. Тогда положим  $g(n) = 2 \left| c_n \right| \cdot n \cdot \rho^{n-1}$ . Осталось проверить суммируемость $g(n)$:
   \begin{align*}
    \iff \sum_{n=1}^{\infty} n \left| c_n \right| \cdot \rho^{n - 1} < \infty.
-  \end{align*} Проверим по теореме \ref{theorem:adamar}:
+  \end{align*} Проверим по теореме Адамара \ref{theorem:adamar}:
   \begin{align*}
 	\rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left( (n + 1) \left| c_{n + 1} \right|\right)^{1 / n}} = \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
   \end{align*} так как $ \lim_{n \to \infty} (n+1)^{\frac{1}{n}} = 1 $.
@@ -176,7 +176,7 @@
 
  Для того, чтобы проверить замкнутость $f \, dz$, проверим, что для любого замкнутого прямоугольника $\Pi \subset \Omega$ имеет место $\int_{\partial\Pi} f\,dz =0 $. От противного: предположим, что это не так: существует $\eps > 0$ такое, что 
 \begin{align*}
- \left|\int_{\partial\Pi} f\,dz  \right|  \geqslant \eps^{2}\left( \diam \Pi \right)^{2} > 0. \qquad ( \ast\ast )
+ \left|\varointctrclockwise_{\partial\Pi} f\,dz  \right|  \geqslant \eps^{2}\left( \diam \Pi \right)^{2} > 0. \qquad ( \ast\ast )
 \end{align*}
 \begin{figure}[ht]
     \centering
@@ -202,7 +202,7 @@
   &= \varointctrclockwise\limits_{\partial\Pi_n}  \left( a+bz \right)\,dz + \varointctrclockwise\limits_{\partial\Pi_n}  o(z-z_0)\,dz
  \end{align*} для некоторых комплексных чисел $a,b \in \CC$. Но по примеру \ref{example:form_a_plus_b_times_z_dz} левое слагаемое равно нулю, тогда
  \begin{align*}
-  \varointctrclockwise\limits_{\partial\Pi_n} f\,dz  = o(\left| z-z_0 \right| \diam \Pi_n) = o(\left( \diam \Pi_n \right)^{2}).
+	 \varointctrclockwise\limits_{\partial\Pi_n} f\,dz  = o(\max\limits_{z \in \Pi_n}\left| z-z_0 \right| \diam \Pi_n) = o(\left( \diam \Pi_n \right)^{2}).
  \end{align*} С другой стороны,
  \begin{align*}
   \varointctrclockwise\limits_{\partial\Pi_n} f\,dz  \geqslant \eps^{2}\left( \diam \Pi_n \right)^{2},
@@ -235,6 +235,7 @@
   = \frac{1}{z-z_0} \sum_{n=0}^{\infty} \left( \frac{\zeta-z_0}{z-z_0} \right)^{n}.
  \end{align*} Ряд сходится для $z \in C$, ведь
  \begin{align*}
+	 |z - z_0| = \rho', \ |\zeta - z_0| < \rho' \implies 
   \left| \frac{\zeta - z_0}{z-z_0} \right| < 1.
  \end{align*}
  Степенной ряд готов.
@@ -253,7 +254,7 @@
   f'(w) = \sum_{n=1}^{\infty} c_n \cdot n(w - z_0)^{n-1},
  \end{align*} в частности это верно в точке  $ w = z_0 $.
  
-\item $ (2 \implies 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $. Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $. Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (следствие). Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит, $ g $ удовлетворяет условию $ 3 $, значит
+\item $ (2 \implies 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $. Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $. Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (По лемме \ref{lemma:about_primordial}). Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит, $ g $ удовлетворяет условию $ 3 $, значит
  \begin{align*}
   g = \sum_{k=0}^{\infty}a_k(z-z_0)^{k}.
  \end{align*} Поэтому,

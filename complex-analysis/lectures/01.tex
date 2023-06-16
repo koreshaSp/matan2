@@ -305,7 +305,7 @@
     \eta = \eta_0 + \eta_1 + \ldots + \eta_{N-1}, & &\rho = \rho_0 + \rho_1 + \ldots + \rho_{N-1},
    \end{align*} где
    \begin{align*}
-    \eta_j = \eta \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  }, & &\rho_j = \rho \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  },
+ \eta_j = \eta \left\rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]}\right., & &\rho_j = \rho\left\rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]}\right.,
    \end{align*} для всех $j \in \left\{ 0, \ldots, N - 1 \right\}$. Теперь для каждого $j$ соединим концы и начала путей $\eta_j$, $\rho_j$ отрезками $I_j$, $J_j$ соответственно. Отрезок $I_j$ направим от $\eta_j$ к $\rho_j$, а отрезок $J_j$ направим от $\rho_j$ к $\eta_j$. Получим направленный контур $C_j = \eta_j + I_j + (-\rho_j) + J_j$, изображённый на рисунке \ref{fig:closed_1_form_small_contur}.
 
    \begin{figure}[ht]
@@ -356,7 +356,34 @@
     \label{fig:parrallel_path_in_oblast}
 \end{figure}
 
- Как и раньше, проверяется, что $dF = \omega$.
+	Далее действуем аналогично доказательству из пункта \ref{enum2:theorem:exact_1_form} в пункт \ref{enum1:theorem:exact_1_form} теоремы \ref{theorem:exact_1_form}. Хотим проверить. что $df = \omega$. 
+
+	Пользуясь тем, что $\int_{\partial\Pi} \omega = 0$ и смотря на рисунок \eqref{fig:differential_of_parallel_path_f} получаем, что 
+
+
+ \begin{align*}
+   \int\limits_{\gamma(z+h)}  \omega - \int\limits_{\gamma(z)}  \omega = \int\limits_{\Gamma} \omega. 
+ \end{align*}
+
+ Обозначим $h_x = (h_1, 0), \ h_y = (0, h_y), \  \Gamma_x(s) = z + s \cdot h_x, \ \Gamma_y(s) = z + h_x + s \cdot h_y$, тогда
+
+ \begin{align*}
+	 \Gamma(s) = (\Gamma_x + \Gamma_y)(s) = \begin{cases} 
+		 z + s h_x & s < 1 \\ 
+		 z + h_x + (s - 1) h_y & s \geqslant 1
+	 \end{cases}
+ \end{align*}
+
+ Далее, как и в прошлой теореме расписыванием
+
+ \begin{align*}
+	 \int_{\Gamma} \omega = & \int\limits_0^2 P(\Gamma(t))\Gamma_1'(t) + Q(\Gamma(t)) \Gamma_2'(t) \ dt \\
+													&= \int\limits_{0}^{1} P(\Gamma_x(t)) h_1 \ dt + \int\limits_1^2 Q(\Gamma_y(t - 1)) h_2 \ dt \\
+													&= \int\limits_0^1 P(z + th_x) h_1 + Q(z + h_x + t h_y) h_2 \ dt \\
+													&= \int\limits_0^1 P(z) h_1 + Q(z) h_2 + o(h) \ dt = \\
+													&= P(z) h_1 + Q(z) h_2 + o(h)
+ \end{align*}
+
 
 \begin{figure}[ht]
     \centering
@@ -365,10 +392,7 @@
     \label{fig:differential_of_parallel_path_f}
 \end{figure}
 
-  \begin{align*}
-   \int\limits_{\gamma(z+h)}  \omega - \int\limits_{\gamma(z)}  \omega = \int\limits_{\Gamma} \omega. 
-  \end{align*} Далее так же, смотря на рисунок \eqref{fig:differential_of_parallel_path_f}.
- \end{itemize}
+\end{itemize}
 \end{proof}
 
 
