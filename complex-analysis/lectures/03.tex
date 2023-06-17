@@ -133,17 +133,34 @@
   \frac{f(z)-f(w)}{z-w} = \sum_{n=1}^{\infty} c_n \frac{z^{n}-w^{n}}{z-w}.
  \end{align*} Тогда
  \begin{align*}
-  \lim_{z \to w} \frac{f(z) - f(w)}{z-w} = \lim_{z \to w} \sum_{n=1}^{\infty} c_n \frac{z^{n}-w^{n}}{z-w} =^{(\ast)} \sum_{n=0}^{\infty} c_n \lim_{z \to w} \frac{z^{n} - w^{n}}{z-w} = \sum_{n=1}^{\infty} c_n \cdot n w^{n-1}.
- \end{align*} Нужно лишь теперь обосновать (*). Из пушки по воробьям: это теорема \ref{theorem:lebesgue-majoring-convergence} Лебега о мажорируемой сходимости. Есть функция $h_z(n) = c_n \frac{z^{n}-w^{n}}{z-w}$. Мы хотим найти такую функцию $g$  такую, что $\left| h_z(n) \right| \leqslant \left| g(n) \right|$  и $ \sum_{n=0}^{\infty} \left| g(n) \right| < \infty$. Найдём по лемме \ref{lemma:complex_n_w_inequality}:
+  \lim_{z \to w} \frac{f(z) - f(w)}{z-w} = \lim_{z \to w} \sum_{n=1}^{\infty} c_n \frac{z^{n}-w^{n}}{z-w} =^{(\ast)} \sum_{n=0}^{\infty} c_n \lim_{z \to w} \frac{z^{n} - w^{n}}{z-w} =\\
+  = \sum_{n=0}^{\infty} c_n \lim_{z \to w} \frac{(z - w)(\sum_{k=0}^{n-1} z^k\cdot w^{n - 1 - k})}{z-w} = \sum_{n=1}^{\infty} c_n \cdot n w^{n-1}.
+ \end{align*} Нужно лишь теперь обосновать (*). 
+ Из пушки по воробьям: это теорема \ref{theorem:lebesgue-majoring-convergence} Лебега о мажорируемой сходимости.
+ Есть функция $h_z(n) = c_n \frac{z^{n}-w^{n}}{z-w}$. Мы хотим найти такую функцию $g$  такую, что $\left| h_z(n) \right| \leqslant \left| g(n) \right|$  и $ \sum_{n=0}^{\infty} \left| g(n) \right| < \infty$. 
+
+ Возьмем $\rho < R_{\text{сх}}\colon |z| < \rho, |w| < \rho$. Такое существует, так как $z, w \in B(0, R_{\text{сх}})$, а шар это открытое множество.
+ Тогда положим  $g(n) = 2 \left| c_n \right| \cdot n \cdot \rho^{n-1}$ .
+
+ $\left| h_z(n) \right| \leqslant \left| g(n) \right|$ проверяется по лемме \ref{lemma:complex_n_w_inequality}:
  \begin{align*}
-  \left| h_z(n) \right| \leqslant \left| c_n \right| \cdot \left( \left| z \right|^{n-1} + \left| w \right|^{n-1} \right) \leqslant 2 \left| c_n \right| \cdot n \cdot \rho^{n-1},
- \end{align*} где $\rho=(1 - \eps)R_{\text{сх}}$. Тогда положим  $g(n) = 2 \left| c_n \right| \cdot n \cdot \rho^{n-1}$ . Осталось проверить суммируемость $g(n)$:
+  \left| h_z(n) \right| \leqslant \left| c_n \right| \cdot \left( \left| z \right|^{n-1} + \left| w \right|^{n-1} \right) \leqslant 2 \left| c_n \right| \cdot n \cdot \rho^{n-1}.
+ \end{align*}  
+
+ Осталось проверить суммируемость $g(n)$:
   \begin{align*}
-   \iff \sum_{n=1}^{\infty} n \left| c_n \right| \cdot \rho^{n - 1} < \infty.
-  \end{align*} Проверим по теореме \ref{theorem:adamar}:
+   \sum_{n=1}^{\infty} n \left| c_n \right| \cdot \rho^{n - 1} < \infty.
+\end{align*} 
+Сходимость ряда выше эквивалентна следующему неравенству 
+по теореме Адамара(\ref{theorem:adamar}):
   \begin{align*}
-	\rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left( (n + 1) \left| c_{n + 1} \right|\right)^{1 / n}} = \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
-  \end{align*} так как $ \lim_{n \to \infty} (n+1)^{\frac{1}{n}} = 1 $.
+	\rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left( (n + 1) \left| c_{n + 1} \right|\right)^{1 / n}} .
+  \end{align*}
+Но $ \lim_{n \to \infty} (n+1)^{\frac{1}{n}} = 1 $, поэтому правую часть в равенстве выше можно заменить:
+  \begin{align*}
+    \rho < \frac{1}{\varlimsup\limits_{n \to \infty} \left| c_{n+1} \right|^{1/ n}} = R_{\text{сх}}
+  \end{align*}
+Данное неравенство выполнено по выбору $\rho$.
 \end{proof}
 
 \section{Аналитические функции}
