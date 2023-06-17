@@ -47,7 +47,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7031285"
      inkscape:cx="433.77562"
-     inkscape:cy="171.37692"
+     inkscape:cy="170.66582"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -181,6 +181,6 @@
          id="tspan3470"
          style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.455001"
          x="184.67168"
-         y="264.14859">$H(\cdot, t) \text{ при разных } t$</tspan></text>
+         y="264.14859">$H(s, \cdot) \text{ при разных } s$</tspan></text>
   </g>
 </svg>

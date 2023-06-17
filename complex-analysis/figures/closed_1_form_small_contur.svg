@@ -83,8 +83,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2531301"
-     inkscape:cx="433.31496"
-     inkscape:cy="317.6047"
+     inkscape:cx="433.31494"
+     inkscape:cy="226.63249"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -123,12 +123,13 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="blue ball">
-    <circle
+    <ellipse
        style="fill:#0000ff;fill-opacity:0.182068;stroke:none;stroke-width:0.658034;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none"
        id="path13522"
-       cx="111.72079"
-       cy="71.609276"
-       r="45.046761" />
+       cx="104.27571"
+       cy="63.416882"
+       rx="45.047001"
+       ry="45.046761" />
   </g>
   <g
      inkscape:label="Layer 1"
@@ -163,18 +164,10 @@
        r="0.9517895" />
     <circle
        id="path2395"
-       style="fill:#000000;stroke:none;stroke-width:0.634527"
+       style="fill:#0000ff;stroke:none;stroke-width:0.634527;fill-opacity:1"
        cx="99.248528"
        cy="240.10875"
        r="0.9517895" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.63499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15988);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       d="M 140.00357,248.23323 125.97695,208.80299"
-       id="path2531" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.63499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15988);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       d="m 99.248532,240.10874 6.347168,33.93467"
-       id="path2533" />
     <text
        xml:space="preserve"
        style="font-size:9.3064px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.634527"
@@ -189,14 +182,14 @@
     <text
        xml:space="preserve"
        style="font-size:9.3064px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.634527"
-       x="136.37149"
-       y="227.96036"
+       x="133.23473"
+       y="229.98895"
        id="text5109"><tspan
          sodipodi:role="line"
          id="tspan5107"
          style="stroke-width:0.634527"
-         x="136.37149"
-         y="227.96036">$I_j$</tspan></text>
+         x="133.23473"
+         y="229.98895">$-\xi_{j+1}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.7527px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.187824;stroke-miterlimit:4;stroke-dasharray:none"
@@ -211,25 +204,25 @@
     <text
        xml:space="preserve"
        style="font-size:2.91779px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.19894"
-       x="94.322327"
-       y="262.13782"
+       x="97.685829"
+       y="256.87128"
        id="text8255"><tspan
          sodipodi:role="line"
          id="tspan8253"
          style="stroke-width:0.19894"
-         x="94.322327"
-         y="262.13782">$J_j$</tspan></text>
+         x="97.685829"
+         y="256.87128">$\xi_j$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.61501px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.246478"
-       x="149.27121"
-       y="281.43744"
+       x="39.450047"
+       y="216.01442"
        id="text15830"><tspan
          sodipodi:role="line"
          id="tspan15828"
          style="stroke-width:0.246478"
-         x="149.27121"
-         y="281.43744">$\color{blue} B(P, \eps_0)$</tspan></text>
+         x="39.450047"
+         y="216.01442">$\color{blue} B(P, \eps_0)$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
@@ -255,14 +248,22 @@
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="105.77922"
-       y="280.40326"
+       x="89.904228"
+       y="237.54077"
        id="text39542"><tspan
          sodipodi:role="line"
          id="tspan39540"
          style="stroke-width:0.264583"
-         x="105.77922"
-         y="280.40326">$\color{blue}P$</tspan></text>
+         x="89.904228"
+         y="237.54077">$\color{blue}P$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.636;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker15988)"
+       d="M 140.00358,248.23323 C 128.76249,238.88967 128.6643,223.36574 125.97695,208.80299"
+       id="path998" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.636;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker15988)"
+       d="m 99.248536,240.10874 c 18.275794,3.75677 -3.031369,30.08528 6.347164,33.93467"
+       id="path5285" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -270,7 +271,7 @@
      inkscape:label="dots">
     <circle
        id="path2391"
-       style="fill:#0000ff;stroke:none;stroke-width:0.634527;fill-opacity:1"
+       style="fill:#000000;stroke:none;stroke-width:0.634527;fill-opacity:1"
        cx="105.5957"
        cy="274.0434"
        r="0.9517895"
