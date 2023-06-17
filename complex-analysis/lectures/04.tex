@@ -3,6 +3,7 @@
 \begin{document}
 
 \begin{crly}
+	\label{corollary:coefficients_of_analytic_function}
  Если $ B(z_0, r(z_0)) \subset \Omega $, то
  \begin{align*}
   f = \sum_{n=0}^{\infty}c_n(z-z_0)^{n},
@@ -32,7 +33,7 @@
  Ряд
  \begin{align*}
   f(z) = \sum_{k=0}^{\infty} c_k z^{k}.
- \end{align*} сходится всюду в $ \CC $. С другой стороны,
+\end{align*} сходится всюду в $ \CC $ по теореме \ref{theorem:cauchy-gursa-morer}. С другой стороны, по следствию \ref{corollary:coefficients_of_analytic_function}
  \begin{align*}
   c_k = \frac{1}{2\pi i} \int\limits_{C_\rho} \frac{f(z)}{z^{k+1}} dz.
  \end{align*} При этом $ \rho > 0 $ можно взять любое. Тогда
