@@ -235,15 +235,34 @@
 
  Рассмотрим форму
  \begin{align*}
-  \omega = \frac{f(z) - f(\zeta)}{z-\zeta}\,dz.
- \end{align*} Форма $\omega$ замкнута в $B(z_0, \rho) \setminus \left\{ \zeta \right\}$ (используя $1 \implies 2$ для функции $\frac{f(z) - f(\zeta)}{z-\zeta}$). Кроме того, $\omega$ имеет непрерывные коэффициенты в $B(z_0, \rho)$. По лемме \ref{lemma:ob_ustranenii_osobennosti} об устранении особенности $\omega$ замкнута в $B(z_0, \rho)$. Возьмём и проинтегрируем по хорошему контуру. Возьмём $\rho' < \rho$ такое, что $\zeta \in B(z_0, \rho')$. Возьмём контур
+    g(z) = \frac{f(z) - f(\zeta)}{z-\zeta}\\
+  \omega = g(z)\,dz.
+ \end{align*} 
+ Форма $\omega$ замкнута в $B(z_0, \rho) \setminus \left\{ \zeta \right\}$ (используя $1 \implies 2$ для функции $g$).
+ Проверка условия $1$  для $g$(производная берется в точке $\gamma \in B(z_0, \rho) \setminus \left\{ \zeta \right\}$):
  \begin{align*}
-  C = \left\{ \left| z_0 - z \right| = \rho' \right\}.
- \end{align*} И проинтегрируем по нему:
+     g'(z) = \lim_{z \to \gamma} \frac{g(z) - g(\gamma)}{z - \gamma} = 
+    \lim_{z \to \gamma} \frac{\frac{f(z) - f(\zeta)}{z - \zeta} - \frac{f(\gamma) - f(\zeta)}{\gamma - \zeta}}{z - \gamma} = \\=
+    \lim_{z \to \gamma} \frac{(f(z) - f(\zeta))(\gamma - \zeta) - (f(\gamma) - f(\zeta))(z - \zeta)}{(z - \gamma)(\gamma - \zeta)(z - \zeta)}= \\=
+    \lim_{z \to \gamma} \frac{f(z)(\gamma - \zeta) - f(\gamma)(z - \zeta)}{(z - \gamma)(\gamma - \zeta)(z - \zeta)}=\\=
+    \frac{1}{\gamma - \zeta} \lim_{z \to \gamma} \frac{f(z)(\gamma - \zeta) - f(\gamma)(\gamma - \zeta) - f(\gamma)(z - \gamma)}{(z - \gamma)(z - \zeta)}=
+    \frac{f'(\gamma) - C}{\gamma - \zeta} 
+ \end{align*}
+ Кроме того, $\omega$ имеет непрерывные коэффициенты в $B(z_0, \rho)$.
+ По лемме \ref{lemma:ob_ustranenii_osobennosti} об устранении особенности $\omega$ замкнута в $B(z_0, \rho)$.
+ Возьмём и проинтегрируем по хорошему контуру.
+ Возьмём $\rho' < \rho$ такое, что $\zeta \in B(z_0, \rho')$.
+
+ Возьмём контур
+ $C = \left\{ \left| z_0 - z \right| = \rho' \right\}$
+ и проинтегрируем по нему:
  \begin{align*}
   0=\frac{1}{2\pi i} \varointctrclockwise\limits_{C} \omega  = \frac{1}{2\pi i} \varointctrclockwise\limits_{C} \frac{f(z)\,dz}{z - \zeta}  - \frac{1}{2\pi i} f(\zeta) \varointctrclockwise\limits_{C} \frac{dz}{z - \zeta} 
  \end{align*}
- По примеру \ref{example:form_dz_div_z_minus_a} знаем, что $\varointctrclockwise_{C} \frac{dz}{z - \zeta} = 2 \pi i$, тогда 
+ Интеграл равен нулю, так как область $B(z_o, \rho')$ односвязная, а это значит что $C$
+ можно стянуть в точку.
+
+ С другой стороны, по примеру \ref{example:form_dz_div_z_minus_a} знаем, что $\varointctrclockwise_{C} \frac{dz}{z - \zeta} = 2 \pi i$, тогда 
  \begin{align*}
   f(\zeta) = \frac{1}{2\pi i} \varointctrclockwise\limits_{C} \frac{f(z)\,dz}{z - \zeta}.
  \end{align*} Но
@@ -262,7 +281,9 @@
   c_n = \frac{1}{2\pi i} \varointctrclockwise\limits_{C} \frac{f(z)\,dz}{(z - z_0)^{n + 1}}.
  \end{align*} 
 
-\item $ 3 \implies 1 $. У ряда 
+\item $ 3 \implies 1 $. 
+    Докажем существование производной в точке $z_0$.
+    У ряда 
  \begin{align*}
   f(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}
 \end{align*} существует производная в любой точке $ w \in B(z_0, r(z_0))$ по \eqref{corollary:complex_differential_of_}:
@@ -270,13 +291,19 @@
   f'(w) = \sum_{n=1}^{\infty} c_n \cdot n(w - z_0)^{n-1},
  \end{align*} в частности это верно в точке  $ w = z_0 $.
  
-\item $ (2 \implies 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $. Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $. Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (следствие). Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит, $ g $ удовлетворяет условию $ 3 $, значит
+\item $ (2 \implies 3) $. Пусть $ f\,dz $ --- замкнутая форма, $ z_0 \in \Omega $ --- точка, такая что $ B(z_0, r(z_0)) \subset \Omega $.
+    Так как область $ B(z_0, r(z_0)) $ односвязна, то $ f\,dz $ точна в $ B(z_0, r(z_0)) $.
+    Поэтому, существует функция $ g $ такая, что $ g'(z) = f(z) $ для любой точки $ z \in B(z_0, r(z_0)) $ (по
+    лемме о первообразной(\ref{lemma:o_pervoobraznoi})).
+    Эта функция $ g $ удовлетворяет условию 1 в $ B(z_0, r(z_0)) $, значит
+    $ g $ удовлетворяет условию $ 3 $, откуда:
  \begin{align*}
-  g = \sum_{k=0}^{\infty}a_k(z-z_0)^{k}.
- \end{align*} Поэтому,
+  g = \sum_{k=0}^{\infty}a_k(z-z_0)^{k}
+ \end{align*} и данный ряд сходится в $B(z_0, r(z_0))$. Поэтому по \eqref{corollary:complex_differential_of_}
  \begin{align*}
-  f = g' = \sum_{k=1}^{\infty}a_k \cdot k \cdot (z-z_0)^{k-1}.
- \end{align*} Значит, $ f $ удовлетворяет условию 3. 
+  f = g' = \sum_{k=1}^{\infty}a_k \cdot k \cdot (z-z_0)^{k-1}
+ \end{align*} тоже сходится в $B(z_0, r(z_0))$, 
+ значит $ f $ удовлетворяет условию 3. 
  \end{itemize}
 \end{proof}
 
