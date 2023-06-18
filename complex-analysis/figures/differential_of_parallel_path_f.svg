@@ -7,7 +7,7 @@
    viewBox="0 0 240 120"
    version="1.1"
    id="svg8"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="differential_of_parallel_path_f.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.99437388"
-     inkscape:cx="92.017703"
-     inkscape:cy="183.02975"
+     inkscape:zoom="1.0149036"
+     inkscape:cx="401.02329"
+     inkscape:cy="212.82809"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,8 +35,8 @@
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1417"
+     inkscape:window-width="1440"
+     inkscape:window-height="840"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -70,78 +70,83 @@
      id="layer1"
      transform="translate(0,-177)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 76.734262,279.79503 h 67.575028 l 0,-72.34801"
+       style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 77.045033,279.19739 H 151.55232 V 199.42747"
        id="path856" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 131.92512,279.77225 V 218.27021"
+       style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 137.89771,279.17227 v -67.8113"
        id="path858" />
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="73.663216"
-       y="284.84958"
+       style="font-size:4.27865px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.291726"
+       x="65.51683"
+       y="282.21204"
        id="text4250"><tspan
          sodipodi:role="line"
          id="tspan4248"
-         style="stroke-width:0.264583"
-         x="73.663216"
-         y="284.84958">$z_0$</tspan></text>
+         style="stroke-width:0.291726"
+         x="65.51683"
+         y="282.21204">$z_0$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="121.99641"
-       y="214.63625"
+       style="font-size:4.27865px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.7;stroke-miterlimit:4;stroke-dasharray:none"
+       x="129.06709"
+       y="211.58749"
        id="text5750"><tspan
          sodipodi:role="line"
          id="tspan5748"
-         style="stroke-width:0.264583"
-         x="121.99641"
-         y="214.63625">$z$</tspan></text>
+         style="stroke-width:0.7;stroke-miterlimit:4;stroke-dasharray:none"
+         x="129.06709"
+         y="211.58749">$p$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="144.76498"
-       y="202.52617"
+       style="font-size:4.27865px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.291726"
+       x="155.75888"
+       y="194.53098"
        id="text6600"><tspan
          sodipodi:role="line"
          id="tspan6598"
-         style="stroke-width:0.264583"
-         x="144.76498"
-         y="202.52617">$z + h$</tspan></text>
-    <circle
-       id="path6715"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="76.734261"
-       cy="279.79504"
-       r="0.39687499" />
-    <circle
-       id="path6717"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="131.92513"
-       cy="218.27022"
-       r="0.39687499" />
-    <circle
-       id="path6719"
-       style="fill:#000000;stroke:none;stroke-width:0.264583;fill-opacity:1"
-       cx="144.3093"
-       cy="207.44702"
-       r="0.39687499" />
+         style="stroke-width:0.291726"
+         x="155.75888"
+         y="194.53098">$p + h$</tspan></text>
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 131.92512,218.27021 h 12.23523 l 0,-11.1489"
+       style="fill:none;stroke:#ff0000;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 137.89726,211.36053 h 13.65476 V 199.0688"
        id="path6985" />
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583;fill:#ff0000"
-       x="137.15613"
-       y="227.43257"
+       style="font-size:4.27865px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';fill:#ff0000;stroke-width:0.291726"
+       x="155.30701"
+       y="211.93817"
        id="text8430"><tspan
          sodipodi:role="line"
          id="tspan8428"
-         style="stroke-width:0.264583;fill:#ff0000"
-         x="137.15613"
-         y="227.43257">$\Gamma$</tspan></text>
+         style="fill:#ff0000;stroke-width:0.291726"
+         x="155.30701"
+         y="211.93817">\color{red}$\gamma(p,p+h)$</tspan></text>
+    <circle
+       id="path6717-5"
+       style="fill:#000000;stroke:none;stroke-width:1.54119;stroke-miterlimit:4;stroke-dasharray:none"
+       cx="77.340668"
+       cy="279.19299"
+       r="0.96344024" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <circle
+       id="path6717"
+       style="fill:#000000;stroke:none;stroke-width:1.54119;stroke-miterlimit:4;stroke-dasharray:none"
+       cx="137.89354"
+       cy="34.371071"
+       r="0.96344024" />
+    <circle
+       id="path6717-6"
+       style="fill:#000000;stroke:none;stroke-width:1.54119;stroke-miterlimit:4;stroke-dasharray:none"
+       cx="151.6109"
+       cy="22.082771"
+       r="0.96344024" />
   </g>
 </svg>

@@ -1,54 +1,35 @@
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
 
-В этом семестре будет \textit{комплексный анализ}. Эта наука в первую очередь изучает \textit{аналитические функции} --- то есть те функции, которые совпадают со своим рядом Тейлора в окрестности любой точки (где определена функция).
-
-Рассмотрим две вещественные бесконечно гладкие функции $\frac{1}{1+x^{2}}$ и $e^{-x^{2}}$
-
-\begin{figure}[ht]
- \centering
- \incfig{similar-plots}
- \caption{}
- \label{fig:similar-plots}
-\end{figure}
-
-Запишем ряды Тейлора этих функций в точке $0$:
-\begin{align}
- \label{equation:introduction:taylor_series_of_1_over_1_plus_x_squared}
- \frac{1}{1+x^{2}} &= \sum_{k=0}^{\infty} (-x^{2})^{k}, \\
- \label{equation:introduction:taylor_series_of_e_to_minus_x_squared}
- e^{-x^{2}} &= \sum_{k=0}^{\infty}  \frac{(-x^{2})^{k}}{k!}.
-\end{align} Ряд \eqref{equation:introduction:taylor_series_of_1_over_1_plus_x_squared} сходится при $\left| x \right| < 1$, а ряд \eqref{equation:introduction:taylor_series_of_e_to_minus_x_squared} --- при любых $x \in \R$.
-
-Продолжим первую функцию в область $\CC$ комплексных чисел: получим функцию $\frac{1}{1 + z^{2}}$. Однако, есть две особые точки: $i$ и $-i$: в этих двух точках функция не определена. Тем не менее, ряд \begin{align*}
- \frac{1}{1+z^{2}} = \sum_{k=0}^{\infty} (-z^{2})^{k}
-\end{align*}  сходится на комплексном единичном круге $\left| z \right| < 1$. {\color{red} ещё две картинки}
-
-{\color{red} Не понятно, что показывает иллюстрация --- выпилить её или довести до ума.}
+В этом семестре мы будем изучать теорию функций комплексного переменного (комплексный анализ). Эта наука изучает не произвольные функции комплексного переменного, а, так называемые, \textit{аналитические} функции (в литературе они также называются \textit{голоморфными} функциями). 
 
 \section{Точные и замкнутые дифференциальные формы.}
 
 \begin{conventn*}
- Начиная с этого параграфа, плоскость $\R^{2}$ мы часто будем отождествлять с областью комплексных чисел $\CC$ и будем писать $\R^{2} \cong \CC$. Так, вектор $ \begin{psmallmatrix}
-  h_1 \\ h_2
- \end{psmallmatrix} \in \R^{2}$ отождествляется с комплексным числом $h_1 + i h_2 \in \CC$. В каких-то случаях нам будет удобнее говорить о $\R^{2}$, а в других случаях --- о $\CC$.
+ Начиная с этого параграфа, плоскость $\R^{2}$ мы иногда будем отождествлять с областью комплексных чисел $\CC$ естественным образом. Так, вектор $ \begin{psmallmatrix}
+  x \\ y
+ \end{psmallmatrix} \in \R^{2}$ отождествляется с комплексным числом $z = x+iy \in \CC$. В каких-то случаях нам будет удобнее говорить о $\R^{2}$, а в других случаях --- о $\CC$. Буквы $ x $, $ y $ и $ z $, использованные выше, обычно будут именно в таких ролях.
 \end{conventn*}
 
-Как это не было бы удивительно, чтобы эффективно и быстро построить теорию комплексного анализа, необходимо прибегнуть к дифференциальным формам порядка $1$. Поэтому, вспомним соответствующие определения из предыдущего семестра.
 
-В определениях форм есть два важных отличия от предыдущего семестра. Во-первых, формы теперь могут принимать комплексные значения. Во-вторых, мы будем рассматривать формы, действующие только из $\R^{2}$ и имеющие порядок $1$. 
+Несмотря на то, что предмет изучения комплексного анализа --- аналитические функции, чтобы эффективно и быстро построить основную теорию, неожиданно оказывается, что нужно прибегнуть к дифференциальным формам порядка $1$. Вспомним соответствующие определения из предыдущего семестра.
 
-\begin{df}
+\subsection{Дифференциальные формы первого порядка.}
+
+В определении дифференциальной формы, которое мы рассмотрим сейчас,  есть два важных отличия от предыдущего семестра. Во-первых, формам теперь разрешено принимать комплексные значения. Во-вторых, мы будем рассматривать формы, действующие только из $\R^{2}$ и имеющие порядок $1$ (но изредка будут появляться формы порядка $ 2 $).
+
+\begin{df}[линейная форма]
  \label{definition:linear_form}
- \textit{Линейной формой} (порядка $1$) будем называть функцию $L \colon\, \R^{2} \to \CC$ со следующими свойствами:
+ \textit{Линейной формой} (порядка $1$) будем называть функцию $L \colon\, \R^{2} \to \CC$, линейную по $ \R $, то есть обладающую следующими свойствами.
  \begin{enumerate}
   \item $L(h_1 + h_2) = L(h_1) + L(h_2)$ для всех $h_1, h_2 \in \R^{2}$.
-  \item \label{enum2:definition:linear_form} $L(\alpha h) = \alpha L(h)$ для всех $\alpha \in \R$ и $h \in \R^{2}$.
+  \item \label{enum2:definition:linear_form} $L(\alpha h) = \alpha \cdot L(h)$ для всех $\alpha \in \R$ и $h \in \R^{2}$.
 
  \end{enumerate}
 \end{df}
 \begin{exmpl}
- Линейные формы $dx, dy \colon\, \R^{2} \to \CC$ определены формулами:
+ \label{example:dx_dy_linear_forms}
+ Линейные формы $dx, dy \colon\, \R^{2} \to \CC$ определены формулами
  \begin{align*}
   dx \begin{pmatrix}
    x \\ y
@@ -59,7 +40,7 @@
 \end{exmpl}
 
 \begin{remrk}
- Лучше считать, что линейные формы действуют из $\R^{2}$. Можно считать, что линейная форма действует из $\CC$, но в таком случае возникает следующий нюанс. Условие $\alpha \in \R$ в пункте \ref{enum2:definition:linear_form} становится критическим. Хоть линейная форма и может принимать комплексные значения, и должна быть линейной по $\R$, \textbf{она совершенно не обязана быть линейной по $\CC$}.
+ Лучше считать, что линейные формы действуют из $\R^{2}$. Конечно, можно считать, что линейная форма действует из $\CC$, но в таком случае возникает следующий нюанс. Условие $\alpha \in \R$ в пункте \ref{enum2:definition:linear_form} становится критическим. Хоть линейная форма и может принимать комплексные значения, и должна быть линейной по $\R$, она совершенно не обязана быть линейной по $\CC$!
 
  Например, форма $dx$ не линейна по $\CC$: возьмём вектор $h = \begin{psmallmatrix}
   1 \\ 0
@@ -68,128 +49,192 @@
   dx(\alpha z) = dx(i) = 0, & &\alpha \cdot dx(z) = i \cdot 1 = i.
  \end{align*} 
 \end{remrk}
+
 \begin{remrk}
  \label{remark:linear_forms_is_linear_space}
- Линейные формы образуют линейное пространство над полем $\CC$, которое мы будем обозначать $\LF$ (конечно, это даже банахово пространство). Формы $dx$ и $dy$ образуют базис в этом пространстве: всякая линейная форма имеет вид $z_1\,dx + z_2\,dy$ для некоторых $z_1, z_2 \in \CC$.
-\end{remrk}
-\begin{exmpl*}
- Важная линейная форма: $dz = dx + i\,dy$. По сути эта форма --- функция $\R^{2} \to \CC$, задающая отождествление $\R^{2} \cong \CC$.
-\end{exmpl*}
+ Линейные формы порядка $ 1 $ образуют линейное пространство над полем $\CC$, которое мы будем обозначать $\LF$. Разумеется, это даже банахово пространство (то есть линейное нормированное пространство, полное относительно заданной на нём нормы).
 
-\begin{df}
- \textit{Дифференциальной формой} порядка $1$ в $\CC$ (или \textit{$1$-формой}) называется отображение $\omega \colon\, \Omega \to \LF$, которое каждой точке $z$ из области $\Omega \subset \CC$ сопоставляет линейную форму $\omega(z) \in \LF$ (в смысле определения \ref{definition:linear_form}).
+ Формы $dx$ и $dy$, определённые в примере \ref{example:dx_dy_linear_forms}, образуют базис в этом пространстве: всякая линейная форма $ L \in \LF $ имеет вид $L = p\,dx + q\,dy$ для некоторых чисел $p,q \in \CC$.
+\end{remrk}
+
+\begin{exmpl}
+ Ещё одна крайне важная линейная форма --- это \[
+  dz = dx + i\,dy.
+  \] Форма $ dz \colon\,\R^{2} \to \CC $ по сути задаёт отождествление вещественной плоскости $ \R^{2} $ и комплексной плоскости $ \CC $: вектору $ \begin{psmallmatrix}
+  x \\ y
+ \end{psmallmatrix} \in \R^{2} $ она сопоставляет комплексное число $ z = x + iy \in \CC $.
+\end{exmpl}
+
+\begin{df}[дифференциальная форма]
+ \textit{Дифференциальной формой} порядка~$1$ (или \textit{$1$-формой}) на области $ \Omega \subset \CC $ называется отображение $\omega \colon\, \Omega \to \LF$, которое каждой точке $z \in \Omega$ сопоставляет линейную форму $\omega(z) \in \LF$.
 \end{df}
-\begin{remrk*}
+
+\begin{remrk}
  В силу замечания \ref{remark:linear_forms_is_linear_space} всякая $1$-форма $\omega \colon\, \Omega \to \LF$ имеет вид
  \begin{align}
   \label{equation:1-form}
-  \omega = P(x,y)\,dx + Q(x,y)\,dy
- ,\end{align} где $P, Q \colon\, \Omega \to \CC$ --- функции.
-\end{remrk*}
+  \omega(z) = P(z)\,dx + Q(z)\,dy
+ ,\end{align} где $P, Q \colon\, \Omega \to \CC$ --- функции комплексного переменного.
+\end{remrk}
 
 \begin{exmpl*}
- $\omega = x \, dy$ --- $1$-форма. В точке $2 \in \CC$ на векторе $ \begin{psmallmatrix}
+ $\omega = x \, dy$ --- $1$-форма на области $ \Omega = \CC $. В точке $2 + i \in \CC$ на векторе $ \begin{psmallmatrix}
   1 \\ 3
  \end{psmallmatrix} \in \R^{2}$ эта форма принимает значение
  \begin{align*}
-  \left(\omega (2)\right) \begin{psmallmatrix}
+  \left(\omega (2 + i)\right) \begin{psmallmatrix}
    1 \\ 3
    \end{psmallmatrix}= (2 \, dy) \begin{psmallmatrix}
    1 \\ 3
   \end{psmallmatrix} = 2 \cdot 3 = 6
  .\end{align*} 
 \end{exmpl*}
+
 \begin{exmpl*}
+ $ \omega=z\,dz $ --- $ 1 $-форма на $ \CC $. Её можно переписать так:
  \begin{align*}
-  z\,dz &= (x + iy)(dx + i\,dy) = (x + iy)\,dx + (-y +ix)\,dy
- .\end{align*} Здесь $P(x,y) = x + iy$ и $Q(x,y) = -y + ix$.
+  z\,dz = z \cdot (dx + i\,dy) = z\,dx + iz\,dy.
+ \end{align*} В записи \eqref{equation:1-form} имеем  $ P(z)=z $ и $ Q(z)=iz $.
 \end{exmpl*}
+
 \begin{df*}
- $1$-форма $\omega \colon\, \Omega \to \LF$, представленная в виде \eqref{equation:1-form}, называется \textit{непрерывной}, если функции $P,Q \colon\, \Omega \to \CC$ непрерывны. Форма $\omega$ называется $C^{k}$-гладкой, если $P$ и $Q$ --- $C^{k}$-гладкие (здесь $k \in \N \cup \left\{ \infty \right\}$).
+ $1$-форма $\omega \colon\, \Omega \to \LF$ называется \textit{непрерывной}, если функции $P,Q \colon\, \Omega \to \CC$ из представления \eqref{equation:1-form} являются непрерывными на $ \Omega $. Форма $\omega$ называется $C^{k}$-гладкой, если функции $P$ и $Q$ --- $C^{k}$-гладкие (где $k \in \N \cup \left\{ \infty \right\}$).
 \end{df*}
+
+$ 1 $-формы у нас всегда будут как минимум непрерывными. В других источниках непрерывность (или даже гладкость!) включается в само определение дифференциальной формы.
+
+\subsection{Гладкие пути в \texorpdfstring{$\CC$}{комплексной плоскости}.}
 
 Мы вспомнили определение дифференциальных форм порядка $1$. Теперь вспомним определение объектов, по которым мы умеем интегрировать такие формы. Эти объекты --- поверхности размерности $1$ в $\CC$, то есть \textit{пути}.
 
-\begin{df*}
- \textit{Путём} в $\CC$ называется непрерывная функция $\gamma \colon [a,b] \to \CC$. Путь $\gamma$ называется \textit{гладким}, если $\gamma \in C^{1}([a,b],\CC)$ --- гладкая функция. Путь $\gamma$ называется \textit{кусочно-гладким}, если $\gamma$ --- кусочно-гладкая функция, то есть $\gamma = \gamma_1 + \ldots + \gamma_n$, где $\gamma_i$ --- гладкие пути.
-\end{df*}
+\begin{df}[путь]
+ \emph{Путём} в $\CC$ называется непрерывная функция $\gamma \colon [a,b] \to \CC$. Путь $\gamma$ называется \textit{гладким}, если $\gamma \in C^{1}([a,b],\CC)$ --- гладкая функция. Путь $\gamma$ называется \textit{кусочно-гладким}, если $\gamma$ --- кусочно-гладкая функция, то есть $\gamma = \gamma_1 + \ldots + \gamma_n$, где $\gamma_i$ --- гладкие пути.
+\end{df}
 
-\begin{df*}
+\begin{df}[сумма путей]
  Если $\gamma_1 \colon [a,b] \to \CC$ и $\gamma_2 \colon [b,c] \to \CC$ --- пути, то \textit{суммой путей $\gamma_1$ и $\gamma_2$} называется путь $(\gamma_1 + \gamma_2)\colon\, [a,c] \to \CC$, определённый по формуле
  \begin{align*}
   (\gamma_1 + \gamma_2)(t) = \begin{cases}
    \gamma_1(t), \text{ если } t \in [a,b],  \\
    \gamma_2(t), \text{ если } t \in [b,c].
   \end{cases} 
-\end{align*} При условии что $\gamma_1(b) = \gamma_2(b)$.
-\end{df*}
+ \end{align*} Сумма путей определена при условии $\gamma_1(b) = \gamma_2(b)$.
+\end{df}
 
-\begin{notatn*}
+\begin{notatn}
  Если $\gamma \colon\, [a,b] \to \CC$ --- путь, то путь $-\gamma \colon [a,b] \to \CC$ определяется по формуле:
  \begin{align*}
-  -\gamma(t) = \gamma(b - t + a)
- \end{align*} --- это тот же путь, но проходимый в обратном направлении.
-\end{notatn*}
-\begin{notatn*}
- Если $\gamma \colon\, [c, d] \to \CC$ --- путь, то $b(\gamma) = \gamma(c) \in \CC$ --- \textit{начало пути} (begin), а $e(\gamma) = \gamma(d) \in \CC$ --- конец пути (end).
-\end{notatn*}
+  -\gamma(t) = \gamma(b - t + a).
+ \end{align*} Это тот же самый путь $ \gamma $, но проходимый в обратном направлении.
+\end{notatn}
+
+\begin{df}
+ Путь $ \gamma \colon\, [a,b]\to\CC $ называется \emph{петлёй}, если его начало совпадает с его концом: $ \gamma(a)=\gamma(b) $.
+\end{df}
+
+\begin{prop}
+ \label{prop:smooth_path_existance}
+ Пусть в области $ \Omega \subset \CC $ существует путь между двумя точками $ p, q\in\Omega $. Тогда между точками $ p $ и $ q $ существует путь, представляющий из себя ломанную линию (в частности, этот путь кусочно-гладкий).
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть существует путь $ \gamma\colon[a,b]\to\Omega $, $ \gamma(a) = p $, $ \gamma(b)=q $. Так как $ \Omega $ --- открытое подмножество $ \CC $, то для каждой точки $ \gamma(t) \in \Omega $, $ t \in [a,b] $, существует открытый шар $ B_t $ с центром в точке $ t $. Так как образ $ \gamma([a,b]) $ --- компактное множество (как непрерывный образ компакта), то из открытого покрытия $ \left\{B_t\right\}_{t \in [a,b]} $  можно выделить конечное подпокрытие $ B_{t_1}, \ldots, B_{t_N} $. Пусть $ r $ --- наименьший из радиусов шаров этого конечного подпокрытия. Тогда можно построить ломаную линию, соединяющую точки $ a $ и $ b $, звенья которой будут иметь длину меньше $ r $.
+\end{proof}
+
+\subsection{Интегрирование 1-форм по путям.}
 
 Теперь вспомним (и обобщим) понятие интеграла $1$-формы по пути в $\CC$.
 
 \begin{df}[интеграл $1$-формы по пути]
- Пусть $\Omega \subset \CC$ --- область, $\gamma \colon [a,b] \to \Omega$ --- кусочно-гладкий путь, и $\omega \colon\, \Omega \to \LF$ --- непрерывная $1$-форма. Тогда \textit{интегралом} от $1$-формы $\omega$ по пути  $\gamma$ называется число
+ Пусть $\Omega \subset \CC$ --- область, $\gamma \colon [a,b] \to \Omega$ --- кусочно-гладкий путь, а $\omega \colon\, \Omega \to \LF$ --- непрерывная $1$-форма на $ \Omega $, записанная в виде
  \begin{align*}
-  \int\limits_{\gamma} \omega = \int\limits_{a}^{b} \left( P(\gamma(t)) \gamma_1'(t) + Q(\gamma(t)) \gamma_2'(t) \right) dt,
- \end{align*} где $\gamma(t) = (\gamma_1(t),\gamma_2(t))$ (или $\gamma(t) = \gamma_1(t) + i \gamma_2(t)$).
+  \omega(z) = P(z)\,dx + Q(z)\,dy.
+ \end{align*} Тогда \textit{интегралом} от $1$-формы $\omega$ по пути  $\gamma$ называется число
+ \begin{align}
+  \label{eq:definition:integral_of_1_form_on_path}
+  \int_{\gamma} \omega = \int_{a}^{b} \left( P(\gamma(t)) \cdot \gamma_1'(t) + Q(\gamma(t)) \cdot \gamma_2'(t) \right) dt,
+ \end{align} где $\gamma(t) = \gamma_1(t) + i \gamma_2(t)$.
 \end{df}
-\begin{lm}[основная оценка интеграла]
+\begin{remrk*}
+ Определение интеграла \eqref{eq:definition:integral_of_1_form_on_path} можно <<вывести>>, если записать $ 1 $-форму в виде \eqref{equation:1-form} и применить замену переменной $ z = \gamma(t) $:
  \begin{align*}
-  \left| \int\limits_{\gamma} \omega  \right| \leqslant \max_{t \in [a,b]} \sqrt{\left| P(\gamma(t)) \right|^{2} + \left| Q(\gamma(t)) \right|^{2}} \cdot l(\gamma),
- \end{align*} где $l(\gamma)$ --- длина пути $\gamma$.
+  \int_{\gamma} \omega &= \int_{\gamma} \left( P(z)\,dx + Q(z)\,dy \right) = \int_{a}^{b} (P(\gamma(t)) \, d (\gamma_1(t)) + Q(\gamma(t)) \, d(\gamma_2(t))) = \\
+  &= \int_{a}^{b} \left( P(\gamma(t)) \cdot \gamma_1(t) + Q(\gamma(t)) \cdot \gamma_2(t)\right)dt.
+ \end{align*}
+\end{remrk*}
+
+Для интеграла от $ 1 $-форм по гладкому пути верны всевозможные свойства, непосредственно следующие из соответствующих свойств интеграла Лебега: линейность, аддитивность, монотонность и прочие. Мы не будем сейчас проверять их все, ограничимся пока полезной оценкой модуля интеграла.
+
+\begin{lm}
+ \begin{align*}
+  \left| \int_{\gamma} \omega  \right| \leqslant l(\gamma) \cdot \max_{t \in [a,b]} \sqrt{\left| P(\gamma(t)) \right|^{2} + \left| Q(\gamma(t)) \right|^{2}},
+ \end{align*} где $l(\gamma)$ --- длина кусочно-гладкого пути $\gamma$.
 \end{lm}
 \begin{proof}
- Воспользуемся <<обычной>> основной оценкой интеграла (утверждение \ref{claim:basic_estimation_of_integral}), а также неравенством \eqref{equation:lemma:cauchy_bunyakovsky_schwarz_inequality} КБШ для пространства $\CC^{2}$:
+ Воспользуемся аналогичной оценкой для интеграла Лебега, а также неравенством Коши-Буняковского-Шварца для пространства $\CC^{2}$:
  \begin{align*}
-  \left| \int\limits_{\gamma} \omega  \right| &\leqslant \int\limits_{a}^{b} \left| P(\gamma(t))\gamma_1'(t) + Q(\gamma(t))\gamma_2'(t) \right|dt \leqslant \\
-  &\leqslant \int\limits_{a}^{b} \sqrt{\left| P(\gamma(t)) \right|^{2} + \left| Q(\gamma(t)) \right|^{2}} \cdot \sqrt{\left| \gamma_1'(t) \right|^{2} + \left| \gamma_2'(t) \right|^{2}} dt \leqslant \\
-  &\leqslant \max_{t \in [a,b]} \sqrt{\left| P(\gamma(t)) \right|^{2} + \left| Q(\gamma(t)) \right|^{2}} \cdot \int\limits_{a}^{b} \left| \gamma'(t) \right|  dt
-  .\end{align*} Интеграл $\int_{a}^{b} \left| \gamma'(t) \right|dt$ и есть в точности длина пути $l(\gamma)$. Неравенство КБШ было применено к векторам $ \begin{psmallmatrix}
-  P(\gamma(t)) \\ Q(\gamma(t))
-  \end{psmallmatrix}, \begin{psmallmatrix}
-  \gamma_1'(t) \\ \gamma_2'(t)
- \end{psmallmatrix} \in \CC^{2}$.
+  \left| \int_{\gamma} \omega  \right| &\leqslant \int_{a}^{b} \left| P(\gamma(t))\cdot\gamma_1'(t) + Q(\gamma(t))\cdot\gamma_2'(t) \right|dt \leqslant \\
+  &\leqslant \int_{a}^{b} \sqrt{\left| P(\gamma(t)) \right|^{2} + \left| Q(\gamma(t)) \right|^{2}} \cdot \sqrt{\left| \gamma_1'(t) \right|^{2} + \left| \gamma_2'(t) \right|^{2}} dt \leqslant \\
+  &\leqslant \max_{t \in [a,b]} \sqrt{\left| P(\gamma(t)) \right|^{2} + \left| Q(\gamma(t)) \right|^{2}} \cdot \int_{a}^{b} \left| \gamma'(t) \right|  dt
+ .\end{align*} Интеграл $\int_{a}^{b} \left| \gamma'(t) \right|dt$ и есть длина гладкого пути $l(\gamma)$ (как мы выяснили во втором семестре матана). Неравенство КБШ было применено к векторам
+ \begin{align*}
+  \begin{pmatrix}
+   P(\gamma(t)) \\ Q(\gamma(t))
+   \end{pmatrix}, \begin{pmatrix}
+   \gamma_1'(t) \\ \gamma_2'(t)
+  \end{pmatrix} \in \CC^{2}.
+ \end{align*}
 \end{proof}
 
-Дадим новое важное топологическое определение.
-\begin{df}[гомотопия]
- \textit{Гомотопией} в области $\Omega \subset \CC$ называется непрерывное отображение $H \colon [a,b] \times [0,1] \to \Omega$, $H = H(s,t)$. 
-\end{df}
+Докажем ещё одно простое, но часто используемое равенство.
 
-Гомотопии часто применяются, когда работают с путями.
+\begin{prop}
+ \begin{align*}
+  \int_{-\gamma} \omega = -\int_{\gamma} \omega.  
+ \end{align*}
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ \begin{align*}
+  \int_{-\gamma} \omega &= \int_{a}^{b} \left( P(-\gamma(t)) \cdot (-\gamma)_1'(t)  + Q(-\gamma(t)) \cdot (-\gamma)_2'(t) \right) dt = \\
+  &= \begin{bmatrix}
+   u = b - t + a, & du = -dt
+  \end{bmatrix} = \\
+  &= \int_{a}^{b} \left( P(\gamma(t)) \cdot \gamma_1'(u) + Q(\gamma(u)) \cdot \gamma_2'(t) \right)(-du) = - \int_{\gamma} \omega. 
+ \end{align*}
+\end{proof}
+
+\subsection{Гомотопии путей.}
+
+Дадим новое важное топологическое определение, которое часто применяется при работе с путями.
 
 \begin{df}[гомотопные пути]
  \label{definition:path-homotopy}
- Пусть $\Omega \subset \CC$ --- область, $\gamma_0, \gamma_1\colon [a,b] \to \Omega$ --- два пути в $\Omega$. Путь $\gamma_0$ \textit{гомотопен} пути $\gamma_1$ в области $\Omega$, если их начало и конец совпадают ($b(\gamma_0) = b(\gamma_1)$, $e(\gamma_0) = e(\gamma_1)$), а также существует гомотопия $H \colon [a,b] \times [0,1] \to \Omega$  такая, что для любого $s \in [a,b]$:
+ Два пути $ \gamma_0,\gamma_1\colon [a,b] \to \Omega$ \textit{гомотопны} в области $ \Omega \subset \CC $, если $ \gamma_0 $ можно перевести в $ \gamma_1 $ <<непрерывным образом>>: существует непрерывное отображение $ H \colon [0,1] \times [a,b] \to \Omega $, $ H = H(s,t) $, называемое \textit{гомотопией}, которое переводит $ \gamma_0 $ в $ \gamma_1 $:
  \begin{align*}
-  H(s,0) = \gamma_0(s), & &H(s,1) = \gamma_1(s).
- \end{align*} Иными словами, два пути гомотопны, если один можно переделать в другой непрерывным образом.
+  H(0, t) &= \gamma_0(t), & H(1,t)&=\gamma_1(t)
+ \end{align*} а также сохраняет концы путей:
+ \begin{align*}
+  H(s, a) &= \gamma_0(a) = \gamma_1(a), & H(s,b) &= \gamma_0(b) = \gamma_1(b).
+ \end{align*} В частности, пути могут быть гомотопны, только если их концы совпадают.
 \end{df}
-
-Пример двух гомотопных путей см. на рисунке \ref{fig:path-homptopy}.
 
 \begin{figure}[ht]
  \centering
  \incfig[0.5]{path-homptopy}
- \caption{Пути и гомотопия между ними.}
+ \caption{Гомотопные пути.}
  \label{fig:path-homptopy}
 \end{figure}
 
-Приведём пример, который показывает, что область $\Omega$ в определении \ref{definition:path-homotopy} гомотопии путей важна.
+\begin{remrk*}
+ Легко видеть, что гомотопия путей --- это отношение эквивалентности. Путь гомотопен самому себе; если $ \gamma_0 $ гомотопен $ \gamma_1 $, то и $ \gamma_1 $ гомотопен $ \gamma_0 $; если $ \gamma_0 $ гомотопен $ \gamma_1 $, а $ \gamma_1 $ гомотопен $ \gamma_2 $, то и $ \gamma_0 $ гомотопен $ \gamma_2 $.
+\end{remrk*}
 
 \begin{exmpl}
+ \label{example:non_homotopy_paths}
+ Одна и та же пара путей может быть гомотопна в одной области, но не гомотопна в другой области --- область $\Omega$ в определении \ref{definition:path-homotopy} важна.
+
  Рассмотрим рисунок \ref{fig:paths-without-homptopy}. Путь $\gamma_0$ --- верхняя полуокружность, направленная по часовой стрелке, а путь $\gamma_1$ ---  нижняя полуокружность, направленная против часовой стрелки. Пути $\gamma_0$ и $\gamma_1$ гомотопны в области $\CC$, но не гомотопны в области $\CC \setminus \left\{ 0 \right\}$.
 
- Интуитивное объяснение такое: мы не можем непрерывно перевести $\gamma_0$ в $\gamma_1$, миновав выколотую точку $0$. Формальное доказательство давать не будем (если интересно доказательство, см. фундаментальную группу единичной окружности).
+ Интуитивное объяснение негомотопности такое: мы не можем непрерывно перевести $\gamma_0$ в $\gamma_1$, сохраняя концы, миновав выколотую точку $0$. Формальное доказательство давать не будем (если интересно доказательство, ключевое слово --- фундаментальная группа единичной окружности).
 \end{exmpl}
 
 \begin{figure}[ht]
@@ -199,73 +244,171 @@
  \label{fig:paths-without-homptopy}
 \end{figure}
 
-Вспомним определение \textit{точных} дифференциальных форм, которое мы уже давали раньше.
+\subsection{Односвязные области.}
+
+Мы уже знаем, что если пути гомотопны, то их начало и конец обязаны совпадать, но обратное, как показывает пример \ref{example:non_homotopy_paths}, в общем случае не верно. Тем не менее, во многих областях обратное следование всё же верно, и для этих областей есть специальное название.
+
+\begin{df}[односвязная область]
+ Область $ \Omega \subset\CC $ называется \emph{односвязной}, если любые два пути в $ \Omega $, имеющие одинаковые начало и конец, гомотопны.
+\end{df}
+
+\begin{claim}
+ Область $ \Omega \subset \CC $ односвязна тогда и только тогда, когда любую петлю $ \gamma \colon\,[a,b] \to \Omega $ <<можно стянуть в точку>>, то есть путь $ \gamma $ гомотопен постоянному пути $ \gamma_0 \colon\,[a,b] \to \Omega $, $ \gamma_0(t) = \gamma(a) $ в области $ \Omega $.
+\end{claim}
+
+Это утверждение было задачей в листочке.
+
+\begin{proof}
+ Пусть в области $ \Omega $ можно стянуть всякую петлю. Пусть теперь $ \gamma_0, \gamma_1 \colon\, [0,1] \to \Omega $ --- два пути с совпадающими началом $ A = \gamma_0(0) = \gamma_1(0) $ и концом $ B = \gamma_0(1) = \gamma_1(1) $.
+
+ Пусть $ \eta = \gamma_0 + (-\gamma_1)$, $ \eta \colon\, [0,1] \to \Omega $ --- петля, образованная этими двумя путями (сначала проходим по $ \gamma_0 $ в прямую сторону, а затем по $ \gamma_1 $ в обратную сторону). По предположению петлю $ \eta $ можно стянуть в точку $ A $ гомотопией $ H \colon\, [0,1] \times [0,1] \to \Omega $.
+
+ Посмотрим на путь $ \xi $, который проходит точка $ B $ под действием гомотопии $ H $:
+ \begin{align*}
+  \xi(t) = H(t, 1 / 2),
+ \end{align*} смотрите рисунок \ref{fig:central-path}.
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.7]{central-path}
+  \caption{Путь $ \xi $, проходимой точкой $ B $ под действием гомотопии $ H $.}
+  \label{fig:central-path}
+ \end{figure}
+
+ Утверждается, что в путь $ -\xi $ можно перевести оба пути $ \gamma_0 $ и $ \gamma_1 $ гомотопией. Построим гомотопию $ \hat H \colon [0,1] \times [0,1] \to \Omega $, которая переводит $ \gamma_0 $ в $ -\xi $ (гомотопия для $ \gamma_1 $ построится так же). Пусть $ t \in [0, 1] $. Путь $ \hat H(t) \colon\, [0,1] \to \Omega $ будет устроен следующим образом: сначала мы пройдём по петле $ H(t) $ до точки $ C_t = H(t, 1 / 2) $, которая лежит на пути $ -\xi $. Затем мы пройдём кусок пути $ -\xi $ от точки $ C_t $ до точки $ B $. Для понимания смотрите рисунок \ref{fig:homotopy_to_central_path}.
+
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.9]{homotopy_to_central_path}
+  \caption{Гомотопия $ \hat H $ пути $ \gamma_0 $ и $ -\xi $: слой $ \hat H(t) $.}
+  \label{fig:homotopy_to_central_path}
+ \end{figure}
+
+ Более формально, путь $ \hat H(t) $ при $0 \leqslant t \leqslant 1$ задаётся по формуле:
+ \begin{align*}
+  \hat H(t, u) = \begin{cases}
+   H(t, u), \text{ если } 0 \leqslant u \leqslant 1 / 2, \\
+   H(t(1 - (u - 1 / 2)), 1 / 2), \text{ если } 1 / 2 \leqslant u \leqslant 1.
+  \end{cases} 
+ \end{align*}
+
+ Так как областей значений $ \hat H $ является подмножеством области значений $ H$, то $ \hat H $ --- действительно гомотопия пути $ \gamma_0 $ и $ -\xi $.
+
+\end{proof}
+
+Возникает естественный вопрос: а бывают ли вообще односвязные области? Например, область $ \CC $ односвязна? Оказывается, что да.
+
+\begin{prop}
+ Выпуклые области односвязны.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $ \Omega \subset \CC $ --- выпуклая область, и два пути $ \gamma_0,\gamma_1\colon\,[a,b] \to \Omega $ имеют одинаковые начало и конец. Построим их гомотопию $ H \colon[0,1] \times [a,b]\to\Omega $ в явном виде:
+ \begin{align*}
+  H(s,t) = (1 - s) \cdot \gamma_0(t) + s \cdot \gamma_1(t).
+ \end{align*} Ясно, что по построению отображение $ H $ непрерывно, и оно переводит $ \gamma_0 $ в $ \gamma_1 $, сохраняя начало и конец. По выпуклости области $ \Omega $ образ $ H $ не выходит за пределы $ \Omega $, поэтому пути действительно гомотопны.
+\end{proof}
+
+\subsection{Точные формы.}
+
+Вспомним определение \textit{точных} дифференциальных форм --- аналога неопределённого интеграла, что мы уже рассматривали в прошлом семестре.
 
 \begin{df}[%
  точная $1$-форма]
- $1$-форма $\omega \colon\, \Omega \to \LF$ называется \textit{точной} в области $\Omega \subset \CC$, если существует гладкая функция $F \colon\, \Omega \to \CC$ ($0$-форма) такая, что $\omega = dF$.
+ $1$-форма $\omega \colon\, \Omega \to \LF$ называется \textit{точной} в области $\Omega \subset \CC$, если существует гладкая функция $F \colon\, \Omega \to \CC$ ($0$-форма), дифференциал которой совпадает с формой $ \omega $:
+ \begin{align*}
+  \omega = dF = F_x'\,dx + F_y'\,dy
+ \end{align*} при всех $ z \in \Omega $. Функция $ F $ называется \textit{первообразной} формы $ \omega $.
 \end{df}
 
-Рассмотрим следующий нетривиальный критерий точности формы.
+У точности дифференциальной формы есть следующий нетривиальный критерий.
 
 \begin{thm}
  \label{theorem:exact_1_form}
- Пусть $\omega$ --- непрерывная $1$-форма в области $\Omega \subset \CC$. Тогда следующие условия равносильны:
+ Пусть $\omega$ --- непрерывная $1$-форма в области $\Omega \subset \CC$. Тогда следующие условия равносильны.
  \begin{enumerate}
-  \item \label{enum1:theorem:exact_1_form} $\omega$ точна в $\Omega$.
-  \item \label{enum2:theorem:exact_1_form} Для любых кусочно-гладких путей $\gamma_0, \gamma_1 \colon [0,1] \to \Omega$ с совпадающими началом и концом ($b(\gamma_0) = b(\gamma_1)$ и $e(\gamma_0) = e(\gamma_1)$) верно $ \int_{\gamma_0}  \omega = \int_{\gamma_1} \omega $. То есть, интеграл формы по пути зависит лишь от начала и от конца пути.
+  \item \label{enum1:theorem:exact_1_form} Форма $\omega$ точна в $\Omega$.
+  \item \label{enum2:theorem:exact_1_form} Для любых кусочно-гладких путей $\gamma_0, \gamma_1 \colon [a,b] \to \Omega$ с совпадающими началом и концом \textup{(}$\gamma_0(a)=\gamma_1(a)$ и $\gamma_0(b)=\gamma_1(b)$\textup{)}, интеграл формы $ \omega $ по этим двум путям совпадает:
+   \begin{align*}
+    \int_{\gamma_0}  \omega = \int_{\gamma_1} \omega.
+   \end{align*} То есть, интеграл формы $ \omega $ по пути зависит лишь от начала и от конца пути.
  \end{enumerate}
 \end{thm}
 \begin{proof}\
  \begin{itemize}
-  \item Из пункта \ref{enum1:theorem:exact_1_form} в пункт \ref{enum2:theorem:exact_1_form}. Пусть существует гладкая функция $F \colon\,\Omega \to \CC$ такая, что
+  \item Из пункта \ref{enum1:theorem:exact_1_form} следует пункт \ref{enum2:theorem:exact_1_form}. Пусть существует гладкая функция $F \colon\,\Omega \to \CC$ такая, что
    \begin{align*}
     \omega = d F = F'_x \, dx + F'_y \, dy
-   .\end{align*} Возьмём любой кусочно-гладкий путь $\gamma \colon [0,1] \to \Omega$ и проинтегрируем по нему $\omega$, используя формулу Ньютона-Лейбница:
+   .\end{align*} Возьмём любой кусочно-гладкий путь $\gamma \colon [a,b] \to \Omega$ и проинтегрируем по нему форму $\omega$, используя формулу Ньютона-Лейбница:
    \begin{align*}
-    \int\limits_{\gamma} \omega &= \int\limits_{\gamma} dF = \int\limits_{0}^{1} \left( F'_x(\gamma(t)) \gamma_1'(t)  + F'_y(\gamma(t)) \gamma_2'(t) \right) dt = \\
-    &= \int\limits_{0}^{1} \left( F(\gamma(t)) \right)'_t dt = F(\gamma(1)) - F(\gamma(0)) = F(e(\gamma)) - F(b(\gamma))
-   .\end{align*} Полученное выражение зависит только от начала и конца пути.
-  \item Из пункта \ref{enum2:theorem:exact_1_form} в пункт \ref{enum1:theorem:exact_1_form}. Имея знание о пункте \ref{enum2:theorem:exact_1_form} мы красивым образом сконструируем функцию $F$. Выберем произвольную точку $p_0 \in \Omega$. Для любой точки $p \in \Omega$ определим
-   \begin{align*}
-    F(p) = \int\limits_{\gamma(p_0,p)}  \omega
-   ,\end{align*} где $\gamma(p_0,p)$ --- произвольный кусочно-гладкий путь в  $\Omega$, соединяющий $p_0$ и $p$. Это определение корректно, так как по пункту \ref{enum2:theorem:exact_1_form} интеграл формы не зависит от выбора пути. Кроме того, путь между $p_0$ и $p$ существует, так как $\Omega$ --- линейно связное множество ({\color{red} однако не ясно, почему этот путь кусочно-гладкий}).
+    \int_{\gamma} \omega &= \int_{\gamma} \left( F_x'\,dx + F_y'\,dy \right) = \int_{a}^{b} \left( F'_x(\gamma(t)) \cdot \gamma_1'(t)  + F'_y(\gamma(t)) \cdot\gamma_2'(t) \right) dt = \\
+    &= \int_{a}^{b} \left[ F(\gamma(t)) \right]'_t dt = F(\gamma(b)) - F(\gamma(a))
+   .\end{align*} Таким образом, интеграл зависит лишь от начала и конца пути.
 
-   Проверим, что построенная функция $F$ подходит. Возьмём произвольную точку $p \in \Omega$. Рассмотрим малое приращение $h \in \CC$, $h \to 0$:
+  \item Из пункта \ref{enum2:theorem:exact_1_form} следует пункт \ref{enum1:theorem:exact_1_form}. Имея знание о выполнении условия из пункта~\ref{enum2:theorem:exact_1_form}, мы красивым образом сконструируем первообразную~$F$.
+
+   Выберем произвольную точку~$p_0 \in \Omega$. По линейной связности области $ \Omega $ для любой точки~$ p \in \Omega $ существует путь $ \gamma(p) $, соединяющий точку~$ p_0 $ с точкой~$ p $, а по предложению~\ref{prop:smooth_path_existance} можно считать, что этот путь кусочно-гладкий. Тогда для любой точки~$ p \in \Omega $ определим
    \begin{align*}
-    &F(p + h) - F(p) = \int\limits_{\gamma(p_0,p + h)}  \omega - \int\limits_{\gamma(p_0,p)}  \omega = \int\limits_{\gamma(p_0,p) + [p,p+h]} \omega - \int\limits_{\gamma(p_0,p)}   \omega = \int\limits_{[p,p+h]} \omega.
-   \end{align*} Здесь $[p,p+h] \subset \Omega$ --- отрезок, соединяющий точки $p$ и $p + h$, рассматриваемый как путь в $\Omega$. Так как $h$ очень мало, а $\Omega$ открыто, то отрезок лежит в $\Omega$. Этот отрезок параметризуется функцией $\gamma \colon [0,1] \to \Omega$, $\gamma(t) = p + th$. Производная этой функции равна $\gamma'(t) = (\gamma'_1(t), \gamma'_2(t)) = (h_1, h_2)$, где $h = h_i + i h_2$. Запишем $\omega = P(z)\,dx + Q(z)\,dy$, где $P,Q$ --- непрерывные функции. Подставим всё это:
+    F(p) = \int_{\gamma(p)}  \omega.
+   \end{align*} Это определение корректно, так как по пункту~\ref{enum2:theorem:exact_1_form} интеграл не зависит от выбора пути~$ \gamma(p) $, лишь бы только этот путь был.
+
+   Проверим, что построенная функция~$F$ действительно является первообразной формы~$ \omega $. Возьмём произвольную точку~$p \in \Omega$, и рассмотрим малое приращение $h \in \CC$, $h \to 0$:
    \begin{align*}
-    F(p+h)-F(p) &= \int\limits_{0}^{1} \left( P(p+th) h_1 + Q(p+th) h_2 \right)dt = \\
-    &=  \int\limits_{0}^{1} \left( (P(p) + o(1))h_1 + (Q(p) + o(1))h_2 \right)dt = \\
-    &= \int\limits_{0}^{1} \left( P(p)h_1 + Q(p)h_2 + o(h) \right)dt = \\
-    &= P(p)h_1 + Q(p)h_2 + o(h).
-   \end{align*} Получается, функция $F$ по определению дифференцируема в точке $p$, и её дифференциал на приращении $h$ равен
+    &F(p + h) - F(p) = \int_{\gamma(p + h)}  \omega - \int_{\gamma(p)}  \omega = \int_{\gamma(p) + [p,p+h]} \omega - \int_{\gamma(p)}   \omega = \int_{[p,p+h]} \omega.
+   \end{align*} Здесь $[p,p+h] \subset \Omega$ --- отрезок, соединяющий точки $p$ и $p + h$, рассматриваемый как путь в $\Omega$. Этот отрезок параметризуется функцией
+   \begin{align*}
+    \gamma(t) = p + th, \qquad t \in [0,1].
+   \end{align*} Производная этой функции равна
+   \begin{align*}
+    \gamma'(t) = (\gamma'_1(t), \gamma'_2(t)) = (h_1, h_2),
+   \end{align*} где $h = h_1 + i h_2$, $ h_1,h_2\in\R $. Запишем форму в виде $\omega = P(z)\,dx + Q(z)\,dy$, где $P,Q$ --- непрерывные функции. Подставим всё это обратно:
+   \begin{align*}
+    F(p+h)-F(p) &= \int_{0}^{1} \left( P(p+th) \cdot h_1 + Q(p+th)\cdot h_2 \right)dt = \\
+    &=  \int_{0}^{1} \left( (P(p) + o(1))\cdot h_1 + (Q(p) + o(1))\cdot h_2 \right)dt = \\
+    &= \int_{0}^{1} \left( P(p) \cdot h_1 + Q(p)\cdot h_2 + o(h) \right)dt = \\
+    &= P(p) \cdot h_1 + Q(p)\cdot h_2 + o(h).
+   \end{align*} Получается, функция~$F$ по определению дифференцируема в точке~$p$, и её дифференциал на приращении~$h$ равен
    \begin{align*}
     d_p F \begin{pmatrix}
      h_1 \\ h_2
-     \end{pmatrix} = P(p) h_1 + Q(p) h_2 = \left( \omega(p) \right) \begin{pmatrix}
+     \end{pmatrix} = P(p)\cdot  h_1 + Q(p)\cdot h_2 = \left( \omega(p) \right) \begin{pmatrix}
      h_1 \\ h_2
     \end{pmatrix}
    ,\end{align*} что и требовалось доказать.
  \end{itemize}
 \end{proof}
 
-Теперь введём определение \textit{замкнутой} дифференциальной формы, которое имеет связь с точными формами.
+\begin{remrk}
+ В процессе доказательства теоремы~\ref{theorem:exact_1_form} мы вывели формулу интеграла точной формы $ \omega $ по гладкому пути $ \gamma \colon\,[a,b] \to \Omega $:
+ \begin{align*}
+  \int_{\gamma} \omega =  F(\gamma(b)) - F(\gamma(a)),
+ \end{align*} где $ F $ --- первообразная формы~$ \omega $. В частности,
+ \begin{align*}
+  \int_{\gamma} \omega = 0, 
+ \end{align*} если $ \gamma $ --- петля.
+\end{remrk}
+
+\subsection{Замкнутые формы.}
+
+Теперь введём понятие \textit{замкнутой} дифференциальной формы, которое имеет неразрывную связь с точностью формы.
 
 \begin{df}[замкнутая $1$-форма]
- $1$-форма $\omega \colon\,\Omega\to\LF$ называется \textit{замкнутой} в области $\Omega$, если $\omega$ локально точна: для любой точки $p \in \Omega$ существует окрестность $U_p \ni p$, $U_p \subset \Omega$ такая, что $\omega$ точна в $U_p$.
+ $1$-форма $\omega \colon\,\Omega\to\LF$ называется \textit{замкнутой} в области $\Omega$, если она <<локально точна>>: для любой точки $p \in \Omega$ существует окрестность $U_p \ni p$, $U_p \subset \Omega$ такая, что форма~$\omega$ точна в $U_p$.
 \end{df}
 
 Как и для точных форм, есть следующие нетривиальные критерии замкнутости формы.
 
 \begin{thm}
  \label{theorem:closed_1_form}
- Пусть $\omega$ --- непрерывная $1$-форма на области $\Omega \subset \CC$. Тогда следующие условия эквивалентны:
+ Пусть $\omega$ --- непрерывная $1$-форма в области $\Omega \subset \CC$. Тогда следующие условия равносильны.
  \begin{enumerate}
-  \item \label{enum1:theorem:closed_1_form} $\omega$ замкнута в $\Omega$.
-  \item \label{enum2:theorem:closed_1_form} Если пути $\gamma_0, \gamma_1 \colon [0,1] \to \Omega$ гомотопны в $\Omega$, то $\int_{\gamma_0} \omega = \int_{\gamma_1} \omega $.
-  \item \label{enum3:theorem:closed_1_form} Если $\Pi$ --- замкнутый прямоугольник в $\Omega$, а $\partial \Pi$ --- его граница, то $\int_{\partial \Pi} \omega = 0$ (см. рисунок \ref{fig:closed-rectangle-and-its-border}).
+  \item \label{enum1:theorem:closed_1_form} Форма~$\omega$ замкнута в области~$\Omega$.
+  \item \label{enum2:theorem:closed_1_form} Если два пути~$\gamma_0, \gamma_1 \colon [0,1] \to \Omega$ гомотопны в области~$\Omega$, то интеграл формы~$ \omega $ по ним совпадает:
+   \begin{align*}
+    \int_{\gamma_0} \omega = \int_{\gamma_1} \omega.
+   \end{align*}
+  \item \label{enum3:theorem:closed_1_form} Пусть $\Pi$ --- замкнутый прямоугольник, полностью лежащий в области~$\Omega$, стороны которого параллельны осям координат $ x $ и $ y $. Тогда
+   \begin{align*}
+    \int_{\partial \Pi} \omega = 0,
+   \end{align*} где $ \partial\Pi $ --- граница прямоугольника, рассматриваемая как кусочно-гладкий путь. Для понимания см. рисунок~\ref{fig:closed-rectangle-and-its-border}.
    \begin{figure}[ht]
     \centering
     \incfig[0.5]{closed-rectangle-and-its-border}
@@ -274,135 +417,138 @@
    \end{figure}
  \end{enumerate}
 \end{thm}
-\begin{proof}\
+\begin{remrk*}
+ Условие~\ref{enum3:theorem:closed_1_form} из теоремы~\ref{theorem:closed_1_form} часто применяется как достаточно простой признак замкнутости дифференциальной формы. Мы иногда будем называть его <<тестом на прямоугольнике>>.
+\end{remrk*}
+\begin{proof}[\normalfont{\textsc{Доказательство теоремы \ref{theorem:closed_1_form}}}]\
  \begin{itemize}
-  \item Из пункта \ref{enum1:theorem:closed_1_form} в пункт \ref{enum2:theorem:closed_1_form}. Пусть $\omega$ замкнута в $\Omega$. Пусть пути $\gamma_0$, $\gamma_1$ гомотопны в $\Omega$, $H \colon [0,1] \times [0,1] \to \Omega$ --- их гомотопия. Заметим, что образ
+  \item Из пункта~\ref{enum1:theorem:closed_1_form} следует пункт~\ref{enum2:theorem:closed_1_form}. Это самая сложная часть теоремы. Основная идея её доказательства: всё  локализовать и свести к теореме~\ref{theorem:exact_1_form} о точных формах.
+
+   Пусть форма~$\omega$ замкнута в области~$\Omega$. Пусть пути~$\gamma_0$, $\gamma_1$ гомотопны в $\Omega$, а $H \colon [0,1] \times [0,1] \to \Omega$ --- их гомотопия. Заметим, что образ
    \begin{align*}
     H([0,1] \times [0,1]) = K
-   \end{align*}  является компактным (как непрерывный образ компакта).
+   \end{align*}  является компактным как непрерывный образ компакта.
+
+   Мы знаем, что форма~$ \omega $ локально точна на множестве~$ K $. Однако, пользуясь компактностью $ K $ это условие можно усилить, добавив <<равномерность>>.
    \begin{prop}
     \label{prop:eps_0:theorem:closed_1_form}
     Существует число $\eps_0 > 0$ такое, что для любой точки $p \in K$ форма $\omega$ точна в шаре $B(p,\eps_0) \subset \Omega$. 
    \end{prop}
    \begin{proof}[\normalfont\textsc{Доказательство}]
-    Действительно, так как $\omega$ замкнута, то для любой точки $p \in K$ существует число $\eps(p) > 0$ такое, что $\omega$ точна в шаре $B(p,2\eps(p))\subset\Omega$. Семейство открытых шаров $\{B(p,\eps(p))\}_{p \in K}$ образует открытое покрытие компакта $K$:  выделим из него конечное подпокрытие $\left\{ B(p_k, \eps(p_k)) \right\}_{k=1}^{N}$. Возьмём $\eps_0 = \min \left\{ \eps(p_1), \ldots, \eps(p_N) \right\}$.
+    Действительно, так как $\omega$ замкнута, то для любой точки $p \in K$ существует число $\eps(p) > 0$ такое, что $\omega$ точна в шаре $B(p,2\eps(p))\subset\Omega$. Семейство открытых шаров $\{B(p,\eps(p))\}_{p \in K}$ образует открытое покрытие компакта $K$:  выделим из него конечное подпокрытие $\left\{ B(p_k, \eps(p_k)) \right\}_{k=1}^{N}$, и возьмём число $\eps_0 = \min \left\{ \eps(p_1), \ldots, \eps(p_N) \right\}$.
 
-    Проверим, что $\eps_0$ подходит: пусть $p \in K$ --- любая точка. Тогда $p \in B(p_k,\eps(p_k))$ для некоторого $k$. В таком случае по неравенству треугольника $B(p, \eps_0)\subset B(p_k,2\eps(p_k))$. Тогда $\omega$ тем более точна в $B(p,\eps_0)$.
+    Проверим, что $\eps_0$ подходит: пусть $p \in K$ --- любая точка. Тогда $p \in B(p_k,\eps(p_k))$ для некоторого $k$. В таком случае по неравенству треугольника
+    \begin{align*}
+     B(p, \eps_0)\subset B(p_k,2\eps(p_k)).
+    \end{align*} Тогда форма~$\omega$ уж тем более точна в $B(p,\eps_0)$.
    \end{proof}
 
-   Гомотопия $H$ равномерно непрерывна на компакте $[0,1]\times[0,1]$ (по теореме Кантора с первого курса): для любого $\eps > 0$ существует число $\delta(\eps) > 0$, такое, что для любых двух точек $w_1,w_2 \in [0,1] \times [0,1]$ условие $\left\| w_1 - w_2 \right\| < \delta(\eps)$ влечёт $\left| H(w_1)-H(w_2) \right| < \eps$.
+   По теореме Кантора гомотопия~$H$ равномерно непрерывна на компакте~$[0,1]\times[0,1]$: для любого $\eps > 0$ существует число~$\delta(\eps) > 0$, такое, что для любых двух точек $w_1,w_2 \in [0,1] \times [0,1]$ условие $\left\| w_1 - w_2 \right\| < \delta(\eps)$ влечёт
+   \begin{align*}
+    \left| H(w_1)-H(w_2) \right| < \eps.
+   \end{align*}
 
-   Возьмём натуральное число $N \geqslant 1$ такое, что $1 / N < \delta(\eps_0 / 2)$, где $\eps_0$ взято из предложения \ref{prop:eps_0:theorem:closed_1_form}.
-
-   Для всякого $t \in [0,1]$ обозначим путь $\gamma_t \colon\, s \mapsto H(s,t)$ ($s \in [0,1]$). Покажем равенство следующих интегралов:
+   Мы теперь готовы к локализации. Возьмём достаточно большое натуральное число $ N \geqslant 1 $, которое мы подберём позже. Для каждого $ k = 0, 1, \ldots, N $ рассмотрим путь
+   \begin{align*}
+    \gamma_{\frac{k}{N}}(t) = H\left(\frac{k}{N}, t\right), \quad t \in [0,1].
+   \end{align*} Покажем для всех $ k = 0,1,\ldots,N-1 $ равенство
    \begin{align}
     \label{equation:small_gamma_step:theorem:closed_1_form}
-    \int\limits_{\gamma_{\frac{k}{N}}}  \omega = \int\limits_{\gamma_{\frac{k+1}{N}}}  \omega,
-   \end{align} где $k \in \left\{ 0 \ldots N - 1 \right\}$. Ясно, что из \eqref{equation:small_gamma_step:theorem:closed_1_form} всё последует: будет цепочка из $N$ равенств, в конце установим равенство интегралов по $\gamma_0$ и $\gamma_1$.
-
-   Зафиксируем $k \in \left\{ 0, \ldots, N-1 \right\}$ и обозначим $\eta = \gamma_{\frac{k}{N}}$  и $\rho = \gamma_{\frac{k+1}{N}}$. Разобьём оба пути на маленькие кусочки:
+    \int_{\gamma_{\frac{k}{N}}}  \omega = \int_{\gamma_{\frac{k+1}{N}}}  \omega.
+   \end{align} Ясно, что из \eqref{equation:small_gamma_step:theorem:closed_1_form} всё последует, ведь тогда можно будет построить цепочку равенств
+   \begin{align*}
+    \int_{\gamma_0}\omega = \int_{\gamma_{\frac{1}{N}}} \omega = \ldots = \int_{\gamma_{\frac{N-1}{N}}} \omega  = \int_{\gamma_{1}}\omega.
+   \end{align*} Итак, зафиксируем число~$k$ и обозначим $\eta = \gamma_{\frac{k}{N}}$  и $\rho = \gamma_{\frac{k+1}{N}}$. Продолжим локализацию. Разобьём оба пути на маленькие кусочки:
    \begin{align*}
     \eta = \eta_0 + \eta_1 + \ldots + \eta_{N-1}, & &\rho = \rho_0 + \rho_1 + \ldots + \rho_{N-1},
    \end{align*} где
    \begin{align*}
-    \eta_j = \eta \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  }, & &\rho_j = \rho \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  },
-   \end{align*} для всех $j \in \left\{ 0, \ldots, N - 1 \right\}$. Теперь для каждого $j$ соединим концы и начала путей $\eta_j$, $\rho_j$ отрезками $I_j$, $J_j$ соответственно. Отрезок $I_j$ направим от $\eta_j$ к $\rho_j$, а отрезок $J_j$ направим от $\rho_j$ к $\eta_j$. Получим направленный контур $C_j = \eta_j + I_j + (-\rho_j) + J_j$, изображённый на рисунке \ref{fig:closed_1_form_small_contur}.
+    \eta_j = \eta \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  }, & &\rho_j = \rho \rvert_{\left[\frac{j}{N},\frac{j+1}{N}\right]  }.
+   \end{align*} Кроме того, для каждого $ j = 0,1,\ldots,N $ рассмотрим путь
+   \begin{align*}
+    \xi_j(t) = H \left( \frac{k + t}{N}, \frac{j}{N} \right), \quad t \in [0,1].
+   \end{align*} Наконец, для каждого $ j = 0,\ldots,N-1 $ рассмотрим замкнутый контур
+   \begin{align*}
+    C_j = \xi_j+\eta_j+(-\xi_{j+1})+(-\rho_j),
+   \end{align*} изображённый на рисунке~\ref{fig:closed_1_form_small_contur}.
 
    \begin{figure}[ht]
     \centering
     \incfig{closed_1_form_small_contur}
-    \caption{Малый контур $C_j = \eta_j + I_j + (-\rho_j) + J_j$, в котором форма $\omega$ точна.}
+    \caption{Малый контур $C_j = \xi_j+\eta_j + (-\xi_{j+1}) + (-\rho_j)$.}
     \label{fig:closed_1_form_small_contur}
    \end{figure}
 
-   За точку $P$ обозначим начало пути $\eta_j$. Заметим, что расстояние от любой точки контура $C_j$ до $P$ не превосходит $\eps_0$. Действительно, это следует из того, что
+   Докажем теперь для каждого контура $C_j$ равенство
+   \begin{align}
+    \label{eq:int_on_C_j_eq_0:theorem:closed_1_form}
+    \int_{C_j} \omega = 0. 
+   \end{align} Из равенств~\eqref{eq:int_on_C_j_eq_0:theorem:closed_1_form} последует равенство~\eqref{equation:small_gamma_step:theorem:closed_1_form} для данного $ k $. Действительно, просуммируем \eqref{eq:int_on_C_j_eq_0:theorem:closed_1_form} по всем $ j $ и воспользуемся аддитивностью интеграла:
    \begin{align*}
-    C_j = H(\partial \Pi),
-   \end{align*} где $\partial \Pi$ --- граница прямоугольника
-   \begin{align*}
-    \Pi = \left[ \frac{k}{N}, \frac{k+1}{N} \right] \times \left[ \frac{j}{N}, \frac{j+1}{N} \right].
-   \end{align*} Так как из любой точки $\partial \Pi$ мы можем за один или два шага длиной меньше $1 / N$ дойти до точки $(k / N, j / N)$, а $N$ выбрано так, что $1 / N < \delta(\eps_0 / 2)$, то из любой точки контура мы можем за один или два шага длиной менее $\eps_0 / 2$ дойти до точки $P$. Следовательно, расстояние от неё до $P$ меньше $\eps_0$.
+    \sum_{j=0}^{N-1} \int_{C_j} \omega = \int_{\eta + (-\rho)} \omega = 0 \implies \int_{\eta} \omega = \int_{\rho} \omega.  
+   \end{align*} Здесь важно отметить, что интегралы по всем $ \xi_j $, $ j=1,\ldots,N-1 $ сокращаются, а интегралы по $ \xi_0 $ и $ \xi_N $ и так равны нулю, так как эти пути постоянные.
 
-   Иными словами, $C_j \subset B(P,\eps_0)$. Но так как форма $\omega$ точна в шаре $B(P,\eps_0)$, то
+   Итак, докажем \eqref{eq:int_on_C_j_eq_0:theorem:closed_1_form}. За точку~$P$ обозначим начало пути~$\xi_j$:
    \begin{align*}
-    \int\limits_{C_j} \omega = 0.
-   \end{align*} Просуммируем теперь это равенство по всем $j \in \left\{ 0, \ldots,N-1 \right\}$, сократив интегралы по парам отрезков вида $I_j$, $J_{j+1}$:
+    P = H \left( \frac{k}{N}, \frac{j}{N} \right).
+   \end{align*}Докажем, что число~$ N $ можно подобрать так, чтобы выполнилось $ C_j \subset B(P,\eps_0) $, где $ \eps_0 $ взято из предложения~\ref{prop:eps_0:theorem:closed_1_form}. Действительно, любая точка~$ Q $ из контура~$ C_j $ имеет прообраз --- точку $ (q_1, q_2) $, такую что  $ Q = H(q_1, q_2) $, причём по построению контура~$ C_j $ выполнено
    \begin{align*}
-    \sum_{j=0}^{N-1} \int\limits_{C_j} \omega = \int\limits_{\eta + (- \rho)}  \omega = 0.
-   \end{align*} Следовательно,
+    \frac{k}{N} \leqslant q_1 \leqslant \frac{k+1}{N}, && \frac{j}{N} \leqslant q_2 \leqslant \frac{j+1}{N}.
+   \end{align*} Тогда расстояние между прообразами $ P $ и $ Q $ не превосходит $ \frac{\sqrt 2}{N} $. Если выбрать $ N $ достаточно большим, чтобы было выполнено $ \frac{\sqrt 2}{N} < \delta(\eps_0) $, то по равномерной непрерывности гомотопии~$ H $ получаем
    \begin{align*}
-    \int\limits_{\eta} \omega = \int\limits_{\rho} \omega,  
-   \end{align*} что и требовалось доказать.
-  \item Из пункта \ref{enum2:theorem:closed_1_form} в пункт \ref{enum3:theorem:closed_1_form}. Если весь прямоугольник $\Pi \subset \Omega$, то его границу $\partial \Pi$ можно стянуть в точку в $\Omega$. То есть, $\partial\Pi$ гомотопна постоянному пути $\gamma_{z_0}(t) = z_0$. Значит,
+    \left| P - Q \right| < \eps_0,
+   \end{align*} что доказывает включение $C_j \subset B(P,\eps_0)$.
+
+   Теперь, так как по предложению~\ref{prop:eps_0:theorem:closed_1_form} форма~$\omega$ точна в шаре~$B(P,\eps_0)$, содержащем в себе контур~$ C_j $, то
    \begin{align*}
-    \int\limits_{\partial\Pi} \omega = \int\limits_{\gamma_{z_0}}   \omega = 0.
+    \int_{C_j} \omega = 0.
+   \end{align*} Равенство~\eqref{eq:int_on_C_j_eq_0:theorem:closed_1_form} доказано.
+
+  \item Из пункта~\ref{enum2:theorem:closed_1_form} следует пункт~\ref{enum3:theorem:closed_1_form}. Действительно, так как весь прямоугольник~$\Pi$ лежит в области~$ \Omega $, то его границу $\partial \Pi$ можно стянуть в точку~$z_0\in\Omega$ (процесс стягивания изображён на рисунке~\ref{fig:rectangle_into_point}). Таким образом, граница $\partial\Pi$ гомотопна постоянному пути $\gamma_{z_0}(t) = z_0$. Следовательно,
+   \begin{align*}
+    \int_{\partial\Pi} \omega = \int_{\gamma_{z_0}}   \omega = 0.
    \end{align*} 
-\begin{figure}[ht]
+   \begin{figure}[ht]
     \centering
-	\incfig[0.5]{rectangle_into_point}
-    \caption{Сжатие прямоугольника в точку.}
+    \incfig[0.5]{rectangle_into_point}
+    \caption{Стягивание границы прямоугольника в точку.}
     \label{fig:rectangle_into_point}
-\end{figure}
+   \end{figure}
 
-\item Из пункта \ref{enum3:theorem:closed_1_form} в пункт \ref{enum1:theorem:closed_1_form}. Возьмём любую точку $z_0 \in \Omega$. Нужно найти функцию $F \colon\, \R^{2} \to \CC$ такую, что $dF = \omega$ в $B(z_0,\eps)$ для некоторого $\eps > 0$. Положим
- \begin{align*}
-  F(x,y) = \int\limits_{\gamma(x,y)} \omega,
- \end{align*} где $\gamma(x,y)$ --- это путь из двух отрезков, параллельных осям $x$ и $y$ с началом в точке $z_0 = (x_0, y_0)$ и концом в точке $(x,y)$. См. рис. \eqref{fig:parrallel_path_in_oblast}.
+  \item Из пункта~\ref{enum3:theorem:closed_1_form} следует пункт~\ref{enum1:theorem:closed_1_form}. Рассмотрим любую точку~$ z_0 \in \Omega $. Возьмём радиус~$ r > 0 $ такой, что открытый шар~$ B_0 = B(z_0, r) \subset \Omega $. Нам нужно найти $ C^{1} $-гладкую функцию~$ F \colon B_0 \to \CC $, такую, что $ dF = \omega $ всюду в $ B_0 $. Построим первообразную явно:
+   \begin{align*}
+    F(z) = \int_{\gamma(z_0, z)} \omega, \qquad z \in B_0,
+   \end{align*} где $ \gamma(z_0, z) $ --- путь от точки $ z_0 $ до точки $ z $, состоящий из двух отрезков, параллельных осям $ x $ и $ y $; он изображен на рисунке \ref{fig:parrallel_path_in_oblast}. Заметим, что так как интеграл по границе прямоугольника со сторонами, параллельными осям координат, и с углами в точках $ z_0 $ и $ z $ равен нулю, то не важно, какой из двух возможных путей брать. Кроме того, любой из этих двух путей обязательно лежит в $ B_0 $, так как шар~$ B_0 $ выпуклый. Поэтому, функция~$ F $ корректно задана на $ B_0 $ --- нам осталось проверить, что она действительно является первообразной формы~$ \omega $.
 
-\begin{figure}[h]
-
-\begin{subfigure}{0.5\textwidth}
-	\incfig{parrallel_path_in_oblast}
-    \caption{Параллельный путь в области.}
+   \begin{figure}[ht]
+    \centering
+    \incfig[0.7]{parrallel_path_in_oblast}
+    \caption{Путь $ \gamma(z_0, z) $.}
     \label{fig:parrallel_path_in_oblast}
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
-	\incfig[0.8]{differential_of_parallel_path_f}
-    \caption{Дифференциал параллельного пути.}
+   \end{figure}
+
+   Пусть $ p = p_1 + ip_2 \in B_0 $ --- произвольная точка в шаре. Проверим дифференцируемость функции~$ F $ в точке~$ p $. Пусть $ h = h_1 + ih_2 \to 0 $ --- малое приращение. Тогда
+   \begin{align*}
+    F(p + h) - F(p) &= \int_{\gamma(p, p + h)}   \omega,
+   \end{align*} где $ \gamma(p, p + h) $ --- путь от  $ p $  до $ p + h $, состоящий из двух отрезков, параллельных осям координат. Это верно, так как интегралы формы $ \omega $ по пути $ \gamma(z_0,p+h) $ и по пути $ \gamma(z_0, p) + \gamma(p,p+h) $ совпадают, для понимания см. рисунок~\ref{fig:differential_of_parallel_path_f}.
+
+   \begin{figure}[ht]
+    \centering
+    \incfig[0.7]{differential_of_parallel_path_f}
+    \caption{Разность $ F(p+h) - F(p) $ наглядно.}
     \label{fig:differential_of_parallel_path_f}
-\end{subfigure}
+   \end{figure}
 
-\caption{Доказательство теоремы \eqref{theorem:closed_1_form}, из пункта \ref{enum3:theorem:closed_1_form} в пункт \ref{enum1:theorem:closed_1_form}.}
-\end{figure}
-
-	Далее действуем аналогично доказательству из пункта \ref{enum2:theorem:exact_1_form} в пункт \ref{enum1:theorem:exact_1_form} теоремы \ref{theorem:exact_1_form}. Хотим проверить. что $dF = \omega$. 
-
-	Пользуясь тем, что $\int_{\partial\Pi} \omega = 0$ и смотря на рисунок \eqref{fig:differential_of_parallel_path_f} получаем, что 
-
-
- \begin{align*}
-   \int\limits_{\gamma(z+h)}  \omega - \int\limits_{\gamma(z)}  \omega = \int\limits_{\Gamma} \omega. 
- \end{align*}
-
- Обозначим $h_x = (h_1, 0), \ h_y = (0, h_y)$, тогда
-
- \begin{align*}
-	 \Gamma : [0, 2] \to \Omega, \ \Gamma(s) &= \begin{cases} 
-																						 z + s h_x & 0 \leqslant s < 1 \\ 
-																						 z + h_x + (s - 1) h_y & 1 \leqslant s \leqslant 2
-																					 \end{cases} \\
-																					 &= [\rho(s) = z + s h_x, \ \zeta(s) = z + h_x + s h_y] \\
-																					 &= \begin{cases}
-																							\rho(s) & 0 \leqslant s < 1 \\
-																							\zeta(s - 1) & 1 \leqslant s \leqslant 2
-																					 \end{cases}
- \end{align*}
-
- Тогда
-
-{\allowdisplaybreaks
- \begin{align*}
-	 \int_{\Gamma} \omega &= \int\limits_0^2 P(\Gamma(t))\Gamma_1'(t) + Q(\Gamma(t)) \Gamma_2'(t) \ dt \\
-												&= \int\limits_0^1 P(\rho(t))\underbrace{\rho_1'(t)}_{=h_1} + Q(\rho(t)) \underbrace{\rho_2'(t)}_{=0} \ dt \ + \\ 
-												&\ \ +  \int\limits_1^2 P(\zeta(t-1))\underbrace{\zeta_1'(t-1)}_{=0} + Q(\zeta(t-1)) \underbrace{\zeta_2'(t-1)}_{=h_2} \ dt \\
-											  &= \int\limits_{0}^{1} P(\rho(t)) h_1 \ dt + \int\limits_0^1 Q(\zeta(t)) h_2 \ dt \\
-											  &= \int\limits_0^1 P(z + th_x) h_1 + Q(z + h_x + t h_y) h_2 \ dt \\
-											  &= \int\limits_0^1 P(z) h_1 + Q(z) h_2 + o(h) \ dt \\
-											  &= P(z) h_1 + Q(z) h_2 + o(h)
- \end{align*}
-}
+   Запишем  $ \omega(z) = P(x,y)\,dx + Q(x,y)\,dy $, где  $ P,Q $ --- непрерывные функции двух вещественных переменных ($ z = x+iy $). Тогда
+   \begin{align*}
+    F(p+h)-F(p) &= \int_{0}^{h_1} P(p_1 + x, p_2)\,dx + \int_{0}^{h_2} Q(p_1 + h_1, p_2 + y)\,dy = \\
+    &= \int_{0}^{h_1} \left( P(p) + o(1) \right)dx + \int_{0}^{h_2} \left( Q(p) + o(1) \right)dy = \\
+    &= P(p) \cdot h_1 + Q(p) \cdot h_2 + o(h).
+   \end{align*} Таким образом, функция $ F $ дифференцируема в каждой точке $ p \in B_0 $, и
+   \begin{align*}
+    d_p F = P(p)\,dx + Q(p)\,dy = \omega(p).
+   \end{align*} Значит, форма $ \omega $ точна в шаре~$ B_0 $, то есть $ \omega $ замкнута в области~$ \Omega $.
  \end{itemize}
 \end{proof}
-
 
 \end{document}

@@ -1,10 +1,6 @@
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
 
-\begin{df}
- Область $\Omega \subset \CC$ называется \textit{односвязной}, если любые два пути с одинаковыми началом и концом гомотопны.
-\end{df}
-
 Гомотопия соединяет глобальную и локальную картины.
 
 \begin{crly}
@@ -141,7 +137,9 @@
 Базовый принцип комплексного анализа: если у функции есть особенность, то её нужно локализовывать.
 
 
-\begin{lm}
+\begin{lm}[%
+о первообразной]
+\label{lemma:o_pervoobraznoi}
  Пусть $\Omega$ --- область, непрерывная $1$-форма $f\,dz$ точна в $\Omega$. Тогда существует функция $g \colon\,\Omega\to\CC$ такая, что для любого есть $z_0 \in \Omega$:
  \begin{align*}
   \lim_{z \to z_0} \frac{g(z)-g(z_0)}{z-z_0} = f(z_0)
@@ -153,8 +151,7 @@
  Раз форма $\omega = f\, dz$ точна, то существует $F \colon\, \Omega \to \CC $, $\omega = dF$. Построим с помощью $F$ функцию $g$. Для $z = x+iy \in \Omega$ положим
  \begin{align*}
 	 g(z) &= F(x,y) \implies g(z)dz = F(x, y)dz \\
-	 \implies g'(z) &= (g(z)) d(x + i \cdot y) = g'(z)dx + i \cdot g'(z)dy = F'_x(x,y)dx + F'_y(x,y)dy \implies \\
-	 \implies F'_x(x, y) &= g'(z), F'_y(x, y) = g'(z) \cdot i
+	 F'_x(x, y) &= g'(z), F'_y(x, y) = g'(z) \cdot i
  \end{align*} Проверим, что такой выбор нам подходит: по определению дифференциала
  \begin{align}
 	 (*) \ F(x,y) = F(x_0, y_0) + (x-x_0) F'_x(x_0, y_0) + (y-y_0)F'_y(x_0,y_0) + o(\sqrt{\left| x-x_0 \right|^2 + \left| y-y_0 \right|^2})

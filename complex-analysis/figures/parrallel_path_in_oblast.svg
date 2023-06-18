@@ -7,7 +7,7 @@
    viewBox="0 0 240 120"
    version="1.1"
    id="svg8"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="parrallel_path_in_oblast.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="66.932633"
-     inkscape:cx="432.01647"
-     inkscape:cy="155.82832"
+     inkscape:zoom="1.5615178"
+     inkscape:cx="377.83752"
+     inkscape:cy="243.35298"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,8 +35,8 @@
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1417"
+     inkscape:window-width="1440"
+     inkscape:window-height="840"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -65,80 +65,98 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <path
+       style="fill:#000000;fill-opacity:0.1;stroke:#000000;stroke-width:0.246937px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 29.627338,244.78982 C 12.478373,209.21483 137.07776,173.92237 163.58782,187.68299 c 12.77317,6.63019 11.84239,26.45917 18.1737,37.85189 5.80914,10.4531 27.28575,21.51419 22.06916,33.8468 -5.12322,12.11182 -27.14967,14.65602 -39.31163,22.38658 -41.96156,26.67216 -131.902961,-1.03097 -134.891712,-36.97844 z"
+       id="path856"
+       sodipodi:nodetypes="cssssc"
+       transform="translate(0,-177)" />
+    <circle
+       style="fill:#0000ff;fill-opacity:0.101817;fill-rule:evenodd;stroke:none;stroke-width:0.38079;paint-order:stroke fill markers"
+       id="path3556"
+       cx="106.57463"
+       cy="243.73999"
+       r="45.941841"
+       transform="translate(0,-177)" />
+  </g>
+  <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-177)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 8.6421377,242.96634 C -9.7322831,204.84917 123.77088,167.03473 152.17534,181.77868 c 13.68594,7.10398 12.68864,28.34993 19.47239,40.55677 6.22426,11.20007 29.23558,23.05159 23.64621,36.26548 -5.48932,12.97733 -29.08977,15.70334 -42.12083,23.98632 C 108.213,311.16539 11.844464,281.48261 8.6421377,242.96634 Z"
-       id="path856"
-       sodipodi:nodetypes="cssssc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 91.088073,241.84145 V 217.5795 h 20.759097"
+       style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 105.29772,247.09496 v -31.3349 h 26.81093"
        id="path858" />
     <circle
        id="path5931"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="91.088074"
-       cy="241.84146"
-       r="0.39687499" />
+       style="fill:#000000;stroke:none;stroke-width:0.549527"
+       cx="105.30264"
+       cy="247.2749"
+       r="0.82429242" />
+    <circle
+       id="path5931-3"
+       style="fill:#000000;stroke:none;stroke-width:0.549527"
+       cx="132.40331"
+       cy="215.69617"
+       r="0.82429242" />
     <text
        xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="90.527962"
-       y="249.61006"
+       style="font-size:5.01184px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.341715"
+       x="96.636757"
+       y="251.83653"
        id="text6829"><tspan
          sodipodi:role="line"
          id="tspan6827"
-         style="stroke-width:0.264583"
-         x="90.527962"
-         y="249.61006">$z_0$</tspan></text>
+         style="stroke-width:0.341715"
+         x="96.636757"
+         y="251.83653">$z_0$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:0.996226;fill-rule:evenodd;stroke:#000000;stroke-width:0.408001;paint-order:stroke fill markers"
-       x="133.45256"
-       y="212.23877"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.62175px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:0.996226;fill-rule:evenodd;stroke:#000000;stroke-width:0.38079;paint-order:stroke fill markers"
+       x="146.11357"
+       y="216.11162"
        id="text530"><tspan
          sodipodi:role="line"
          id="tspan528"
-         style="stroke-width:0.408"
-         x="133.45256"
-         y="212.23877" /></text>
+         style="stroke-width:0.380789"
+         x="146.11357"
+         y="216.11162" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:0.996226;fill-rule:evenodd;stroke:#000000;stroke-width:0.408001;paint-order:stroke fill markers"
-       x="104.71089"
-       y="214.87166"
-       id="text534"><tspan
-         sodipodi:role="line"
-         id="tspan532"
-         style="stroke-width:0.408"
-         x="104.71089"
-         y="214.87166">$(x,y)$</tspan></text>
-    <circle
-       style="fill:#ffffff;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.408001;paint-order:stroke fill markers"
-       id="path3556"
-       cx="91.088074"
-       cy="241.84146"
-       r="49.224831" />
-    <text
-       xml:space="preserve"
-       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="141.39825"
-       y="237.24858"
+       style="font-size:3.62175px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.246937"
+       x="87.912666"
+       y="276.49509"
        id="text3738"><tspan
          sodipodi:role="line"
          id="tspan3736"
+         style="stroke-width:0.246937"
+         x="87.912666"
+         y="276.49509">\color{blue}$B(z_0,r)$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="131.96666"
+       y="222.35196"
+       id="text7280"><tspan
+         sodipodi:role="line"
+         id="tspan7278"
          style="stroke-width:0.264583"
-         x="141.39825"
-         y="237.24858">$B(z_0,\varepsilon)$</tspan></text>
-    <circle
-       id="circle3812"
-       style="fill:#000000;stroke:none;stroke-width:0.264583"
-       cx="111.791"
-       cy="217.5607"
-       r="0.39687499" />
+         x="131.96666"
+         y="222.35196">$z$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="177.20767"
+       y="256.96896"
+       id="text10651"><tspan
+         sodipodi:role="line"
+         id="tspan10649"
+         style="stroke-width:0.264583"
+         x="177.20767"
+         y="256.96896">$\Omega$</tspan></text>
   </g>
 </svg>
