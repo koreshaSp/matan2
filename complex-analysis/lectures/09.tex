@@ -60,7 +60,7 @@
  \begin{proof}[\normalfont\textsc{Доказательство}]
   Рассмотрим функции
   \begin{align*}
-   f_n = \left(f(z + \frac{1}{n}) - f(z) \right)n, \qquad n \in \N. 
+   f_n = \left(f\left(z + \frac{1}{n}\right) - f(z) \right)n, \qquad n \in \N. 
 \end{align*} заданы при больших $ n $ в шаре $ B(z_0, \eps) $ таком, что $ B(z_0, 2\eps) \subset \Omega $. Кроме того, $ f_n $ равномерно на всём шаре $ \overline {B(z_0,\eps)} $ сходится к $ f' $. Равномерность оценим
   \begin{align*}
    f_n(z) = \frac{f\left(z + \frac{1}{n}\right) - f(z)}{z + \frac{1}{n} - z} = g_z \left( \frac{1}{n} \right),
@@ -105,6 +105,7 @@
  \end{df}
 
  \begin{lm}
+	 \label{lemma:metric_compact_is_seperable_space}
  	Пусть $(X, \rho)$ --- метрический компакт, тогда $X$ --- сепарабельное.
  \end{lm}
 
@@ -123,7 +124,7 @@
   \end{align*} где $ f $ непрерывна на $ X $.
  \end{thm}
  \begin{proof}[\normalfont\textsc{Доказательство}]
-  Шаг 1. Считаем $ A = \N $ . Так как $ X $  сепарабельный, то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
+	 Шаг 1. Считаем $ A = \N $ . Так как $ X $  сепарабельный (по лемме \ref{lemma:metric_compact_is_seperable_space}), то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
 
   Т.к. $\{ f_\alpha \}$ равномерно ограничены, значит можно выделить сходящуюся подпоследовательность $f_{n_1}, f_{n_2}, \ldots $ сходящуюся в точке $x_1$.
   Но эта подпоследовательность тоже будет равномерно ограничена, поэтому из нее можно выделить подпоследовательность сходящуюся в точке $x_2$.
