@@ -20,7 +20,7 @@
   &= \lim_{r \to 1} r^{-1} \sup_{\left| z \right| = r} \underbrace{\left| f(z) \right|}_{\leq 1} \leqslant \lim_{r \to 1} r^{-1} = 1.
  \end{align*} Значит, $ \left| g \right| \leqslant 1 $ в $ \mathbb D $, то есть $ \left| f \right| \leqslant \left| z \right| $ в $ \mathbb D $.
 
- Пусть $ \left|f(z_0) \right| = \left| z_0 \right| $ в точке $ z_0 \in \mathbb D $. Тогда $ g(z_0) = 1 $, и по принципу максимума функция $ g $ --- константа в $ \mathbb D $, то есть $ f = \alpha \cdot z $, где $ \alpha = g(z_0) $, $ \left| \alpha \right|=1 $.
+ Пусть $ \left|f(z_0) \right| = \left| z_0 \right| $ в точке $ z_0 \in \mathbb D $. Тогда $ |g(z_0)| = 1 $, и по принципу максимума функция $ g $ --- константа в $ \mathbb D $, то есть $ f = \alpha \cdot z $, где $ \alpha = g(z_0) $, $ \left| \alpha \right|=1 $.
 \end{proof}
 
 \begin{df}
@@ -55,7 +55,7 @@
 
  Рассмотрим функцию $ g_n = \frac{f}{\B_n} $, эта функция также аналитична в $ \mathbb D $ по построению (т.к. кратность нуля у $f$ во всех точках не меньше чем кратность нуля у $\mathcal B_n$, значит по лемме о кратности нуля получаем что отношение это аналитическая функция).
  \begin{align*}
-	 \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} =  \frac{ \lim_{r \to 1}\left| f(z) \right|}{1 + o(1)} \leqslant 1.
+ \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} \leqslant \lim_{r \to 1} \sup_{|z| = 1} \frac{1}{1 + o(1)} = 1.
  \end{align*} Значит,
  \begin{align*}
   \left| f \right| = \left| \mathcal B_n \cdot g_n \right| \leqslant \left| \B_n \right|
@@ -97,7 +97,7 @@
  \end{align*} где $ a \in \CC $ и $ 0 \leqslant r < R \leqslant +\infty $. Тогда
  \begin{align}
   \label{equation:loran_series}
-  f(w) = \sum_{z \in \Z} c_k(w - a)^{k}
+  f(w) = \sum_{k \in \Z} c_k(w - a)^{k}
 \end{align} где ряды $ \sum_{k \geqslant 0} $ и $ \sum_{k < 0} $ сходятся равномерно на компактах в $ \Omega_{R,r} $. См. рисунок \eqref{fig:laurent-series-compacts}. Более того, коэффициенты $ c_k $ определены единственным образом:
  \begin{align*}
   c_k = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho}   \frac{f(z)}{(z-a)^{k+1}}\,dz,

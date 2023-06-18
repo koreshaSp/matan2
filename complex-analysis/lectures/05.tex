@@ -78,7 +78,7 @@
  f = e^{\log f} = e^{\Real \log f} \cdot e^{i \Imaginary (\log f)} = \left| f \right| e^{i \arg f}.
  \end{align*} Если $ A_1, A_2 $ --- непрерывные ветви аргумента, то
  \begin{align*}
-  e^{i(A_1 - A_2)} = \frac{\left| f \right|e^{i(A_1)}}{\left| f \right|e^{iA_2}} = \frac{\left| f \right|}{\left| f \right|} = 1.
+  e^{i(A_1 - A_2)} = \frac{\left| f \right|e^{iA_1}}{\left| f \right|e^{iA_2}} = \frac{f}{f} = 1.
 \end{align*} Значит, $ A_1 - A_2 = 2\pi k(z) $ \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z $. Так как $ k $ непрерывна, то $ k \equiv k_0 $, $ k_0 \in \Z $.
 \end{proof}
 \begin{remrk}
@@ -148,7 +148,7 @@
   \end{pmatrix} = u^{'2}_x + u^{'2}_y.
  \end{align*} С другой стороны,
  \begin{align*}
-  \left| f'(z_0) \right|^{2} = \left| \left. \frac{\partial}{\partial x}f(x + iy_0) \right|_{\substack{x = x_0}}  \right|^{2} = \left| u'_x(x_0 + iy_0) + iv'_x(x_0 + iy_0) \right| = \\
+  \left| f'(z_0) \right|^{2} = \left| \left. \frac{\partial}{\partial x}f(x + iy_0) \right|_{\substack{x = x_0}}  \right|^{2} = \left| u'_x(x_0 + iy_0) + iv'_x(x_0 + iy_0) \right|^2 = \\
    = u^{'2}_x + v^{'2}_x = u^{'2}_x + u^{'2}_y,
  \end{align*} снова по условию Коши-Римана.
 \end{proof}
