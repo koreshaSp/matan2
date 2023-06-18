@@ -1,167 +1,179 @@
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
 
-Гомотопия соединяет глобальную и локальную картины.
+Заметим, что при выводе пункта~\ref{enum1:theorem:closed_1_form} из пункта~\ref{enum3:theorem:closed_1_form} радиус~$ r $ шара~$ B_0 $ с центром в точке~$ p $ мы выбирали абсолютно произвольный, лишь бы только шар помещался в область~$ \Omega $. Более того, мы могли бы выбирать не шар с центром в точке~$ p $, а открытый прямоугольник, или любую другую <<достаточно хорошую>> фигуру. Таким образом, с помощью понятия гомотопии мы из локальной точности формы получили почти-что глобальную точность. Более формально, мы получили следующий результат.
 
 \begin{crly}
- Пусть $\Omega$ --- односвязная область. Тогда любая замкнутая $1$-форма в $\Omega$ точна в $\Omega$.
+ \label{corollary:closed_form_is_exact_in_simply_connected}
+ $ 1 $-форма~$ \omega $, замкнутая в односвязной области~$ \Omega $, является точной в $ \Omega $.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Следует из теоремы \ref{theorem:closed_1_form} и теоремы \ref{theorem:exact_1_form}.
+ По теореме~\ref{theorem:exact_1_form} о точных формах нам достаточно доказать равенство~\eqref{eq:exact_1_form:integral_equals} для любых кусочно-гладких путей~$ \gamma_0, \gamma_1 $ в $ \Omega $ с совпадающими началом и концом. Так как область~$ \Omega $ односвязна, то любые такие пути гомотопны в $ \Omega $. Но тогда по теореме~\ref{theorem:closed_1_form} о замкнутых формах равенство~\eqref{eq:exact_1_form:integral_equals} действительно выполняется, что и требовалось доказать.
 \end{proof}
 
-\begin{thm}
- Пусть $\omega = P(x,y)\,dx + Q(x,y)\,dy$ --- $1$-форма с гладкими коэффициентами ($P, Q \in C^{1}(\Omega, \CC)$). Тогда $\omega$ замкнута тогда и только тогда, когда $d \omega = 0$.
+Если дифференциальная форма~$ \omega $ не только непрерывная, но ещё и гладкая, то для неё есть ещё один интересный критерий замкнутости.
+
+\begin{thm}[замкнутость гладких форм]
+ \label{theorem:smooth_form_closed}
+ $ C^{1} $-гладкая $ 1 $-форма~$ \omega $ замкнута в области~$ \Omega $ тогда и только тогда, когда выполнено $ d \omega = 0 $ в $ \Omega $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Пусть $\omega$ замкнута. Тогда для любой точки $z_0 \in \Omega$  существует $\eps > 0$ такое, что $\omega = dF$ в $B(z_0, \eps) \subset \Omega$. Найдём второй дифференциал формы:
+ Пусть гладкая форма~$ \omega $ замкнута в $ \Omega $, $ z_0 \in \Omega $ --- произвольная точка, а $ r > 0 $ --- такое число, что $ \omega = d F $ в $ B(z_0,r) \subset \Omega $, где $ F \colon\,\Omega\to\CC $ --- гладкая функция. Тогда в $ B(z_0,r) $ выполнено
  \begin{align*}
-  d \omega &= d(P\,dx + Q\,dy) = (P'_x \, dx + P'_y\,dy) \land dx + (Q'_x \, dx + Q'_y \, dy) \land dy = \\
-  &= P'_y \, dy \land dx + Q'_x \, dx \land dy = (Q'_x - P'_y) \, dx \land dy.
- \end{align*} Но $P\,dx + Q \, dy = dF = F'_x \, dx + F'_y \, dy$. Продолжим:
- \begin{align*}
-  d \omega = (-F''_{xy} + F''_{yx})\,dx \land dy = 0
- .\end{align*} Равенство $F''_{xy} = F''_{yx}$ верно, так как $P$ и $Q$ гладкие. Это верно в любом шаре, значит это верно всюду.
+  d\omega&=d(dF) = d \left( F_x'\,dx + F_y'\,dy \right) = \\
+  &= \left( F_{x x}''\,dx + F_{x y}''\,dy \right)\land dx + \left( F_{y x}''\,dx + F_{y y}''\,dy \right)\land dy = \\
+  &= F_{x x}''\,dx \land dx + F_{xy}''\,dy \land dx + F_{yx}''\,dx\land dy + F_{y y}''\,dy \land dy = \\
+  &= -F_{xy}''\,dx\land dy + F_{yx}''\,dx \land dy = (F_{yx}'' - F_{xy}'')\,dx\land dy.
+ \end{align*} Но $ F_x' = P $ и $ F_y' = Q $ --- это $ C^{1} $-гладкие функции, поэтому верно $ F_{xy}'' = F_{yx}'' $. Получаем $ d\omega=0 $ в шаре $ B(z_0,r) $ (а значит и всюду).
 
-
- Теперь пусть $d \omega = 0$ в $\Omega$. Проверим \ref{enum3:theorem:closed_1_form} пункт теоремы \ref{theorem:exact_1_form}: если $\Pi \subset \Omega$, то $\int_{\partial\Pi} \omega = 0 $. Действительно, по формуле Стокса \eqref{equation:formula_stox} (или формуле Грина \eqref{equation:green_formula})
+ Теперь пусть выполнено $d \omega = 0$ в области~$\Omega$. Проверим замкнутость формы с помощью <<теста на прямоугольнике>> --- условия~\ref{enum3:theorem:closed_1_form} из теоремы~\ref{theorem:closed_1_form}. Пусть $ \Pi \subset \Omega $ --- замкнутый прямоугольник со сторонами, параллельными осям координат, а $ \partial\Omega $ --- его граница. Тогда по формуле Стокса:
  \begin{align*}
-  \int\limits_{\partial\Pi} \omega = \int\limits_{\Pi} d\omega = 0.  
- \end{align*} Можно и руками проверить (В прямоугольнике всё элементарно сведётся к формуле Ньютона-Лейбница).
+  \int_{\partial\Pi} \omega = \int_{\Pi} d\omega = \int_{\Pi} 0 = 0. 
+ \end{align*} Так как мы не доказывали в полной мере формулу Стокса, здесь лучше воспользоваться формулой Грина, которая как минимум доказана для стандартных областей.
 \end{proof}
+
+\subsection{Примеры дифференциальных форм.}
 
 \begin{exmpl}
  \label{example:form_a_plus_b_times_z_dz}
- Рассмотрим форму $\omega = (a + bz)\,dz$, $\Omega = \CC$. Эта форма точна: так как $\CC$ односвязна, можно проверить лишь $d\omega = 0$.
+ Для коэффициентов $ a,b\in\CC $ рассмотрим дифференциальную форму
  \begin{align*}
-  d (a+bz)\,dz = (b\,dx + ib\,dy) \land (dx + i\,dy) = b (dx + i\,dy) \land (dx + i\,dy) = 0.
- \end{align*} 
+  \omega = (a + bz)\,dz.
+ \end{align*} Оказывается, форма~$ \omega $ точна в области~$ \CC $. Так как форма гладкая, а область $ \CC $ односвязная, то по следствию~\ref{corollary:closed_form_is_exact_in_simply_connected} и теореме~\ref{theorem:smooth_form_closed} достаточно показать $ d\omega = 0 $:
+ \begin{align*}
+  d\omega &= d(a + bz)\land dz = b\,dz \land dz = 0,
+ \end{align*} где
+ \begin{align*}
+  dz\land dz = (dx + i\,dy) \land (dx + i\,dy) = i\,dy\land dx + i\,dx\land dy = 0.
+ \end{align*}
 \end{exmpl}
 
-\begin{remrk}
-	Односвязность выпуклых областей проверяется гомотопией $H(s,t) = (1-t)\gamma_0(s) + t \gamma_1(s)$ пути $\gamma_0$ в $\gamma_1$.
-\end{remrk}
+Следующая дифференциальная форма~\eqref{eq:form:dz/z-a} неожиданно окажется крайне полезной в дальнейшем построении теории.
 
 \begin{exmpl}
- \label{example:form_2}
- Пусть $a \in \CC$. Рассмотрим форму $\omega = \frac{1}{z - a}\,dz$ в области $\Omega = \CC \setminus \left\{ a \right\}$. Проверим, что $\omega$ замкнута в $\Omega$:
- \begin{align*}
-  d \omega &= d \left( \frac{1}{z-a} \right) \land dz = \left( -\frac{1}{(z-a)^{2}}\,dx - \frac{i}{(z-a)^{2}}\,dy \right) \land dz = \\
-  &= - \frac{1}{(z-a)^{2}}\,dz \land dz = 0.
- \end{align*} 
-\end{exmpl}
-
-\begin{exmpl}
-	\label{example:form_dz_div_z_minus_a}
- Пусть $\omega$, $\Omega$ --- как в предыдущем примере \ref{example:form_2}, а $\gamma$ --- это окружность в $\CC$, ориентированная против часовой стрелки. Тогда
- \begin{align*}
-  \int\limits_{\gamma} \omega = \int\limits_{\gamma} \frac{dz}{z-a} = \begin{cases}
-   0, \text{ если $a$ не лежит внутри $\gamma$;}  \\
-   2\pi i, \text{ иначе. }
-  \end{cases} 
- \end{align*} Здесь предполагается, что $a \notin \gamma$.
-\end{exmpl}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Если $a$ не лежит внутри $\gamma$, тогда $\gamma$ гомотопна точке в $\Omega$. Значит, $\int_{\gamma} \omega = 0 $  в силу замкнутости.
-
-Пусть теперь $a$  лежит внутри $\gamma$. Изменим контур интегрирования \eqref{fig:gamma_with_tilde} на $\tilde\gamma$:
-
-\begin{figure}[ht]
-    \centering
-	\incfig[0.5]{gamma_with_tilde}
-    \caption{Точка $a$ внутри $\gamma$. }
-    \label{fig:gamma_with_tilde}
-\end{figure}
-
-\begin{align*}
- \int\limits_{\tilde\gamma}  \omega = 0,
-\end{align*} так как $\tilde\gamma$ можно стянуть в точку.
-
-С другой стороны,
- \begin{align*}
- 0 = \int\limits_{\tilde\gamma}  \omega = \int\limits_{\gamma}  \omega + \int\limits_{I}  \omega + \int\limits_{-I}   \omega + \int\limits_{\gamma_r}  \omega = \\
- \implies \int\limits_{\gamma} \omega = -\int\limits_{\gamma_r}   \omega.
-\end{align*}
-
-Теперь посчитаем по $\gamma_r$:
- \begin{align*}
- \int\limits_{\gamma_r} \frac{dz}{z - a}  = \int\limits_{0}^{2\pi}   \frac{d(re^{it} + a)}{r e^{it} + a - a} = \int\limits_{0}^{2\pi}  \frac{r i e^{it}\,dt}{r e^{it}} = i \int\limits_{0}^{2\pi} dt = 2\pi i.
-\end{align*} 
-
-\end{proof}
-
-Мгновенный вывод: форма $\frac{dz}{z - a}$ не точна в $\CC \setminus \left\{ a \right\}$.
-
-\begin{lm}[%
-об устранении особенности]
-\label{lemma:ob_ustranenii_osobennosti}
- Пусть $\Omega$ --- область, $\omega$ --- непрерывная $1$-форма в $\Omega$. Пусть $\omega$ замкнута  в $\Omega \setminus \left\{ a \right\}$. Тогда $\omega$ замкнута в $\Omega$.
-\end{lm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Докажем, что для любого прямоугольника $\Pi \subset \Omega$
- \begin{align*}
-  \int\limits_{\partial\Pi} \omega = 0. 
- \end{align*} Пусть $\Pi$ --- прямоугольника в $\Omega$.
-
- Если $a \notin \Pi$, то всё доказано, потому что $\Pi \subset \Omega \setminus \left\{ a \right\}$.
-
- Если $a \in \Pi$.
-
-\begin{figure}[ht]
-    \centering
-	\incfig[0.9]{special_point_in_rectangle}
-    \caption{Устранение особенности в прямоугольнике.}
-    \label{fig:special_point_in_rectangle}
-\end{figure}
-
-\begin{align*}
- \int\limits_{\gamma_+}  \omega + \int\limits_{\gamma_-}  \omega &= \int\limits_{\partial\Pi} + \int\limits_{I_1}   + \int\limits_{-I_1}   + \int\limits_{I_2}  + \int\limits_{-I_2}   + \int\limits_{C_+}   + \int\limits_{C_-}   = \\
- &= \int\limits_{\partial\Pi} \omega + \underbrace{\varointctrclockwise\limits_{\left\{ \left| z-a \right|=\eps \right\}} \omega}_{A_{\eps}} 
-\end{align*} 
-
-\begin{align*}
- \omega = P\,dx + Q\,dy
-\end{align*} 
-
-\begin{align*}
- \left| A_{\eps} \right| \leqslant 2\pi\eps \cdot \max_{\left\{ \left| z-a \right|=\eps \right\}} \sqrt{\left| P \right|^{2} + \left| Q \right|^{2}} \leqslant 2\pi\eps B,
-\end{align*} где $B$ не зависит от $\eps$ (непрерывная функция на компакте ограничена). Переходя к пределу, получаем 
-\begin{align*}
- \int\limits_{\partial\Pi}   \omega = 0.
-\end{align*} 
-
-В случае если точка $a$ лежит на границе прямоугольника, то надо по аналогии делать путь который ее огибает.
- 
-\end{proof}
-
-Базовый принцип комплексного анализа: если у функции есть особенность, то её нужно локализовывать.
-
-
-\begin{lm}[%
-о первообразной]
-\label{lemma:o_pervoobraznoi}
- Пусть $\Omega$ --- область, непрерывная $1$-форма $f\,dz$ точна в $\Omega$. Тогда существует функция $g \colon\,\Omega\to\CC$ такая, что для любого есть $z_0 \in \Omega$:
- \begin{align*}
-  \lim_{z \to z_0} \frac{g(z)-g(z_0)}{z-z_0} = f(z_0)
- .\end{align*} 
-
- Иначе, говоря, $g'(z_0) = f(z_0)$ (в смысле комплексной производной).
-\end{lm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Раз форма $\omega = f\, dz$ точна, то существует $F \colon\, \Omega \to \CC $, $\omega = dF$. Построим с помощью $F$ функцию $g$. Для $z = x+iy \in \Omega$ положим
- \begin{align*}
-	 g(z) &= F(x,y) \implies g(z)dz = F(x, y)dz \\
-	 F'_x(x, y) &= g'(z), F'_y(x, y) = g'(z) \cdot i
- \end{align*} Проверим, что такой выбор нам подходит: по определению дифференциала
+ \label{example:form:dz/z-a}
+ Пусть дана точка $a \in \CC$. Рассмотрим дифференциальную форму
  \begin{align}
-	 (*) \ F(x,y) = F(x_0, y_0) + (x-x_0) F'_x(x_0, y_0) + (y-y_0)F'_y(x_0,y_0) + o(\sqrt{\left| x-x_0 \right|^2 + \left| y-y_0 \right|^2})
- \end{align}
-
- Заметим, что (*) равносильна
+  \label{eq:form:dz/z-a}
+  \omega = \frac{dz}{z - a}
+ \end{align} в области $\Omega = \CC \setminus \left\{ a \right\}$. Проверим, что $\omega$ замкнута в $\Omega$. Снова по теореме~\ref{theorem:smooth_form_closed} достаточно показать $ d\omega=0 $:
  \begin{align*}
-	 g(z) - g(z_0) &= (x-x_0)g'(z_0) + (y-y_0)g'(z_0) \cdot i + o(\left| z-z_0 \right|) = \\
-				   & = ((x-x_0) + i(y-y_0))g'(z_0) + o(\left| z-z_0 \right|) = (z-z_0)g'(z_0) + o(\left| z-z_0 \right|).
+  d \omega &= d \left( \frac{1}{z-a} \right) \land dz = \left( -\frac{1}{(z-a)^{2}}\,dx - \frac{i}{(z-a)^{2}}\,dy \right) \land dz = - \frac{dz\land dz}{(z-a)^{2}} = 0.
+ \end{align*} Однако, так как область~$ \CC \setminus \left\{ a \right\} $ не односвязная, нельзя сказать, что форма~$ \omega $ точна в $ \CC \setminus \left\{ a \right\} $ (и мы уже сразу увидим, что она действительно не точна). Тем не менее, для формы~\eqref{eq:form:dz/z-a} есть крайне полезная формула интегрирования.
+\end{exmpl}
+\begin{lm}
+ \label{lemma:form:dz/z-a}
+ Пусть $ C $ --- окружность в $ \CC $, ориентированная против часовой стрелки, и не содержащая точку~$ a \in \CC $. Тогда
+ \begin{align}
+  \label{eq:int_form:dz/z-a}
+  \int_{C} \frac{dz}{z-a} = \begin{cases}
+   2\pi i, &\text{если $ C $ содержит точку $ a $ внутри;}\\
+   0,&\text{иначе.}
+  \end{cases} 
+ \end{align}
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Если точка~$a$ не лежит внутри $C$, то $ \int_{C} \frac{dz}{z-a} = 0 $, так как окружность~$ C $ стягиваема в точку в области~$ \CC\setminus \left\{ a \right\} $.
+
+ Пусть теперь точка~$a$  лежит внутри $C$. Как часто бывает в комплексном анализе, доказательство будет <<на картинке>>: мы изменим некоторым хирургическим образом контур интегрирования так, чтобы интегралы на отдельных часах контура хорошо посчитались. В данном случае мы рассмотрим окружность~$ C_r $, направленную против часовой стрелки, с центром в точке~$ a $ и радиусом~$ r > 0 $, достаточно маленьким для того, чтобы окружность~$ C_r $ целиком помещалась во внутренность $ C $. Также соединим окружность $ C $ с окружностью $ C_r $ направленным отрезком $ I $, и рассмотрим контур $ \gamma = C + I + (-C_r) + (-I)$ (рисунок \ref{fig:gamma_with_tilde}).
+
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.8]{gamma_with_tilde}
+  \caption{Контур интегрирования $ \gamma $.}
+  \label{fig:gamma_with_tilde}
+ \end{figure}
+
+ Несмотря на то, что на рисунке~\ref{fig:gamma_with_tilde} отрезки $ I $ и $ -I $ нарисованы как разные отрезки (на некотором расстоянии друг от друга), они на самом деле являются одним и тем же отрезком, но направленным в разные стороны.
+
+ Так как контур $ \gamma $ можно стянуть в точку в области $ \CC\setminus \left\{ a \right\} $, то
+ \begin{align*}
+  \int_{\gamma}  \omega = 0.
+ \end{align*}
+
+ С другой стороны, по аддитивности интеграла
+ \begin{align*}
+  \int_{\gamma} \omega = \int_{C} \omega + \int_{I} \omega + \int_{-C_r} \omega + \int_{-I} \omega = \int_{C} \omega - \int_{C_r} \omega.   
+ \end{align*} Поэтому,
+ \begin{align*}
+  \int_{C} \omega &= \int_{C_r} \omega = \int_{C_r} \frac{dz}{z-a} = \begin{bmatrix}
+   z = re^{it}+a, & dz = ire^{it}\,dt
+  \end{bmatrix}=\\
+  &= \int_{0}^{2\pi} \frac{ir e^{it}\,dt}{r e^{it} + a - a} = 2\pi i.
+ \end{align*}
+\end{proof}
+
+Из формулы~\eqref{eq:int_form:dz/z-a} мгновенно следует, что форма~$ \frac{dz}{z-a} $ не точна в $ \CC \setminus \left\{ a \right\} $.
+
+\subsection{Лемма об устранении особенности, лемма о первообразной.}
+
+В последнем разделе параграфа докажем две технические леммы.
+
+\begin{lm}[%
+ об устранении особенности]
+ \label{lemma:ob_ustranenii_osobennosti}
+ Пусть $\omega$ --- непрерывная $1$-форма в области $\Omega$, замкнутая в $ \Omega \setminus \left\{ a \right\} $. Тогда $\omega$ также замкнута в $\Omega$.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Снова воспользуемся <<тестом на прямоугольнике>> --- условием~\ref{enum3:theorem:closed_1_form} теоремы~\ref{theorem:closed_1_form}. Возьмём любой замкнутый прямоугольник $\Pi \subset \Omega$, и проверим
+ \begin{align*}
+  \int_{\partial\Pi} \omega=0.
+ \end{align*} Если $a \notin \Pi$, то доказывать нечего. Если же $ a $ лежит строго внутри $ \Pi $, то снова изменим контур интегрирования. Нарисуем вокруг точки~$ a $ окружность~$ C_\eps $ маленького радиуса~$ \eps > 0 $, разобьём её на верхнюю и нижнюю полуокружности ($ C_\eps^{+} $ и $ C_\eps^{-} $ соответственно), соединим её горизонтальными отрезками $ I_1 $ и $ I_2 $ с границей прямоугольника $ \partial\Pi $, и получим в сумме контур $ \gamma $ (рисунок \ref{fig:special_point_in_rectangle}).
+
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.8]{special_point_in_rectangle}
+  \caption{Устранение особенности в прямоугольнике.}
+  \label{fig:special_point_in_rectangle}
+ \end{figure}
+
+ Тогда
+ \begin{align*}
+  \int_{\gamma} \omega &= \int_{\partial\Pi} \omega + \int_{I_1} \omega + \int_{-I_1} \omega + \int_{I_2} \omega + \int_{-I_2} \omega + \int_{-C_\eps} \omega = \\
+  &= \int_{\partial\Pi} \omega - \int_{C_\eps}  \omega.
+ \end{align*} Но $ \gamma = \gamma^{+} + \gamma^{-} $, где $ \gamma^{+} $ --- верхняя часть кривой, а $ \gamma^{-} $ --- нижняя. Обе части можно стянуть в точку в области $ \Omega $, поэтому
+ \begin{align*}
+  \int_{\gamma} \omega = \int_{\gamma^{+}} \omega + \int_{\gamma^{-}}  \omega = 0,
+ \end{align*} и, следовательно,
+ \begin{align*}
+  \int_{\partial\Pi} \omega = \int_{C_\eps}   \omega.
+ \end{align*}
+
+ Запишем $ \omega = P\,dx + Q\,dy $. Тогда по оценке модуля интеграла \eqref{eq:bound_on_absolute_value_of_int}:
+ \begin{align*}
+  \left| \int_{C_\eps} \omega  \right| \leqslant 2\pi\eps \cdot \max_{z \in C_\eps} \sqrt{ \left| P(z) \right|^{2} + \left| Q(z) \right|^{2} } \leqslant 2\pi B \eps,
+ \end{align*} где $ B $ --- константа, не зависящая от $ \eps $ (непрерывная функция ограничена на компакте~$ \Pi $). Так как это верно для всякого $ \eps > 0 $, то
+ \begin{align*}
+  \int_{\partial\Pi}   \omega = 0.
  \end{align*} 
+
+ В случае если точка $a$ лежит на границе прямоугольника (или является углом прямоугольника), то нужно по аналогии строить путь который ее огибает, и устремлять к нулю изменение.
+
+\end{proof}
+
+\begin{lm}[%
+ о первообразной]
+ \label{lemma:o_pervoobraznoi}
+ Пусть $ f \colon\,\Omega\to\CC $ --- непрерывная функция на области~$ \Omega \subset \CC $ такая, что дифференциальная форма $ f\,dz $ точна в $ \Omega $. Тогда у функции $ f $ есть \emph{первообразная} в $ \Omega $: существует функция $ g \colon\,\Omega\to\CC $ такая, что выполнено
+ \begin{align*}
+  g'(z) := \lim_{h \to 0} \frac{g(z + h) - g(z)}{h} = f(z)
+ \end{align*} при всех $ z \in \Omega $.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Раз форма $f\, dz$ точна в $ \Omega $, то существует функция~$F \colon\, \Omega \to \CC $ такая, что $f\,dz = dF$ всюду в $ \Omega $. Как можно было догадаться, в качестве первообразной нужно взять именно эту функцию:
+ \begin{align*}
+  g(z) = F(x, y),
+ \end{align*} где $ z = x+iy \in \Omega $. Проверим, что она подходит: возьмём малое приращение $ h = h_1 + ih_2 \to 0 $ и запишем
+ \begin{align*}
+  g(z + h) &= F(x + h_1, y + h_2) = F(x,y) + F_x'(x,y) \cdot h_1 + F_y'(x,y) \cdot h_2 + o(h).
+ \end{align*} Так как
+ \begin{align*}
+  dF = F_x'\,dx + F_y'\,dy = f\,dz = f\,dx + if\,dy,
+ \end{align*} то
+ \begin{align*}
+  g(z+h) &= g(z) + f(z) \cdot h_1 + i f(z) \cdot h_2 + o(h) = \\
+  &= g(z) + f(z) \cdot h + o(h),
+ \end{align*} что и требовалось доказать.
 \end{proof}
 
 \end{document}
