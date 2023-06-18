@@ -25,9 +25,9 @@
  \end{align*} Проинтегрируем
  \begin{align*}
   \int\limits_{\left| z \right|=1} g'\,dz = 0,
- \end{align*} так как $ g'\,dz = dg $ --- точная форма.
+\end{align*} так как $ g'\,dz = dg $ --- точная форма, то по критерию точности формы(\ref{theorem:exact_1_form}) интеграл равен нулю.
 
- С другой стороны,
+ С другой стороны, по лемме \ref{lemma:form:dz/z-a}, этот интеграл равен:
  \begin{align*}
   \int\limits_{\left| z \right|=1}   \frac{dz}{z} = 2\pi i.
 \end{align*} $\implies \not \exists$ аналитической ветви логарифма для $f$ в $\CC \setminus \left\{ 0 \right\} $ .   
@@ -38,11 +38,11 @@
  Если $ \Omega \subset \CC $ --- односвязная область, и $ f(z) \neq 0 $ для любой $ z \in \Omega $, то существует аналитическая ветвь $ \log f $. Более того, любые две аналитические ветви $ \log f $ отличаются на $ 2\pi k i $, $ k \in \Z $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Рассмотрим функцию $h = \frac{f'}{f}$. Функция $ h $ аналитична в $ \Omega $. Значит, форма  $ h\,dz $ замкнута в  $ \Omega $, по теореме Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}. Значит, $ h\,dz $ точна в  $ \Omega $, потому что  $ \Omega $  односвязна. Тогда существует аналитическая в $ \Omega $  функция $ g $  такая, что $ g' = h $ в  $ \Omega $. Наша цель: показать, что $ g $  почти-что и есть логарифм $ f $.
+    Рассмотрим функцию $h = \frac{f'}{f}$. Функция $ h $ аналитична в $ \Omega $, например, потому что от нее можно взять производную. Значит, форма  $ h\,dz $ замкнута в  $ \Omega $, по теореме Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}. Значит, $ h\,dz $ точна в  $ \Omega $, потому что  $ \Omega $  односвязна. Тогда по лемме о первообразной(\ref{lemma:o_pervoobraznoi}) существует аналитическая в $ \Omega $  функция $ g $  такая, что $ g' = h $ в  $ \Omega $. Наша цель: показать, что $ g $  почти-что и есть логарифм $ f $.
 
  \begin{align*}
   \left( \frac{e^{g}}{f} \right)' = \frac{g' e^{g} \cdot f - e^{g} \cdot f'}{f^{2}} = \frac{\frac{f'}{f} \cdot e^{g} \cdot f - f' \cdot e^{g}}{f^{2}} = 0.
-\end{align*} Значит, $ \frac{e^{g}}{f} $  --- аналитическая функция на $ \Omega $, со всюду нулевой производной. Значит, по неравенству Лагранжа \eqref{theorem:Lagrange_inequality} $ \frac{e^{g}}{f} = c $ всюду в $ \Omega $. Выберем $ \tilde c $ так, что $ c \cdot e^{\tilde c} = 1 $, и тогда $ e^{g+\tilde c} = f $ всюду в $ \Omega $. Значит, $ g + \tilde c $ --- аналитическая ветвь логарифма $ f $.
+\end{align*} Значит, $ \frac{e^{g}}{f} $  --- аналитическая функция на $ \Omega $, со всюду нулевой производной. Значит, по следствию из неравенства Лагранжа \eqref{remark:zero_derivative_analytical} $ \frac{e^{g}}{f} = c $ всюду в $ \Omega $. Выберем $ \tilde c $ так, что $ c \cdot e^{\tilde c} = 1 $, и тогда $ e^{g+\tilde c} = f $ всюду в $ \Omega $. Значит, $ g + \tilde c $ --- аналитическая ветвь логарифма $ f $.
 
 В качестве $\tilde c$ можно взять: 
  \begin{align*}
@@ -52,7 +52,8 @@
  Осталось доказать единственность. Пусть $ e^{g_1} = e^{g_2} = f $ в $ \Omega $. Тогда
  \begin{align*}
   e^{g_1 - g_2} = 1
-\end{align*} в $ \Omega $. Тогда $ (g_1-g_2)(z) = 2\pi i k (z) $, по \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z$. Так как функция $k$ непрерывна, то $ k $ --- это константа в $ \Omega $.
+\end{align*} в $ \Omega $. Тогда $ (g_1-g_2)(z) = 2\pi i k (z) $, по \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z$. Так как функция $k$ должна быть 
+непрерывной, чтобы равенство выполнялось($(g_1 - g_2)(z)$~--- непрерывная), то $ k $ --- это константа в $ \Omega $.
 
 \end{proof}
 \begin{remrk}
@@ -79,7 +80,7 @@
  \end{align*} Если $ A_1, A_2 $ --- непрерывные ветви аргумента, то
  \begin{align*}
   e^{i(A_1 - A_2)} = \frac{\left| f \right|e^{iA_1}}{\left| f \right|e^{iA_2}} = \frac{f}{f} = 1.
-\end{align*} Значит, $ A_1 - A_2 = 2\pi k(z) $ \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z $. Так как $ k $ непрерывна, то $ k \equiv k_0 $, $ k_0 \in \Z $.
+\end{align*} Значит, $ A_1 - A_2 = 2\pi k(z) $ по замечанию \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z $. Так как $ k $ непрерывна, то $ k \equiv k_0 $, $ k_0 \in \Z $.
 \end{proof}
 \begin{remrk}
  В ходе доказательства мы проверили, что $ e^{\Real f} = \left| f \right| = e^{\ln \left| f \right|} $, где $ \ln \left| f \right| $ --- вещественный логарифм в старом смысле. Иными словами,

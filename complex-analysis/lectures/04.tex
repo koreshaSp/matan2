@@ -46,15 +46,19 @@
  Если $ p \in \CC[z] $ --- многочлен, $ \mathrm{deg}\;p \geqslant 1 $, то существует точка $ z_0 \in \CC $ такая, что $ p(z_0) = 0 $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Пусть нет корней. Рассмотрим функцию $ f = \frac{1}{p} $ , она аналитична в $ \CC $  по условию ($ f'(z) = -\frac{p'(z)}{p^{2}(z)} $). Но при $ \left| z \right| \leqslant R \implies \left| f(z) \right| \leqslant M_R < \infty $ по непрерывности. С другой стороны, если $ \mathrm{deg}\;p \geqslant 1 $, то $ p = c_n z^{n} + \ldots + c_0 $, $ c_n \neq 0 $, и 
+ Пусть нет корней. Рассмотрим функцию $ f = \frac{1}{p} $ , она аналитична в $ \CC $  по условию ($ f'(z) = -\frac{p'(z)}{p^{2}(z)} $).
+
+ Заметим, что: $ \forall \left| z \right| \leqslant R,\, \left| f(z) \right| \leqslant M_R < \infty $ для любого $ R $, так как непрерывная
+ функция достигает максимума на компакте.
+ С другой стороны, если $ \mathrm{deg}\;p \geqslant 1 $, то $ p = c_n z^{n} + \ldots + c_0 $, $ c_n \neq 0 $, и 
  \begin{align*}
-  \lim_{z \to \infty} \frac{1}{\left| p(z) \right|} = \lim_{z \to \infty} \frac{1}{\left| c_n \right| \cdot \left| z \right|^{n}} = 0.
- \end{align*} Поэтому существует $ R $ такое, что $ \left| f(z) \right| \leqslant 1 $ для всех $ \left| z \right| \geqslant R $. Тогда $ \left| f \right| \leqslant M_R + 1 $ всюду в $ \CC $. По теореме \ref{theorem:liuvill} $ f \equiv \mathrm{const} $, а это противоречие!
+  \lim_{z \to \infty} \left| f(z) \right| = \lim_{z \to \infty} \frac{1}{\left| p(z) \right|} = \lim_{z \to \infty} \frac{1}{\left| c_n \right| \cdot \left| z \right|^{n}} = 0.
+ \end{align*} Поэтому существует $ R $ такое, что $ \left| f(z) \right| \leqslant 1 $ для всех $ \left| z \right| \geqslant R $. Тогда $ \left| f \right| \leqslant M_R + 1 $ всюду в $ \CC $. По теореме Лиувилля(\ref{theorem:liuvill}) $ f \equiv \mathrm{const} $, а это противоречие c $ \deg p \geqslant 1 $!
 \end{proof}
 
 \begin{lm}[лемма о кратности нуля]
 \label{lemma:zero_multiplicity}
- Пусть $ f\colon\,\Omega \to \CC $ --- аналитическая, $ f \not\equiv 0 $ в шаре $ B(z_0,r(z_0)) \subset \Omega $. Пусть $ z_0 \in \Omega $ такая, что $ f(z_0) = 0 $. Тогда существует число $ n_0 \geqslant 1 $ такое, что $ f = (z - z_0)^{n_0}g $, где $ g $ --- аналитическая на $ \Omega $ такая, что $ g(z_0) \neq 0 $.
+ Пусть $ f\colon\,\Omega \to \CC $ --- аналитическая, $ z_0 \in \Omega $ такая, что $ f(z_0) = 0 $ и $ f \not\equiv 0 $ в шаре $ B(z_0,r(z_0)) \subset \Omega $.  Тогда существует число $ n_0 \geqslant 1 $ такое, что $ f = (z - z_0)^{n_0}g $, где $ g $ --- аналитическая на $ \Omega $ такая, что $ g(z_0) \neq 0 $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  \begin{align*}
@@ -71,11 +75,14 @@
 Пусть $ \Omega $ --- область, $ f,g $ --- аналитические в $ \Omega $. Пусть $ f |_E = g|_E $, где $ E \subset \Omega $ такое, что $ E $ имеет предельную точку в $ \Omega $. Тогда $ f = g $ в $ \Omega $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- По условию существует точка $ z_\ast \in \Omega $ такая, что для любого $ \rho > 0 $ $ B(z_\ast,\rho) \setminus \left\{ z_\ast \right\} \cap E \neq \varnothing $. Рассмотрим функцию $ h = f - g $ и докажем, что существует $ r > 0 $ такое, что $ B(z_\ast,r) \subset \Omega $ и $ h|_{B(z_\ast,r)} \equiv 0 $. По лемме о кратности нуля
- \begin{align}
-  \label{equation:uniqueness_thm}
+ По условию существует точка $ z_\ast \in \Omega $ такая, что для любого $ \rho > 0 $ $ B(z_\ast,\rho) \setminus \left\{ z_\ast \right\} \cap E \neq \varnothing $.
+ Рассмотрим функцию $ h = f - g $ и докажем, что существует $ r > 0 $ такое, что $ B(z_\ast,r) \subset \Omega $ и $ h|_{B(z_\ast,r)} \equiv 0 $.
+ Докажем от обратного, пусть $ h|_{B(z_\ast,r)} \not \equiv 0 $ для сколь угодно малых $ r $. По лемме о кратности нуля(\ref{lemma:zero_multiplicity})
+ (если $h(z_\ast) \neq 0$, то лемма формально неприменима, но можно взять $\zeta(z) = h(z)$):
+ \begin{align*}
   h(z) = (z - z_\ast)^{n_0} \cdot \zeta(z),
-\end{align} где $ \zeta $ --- аналитическая функция, такая, что $ \zeta(z_\ast) \neq 0 $, либо  $ h \equiv 0 $ в $ B(z_\ast,r) $ (а тут доказывать нечего). В первом случае существует такое число  $ \eps > 0 $, что $ \left|\zeta(z) \right| > \frac{\left| \zeta(z_\ast) \right|}{2} $ в $ B(z_\ast,\eps) $. Тогда $ B(z_\ast,\eps) \setminus \left\{ z_\ast \right\} \cap E = \varnothing $, т.к. $\left|h(z)\right| > 0$ на $B(z_\ast, \eps) \setminus \{z_\ast\}$  , а это противоречит тому, что $z_\ast$ предельная точка. Мы доказали $ f \equiv g $ в $ B(z_\ast,r) $.
+\end{align*} где $ \zeta $ --- аналитическая функция, такая, что $ \zeta(z_\ast) \neq 0 $. 
+Тогда в силу непрерывности $ \zeta $ существует $ \eps > 0 $, что $ \left|\zeta(z) \right| > \frac{\left| \zeta(z_\ast) \right|}{2} $ в $ B(z_\ast,\eps) $. Тогда $ B(z_\ast,\eps) \setminus \left\{ z_\ast \right\} \cap E = \varnothing $, т.к. $\left|h(z)\right| > 0$ на $B(z_\ast, \eps) \setminus \{z_\ast\}$  , а это противоречит тому, что $z_\ast$ предельная точка. Мы доказали $ f \equiv g $ в $ B(z_\ast,r) $.
 
 \begin{figure}[ht]
     \centering
@@ -128,7 +135,8 @@
  \end{enumerate}
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- $ f $ аналитична тогда и только тогда, когда $ f \, dz $ замкнута. Тогда и только тогда, когда 
+$ f $ аналитична тогда и только тогда, когда $ f \, dz $ замкнута. А по теореме о замкнутости гладкой формы(\ref{theorem:smooth_form_closed}), это выполнено тогда и только тогда, когда 
+ 
 \begin{align*}
 d(f\,dz) = 0 \iff d((u+iv)dz) = 0 &\iff (u'_x\,dx+u'_y\,dy+iv'_x\,dx+iv'_y\,dy) \land dz = 0 \iff \\
 &\iff ((u'_x + iv'_x)\,dx + (u'_y + iv'_y)dy) \land (dx + i\,dy) = \\
@@ -167,6 +175,7 @@ d(f\,dz) = 0 \iff d((u+iv)dz) = 0 &\iff (u'_x\,dx+u'_y\,dy+iv'_x\,dx+iv'_y\,dy) 
  \end{align*} 
 \end{remrk}
 \begin{remrk}[Аналитические функции с нулевой производной]
+    \label{remark:zero_derivative_analytical}
 	Если $f'(z) \equiv 0$, то $f(z) \equiv$ const.  
 \end{remrk}
 \end{document}
