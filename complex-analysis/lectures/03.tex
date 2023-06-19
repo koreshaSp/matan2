@@ -96,6 +96,7 @@
 Рассмотрим несколько канонических примеров степенных рядов, и применим к ним теорему Адамара.
 
 \begin{exmpl}[экспонента]
+ \label{example:exp_function}
  \emph{Экспонентой} называется степенной ряд
  \begin{align*}
   e^{z} = \sum_{n=0}^{\infty}\frac{z^{n}}{n!}.
@@ -106,13 +107,6 @@
   L = \limsup_{n \to \infty} \left( \frac{1}{n!} \right)^{1 / n} = \limsup_{n \to \infty} \frac{e}{n} = 0,\\
   \Rconv = \frac{1}{L} = +\infty.
  \end{gather*} Таким образом, ряд $ e^{z} $ сходится всюду в $ \CC $.
-\end{exmpl}
-
-\begin{exmpl}
- Ряды
- \begin{align*}
-  \cos z = \frac{e^{iz}+e^{-iz}}{2}, && \sin z = \frac{e^{it}-e^{-iz}}{2i}
- \end{align*} также сходятся всюду в $ \CC $.
 \end{exmpl}
 
 \begin{exmpl}[сумма геометрической прогрессии]
@@ -309,9 +303,9 @@
    \end{align} Ряд~\eqref{eq:sum_geom_series:cauchy_gurs_morer} сходится для всех $ z \in C_\rho $, причём равномерно по $ z $, ведь
    \begin{align*}
     \left| \frac{b-a}{z-a} \right| = \frac{\left| b-a \right|}{\rho} < 1,
-   \end{align*} причём равномерность не нарушится после умножения на $ f(z) $. Подставим полученное в \eqref{eq:cauchy_formula:cauchy_gurs_morer}:
+   \end{align*} и равномерность не нарушится после умножения на $ f(z) $. Подставим полученное в \eqref{eq:cauchy_formula:cauchy_gurs_morer}:
    \begin{align*}
-    f(b) &= \frac{1}{2\pi i} \int_{C_\rho} f(z) \cdot \sum_{n=0}^{\infty}\frac{(b-a)^{n}}{(z-a)^{n+1}}.
+    f(b) &= \frac{1}{2\pi i} \int_{C_\rho} f(z) \cdot \sum_{n=0}^{\infty}\frac{(b-a)^{n}}{(z-a)^{n+1}}\,dz.
    \end{align*} Так как ряд~\eqref{eq:sum_geom_series:cauchy_gurs_morer} сходится равномерно (всё суммируемо), то по теореме Фубини можно поменять местами сумму и интеграл. Получаем
    \begin{align}
     \label{eq:taylor_series:cauchy_gurs_morer}
@@ -319,11 +313,9 @@
    \end{align} где
    \begin{align*}
     c_n = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{(z-a)^{n+1}}.
-   \end{align*} Равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} верно для любого $ b \in B(a,\rho) $.
+   \end{align*}
 
-   {\color{red} Почему коэффициенты $ c_n $ не зависят от $ \rho $?}
-
-   Теперь можно устремить $ \rho \to r $ и получить равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} на всём диске $ D $.
+   Мы установили равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} для любого $ b \in B(a,\rho) $. Заметим, что коэффициенты $ c_n $ не зависят от выбора $ \rho $, так как по следствию~\ref{corollary:complex_differential_of_power_series} о комплексной дифференцируемости степенных рядов их можно восстановить, зная лишь все производные функции~$ f $ в точке~$ a $. Например, $ c_0 = f(a) $, $ c_1 = f'(a) $, $ c_2 = f''(a) / 2 $, и так далее. Поэтому, можно устремить $ \rho \to r $ и получить равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} на всём диске $ D $.
 
   \item Из условия~\ref{enum3:theorem:cauchy_gurs_morer} следует условие~\ref{enum1:theorem:cauchy_gurs_morer}. Пусть функция $ f $ раскладывается в ряд Тейлора
    \begin{align*}
