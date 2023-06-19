@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3620971"
-     inkscape:cx="425.07982"
-     inkscape:cy="180.60386"
+     inkscape:zoom="1.1932731"
+     inkscape:cx="424.88179"
+     inkscape:cy="188.55701"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -130,14 +130,14 @@
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
-       x="154.86801"
-       y="249.09492"
+       x="173.91806"
+       y="255.97404"
        id="text20589"><tspan
          sodipodi:role="line"
          id="tspan20587"
          style="stroke-width:0.264583"
-         x="154.86801"
-         y="249.09492">\color{blue}$D$</tspan></text>
+         x="173.91806"
+         y="255.97404">\color{blue}$D$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
@@ -149,5 +149,22 @@
          style="stroke-width:0.264583"
          x="83.866333"
          y="274.88373">$\Omega$</tspan></text>
+    <circle
+       style="fill:none;stroke:#89008c;stroke-width:0.404231;stroke-linejoin:bevel;stroke-opacity:1"
+       id="path893"
+       cx="147.16399"
+       cy="225.54614"
+       r="31.152737" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+       x="120.35113"
+       y="233.91266"
+       id="text5683"><tspan
+         sodipodi:role="line"
+         id="tspan5681"
+         style="stroke-width:0.264583"
+         x="120.35113"
+         y="233.91266">\color{violet}$C_\rho$</tspan></text>
   </g>
 </svg>

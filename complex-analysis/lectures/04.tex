@@ -23,7 +23,7 @@
  \end{align} где $ C_\rho $ --- окружность с центром в точке~$ z_0 $ и радиусом~$ \rho \in (0, r) $, проходимая против часовой стрелки. В частности, интеграл~\eqref{eq:coefficient_of_analytiv_function_taylor_series} не зависит от выбора $ \rho $.
 \end{crly}
 
-Следствия \ref{corollary:cauchy_formula} и \ref{corollary:coefficients_of_analytic_function} были установлены в доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} при выводе условия~\ref{enum3:theorem:cauchy_gurs_morer} из условия~\ref{enum1:theorem:cauchy_gurs_morer}.
+Следствия \ref{corollary:cauchy_formula} и \ref{corollary:coefficients_of_analytic_function} были установлены в доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} при выводе условия~\ref{enum3:theorem:cauchy_gurs_morer} из условия~\ref{enum1:theorem:cauchy_gurs_morer}. 
 
 \begin{crly}
  Если функция $ f \colon\,\Omega\to\CC $ аналитична в области~$ \Omega \subset \CC$, то и её производная $ f' \colon\,\Omega\to\CC $ существует, и также аналитична в области~$ \Omega $.
@@ -39,6 +39,17 @@
   f'(z) = \sum_{n=1}^{\infty} nc_n (z-z_0)^{n-1},
  \end{align*} причём ряд сходится в том же диске $ B(z_0,r) $. Но тогда функция $ f' \colon\,\Omega\to\CC $ по условию~\ref{enum3:theorem:cauchy_gurs_morer} аналитична в $ \Omega $, что и требовалось доказать.
 \end{proof}
+
+\begin{crly}
+ \label{corollary:taylor_series}
+ Пусть функция~$ f $ аналитична в области~$ \Omega \subset \CC $, и $ B(z_0, r) \subset \Omega $. Тогда
+ \begin{align*}
+  f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z)}{n!}
+ \end{align*} для всех $ z \in B(z_0,r) $.
+\end{crly}
+
+Следствие~\ref{corollary:taylor_series} также было установлено в доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} при выводе условия~\ref{enum3:theorem:cauchy_gurs_morer} из условия~\ref{enum1:theorem:cauchy_gurs_morer}. Оно показывает, что ряд Тейлора в старом смысле совпадает с рядом Тейлора аналитической функции.
+
 
 \subsection{Теорема Лиувилля.}
 
