@@ -108,6 +108,13 @@
  \end{gather*} Таким образом, ряд $ e^{z} $ сходится всюду в $ \CC $.
 \end{exmpl}
 
+\begin{exmpl}
+ Ряды
+ \begin{align*}
+  \cos z = \frac{e^{iz}+e^{-iz}}{2}, && \sin z = \frac{e^{it}-e^{-iz}}{2i}
+ \end{align*} также сходятся всюду в $ \CC $.
+\end{exmpl}
+
 \begin{exmpl}[сумма геометрической прогрессии]
  Рассмотрим ряд
  \begin{align*}
@@ -280,7 +287,7 @@
    \begin{align}
     \label{eq:int_g_eq_0:cauch_gurs_morer}
     \int_{C_\rho} g\,dz = 0,
-   \end{align} поскольку форма~$ g\,dz $ замкнута в области~$ D $, а окружность~$ C $ можно стянуть в точку. С другой стороны,
+   \end{align} поскольку форма~$ g\,dz $ замкнута в области~$ D $, а окружность~$ C_\rho $ можно стянуть в точку. С другой стороны,
    \begin{align}
     \label{eq:int_g_eq_diff:cauchy_gurs_morer}
     \int_{C_\rho} g\,dz = \int_{C_\rho} \frac{f(z)\,dz}{z-b} - f(b) \int_{C_\rho} \frac{dz}{z-b}.
@@ -292,7 +299,7 @@
    \end{align*} Подставляя обратно в \eqref{eq:int_g_eq_0:cauch_gurs_morer} и \eqref{eq:int_g_eq_diff:cauchy_gurs_morer}, получаем, так называемую, \emph{формулу Коши}:
    \begin{align}
     \label{eq:cauchy_formula:cauchy_gurs_morer}
-    f(b) = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)}{z-b}\,dz.
+    f(b) = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{z-b}.
    \end{align}
 
    Далее, дробь $ 1/(z-b) $ можно разложить в сумму геометрической прогрессии:
@@ -332,5 +339,7 @@
    \end{align*} причём ряд также сходится в $ D $. Следовательно, $ f $ тоже удовлетворяет условию~\ref{enum3:theorem:cauchy_gurs_morer}.
  \end{itemize}
 \end{proof}
+
+Заметим, что дифференциальные формы в теореме~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера играют ключевую роль: без них мы не смогли бы вывести из комплексной дифференцируемости (условия~\ref{enum1:theorem:cauchy_gurs_morer}) разложение в ряд Тейлора (условие~\ref{enum3:theorem:cauchy_gurs_morer}).
 
 \end{document}
