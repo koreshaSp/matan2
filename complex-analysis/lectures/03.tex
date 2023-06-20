@@ -96,6 +96,7 @@
 Рассмотрим несколько канонических примеров степенных рядов, и применим к ним теорему Адамара.
 
 \begin{exmpl}[экспонента]
+ \label{example:exp_function}
  \emph{Экспонентой} называется степенной ряд
  \begin{align*}
   e^{z} = \sum_{n=0}^{\infty}\frac{z^{n}}{n!}.
@@ -280,7 +281,7 @@
    \begin{align}
     \label{eq:int_g_eq_0:cauch_gurs_morer}
     \int_{C_\rho} g\,dz = 0,
-   \end{align} поскольку форма~$ g\,dz $ замкнута в области~$ D $, а окружность~$ C $ можно стянуть в точку. С другой стороны,
+   \end{align} поскольку форма~$ g\,dz $ замкнута в области~$ D $, а окружность~$ C_\rho $ можно стянуть в точку. С другой стороны,
    \begin{align}
     \label{eq:int_g_eq_diff:cauchy_gurs_morer}
     \int_{C_\rho} g\,dz = \int_{C_\rho} \frac{f(z)\,dz}{z-b} - f(b) \int_{C_\rho} \frac{dz}{z-b}.
@@ -292,7 +293,7 @@
    \end{align*} Подставляя обратно в \eqref{eq:int_g_eq_0:cauch_gurs_morer} и \eqref{eq:int_g_eq_diff:cauchy_gurs_morer}, получаем, так называемую, \emph{формулу Коши}:
    \begin{align}
     \label{eq:cauchy_formula:cauchy_gurs_morer}
-    f(b) = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)}{z-b}\,dz.
+    f(b) = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{z-b}.
    \end{align}
 
    Далее, дробь $ 1/(z-b) $ можно разложить в сумму геометрической прогрессии:
@@ -302,9 +303,9 @@
    \end{align} Ряд~\eqref{eq:sum_geom_series:cauchy_gurs_morer} сходится для всех $ z \in C_\rho $, причём равномерно по $ z $, ведь
    \begin{align*}
     \left| \frac{b-a}{z-a} \right| = \frac{\left| b-a \right|}{\rho} < 1,
-   \end{align*} причём равномерность не нарушится после умножения на $ f(z) $. Подставим полученное в \eqref{eq:cauchy_formula:cauchy_gurs_morer}:
+   \end{align*} и равномерность не нарушится после умножения на $ f(z) $. Подставим полученное в \eqref{eq:cauchy_formula:cauchy_gurs_morer}:
    \begin{align*}
-    f(b) &= \frac{1}{2\pi i} \int_{C_\rho} f(z) \cdot \sum_{n=0}^{\infty}\frac{(b-a)^{n}}{(z-a)^{n+1}}.
+    f(b) &= \frac{1}{2\pi i} \int_{C_\rho} f(z) \cdot \sum_{n=0}^{\infty}\frac{(b-a)^{n}}{(z-a)^{n+1}}\,dz.
    \end{align*} Так как ряд~\eqref{eq:sum_geom_series:cauchy_gurs_morer} сходится равномерно (всё суммируемо), то по теореме Фубини можно поменять местами сумму и интеграл. Получаем
    \begin{align}
     \label{eq:taylor_series:cauchy_gurs_morer}
@@ -312,11 +313,9 @@
    \end{align} где
    \begin{align*}
     c_n = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{(z-a)^{n+1}}.
-   \end{align*} Равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} верно для любого $ b \in B(a,\rho) $.
+   \end{align*}
 
-   {\color{red} Почему коэффициенты $ c_n $ не зависят от $ \rho $?}
-
-   Теперь можно устремить $ \rho \to r $ и получить равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} на всём диске $ D $.
+   Мы установили равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} для любого $ b \in B(a,\rho) $. Заметим, что коэффициенты $ c_n $ не зависят от выбора $ \rho $, так как по следствию~\ref{corollary:complex_differential_of_power_series} о комплексной дифференцируемости степенных рядов их можно восстановить, зная лишь все производные функции~$ f $ в точке~$ a $. Например, $ c_0 = f(a) $, $ c_1 = f'(a) $, $ c_2 = f''(a) / 2 $, и так далее. Поэтому, можно устремить $ \rho \to r $ и получить равенство~\eqref{eq:taylor_series:cauchy_gurs_morer} на всём диске $ D $.
 
   \item Из условия~\ref{enum3:theorem:cauchy_gurs_morer} следует условие~\ref{enum1:theorem:cauchy_gurs_morer}. Пусть функция $ f $ раскладывается в ряд Тейлора
    \begin{align*}
@@ -332,5 +331,7 @@
    \end{align*} причём ряд также сходится в $ D $. Следовательно, $ f $ тоже удовлетворяет условию~\ref{enum3:theorem:cauchy_gurs_morer}.
  \end{itemize}
 \end{proof}
+
+Заметим, что дифференциальные формы в теореме~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера играют ключевую роль: без них мы не смогли бы вывести из комплексной дифференцируемости (условия~\ref{enum1:theorem:cauchy_gurs_morer}) разложение в ряд Тейлора (условие~\ref{enum3:theorem:cauchy_gurs_morer}).
 
 \end{document}

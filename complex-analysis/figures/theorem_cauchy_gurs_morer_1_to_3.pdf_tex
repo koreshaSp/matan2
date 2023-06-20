@@ -56,7 +56,9 @@
     \put(0,0){\includegraphics[width=\unitlength,page=1]{theorem_cauchy_gurs_morer_1_to_3.pdf}}%
     \put(0.60409616,0.26876469){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}$a$\end{tabular}}}}%
     \put(0.56213023,0.36462727){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{red}$b$\end{tabular}}}}%
-    \put(0.64528338,0.19960448){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}$D$\end{tabular}}}}%
+    \put(0.72465858,0.17094148){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{blue}$D$\end{tabular}}}}%
     \put(0.34944305,0.09215113){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{theorem_cauchy_gurs_morer_1_to_3.pdf}}%
+    \put(0.50146303,0.26286392){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\color{violet}$C_\rho$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

@@ -2,203 +2,409 @@
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
 
-\section{Логарифм и аргумент.}
+\newpage
+\section{Экспонента, логарифм и аргумент.}
+
+В этом параграфе мы изучим более конкретные, но фундаментальные функции в комплексном анализе: \emph{экспоненту}, \emph{логарифм} и \emph{аргумент}. С экспонентой все довольно просто: это очень хорошая целая функция с замечательными свойствами. Из неё также можно построить тригонометрические функции: косинус и синус. Логарифм и аргумент, напротив, невозможно сделать целыми функциями, поэтому к ним требуется более аккуратный подход.
+
+\subsection{Экспонента.}
+
+\begin{df}
+ \emph{Экспонентой} называется целая функция
+ \begin{align}
+  \label{eq:def:exp}
+  \exp z = \sum_{n=0}^{\infty} \frac{z^{n}}{n!}.
+ \end{align}
+\end{df}
+\begin{remrk}
+ Экспонента действительно является целой функцией: ряд~\eqref{eq:def:exp} по теореме~\ref{theorem:adamar} Адамара (пример~\ref{example:exp_function}) сходится всюду в $ \CC $, поэтому по условию~\ref{enum3:theorem:cauchy_gurs_morer} теоремы~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера функция аналитична в $ \CC $.
+\end{remrk}
+
+\begin{prop}[основное свойство экспоненты]
+ \begin{align}
+  \label{eq:exponent_common_property}
+  \exp(z+w) = \exp z \cdot \exp w
+ \end{align} для любых $ z,w\in\CC $.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно,
+ \begin{align*}
+  \sum_{n=0}^{\infty} \frac{(z+w)^{n}}{n!} = \sum_{n=0}^{\infty} \sum_{k=0}^{n} \frac{z^{k}\cdot w^{n-k}}{k!(n-k)!} = \left[ \sum_{n=0}^{\infty} \frac{z^{n}}{n!} \right] \cdot \left[ \sum_{m=0}^{\infty}\frac{w^{m}}{m!} \right],
+ \end{align*} переходы верны, так как все ряды сходятся абсолютно (это некоторая теорема из теории рядов).
+\end{proof}
+
+Можно проверить, что $ \exp x $ при $ x \in \R $ совпадает с <<обычной>> вещественной экспонентой $ e^{x} $. Во-первых,
+\begin{align*}
+ \exp 1 = \sum_{n=0}^{\infty} \frac{1}{n!} = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^{n} = e,
+\end{align*} так как
+\begin{align*}
+ \left( 1 + \frac{1}{n} \right)^{n} &= \sum_{k=0}^{n} \frac{n(n-1)\ldots(n-k+1)}{n^{k} \cdot k!} = \\
+ &= \sum_{k=0}^{n} 1 \cdot \left( 1 - \frac{1}{n} \right) \cdot \ldots \cdot \left( 1 - \frac{k}{n} \right) \cdot \frac{1}{k!} \to \sum_{k=0}^{\infty}\frac{1}{k!}.
+\end{align*} Во-вторых, по свойству~\eqref{eq:exponent_common_property} экспонента в новом и старом смысле совпадают на $ \Z $, так как
+\begin{align*}
+ \exp n = \underbrace{\exp 1 \cdot \ldots \cdot \exp 1}_{n \text{ раз}} = \underbrace{e \cdot e \cdot \ldots e}_{n \text{ раз}} = e^{n},
+\end{align*} и
+\begin{align*}
+ 1 = \exp 0 = \exp n \cdot \exp (-n) \implies \exp (-n) = e^{-n}.
+\end{align*} В третьих, по тому же свойству~\ref{eq:exponent_common_property} функции совпадают при показателях вида $ 1 / n $:
+\begin{align*}
+ \exp 1 = \left( \exp \frac{1}{n} \right)^{n} \implies \exp \frac{1}{n} = e^{1 / n},
+\end{align*} а значит и на $ \Q $. Наконец, по непрерывности функции совпадают на $ \R $. По этой причине вместо $ \exp z $ мы будем просто писать $ e^{z} $.
+
+\begin{prop}
+ $ e^{z} \neq 0 $.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Предположим, что $ e^{z_0} = 0 $ в точке $ z_0 \in \CC $. Но тогда
+ \begin{align*}
+  1 = e^{0} = e^{z_0} \cdot e^{-z_0} = 0 \cdot e^{-z_0} = 0.
+ \end{align*}
+\end{proof}
+
+\begin{prop}
+ $ (e^{z})' = e^{z} $.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно, это легко проверяется по следствию~\ref{corollary:complex_differential_of_power_series}:
+ \begin{align*}
+  (e^{z})' = \sum_{n=1}^{\infty} n \cdot \frac{z^{n-1}}{n!} = \sum_{k=0}^{\infty}\frac{z^{k}}{k!}.
+ \end{align*}
+\end{proof}
+
+Более того, можно доказать, что экспонента --- это единственная с точностью до мультипликативной константы целая функция~$ f $, удовлетворяющая функциональному уравнению $ f' = f $.
+
+\begin{prop}
+ \label{prop:|e^it| is 1}
+ $ \left| e^{it} \right| = 1 $ при $ t \in \R $.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Заметим, что для $ t \in \R $
+ \begin{align*}
+  \overline{e^{it}} = e^{-it},
+ \end{align*} ведь $ \overline \imath = -i $. Тогда
+ \begin{align*}
+  1 = e^{0} = e^{it - it} = e^{it} \cdot e^{-it} = e^{it} \cdot \overline{e^{it}} = \left| e^{it} \right|^{2},
+ \end{align*} что и требовалось доказать.
+\end{proof}
+
+Выделим в ряде $ e^{it} $ для $ t \in \R $ вещественную и мнимую часть:
+\begin{align*}
+ e^{it} = \sum_{n=0}^{\infty} \frac{(it)^{n}}{n!} = \sum_{k=0}^{\infty} \frac{(-1)^{k}t^{k}}{(2k)!} + i \cdot \left[ \sum_{k=0}^{\infty} \frac{(-1)^{k}t^{2k+1}}{(2k+1)!} \right].
+\end{align*} Перестановку слагаемых делать можно, так как все ряды сходятся абсолютно. Это выражение наталкивает на следующее определение.
+
+\begin{df}
+ \label{def:cos_sin}
+ \emph{Косинусом} называется целая функция
+ \begin{align*}
+  \cos z = \frac{e^{iz} + e^{-iz}}{2} = \sum_{k=0}^{\infty} \frac{(-1)^{k}z^{2k}}{(2k)!}.
+ \end{align*} \emph{Синусом} называется целая функция
+ \begin{align*}
+  \sin z = \frac{e^{iz} - e^{-iz}}{2i} = \sum_{k=0}^{\infty} \frac{(-1)^{k}z^{2k+1}}{(2k+1)!}.
+ \end{align*}
+\end{df}
+\begin{remrk*}
+ Косинус и синус действительно целые функции, так как они выражаются через экспоненту.
+\end{remrk*}
+
+Из определения~\ref{def:cos_sin} непосредственно следует \emph{формула Эйлера}
+\begin{align}
+ \label{eq:exp:euler_formula}
+ e^{iz} = \cos z + i \sin z.
+\end{align} А из формулы~\eqref{eq:exp:euler_formula} и предложения~\ref{prop:|e^it| is 1} следует основное тригонометрическое тождество:
+\begin{align*}
+ \cos^{2}t+\sin^{2}t=1,\qquad t\in\R.
+\end{align*} Формулу Эйлера можно также записать в виде
+\begin{align*}
+ e^{x+iy} = e^{x} \cdot (\cos y + i \sin y),
+\end{align*} где экспонента, косинус и синус берутся от вещественного числа.
+
+\subsection{Аналитическая ветвь логарифма.}
+
+В классическом смысле логарифм --- это функция, обратная экспоненте. В комплексном анализе нам понадобится некоторое более замысловатое определение.
 
 \begin{df}[%
-аналитическая ветвь логарифма]
- Пусть $ \Omega  \subset \CC$ --- область, $ f \colon\, \Omega \to \CC   $ --- аналитическая функция. Тогда функция $ g \colon\, \Omega \to \CC   $ называется \textit{аналитической ветвью} $ \log f $, если $ g $ аналитична и
+ аналитическая ветвь логарифма]
+ Пусть функция~$ f\colon\,\Omega\to\CC $ аналитична в области~$ \Omega \subset \CC $. Функция $ g\colon\,\Omega\to\CC $ называется \emph{аналитической ветвью логарифма $ f $} в области~$ \Omega $, если $ g $ аналитична в $ \Omega $, и выполнено
  \begin{align*}
   e^{g(z)} = f(z)
- \end{align*} для всех $ z \in \Omega $.
+ \end{align*} всюду в $ \Omega $. Если из контекста ясно, о какой ветви логарифма идёт речь, то её обозначают $ \log f(z) = g(z) $.
 \end{df}
+
+Разумеется, не во всех ситуациях существует аналитическая ветвь логарифма функции. Приведём конкретные примеры.
+
 \begin{remrk}
- Если существует точка $ z_0 $ такая, что $ f(z_0) = 0 $, то у функции $ f $ нет аналитической ветви логарифма. 
+ Если существует точка $ z_0 \in \Omega $ такая, что $ f(z_0) = 0 $, то у функции $ f $ нет аналитической ветви логарифма. 
 \end{remrk}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- $ e^{z} \neq 0 $ для $ z \in \CC $.
+ В самом деле, $ e^{w} \neq 0 $ при всех $ w \in \CC $.
 \end{proof}
 
 \begin{exmpl}
- Пусть $ \Omega = \CC \setminus \left\{ 0 \right\} $, и функция $ f(z) = z $. Предположим, что у $ f $ есть аналитическая ветвь логарифма --- функция $ g $. Продифференцируем:
+ Рассмотрим тождественную функцию~$ f(z)=z $ в области~$ \Omega = \CC \setminus \left\{ 0 \right\} $. Предположим, что у неё есть аналитическая ветвь логарифма --- функция $ g  $. Продифференцируем функцию $ f $:
  \begin{align*}
-  g' \cdot e^{g} = 1 \implies g' = \frac{1}{e^{g}} = \frac{1}{z}.
- \end{align*} Проинтегрируем
+  1 = (z)' = (e^{g(z)})' = g'(z) \cdot e^{g(z)} = g'(z) \cdot z.
+ \end{align*} Следовательно,
  \begin{align*}
-  \int\limits_{\left| z \right|=1} g'\,dz = 0,
-\end{align*} так как $ g'\,dz = dg $ --- точная форма, то по критерию точности формы(\ref{theorem:exact_1_form}) интеграл равен нулю.
-
- С другой стороны, по лемме \ref{lemma:form:dz/z-a}, этот интеграл равен:
+  g'(z) = \frac{1}{z}.
+ \end{align*} Так как дифференциальная форма $ g'(z)\,dz $ точна в $ \Omega $ (лемма~\ref{lemma:derivative_of_analytic_f_is_exact_form}), то
  \begin{align*}
-  \int\limits_{\left| z \right|=1}   \frac{dz}{z} = 2\pi i.
-\end{align*} $\implies \not \exists$ аналитической ветви логарифма для $f$ в $\CC \setminus \left\{ 0 \right\} $ .   
+  \int_{\left| z \right|=1} g'(z)\,dz = 0.
+ \end{align*} С другой стороны, по формуле~\eqref{eq:int_form:dz/z-a} (лемма \ref{lemma:form:dz/z-a}), этот интеграл равен
+ \begin{align*}
+  \int_{\left| z \right|=1}   \frac{dz}{z} = 2\pi i.
+ \end{align*} Следовательно, у тождественной функции $ f(z) = z $ нет аналитической ветви логарифма в области $ \CC \setminus \left\{ 0 \right\} $.
 \end{exmpl}
 
-\begin{thm}[%
-]
- Если $ \Omega \subset \CC $ --- односвязная область, и $ f(z) \neq 0 $ для любой $ z \in \Omega $, то существует аналитическая ветвь $ \log f $. Более того, любые две аналитические ветви $ \log f $ отличаются на $ 2\pi k i $, $ k \in \Z $.
-\end{thm}
+\begin{prop}
+ Аналитическая ветвь логарифма аналитической функции $ f\colon\,\Omega\to\CC $ в области~$ \Omega \subset\CC $ единственна с точностью до прибавления $ 2\pi k i $, $ k \in \Z $, если, конечно, она существует.
+\end{prop}
 \begin{proof}[\normalfont\textsc{Доказательство}]
-    Рассмотрим функцию $h = \frac{f'}{f}$. Функция $ h $ аналитична в $ \Omega $, например, потому что от нее можно взять производную. Значит, форма  $ h\,dz $ замкнута в  $ \Omega $, по теореме Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}. Значит, $ h\,dz $ точна в  $ \Omega $, потому что  $ \Omega $  односвязна. Тогда по лемме о первообразной(\ref{lemma:o_pervoobraznoi}) существует аналитическая в $ \Omega $  функция $ g $  такая, что $ g' = h $ в  $ \Omega $. Наша цель: показать, что $ g $  почти-что и есть логарифм $ f $.
-
+ Пусть $ g_1,g_2 $ --- две аналитические ветви логарифма функции $ f $. Тогда при всех $ z \in \Omega $ выполнено
  \begin{align*}
-  \left( \frac{e^{g}}{f} \right)' = \frac{g' e^{g} \cdot f - e^{g} \cdot f'}{f^{2}} = \frac{\frac{f'}{f} \cdot e^{g} \cdot f - f' \cdot e^{g}}{f^{2}} = 0.
-\end{align*} Значит, $ \frac{e^{g}}{f} $  --- аналитическая функция на $ \Omega $, со всюду нулевой производной. Значит, по следствию из неравенства Лагранжа \eqref{remark:zero_derivative_analytical} $ \frac{e^{g}}{f} = c $ всюду в $ \Omega $. Выберем $ \tilde c $ так, что $ c \cdot e^{\tilde c} = 1 $, и тогда $ e^{g+\tilde c} = f $ всюду в $ \Omega $. Значит, $ g + \tilde c $ --- аналитическая ветвь логарифма $ f $.
-
-В качестве $\tilde c$ можно взять: 
+  e^{g_1(z)} = e^{g_2(z)} = f(z),
+ \end{align*} и, значит
  \begin{align*}
-  e^{\tilde c} = \frac{ f(z_0)}{e^{g(z_0)}}
- \end{align*} в какой-то точке $ z_0 \in \Omega $.
-
- Осталось доказать единственность. Пусть $ e^{g_1} = e^{g_2} = f $ в $ \Omega $. Тогда
+  e^{g_1(z) - g_2(z)} = 1.
+ \end{align*} Это означает (замечание~\ref{remark:expeq1_implies_poweq2pk}), что
  \begin{align*}
-  e^{g_1 - g_2} = 1
-\end{align*} в $ \Omega $. Тогда $ (g_1-g_2)(z) = 2\pi i k (z) $, по \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z$. Так как функция $k$ должна быть 
-непрерывной, чтобы равенство выполнялось($(g_1 - g_2)(z)$~--- непрерывная), то $ k $ --- это константа в $ \Omega $.
-
+  g_1(z) - g_2(z) = 2\pi i k(z),
+ \end{align*} где $ k(z) $ --- аналитическая в $ \Omega $ функция, принимающая лишь целые значения. Так как $ \Omega $ --- связное множество, то $ k(z) = k $ --- константа в $ \Omega $.
 \end{proof}
 \begin{remrk}
-  \label{remark:expeq1_implies_poweq2pk}
- $ e^{\lambda} = 1 $, $ \lambda = a + ib $, тогда
+ \label{remark:expeq1_implies_poweq2pk}
+ Пусть $ e^{z} = 1 $, $ z = x+yi $, $ x,y\in\R $. Тогда
  \begin{align*}
-  \left|e^{a} \cdot e^{ib} \right| = 1
- \end{align*} $ e^{a} = 1 $, $ a \in \R \implies a = 0 $, $ e^{ib} = 1 \implies \cos b + i \sin b = 1$. Значит, $ \sin b = 0 \implies \cos b = 1 \implies b = 2\pi k $.
+  1 = \left| e^{z} \right| = \left| e^{x} \cdot e^{iy} \right| = e^{x},
+ \end{align*} и, следовательно, $ x = 0 $. В таком случае
+ \begin{align*}
+  \cos y + i \sin y = 1,
+ \end{align*} следовательно, $ \cos y = 1 $, и $ y = 2\pi k $, $ k \in \Z $.
 \end{remrk}
 
-\begin{df}
- Пусть $ f $ --- аналитическая в $ \Omega $. \textit{Непрерывной ветвью} аргумента $ f $ называется непрерывная функция $ \arg f \colon\, \Omega \to \R $ такая, что
- \begin{align*}
-  \left| f(z) \right| \cdot e^{i \arg f(z)} = f(z).
- \end{align*}
-\end{df}
+Теперь рассмотрим частую ситуацию, когда логарифм всё же существует.
+
 \begin{thm}
- Если область $ \Omega \subset \CC  $ односвязна, $ f \neq 0 $ в $ \Omega $, то существует непрерывная ветвь аргумента $ f $, причём любые две такие ветви отличаются на $ 2\pi k $, $ k \in \Z $.
+ \label{theorem:exist_log_f}
+ Пусть функция~$ f\colon\,\Omega\to\CC $ аналитична в односвязной области~$ \Omega \subset \CC $, и $ f(z) \neq 0 $ на $ \Omega $. Тогда существует аналитическая ветвь логарифма функции $ f $ в области~$ \Omega $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- $ \arg f(z) = \Imaginary (\log f) $, где $ \log f $ --- аналитическая ветвь логарифма $ f $. Тогда
+ Функция
  \begin{align*}
- f = e^{\log f} = e^{\Real \log f} \cdot e^{i \Imaginary (\log f)} = \left| f \right| e^{i \arg f}.
- \end{align*} Если $ A_1, A_2 $ --- непрерывные ветви аргумента, то
+  h(z) = \frac{f'(z)}{f(z)}
+ \end{align*} аналитична в области $ \Omega $ как частное аналитичных в $ \Omega $ функций, ведь $ f(z) \neq 0 $ в $ \Omega $. По теореме~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера дифференциальная форма $ h\,dz $ замкнута в $ \Omega $, а так как область односвязна, то по следствию~\ref{corollary:closed_form_is_exact_in_simply_connected} форма $ h\,dz $ точна в $ \Omega $. Тогда по лемме~\ref{lemma:o_pervoobraznoi} о первообразной существует такая аналитическая в $ \Omega $ функция $ g $, что
  \begin{align*}
-  e^{i(A_1 - A_2)} = \frac{\left| f \right|e^{iA_1}}{\left| f \right|e^{iA_2}} = \frac{f}{f} = 1.
-\end{align*} Значит, $ A_1 - A_2 = 2\pi k(z) $ по замечанию \eqref{remark:expeq1_implies_poweq2pk}, где $ k(z) \in \Z $. Так как $ k $ непрерывна, то $ k \equiv k_0 $, $ k_0 \in \Z $.
+  g'(z) = h(z)
+ \end{align*} всюду в $ \Omega $. Покажем, что функция~$ g $ почти-что и есть искомый логарифм. Для всех $ z \in \Omega $ выполнено
+ \begin{align*}
+  \left[ \frac{e^{g(z)}}{f(z)} \right]' = \frac{g'(z) \cdot e^{g(z)} \cdot f(z) - e^{g(z)} \cdot f'(z)}{f(z)^{2}} = \frac{\frac{f'(z)}{f(z)} \cdot e^{g(z)} \cdot f(z) - e^{g(z)} \cdot f'(z)}{f(z)^{2}} = 0.
+ \end{align*} Тогда по замечанию~\ref{remark:zero_derivative_analytical} данная функция постоянна на $ \Omega $:
+ \begin{align*}
+  \frac{e^{g(z)}}{f(z)} = \zeta, \qquad \zeta\in\CC,
+ \end{align*} причём $ \zeta\neq 0 $, так как экспонента не имеет нулей. Возьмём такое число $ \theta \in \CC $, что $ e^{\theta} = \zeta^{-1} $. Тогда функция $ z \mapsto g(z) + \theta $ и есть искомая ветвь логарифма функции~$ f $:
+ \begin{align*}
+  \frac{e^{g(z) + \theta}}{f(z)} = \zeta \cdot \zeta^{-1} = 1 \implies e^{g(z)+\theta} = f(z).
+ \end{align*}
 \end{proof}
-\begin{remrk}
- В ходе доказательства мы проверили, что $ e^{\Real f} = \left| f \right| = e^{\ln \left| f \right|} $, где $ \ln \left| f \right| $ --- вещественный логарифм в старом смысле. Иными словами,
+
+\subsection{Непрерывная ветвь аргумента.}
+
+\begin{df}
+ Пусть функция~$ f $ аналитична в области~$ \Omega $. \textit{Непрерывной ветвью аргумента $ f $ в области~$ \Omega $} называется непрерывная функция~$ g \colon\, \Omega \to \R $ такая, что
  \begin{align*}
-  \Real (\log f) &= \ln \left| f \right|, \\
-  \Imaginary (\log f) &= \arg f.
+  \left| f(z) \right| \cdot e^{i g(z)} = f(z)
+ \end{align*} для всех $ z\in\Omega $. Если из контекста ясно, о какой ветви аргумента идёт речь, то её обозначают $ \arg f(z) = g(z) $.
+\end{df}
+
+Как и для ветвей логарифма, у ветвей аргумента есть некоторая единственность.
+
+\begin{prop}
+ Непрерывная ветвь аргумента аналитической функции~$ f $ в области~$ \Omega \subset \CC $ единственна с точностью до прибавления $ 2\pi k $, $ k\in\Z $, если, конечно, она существует.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $ g_1,g_2 $ --- непрерывные ветви аргумента $ f $ в области~$ \Omega $. Тогда в $ \Omega $ выполнено
+ \begin{align*}
+  e^{i(g_1(z) - g_2(z))} = \frac{\left| f(z) \right| \cdot e^{ig_1(z)}}{\left| f(z) \right| \cdot e^{ig_2(z)}} = \frac{f(z)}{f(z)} = 1.
+ \end{align*} По замечанию~\ref{remark:expeq1_implies_poweq2pk}
+ \begin{align*}
+  g_1(z)-g_2(z) = 2\pi k(z),
+ \end{align*} где $ k\colon\,\Omega\to\Z $ --- непрерывная функция. Так как $ \Omega $ --- связное множество, то $ k(z) = k $ --- константа на $ \Omega $.
+\end{proof}
+
+По аналитической ветви логарифма всегда можно построить непрерывную ветвь аргумента.
+
+\begin{thm}
+ \label{theorem:exist_arg_f}
+ Пусть аналитическая в области~$ \Omega \subset \CC $ функция~$ f\colon\,\Omega\to\CC $ обладает аналитической ветвью логарифма $ \log f $. Тогда функция
+ \begin{align*}
+  \arg f(z) = \Imaginary \log f(z)
+ \end{align*} является непрерывной ветвью аргумента $ f $ в области~$ \Omega $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ В самом деле,
+ \begin{align*}
+  f(z) = e^{\log f(z)} = e^{\Real \log f(z) + i \Imaginary \log f(z)} = e^{\Real \log f(z)} \cdot e^{i\arg f(z)} = \left| f(z) \right| \cdot e^{i\arg f(z)},
+ \end{align*} где равенство
+ \begin{align*}
+  e^{\Real \log f(z)} = \left| f(z) \right|
+ \end{align*} выполнено, так как $ \left| e^{it} \right|=1 $ при $ t \in \R $.
+\end{proof}
+
+Соединяя вместе с теоремой~\ref{theorem:exist_log_f}, получаем следующее следствие.
+
+\begin{crly}
+ Если функция~$ f\colon\,\Omega\to\CC $ аналитична в односвязной области $ \Omega \subset \CC  $, и $ f \neq 0 $ в $ \Omega $, то существует непрерывная ветвь аргумента $ f $.
+\end{crly}
+
+\begin{remrk}
+ В ходе доказательства теоремы~\ref{theorem:exist_arg_f} мы проверили, что
+ \begin{align*}
+  e^{\Real \log f(z)} = \left| f(z) \right| = e^{\ln \left| f(z) \right|},
+ \end{align*} где $ \ln x $, $ x > 0 $ --- вещественный логарифм в старом смысле. Тогда
+ \begin{align*}
+  \Real \log f(z) &= \ln \left| f(z) \right|, \\
+  \Imaginary \log f(z) &= \arg f(z),
+ \end{align*} или же
+ \begin{align*}
+  \log f(z) = \ln \left| f(z) \right| + i \cdot \arg f(z).
  \end{align*}
 \end{remrk}
 
-\begin{df}
- Пусть $ \alpha \in\CC $, $ f \colon\, \Omega \to \CC   $ --- аналитическая функция, существует $ \log f $  --- аналитическая ветвь логарифма функции $ f $. Тогда
+\subsection{Примеры применения.}
+
+\begin{df}[степенная функция]
+ Пусть функция~$ f $ аналитична в области~$ \Omega $ и обладает аналитической ветвью логарифма~$ \log f $. Пусть $ \alpha\in\CC $. Тогда \emph{степенной функцией с показателем $ \alpha $, отвечающей ветви логарифма $ \log f $} называется аналитичная в $ \Omega $ функция
  \begin{align*}
-  f^{\alpha} = e^{\alpha \log f}.
- \end{align*} В частности, в $ \CC \setminus \left\{ \left(-\infty, 0\right]   \right\} $  определена степень $ z^{\alpha} = e^{\alpha \log z} $, где $ \log z $ --- какая-то ветвь логарифма $ z $.
+  f(z)^{\alpha} = e^{\alpha \log f(z)}.
+ \end{align*}
 \end{df}
+
+В частности, в односвязной области~$ \CC \setminus \left(-\infty, 0\right]$ для любого показателя $ \alpha \in \CC $ определена степенная функция
+\begin{align*}
+ z^{\alpha} = e^{\alpha \log z},
+\end{align*} где $ \log z $ --- любая аналитическая ветвь логарифма тождественной функции $ z \mapsto z $ (которая существует по теореме~\ref{theorem:exist_log_f}). Имеет смысл зафиксировать одну ветвь логарифма для данной ситуации.
 
 \begin{df}
- \textit{Главная ветвь} $ \log z $ --- это такая аналитическая ветвь логарифма $ z $, что $ \log 1 = 0 $.
+ \textit{Главной ветвью логарифма} $ \log z $ называется такая аналитическая ветвь логарифма тождественной функции~$ z \mapsto z $ в области~$ \CC \setminus (-\infty, 0] $, что $ \log 1 = 0 $.
 \end{df}
-\begin{exmpl}
- Вычислим $ i^{i} $, если степень понимается заданной с помощью главной ветви логарифма.
 
-\begin{align*}
- i^{i} = e^{i \log i} = e^{i \cdot \left( \Real \log i + \Imaginary \log i \right)} = e^{i \cdot \left( \ln \left| i \right| + i \arg i \right)} = e^{-\arg i} = e^{-\pi / 2}.
-\end{align*} Почему же $ \arg i = \pi / 2 $?  $ i = e^{i \frac{\pi}{2}} $ , и в области $ \CC \setminus \left(-\infty, 0\right]   $  полярные координаты задают непрерывную ветвь аргумента и $\varphi \in [-\pi, \pi], \ r > 0$ . 
+По теореме~\ref{theorem:exist_log_f} главная ветвь логарифма существует: достаточно взять любую ветвь, и вычесть из неё число $ \log 1 = 2\pi i k $, $ k \in \Z $.
+
+\begin{exmpl}
+ Вычислим выражение $ i^{i} $, где степенная функция отвечает главной ветви логарифма:
+ \begin{align*}
+  i^{i} = e^{i \log i} = e^{i \cdot \left( \Real \log i + \Imaginary \log i \right)} = e^{i \cdot \left( \ln \left| i \right| + i \arg i \right)} = e^{-\arg i} = e^{-\pi / 2}.
+ \end{align*}
 \end{exmpl}
 
 \newpage
 \section{Принцип максимума.}
 
-\begin{df}
- Пусть $ (X_1,\rho_1) $, $ (X_2,\rho_2) $ --- метрические пространства.
- $ f \colon\, X_1 \to X_2   $ --- \textit{открытое отображение}, если оно переводит открытые множества в открытые.
-\end{df}
-\begin{remrk}
- Композиция открытых отображений --- открытое отображение.
-\end{remrk}
-\begin{thm}
-\label{theorem:analytic_implies_open}
- Пусть $ \Omega \subset \CC$ --- область, $ f \colon\, \Omega \to \CC  $  --- аналитическая функция, $ f \not\equiv \mathrm{const} $. Тогда $ f $ --- открытое отображение.
-\end{thm}
+В этом параграфе мы изучим лишь одну теорему, называемую \emph{принципом максимума}, которая оказывается крайне полезной на практике при работе с аналитическими функциями. Сформулируем её.
+
 \begin{thm}[принцип максимума]
-\label{theorem:maximum_principle}
- Если $ f \colon\, \Omega \to \CC $ --- аналитическая и существует $ z_0 \in \Omega $ такая, что $ \left| f(z_0) \right| \geqslant \left| f(z) \right| $ для любой $ z \in \Omega $, то $ f \equiv \mathrm{const} $.
+ \label{theorem:maximum_principle}
+ Пусть у аналитической в области~$ \Omega $ функции $f$ есть точка максимума $ z_0 \in \Omega $: для всех $ z\in\Omega $ выполнено
+ \begin{align*}
+  \left| f(z_0) \right| \geqslant \left| f(z) \right|.
+ \end{align*} Тогда функция~$ f $ постоянна на $ \Omega $.
 \end{thm}
-\begin{prop}
-Из теоремы \eqref{theorem:analytic_implies_open} следует теорема \eqref{theorem:maximum_principle} .
-\end{prop}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Так как $ f(B(z_0, \eps)) $ содержит точку $ f(z_0) $, но не содержит точки $ w $ такие, что $ \left| w \right| > \left| f(z_0) \right| $, значит $ f $ не открытое, и значит $ f \equiv \mathrm{const} $.
+
+Несмотря на кажущуюся простоту, доказательство принципа максимума достаточно хитрое.
+
+\begin{df}
+ Отображение~$ f\colon\,X_1 \to X_2 $ между топологическими пространствами~$ X_1 $ и $ X_2 $ называется \emph{открытым}, если оно переводит открытые подмножества $ X_1 $ в открытые подмножества $ X_2 $.
+\end{df}
+
+\begin{thm}
+ \label{theorem:analytic_implies_open}
+ Непостоянная аналитическая функция~$ f\colon\,\Omega\to\CC $ в области~$ \Omega \subset \CC $ является открытым отображением.
+\end{thm}
+
+Оказывается, из открытости аналитических отображений элементарно выводится принцип максимума.
+
+\begin{proof}[\normalfont\textsc{Вывод теоремы~\ref{theorem:maximum_principle} из теоремы~\ref{theorem:analytic_implies_open}}]
+ По теореме~\ref{theorem:analytic_implies_open} образ $ f(\Omega) $ --- открытое подмножество $ \CC $. Этот образ содержит точку $ f(z_0) $, но не содержит все такие точки $ w \in \CC $, что $ \left| w \right| > \left| f(z_0) \right| $. Поэтому $ f(z_0) $ не входит в $ f(\Omega) $ вместе со своей окрестностью, и $ f(\Omega) $ не может быть открыто.
 \end{proof}
+
 \begin{lm}
- Рассмотрим $ F(x, y) = (u(x,y), v(x,y)) $, где $ u(x,y) = \Real f(x + iy) $, $ v(x,y) = \Imaginary f(x +iy) $. Тогда
+ Пусть функция~$ f\colon\,\Omega\to\CC $ аналитична в области~$ \Omega \subset \CC $ и записана в вещественном виде:
  \begin{align*}
-  \det J_F (x_0, y_0) = \left| f'(z_0) \right|^{2}.
- \end{align*}, где $z_0 = x_0 + i y_0$.
+  F(x,y) = (u(x,y), v(x,y)), && f(x + iy) = u(x,y) + iv(x,y).
+ \end{align*} Тогда якобиан отображения $ F $ равен
+ \begin{align*}
+  \det J_F (x_0,y_0) = \left| f'(z_0) \right|^{2},
+ \end{align*} где $ z_0 = x_0 + iy_0 $.
 \end{lm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
+\begin{proof}
+ С одной стороны, по условию Коши-Римана (теорема~\ref{theorem:cauchy_riman})
  \begin{align*}
-  \det J_F = \det \begin{pmatrix}
-   u'_x & u'_y \\
-   v'_x & v'_y \\
-\end{pmatrix} = [\text{усл. Коши-Римана \eqref{theorem:cauchy_riman}}] = \det \begin{pmatrix}
-  u'_x & u'_y \\
-  -u'_y & u'_x
-  \end{pmatrix} = u^{'2}_x + u^{'2}_y.
+  \det J_F = \begin{vmatrix}
+   u_x' & u_y' \\
+   v_x' & v_y'
+  \end{vmatrix} = u_x' \cdot v_y' - u_y' \cdot v_x' = u_x' \cdot u_x' - u_y' \cdot (-u_y') = \left( u_x' \right)^{2} + \left( u_y' \right)^{2}
  \end{align*} С другой стороны,
  \begin{align*}
-  \left| f'(z_0) \right|^{2} = \left| \left. \frac{\partial}{\partial x}f(x + iy_0) \right|_{\substack{x = x_0}}  \right|^{2} = \left| u'_x(x_0 + iy_0) + iv'_x(x_0 + iy_0) \right|^2 = \\
-   = u^{'2}_x + v^{'2}_x = u^{'2}_x + u^{'2}_y,
- \end{align*} снова по условию Коши-Римана.
-\end{proof}
-\begin{crly}
-\label{corollary:open_map_derivative}
- Если $ z_0 $: $ f'(z_0) \neq 0 $, то в малой окрестности $ z_0 $ отображение $ f $ открыто.
-\end{crly}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Если $ f'(z_0) \neq 0 $, то по непрерывности $ \left| f'(z) \right|^{2} \neq 0 $ для $ z \in B(z_0, \eps) $, и значит $ \det J_F \neq 0 $ в шаре, и по теореме об открытости отображения с ненулевым якобианом. $ f $ открыто как отображение из $ B(z_0, \eps) \subset \R^{2} $ в $ \R^{2} $.
-\end{proof}
-\begin{lm}
-\label{lemma:open_map_z_n}
- $ z^{n} $ --- открытое отображение в $ \CC $ для любого $ n \in \N $.
-\end{lm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Производная $(z^{n})' = nz^{n-1} $  --- не обнуляется в $ \CC \setminus \left\{ 0 \right\} $. Значит $ \forall z_0 \in \CC \setminus \left\{ 0 \right\} \colon\; \exists  \eps > 0 \colon\; f=z^{n}, f(B(z_0, \eps))  $ открыто по предыдущему следствию.
- \begin{align*}
-  f(B(0,r)) = B(0, r^{n})
- \end{align*} --- открытое множество. Значит, $ f $ открыто.
-\end{proof}
-\begin{proof}[\normalfont\textsc{Доказательство \eqref{theorem:analytic_implies_open}}]
-  Подберем так, чтобы $ f = h_1 \circ h_2 \circ h_3 $, где $ h_1 $, $ h_2 $, $ h_3 $ --- открытые в окрестности $ z_0 \in \Omega $.
+  f'(z_0) = \lim_{h \to 0}  \frac{f(z_0+h)-f(z_0)}{h} = \lim_{\substack{h \to 0 \\ h \in \R}} \frac{f(z_0+h) - f(z_0)}{h} = \left.\frac{\partial}{\partial x}f(x + iy_0)\right|_{x = x_0},
+  \end{align*} поэтому
+  \begin{align*}
+   \left| f'(z_0) \right|^{2} = \left| u'_x(x_0 + iy_0) + iv'_x(x_0 + iy_0) \right|^2 =  \left( u'_x \right)^{2} + \left( v_x' \right)^{2} = \left( u_x' \right)^{2} + \left( u_y' \right)^{2}
+  \end{align*} также по условию Коши-Римана.
+ \end{proof}
 
- По лемме о кратности нуля
- \begin{align*}
-  Q(z) = f(z) - f(z_0) = (z - z_0)^{n} \cdot P(z),
- \end{align*} где $ P $ --- аналитическая. Теперь
- \begin{align*}
-  Q(z) = (z - z_0)^{n} \cdot e^{\log P}
- \end{align*} в односвязной окрестности $ z_0 $, и $ P \neq 0 $ в этой окрестности. Тогда
- \begin{align*}
-  Q(z) = \left((z-z_0) \cdot e^{\frac{\log P}{n}}\right)^{n}.
- \end{align*} Итого
- \begin{align*}
-  f(z) &= f(z_0) + \left((z - z_0) \cdot g(z) \right)^{n}, \\
-  g &= e^{\frac{\log P}{n}}.
- \end{align*} где $ g $ --- аналитическая в окр. $ z_0 $ и $ n \in \N $, $ g(z_0) \neq 0 $.
+ \begin{crly}
+  \label{corollary:open_map_derivative}
+  Пусть функция~$ f $ аналитична в области~$ \Omega \subset \CC $. Если точка~$ z_0 \in \Omega $ такова, что $ f'(z_0) \neq 0 $, то в малой окрестности точки $ z_0 $ $ f $ --- открытое отображение.
+ \end{crly}
+ \begin{proof}[\normalfont\textsc{Доказательство}]
+  Если $ f'(z_0) \neq 0 $, то по непрерывности производной верно
+  \begin{align*}
+   \det J_F =  \left| f'(z) \right|^{2} \neq 0
+  \end{align*} в некоторой окрестности $ U \ni z_0 $. Тогда по теореме об открытости отображения с ненулевым якобианом, отображение $ \left.f\right|_U $ открыто.
+  \end{proof}
 
- \begin{align*}
-  &h_3 \colon\, z \mapsto (z-z_0)(g(z)) \\
-  &h_2 \colon z \mapsto z^{n} \\
-  &h_1 \colon z \mapsto f(z_0) + z
- \end{align*} $ h_1 $ и $ h_2 $ открытые ($h_2$ открыто по лемме \eqref{lemma:open_map_z_n}). Почему $ h_3 $ открытое?
- \begin{align*}
-  h_3'(z_0) = g(z_0) + (z_0 - z_0) g'(z_0) = g(z_0) \neq 0
-\end{align*} По лемме \eqref{corollary:open_map_derivative} получаем что $ h_3 $ открыто в малой окрестности $ z_0 \in \Omega $.
-А значит $ f $ открыто в $ \Omega $.
+  \begin{lm}
+   \label{lemma:open_map_z_n}
+   Для любого натурального $ n \geqslant 1 $ функция $ z^{n} $ --- открытое отображение из $ \CC $ в $ \CC $.
+  \end{lm}
+  \begin{proof}[\normalfont\textsc{Доказательство}]
+   Производная $(z^{n})' = nz^{n-1} $  не обнуляется в области~$ \CC \setminus \left\{ 0 \right\} $. Значит, по следствию~\ref{corollary:open_map_derivative} отображение $ z^{n} $ открыто в области~$ \CC\setminus \left\{ 0 \right\} $. Кроме того,
+   \begin{align*}
+    f(B(0,r)) = B(0,r^{n})
+   \end{align*} --- открытое подмножество $ \CC $, поэтому отображение открыто в $ \CC $.
+  \end{proof}
 
-\end{proof}
+  Наконец мы готовы доказать теорему об открытости непостоянной аналитической функции и завершить обоснование принципа максимума.
 
+  \begin{proof}[\normalfont\textsc{Доказательство теоремы~\ref{theorem:analytic_implies_open}}]
+   Пусть $ f \colon\,\Omega\to\CC $ --- непостоянная аналитическая функция. Пусть $ z_0 \in \Omega $ --- любая точка. Наша цель: выразить $ f $ как
+   \begin{align}
+    \label{eq:desired_composition:analytic_implies_open}
+    f(z) = h_3(h_2(h_1(z))),
+   \end{align} где функции~$ h_j $, $ j=1,2,3 $ аналитичны в $ \Omega $ и являются открытыми отображениями в окрестности точки~$ z_0 $; тогда и функция~$ f $ будет открытым отображением в окрестности $ z_0 $ как композиция открытых отображений. Так как мы это покажем для любой точки~$ z_0\in\Omega $, то $ f $ будет открытым отображением и в самом $ \Omega $.
 
-\end{document}
+   По лемме~\ref{lemma:zero_multiplicity} о кратности нуля существует $ n \geqslant 1 $ такое, что
+   \begin{align*}
+    f(z) - f(z_0) = (z - z_0)^{n} \cdot P(z),
+   \end{align*} где функция~$ P $ аналитична в $ \Omega $, и $ P(z) \neq 0 $. Так как $ P(z_0) \neq 0 $ в малой односвязной окрестности точки $ z_0 $, то по теореме~\ref{theorem:exist_log_f} в этой окрестности существует аналитическая ветвь логарифма $ \log P $. Тогда
+   \begin{align*}
+    f(z) - f(z_0) = (z - z_0)^{n} \cdot e^{\log P(z)} = \left[ \left( z-z_0 \right) \cdot e^{\frac{\log P(z)}{n}} \right]^{n},
+   \end{align*} и, следовательно,
+   \begin{align}
+    \label{eq:explicit_composition:analytic_implies_open}
+    f(z) &= f(z_0) + ((z-z_0) \cdot g(z))^{n},
+   \end{align} где функция
+   \begin{align*}
+    g(z) = e^{\frac{\log P(z)}{n}}
+   \end{align*} аналитична в окрестности точки~$ z_0 $, $ n \geqslant 1 $ и $ g(z_0) \neq 0 $. Разложение~\eqref{eq:explicit_composition:analytic_implies_open} имеет в точности вид~\eqref{eq:desired_composition:analytic_implies_open}, где
+   \begin{align*}
+    h_1(z) &= (z - z_0) \cdot g(z), & h_2(z) &= z^{n}, & h_3(z) &= f(z_0) + z.
+   \end{align*} Отображение $ h_3 $ открыто по очевидным причинам, а $ h_2 $ открыто по лемме~\ref{lemma:open_map_z_n}. Осталось понять открытость отображения $ h_1 $. Продифференцируем его:
+   \begin{align*}
+    h_1'(z) = g(z) + (z - z_0) \cdot g'(z).
+   \end{align*} Тогда в точке $ z = z_0 $
+   \begin{align*}
+    h_1'(z_0) = g(z) \neq 0.
+   \end{align*} Раз так, то по следствию~\ref{corollary:open_map_derivative} отображение~$ h_1 $ также открыто в окрестности точки~$ z_0 $.
+  \end{proof}
+
+  \end{document}

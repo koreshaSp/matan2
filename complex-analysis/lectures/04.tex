@@ -2,180 +2,275 @@
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
 
-\begin{crly}
-	\label{corollary:coefficients_of_analytic_function}
- Если $ B(z_0, r(z_0)) \subset \Omega $, то
+Уже в самом доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} нам пришлось выяснить некоторые нетривиальные факты про аналитические функции. Оформим их как следствия.
+
+\begin{crly}[формула Коши]
+ \label{corollary:cauchy_formula}
+ Пусть функция~$ f  $ аналитична в области~$ \Omega \subset \CC $, и точка~$ z_0 $ лежит в $ \Omega $ вместе с замкнутым диском с центром в $ z_0 $ и радиусом $ \rho > 0 $. Пусть точка~$ b \in B(z_0,\rho) $. Тогда верна \emph{формула Коши:}
  \begin{align*}
-  f = \sum_{n=0}^{\infty}c_n(z-z_0)^{n},
- \end{align*} где
- \begin{align*}
-  c_n = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho} \frac{f(z)\,dz}{(z-z_0)^{n+1}},
- \end{align*} где $ C_\rho = \left\{ \left| z-z_0 \right| = \rho \right\} $, и $ 0 < \rho < r(z_0) $.
+  f(b) = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{z - b},
+ \end{align*} где $ C_\rho $ --- окружность с центром в $ z_0 $ и радиусом $ \rho $, проходимая против часовой стрелки.
 \end{crly}
 \begin{crly}
- Если $ f $ аналитическая, то $ f' $ тоже аналитическая. Следовательно, для любого $ k \in \N $ существует производная $ f^{(k)} $ в $ \Omega $. В том числе $ f \in C^{\infty}(\Omega \to \CC) $.
-\end{crly}
-\begin{crly}
- Если $ B(z_0, r(z_0)) \subset \Omega $ и $ w \in B(z_0,r(z_0)) $, то
+ \label{corollary:coefficients_of_analytic_function}
+ Пусть функция~$ f $ аналитична в области~$ \Omega \subset\CC$. Тогда ряд Тейлора функции~$ f $ в точке~$ z_0 \in \Omega $
  \begin{align*}
-  f(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho} \frac{f(z)\,dz}{z - w},
- \end{align*} где $ C_\rho = \left\{ \left| z-z_0 \right| = \rho \right\} $, и $ \left| w - z_0 \right| < \rho < r(z_0) $.
+  f(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n},
+ \end{align*} сходящийся на открытом диске $ B(z_0,r) \subset \Omega $, имеет коэффициенты
+ \begin{align}
+  \label{eq:coefficient_of_analytiv_function_taylor_series}
+  c_n = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{(z-z_0)^{n+1}},
+ \end{align} где $ C_\rho $ --- окружность с центром в точке~$ z_0 $ и радиусом~$ \rho \in (0, r) $, проходимая против часовой стрелки. В частности, интеграл~\eqref{eq:coefficient_of_analytiv_function_taylor_series} не зависит от выбора $ \rho $.
 \end{crly}
 
+Следствия \ref{corollary:cauchy_formula} и \ref{corollary:coefficients_of_analytic_function} были установлены в доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} при выводе условия~\ref{enum3:theorem:cauchy_gurs_morer} из условия~\ref{enum1:theorem:cauchy_gurs_morer}. 
+
+\begin{crly}
+ Если функция $ f \colon\,\Omega\to\CC $ аналитична в области~$ \Omega \subset \CC$, то и её производная $ f' \colon\,\Omega\to\CC $ существует, и также аналитична в области~$ \Omega $.
+
+ Следовательно, аналитическая функция бесконечно гладкая, и любая её $ k $-я производная аналитична.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $ f $ аналитична в области~$ \Omega $. Тогда в любой окрестности~$ B(z_0, r) \subset \Omega $ ряд Тейлора
+ \begin{align*}
+  f(z) = \sum_{n=0}^{\infty} c_n (z-z_0)^{n}
+ \end{align*} по следствию~\ref{corollary:complex_differential_of_power_series} комплексно дифференцируем, и его производная равна
+ \begin{align*}
+  f'(z) = \sum_{n=1}^{\infty} nc_n (z-z_0)^{n-1},
+ \end{align*} причём ряд сходится в том же диске $ B(z_0,r) $. Но тогда функция $ f' \colon\,\Omega\to\CC $ по условию~\ref{enum3:theorem:cauchy_gurs_morer} аналитична в $ \Omega $, что и требовалось доказать.
+\end{proof}
+
+\begin{crly}
+ \label{corollary:taylor_series}
+ Пусть функция~$ f $ аналитична в области~$ \Omega \subset \CC $, и $ B(z_0, r) \subset \Omega $. Тогда
+ \begin{align*}
+  f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z)}{n!}
+ \end{align*} для всех $ z \in B(z_0,r) $.
+\end{crly}
+
+Следствие~\ref{corollary:taylor_series} также было установлено в доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} при выводе условия~\ref{enum3:theorem:cauchy_gurs_morer} из условия~\ref{enum1:theorem:cauchy_gurs_morer}. Оно показывает, что ряд Тейлора в старом смысле совпадает с рядом Тейлора аналитической функции.
+
+
+\subsection{Теорема Лиувилля.}
+
+Рассмотрим один из <<простых>> случаев аналитической функции, когда она аналитична всюду.
+
 \begin{df}
-	Функция $f: \CC \to \CC$ называется целой, если она аналитическая в $\CC$.
+ \emph{Целой функцией} называется функция~$ f\colon\,\CC\to\CC $, аналитическая в области~$ \CC $.
 \end{df}
+
+Теорема Лиувилля является основным результатом о целых функциях.
+
 \begin{thm}[Лиувилля]
  \label{theorem:liuvill}
- Пусть $ f \colon\, \CC \to \CC $ --- целая функция и существует $ M \geq 0 $ такое, что $ \left| f(z) \right| \leqslant M $ для любого $ z \in \CC $. Тогда $ f \equiv \mathrm{const} $.
+ Пусть целая функция~$ f\colon\,\CC\to\CC $ ограничена: существует такое $ M > 0 $, что $ \left| f(z) \right| \leqslant M $ всюду в $ \CC $. Тогда функция $ f $ постоянна на $ \CC $: $ f(z) = c_0 $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Ряд
+ С одной стороны, ряд Тейлора функции~$ f $ в точке~$ 0 $
  \begin{align*}
-  f(z) = \sum_{k=0}^{\infty} c_k z^{k}.
-\end{align*} сходится всюду в $ \CC $ по теореме \ref{theorem:cauchy-gursa-morer}. С другой стороны, по следствию \ref{corollary:coefficients_of_analytic_function}
+  f(z) = \sum_{n=0}^{\infty} c_n z^{n}
+ \end{align*} сходится всюду в $ \CC $ по теореме~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера. С другой стороны, по формуле~\eqref{eq:coefficient_of_analytiv_function_taylor_series} (следствие~\ref{corollary:coefficients_of_analytic_function}):
  \begin{align*}
-  c_k = \frac{1}{2\pi i} \int\limits_{C_\rho} \frac{f(z)}{z^{k+1}} dz.
- \end{align*} При этом $ \rho > 0 $ можно взять любое. Тогда
+  c_n = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{z^{n+1}},
+ \end{align*} причём радиус~$ \rho > 0 $ мы вольны взять любой. Тогда при стремлении $ \rho \to \infty $ имеем оценку
  \begin{align*}
-  \left| c_k \right| &\leqslant \frac{1}{2\pi} \left| C_\rho \right| \cdot \max_{z \in C_\rho} \left| \frac{f(z)}{z^{k+1}} \right| = \frac{2\pi \rho}{2\pi}  \cdot \max_{\left| z \right|=\rho} \frac{\left| f(z) \right|}{\left| z \right|^{k+1}} \leqslant \rho \frac{M}{\rho^{k+1}} = \frac{M}{\rho^{k}}.
- \end{align*} Следовательно, $ c_k = 0 $ для любого $ k \geqslant 1 $, потому что $ \frac{M}{\rho^{k}} \to 0 $ при $ \rho \to \infty $ и $ k \geqslant 1 $. Значит, $ f(z) = c_0 $ для любого $ z $.
+  \left| c_n \right| = \frac{1}{2\pi} \left| \int_{C_\rho} \frac{f(z)\,dz}{z^{n+1}}  \right|\leqslant \frac{2\pi\rho}{2\pi} \cdot \max_{\left| z \right|=\rho} \frac{\left| f(z) \right|}{\rho^{n+1}} \leqslant \frac{M}{\rho^{n}}.
+ \end{align*} Так как при $ n \geqslant 1 $ правая часть стремится к нулю при $ \rho \to \infty $, то $ c_n = 0 $ при $ n \geqslant 1 $, то есть $ f(z) = c_0 $ всюду в $ \CC $.
 \end{proof}
+
+В качестве примера применения теоремы Лиувилля (и комплексного анализа в целом), докажем основную теорему алгебры.
 
 \begin{thm}[основная теорема алгебры]
- Если $ p \in \CC[z] $ --- многочлен, $ \mathrm{deg}\;p \geqslant 1 $, то существует точка $ z_0 \in \CC $ такая, что $ p(z_0) = 0 $.
+ У всякого непостоянного многочлена есть корень в $ \CC $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Пусть нет корней. Рассмотрим функцию $ f = \frac{1}{p} $ , она аналитична в $ \CC $  по условию ($ f'(z) = -\frac{p'(z)}{p^{2}(z)} $).
+ Пусть у непостоянного многочлена
+ \begin{align*}
+  p(z) = c_0 + c_1 z + \ldots + c_n z^{n}, \qquad n \geqslant 1,\; c_n \neq 0
+ \end{align*}
+ нет корней. Рассмотрим функцию
+ \begin{align*}
+  f(z) = \frac{1}{p(z)}.
+ \end{align*} Так как функция $ p(z) $ целая и не обнуляется в $ \CC $, то функция $ f(z) $ также целая.
 
- Заметим, что: $ \forall \left| z \right| \leqslant R,\, \left| f(z) \right| \leqslant M_R < \infty $ для любого $ R $, так как непрерывная
- функция достигает максимума на компакте.
- С другой стороны, если $ \mathrm{deg}\;p \geqslant 1 $, то $ p = c_n z^{n} + \ldots + c_0 $, $ c_n \neq 0 $, и 
+ Заметим, что функция~$ f $ ограничена. Действительно, с одной стороны непрерывная функция~$ f $ ограничена на любом компакте~$ \overline B(0, R) $, $ R > 0 $, а с другой стороны
  \begin{align*}
   \lim_{z \to \infty} \left| f(z) \right| = \lim_{z \to \infty} \frac{1}{\left| p(z) \right|} = \lim_{z \to \infty} \frac{1}{\left| c_n \right| \cdot \left| z \right|^{n}} = 0.
- \end{align*} Поэтому существует $ R $ такое, что $ \left| f(z) \right| \leqslant 1 $ для всех $ \left| z \right| \geqslant R $. Тогда $ \left| f \right| \leqslant M_R + 1 $ всюду в $ \CC $. По теореме Лиувилля(\ref{theorem:liuvill}) $ f \equiv \mathrm{const} $, а это противоречие c $ \deg p \geqslant 1 $!
+ \end{align*} Тогда по теореме~\ref{theorem:liuvill} Лиувилля функция~$ f $ постоянна на $ \CC $ (и тогда $ p $ тоже), а это противоречие!
 \end{proof}
 
-\begin{lm}[лемма о кратности нуля]
-\label{lemma:zero_multiplicity}
- Пусть $ f\colon\,\Omega \to \CC $ --- аналитическая, $ z_0 \in \Omega $ такая, что $ f(z_0) = 0 $ и $ f \not\equiv 0 $ в шаре $ B(z_0,r(z_0)) \subset \Omega $.  Тогда существует число $ n_0 \geqslant 1 $ такое, что $ f = (z - z_0)^{n_0}g $, где $ g $ --- аналитическая на $ \Omega $ такая, что $ g(z_0) \neq 0 $.
+\subsection{Теорема единственности.}
+
+Изучим, как устроены нули аналитических функций.
+
+\begin{lm}[о кратности нуля]
+ \label{lemma:zero_multiplicity}
+ Пусть функция $ f $  аналитична в области~$ \Omega \subset \CC $ и не равна тождественно нулю на $ \Omega $, а точка~$ z_0 \in \Omega $ --- нуль этой функции: $ f(z_0) = 0 $. Тогда существует единственное натуральное число $ n_0 \geqslant 1 $, называемое \emph{кратностью нуля} функции~$ f $ в точке~$ z_0 $, такое, что
+ \begin{align*}
+  f(z) = (z - z_0)^{n_0} \cdot g(z),
+ \end{align*} где функция $ g $ аналитична в $ \Omega $, и $ g(z_0) \neq 0 $.
 \end{lm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
+Для удобства можно считать, что лемма~\ref{lemma:zero_multiplicity} верна и при $ f(z_0) \neq 0 $: тогда кратность нуля~$ n_0 $ попросту равна нулю. Также можно считать, что в случае тождественного нуля (когда $ f \equiv 0 $ в $ \Omega $) каждая точка $ z_0 \in \Omega $ является нулём $ f $ бесконечной кратности.
+\begin{proof}[\normalfont\textsc{Доказательство леммы~\ref{lemma:zero_multiplicity} в предположении диска с не нулём}]\item
+ Предположим сначала, что существует такой проколотый диск $ D \setminus \left\{ z_0 \right\} $ с центром в $ z_0 $, что $ f(z) \neq 0 $ для некоторого $ z\in D \setminus \left\{ z_0 \right\} $ (в дальнейшем мы докажем, что это всё равно следует из условия $ f \not\equiv 0 $ на $ \Omega $). Ряд Тейлора
+ \begin{align}
+  \label{eq:taylor_series:zero_multiplicity}
+  f(z) = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}
+ \end{align} сходится на диске~$ D $, причём $ f(z_0) = c_0 = 0 $. Так как $ f(z) \neq 0 $ для некоторого $ z \in D $, то ряд~\eqref{eq:taylor_series:zero_multiplicity} обязан иметь хотя бы один ненулевой коэффициент $ c_n \neq 0 $. Пусть  $ n_0 \geqslant 1 $  --- номер наименьшего такого коэффициента $ c_{n_0} \neq 0 $.  Тогда в $ D $ выполнено
  \begin{align*}
-  f = \sum_{n=0}^{\infty}c_n(z-z_0)^{n}
- \end{align*} в $ B(z_0, r(z_0)) \subset \Omega $. Положим $ n_0 = \min_{n \geqslant 1} : c_n \neq 0 $. Тогда
- \begin{align*}
-  f = (z - z_0)^{n_0} \cdot \sum_{n=n_0 + 1}^{\infty} c_n(z-z_0)^{n - n_0 - 1}.
- \end{align*} Тогда функция
- \begin{align*}
-  g = \frac{f}{(z - z_0)^{n_0}}
- \end{align*}  аналитична в $ \Omega \setminus \left\{ z_0 \right\} $, и аналитична в $ B(z_0, r(z_0)) $, значит она аналитична в $ \Omega $.
+  f(z) = (z-z_0)^{n_0} \sum_{n=0}^{\infty} c_{n + n_0}(z-z_0)^{n},
+ \end{align*} то есть функция $ g(z) = f(z) / (z-z_0)^{n_0} $ аналитична в $ D $. Но так как она также аналитична в $ \Omega \setminus \left\{ z_0 \right\} $, то она аналитична в $ \CC $. При этом, $ g(z_0) = c_{n_0} \neq 0 $.
 \end{proof}
+
+От сделанного предположения нам поможет избавиться следующая, крайне существенная сама по себе, теорема о единственности аналитической функции.
+
 \begin{thm}[теорема единственности]
-Пусть $ \Omega $ --- область, $ f,g $ --- аналитические в $ \Omega $. Пусть $ f |_E = g|_E $, где $ E \subset \Omega $ такое, что $ E $ имеет предельную точку в $ \Omega $. Тогда $ f = g $ в $ \Omega $.
+ \label{theorem:uniqueness}
+ Пусть функции $ f_1,f_2 $, аналитические в области~$ \Omega $, совпадают на некотором множестве $ E \subset \Omega $, которое имеет предельную точку в $ \Omega $. Тогда $ f_1(z) = f_2(z) $ всюду в $ \Omega $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- По условию существует точка $ z_\ast \in \Omega $ такая, что для любого $ \rho > 0 $ $ B(z_\ast,\rho) \setminus \left\{ z_\ast \right\} \cap E \neq \varnothing $.
- Рассмотрим функцию $ h = f - g $ и докажем, что существует $ r > 0 $ такое, что $ B(z_\ast,r) \subset \Omega $ и $ h|_{B(z_\ast,r)} \equiv 0 $.
- Докажем от обратного, пусть $ h|_{B(z_\ast,r)} \not \equiv 0 $ для сколь угодно малых $ r $. По лемме о кратности нуля(\ref{lemma:zero_multiplicity})
- (если $h(z_\ast) \neq 0$, то лемма формально неприменима, но можно взять $\zeta(z) = h(z)$):
+ По существу нам нужно доказать, что если множество~$ E $ нулей аналитической в $ \Omega $ функции~$ g = f_1 - f_2 $ имеет предельную точку, то $ f \equiv 0 $ на $ \Omega $.
+
+ Пусть $ z_\ast \in \Omega $ --- предельная точка множества~$ E $, то есть любая проколотая окрестность $ \dot U $ точки $ z_\ast $ пересекается с $ E $. Докажем сначала, что $ g $ тождественно равна нулю на любом диске $ B(z_\ast,r) $. Докажем от противного: предположим, что функция $ g $ не тождественный нуль на диске $ B(z_\ast, r) $. Тогда по лемме~\ref{lemma:zero_multiplicity} о кратности нуля (с учётом предположения $ g \not\equiv 0 $ на $ B(z_0,r) $) для некоторого $ n_0 \geqslant 0 $ функция
  \begin{align*}
-  h(z) = (z - z_\ast)^{n_0} \cdot \zeta(z),
-\end{align*} где $ \zeta $ --- аналитическая функция, такая, что $ \zeta(z_\ast) \neq 0 $. 
-Тогда в силу непрерывности $ \zeta $ существует $ \eps > 0 $, что $ \left|\zeta(z) \right| > \frac{\left| \zeta(z_\ast) \right|}{2} $ в $ B(z_\ast,\eps) $. Тогда $ B(z_\ast,\eps) \setminus \left\{ z_\ast \right\} \cap E = \varnothing $, т.к. $\left|h(z)\right| > 0$ на $B(z_\ast, \eps) \setminus \{z_\ast\}$  , а это противоречит тому, что $z_\ast$ предельная точка. Мы доказали $ f \equiv g $ в $ B(z_\ast,r) $.
+  h(z) = \frac{g(z)}{(z-z_\ast)^{n_0}}
+ \end{align*} аналитична в $ \Omega $, и $ h(z_\ast) \neq 0 $. Но все нули $ g $ также являются нулями $ h $, поэтому существует последовательность нулей $ z_1, z_2, \ldots $ функции~$ h $ такая, что $ z_n \to z_\ast $. По непрерывности~$ h $ получаем $ h(z_n) = 0 $, а это противоречие! Мы доказали, что $ g \equiv 0 $ на некотором открытом диске $ B(z_\ast, r) $, где $ z_\ast $ --- предельная точка множества нулей функции~$ g $.
 
-\begin{figure}[ht]
-    \centering
-	\incfig[0.5]{uniqueness_thm_f}
-    \caption{Обобщение равенства на все $\Omega$. }
-    \label{fig:uniqueness_thm_f}
-\end{figure}
-
- Рассмотрим $ F = \mathrm{int} \left\{ z \mid h(z) = 0 \right\} $. $ F \neq \varnothing $ ведь $ F \supset B(z_\ast,r) $. $ F $ открыто. Докажем, что $ F = \Omega $. Пусть $ w \in \Omega \setminus F$. Соединим $ z_\ast $ и $ w $ некоторым путём $ \gamma\colon[0,1] \to \Omega $ (так можно, потому что $ \Omega $ линейно связно). Рассмотрим
+ Теперь рассмотрим множество
  \begin{align*}
-  t_\ast = \sup \left\{ t \in [0,1] \mid \gamma(t) \in F \right\}.
-\end{align*}  Положим $ \xi = \gamma(t_\ast) $), см. рис. \eqref{fig:uniqueness_thm_f}. $ \xi $ --- это предельная точка $ F $ ($ \xi = \lim_{n \to \infty} \gamma(t_n) $, где $ t_n \to t_\ast $)  и $ \xi \in \Omega $. Воспользуемся уже доказанной частью рассуждения: тогда существует шар, содержащий $ \xi $, и лежащий в $ \Omega $, а это противоречие!
+  F = \mathop{\mathrm{Int}} \left\{ z \in \Omega \mid g(z) = 0 \right\},
+ \end{align*} где внутренность берётся в метрическом пространстве~$ \Omega $. Докажем, что $ F = \Omega $.
 
- Можно было сказать, что $ F $ открытое и замкнутое множество в связном пространстве. Здесь скрыт некоторый топологический аргумент.
+ Предположим $ F \neq \Omega $. С одной стороны, множество~$ F $ по построению открыто в пространстве $ \Omega $, и не пусто, как мы показали ранее. С другой стороны, покажем, что множество~$ F $ замкнуто в пространстве~$ \Omega $. Действительно, пусть $ t_\ast \in \Omega $ --- предельная точка множества $ F $. Тогда по уже доказанному получаем, что $ g \equiv 0 $ в некоторой окрестности точки $ t_\ast $, то есть $ t_\ast \in F $. В таком случае, мы нашли подмножество $ F \subset \Omega $, не пустое, не равное всему пространству~$ \Omega $, одновременно открытое и замкнутое, а такого не бывает в связном пространстве $ \Omega $.
 \end{proof}
-\begin{remrk}
- В лемме о кратности нуля можно стереть условие $ f \not\equiv 0 $ на шаре.
-\end{remrk}
-\begin{df}
- \begin{align*}
-  \sin z = \frac{e^{iz} - e^{-iz}}{2i}, & & \cos z = \frac{e^{iz} + e^{-iz}}{2}.
- \end{align*} 
-\end{df}
+
+Теперь можно закончить доказательство леммы~\ref{lemma:zero_multiplicity} о кратности нуля.
+
+\begin{proof}[\normalfont\textsc{Полное доказательство леммы~\ref{lemma:zero_multiplicity}}]
+ Действительно, если предположение выше не выполняется, то есть существует открытый диск, состоящий из нулей функции~$ f $, то по теореме единственности~\ref{theorem:uniqueness} $ f $ тождественна равна нулю на $ \Omega $, чего не может быть по условию.
+\end{proof}
+
 \begin{exmpl}
- Пусть $ f\colon\,\CC\to\CC $ --- аналитическая. Пусть $ f(1 / n) = \sin \frac{1}{n} , \forall n \in \N$. Тогда $ f(z) = \sin z $.
+ Пусть $ f\colon\,\CC\to\CC $ --- целая функция, такая, что
+ \begin{align*}
+  f \left( \frac{1}{n} \right) = \sin \frac{1}{n}
+ \end{align*} для всех натуральных $ n \geqslant 1 $. Тогда $ f(z) = \sin z $ всюду в $ \CC $.
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Рассмотрим $ E = \left\{ \frac{1}{n} \mid n \in \N \right\} $. Тогда $ f|_E = \sin|_E $ по условию, а $ 0 $ --- предельная точка, лежащая в $ \CC $. Далее теорема о единственности.
+ Функции $ f(z) $ и $ \sin z $ совпадают на множестве
+ \begin{align*}
+  E = \left\{ \frac{1}{n} \Mid n \in \N \right\},
+ \end{align*} имеющем предельную точку $ 0 \in \CC $. По теореме единственности~\ref{theorem:uniqueness} совпадение функций есть и всюду в $ \CC $.
 \end{proof}
 
 \begin{df}
- $ E \subset \Omega $ --- \textit{дискретное множество}, если любая предельная точка $ E $ не лежит в $ \Omega $.
+ Подмножество~$ E \subset \Omega $ области~$ \Omega $ называется \emph{дискретным множеством}, если любая предельная точка $ E $ не лежит в $ \Omega $.
 \end{df}
+\begin{prop}
+ Дискретное множество не более, чем счётно.
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно, каждую точку~$ z \in E $ можно отделить от множества~$ E $ некоторым открытым диском (иначе точка~$ z $ была бы предельной точкой~$ E $), а в каждом диске можно выбрать рациональное комплексное число.
+\end{proof}
+
 \begin{crly}
- Если $ f \not\equiv 0 $ --- аналитическая в $ \Omega $, то множество $ \left\{ z \colon f(z) = 0 \right\} $ --- дискретное подмножество $ \Omega $.
+ Множество нулей аналитической в области~$ \Omega $ функции~$ f $, не равной тождественно нулю в $ \Omega $, является дискретным.
 \end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Непосредственно следует из теоремы единственности~\ref{theorem:uniqueness}.
+\end{proof}
+
+\subsection{Условия Коши-Римана.}
+
+Есть ещё одно эквивалентное определение аналитической функции, рассматривающая функцию не как комплекснозначную функцию одного комплексного переменного, а как пару вещественнозначных функций двух вещественных переменных.
 
 \begin{thm}[условия Коши-Римана]
-\label{theorem:cauchy_riman}
- Пусть $ \Omega \subset \CC $ --- область, $ f $--- функция в $ \Omega $. Функции $ u, v \colon \Omega \to \R $ такие, что $ f(x + iy) = u(x, y) + iv(x,y) $. Следующие условия равносильны.
+ \label{theorem:cauchy_riman}
+ Пусть $ \Omega \subset \CC $ --- область, $ f\colon\,\Omega \subset \CC $ --- функция. Обозначим через $ u, v \colon\, \Omega \to \R $ функции, такие, что
+ \begin{align*}
+  f(x + iy) = u(x, y) + iv(x,y)
+ \end{align*} для всех $ x+iy \in \CC $. Тогда следующие условия равносильны.
  \begin{enumerate}
-  \item $ f $ аналитична на $ \Omega $.
-  \item $ u,v \in C^{1}(\Omega, \R) $. Выполнены равенства
+  \item \label{enum1:cauchy_riman} Функция~$ f $ аналитична в области~$ \Omega $.
+  \item \label{enum2:cauchy_riman} Функции~$ u,v $ $ C^{1} $-гладкие, а также всюду в $ \Omega $ выполнены следующие равенства, называемые \emph{условиями Коши-Римана:}
    \begin{align*}
     \begin{cases}
-     u'_x = v'_y \\
-     u'_y = -v'_x
- \end{cases} \text{ в } \Omega.
+     u'_x = v'_y, \\
+     u'_y = -v'_x.
+    \end{cases} 
    \end{align*}
  \end{enumerate}
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
-$ f $ аналитична тогда и только тогда, когда $ f \, dz $ замкнута. А по теореме о замкнутости гладкой формы(\ref{theorem:smooth_form_closed}), это выполнено тогда и только тогда, когда 
- 
-\begin{align*}
-d(f\,dz) = 0 \iff d((u+iv)dz) = 0 &\iff (u'_x\,dx+u'_y\,dy+iv'_x\,dx+iv'_y\,dy) \land dz = 0 \iff \\
-&\iff ((u'_x + iv'_x)\,dx + (u'_y + iv'_y)dy) \land (dx + i\,dy) = \\
-& = i(u'_x + iv'_x)\,dx \land dy +  (u'_y + iv'_y)\,dy\land dx = \\
-& = (i u'_x - v'_x) dx \land dy - (u'_y + iv'_y) dx \land dy = \\
-& = (iu'_x - v'_x - u'_y - iv'_y)\,dx \land dy \equiv 0 \iff \\
-& \iff u'_x - v'_y = 0 \text{ и } -v'_x - u'_y \equiv 0
-\end{align*} 
-И $u, v \in C^1(\Omega, \R)$ т.к. это вещественная/мнимая часть от гладкой функции. 
+ По теореме~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера функция~$ f $ аналитична в $ \Omega $ тогда и только тогда, когда дифференциальная форма~$ f \, dz $ замкнута в $ \Omega $. А по теореме~\ref{theorem:smooth_form_closed} о замкнутости $ C^{1} $-гладкой формы, форма замкнута тогда и только тогда, когда $ d(f\,dz) = 0 $. Раскроем левую часть:
+ \begin{align*}
+  d(f\,dz) &= d((u+iv)\,dz) = (u_x'\,dx + u_y'\,dy + iv_x'\,dx + iv_y'\,dy)\land dz = \\
+  &= ((u_x' + iv_x')\,dx + (u_y' + iv_y')\,dy) \land (dx + i\,dy) = \\
+  &= (-v_x' + iu_x')\,dx \land dy + (u_y' + iv_y')\,dy \land dx = \\
+  &= (-u_y' - v_x' + i(u_x' - v_y'))\,dx\land dy.
+ \end{align*} Тогда $ d(f\,dz) = 0 $, если и только если
+ \begin{align*}
+  \begin{cases}
+   -u_y' - v_x' = 0\\
+   u_x' - v_y' = 0
+  \end{cases} \iff
+  \begin{cases}
+   u_x' = v_y'\\
+   u_y' = -v_x'.
+  \end{cases} 
+ \end{align*} Отметим, что гладкость формы при импликации из \ref{enum2:cauchy_riman} в \ref{enum1:cauchy_riman} есть по условию, а при импликации из \ref{enum1:cauchy_riman} в \ref{enum2:cauchy_riman} есть по гладкости функции~$ f $.
+\end{proof}
+
+\subsection{Неравенство Лагранжа.}
+
+\begin{lm}
+ \label{lemma:derivative_of_analytic_f_is_exact_form}
+ Пусть функция~$ f $ аналитична в области~$ \Omega \subset \CC $. Тогда дифференциальная форма~$ f'(z)\,dz $ точна в $ \Omega $, и, более того, функция~$ f $ (рассматриваемая как функция двух вещественных переменных) является её первообразной: $ df = f'(z)\,dz $.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ В самом деле,
+ \begin{align*}
+  d(f(z)) &= d(f(x + iy)) = f'(x+iy) \cdot \frac{\partial}{\partial x}(x+iy)\,dx + f'(x+iy) \cdot \frac{\partial}{\partial y}(x+iy)\,dy = \\
+  &= f'(z) \, dx + f'(z) \cdot i\,dy = f'(z)\,dz,
+ \end{align*} где $ l(\gamma) $ --- длина пути $ \gamma $.
 \end{proof}
 
 \begin{thm}[неравенство Лагранжа]
  \label{theorem:Lagrange_inequality}
- Пусть $ \Omega $ --- область, $ f \colon\, \Omega \to \CC $ аналитична, $ z_1, z_2 \in \Omega $. Тогда
- \begin{align*}
-  \left| f(z_1) - f(z_2) \right| \leqslant \max_{z \in \gamma} \left| f'(z) \right| \cdot l(\gamma),
- \end{align*} где $ \gamma $ --- любой кусочно-гладкий путь, соединяющий $ z_1 $ и $ z_2 $.
+ Пусть функция~$ f $ аналитична в области~$ \Omega \subset \CC$, а $ \gamma $ --- кусочно-гладкий путь в $ \Omega $, соединяющий точки $ z_1 $ и $ z_2 $. Тогда
+ \begin{align}
+  \label{eq:lagrange_inequality}
+  \left| f(z_1) - f(z_2) \right| \leqslant l(\gamma) \cdot \max_{z \in \gamma} \left| f'(z) \right|.
+ \end{align} 
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Проверим $ df = f'(z) \, dz$:
+ По лемме~\ref{lemma:derivative_of_analytic_f_is_exact_form} функция~$ f $ является первообразной точной дифференциальной формы~$ f'(z)\,dz $. Тогда по формуле~\eqref{eq:integral_of_exact_form} (замечание~\ref{remark:integral_of_exact_form}):
  \begin{align*}
-  d(f(x+iy)) = f'(x+iy) \frac{\partial}{\partial x}(x+iy)\,dx + f'(x +iy) \frac{\partial}{\partial y}(x+iy)\,dy = \\
-  =f'(x+iy)\,(dx + i\,dy) = f'(z)\,dz.
- \end{align*} Следовательно, $ f'(z)\,dz $ --- точная форма с первообразной $ f $. Таким образом,
+  f(z_2) - f(z_1) = \int_{\gamma} f'(z)\,dz. 
+ \end{align*} Тогда по оценке модуля интеграла:
  \begin{align*}
-  \int\limits_{\gamma}  f'(z)\,dz = f(z_2) - f(z_1).
- \end{align*} Но по основной оценке интеграла
- \begin{align*}
-  \left| f(z_1) - f(z_2) \right| = \left| \int_{\gamma} f'(z)\,dz   \right| \leqslant \max_{z \in \gamma} \left| f'(z) \right| \cdot l(\gamma).
- \end{align*} 
+  \left| f(z_1) - f(z_2) \right| = \left| \int_{\gamma} f'(z)\,dz  \right| \leqslant l(\gamma) \cdot \max_{z \in \gamma} \left| f'(z) \right|.
+ \end{align*}
 \end{proof}
+
+Из неравенства~\eqref{eq:lagrange_inequality} Лагранжа непосредственно выводится следующее.
+
 \begin{remrk}
-  Если $ [z_1, z_2] \subset \Omega $, то теорема \eqref{theorem:Lagrange_inequality} влечёт\
+ Если $ f $ аналитична в области~$ \Omega $, и отрезок~$ [z_1,z_2] \subset \Omega$, то
  \begin{align*}
-  \left| f(z_1) - f(z_2) \right| \leqslant \max_{z \in [z_1, z_2]} \left| f'(z) \right| \cdot \left| z_1 - z_2 \right|.
- \end{align*} 
+  \left| f(z_1) - f(z_2) \right| \leqslant \left| z_1-z_2 \right| \cdot \max_{z \in [z_1, z_2]} \left| f'(z) \right|.
+ \end{align*}
 \end{remrk}
-\begin{remrk}[Аналитические функции с нулевой производной]
-    \label{remark:zero_derivative_analytical}
-	Если $f'(z) \equiv 0$, то $f(z) \equiv$ const.  
+
+\begin{remrk}[аналитические функции с нулевой производной]
+ \label{remark:zero_derivative_analytical}
+ Если функция~$ f $ аналитична в области~$ \Omega $, и её производная~$ f'(z) $ тождественно равна нулю в $ \Omega $, то $ f(z) $ постоянна в $ \Omega $.
 \end{remrk}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Действительно, так как в линейно связном множестве~$ \Omega $ любые две точки $ z_1 $ и $ z_2 $ можно соединить путём $ \gamma $, то по неравенству~\eqref{eq:lagrange_inequality} Лагранжа
+ \begin{align*}
+  \left| f(z_1)-f(z_2) \right| \leqslant l(\gamma) \cdot 0 = 0.
+ \end{align*}
+\end{proof}
+
 \end{document}
