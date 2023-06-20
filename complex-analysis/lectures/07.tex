@@ -1,264 +1,323 @@
 % 2023.04.06 lecture 07
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
+
+\subsection{Полюса.}
+
 \begin{df}[полюс]
- Пусть $ \Omega $ --- область, $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $, $ a \in \Omega $. Тогда $ a $ называется \textit{полюсом}, если
+ Неустранимая изолированная особая точка~$ a\in\CC $ функции~$ f $ называется \emph{полюсом}, если для некоторого натурального числа $ n \geqslant 1 $ выполнено
  \begin{align*}
-  f(z) = O \left( \frac{1}{(z-a)^{N}} \right),
- \end{align*} и $ f $ не ограничена в проколотой окрестности точки $ a $. \textit{Порядком} полюса называется минимальное такое $ N \geqslant 1 $ (если оно, конечно, существует).
+  f(z) = \OO \left( \frac{1}{(z-a)^{n}} \right)
+ \end{align*} при $ z \to a $. \emph{Порядком} полюса~$ a $ называется минимальное такое число $ n \geqslant 1 $.
 \end{df}
+
+Устранимую особую точку можно считать полюсом порядка~$ 0 $, ведь в этом случае при $ z \to a $ выполнено $ f(z) = \OO (z-a)^{-0} = \OO(1) $, что и означает локальную ограниченность.
+
 \begin{exmpl}\
  \begin{itemize}
-  \item Для функции $ \frac{1}{z^{2}} $ число $ 0 $ --- это полюс порядка $ 2 $.
-  \item Для функции $ \frac{\sin z}{z^{2}} $ точка $ 0 $ --- это полюс порядка $ 1 $.
+  \item Точка $ z=0 $ является полюсом порядка~$ 2 $ функции $ f(z) =  1/z^{2} $.
+  \item Точка $ z = 0 $ является полюсом порядка~$ 1 $ функции~$ f(z) = \sin z / z^{2} $, так как $ f(z) \sim 1 / z $ при $ z \to 0 $.
  \end{itemize}
 \end{exmpl}
+
 \begin{thm}
- Следующие условия равносильны:
- \begin{enumerate}
-  \item $ a $ --- это полюс порядка $ N \geqslant 1$.
-  \item Функция $ f $ раскладывается в ряд Лорана
-   \begin{align*}
-    f(z) = \sum_{-N}^{\infty} c_n(z-a)^{n},
-   \end{align*} в проколотой окрестности точки $ a $ где $ c_{-N} \neq 0 $.
- \end{enumerate}
+ \label{theorem:Pole}
+ Изолированная особая точка~$ a\in\CC $ функции~$ f $ является полюсом порядка~$ n \geqslant 1 $, если и только если ряд Лорана функции~$ f $ в проколотой окрестности~$ \dot B(a,\eps) $ имеет вид
+ \begin{align}
+  \label{eq:Pole Laurent Series}
+  f(z) = \sum_{k=-n}^{\infty} c_k(z-a)^{k},
+ \end{align} где $ c_{-n} \neq 0 $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- $  1 \implies 2 $. Пусть $ f(z) = O (\frac{1}{(z-a)^{N}}) $. Рассмотрим функцию
+ Если ряд Лорана функции~$ f $ в проколотой окрестности точки~$ a $ имеет вид~\eqref{eq:Pole Laurent Series}, то совершенно очевидно выполняется
  \begin{align*}
-  g = (z-a)^{N} f.
- \end{align*} $ g $ аналитична в $ \Omega \setminus \left\{ a \right\} $. $ a $ --- устранимая особая точка $ g $, поэтому
- \begin{align*}
-  g(z) = \sum_{j=0}^{\infty} b_j(z-a)^{j}
- \end{align*} в окрестности точки $ a $. Значит в проколотой окрестности точки $ a $ имеем
- \begin{align*}
-  f(z) = \sum_{k=-N}^{\infty} c_k (z-a)^{k},
- \end{align*} где $ c_k = b_{k+N} $. При этом $ c_{-N} = b_0 \neq 0 $, так как получилось бы $ f = O \left( \frac{1}{(z-a)^{N-1}} \right) $.
+  f(z) \sim \frac{c_{-n}}{(z-a)^{n}}
+ \end{align*} при $ z \to a $, причём так как $ c_{-n} \neq 0 $, то полюс~$ a $ имеет порядок ровно $ n $.
 
- Теперь $ 2 \implies 1 $ очевидно:
+ Наоборот, пусть $ a $ --- полюс порядка $ n \geqslant 1 $ функции~$ f $. Рассмотрим функцию
  \begin{align*}
-  f = \left(\frac{1}{z-a} \right)^{N} \underbrace{\left( \sum_{k=0}^{\infty} c_{k} (z-a)^{k} \right)}_{O(1)}.
- \end{align*} То есть
+  g(z) = (z-a)^{n}f(z).
+ \end{align*} Функция~$ g $ аналитична в проколотой окрестности точки~$ a $, и $ g(z) = \OO(1) $ при $ z \to a $ (так как $ f(z) = \OO(z-a)^{-n} $). По лемме~\ref{lm:Removable Singularity} $ a $ --- устранимая особая точка функции~$ g $, поэтому в окрестности точки~$ a $ функция~$ g $ (с до-определённым значением в точке~$ a $) раскладывается в ряд Тейлора:
  \begin{align*}
-  f \sim \frac{c_{-N}}{(z-a)^{N}}
- \end{align*} при $ z \to a $. Так как $ c_{-N} \neq 0 $, то порядок полюса равен $ N $.
+  g(z) = \sum_{j=0}^{\infty} b_j(z-a)^{j}.
+ \end{align*} Но тогда проколотой окрестности точки $ a $ имеем в точности разложение~\eqref{eq:Pole Laurent Series}, где $ c_k = b_{k+n} $. При этом $ c_{-n} = b_0 \neq 0 $, так как $ a $ --- полюс порядка ровно~$ n $ функции~$ f $.
 \end{proof}
 
+\subsection{Существенные особенности.}
+
 \begin{df}
- Пусть $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $, где $ a \in \Omega $, $ \Omega $ --- область. Точка $ a $ называется \textit{существенной особой точкой}, если для любого $ N \geqslant 1 $
- \begin{align*}
-  \varlimsup_{z \to a} \left|(z-a)^{N}f(z) \right| = +\infty.
- \end{align*}
+ Неустранимая изолированная особая точка~$ a\in\CC $ функции~$ f $, не являющаяся полюсом, называется \emph{существенной особой точкой}.
 \end{df}
+
 \begin{thm}
- Следующие условия равносильны:
+ Пусть $ a\in\CC $ --- изолированная особая точка функции~$ f $. Тогда следующие условия равносильны.
  \begin{enumerate}
-  \item $ a $ --- существенная особая точка.
-  \item
+  \item \label{enum1:Essential Singularity} $ a $ --- существенная особая точка.
+  \item \label{enum2:Essential Singularity} Для любого $ n \geqslant 0 $ выполнено
    \begin{align*}
-    f = \sum_{n \in \Z} c_n(z-a)^{n},
-   \end{align*} где для любого $ N \geqslant 1 $ существует $ k \geqslant N $ такое, что $ c_{-k} \neq 0 $.
+    \limsup_{z \to a} \left| (z-a)^{n} f(z) \right| = +\infty.
+   \end{align*}
+  \item \label{enum3:Essential Singularity} Ряд Лорана функции~$ f $ в проколотой окрестности точки~$ a $
+   \begin{align*}
+    f(z) = \sum_{k \in \Z} c_n(z-a)^{k}
+   \end{align*} имеет бесконечное число ненулевых коэффициентов $ c_k \neq 0 $ при $ k < 0 $.
  \end{enumerate}
 \end{thm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- $ 1 \implies 2 $. $ a $ --- это не устранимая особая точка и не полюс. Значит, в ряде Лорана бесконечно много отрицательных ненулевых коэффициентов.
-
- $ 2 \implies 1 $. Если существует существует $ N $ такое, что
- \begin{align*}
-  \varlimsup_{z \to a} \left| (z-a)^{N}f(z) \right| < +\infty,
- \end{align*} то $ f = O(\frac{1}{(z-a)^{N}}) \implies a $ --- полюс.
+\begin{proof}[\normalfont\textsc{Доказательство}]\
+ \begin{itemize}
+  \item Из условия~\ref{enum1:Essential Singularity} следует условие~\ref{enum2:Essential Singularity}. Действительно, если для некоторого $ n \geqslant 0 $ выполнено
+   \begin{align*}
+    \limsup_{z \to a} \left| (z-a)^{n} f(z) \right| < +\infty,
+   \end{align*} то $ f(z) = \OO (z-a)^{-n} $ при $ z \to a $, и тогда $ f $ является полюсом (или устранимой особенностью).
+  \item Из условия~\ref{enum2:Essential Singularity} следует условие~\ref{enum3:Essential Singularity}. Действительно, если бы у ряда Лорана было лишь конечно много ненулевых отрицательных коэффициентов, то мы бы получили
+   \begin{align*}
+    \lim_{z \to a} (z-a)^{n}f(z) = c_{-n},
+   \end{align*} где $ c_{-n} \neq 0 $ --- наименьший ненулевой коэффициент.
+  \item Из условия~\ref{enum3:Essential Singularity} следует условие~\ref{enum1:Essential Singularity}. Действительно, если $ a $ --- устранимая особенность, или полюс, то по следствию~\ref{corollary:Removable Singularity in Laurent Series} и теореме~\ref{theorem:Pole} ряд Лорана имеет лишь конечное число коэффициентов.
+ \end{itemize}
 \end{proof}
 
 \begin{exmpl}
- У функции $ e^{1 / z} $ точка $ 0 $ --- это существенная особая точка, так как
+ Точка $ z=0 $ является существенной особой точкой функции~$ f(z)= e^{1 / z} $, так как для любого $ n \geqslant 0 $
  \begin{align*}
-  \varlimsup_{z \to 0} \left| z \right|^{k} \left| e^{1/z} \right| \geqslant \varlimsup_{\eps \to 0+} \eps^{k} e^{1 / \eps} = +\infty
- \end{align*} для любого $ k \geqslant 1 $.
+  \limsup_{z \to 0} \left| z \right|^{n} \cdot \left| e^{1 / z} \right| \geqslant \limsup_{x \to 0+} x^{n} e^{1 / x} = \limsup_{x \to +\infty} \frac{e^{x}}{x^{n}} = +\infty.
+ \end{align*}
 \end{exmpl}
 
+\subsection{Вычет аналитической функции.}
+
 \begin{df}
- Пусть $ a $ --- изолированная особая точка функции $ f \colon\, \Omega \setminus \left\{ a \right\} \to \CC$. \textit{Вычетом} функции $ f $ в точке $ a $ называется коэффициент $ c_{-1} $ её ряда Лорана
+ Пусть функция~$ f $ аналитична в проколотой окрестности точки~$ a \in \CC $. Тогда \emph{вычетом} функции~$ f $ в точке~$ a $ называется коэффициент $ c_{-1} $ её ряда Лорана в точке~$ a $
  \begin{align*}
-  f(z) = \sum_{n \in \Z} c_n (z-a)^{n}
- \end{align*} Обозначение: $ \mathrm{res}_a f = c_{-1} $.
+  f(z) = \sum_{k \in \Z} c_k (z-a)^{k}.
+ \end{align*} Обозначение: $ \residue_a f = c_{-1} $.
 \end{df}
-\begin{exmpl*}
- Пусть $ a $ --- устранимая особая точка функции $ f $. Тогда $ \res_a f = 0 $.
-\end{exmpl*}
-\begin{exmpl*}
- Пусть $ f $ аналитична в $ \Omega $, $ a \in \Omega $.
+
+\begin{exmpl}
+ Если $ a $ --- устранимая особая точка функции $ f $, то $ \residue_a f = 0 $.
+\end{exmpl}
+
+\begin{exmpl}
+ \label{example:Residue of f / z-a}
+ Пусть функция~$ f $ аналитична в области~$ \Omega \ni a $, и функция
  \begin{align*}
-  h = \frac{f(z)}{z - a}
- \end{align*} в $ \Omega \setminus \left\{ a \right\} $. Тогда 
+  h(z) = \frac{f(z)}{z - a}
+ \end{align*} определена и аналитична в области~$ \Omega \setminus \left\{ a \right\} $. Тогда 
+ \begin{align}
+  \label{eq:Residue of f / z-a}
+  \residue_a h = f(a).
+ \end{align} Действительно, функция~$ f $ раскладывается в ряд Тейлора в окрестности точки~$ a $:
  \begin{align*}
-  \res_a h = f(a),
- \end{align*} ведь $ h = \frac{1}{z-a}(f(a)+O(z-a)) \implies c_{-1} = f(a) $ (сравниваем асимптотики $ \frac{c_{-1}}{z-a} + c_0 + \ldots $ и $ \frac{f(a)}{z-a} + O(1) $ при $ z\to a $).
-\end{exmpl*}
-\begin{exmpl*}
- Пусть $ h = \frac{f}{(z-a)^{k}} $, где $ k \geqslant 1 $. Найдём $ \res_a f $.
+  f(z) = \sum_{j=0}^{\infty} c_j (z-a)^{j},
+ \end{align*} и тогда $ h(z) $ раскладывается в ряд Лорана в проколотой окрестности  $ a $:
  \begin{align*}
- h = \frac{1}{(z-a)^{k}}\sum_{j=0}^{\infty} \frac{f^{(j)}(a)}{j!}(z-a)^{j} = \sum_{n \geqslant -k}^{\infty} c_n(z-a)^{n},
+  h(z) = \sum_{k=-1}^{\infty} c_{k+1}(z-a)^{k},
+ \end{align*} и коэффициент при $ (z-a)^{-1} $ равен $ c_{0} = f(a) $.
+\end{exmpl}
+\begin{exmpl}
+ Пусть функция~$ f $ аналитична в области~$ \Omega \ni a $, и функция
+ \begin{align*}
+  h(z) = \frac{f(z)}{(z - a)^{k}},
+ \end{align*} где $ k \geqslant 1 $, определена и аналитична в области~$ \Omega \setminus \left\{ a \right\} $. Тогда 
+ \begin{align*}
+  \residue_a h = \frac{f^{(k-1)}(a)}{(k-1)!}
+ \end{align*} Действительно,
+ \begin{align*}
+  h(z) = \frac{1}{(z-a)^{k}}\sum_{j=0}^{\infty} \frac{f^{(j)}(a)}{j!}(z-a)^{j} = \sum_{n \geqslant -k}^{\infty} c_n(z-a)^{n},
  \end{align*} где
  \begin{align*}
   c_n = \frac{f^{(n+k)}(a)}{(n+k)!}.
  \end{align*} Тогда
  \begin{align*}
-  \res_a h = c_{-1} = \frac{f^{(k-1)}(a)}{(k-1)!}.
+  \residue_a h = c_{-1} = \frac{f^{(k-1)}(a)}{(k-1)!}.
  \end{align*}
-\end{exmpl*}
+\end{exmpl}
 \begin{exmpl}
  \label{example:logarithmic_derivative1}
- Пусть $ f $ аналитична в $ \Omega $, $ f(a) = 0 $, и $ a $ --- корень кратности $ N \geqslant 1$ функции $ f $. Тогда
+ Пусть функция~$ f $ аналитична в области~$ \Omega $, и $ a \in \Omega $ --- корень кратности $ n \geqslant 1 $ функции $ f $. Тогда
  \begin{align*}
-  \res_a \frac{f'}{f} = N.
+  \residue_a \frac{f'(z)}{f(z)} = n.
  \end{align*}
-
- Функция $ \frac{f'}{f} $  называется \textit{логарифмической производной} функции $ f $.
 \end{exmpl}
+Функция $ f'(z)/f(z) $  называется \textit{логарифмической производной} функции $ f $. Так как множество нулей аналитической функции дискретно (следствие~\ref{corollary:Zeroes of analytic fun is a Discrete Set}), то особая точка $ a $ является изолированной.
 \begin{proof}[\normalfont\textsc{Доказательство}]
- По лемме о кратности нуля:
+ По лемме~\ref{lemma:zero_multiplicity} о кратности нуля
  \begin{align*}
-  f=(z-a)^{N}g,
- \end{align*} где $ g(a) \neq 0 $. Тогда
+  f(z)=(z-a)^{N}g(z),
+ \end{align*} где функция~$ g $ аналитична в $ \Omega $, и $ g(a) \neq 0 $. Тогда при $ z \to a $
  \begin{align*}
-  \frac{f'}{f} &= \frac{N(z-a)^{N-1}g + (z-a)^{N}g'}{(z-a)^{N}g} = \frac{N (z-a)^{N - 1} g}{(z - a)^{N} g} + \frac{(z-a)^{N} g'}{(z-a)^{N} g}= \frac{N}{z-a} + O(1)
- \end{align*} при $ z \to a $. Значит, $ a $  --- полюс первого порядка функции $ \frac{f'}{f} $, и
+  \frac{f'(z)}{f(z)} &= \frac{n(z-a)^{n-1}g(z) + (z-a)^{n}g'(z)}{(z-a)^{n}g(z)} = \\
+  &= \frac{n (z-a)^{n - 1} g(z)}{(z - a)^{n} g(z)} + \frac{(z-a)^{n} g'(z)}{(z-a)^{n} g(z)}= \frac{n}{z-a} + \OO(1).
+ \end{align*} Значит, $ a $  --- полюс первого порядка функции $ f'(z)/f(z) $, и
  \begin{align*}
-  \res_a \frac{f'}{f} = N.
+  \residue_a \frac{f'(z)}{f(z)} = n.
  \end{align*}
 \end{proof}
 
 \begin{exmpl}
  \label{example:logarithmic_derivative2}
- Пусть $ f $ аналитична в $ \Omega \setminus \left\{ a \right\} $ и $ a $ --- полюс порядка $ N \geqslant 1$. Тогда
+ Пусть $ a\in\CC $ --- полюс порядка~$ n \geqslant 1 $ аналитической функции~$ f $. Тогда
  \begin{align*}
-  \res_a \frac{f'}{f} = -N.
+  \residue_a \frac{f'(z)}{f(z)} = -n.
  \end{align*}
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- $ f = \frac{g}{(z-a)^{N}} $, $ g(a) \neq 0 $. Поэтому
+ По теореме~\ref{theorem:Pole} в окрестности точки~$ a $ выполнено
  \begin{align*}
-  \frac{f'}{f} = \frac{ \frac{g' \cdot (z-a)^{N} - N(z-a)^{N-1}g}{(z-a)^{2N}} }{\frac{g}{(z-a)^{N}}} = -\frac{N}{z-a} + O(1).
- \end{align*} Далее всё так же.
+  f(z) = \frac{g(z)}{(z-a)^{n}},
+ \end{align*} где функция~$ g $ аналитична в окрестности~$ a $, и $ g(a) \neq 0 $. Поэтому
+ \begin{align*}
+  \frac{f'(z)}{f(z)} = \frac{ \frac{g'(z) \cdot (z-a)^{n} - n(z-a)^{n-1}g(z)}{(z-a)^{2n}} }{\frac{g(z)}{(z-a)^{n}}} = -\frac{n}{z-a} + \OO(1)
+ \end{align*} при $ z \to a $. Значит, $ a $ --- полюс первого порядка функции $ f'(z) / f(z) $, и
+ \begin{align*}
+  \residue_a \frac{f'(z)}{f(z)} = -n.
+ \end{align*}
 \end{proof}
 
 \newpage
 \section{Теорема Коши о вычетах.}
 
-\begin{df*}
- Путь $ \gamma \colon\,[0,1] \to \CC $ называется \textit{замкнутым}, если $ \gamma(0) = \gamma(1) $.
-\end{df*}
+В этом параграфе мы изучим \emph{теорему Коши о вычетах} --- мощном инструменте для вычисления интеграла от аналитической функции по замкнутому контуру. Этот результат применяется очень часто, в том числе и при вычислении вещественных интегралов.
 
-\begin{df*}
- Замкнутый путь $ \gamma\colon\,[0,1] \to \CC $ называется \textit{простым}, если $\gamma |_{[0, 1)}$ --- инъективное отображение (без самопересечений).
-\end{df*}
-
-\begin{df*}
- Кусочно-гладкий замкнутый путь --- конечная сумма гладких путей, образующая замкнутый путь.
-\end{df*}
+В условии теоремы нам придётся наложить некоторые ограничения на область определения аналитической функции; введём для этих ограничений специальное название.
 
 \begin{df}
- \textit{Стандартная область}: это область  $ \Omega \subset \CC $ такая, что
- \begin{enumerate}
-  \item $ \Omega $ ограничена.
-  \item $ \overline \Omega \setminus \Omega $ состоит из конечного числа непересекающихся кусочно-гладких замкнутых путей.
- \end{enumerate}
+ Замкнутый путь $ \gamma\colon\,[a,b] \to \CC $ называется \textit{простым}, если у него нет самопересечений: $\gamma |_{[a,b)}$ --- инъективное отображение.
 \end{df}
 
+\begin{df}
+ Область~$ \Omega \subset \CC $ называется \emph{стандартной}, если она ограничена, и её граница $ \partial\Omega = \overline \Omega \setminus \Omega $ представляет собой объединение конечного числа непересекающихся кусочно-гладких замкнутых путей.
+\end{df}
+
+Пример стандартной области изображён на рисунке~\ref{fig:standart-region}.
+
 \begin{figure}[ht]
-    \centering
-	\incfig[0.5]{standart-region}
-    \caption{Пример стандартной области.}
-    \label{fig:standart-region}
+ \centering
+ \incfig[0.7]{standart-region}
+ \caption{Стандартная область.}
+ \label{fig:standart-region}
 \end{figure}
 
-\begin{df*}
- $ \overline \Omega \setminus \Omega $ называется \textit{границей} стандартной области $ \Omega $. Обозначение: $ \partial \Omega $.
-\end{df*}
+\begin{conventn}
+ Пусть $ \Omega \subset\CC$ --- стандартная область. Обычно, например, когда мы будем писать выражение
+ \begin{align*}
+  \varointctrclockwise_{\partial \Omega} f \, dz,
+ \end{align*} мы будем подразумевать, что граница $ \partial \Omega $ ориентирована так, что при обходе вдоль неё область~$ \Omega $ остаётся слева.
 
-\begin{conventn*}
- Запись $\varointctrclockwise_{\partial \Omega} f \, dz $ означает, что граница $ \partial \Omega $ ориентированна так, чтобы область оставалась слева при обходе.
-
- <<Слева>> означает, что вектор $ \gamma'(t_0) + \gamma(t_0) $ и $ \gamma(t_0) + i\gamma'(t_0) \cdot \eps \in \Omega $ при малых $ \eps > 0 $ --- это можно записать математически строго.
-
- Существование такой параметризации --- вопрос сложный, но его можно строго доказать.
-\end{conventn*}
+ Словосочетанию <<область остаётся слева>> можно придать математическую строгость: для любого пути $ \gamma_k $, являющегося составной частью границы~$ \partial\Omega $, и для любого $ t $ при достаточно малом $ \eps > 0 $ выполнено
+ \begin{align*}
+  \gamma_k(t) + i\eps\gamma_k'(t) \in \Omega.
+ \end{align*} Для понимания см. рисунок~\ref{fig:region-traversal-direction}. Существование такой параметризации для произвольной стандартной области --- вопрос сложный, но и его можно строго доказать.
+\end{conventn}
 
 \begin{figure}[ht]
-    \centering
-	\incfig[0.5]{region-traversal-direction}
-    \caption{Направление обхода контура.}
-    \label{fig:region-traversal-direction}
+ \centering
+ \incfig[0.5]{region-traversal-direction}
+ \caption{Направление обхода контура.}
+ \label{fig:region-traversal-direction}
 \end{figure}
 
 \begin{thm}[%
-Коши о вычетах]
-\label{theorem:cauchy_residue}
-Пусть $ \Omega $ --- стандартная область, $ f\colon\,\Omega \setminus E \to \CC $ --- аналитическая функция, где $ E \subset \Omega $  --- конечное число точек. Пусть также $ f \in C(\overline{\Omega} \setminus E) $. Тогда
-\begin{align*}
- \varointctrclockwise_{\partial \Omega} f\,dz = 2\pi i \sum_{a \in E} \res_{a} f.
-\end{align*}
+ Коши о вычетах]
+ \label{theorem:cauchy_residue}
+ Пусть $ \Omega \subset \CC$ --- стандартная область, и $ E \subset \Omega $ --- конечное число точек в ней. Пусть функция~$ f $ аналитична в области~$ \Omega \setminus E $, и непрерывно продолжается на границу области: $ f\in C(\overline\Omega \setminus E) $. Тогда
+ \begin{align}
+  \label{eq:Cauchy Residue Theorem}
+  \varointctrclockwise_{\partial \Omega} f\,dz = 2\pi i \sum_{a \in E} \residue_{a} f.
+ \end{align}
 \end{thm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Доказательство будет по модулю формулы Стокса. 
 
- Рассмотрим область $ \tilde \Omega = \Omega \setminus \bigcup_{a \in E} B(a,\eps) $, где $ \eps > 0 $ достаточно маленькое, чтобы все круги $ \overline {B(a,\eps)} $ лежали в $ \Omega $ и не пересекались.
+Оказывается, теорема~\ref{theorem:cauchy_residue} очень просто выводится из теоремы Стокса. Однако теорема Стокса не была доказана нами в полной мере, поэтому этот вывод не будет являться полным доказательством.
 
-\begin{figure}[ht]
-    \centering
-	\incfig[0.5]{theorem_cauchy_omega_tilde}
-    \caption{$\tilde \Omega$ .}
-    \label{fig:theorem_cauchy_omega_tilde}
-\end{figure}
+\begin{proof}[\normalfont\textsc{Вывод теоремы~\ref{theorem:cauchy_residue} из формулы Стокса}]
+ Рассмотрим область
+ \begin{align*}
+  \tilde \Omega = \Omega \setminus \bigcup_{a \in E} \overline B(a,\eps),
+ \end{align*} где число $ \eps > 0 $ достаточно маленькое, чтобы все замкнутые диски $ \overline B(a,\eps) $, $ a \in E $ лежали в~$ \Omega $ и не пересекались (рисунок~\ref{fig:theorem_cauchy_omega_tilde}). Область~$ \tilde \Omega $ также является стандартной областью.
 
- Тогда по формуле Стокса:
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.5]{theorem_cauchy_omega_tilde}
+  \caption{Область $\tilde \Omega$.}
+  \label{fig:theorem_cauchy_omega_tilde}
+ \end{figure}
+
+ Дифференциальная форма~$ f\,dz $ непрерывна на $ \overline{\tilde \Omega} $, а также $ C^{1} $-гладкая и замкнутая в области~$ \tilde \Omega $ по теореме~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера: по теореме~\ref{theorem:smooth_form_closed} имеем $ d(f\,dz) = 0 $ в области~$ \tilde\Omega $. Тогда по формуле Стокса
+ \begin{align}
+  \label{eq:Stokes Formula:Cauchy Residue Thm}
+  \varointctrclockwise_{\partial \tilde \Omega}   f\,dz = \int_{\tilde \Omega} d(f\,dz)  = \int_{\tilde\Omega} 0\,dx\land dy = 0.
+ \end{align} Но по аддитивности интеграла
+ \begin{align}
+  \label{eq:Additivity:Cauchy Residue Thm}
+  \varointctrclockwise_{\partial \tilde \Omega} f\,dz = \varointctrclockwise_{\partial \Omega} f\,dz - \sum_{a \in E} \varointctrclockwise_{C(a,\eps)}f\,dz,
+ \end{align} где $ C(a,\eps) $ --- окружность с центром в $ a \in E $ и радиусом~$ \eps $, проходимая против часовой стрелке. Подставляя \eqref{eq:Stokes Formula:Cauchy Residue Thm} в \eqref{eq:Additivity:Cauchy Residue Thm}, получаем
+ \begin{align}
+  \label{eq:Almost:Cauchy Residue Thm}
+  \varointctrclockwise_{\partial\Omega} f\,dz = \sum_{a \in E}\varointctrclockwise_{C(a,\eps)} f\,dz.
+ \end{align} По теореме~\ref{theorem:Laurent series of analytic function} Лорана в проколотой окрестности каждой точки~$ a \in E $ функция~$ f $ раскладывается в ряд Лорана
+ \begin{align}
+  \label{eq:Laurent Series:Cauchy Residue Thm}
+  f(z)=\sum_{k\in\Z}c_k(z-a)^{k},
+ \end{align} причём ряд~\eqref{eq:Laurent Series:Cauchy Residue Thm} сходится равномерно на компактах в этой проколотой окрестности. Тогда
  \begin{align*}
-  \varointctrclockwise \limits_{\partial \tilde \Omega}   f\,dz = \varointctrclockwise\limits_{\tilde \Omega} d(f\,dz) = 0.
- \end{align*} Но
- \begin{align*}
-  \varointctrclockwise\limits_{\partial \tilde \Omega} f\,dz = \varointctrclockwise\limits_{\partial \Omega} f\,dz + \sum_{a \in E} \underbrace{\varointclockwise\limits_{C(a,\eps)}f\,dz}_{=-2\pi i \cdot \res_a f}.
- \end{align*} Т.к.
- \begin{align*}
-  \varointctrclockwise\limits_{C(a,\eps)}f(z)\,dz = \varointctrclockwise\limits_{C(a,\eps)} \left( \sum_{k \in \Z} c_k(z-a)^{k} \right)dz = 2\pi i \cdot c_{-1} = 2\pi i \cdot \res_a f.
- \end{align*}
+  \varointctrclockwise_{C(a,\eps)}f(z)\,dz &= \varointctrclockwise_{C(a,\eps)} \left[ \sum_{k \in \Z} c_k(z-a)^{k} \right]dz = \sum_{k\in\Z} c_k \cdot \left[ \varointctrclockwise_{C(a,\eps)} (z-a)^{k}\,dz \right] = \\
+  &= \sum_{k\in\Z}c_k \cdot \left[ \varointctrclockwise_{C(0,\eps)} \zeta^{k}\,d\zeta \right] = 2\pi i \cdot c_{-1} = 2\pi i \cdot \residue_a f,
+ \end{align*} где переставлять местами знак суммы и интеграла можно по равномерной сходимости ряда~\eqref{eq:Laurent Series:Cauchy Residue Thm}. Подставляя полученное в \eqref{eq:Almost:Cauchy Residue Thm}, получаем в точности \eqref{eq:Cauchy Residue Theorem}, что и требовалось доказать.
 \end{proof}
 
-\begin{crly}[Интегральное следствие Коши]
- Пусть область $ \Omega $ стандартная, $ f \in C(\overline \Omega) $ и $ f $ аналитична в $ \Omega $. Тогда
- \begin{align*}
-  f(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz,\quad w \in \Omega.
- \end{align*}
+В качестве примера применения теоремы~\ref{theorem:cauchy_residue} Коши о вычетах, обобщим уже известную нам \emph{интегральную формулу Коши} (следствие~\ref{corollary:cauchy_formula}).
+
+\begin{crly}[интегральная формула Коши]
+ \label{corollary:Cauchy Integral Formula}
+ Пусть функция~$ f $ аналитична в стандартной области~$ \Omega \subset \CC $, и непрерывно продолжается на её границу: $ f \in C(\overline \Omega) $. Тогда для любой точки $ z_0 \in \Omega $ верна \emph{интегральная формула Коши:}
+ \begin{align}
+  \label{eq:Cauchy Integral Formula}
+  f(z_0) = \frac{1}{2\pi i} \varointctrclockwise_{\partial\Omega} \frac{f(z)\,dz}{z-z_0}.
+ \end{align}
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- По теореме Коши
+ Так как аналитическая функция~$ f(z) / (z-z_0) $ в области~$ \Omega $ имеет лишь одну особенность в точке $ z = z_0 $, то по теореме~\ref{theorem:cauchy_residue} Коши о вычетах:
  \begin{align*}
-  \varointctrclockwise\limits_{\partial \Omega} \frac{f(z)}{z-w}\,dz = 2\pi i \cdot \res_w \frac{f}{z-w} = 2\pi i f(w).
- \end{align*}
+  \varointctrclockwise_{\partial \Omega} \frac{f(z)\,dz}{z-z_0} = 2\pi i \cdot \residue_{z_0} \frac{f(z)}{z-z_0} = 2\pi i  \cdot f(z_0),
+ \end{align*} где вычет был вычислен по формуле~\eqref{eq:Residue of f / z-a} (пример~\ref{example:Residue of f / z-a}).
 \end{proof}
 
 \begin{thm}
- Пусть функции $ f $, $ g_n $ аналитичны в стандартной области $ \Omega $, непрерывны в $ \overline \Omega $, и
- \begin{align*}
-  \lim_{n \to \infty} \max_{\partial\Omega} \left| f-g_n \right| = 0.
- \end{align*} Тогда $ g'_n $ сходится к $ f' $ равномерно на компактах в $ \Omega $.
-\end{thm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- По предыдущему следствию:
- \begin{align*}
-  f(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial\Omega} \frac{f(z)}{z-w}\,dz.
- \end{align*} Аналогичная формула верна для $ g_n $. Тогда
+ \label{theorem:Derivative Convergence Example}
+ Пусть функции $ f, g_1, g_2, \ldots, g_n, \ldots $ аналитичны в стандартной области $ \Omega \subset \CC $ и непрерывны на $ \overline \Omega $. Пусть также выполнено
  \begin{align}
-  \label{equation:proof:theorem_equal_diff_also_equal}
-	 f'(w) = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial\Omega} \frac{f(z)}{(z-w)^{2}}\,dz.
- \end{align} Почему можно дифференцировать?
- \begin{align*}
-  \frac{f(w+\xi)-f(w)}{\xi} = \frac{1}{2\pi i} \varointctrclockwise\limits_{\partial \Omega} f(z) \underbrace{\frac{1}{\xi} \left( \frac{1}{z-(w+\xi)} - \frac{1}{z - w} \right)}_{\frac{1}{(z-w-\xi)(z-w)} = O(\frac{1}{(z-w)^{2}}) = O(1)}\,dz
- \end{align*}, т.к. $(z - w) = O(1)$ ведь $w$ фиксированна и мы живем на компакте.  
+  \label{eq:Condition:Derivative Convergence Example}
+  \lim_{n \to \infty} \max_{z \in \partial\Omega} \left| f(z)-g_n(z) \right| = 0.
+ \end{align} Тогда производные~$ g_n' $ сходятся к $ f' $ равномерно на компактах в $ \Omega $.
+\end{thm}
 
- По теореме Лебега можно переходить к пределу и получим \eqref{equation:proof:theorem_equal_diff_also_equal}. Тогда
+\begin{lm}
+ \label{lemma:Derivative Cauchy Integral Formula}
+ Пусть функция~$ f $ аналитична в стандартной области~$ \Omega \subset \CC $ и непрерывна на $ \overline\Omega $. Тогда для любой точки~$ z_0 \in \Omega $ выполнено
+ \begin{align}
+  \label{eq:Derivative Cauchy Integral Formula}
+  f'(z_0) = \frac{1}{2\pi i} \varointctrclockwise_{\partial\Omega} \frac{f(z)\,dz}{(z-z_0)^{2}}.
+ \end{align}
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пользуясь интегральной формулой Коши~\eqref{eq:Cauchy Integral Formula} (следствие~\ref{corollary:Cauchy Integral Formula}), раскроем производную функции~$ f $ в точке $ z_0 $:
  \begin{align*}
-	 \left| f'(w) - g'(w) \right| \leqslant \frac{1}{2\pi} \varointctrclockwise\limits_{\partial\Omega} \frac{\max_{\partial\Omega} \left| f-g_n \right|}{\left| z-w \right|^{2}}\,dz \overset{n \to \infty}{\rightrightarrows} 0,
- \end{align*} равномерно по $ w \in K $(т.к. точки $z$ берутся на границе ), где $ K $ --- компакт в $ \Omega $.
+  f'(z_0) &= \lim_{h\to 0} \frac{f(z_0 + h) - f(z_0)}{h} = \lim_{h \to 0}  \frac{1}{2\pi i}\varointctrclockwise_{\partial\Omega} \frac{f(z)}{h} \left[ \frac{1}{z-(z_0+h)} - \frac{1}{z-z_0} \right]dz = \\
+  &= \lim_{h \to 0} \frac{1}{2\pi i} \varointctrclockwise_{\partial\Omega} \frac{f(z)\,dz}{(z - z_0 - h)(z - z_0)} = \frac{1}{2\pi i} \varointctrclockwise_{\partial\Omega} \frac{f(z)\,dz}{(z-z_0)^{2}}.
+ \end{align*} Осталось лишь обосновать предельный переход под знаком интеграла по теореме Лебега о мажорируемой сходимости. В самом деле, при малых~$ h $:
+ \begin{align*}
+  \left| \frac{f(z)}{(z - z_0 - h)(z-z_0)} \right|  \leqslant \frac{2 \left| f(z) \right|}{\left| z-z_0 \right|^{2}} = \OO(1),
+ \end{align*} так как точка~$ z_0 $ отделена от границы~$ \partial\Omega $ ($ \left| z-z_0 \right| \geqslant \delta$ для некоторой константы $ \delta > 0$ и для всех $ z\in\partial\Omega $), а непрерывная функция~$ \left| f(z) \right| $ достигает максимума на компакте~$ \partial\Omega $.
+\end{proof}
+
+\begin{proof}[\normalfont\textsc{Доказательство теоремы~\ref{theorem:Derivative Convergence Example}}]
+ Пользуясь формулой~\eqref{eq:Derivative Cauchy Integral Formula} (лемма~\ref{lemma:Derivative Cauchy Integral Formula}), запишем
+ \begin{align*}
+  \left| f'(w) - g_n'(w) \right| &= \left| \frac{1}{2\pi i} \varointctrclockwise_{\partial\Omega} \frac{(f(z)-g_n(z))\,dz}{(z-w)^{2}}  \right| \leqslant \frac{1}{2\pi} \varointctrclockwise_{\partial\Omega} \frac{\max_{\partial\Omega} \left| f-g_n \right|}{\left| z-w \right|^{2}}\,dz.
+ \end{align*} Тогда по~\eqref{eq:Condition:Derivative Convergence Example} 
+ \begin{align*}
+  \left| f'(w) - g_n'(w) \right| \leqslant \frac{1}{2\pi} \varointctrclockwise_{\partial\Omega} \frac{o(1)\,dz}{\left| z-w \right|^{2}} \leqslant \frac{l(\partial\Omega) \cdot o(1)}{2\pi} \cdot \max_{z \in \partial\Omega} \frac{1}{\left| z-w \right|^{2}} \rightrightarrows 0
+ \end{align*} при $ n \to \infty $, причём сходимость равномерная по $ w $ на компактах в $ \Omega $ (так как любой компакт $ K \subset \Omega $ отделён от границы).
 \end{proof}
 
 \end{document}

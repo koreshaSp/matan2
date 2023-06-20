@@ -92,7 +92,7 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
 По теореме Коши \eqref{theorem:cauchy_residue}
  \begin{align*}
-  \int\limits_{\partial\Omega} \frac{f'(z)}{f(z)} \,dz = 2\pi i \sum_{a \in E} \res_a \frac{f'}{f}.
+  \int\limits_{\partial\Omega} \frac{f'(z)}{f(z)} \,dz = 2\pi i \sum_{a \in E} \residue_a \frac{f'}{f}.
  \end{align*} Левая часть по определению интеграла равна
  \begin{align*}
   \sum_{k=1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt.
@@ -100,19 +100,19 @@
 
  Припишем $ \Imaginary$ к обоим частям:
  \begin{align*}
-  \Imaginary \left(\sum_{k=1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt\right) = \Imaginary \left( 2\pi i \sum_{a \in E}\res_a \frac{f'}{f} \right)
+  \Imaginary \left(\sum_{k=1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt\right) = \Imaginary \left( 2\pi i \sum_{a \in E}\residue_a \frac{f'}{f} \right)
  \end{align*} Левая часть равна
  \begin{align*}
   \sum_{1}^{\tilde N} \psi_k(1) - \psi_k(0) = \Delta_{\partial \Omega} \arg f,
  \end{align*} где $ \psi_k $ --- аргумент $ f $ вдоль $ \gamma_k $ Правая часть равна
  \begin{align*}
-  2\pi \sum_{a \in E} \Real \left( \res_a \frac{f'}{f} \right).
+  2\pi \sum_{a \in E} \Real \left( \residue_a \frac{f'}{f} \right).
  \end{align*} Пусть $ a $ --- ноль функции $ f $ кратности $ k(a) $. Тогда
  \begin{align*}
-  \res_a \frac{f'}{f} = k(a).
+  \residue_a \frac{f'}{f} = k(a).
  \end{align*} Пусть теперь $ a $ --- полюс порядка $ p(a) $, то
  \begin{align*}
-  \res_a \frac{f'}{f} = -p(a).
+  \residue_a \frac{f'}{f} = -p(a).
 \end{align*} У нас были два примера на это \eqref{example:logarithmic_derivative1} \eqref{example:logarithmic_derivative2} . Просуммировав всё, правая часть равна
  \begin{align*}
   2\pi (N-P),
