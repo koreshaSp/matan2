@@ -5,218 +5,276 @@
 \newpage
 \section{Лемма Шварца. Нули ограниченных аналитических функций.}
 
-\begin{df*}
- \textit{Единичным диском} называется $ \mathbb D = \left\{ z \in \CC \Mid \left| z \right| < 1 \right\} $.
-\end{df*}
+Одним из интересных приложений принципа максимума является \emph{лемма Шварца}.
+
+\begin{df}
+ \textit{Единичным диском} называется множество $ \mathbb D = \left\{ z \in \CC : \left| z \right| < 1 \right\} $.
+\end{df}
 
 \begin{lm}[Шварца]
-\label{lemma:schwarz}
- Пусть $ f \colon\, \mathbb D \to \mathbb D $ --- аналитическая функция, причём $ f(0) = 0 $. Тогда $ \left| f(z) \right| \leqslant \left| z \right| $ в $ \mathbb D $, и равенство достигается в какой-то точке $ z \in \mathbb D $ тогда и только тогда, когда $f = \alpha z$, $ \left| \alpha  \right| = 1 $.
+ \label{lemma:schwarz}
+ Пусть $ f \colon\, \mathbb D \to \mathbb D $ --- аналитическая функция, причём $ f(0) = 0 $. Тогда $ \left| f(z) \right| \leqslant \left| z \right| $ в $ \mathbb D $, и равенство достигается в какой-то точке $ z \in \mathbb D $, отличной от нуля, тогда и только тогда, когда $f(z) = \alpha z$, $ \left| \alpha  \right| = 1 $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
-Применим принцип максимума \eqref{theorem:maximum_principle}. Рассмотрим функцию $ g=\frac{f}{z} $. Функция аналитическая в $ \mathbb D $ (так как ряд не имеет свободного члена ($ f(0) = 0 $), и его можно поделить на $ z $). Найдём
+ Рассмотрим функцию
  \begin{align*}
-  \sup_{\left| z \right| < 1} \left| g(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| \leqslant r} \left| g(z) \right| = [\text{принцип максимума}] = \lim_{r\to 1} \sup_{\left| z \right| = r} \left| g(z) \right| = \\
-  &= \lim_{r \to 1} r^{-1} \sup_{\left| z \right| = r} \underbrace{\left| f(z) \right|}_{\leq 1} \leqslant \lim_{r \to 1} r^{-1} = 1.
- \end{align*} Значит, $ \left| g \right| \leqslant 1 $ в $ \mathbb D $, то есть $ \left| f \right| \leqslant \left| z \right| $ в $ \mathbb D $.
+  g(z) = \frac{f(z)}{z}.
+ \end{align*} Функция~$ g $ аналитична в $ \mathbb D $, так как $ f(0) = 0 $. Найдём верхнюю границу функции~$ g $ на диске~$ \mathbb D $:
+ \begin{align*}
+  \sup_{\left| z \right| < 1} \left| g(z) \right| &= \lim_{r \to 1-} \max_{\left| z \right| \leqslant r} \left| g(z) \right|,
+  \intertext{а по принципу максимума (следствие~\ref{corollary:maximum_principle_border})}
+  &= \lim_{r \to 1-} \max_{\left| z \right| = r} \left| g(z) \right| = \lim_{r \to 1-}  \max_{\left| z \right|=r} \frac{\left| f(z) \right|}{r} \leqslant \\
+  &\leqslant \lim_{r \to 1-} \frac{1}{r} = 1.
+ \end{align*} Таким образом, $ \left| g \right| \leqslant 1 $, то есть $ \left| f \right| \leqslant \left| z \right| $ всюду в $ \mathbb D $.
 
- Пусть $ \left|f(z_0) \right| = \left| z_0 \right| $ в точке $ z_0 \in \mathbb D $. Тогда $ |g(z_0)| = 1 $, и по принципу максимума функция $ g $ --- константа в $ \mathbb D $, то есть $ f = \alpha \cdot z $, где $ \alpha = g(z_0) $, $ \left| \alpha \right|=1 $.
+ Теперь разберёмся с равенством. <<Тогда>> очевидно. <<Только тогда>>: пусть $ \left|f(z_0) \right| = \left| z_0 \right| $ в точке $ z_0 \in \mathbb D $, $ z_0 \neq 0 $. Тогда $ |g(z_0)| = 1 $, и по принципу максимума функция $ g $ --- константа в $ \mathbb D $, то есть $ f(z) = \alpha z $, где $ \alpha = g(z_0) $, $ \left| \alpha \right|=1 $.
 \end{proof}
 
-\begin{df}
- Пусть $ f \colon\, \Omega \to \CC $ аналитична, и $ f(z_0) = 0 $ в некоторой точке $ z_0 \in \CC $. \textit{Кратностью нуля $ z_0 $} --- это число $ n \geqslant 1 $ такое, что
- \begin{align*}
-  f(z) = (z-z_n)^{n} \cdot g(z)
- \end{align*} где $ g $ аналитична в $ \Omega $ и $ g(z_0) \neq 0 $.
-\end{df}
-
-По лемме \eqref{lemma:zero_multiplicity} о кратности нуля у каждой функции (кроме тождественного нуля) есть кратность во всех нулях.
-
 \begin{thm}
- Пусть аналитическая функция $ f\colon\,\mathbb D \to \CC $  ограничена. Пусть $\{\lambda_{k}\}_{k=1}^{N} $,  где $ N \in \N \cup \left\{ \infty \right\} $ последовательность всех её нулей с учётом кратности (каждый нуль встречается в этой последовательности столько раз, какова его кратность).
-
- Тогда сходится ряд:
+ Пусть аналитическая функция $ f\colon\,\mathbb D \to \CC $  ограничена и не равна тождественно нулю. Пусть $\{\lambda_{k}\}_{k=1}^{N} $,  где $ N \in \N \cup \left\{ \infty \right\} $ --- последовательность всех её нулей с учётом кратности (каждый нуль встречается в этой последовательности столько раз, какова его кратность). Тогда для функции $ f $ выполнено \emph{условие Бляшке:} сходится ряд
  \begin{align}
   \label{equation:zero_sum_conv}
-  \sum_{k=1}^{N} \left( 1 - \left| \lambda_k \right| \right) < \infty.
- \end{align} Более того, обратное тоже верно: по нулям с условием \eqref{equation:zero_sum_conv} можно построить ограниченную аналитическую функцию с нулями в этих точках указанной кратности.
+  \sum_{k=1}^{N} \left( 1 - \left| \lambda_k \right| \right) < +\infty.
+ \end{align} Более того, обратное тоже верно: по последовательности нулей $ \{\lambda_{k}\}_{k=1}^{N}  $, удовлетворяющим условию~\eqref{equation:zero_sum_conv} Бляшке можно построить ограниченную аналитическую функцию с нулями в этих точках, с учётом указанной кратности.
 \end{thm}
-Сходимость ряда \eqref{equation:zero_sum_conv} называется \textit{условием Бляшке}.
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Доказываем только в прямую сторону (в обратную сторону будет в листочке). Интересен только случай $ N = \infty $. Можно считать, что $ \left| f(z) \right| \leqslant 1$ в $ \mathbb D $.
 
- Рассмотрим функцию $ \mathcal B_n = \prod_{k=1}^{n} \frac{\lambda_k - z}{1 - \overline{\lambda_k}z} $, которая называется \textit{произведением Бляшке}. Эта функция аналитична в $ \mathbb D  $ и непрерывна в $ \overline {\mathbb D} $ (ведь $ \left| \lambda_k \right| < 1  $ и $ 1 - \overline{\lambda_k}z \neq 0 $). Кроме того,
+В виду предложения~\ref{proposition:Discrete Set is Countable} и следствия~\ref{corollary:Zeroes of analytic fun is a Discrete Set} любая аналитическая функция, не равная тождественно нулю, имеет не более, чем счётное число нулей, поэтому их всегда можно занумеровать последовательностью $ \{\lambda_{k}\}_{k=1}^{N}  $.
+
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Доказываем только в прямую сторону (в обратную сторону --- задача в листочке). Интересен только случай $ N = \infty $ (при $ N < \infty $ ряд~\eqref{equation:zero_sum_conv} и так сходится). Можно считать, что $ \left| f(z) \right| \leqslant 1$ в $ \mathbb D $ (если не так, то поделим функцию на константу~$ M $, ограничивающую $ f $). Кроме того, можно считать, что $ f(0) \neq 0 $, иначе рассмотрим функцию~$ \tilde f(z) = f(z) / z^{k} $, где $ k $ --- кратность нуля функции~$ f $ в точке~$ 0 $, и применим теорему для неё: в ряд~\eqref{equation:zero_sum_conv} добавится лишь число~$ k $.
+
+ Рассмотрим функцию
  \begin{align*}
-  \left| \mathcal B_n(\xi) \right| = 1
- \end{align*} для любого $ \xi \in \CC $, $ \left| \xi \right| = 1 $, потому что
+  \mathcal B_n(z) = \prod_{k=1}^{n} \frac{\lambda_k - z}{1 - \overline{\lambda_k}z},
+ \end{align*} которая называется \textit{произведением Бляшке} (множители $ \frac{\lambda_k - z}{1 - \overline{\lambda_k} z} $ называются \emph{множителями Бляшке}). Функция~$ \B_n $ аналитична в $ \mathbb D $ и непрерывна на $ \overline{\mathbb D} $, так как при $ \left| \lambda_k \right| < 1 $ и $ \left| z \right| \leqslant 1 $ верно $ \left| \overline{\lambda_k} z \right| < 1 \implies 1 - \overline{\lambda_k} z \neq 0 $. Кроме того, функция~$ \B_n $ по построению имеет нули в точках $ \lambda_1, \lambda_2, \ldots, \lambda_n $ с учётом кратности. Наконец, для любого $ \xi \in \CC $, $ \left| \xi \right|=1 $ верно
+ \begin{align*}
+  \left| \mathcal B_n(\xi) \right| = 1,
+ \end{align*} потому что
  \begin{align*}
   \left| \frac{\lambda_k - \xi}{1 - \overline{\lambda_k}\xi} \right| = \left| \frac{\overline \xi \lambda_k - 1}{1 - \overline{\lambda_k} \xi} \right| = 1.
- \end{align*} По принципу максимума $ \left| \B_n(z) \right| \leqslant 1$, для любого $z \in \mathbb D $.
+ \end{align*} По принципу максимума (следствие~\ref{corollary:maximum_principle_border}) $ \left| \B_n(z) \right| \leqslant 1$ всюду в $ \mathbb D $.
 
- Рассмотрим функцию $ g_n = \frac{f}{\B_n} $, эта функция также аналитична в $ \mathbb D $ по построению (т.к. кратность нуля у $f$ во всех точках не меньше чем кратность нуля у $\mathcal B_n$, значит по лемме о кратности нуля получаем что отношение это аналитическая функция).
+ Рассмотрим функцию
  \begin{align*}
- \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1} \sup_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| B_n(z) \right|} \leqslant \lim_{r \to 1} \sup_{|z| = 1} \frac{1}{1 + o(1)} = 1.
- \end{align*} Значит,
+  g_n(z) = \frac{f(z)}{\B_n(z)}.
+ \end{align*} Так как кратность нуля у функции~$ f $ в каждой точке не меньше кратности нуля у функции~$ \B_n $ в этой же точке, то функция~$ g_n $ аналитична в $ \mathbb D $. Тогда для каждого $ n $ по принципу максимума
  \begin{align*}
-  \left| f \right| = \left| \mathcal B_n \cdot g_n \right| \leqslant \left| \B_n \right|
- \end{align*} всюду в $ \mathbb D $. Подставим нуль:
+  \sup_{\left| z \right| < 1} \left| g_n(z) \right| &= \lim_{r \to 1-} \max_{\left| z \right| \leqslant r}  \left| g_n(z) \right| = \lim_{r \to 1-} \max_{\left| z \right| = r} \frac{\left|f(z) \right|}{\left| \B_n(z) \right|} \leqslant \lim_{r \to 1-} \max_{\left| z \right| = r} \frac{1}{1 + o(1)} = 1,
+ \end{align*} ведь функция~$ \B_n $ равномерно непрерывна на $ \overline{\mathbb D} $, и равна единице на $ \partial \mathbb D $. В таком случае
+ \begin{align}
+  \label{eq:f < B_n z:blyaske}
+  \left| f(z) \right| \leqslant \left| \B_n(z) \right|
+ \end{align} всюду в $ \mathbb D $. Подставим $ z = 0 $ в \eqref{eq:f < B_n z:blyaske}:
  \begin{align*}
   \left| f(0) \right| \leqslant \left| \B_n(0) \right| = \prod_{k=1}^{n}\left| \lambda_k \right|.
- \end{align*} Пусть сначала $ f(0) \neq 0 $. Тогда
+ \end{align*} Так как $ f(0) \neq 0 $, то
  \begin{align*}
-	-\infty < \log \left| f(0) \right| &\leqslant \sum_{k=1}^{n} \log \left| \lambda_k \right| = \sum_{k=1}^{n} \log (1 + (\left| \lambda_k \right| - 1)) \leqslant \\
-	&\leqslant [\log(1+x) \leqslant x, \; \forall  x \in (-1, +\infty)  ] \leqslant \\
-	&\leqslant \sum_{k=1}^{n}\left( \left| \lambda_k \right| - 1 \right).
- \end{align*} Умножая на $ -1 $, получаем
+  -\infty < \log \left| f(0) \right| &\leqslant \sum_{k=1}^{n} \log \left| \lambda_k \right| = \sum_{k=1}^{n} \log (1 + (\left| \lambda_k \right| - 1)),
+  \intertext{а по неравенству $ \log(1+x) \leqslant x $ при $ x > -1 $ получаем}
+  &\leqslant \sum_{k=1}^{n}\left( \left| \lambda_k \right| - 1 \right).
+ \end{align*} Умножая всё на $ -1 $, получаем
  \begin{align*}
-  \sum_{k=1}^{n} \left( 1 - \left| \lambda_k \right| \right) \leqslant \log \frac{1}{\left| f(0) \right|}
- \end{align*} Раз неравенство выполнено для любого $ n $, то ряд  \eqref{equation:zero_sum_conv} сходится.
-
- Теперь пусть $ f(0) = 0 $. Тогда достаточно рассмотреть  $ \tilde f(z) = \frac{f(z)}{z^{k}} $, где $ k $ --- кратность корня $ \lambda = 0 $. Дальше всё получается.
-
- В обратную сторону построение --- это бесконечное произведение Бляшке с нормировочными множителями:
-  \begin{align*}
-   f = \prod_{k=1}^{N} \frac{\left| \lambda_k \right|}{\lambda_k} \cdot \frac{\lambda_k -z}{1 - \overline{\lambda_k} z}
- \end{align*}
+  \sum_{k=1}^{n} \left( 1 - \left| \lambda_k \right| \right) \leqslant \log \frac{1}{\left| f(0) \right|} < +\infty.
+ \end{align*} Раз неравенство выполнено для любого $ n $, то ряд~\eqref{equation:zero_sum_conv} сходится.
 \end{proof}
 
-\begin{exmpl*}
- Пусть $ c_k $ такие, что $ \sum \left| c_k \right| < \infty $. Тогда
+Построение в обратную сторону --- бесконечное произведение Бляшке с нормировочными множителями
+\begin{align*}
+ f(z) = \prod_{k=1}^{\infty} \frac{\left| \lambda_k \right|}{\lambda_k} \cdot \frac{\lambda_k -z}{1 - \overline{\lambda_k} z}.
+\end{align*}
+
+\begin{exmpl}
+ Пусть даны коэффициенты $ c_k \in \CC $ такие, что $ \sum_{k=1}^{\infty} \left| c_k \right| < \infty $. Рассмотрим функцию
  \begin{align*}
-  f = \sum_{k=0}^{\infty} c_k z^{k}
- \end{align*} если $ f\left(1 - \frac{1}{n}\right) = 0 $, то $ c_k = 0 $ для любого $ k $, т.к. нули не удовлетворяют условию Бляшке.
-\end{exmpl*}
+  f(z) = \sum_{k=0}^{\infty} c_k z^{k}.
+ \end{align*} Пусть для каждого $ n \geqslant 1 $  верно
+ \begin{align*}
+  f \left( 1 - \frac{1}{n} \right) = 0.
+ \end{align*} Тогда $ f $  тождественно равна нулю ($ c_k = 0 $ при всех $ k \geqslant 0 $), так как нули функции не удовлетворяют условию Бляшке~\eqref{equation:zero_sum_conv}:
+ \begin{align*}
+  \sum_{k=1}^{\infty} (1 - \left| \lambda_k \right|) \geqslant \sum_{n=1}^{\infty} \left( 1 - \left( 1 - \frac{1}{n} \right) \right) = \sum_{n=1}^{\infty} \frac{1}{n} = +\infty.
+ \end{align*}
+\end{exmpl}
 
 \newpage
-\section{Ряды Лорана.}
+\section{Ряд Лорана аналитической функции.}
 
-\begin{thm}
- Пусть $ f $ --- аналитическая функция в кольце
+\begin{df}
+ \label{def:Ring}
+ \emph{Кольцом} с центром в точке~$ a\in\CC$, внешним радиусом~$ R $ и внутренним радиусом~$ r $ называется область
  \begin{align*}
-  \Omega_{R,r} = \left\{ z \in \CC \mid r < \left| z - a \right| < R \right\}
- \end{align*} где $ a \in \CC $ и $ 0 \leqslant r < R \leqslant +\infty $. Тогда
+  \Omega_{R,r} = \left\{ z \in \CC : r < \left| z-a \right| < R \right\},
+ \end{align*} где $ 0 \leqslant r < R \leqslant +\infty $.
+\end{df}
+
+Не стоит путать с кольцом из алгебры! Заметим, что множество $ \left| z - a \right| > r $ также является кольцом с внешним радиусом $ R = +\infty $. У кольца также часто бывает $ r = 0 $ (из диска с центром в $ a $ и радиусом~$ R $ выколота лишь одна точка~$ a $).
+
+Кольцо является простейшим примером неодносвязной области: окружность~$ C_\rho $ с центром в точке~$ a $ и радиусом~$ \rho $, $ r < \rho < R $ нельзя стянуть в точку в кольце. В этом параграфе мы изучим поведение функций, аналитичных в таких областях.
+
+\begin{thm}[Лорана]
+ \label{theorem:Laurent series of analytic function}
+ Пусть функция $ f $ аналитична в кольце
+ \begin{align*}
+  \Omega_{R,r} = \left\{ z \in \CC : r < \left| z - a \right| < R \right\}
+ \end{align*} где $ a \in \CC $ и $ 0 \leqslant r < R \leqslant +\infty $. Тогда для каждой точки~$ z \in \Omega_{R,r} $ выполнено
  \begin{align}
   \label{equation:loran_series}
-  f(w) = \sum_{k \in \Z} c_k(w - a)^{k}
-\end{align} где ряды $ \sum_{k \geqslant 0} $ и $ \sum_{k < 0} $ сходятся равномерно на компактах в $ \Omega_{R,r} $. См. рисунок \eqref{fig:laurent-series-compacts}. Более того, коэффициенты $ c_k $ определены единственным образом:
- \begin{align*}
-  c_k = \frac{1}{2\pi i} \varointctrclockwise\limits_{C_\rho}   \frac{f(z)}{(z-a)^{k+1}}\,dz,
- \end{align*} где $ r < \rho < R $, $ C_\rho = \left\{ z \in \CC \mid \left| z-a \right|=\rho \right\} $.
+  f(z) = \sum_{k \in \Z} c_k(z - a)^{k}
+ \end{align} где ряды
+ \begin{align}
+  \label{eq:Laurent positive}&\sum_{k \geqslant 0} c_k (z-a)^{k},\\
+  \label{eq:Laurent:negative}&\sum_{k < 0} c_k (z-a)^{k}
+ \end{align} сходятся равномерно на компактах в кольце~$ \Omega_{R,r} $ (рисунок~\ref{fig:laurent-series-compacts}). Более того, коэффициенты~$ c_k \in \CC $ определены единственным образом:
+ \begin{align}
+  \label{eq:Coefficients of Laurent series of analytic f}
+  c_k = \frac{1}{2\pi i} \varointctrclockwise_{C_\rho} \frac{f(z)\,dz}{(z-a)^{k+1}},
+ \end{align} где $ C_\rho $ --- окружность с центром в точке~$ a $ и радиусом~$ \rho $,  $ r < \rho < R $, проходимая против часовой стрелки. В частности, правая часть \eqref{eq:Coefficients of Laurent series of analytic f} не зависит от выбора~$ \rho $.
 \end{thm}
 
 \begin{figure}[ht]
-
-\begin{subfigure}{0.5\textwidth}
-	\incfig[0.7]{laurent-series-compacts-limited}
-    \caption{Ограниченный случай.}
-    \label{fig:laurent-series-compacts-limited}
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
-	\incfig[0.8]{laurent-series-compacts-not-limited}
-	\caption{Неограниченный случай.}
-    \label{fig:laurent-series-compacts-not-limited}
-\end{subfigure}
-
-\caption{Пример компактов внутри кольца.}
-\label{fig:laurent-series-compacts}
+ \begin{subfigure}{0.45\textwidth}
+  \centering
+  \incfig[0.7]{laurent-series-compacts-limited}
+  \caption{Ограниченный случай.}
+  \label{fig:laurent-series-compacts-limited}
+ \end{subfigure}
+ \begin{subfigure}{0.45\textwidth}
+  \centering
+  \incfig[0.95]{laurent-series-compacts-not-limited}
+  \caption{Неограниченный случай.}
+  \label{fig:laurent-series-compacts-not-limited}
+ \end{subfigure}
+ \caption{Пример компактов внутри кольца.}
+ \label{fig:laurent-series-compacts}
 \end{figure}
 
 \begin{df}
- Ряд \eqref{equation:loran_series} называется \textit{рядом Лорана} функции $ f $ в кольце $ \Omega_{R,r} $.
+ Ряд \eqref{equation:loran_series} называется \textit{рядом Лорана} функции $ f $ в кольце $ \Omega_{R,r} $. Ряд~\eqref{eq:Laurent positive} называется \emph{правильной частью}, а ряд~\eqref{eq:Laurent:negative} --- \emph{главной частью} ряда Лорана.
 \end{df}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Для простоты считаем $ a = 0 $. Проверим единственность: пусть ряд
+
+\begin{conventn}
+ Выражение <<ряд~$ S $ сходится равномерно на компактах в области~$ \Omega $>> означает, что для любого компакта~$ K \subset \Omega $ ряд~$ S $ равномерно сходится на~$ K $.
+\end{conventn}
+
+\begin{proof}[\normalfont\textsc{Доказательство теоремы~\ref{theorem:Laurent series of analytic function} Лорана}]
+ Для простоты считаем $ a = 0 $.
+
+ Проверим сначала единственность. Пусть в кольце~$ \Omega_{R,r} $ выполнено
  \begin{align*}
-  f(w) = \sum_{k \in \Z}c_k w^{k}
- \end{align*} сходится равномерно на компактах в $ \Omega_{R,r} $. Проинтегрируем функцию по окружности:
+  f(z) = \sum_{k \in \Z}c_k z^{k},
+ \end{align*} причём ряды $ \sum_{k \geqslant 0} c_k z^{k} $ и $ \sum_{k < 0} c_k z^{k} $ сходятся равномерно на компактах в $ \Omega_{R,r} $. Наша цель: показать, что коэффициенты $ c_k $ удовлетворяют~\eqref{eq:Coefficients of Laurent series of analytic f}.
+
+ Пусть $ C_\rho $ --- окружность с центром в нуле и радиусом $ \rho \in (r,R) $. Найдём правую часть в~\eqref{eq:Coefficients of Laurent series of analytic f} для $ j \in \Z $:
+ \begin{align}
+  \label{eq:evaluating_rhs:Laurent Thm}
+  \varointctrclockwise_{C_\rho} \frac{f(z)\,dz}{z^{j}} &= \varointctrclockwise_{C_\rho} \left[ \sum_{k\in\Z}c_k z^{k-j} \right] dz =  \sum_{k \in \Z} c_k \varointctrclockwise_{C_\rho} z^{k-j}\,dz,
+ \end{align} где перестановку интеграла и суммы можно делать, так как ряды сходятся равномерно на компакте~$ C_\rho \subset \Omega_{R,r} $. Вычислим внутренний интеграл:
  \begin{align*}
-  \int\limits_{C_\rho} \frac{f(w)}{w^{j}} \,dw = \sum_{k \in \Z} c_k \int\limits_{C_\rho} w^{k-j}\,dw,
- \end{align*} потому что $ C_\rho $ --- компакт внутри $ \Omega_{R,r} $, и ряд сходится равномерно. Тогда
- \begin{align*}
-  \int\limits_{C_\rho} w^{n}  \, dw = \int\limits_{0}^{2\pi}  \rho^{n} e^{i \cdot n \cdot t} \cdot \rho \cdot i e^{it}\,dt = \rho^{n+1} \cdot i \cdot \int\limits_{0}^{2\pi} e^{i(n+1)t}\,dt = \begin{cases}
-   2\pi i, \text{ если } n+1=0 \\
-   0, \text{ иначе }
+  \varointctrclockwise_{C_\rho} z^{m}  \, dz &= \begin{bmatrix}
+   z = \rho e^{it}, & dz = i\rho e^{it}\,dt
+  \end{bmatrix} =  \int_{0}^{2\pi}  \rho^{m} e^{i m t} \cdot \rho i e^{it}\,dt = \\
+  &= i\rho^{m+1} \cdot \int_{0}^{2\pi} e^{i(m+1)t}\,dt = \begin{cases}
+   2\pi i, &\text{ если } m=-1, \\
+   0, &\text{ иначе. }
   \end{cases} 
- \end{align*} Продолжим равенство:
+ \end{align*} Продолжим равенство~\eqref{eq:evaluating_rhs:Laurent Thm}:
  \begin{align*}
-  = 2\pi i \cdot c_{j-1}.
- \end{align*} Тогда
- \begin{align*}
-  c_j = \frac{1}{2\pi i} \int\limits_{C_\rho}   \frac{f(w)}{w^{j+1}}\,dw.
- \end{align*}
+  \varointctrclockwise_{C_\rho} \frac{f(z)\,dz}{z^{j}} = 2\pi i \cdot c_{j-1},
+ \end{align*} откуда сразу же следует \eqref{eq:Coefficients of Laurent series of analytic f}. Единственность доказана. В частности, мы доказали, что коэффициент~\eqref{eq:Coefficients of Laurent series of analytic f} не зависит от выбора $ \rho $.
 
- Единственность проверена.
+ Теперь докажем существование --- нужно проверить, что ряд Лорана с коэффициентами~\eqref{eq:Coefficients of Laurent series of analytic f} действительно совпадает с функцией~$ f $ на $ \Omega_{R,r} $ и сходится равномерно на компактах в $ \Omega_{R,r} $.
 
- Докажем существование.
+ Возьмём произвольную точку $ w \in \Omega_{R,r} $. Заметим, что по формуле Коши~\eqref{eq:Cauchy Formula} (следствие~\ref{corollary:cauchy_formula}) верно
+ \begin{align}
+  \label{eq:f w Cauchy Formula:Laurent Thm}
+  f(w) = \frac{1}{2\pi i}\varointctrclockwise_{\gamma_\eps} \frac{f(z)\,dz}{z - w},
+ \end{align} где $ \gamma_\eps $ --- окружность с центром в точке~$ w $ и малым радиусом $ \eps > 0 $ (направленная против часовой стрелки).
 
- Сделаем хирургию: расширим кольцо, $ r < \tilde r < \tilde R < R $, нарисуем контур. $ w \in \Omega_{\tilde R, \tilde r} $.
+ Изменим контур интегрирования в~\eqref{eq:f w Cauchy Formula:Laurent Thm}. Возьмём такие радиусы $ \tilde r $ и $ \tilde R $, что $ r < \tilde r < \left| w \right| - \eps < \left| w \right| + \eps < \tilde R < R $, и рассмотрим окружности $ C_{\tilde r} $ и $ C_{\tilde R} $ с центром в нуле и соответствующими радиусами (направленные против часовой стрелки). Соединим окружности~$ C_{\tilde r} $ и $ C_{\tilde R} $ с окружностью~$ \gamma_\eps $ направленными отрезками, которые разобьют окружность~$ \gamma_\eps $ на две полуокружности $ \gamma_\eps^{+} $ и $ \gamma_\eps^{-} $, и получим контур интегрирования
+ \begin{align*}
+  \Gamma = C_{\tilde R} + I_1 + (-\gamma_\eps^{+}) + I_2 + (-C_{\tilde r}) + I_3 + (-\gamma_\eps^{-}) + I_4,
+ \end{align*} изображённый на рисунке~\ref{fig:laurent-series-point-surgery}.
 
-\begin{figure}[ht]
-    \centering
-	\incfig[0.5]{laurent-series-point-surgery}
-    \caption{Вырезание точки}
-    \label{fig:laurent-series-point-surgery}
-\end{figure}
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.8]{laurent-series-point-surgery}
+  \caption{Контур интегрирования в теореме~\ref{theorem:Laurent series of analytic function} Лорана.}
+  \label{fig:laurent-series-point-surgery}
+ \end{figure}
 
+ Так как контур~$ \Gamma $ можно стянуть в точку в области~$ \Omega_{R,r} \setminus \left\{ w \right\} $, в которой аналитична функция $ z \mapsto f(z) / (z - w) $, то
+ \begin{align}
+  \label{eq:Gamma contour 0 integral:Laurent Thm}
+  \varointctrclockwise_{\Gamma} \frac{f(z)\,dz}{z - w}  = 0
+ \end{align} С другой стороны, по аддитивности интеграла
+ \begin{align}
+  \label{eq:Gamma contour additivity:Laurent Thm}
+  \varointctrclockwise_{\Gamma} \frac{f(z)\,dz}{z-w} = \varointctrclockwise_{C_{\tilde R}} \frac{f(z)\,dz}{z-w} - \varointctrclockwise_{C_{\tilde r}} \frac{f(z)\,dz}{z-w}  - \varointctrclockwise_{\gamma_\eps} \frac{f(z)\,dz}{z-w}.
+ \end{align} Совмещая \eqref{eq:Gamma contour additivity:Laurent Thm} с \eqref{eq:Gamma contour 0 integral:Laurent Thm} и \eqref{eq:f w Cauchy Formula:Laurent Thm}, получаем равенство
  \begin{align*}
-  \Gamma = C_{\tilde R} \cup C_{\tilde r} \cup \gamma_\eps^{+} \cup I_1 \cup I_2 \cup I_3 \cup I_4 \cup \gamma_\eps^{-}.
- \end{align*} Проинтегрируем по нему функцию
+  f(w) &= \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde R}} \frac{f(z)\,dz}{z-w} - \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde r}} \frac{f(z)\,dz}{z-w},
+ \end{align*} которое и продолжим раскрывать:
  \begin{align*}
-  \frac{1}{2\pi i} \int\limits_{\Gamma} \frac{f(z)}{z - w}  \, dz = 0,
- \end{align*} так как контур стягиваем в области $ \Omega_{R,r} \setminus \left\{ w \right\} $. С другой стороны,
+  f(w) &= \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde R}} \frac{f(z)\,dz}{z \left( 1 - \frac{w}{z} \right)} + \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde r}} \frac{f(z)\,dz}{w \left( 1 - \frac{z}{w} \right)}.
+ \end{align*} Так как $ \left| w / z \right| < 1 $ при $ z \in C_{\tilde R} $ и $ \left| z / w \right| < 1 $ при $ z \in C_{\tilde r} $, то по формуле геометрической прогрессии:
  \begin{align*}
-  \frac{1}{2\pi i} \int\limits_{\Gamma} = \frac{1}{2\pi i} \varointctrclockwise \limits_{C_{\tilde R}}   - \frac{1}{2\pi i} \varointctrclockwise\limits_{C_{\tilde r}}  - \frac{1}{2\pi i} \varointctrclockwise\limits_{\gamma_\eps}   = 0.
- \end{align*} Тогда
+  f(w) &= \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde R}} f(z) \cdot \left[ \sum_{k=0}^{\infty} \frac{w^{k}}{z^{k+1}} \right]dz + \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde r}} f(z) \cdot \left[ \sum_{j=0}^{\infty} \frac{z^{j}}{w^{j+1}} \right].
+ \end{align*} При этом, ряды $ \sum \frac{w^{k}}{z^{k+1}} $ и $ \sum \frac{z^{j}}{w^{j + 1}} $ сходятся равномерно по $ z $ на соответствующих им окружностях $ z \in C_{\tilde R} $ и $ z \in C_{\tilde r} $, потому что
+ \begin{align}
+  \label{eq:Bound Geom Progression C_R:Laurent Thm} \left| \frac{w}{z} \right| =  \frac{\left| w \right|}{\tilde R} < 1 &&\text{при } z\in C_{\tilde R},\\
+  \label{eq:Bound Geom Progression C_r:Laurent Thm} \left| \frac{z}{w} \right| = \frac{\tilde r}{\left| w \right|} < 1 &&\text{при } z \in C_{\tilde r},
+ \end{align} и ряды оцениваются суммой геометрической прогрессии, не зависящей от $ z $. По этой равномерности можно поменять местами сумму и интеграл:
  \begin{align*}
-  \frac{1}{2\pi i} \int\limits_{\gamma_\eps} \frac{f(z)}{z-w}\,dz = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i}\int\limits_{C_{\tilde r}}.
-\end{align*} Интеграл мы считали, когда доказывали теорему Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}.
+  f(w) &= \sum_{k=0}^{\infty} w^{k} \cdot \left[ \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde R}} \frac{f(z)\,dz}{z^{k+1}} \right] + \sum_{j < 0} w^{j} \cdot \left[ \frac{1}{2\pi i} \varointctrclockwise_{C_{\tilde r}} \frac{f(z)\,dz}{z^{j+1}} \right].
+ \end{align*} Как мы уже показали в единственности, внутренний интеграл не зависит от выбора радиуса $ \rho $, $ r < \rho < R $, поэтому мы получаем 
+ \begin{align}
+  \label{eq:Final Laurent Series:Laurent Thm}
+  f(w) &= \sum_{k \in \Z} w^{k} \cdot \left[ \frac{1}{2\pi i} \varointctrclockwise_{C_\rho} \frac{f(z)\,dz}{z^{k+1}} \right],
+ \end{align} что и есть равенство~\eqref{equation:loran_series}. При этом ряд~\eqref{eq:Final Laurent Series:Laurent Thm} сходится равномерно по $ w $ на компакте $ w \in \overline{\Omega_{\tilde {\tilde R}, \tilde {\tilde r}}} $ для $ \tilde r < \tilde{\tilde r} < \tilde{\tilde R} < \tilde R $, потому что оценки~\eqref{eq:Bound Geom Progression C_R:Laurent Thm} и \eqref{eq:Bound Geom Progression C_r:Laurent Thm} сумм геометрических прогрессий можно сделать равномерными по $ w \in \overline{\Omega_{\tilde{\tilde R},\tilde{\tilde r}}} $:
  \begin{align*}
-  \frac{1}{2\pi i} \int\limits_{\gamma_\eps}   \frac{f(z)}{z-w}\,dz = f(w)
- \end{align*}
- \begin{align*}
-  f(w) = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   - \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}  = \frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z(1 - \frac{w}{z})}\,dz - \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}   \frac{f(z)}{w(\frac{z}{w}-1)}\,dz = \\
-  = \frac{1}{2\pi i}  \int\limits_{C_{\tilde R}} f(z) \cdot \sum_{k=0}^{\infty} \frac{w^{k}}{z^{k+1}}   + \frac{1}{2\pi i} \int\limits_{C_{\tilde r}}  f(z) \sum_{j=0}^{\infty}\frac{z^{j}}{w^{j+1}} = \\
-  = \sum_{k \geqslant 0} w^{k} \cdot \left(\frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z^{k+1}}\,dz \right) + \sum_{j \geqslant 0} w^{-(j+1)} \left( \frac{1}{2\pi i} \int\limits_{C_{\tilde r}} \frac{f(z)}{z^{-j}}\,dz   \right) = \\
-  = \sum_{k \geqslant 0} w^{k} \cdot \left(\frac{1}{2\pi i} \int\limits_{C_{\tilde R}}   \frac{f(z)}{z^{k+1}}\,dz \right) + \sum_{k \leqslant -1} w^{k} \left( \frac{1}{2\pi i} \int\limits_{C_{\tilde r}} \frac{f(z)}{z^{k + 1}}\,dz   \right)
- \end{align*} Получили что и требовалось.
-
- Ряды сходятся равномерно на $ \Omega_{\tilde{\tilde R}, \tilde{\tilde r}} $, где $ \tilde r < \tilde{\tilde r} < \tilde {\tilde R} < \tilde R $, так как если $ w \in \Omega_{\tilde{\tilde R}, \tilde{\tilde r}} $, то
- \begin{align*}
-  \left| \frac{w}{z} \right| < [z \in C_{\tilde R}] < \frac{\tilde{\tilde R}}{\tilde R} < 1
- \end{align*} аналогично
- \begin{align*}
-  \left| \frac{z}{w} \right| < \frac{\tilde r}{\tilde{\tilde r}} < 1
- \end{align*} Все хвосты оцениваются хвостами геометрических прогрессий.
+  &\left| \frac{w}{z} \right| < \frac{\tilde {\tilde R}}{\tilde R} < 1, &&\text{при } z \in C_{\tilde R},\\
+  &\left| \frac{z}{w} \right| < \frac{\tilde r}{\tilde{\tilde r}} < 1, &&\text{при } z \in C_{\tilde r}.
+ \end{align*} Раз ряд сходится равномерно на таких компактах, то он сходится равномерно и на любом компакте $ K \subset \Omega_{R,r} $ (так как любой такой компакт можно вложить в компакт~$ \overline{\Omega_{\tilde{\tilde R}, \tilde{\tilde r}}} $). Существование доказано.
 \end{proof}
 
 \newpage
-\section{Изолированные особые точки аналитических функций.}
+\section{Особенности аналитических функций.}
+
+Теорема~\ref{theorem:Laurent series of analytic function} Лорана имеет крайне важное приложение. При изучении любой аналитической функции первое, что нужно сделать --- это изучить так называемые \emph{особенности} функции, то есть точки, где эта функция не определена (или определена, но при добавлении этих точек в область определения аналитичность функции нарушается). Если таких точек нет, то функция целая, и всё вообще замечательно, но в общем случае такие точки наверняка найдутся. Проколотая окрестность каждой такой особой точки (если эта точка \emph{изолирована}, то есть в её окрестности нет других особых точек) является кольцом с точки зрения определения~\ref{def:Ring}, и в этом кольце аналитическая функция раскладывается в ряд Лорана по теореме~\ref{theorem:Laurent series of analytic function}. Как мы покажем в этом параграфе, изучение ряда Лорана в проколотой окрестности изолированной особой точки может довольно многое рассказать о поведении аналитической функции, в частности по нему можно определить \emph{тип} особенности, с которой мы имеем дело.
+
+Закончим предисловие и дадим формальные определения.
+
 \begin{df}
- Точка $ a \in \CC $ называется \textit{изолированной особой точкой} функции $ f $, если $ f $ задана и аналитична в некоторой проколотой окрестности $ 0 < \left| z-a \right| < \eps $, но $ f $ не задана в точке $ a $.
+ Точка $ a \in \CC $ называется \textit{изолированной особой точкой} функции~$ f $, если $ f $ определена и аналитична в некоторой проколотой окрестности
+ \begin{align*}
+  \dot B(a, \eps) = \left\{z\in\CC : 0 < \left| z-a \right| < \eps\right\},
+ \end{align*} но не определена в самой точке~$ a $ (или же определена, но $ f $ не аналитична ни в какой окрестности точки~$ a $).
 \end{df}
 \begin{exmpl}
- $ f(z) = \frac{1}{\sin z} $, $ z = 0 $ --- изолированная особая точка.
+ Точка $ z = 0 $ является изолированной особой точкой аналитической функции $ f(z) = \frac{1}{\sin z} $, поскольку функция $ f $ аналитична в области~$ \CC \setminus \left\{ 0 \right\} $ и не определена в точке $ 0 $.
 \end{exmpl}
 
+Изолированные особые точки аналитической функции делятся на три типа: \emph{устранимая} особая точка, \emph{полюс} и \emph{существенная} особая точка.
+
 \begin{df}
- Точка $ a \in \CC $ --- \textit{устранимая особая точка функции $ f $}, если $ a $--- изолированная особая точка и $ f $ ограничена в проколотой окрестности $ \Omega_{\eps,0} $ для некоторого $ \eps > 0 $.
+ Изолированная особая точка~$ a \in \CC $ аналитической функции~$ f $ называется \emph{устранимой}, если функцию~$ f $ можно до-определить (или пере-определить) в точке~$ a $ так, чтобы полученная функция~$ \hat f $ оказалась аналитичной в некоторой окрестности точки $ a $.
 \end{df}
 \begin{lm}
- $ a $ --- устранимая особая точка тогда и только тогда, когда $ \exists  g  \colon\;  $ аналитическая функция в $ \left| z-a \right| < \eps $ такая, что $ f=g $ там, где эти функции определены (при $ z \neq a $).
+ Изолированная особая точка~$ a\in\CC $ функции~$ f $ является устранимой, тогда и только тогда, когда функция~$ f $ аналитична и ограниченна в некоторой проколотой окрестности точки~$ a $.
 \end{lm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Форма $ \omega = (z-a)f\,dz $ (доопределим $ 0 $ в точке $ a $) замкнута в $ \Omega_{\eps,0} $, имеет ограниченные коэффициенты в $ \Omega_{\eps,0} $ и непрерывно продолжается в $ \left| z-a \right| < \eps $.
+ Если особая точка $ a $ устранимая, то $ f $ обязана быть ограничена в её окрестности: функция~$ \hat f $ с устранённой особенностью аналитична в окрестности точки~$ a $, и следовательно, ограничена в некоторой меньшей окрестности $ a $.
 
- Значит форма $ \omega $ замкнутая в $ \left| z-a \right| < \eps $ (по лемме об устранении особенности \eqref{lemma:ob_ustranenii_osobennosti}). Значит,
-
+ Теперь пусть $ f $ аналитична и ограничена в проколотой окрестности $ \dot B(a,\eps) $. Рассмотрим дифференциальную форму $ \omega = (z-a) f(z)\,dz $, которая определена и замкнута в $ \dot B(a,\eps) $ (по условию~\ref{enum3:theorem:cauchy_gurs_morer} теоремы~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера). Так как из ограниченности $ f $ следует
  \begin{align*}
-	 h(z) = \begin{cases}
-		 (z - a) f(z), &z \neq a \\
-		 0, &z = a
-	 \end{cases}
- \end{align*} аналитична по теореме Коши-Гурса-Морера \eqref{theorem:cauchy-gursa-morer}. Кроме того, $ h(a) = 0 $. Значит, по лемме о кратности нуля $ h = (z-a)^{k}\tilde g $, где $ k \geqslant 1 $. Значит, $ (z-a)f = (z-a)^{k}\tilde g \implies f = (z-a)^{k-1}\tilde g $. Тогда $ g = (z-a)^{k-1}\tilde g $ нам подойдет.
-
- В обратную сторону очевидно, т.к. аналитическая функция в $C_\varepsilon$ ограничена. 
+  \lim_{z \to a} (z-a) f(z) = 0,
+ \end{align*} то дифференциальная форма~$ \omega $ непрерывно продолжается на окрестность~$ B(a,\eps) $ до-определением $ \omega(0) = 0 $. Тогда по лемме~\ref{lemma:ob_ustranenii_osobennosti} об устранении особенности дифференциальная форма~$ \omega $ замкнута в $ B(a,\eps) $, и, следовательно, функция
+ \begin{align*}
+  h(z) = \begin{cases}
+   (z-a) f(z), &\text{если } z \neq a,  \\
+   0, &\text{если } z=a;
+  \end{cases} 
+ \end{align*} аналитична в окрестности~$ B(a,\eps) $. Так как $ h(a) = 0 $, то по лемме~\ref{lemma:zero_multiplicity} о кратности нуля в $ B(a,\eps) $ выполнено $ h(z) = (z-a) \hat f(z) $, где функция~$ \hat f $ аналитична в $ B(a,\eps) $. При этом по построению~$ h $ имеем $ f(z) = \hat f(z) $ в $ B(a,\eps) $. Особенность устранена.
 \end{proof}
 
 \end{document}
