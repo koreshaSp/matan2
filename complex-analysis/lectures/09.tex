@@ -135,6 +135,7 @@
 \end{df}
 
 \begin{thm}[Арцела-Асколи]
+ \label{theorem:Arzela-Ascoli}
  Пусть $ (X,\rho) $ --- метрический компакт, и $ C(X,\CC) $ --- банахово пространство непрерывных функций $ f \colon\,X \to \CC $ с $ \sup $-нормой:
  \begin{align*}
   \left\| f \right\| = \max_{x \in X} \left| f(x) \right|, \quad f \in C(X,\CC).
@@ -175,7 +176,24 @@
     \left| \hat f_m(x) - \hat f_n(x) \right| \leqslant 2\eps / 3 + \left| \hat f_m(x_j) - \hat f_n(x_j) \right| < \eps
    \end{align*} при достаточно больших $ n $ и $ m $, так как последовательность $\{\hat f_{n}(x_j)\}_{n=1}^{\infty} $  сходится. Таким образом, последовательность $ \{\hat f_{n}\}_{n=1}^{\infty}  $ сходится всюду в $ X $ к некоторой функции $ f \colon X \to \CC $.
 
-  \item Осталось воспользоваться тем фактом, что сходящаяся последовательность непрерывных на компакте функций сходится равномерно, и её предел --- тоже непрерывная функция. Этот факт был доказан в первом семестре анализа, но доказательство также было дано и на лекциях: см. лемму~\ref{lemma:Convergence of Functions on Compact}.
+  \item Докажем теперь, что сходимость равномерная. Зафиксируем число~$ \eps>0 $. Снова воспользуемся $ \eps / 3 $-приёмом. Для числа $ \eps / 3 $ по равностепенной непрерывности найдём число~$ \delta > 0 $ такое, что $ \rho(x,y) < \delta $ влечёт $ \left| f_n(x)-f_n(y) \right| < \eps / 3$ для всех $ n \geqslant 1 $, $ x,y\in X $. Тогда для каждой точки $ x \in X $ для каждой точки $ y \in B(x,\delta) $ при всех $ n > N_x $ выполнено
+   \begin{align*}
+    \left| f_n(y) - f(y) \right| &\leqslant \left| f_n(y) - f_n(x) \right| + \left| f_n(x) - f(x) \right| + \left| f(x) - f(y) \right| < \\
+    &< \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{3} = \eps,
+   \end{align*} где $ \left| f_n(y) - f_n(x) \right| < \eps / 3$ верно по выбору $ \delta $ (и по равностепенной непрерывности), $ \left| f_n(x) - f(x) \right| < \eps / 3 $ верно при $ n > N_x $ из сходимости последовательности функций  $ \{f_{n}\}_{n=1}^{\infty}  $ в точке~$ x $, и, наконец,
+   \begin{align*}
+    \left| f(x) - f(y) \right| \leqslant \lim_{n \to \infty} \left| f_n(x) - f_n(y) \right| \leqslant \eps / 3.
+   \end{align*}
+
+   Теперь по компактности пространства~$ X $ из открытого покрытия $ \left\{B(x,\delta)\right\}_{x \in X} $   выделим конечное подпокрытие из открытых шаров $ B(x_1,\delta), \ldots, B(x_k, \delta) $. Возьмём число
+   \begin{align*}
+    N = \max \left\{ N_{x_1}, N_{x_2}, \ldots, N_{x_k} \right\}.
+   \end{align*} Тогда любая точка $ y \in X $ попадает в некоторый шар~$ B(x_j,\delta) $, и при $ n > N \geqslant N_{x_j} $ мы получаем $ \left| f_n(y) - f(y) \right| < \eps $. Равномерная сходимость доказана.
+
+  \item Наконец, докажем, что предельная функция~$ f $ непрерывна. Докажем даже равномерную непрерывность: для числа~$ \eps > 0 $ по равностепенной непрерывности выберем $ \delta > 0 $ такое, что $ \rho(x,y) < \delta $ влечёт $ \left| f_n(x)-f_n(y) \right| < \eps $ для всех $ n $, $ x,y\in X $. Тогда для любых $ x,y \in X $, таких, что $ \rho(x,y) < \delta $:
+   \begin{align*}
+    \left| f(x)-f(y) \right| \leqslant \lim_{n \to \infty} \left| f_n(x) - f_n(y) \right| \leqslant \eps.
+   \end{align*}
  \end{enumerate}
 \end{proof}
 
