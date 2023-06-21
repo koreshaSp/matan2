@@ -15,14 +15,15 @@
  \begin{enumerate}
   \item Покажем, что не умаляя общности можно считать $ \Omega \subset \mathbb D $ и $ 0 \in \Omega$. Так как существует некоторая точка $ z_0 \in \CC \setminus \Omega $, то определена аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $. Покажем, что отображение $ h $ инъективно. Пусть $ h(z_1) = h(z_2) $. Тогда
    \begin{align*}
-    e^{h(z_1)} = e^{h(z_2)} \implies z_1 - z_0 = z_2 - z_0 \implies z_1 = z_2.
-   \end{align*} Кроме того, $ h(\Omega) \cap (h(\Omega) + 2\pi i) = \varnothing $. Действительно, если $ h(z_1) = h(z_2) + 2\pi i $, то
+    e^{h(z_1)} = e^{h(z_2)} \implies z_1 - z_0 = z_2 - z_0 \implies z_1 = z_2,
+   \end{align*} 
+   а значит $h$ --- конформна. Более того, $ h(\Omega) \cap (h(\Omega) + 2\pi i) = \varnothing $.
+   Действительно, если $ h(z_1) = h(z_2) + 2\pi i $, то
    \begin{align*}
     e^{h(z_1)} = e^{h(z_2) + 2\pi i} = e^{h(z_2)} \implies z_1 = z_2 \implies h(z_1) = h(z_1) + 2 \pi i
-   \end{align*} а это противоречие, а значит $h$ --- конформна.
+   \end{align*} а это противоречие.
 
-   Наконец, покажем, что $ h(\Omega) + 2\pi i $ --- область, это верно так как аналитические отображения открыты.
-
+   Заметим, что $ h(\Omega) + 2\pi i $ --- область, как аналитическое отображение области.
    Значит, существует точка $ a \in \CC $ такая, что
    \begin{align*}
     \mathrm{dist}(a, h(\Omega)) > 0,
@@ -35,9 +36,14 @@
   \item Рассмотрим множество функций
    \begin{align*}
     \mathcal R = \left\{ f \colon\,\Omega \to \mathbb D \mid f \text{ инъективна аналитична, } f(0) = 0  \right\} \sqcup \left\{ 0 \right\}.
-\end{align*} Если $ f_n \in \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $  на компактах в $ \Omega $ . По теореме Монтеля \eqref{theorem:montel} существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, ведь функции $ f_n $ ограничены и аналитичны, тогда функция $ f $ аналитична. Но по следствию теоремы Гурвица \eqref{theorem:analytic_injective} $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $. Таким образом, множество $ \mathcal R $ компактно.
+   \end{align*} 
+Докажем, что если $ \{ f_n \}_{n=1}^\infty \subset \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $ равномерно на компактах в $ \Omega $ .
 
-  \item Если $ f \in \mathcal R $ и $ f(\Omega) \neq \mathbb D $(если получилось что равен, то мы уже нашли требуемое отображение), то существует отображения $ \varphi $ и $ g $ такое, что $ g \in \mathcal R $, и $ \varphi\colon\,\mathbb D \to \mathbb D $,
+Благодаря тому, что функции $f_n$ ограничены и аналитичны, по теореме Монтеля \eqref{theorem:montel} существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, причем $ f $ аналитическая, что можно проверить тестом на прямоугольниках.
+Но по следствию теоремы Гурвица \eqref{theorem:analytic_injective} $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $.
+Таким образом, множество $ \mathcal R $ компактно.
+
+  \item Если $ f \in \mathcal R $ и $ f(\Omega) \neq \mathbb D $(если получилось что равен, то мы уже нашли требуемое отображение), то существует отображения $ \varphi $ и $ g $ такое, что $ g \in \mathcal R $, и $ \varphi\colon\,\mathbb D \to \mathbb D $ и аналитично, а также:
    \begin{align*}
     \left| \varphi'(0) \right| < 1, \qquad f = \varphi \circ g.
    \end{align*} В частности,
@@ -69,7 +75,9 @@
     \log(T_1 \circ f) = T_2^{-1} \circ g \\
     T_1 \circ f = \exp (T_2^{-1} \circ g) \\
     f = T_1^{-1} \circ \exp (T_2^{-1} \circ g),
-   \end{align*} $ \varphi = T_1^{-1} \circ \exp \circ T_2^{-1} $. Осталось убедиться, что $ \varphi \colon\,\mathbb D \to \mathbb D$ 
+   \end{align*} 
+   $ \varphi = T_1^{-1} \circ \exp \circ T_2^{-1} $, она аналитическая по построению.
+   Осталось убедиться, что $ \varphi \colon\,\mathbb D \to \mathbb D$ 
    \begin{align*}
 	\varphi \colon\,\mathbb D \to \mathbb D &\iff T_1 \circ \varphi \colon\,\mathbb D \to \mathbb D \iff \\
 	&\iff T_1 \circ \varphi \circ T_2 \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D \iff \exp \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D.
@@ -83,23 +91,24 @@
    Если $ \left| \varphi(z) \right| < \left| z \right| $, то
    \begin{align*}
     \left| \frac{\varphi(z)}{z} \right| < 1
-   \end{align*} для любого $ z \in \mathbb D $, в частности по принципу максимума
-   \begin{align*}
-    \sup_{\left| z \right| \leqslant \eps} \left| \frac{\varphi(z)}{z} \right| = \sup_{\left| z \right| = \eps} \left| \frac{\varphi(z)}{z} \right| < 1
-   \end{align*} по компактности. Значит,
+   \end{align*} 
+   для любого $ z \in \mathbb D $, 
+   значит,
    \begin{align*}
     |\varphi'(0)| = \left| \lim_{z \to 0} \frac{\varphi(z)}{z} \right| < 1
    \end{align*} здесь мы победили.
 
    Остался случай $ \varphi(z) \equiv \alpha z $. Докажем, что такого не может быть, ведь $ \varphi $ не инъективна. Инъективность $ \varphi $ равносильна инъективности $ \exp \colon\, \left\{ \Real z < 0 \right\} \to \mathbb D $, а тут инъективности нет. А отображение $ \alpha z $ инъективно!
 
-  \item Завершение доказательства. Рассмотрим функции $ f_n \in \mathcal R $ такие, что
+  \item Завершение доказательства.
+   По определению $\sup$, возьмем последовательность $ \{ f_n \}^\infty_{n=1} \in \mathcal R $ такие, что:
    \begin{align*}
     \lim_{n \to \infty} \left| f'_n(0) \right| = \sup_{\psi \in \mathcal R} \left| \psi'(0) \right|.
-   \end{align*} Пусть $ f_{n_k} $ --- подпоследовательность, которая сходится к $ f \in \mathcal R $ равномерно на компактах в $ \Omega $. Тогда $ f'_{n_k} \rightrightarrows f' $ равномерно на компактах в $ \Omega $. Поэтому $ \left| f'_{n_k}(0) \right| \to \left| f'(0) \right| $. Значит $ f $ такова, что
+   \end{align*} 
+   Пользуясь шагом 2 выберем подпоследовательность $ f_{n_k} $, которая сходится к $ f \in \mathcal R $ равномерно на компактах в $ \Omega $. Тогда $ f'_{n_k} \rightrightarrows f' $ равномерно на компактах в $ \Omega $. Поэтому $ \left| f'_{n_k}(0) \right| \to \left| f'(0) \right| $. Значит $ f $ такова, что
    \begin{align*}
     \left| f'(0) \right| \geqslant \left| g'(0) \right|
-   \end{align*} для любой $ g \in \mathcal R $. Значит $ f(\Omega) = \mathbb D $ (иначе можно увеличить по шагу 3). Ура!
+   \end{align*} для любой $ g \in \mathcal R $. Значит $ f(\Omega) = \mathbb D $ (иначе по шагу 3 равенство выше не выполнялось бы для некоторой $ g \in \mathcal R $). Ура!
  \end{enumerate}
 \end{proof}
 
@@ -125,6 +134,4 @@
 
 	А значит функция $T_1: \mathbb D \to \mathbb D$ является конформной. 
 \end{proof}
-
-\end{document}
 
