@@ -1,151 +1,182 @@
 % 2023.04.20 lecture 09
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
- \begin{exmpl}
-  Найдём число корней многочлена $ 0.1+2z^{3} + z^{10} = 0 $ в кольце $ 1 < \left| z \right|  < 2 $. Рассмотрим область $ \Omega = B(0,1) $. Рассмотрим функцию
-  \begin{align*}
-   f = 2z^{3}, &&g = 0.1 + z^{10}.
-  \end{align*} 
-  Тогда $ \left| f \right| = 2 > 1.1 \geqslant \left| g \right| $ на $ \left| z \right|=1 $. Значит, $f + g$
-  имеет столько же нулей, сколько и $ f $: то есть три штуки (с учётом кратности). Кроме того, на $ \left| z \right| = 1 $ нет нулей.
 
-  А теперь посчитаем сколько нулей в $ \Omega=B(0,2) $. Но выберем там другие буквы $ f $ и $ g $:
-  \begin{align*}
-   f = z^{10}, && g = 0.1  + 2z^{3}.
-  \end{align*} Тогда $ \left| f \right| = 1024 $ на $ \left| z \right|=2 $, а $ \left| g \right| < 0.1 + 16 $ на $ \left| z \right| = 2 $. По теореме Руше у $ f+g $ столько же нулей, сколько и у $ f $. То есть $ 10 $ нулей (с учётом кратности) в круге $ B(0, 2) $. 
+Теорему Руше удобно применять в практических задачах.
 
-  Итого, в кольце $ 1 < \left| z \right| < 2 $ будет $ 10-3 = 7 $ нулей.
- \end{exmpl}
+\begin{exmpl}
+ Найдём число корней многочлена $ p(z) = 0.1+2z^{3} + z^{10} = 0 $ в кольце~$ 1 < \left| z \right|  < 2 $ (с учётом кратности). Рассмотрим открытый диск~$ D_1 = B(0,1) $. Рассмотрим функции
+ \begin{align*}
+  f(z) = 2z^{3}, &&g(z) = 0.1 + z^{10}.
+ \end{align*} Тогда на границе $ \left| z \right|=1 $ выполнено
+ \begin{align*}
+  \left| f(z) \right| = 2 > 1.1 \geqslant \left| g(z) \right|.
+ \end{align*} Значит, по теореме~\ref{theorem:Rouche} Руше функция $f(z) + g(z) = p(z)$
+ имеет столько же нулей в $ D_1 $, сколько и у $ f(z) $: то есть три нуля (с учётом кратности). Кроме того, на $ \left| z \right| = 1 $ нулей нет.
 
- Теорема Руше часто используется в задачах теории возмущений. Другой пример: оператор Шрёдингера, про частицу в потенциальном поле.
+ А теперь посчитаем сколько нулей в диске $ D_2 =B(0,2) $. Но здесь выберем другие буквы $ f $ и $ g $:
+ \begin{align*}
+  f(z) = z^{10}, && g(z) = 0.1  + 2z^{3}.
+ \end{align*} Тогда на границе $ \left| z \right|=2 $ выполнено $ \left| f \right| = 1024 $ и $ \left| g \right| < 0.1 + 16 $. Снова по теореме Руше у функции $ f(z)+g(z) = p(z) $ столько же нулей в $ D_2 $, сколько и у $ f(z) $: то есть $ 10 $ нулей (с учётом кратности).
 
- \begin{crly}[теорема Гурвица]
-  Пусть $ f_k $ --- аналитические функции в области $ \Omega $, и пусть $ f_k $ сходятся на компактах в $ \Omega $ к функции $ f $. Пусть $ z_0 \in \Omega $: $ f(z_0)=0 $. Тогда либо $ f \equiv 0 $ в $ \Omega $, либо $ z_0 $ --- корень кратности $ k_0 \in \N $, и существует $ \eps > 0 $ и $ N \in \N $ такие, что
-  \begin{itemize}
-   \item $ B(z_0, \eps) \subset \Omega $.
-   \item $ f_k $ имеет ровно $ k_0 $ нулей в $ B(z_0, \eps) $ с учётом кратности для любого $ k > N $.
-  \end{itemize}
- \end{crly}
- \begin{proof}[\normalfont\textsc{Доказательство}]
-  Поймём, что $ f $ аналитична в $ \Omega $ (очевидный тест на прямоугольниках). Считаем, что $ f \not\equiv 0 $ в $ \Omega $. Тогда по лемме о кратности нуля $ f = g\cdot(z - z_0)^{k_0} $, где $ g $ аналитична в $ \Omega $, $ g(z_0) \neq 0 $. Значит, существует $ \eps > 0 $ такое, что $ B(z, 2\eps) \subset \Omega $, и $ \left| g(z) \right| > \delta > 0 $ для любого $ z $: $ \left| z - z_0 \right| = \eps $ (по непрерывности $ \delta = \left| g(z_0) \right| / 2 $). Значит
-  \begin{align*}
-   \left|f(z) \right| > \delta \eps^{k_0}, \qquad \left| z-z_0 \right|=\eps.
-  \end{align*} Напишем
-  \begin{align*}
-   f_k = f + (f_k - f) = f + g_k.
-  \end{align*} Так как $ f_k \rightrightarrows f $ равномерно на $ \left| z - z_0 \right| = \eps $, то существует число $ N $ такое, что
-  \begin{align*}
-   \left|g_k(z) \right| < \frac{\delta \cdot \eps^{k_0}}{2}
-  \end{align*} для любого $ \left| z-z_0 \right|=\eps $ и $ k \geqslant N $. По теореме Руше $ f $ и $ f + g_k $ имеет одинаковое число нулей в $ B(z_0,\eps) $ при $ k \geqslant N $.
- \end{proof}
+ Итого, в кольце $ 1 < \left| z \right| < 2 $ будет $ 10-3 = 7 $ нулей.
+\end{exmpl}
 
- Мы доказали чуть больше: $ \exists \eps_0 > 0 \colon\; \forall \eps \in (0, \eps_0) \colon\; B(z,\eps) \in \Omega \colon\; \exists N \colon\;\ldots  $ и так далее.
+Теорема Руше часто используется в задачах теории возмущений. Другое приложение: оператор Шрёдингера --- про частицу в потенциальном поле.
 
- \begin{thm}
-  \label{theorem:analytic_injective}
-  Пусть $ f_k $ --- аналитические функции в $ \Omega $, $ f_k $ сходятся равномерно на компактах к функции $ f $. Пусть $ f_k $ инъективны в $ \Omega $. Тогда либо $ f \equiv \mathrm{const} $, либо $ f $ инъективна.
- \end{thm}
- \begin{proof}[\normalfont\textsc{Доказательство}]
+\begin{crly}[теорема Гурвица]
+ \label{corollary:Gurovitz}
+ Пусть последовательность $ \{f_{n}\}_{n=1}^{\infty}  $ функций, аналитических в области~$ \Omega \subset \CC $, сходится равномерно на компактах в $ \Omega $ к функции~$ f $, не равной тождественно нулю в области~$ \Omega $. Пусть $ z_0 \in \Omega $ --- корень функции~$ f $ кратности $ k_0 \geqslant 1 $. Тогда существует такой открытый диск $ B(z_0,\eps) \subset \Omega $ с центром в $ z_0 $, что при достаточно больших~$ n $ функция $ f_n $ имеет ровно $ k_0 $ нулей с учётом кратности в диске~$ B(z_0,\eps) $.
+\end{crly}
+
+\begin{lm}
+ \label{lemma:Lim of Analytic Functions is Analytic}
+ Пусть последовательность $ \{f_{n}\}_{n=1}^{\infty}  $ функций, аналитических в области~$ \Omega \subset \CC $, сходится равномерно на компактах в $ \Omega $ к функции~$ f $. Тогда функция~$ f $ аналитична в области~$ \Omega $.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Проверим с помощью <<теста на прямоугольнике>>. Для любого замкнутого прямоугольника~$ \Pi \subset \Omega $ имеем
+ \begin{align*}
+  \int_{\partial\Pi} f\,dz = \lim_{n \to \infty} \int_{\partial\Pi} f_n\,dz = \lim_{n \to \infty} 0 = 0,
+ \end{align*} по теореме Лебега о мажорируемой сходимости, так как функции~$ f_n $ сходятся равномерно к $ f $ на компакте $ \partial\Pi \subset \Omega $.
+\end{proof}
+
+\begin{proof}[\normalfont\textsc{Доказательство следствия~\ref{corollary:Gurovitz}}]
+ По лемме~\ref{lemma:Lim of Analytic Functions is Analytic} функция~$ f $ аналитична. По лемме~\ref{lemma:zero_multiplicity} о кратности нуля $ f(z) = (z - z_0)^{k_0}g(z) $, где функция~$ g $ аналитична в~$ \Omega $, и при этом $ g(z_0) \neq 0 $. Тогда существует такой замкнутый диск $ \overline B(z_0, \eps) \subset \Omega $ на котором выполнено $\left| g(z) \right| > \delta > 0$ для некоторого числа~$ \delta>0 $. В частности, на окружности $ C_\eps = \left\{ z \in \CC : \left| z-z_0 \right|=\eps \right\} $ выполнено
+ \begin{align*}
+  \left|f(z) \right| > \delta \eps^{k_0}.
+ \end{align*} Обозначим $ r_n(z) = f_n(z) - f(z) $. Так как $ f_n \rightrightarrows f $ равномерно на компакте~$ C_\eps \subset \Omega $, то для числа $ \delta \eps^{k_0} / 2 $ существует число $ N \geqslant 1 $ такое, что для всех $ n > N $ и для всех $ z \in C_\eps $ верно
+ \begin{align*}
+  \left|r_k(z) \right| < \frac{\delta \cdot \eps^{k_0}}{2} < \left| f(z) \right|.
+ \end{align*} По теореме~\ref{theorem:Rouche} Руше функции $ f(z) $ и $ f(z) - r_n(z) = f_n(z) $ имеет одинаковое число нулей в открытом диске $ B(z_0,\eps) $ (то есть ровно $ k_0 $ нулей) с учётом кратности при всех $ n > N $.
+\end{proof}
+
+На самом деле мы доказали чуть больше: для каждого $ \eps > 0 $, меньшего некоторого заведомо известного $ \eps_0 > 0 $, существует $ N $, при котором функции~$ f_n $ имеет ровно $ k_0 $ нулей в $ B(z_0,\eps) $ с учётом кратности при всех $ n > N $.
+
+\begin{thm}
+ \label{theorem:analytic_injective}
+Пусть последовательность $ \{f_{n}\}_{n=1}^{\infty}  $ функций, аналитических и инъективных в области~$ \Omega \subset \CC $, сходится равномерно на компактах в $ \Omega $ к функции~$ f $. Тогда либо $ f $ постоянна, либо инъективна на $ \Omega $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ По лемме~\ref{lemma:Lim of Analytic Functions is Analytic} функция~$ f $ аналитична. Предположим, что $ f $ не постоянна и не инъективна: существуют различные точки $ z_0,w_0 \in \Omega $ такие, что $ f(z_0) - f(w_0) = 0 $. Рассмотрим функции
+ \begin{align*}
+  F_n(z) &= f_n(z) - f_n(w_0),\\
+  F(z) &= f(z) - f(w_0).
+ \end{align*} От прибавления константы ничего не поменялось: функции~$ F_n $ также аналитичны в $ \Omega $, и сходятся равномерно на компактах к функции~$ F $, аналитичной в $ \Omega $. Но при этом $ F(z_0) = 0 $.
+
+ Возьмём такое число $ \eps > 0 $, чтобы $ \eps < \left| z_0 - w_0 \right| / 2 $, и достаточно маленькое для того, чтобы выполнялась теорема Гурвица (следствие~\ref{corollary:Gurovitz}) для функций $ F_n $ и $ F $. Тогда при достаточно больших $ n $ функция~$ F_n $ имеет нуль в открытом диске~$ B(z_0,\eps) $: существует точка $ z_n \in B(z_0,\eps) $, для которой $ f_n(z_n) = f_n(w_0) $. Но так как функции~$ f_n $ инъективные, то $z_n = w_0$, а это противоречие!
+\end{proof}
+
+\begin{thm}
+ \label{theorem:Derivative of Injective Analytic Fun is not 0}
+ Пусть $ f $ --- инъективная аналитическая функция в области~$ \Omega \subset \CC $. Тогда $ f'(z) \neq 0 $ для всех $ z \in \Omega $.
+\end{thm}
+
+Теорему~\ref{theorem:Derivative of Injective Analytic Fun is not 0} можно доказать и вещественными методами, рассматривая $ f $ как функцию $ f\colon\,\Omega \subset \R^{2} \to \R^{2} $.
+
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $ z_0 \in \Omega $. Рассмотрим функции
+ \begin{align*}
+  f_n(z) = \frac{f\left(z + 1/n\right) - f(z)}{1 / n}, \quad n \geqslant 1,
+ \end{align*} они заданы при достаточно больших $ n $ в замкнутом диске~$ \overline B(z_0, 2\eps) \subset \Omega $, и аналитичны в открытом диске~$ B(z_0,2\eps) $. Покажем, что $ f_n \rightrightarrows f' $ равномерно на компакте~$ \overline B(z_0,\eps) $. Перепишем
+ \begin{align*}
+  f_n(z) = g_z(1 / n),
+ \end{align*} где
+ \begin{align*}
+  g_z(\zeta) = \frac{f(z + \zeta) - f(z)}{\zeta}, &&g_z(0) = f'(z).
+ \end{align*} Для каждого $ z \in \overline B(z_0,\eps) $ функция~$ g_z $ определена и аналитична в открытом диске~$ B(0,\eps) $ (аналитичность в нуле получается с помощью леммы~\ref{lemma:ob_ustranenii_osobennosti} об устранении особенности, см. доказательство теоремы~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера). Тогда по неравенству Лагранжа~\eqref{eq:lagrange_inequality} (теорема~\ref{theorem:Lagrange_inequality}):
+ \begin{align}
+  \label{eq:Bound 1:Derivative of Injective Analytic Fun is not 0}
+  \left|f_n(z) - f'(z) \right| = \left|g_z(1 / n) - g_z(0) \right| \leqslant \frac{1}{n} \cdot \max_{\left| \zeta \right| \leqslant \eps} \left| g'_z(\zeta) \right| = \frac{1}{n} \cdot \max_{\left| \zeta \right|=\eps} \left| g_z'(\zeta) \right|,
+ \end{align} где последний переход справедлив по принципу максимума (следствие~\ref{corollary:maximum_principle_border}). Продифференцируем функцию~$ g_z $:
   \begin{align*}
-   f = \lim f_k
-  \end{align*} --- аналитическая функция в $ \Omega $ (тест на прямоугольниках). Пусть существуют точки $ z_0,w_0 \in \Omega $ такие, что $ f(z_0) - f(w_0) = 0 $. Рассмотрим функции $ F_k \colon\, z \mapsto f_k(z) - f_k(w_0) $, а
-  \begin{align*}
-   F := f(z) - f(w_0)
-  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $.
-  Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $.
-  Пусть $ N $ --- построили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $.
-  Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $.
-  Но так как $ f_n $ инъективны, то $ z_n = w_0 $. Но $ z_n \in B(z_0, \eps) $.
-  То есть $ \left|z_n - z_0 \right| = \left|w_0 - z_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие.
-  Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
- \end{proof}
+  g'_z(\zeta) = \frac{f'(z + \zeta) \cdot \zeta - f(z+\zeta)+f(z)}{\zeta^{2}}.
+ \end{align*} Продолжим оценку~\eqref{eq:Bound 1:Derivative of Injective Analytic Fun is not 0}:
+ \begin{align*}
+  \left| f_n(z) - f'(z) \right| \leqslant \frac{1}{n} \cdot \max_{\left| \zeta \right|=\eps} \left| g'_z(\zeta) \right| \leqslant \frac{1}{n\eps^{2}} \cdot \max_{\left| \lambda - z_0 \right| \leqslant 2\eps} \left( \left| f'(\lambda) \right| \cdot \eps + 2 \left| f(\lambda) \right| \right) = \OO(1 / n).
+ \end{align*} Равномерная сходимость на компакте $ \overline B(z_0,\eps) $ доказана. 
  
- \begin{thm}
-  Пусть $ f $ --- инъективная аналитическая функция в $ \Omega $. Тогда $ f'(z) \neq 0 $ для всех $ z \in \Omega $.
- \end{thm}
- Можно доказать вещественными методами ($ f \colon \R^{2}\to\R^{2} $).
- \begin{proof}[\normalfont\textsc{Доказательство}]
-  Рассмотрим функции
-  \begin{align*}
-   f_n = \left(f\left(z + \frac{1}{n}\right) - f(z) \right)n, \qquad n \in \N. 
-\end{align*} заданы при больших $ n $ в шаре $ B(z_0, \eps) $ таком, что $ B(z_0, 2\eps) \subset \Omega $. Кроме того, $ f_n $ равномерно на всём шаре $ \overline {B(z_0,\eps)} $ сходится к $ f' $. Равномерность оценим
-  \begin{align*}
-   f_n(z) = \frac{f\left(z + \frac{1}{n}\right) - f(z)}{z + \frac{1}{n} - z} = g_z \left( \frac{1}{n} \right),
-  \end{align*} где \begin{align*}
-   g_z(w) = \frac{f(z+w)-f(z)}{w}
-  \end{align*} $ g_z(0) = f'(z) $. Поэтому,
-  \begin{align*}
-   \left|f_n(z) - f'(z) \right| = \left|g_z(1 / n) - g_z(0) \right| \leqslant \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| \cdot \left| 1 / n - 0 \right|.
-  \end{align*}
-  \begin{align*}
-   g'_z(w) = \frac{f'(z + w)w - f(z + w) + f(z)}{w^{2}}
-  \end{align*}
-  \begin{align*}
-   \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| = \max_{\left| \lambda \right|=\eps} \left| g'_z(\lambda) \right| \leqslant \frac{1}{\eps^{2}} \sup_{\zeta \in B(z_0,2\eps)} \left| f'(\zeta) \right| \eps + \left| f(\zeta) \right| \cdot 2 < C.
-  \end{align*}
+ Теперь предположим, что $ f'(z_0) = 0 $. Тогда по теореме Гурвица (следствие~\ref{corollary:Gurovitz}) при при достаточно больших $ n $ функция $ f_n $ имеет корень, то есть $ f(z + 1 / n)  = f(z)$, а этого не может быть, так как функция~$ f $ инъективна!
+\end{proof}
 
-  Доказали равномерность. Если $ \exists z_0 \colon\; f'(z_0) = 0  $, то при больших $ n $
-  \begin{align*}
-   n(f(z + 1 / n) - f(z))
-  \end{align*} имеет корень по теореме Гурвица. Тогда $ f $ не инъективна!
- \end{proof}
+\newpage
+\section{Теорема Арцела-Асколи.}
 
+Нашей целью в курсе комплексного анализа будет доказательство теоремы Римана --- по сути самой красивой теоремы в данном курсе.
 
- На этом немного остановимся в теории аналитических функций. Наша цель --- самая красивая теорема Римана.
+Для этого нам придётся немного отвлечься от теории аналитических функций. В этом параграфе мы займёмся компактностью, и докажем классическую теорему из функционального анализа.
 
- Сегодня будем заниматься компактностью, и докажем классическую теорему из функционального анализа.
+\begin{df}
+ Пусть $ (X,\rho) $ --- метрическое пространство. Говорят, что семейство непрерывных функций $ \left\{f_\alpha\colon X \to \CC\right\}_{\alpha \in A}  $ \emph{равностепенно непрерывно}, если для любого $ \eps > 0 $ существует $ \delta > 0 $ такое, что из $ \rho(x_1, x_2) < \delta $ следует
+ \begin{align}
+  \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps \label{eq:equicontinuity}
+ \end{align} для всех $ \alpha \in A $.
+\end{df}
+\begin{df}
+ Говорят, что семейство функций $ \left\{f_\alpha\colon X \to \CC \right\}_{\alpha \in A}  $ \textit{равномерно ограничено}, если
+ \begin{align*}
+  \sup_{x \in X, \alpha \in A} \left| f_\alpha(x) \right| < \infty.
+ \end{align*}
+\end{df}
 
- \newpage
- \section{Теорема Арцела-Асколи.}
+\begin{lm}
+ \label{lemma:metric_compact_is_seperable_space}
+ Любой метрический компакт сепарабельный.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Возьмем покрытие метрического компакта $X$ открытыми шарами радиуса $1/2$, извлечем конечное подпокрытие по компактности. Затем возьмём покрытие $X$ открытыми шарами радиуса $1/3$ и опять извлечем конечное подпокрытие. Проделаем эту процедуру для всех $ n \in \N $.
 
- \begin{df}
-  Пусть $ (X,\rho) $ --- метрическое пространство, $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- семейство комплекснозначных, непрерывных на $ X $ функций. Говорят, что семейство $ \left\{f_\alpha\right\}_{\alpha\in A}  $ \textit{равностепенно непрерывно}, если для любого $ \eps > 0 $ существует $ \delta > 0 $ такое, что из $ \rho(x_1, x_2) < \delta $ следует
-  \begin{align}
-	  \left|f_\alpha(x_1) - f_\alpha(x_2) \right| < \eps \label{eq:equicontinuity}
-  \end{align} для любого $ \alpha \in A $.
- \end{df}
- \begin{df}
-  Семейство $ \left\{f_\alpha\right\}_{\alpha \in A}  $ \textit{равномерно ограничено}, если
-  \begin{align*}
-   \sup_{x \in X, \alpha \in A} \left| f_\alpha(x) \right| < \infty.
-  \end{align*}
- \end{df}
+ Тогда центры этих шаров образуют счётное всюду плотное множество. Действительно, для каждой точки $ x \in X $ и для любого $\eps > 0$ найдется шар радиуса меньше~$ \eps$ в котором точка~$ x $ лежит; следовательно найдется центр на расстоянии меньше~$\eps$. 
+\end{proof}
 
- \begin{lm}
-	 \label{lemma:metric_compact_is_seperable_space}
- 	Пусть $(X, \rho)$ --- метрический компакт, тогда $X$ --- сепарабельное.
- \end{lm}
+\begin{df}
+ Подмножество~$ Y \subset X $ метрического пространства~$ X $ называется \emph{предкомпактным}, если его замыкание $ \overline Y $ --- компактное пространство.
 
- \begin{proof}[\normalfont\textsc{Доказательство}]
-	 Возьмем покрытие $X$ шарами радиуса $\frac{1}{2}$, извлечем конечное подпокрытие.
-	 После этого проделаем такую же процедуру для покрытия $X$ шарами радиуса $\frac{1}{3}$  и опять извлечем конечное подпокрытие.
-	 Продолжаем по аналогии для всякого $n \in N$ .
+ В терминах секвенциальной компактности, предкомпактность означает, что из любой последовательности $ y_1, y_2, \ldots \in Y $ можно выделить подпоследовательность $ y_{j_1}, y_{j_2}, \ldots $, сходящуюся к $ x \in X $. В отличие от компактности, мы не требуем, чтобы $ x \in Y $.
+\end{df}
 
-	 Тогда центры этих шаров будут счетным всюду плотным множеством, т.к. для каждой точки и любого $\eps$ найдется шар радиуса $< \eps$ в котором эта точка лежит, следовательно найдется центр на расстоянии $< \eps$. 
- \end{proof}
+\begin{thm}[Арцела-Асколи]
+ Пусть $ (X,\rho) $ --- метрический компакт, и $ C(X,\CC) $ --- банахово пространство непрерывных функций $ f \colon\,X \to \CC $ с $ \sup $-нормой:
+ \begin{align*}
+  \left\| f \right\| = \max_{x \in X} \left| f(x) \right|, \quad f \in C(X,\CC).
+ \end{align*} Пусть $S \subset C(X,\CC)$ --- равномерно ограниченное и равностепенно непрерывное семейство непрерывных функций. Тогда семейство~$ S $ предкомпактно, то есть из любой последовательности функций $\{f_{n}\}_{n=1}^{\infty} \subset S$  можно выделить равномерно сходящуюся подпоследовательность $\{f_{i_n}\}_{n=1}^{\infty} $:
+ \begin{align*}
+  f_{i_n} \rightrightarrows f,
+ \end{align*} где $ f \in C(X,\CC) $.
+\end{thm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $\{f_{n}\}_{n=1}^{\infty} \subset S $ --- произвольная последовательность функций из семейства~$ S $.
 
- \begin{thm}[Арцела-Асколи]
-  Пусть $ (X,\rho) $ --- метрический компакт.  $ \left\{f_\alpha\right\}_{\alpha \in A}  $ --- равномерно ограниченное равностепенно непрерывное семейство функций. Тогда $ \left\{f_\alpha\right\}_{\alpha \in A} $ предкомпактно, то есть существует $ \exists \left\{\alpha_k\right\} \colon\;  $ --- набор различных элементов $ A $ такой, что
-  \begin{align*}
-   f_{\alpha_k} \rightrightarrows_X f,
-  \end{align*} где $ f $ непрерывна на $ X $.
- \end{thm}
- \begin{proof}[\normalfont\textsc{Доказательство}]
-	 Шаг 1. Считаем $ A = \N $ . Так как $ X $  сепарабельный (по лемме \ref{lemma:metric_compact_is_seperable_space}), то возьмём $ \left\{x_k\right\}  $ --- счётное всюду плотное множество в $X$
+ \begin{enumerate}
+  \item Так как пространство~$ X $ сепарабельно по лемме~\ref{lemma:metric_compact_is_seperable_space}, то существует счётное всюду плотное подмножество $ \{x_{k}\}_{k=1}^{\infty} \subset X  $. Наша задача: найти подпоследовательность, которая сходится во всех точках $ x_j $ из этого счётного всюду плотного подмножества.
 
-  Т.к. $\{ f_\alpha \}$ равномерно ограничены, значит можно выделить сходящуюся подпоследовательность $f_{n_1}, f_{n_2}, \ldots $ сходящуюся в точке $x_1$.
-  Но эта подпоследовательность тоже будет равномерно ограничена, поэтому из нее можно выделить подпоследовательность сходящуюся в точке $x_2$.
-  Продолжая эту процедуру мы получаем семейство последовательностей где каждая вложена в предыдущую и сходится в конкретной точке.
-  
-\begin{figure}[ht]
+   Так как семейство~$ S $  равномерно ограничено, то из последовательности функций $ \{f_{n}\}_{n=1}^{\infty}  $ можно выделить подпоследовательность $ \{f_{n}^{(1)}\}_{n=1}^{\infty}  $, сходящуюся в точке~$ x_1 $. Из неё так же можно выделить подпоследовательность $ \{f_{n}^{(2)}\}_{n=1}^{\infty}  $, сходящуюся в точке~$ x_2 $, причём подпоследовательность всё ещё будет сходится в точке~$ x_1 $. Продолжая эту процедуру, для каждого  $ m \geqslant 1 $  мы найдём подпоследовательность $ \{f_{n}^{(m)}\}_{n=1}^{\infty}  $ исходной последовательности, которая сходится в точках $ x_1, x_2, \ldots, x_m $.
+
+   Теперь мы проведём рассуждение, аналогичное диагональному методу Кантора: рассмотрим последовательность функций~$ \{f_{n}^{(n)}\}_{n=1}^{\infty}  $ (рисунок~\ref{fig:cantor_diagonalization_theorem_arcel_askol}). Эта последовательность по построению является подпоследовательностью исходной последовательности $ \{f_{n}\}_{n=1}^{\infty}  $, а также она сходится в любой точке $ x_j $; в самом деле, начиная с элемента $ f_j^{(j)} $ хвост будет являться подпоследовательностью последовательности $ \{f_{n}^{j}\}_{n=1}^{\infty}  $, поэтому хвост будет сходится в точке~$ x_j $.
+
+   \begin{figure}[ht]
     \centering
-	\incfig[0.5]{cantor_diagonalization_theorem_arcel_askol}
+    \incfig[0.5]{cantor_diagonalization_theorem_arcel_askol}
     \caption{Диагональный метод Кантора.}
     \label{fig:cantor_diagonalization_theorem_arcel_askol}
-\end{figure}
+   \end{figure}
 
-  Теперь мы можем взять диагональные элементы из каждой подпоследовательности и получить последовательность которая сходится во всех точках $x_i$.
-  См. рис \eqref{fig:cantor_diagonalization_theorem_arcel_askol}. 
+   Итак, мы нашли подпоследовательность $\{\hat f_{n}\}_{n=1}^{\infty} $, которая сходится во всех точках $ x_j $.
+
+  \item Докажем, что та же самая подпоследовательность $ \{\hat f_{n}\}_{n=1}^{\infty}  $ сходится во всех точках $ x \in X $.
+
+   Зафиксируем точку~$ x \in X $. Так как пространство~$ \CC $  полное, нам достаточно доказать, что последовательность чисел $\{\hat f_{n}(x)\}_{n=1}^{\infty} \subset \CC$  фундаментальна. Возьмём любое число~$ \eps > 0 $, и докажем, что при достаточно больших $ m,n $ выполнено
+   \begin{align*}
+    \left| \hat f_m(x) - \hat f_n(x) \right| < \eps.
+   \end{align*} Воспользуемся $ \eps / 3 $-приёмом:
+   \begin{align*}
+    \left| \hat f_m(x) - \hat f_n(x) \right| \leqslant \left| \hat f_m(x) - \hat f_m(x_j) \right| + \left| \hat f_m(x_j) - \hat f_n(x_j) \right| + \left| \hat f_n(x_j) - \hat f_n(x) \right|.
+   \end{align*} Так как семейство~$ S $ равностепенно непрерывно, то для числа~$ \eps / 3 $ существует такое число~$ \delta>0 $, что для любого $ n \geqslant 1 $ и для любых точек~$ p,q \in X $ условие~$ \rho(p,q) < \delta $ влечёт $ \left| \hat f_n(p) - \hat f_n(q) \right| < \eps / 3$. Поэтому, найдём точку $ x_j $ такую, что $ \rho(x,x_j) < \delta $. Тогда
+   \begin{align*}
+    \left| \hat f_m(x) - \hat f_n(x) \right| \leqslant 2\eps / 3 + \left| \hat f_m(x_j) - \hat f_n(x_j) \right| < \eps
+   \end{align*} при достаточно больших $ n $ и $ m $, так как последовательность $\{\hat f_{n}(x_j)\}_{n=1}^{\infty} $  сходится. Таким образом, последовательность $ \{\hat f_{n}\}_{n=1}^{\infty}  $ сходится всюду в $ X $ к некоторой функции $ f \colon X \to \CC $.
+
+  \item Осталось воспользоваться тем фактом, что сходящаяся последовательность непрерывных на компакте функций сходится равномерно, и её предел --- тоже непрерывная функция. Этот факт был доказан в первом семестре анализа, но доказательство также было дано и на лекциях: см. лемму~\ref{lemma:Convergence of Functions on Compact}.
+ \end{enumerate}
 \end{proof}
 
 \end{document}
