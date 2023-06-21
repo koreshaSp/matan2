@@ -1,24 +1,14 @@
 % 2023.04.27 lecture 10
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
-Итак, мы нашли подпоследовательность $ f_{\alpha_1}, f_{\alpha_2}, f_{\alpha_3}, \ldots$ такую, что последовательность
-\begin{align*}
- \left\{f_{\alpha_{k}}(x_j) \right\}_{k=1}^{\infty}
-\end{align*} сходится для любой точки $ x_j $ из некоторого счётного всюду плотного подмножества $ X $.
 
-Шаг 2. Нужно доказать, что теперь эта же самая последовательность сходится всюду(а не только во всюду плотном подмножестве). Мы докажем, что последовательность $ \{f_{\alpha_k}(x)\}_{k=1}^{\infty}   $ фундаментальна в $ \CC $ любой точке $ x \in X $.
-
-Возьмём $ x \in X $, $ \eps > 0 $. Найдём $ \delta $ такое, что $\forall \alpha \in A, x, y : \rho(x, y) < \delta \implies | f_\alpha(x) - f_\alpha(y)| < \eps$ (из условия равностепенной непрерывности $f_\alpha$). Пусть $ k, m \in \N $. Воспользуемся $ \eps / 3 $-приёмом:
-\begin{align*}
- \left| f_{k}(x) - f_{m}(x) \right|\leqslant \left| f_k(x) - f_k(x_j) \right| + \left| f_k(x_j) - f_m(x_j) \right| + \left| f_m(x_j) - f_m(x) \right|,
-\end{align*} где $ x_j $ выбрана так, чтобы $ \rho(x, x_j) < \delta $(такое $x_j$ найдётся в силу всюду плотности $\{ x_j\}$). Тогда в силу равностепенной непрерывности можно оценить первое и третье слагаемые:
-\begin{align*}
- \left| f_k(x)-f_m(x) \right| \leqslant 2\eps + \left| f_k(x_j) - f_m(x_j) \right| \leqslant 3\eps
-\end{align*} при $ k, m \geqslant N(\eps) $, ведь последовательность $ f_k(x_j) $ фундаментальна.
-
-Значит, $ f_{\alpha_k}(x) $ сходится для любой точки $ x \in X $, обозначим её предел через $ f(x) $.
-
-Шаг 3. Обоснуем, что сходимость равномерная. Хотим показать что для любого $ \eps > 0 $ и для любого $ x \in X $ существует $ N_x $:
+\begin{lm}
+ \label{lemma:Convergence of Functions on Compact}
+ Пусть $ (X,\rho) $ --- метрической компакт, и последовательность непрерывных функций  $ \{f_{n}\}_{n=1}^{\infty} \subset C(X,\CC)$ сходится во всех точках $ x \in X $ к функции~$ f \colon X \to \CC $. Тогда эта сходимость равномерная, а также предельная функция непрерывна: $ f \in C(X,\CC) $.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ 
+Шаг 1. Обоснуем, что сходимость равномерная. Хотим показать что для любого $ \eps > 0 $ и для любого $ x \in X $ существует $ N_x $:
 \begin{align*}
  \left|f_{\alpha_k}(y) - f(y) \right| \leqslant 3\eps
 \end{align*} при $ k \geqslant N_x $, $ y \in B(x, \delta(x)) $(но этого критерия недостаточно для равномерной сходимости). Действительно,
@@ -39,12 +29,12 @@
 \end{align*} Возьмём $ N = \max(N_{z_1}, \ldots, N_{z_M}) $ и победим.
 
 
-Шаг 4. Покажем что полученная функция $f$ непрерывна. Предел --- непрерывная функция: если $ \eps > 0 $, $ \delta $ --- из \eqref{eq:equicontinuity}, то
+Шаг 2. Покажем что полученная функция $f$ непрерывна. Предел --- непрерывная функция: если $ \eps > 0 $, $ \delta $ --- из \eqref{eq:equicontinuity}, то
 \begin{align*}
  \left| f(x) - f(y) \right| = \lim_{k \to \infty} \left| f_{\alpha_k}(x) - f_{\alpha_k}(y) \right| \leqslant \eps,
 \end{align*} в силу \eqref{eq:equicontinuity} для любых $ x,y \in X $ таких, что $ \rho(x,y)<\delta $.
 
-Шаги 3 и 4 --- были в первом семестре (пространство непрерывных функций на компакте).
+\end{proof}
 
 \begin{remrk}
  Рассмотрим множество \begin{align*}
