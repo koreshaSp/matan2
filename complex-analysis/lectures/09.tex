@@ -5,7 +5,8 @@
   Найдём число корней многочлена $ 0.1+2z^{3} + z^{10} = 0 $ в кольце $ 1 < \left| z \right|  < 2 $. Рассмотрим область $ \Omega = B(0,1) $. Рассмотрим функцию
   \begin{align*}
    f = 2z^{3}, &&g = 0.1 + z^{10}.
-  \end{align*} Тогда $ \left| g \right| \leqslant 1.1 $ на $ \left| z \right|=1 $, а $ \left| f \right| = 2 > \left| g \right| $ на $ \left| z \right|=1 $. Значит, $f + g$
+  \end{align*} 
+  Тогда $ \left| f \right| = 2 > 1.1 \geqslant \left| g \right| $ на $ \left| z \right|=1 $. Значит, $f + g$
   имеет столько же нулей, сколько и $ f $: то есть три штуки (с учётом кратности). Кроме того, на $ \left| z \right| = 1 $ нет нулей.
 
   А теперь посчитаем сколько нулей в $ \Omega=B(0,2) $. Но выберем там другие буквы $ f $ и $ g $:
@@ -50,7 +51,13 @@
   \end{align*} --- аналитическая функция в $ \Omega $ (тест на прямоугольниках). Пусть существуют точки $ z_0,w_0 \in \Omega $ такие, что $ f(z_0) - f(w_0) = 0 $. Рассмотрим функции $ F_k \colon\, z \mapsto f_k(z) - f_k(w_0) $, а
   \begin{align*}
    F := f(z) - f(w_0)
-  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $. Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $. Пусть $ N $ --- построили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $. Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $. Но так как $ f_n $ инъективны, то $ z_n = w_0 $. Но $ z_n \in B(z_0, \eps) $. То есть $ \left|z_n - w_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие. Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
+  \end{align*} Дано $F_k$ сходится к $ F $ равномерно на компактах (от вычитания константы ничего не поменялось). С другой стороны, $ F(z_0) = 0 $.
+  Возьмём $ \eps $ такое, что $ \left| z_0 - w_0 \right| / 4 > \eps $ и достаточно маленькое для того, чтобы выполнялась теорема Гурвица для $ F_k $ и $ F $.
+  Пусть $ N $ --- построили по $ \eps $ из т. Гурвица такое, что $ F_k $ имеет ноль в $ B(z_0, \eps) $.
+  Значит $ \forall n > N(\eps) \colon\; z_n \in B(z_0,\eps): F_n(z_n) = 0 \implies f_n(z_n) - f_n(w_0) = 0 $.
+  Но так как $ f_n $ инъективны, то $ z_n = w_0 $. Но $ z_n \in B(z_0, \eps) $.
+  То есть $ \left|z_n - z_0 \right| = \left|w_0 - z_0 \right| < \eps < \frac{\left| z_0-w_0 \right|}{4} $, противоречие.
+  Если же $ F \equiv 0 $, то $ f \equiv \mathrm{const} $, что разрешено.
  \end{proof}
  
  \begin{thm}
@@ -74,7 +81,7 @@
    g'_z(w) = \frac{f'(z + w)w - f(z + w) + f(z)}{w^{2}}
   \end{align*}
   \begin{align*}
-   \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| = \max_{\left| \lambda \right|=\eps} \left| g'_z(\lambda) \right| \leqslant \frac{1}{\eps^{2}} \max_{\zeta \in B(z_0,2\eps)} \left| f'(\zeta) \right| \eps + \left| f(\zeta) \right| \cdot 2 < C.
+   \max_{\left| \lambda \right| \leqslant \eps} \left| g'_z(\lambda) \right| = \max_{\left| \lambda \right|=\eps} \left| g'_z(\lambda) \right| \leqslant \frac{1}{\eps^{2}} \sup_{\zeta \in B(z_0,2\eps)} \left| f'(\zeta) \right| \eps + \left| f(\zeta) \right| \cdot 2 < C.
   \end{align*}
 
   Доказали равномерность. Если $ \exists z_0 \colon\; f'(z_0) = 0  $, то при больших $ n $

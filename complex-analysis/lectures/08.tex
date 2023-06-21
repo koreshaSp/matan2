@@ -1,205 +1,308 @@
 % 2023.04.13 lecture 08
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
- 
+
 \newpage
 \section{Принцип аргумента.}
 
-Неформально, принцип аргумента говорит о том, что изменение аргумента на границе равно $ 2\pi(N - P) $, где $ N $ --- число нулей, а $ P $ --- число полюсов (с учётом кратности) у функции.
+В параграфе~\ref{section:Singularities of Analytic Functions}, изучая изолированные особые точки аналитических функций, мы могли заметить некоторую схожесть между нулями и полюсами аналитической функции. Например, порядок полюса равен номеру наименьшего ненулевого коэффициента ряда Лорана (со знаком минус), при условии что хотя бы один ненулевой коэффициент с отрицательным номером всё-таки есть. В то же время, кратность нуля равна номеру наименьшего ненулевого коэффициента в ряде Тейлора (который совпадает с рядом Лорана, если функция аналитична в окрестности изучаемой точки). Таким образом, можно считать, что полюс порядка~$ n \geqslant 1 $ --- это <<нуль кратности $ -n $>>, или же что нуль кратности~$ k \geqslant 1 $ --- это <<полюс порядка $ -k $>>. При этом точку, в которой аналитическая функция определена и не равна нулю, можно считать как нуль кратности~$ 0 $, так и полюс порядка~$ 0 $.
 
-Например, для функции $ z^{n} $ имеем $ \arg e^{int} = nt $, $ t \in [0,2\pi] $. Обходя по окружности $ \gamma $ точку $ 0 $, изменение аргумента равно
+В этом параграфе мы изучим \emph{принцип аргумента} --- утверждение, которое во многом раскрывает это сходство между нулями и полюсами. Упрощая, принцип аргумента говорит о том, что изменение аргумента функции~$ f $ при обходе вдоль границы области~$ \Omega $ равно $ 2\pi(N - P) $, где $ N $ --- число нулей функции~$ f $ в $ \Omega $ с учётом кратности, а $ P $ --- число полюсов функции~$ f $ в $ \Omega $ с учётом порядка. Или же, повторяя предыдущую мысль, изменение аргумента равно $ 2\pi S $, где $ S $ --- сумма кратностей всех нулей функции~$ f $ в $ \Omega $, где полюс порядка $ n \geqslant 1 $ считается как нуль кратности~$ -n $.
+
+Приведём пример <<на пальцах>>. У функции $ f(z) = z^{n} $ в области $ \mathbb D $ аргумент вдоль границы $ \partial\mathbb D $ равен $ \arg e^{int} = nt $, где $ t \in [0,2\pi] $. При обходе точки~$ 0 $ по окружности $ \partial\mathbb D $ против часовой стрелки, аргумент изменяется на
 \begin{align*}
- \Delta_\gamma \arg z^{n} = n \cdot 2\pi - n \cdot 0 = 2\pi n,
-\end{align*} так как $ 0 $ --- нуль функции $ z^{n} $ кратности $ n $.
+ \Delta_{\partial\Omega} \arg z^{n} = 2\pi n = \arg z^{n}(2\pi) - \arg z^{n}(0)
+\end{align*} так как $ 0 $ --- нуль функции $ z^{n} $ кратности $ n $ (а других нулей и полюсов у функции нет).
+
+\subsection{Аргумент вдоль пути.}
+
+Для понятия <<аргумент>> ранее у нас было определение~\ref{def:Continious Branch of Argument} непрерывной ветви аргумента аналитической функции в заданной области. Здесь же нам понадобится <<аргумент вдоль пути>>, поэтому дадим новое определение.
 
 \begin{df}
-\label{definition:continuous_branch_argument_path}
- Пусть $ \gamma \in C([0, 1], \Omega) $ --- путь в области $ \Omega \subset \CC $. Пусть функция $ f $ аналитична в $ \Omega $. Тогда отображение $ \psi \in C([0,1], \R) $ называется \textit{непрерывной ветвью аргумента функции $ f $ вдоль пути $ \gamma $}, если
+ \label{definition:continuous_branch_argument_path}
+ Пусть $ \gamma\colon\,[0,1]\to\CC $ --- путь, а функция~$ f \colon\,\gamma([0,1]) \to \CC \setminus \left\{ 0 \right\}$ определена и не равна нулю на носителе пути. Непрерывная функция~$ \psi\colon\,[0,1] \to \R $ называется \emph{непрерывной ветвью аргумента функции~$ f $ вдоль пути~$ \gamma $}, если для любого $ t\in[0,1] $ выполнено
  \begin{align*}
-  \left| f(\gamma(t)) \right| \cdot e^{i\psi(t)} = f(\gamma(t))
+  \left| f(\gamma(t)) \right| \cdot e^{i\psi(t)} = f(\gamma(t)).
  \end{align*}
- для любого $ t \in [0,1] $, причём $ f(\gamma(t)) \neq 0 $ для любого $ t \in [0, 1] $.
 \end{df}
-\begin{thm}
-\label{theorem:continious_branch_argument_path_exists}
-В условиях определения \eqref{definition:continuous_branch_argument_path} существует непрерывная ветвь аргумента функции $ f $ вдоль пути $ \gamma $, причём две любые такие ветви отличаются на $ 2\pi k $, $ k \in \Z $.
-\end{thm}
-Доказывать теорему \eqref{theorem:continious_branch_argument_path_exists} будем только для кусочно-гладких путей. План доказательства будет такой: определим непрерывный логарифм вдоль пути, и тогда аргумент будет равен его мнимой части.
-\begin{proof}[\normalfont\textsc{Доказательство теоремы}]
- Пусть путь $ \gamma $ кусочно гладкий. Рассмотрим функцию $ g \colon\,[0, 1] \to \CC $:
- \begin{align*}
-  g(t) = \int\limits_{0}^{t} \frac{f'(\gamma(u))}{f(\gamma(u))} \gamma'(u)\,du.
- \end{align*} Проверим, что $ g $ --- это логарифм:
- \begin{align*}
-  \left(\frac{e^{g(t)}}{f(\gamma(t))}\right)' &= \frac{g'(t)e^{g(t)}f(\gamma(t)) - f'(\gamma(t)) \cdot \gamma'(t) \cdot e^{g(t)}}{f^{2}(\gamma(t))}\\
-  \text{но } g'(t) f(\gamma(t)) - f'(\gamma(t))\gamma'(t) &= \frac{f'(\gamma(t))}{f(\gamma(t))} \gamma'(t) f(\gamma(t)) - f'(\gamma(t)) \gamma'(t) = 0.
- \end{align*} Значит, $ \frac{e^{g}}{f} $ --- кусочно постоянная функция, и она непрерывна на $ [0,1] $. Значит
- \begin{align*}
-  \frac{e^{g}}{f} = e^{-c}, 
- \end{align*} где $ c \in \CC $. Тогда $ e^{g+c} = f $. Логарифм $ g $ построен. Теперь рассмотрим $ \psi(t) = \Imaginary (g(t) + c) $, $ t \in [0,1] $. Функция $ \psi $ непрерывна, действует в $ \R $, и
- \begin{align}
-  \left| f(\gamma(t)) \right| \cdot e^{i\psi(t)} = f(\gamma(t)) \iff \left| f(\gamma(t)) \right|e^{i\psi(t)} = e^{g(t) + c}, \label{eq:continious_branch_argument_path_exists}
- \end{align} причём так как $ f(\gamma(t)) = e^{g(t)+c} $ имеем $ \left| f(\gamma(t)) \right|  = e^{\Real(g(t)+c)}$. Тогда \eqref{eq:continious_branch_argument_path_exists} равносильно
- \begin{align*}
-  e^{\Real(g(t)+c) + i\psi(t)} = e^{g(t) + c},
- \end{align*} а это выполнено по построению $ \psi $.
 
- Докажем единственность. Пусть $ \psi_1 $, $ \psi_2 $ --- непрерывные ветви аргумента функции $ f $ вдоль пути $ \gamma $. Тогда
+\begin{claim}
+ \label{claim:Argument Along Path Uniqueness}
+ В условиях определения~\ref{definition:continuous_branch_argument_path} непрерывная ветвь аргумента функции~$ f $ вдоль пути~$ \gamma $ единственна (если, конечно, она существует): любые две такие ветви отличаются на $ 2\pi k $, $ k\in\Z $.
+\end{claim}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Пусть $ \psi_1 $, $ \psi_2 $ --- непрерывные ветви аргумента функции $ f $ вдоль пути $ \gamma $. Тогда для любого $ t\in[0,1] $
  \begin{align*}
-  \left| f(\gamma(t)) \right|e^{i\psi_1(t)} = \left| f(\gamma(t)) \right|e^{i\psi_2(t)} \implies e^{i(\psi_1(t)-\psi_2(t))}  \equiv 1
- \end{align*} Следовательно, $ \psi_1(t) - \psi_2(t) \equiv 2\pi k(t)$, где $ k(t) $ --- непрерывная функция со значениями в $ \Z $, то есть $ k $ --- целое число.
+  \left| f(\gamma(t)) \right| \cdot e^{i\psi_1(t)} = \left| f(\gamma(t)) \right|\cdot e^{i\psi_2(t)}.
+ \end{align*} Так как $ \left| f(\gamma(t)) \right| \neq 0 $, то $ e^{i(\psi_1(t)-\psi_2(t))} = 1 $ для всех $ t\in[0,1] $. Следовательно,
+ \begin{align*}
+  \psi_1(t) - \psi_2(t) = 2\pi k(t),
+ \end{align*} где $ k \colon\,[0,1] \to \Z $ --- непрерывная функция со значениями в $ \Z $, то есть $ k(z) = k $ --- целое число.
+\end{proof}
+
+\begin{thm}
+ \label{theorem:continious_branch_argument_path_exists}
+ Пусть в условиях определения~\ref{definition:continuous_branch_argument_path}  функция~$ f $ вдобавок является $ C^{1} $-гладкой на носителе пути $ \gamma([0,1]) $, а путь $ \gamma $ является кусочно-гладким. Тогда непрерывная ветвь аргумента функции~$ f $ вдоль пути~$ \gamma $ существует.
+\end{thm}
+На самом деле, теорему~\ref{theorem:continious_branch_argument_path_exists} можно доказать и не предполагая кусочно-гладкость пути $ \gamma $, но мы это опустим.
+
+План доказательства будет следующий (схожий с доказательством теоремы~\ref{theorem:exist_arg_f}): мы построим непрерывный логарифм вдоль пути, и тогда аргумент вдоль пути просто будет равен его мнимой части.
+\begin{proof}[\normalfont\textsc{Доказательство теоремы~\ref{theorem:continious_branch_argument_path_exists}}]
+ Рассмотрим функцию~$ g \colon\,[0, 1] \to \CC $:
+ \begin{align}
+  \label{eq:Explicit Def of Log Along Path}
+  g(t) = \int_{0}^{t} \frac{f'(\gamma(u))}{f(\gamma(u))} \cdot  \gamma'(u)\,du.
+ \end{align} Функция~$ g $ по построению непрерывная и кусочно-гладкая. Проверим, что она является логарифмом функции~$ f $ вдоль пути~$ \gamma $:
+ \begin{align*}
+  \left[ \frac{e^{g(t)}}{f(\gamma(t))} \right]' &= \frac{\left(e^{g(t)}\right)' \cdot f(\gamma(t)) - e^{g(t)} \cdot (f(\gamma(t)))'}{f(\gamma(t))^{2}} = \\
+  &= \frac{e^{g(t)} \cdot \left( g'(t) \cdot f(\gamma(t)) - f'(\gamma(t)) \cdot \gamma'(t) \right)}{f(\gamma(t))^{2}},
+ \end{align*} но по построению~$ g $
+ \begin{align*}
+  g'(t) \cdot f(\gamma(t)) - f'(\gamma(t)) \cdot \gamma'(t) = \frac{f'(\gamma(t))}{f(\gamma(t))} \cdot \gamma'(t) \cdot f(\gamma(t)) - f'(\gamma(t)) \cdot \gamma'(t) = 0,
+ \end{align*} поэтому
+ \begin{align*}
+  \left[ \frac{e^{g(t)}}{f(\gamma(t))} \right]' = 0.
+ \end{align*} Значит, функция $ t \mapsto e^{g(t)} / f(\gamma(t)) $ кусочно-постоянна, а раз она непрерывна на $ [0,1] $, то она постоянна на $ [0,1] $:
+ \begin{align*}
+  \frac{e^{g(t)}}{f(\gamma(t))} = e^{-c} 
+ \end{align*} для некоторой константы $ c \in \CC $. Обозначим
+ \begin{align}
+  \label{eq:Explicit Def Of True Log Along Path}
+  \hat g (t) = g(t) + c.
+ \end{align} Тогда
+ \begin{align}
+  \label{eq:Logarithm Along Path:Exists Argument Along Path}
+  e^{\hat g(t)} = f(\gamma(t)), \quad t \in [0,1].
+ \end{align} Логарифм построен.
+
+ Теперь рассмотрим функцию
+ \begin{align}
+  \label{eq:Explicit Def of Argument Along Path}
+  \psi(t) = \Imaginary \hat g(t), \quad t \in [0,1].
+ \end{align} Функция $ \psi $ непрерывна на $ [0,1] $, действует в $ \R $, и по \eqref{eq:Logarithm Along Path:Exists Argument Along Path}
+ \begin{align*}
+  f(\gamma(t)) = e^{\hat g(t)} = e^{\Real \hat g(t) + i \psi(t)} = \left| f(\gamma(t)) \right| \cdot e^{i\psi(t)}.
+ \end{align*} Аргумент вдоль пути построен.
+\end{proof}
+
+\begin{remrk}
+ \label{remark:Piecewise Smooth Argument Along Path}
+ При выполнении условий теоремы~\ref{theorem:continious_branch_argument_path_exists} все непрерывные ветви аргумента функции~$ f $ вдоль пути~$ \gamma $ являются кусочно-гладкими.
+\end{remrk}
+\begin{proof}
+ Покажем, что построенная в доказательстве теоремы~\ref{theorem:continious_branch_argument_path_exists} ветвь аргумента на самом деле является кусочно-гладкой. Действительно, построенная функция $ \hat g \colon\,[0,1] \to \CC $  является кусочно-гладкой. Её можно воспринимать как кусочно-гладкое отображение $ \hat g \colon\,[0,1] \to \R^{2} $. Так отображение $ \Imaginary\colon\,\R^{2}\to\R $ также является гладким (оно даже линейное), то по формуле~\eqref{eq:Explicit Def of Argument Along Path} и ветвь аргумента $ \psi $ кусочно-гладкая.
+
+ По утверждению~\ref{claim:Argument Along Path Uniqueness} о единственности все остальные непрерывные ветви аргумента функции~$ f $ вдоль пути~$ \gamma $ также являются кусочно-гладкими.
 \end{proof}
 
 \begin{df}
- \textit{Изменение аргумента $ f $ вдоль пути $ \gamma $}  --- это число
+ В условиях теоремы~\ref{theorem:continious_branch_argument_path_exists} \textit{изменением аргумента функции~$ f $ вдоль пути $ \gamma $} называется число
  \begin{align*}
   \Delta_\gamma \arg f := \psi(1) - \psi(0).
-\end{align*} По теореме \eqref{theorem:continious_branch_argument_path_exists} оно не зависит от выбора ветви аргумента!
+ \end{align*}
 \end{df}
+
 \begin{remrk}
- Пусть функции $ f,g $ аналитичны в области $ \Omega  $, $ \psi_f $, $ \psi_g $ --- их аргументы вдоль пути $ \gamma $, а $ \psi_{f\cdot g} $ --- аргумент функции $ f \cdot g $ вдоль $ \gamma $. Тогда
+ По существованию аргумента функции вдоль пути (теорема~\ref{theorem:continious_branch_argument_path_exists}) изменение аргумента $ \Delta_\gamma \arg f $ определено, а по единственности (утверждение~\ref{claim:Argument Along Path Uniqueness}) оно не зависит от выбора непрерывной ветви аргумента.
+\end{remrk}
+
+\begin{remrk}
+ \label{remark:Argument Along Paths Adds When Functions Multiply}
+ Пусть $ \gamma\colon\,[0,1] \to \CC $ --- кусочно-гладкий путь, $ f,g\in C^{1}(\gamma([0,1]), \CC \setminus \left\{ 0 \right\}) $, и $ \psi_f, \psi_g, \psi_{fg} $ --- непрерывные ветви аргумента функций~$ f, g, f \cdot g $ (соответственно) вдоль пути~$ \gamma $. Тогда
  \begin{align}
-	 \psi_{f\cdot g} = \psi_f + \psi_g + 2\pi k, \qquad k \in \Z. \label{eq:continious_branch_argument_path_multiplication}
+  \label{eq:Argument Along Paths Adds When Functions Multiply}
+  \psi_{fg}(t) = \psi_f(t) + \psi_g(t) + 2\pi k, \quad k \in \Z.
  \end{align}
 \end{remrk}
 \begin{proof}[\normalfont\textsc{Доказательство}]
-По явной формуле аргументы гладкие. Тогда \eqref{eq:continious_branch_argument_path_multiplication} равносильно
+ По замечанию~\ref{remark:Piecewise Smooth Argument Along Path} функции~$ \psi_f, \psi_g, \psi_{fg} $ кусочно-гладкие. Тогда равенство~\eqref{eq:Argument Along Paths Adds When Functions Multiply} равносильно
+ \begin{align}
+  \label{eq:Derivatives:Arg Along Paths Adds When Fs Mul}
+  \psi_{fg}'(t) = \psi_f'(t) + \psi_g'(t),
+ \end{align} а~\eqref{eq:Derivatives:Arg Along Paths Adds When Fs Mul}, в свою очередь, по формулам~\eqref{eq:Explicit Def of Argument Along Path}, \eqref{eq:Explicit Def Of True Log Along Path} и \eqref{eq:Explicit Def of Log Along Path}, последует из
  \begin{align*}
-  \psi_{f \cdot g}'  = \psi'_f + \psi'_g &\iff \\
-  &\iff \gamma'(t) \frac{(fg)'(\gamma(t))}{(fg)(\gamma(t))} = \gamma'(t) \frac{f'(\gamma(t))}{f(\gamma(t))} +  \gamma'(t)\frac{g'(\gamma(t))}{g(\gamma(t))} \iff \\
-  &\iff \frac{(fg)'(\gamma(t))}{(fg)(\gamma(t))} = \frac{f'(\gamma(t))}{f(\gamma(t))} + \frac{g'(\gamma(t))}{g(\gamma(t))},
- \end{align*} а это верно по правилу Лейбница(производная отношения функций).
+  &\frac{(f \cdot g)'(\gamma(t))}{(f \cdot g)(\gamma(t))} \cdot \gamma'(t) = \frac{f'(\gamma(t))}{f(\gamma(t))} \cdot \gamma'(t) + \frac{g'(\gamma(t))}{g(\gamma(t))} \cdot \gamma'(t) \impliedby \\
+  \impliedby\;& \frac{f'(\gamma(t)) \cdot g(\gamma(t)) + f(\gamma(t)) \cdot g'(\gamma(t))}{f(\gamma(t)) \cdot g(\gamma(t))} = \frac{f'(\gamma(t))}{f(\gamma(t))} + \frac{g'(\gamma(t))}{g(\gamma(t))}.
+ \end{align*} Последнее равенство, как можно видеть, верно.
 \end{proof}
 
-\begin{remrk*}
- Мы не пользовались аналитичностью функции на границе, только $ C^{1} $-гладкостью.
-\end{remrk*}
+\subsection{Принцип аргумента.}
 
-\begin{df}
- Пусть $ \Omega $ --- стандартная область, $ \partial \Omega  = \bigcup_{k=1}^{N} \gamma_k $  --- её граница, у которой $ \gamma_k $ --- простые замкнутые кусочно-гладкие пути  $ \gamma_k \colon\, [0,1] \to \CC $, проходимые в таком направлении, чтобы область оставалась слева. Пусть функция $ f $ - $ C^{1} $-гладкая на $ \overline \Omega $ и аналитична в $ \Omega $.
+\begin{notatn}
+ Пусть $ \Omega \subset \CC $ --- стандартная область, $ \partial \Omega  = \bigsqcup_{k=1}^{N} \gamma_k $  --- её граница, ориентированная каноничным способом (в смысле соглашения~\ref{convention:Standard Region Canonical Parameterization}). Пусть функция $ f \in C^{1}(\partial\Omega, \CC \setminus \left\{ 0 \right\}) $. Тогда \emph{изменением аргумента функции~$ f $ вдоль границы~$ \partial\Omega $} называется число
  \begin{align*}
   \Delta_{\partial \Omega} \arg f = \sum_{k=1}^{N}\Delta_{\gamma_k} \arg f.
  \end{align*}
-\end{df}
+\end{notatn}
 
 \begin{thm}[%
-принцип аргумента]
- Пусть $ \Omega $ --- стандартная область, $ f \in C^{1}(\overline \Omega \setminus E) $, $ f $ аналитична в $ \Omega \setminus E $. Здесь $ E $ --- конечное подмножество в $ \Omega $, $ f $ имеет полюса в точках из $ E $. Тогда
+ принцип аргумента]
+ \label{theorem:Argument Principle}
+ Пусть $ \Omega \subset\CC$ --- стандартная область, $ E \subset \Omega $ --- конечное число точек. Пусть функция~$ f $ аналитична в области~$ \Omega \setminus E $, $ C^{1} $-гладко продолжается на границу: $ f \in C^{1}(\overline\Omega \setminus E) $, не обнуляется на границе: $ f(z) \neq 0 $ при $ z \in \partial\Omega $, а также не имеет существенных особых точек в области~$ \Omega $. Тогда
  \begin{align*}
   \Delta_{\partial \Omega} \arg f = 2\pi(N - P),
- \end{align*} где $ N $ --- суммарное количество нулей $ f $ в $ \Omega $ (с учётом кратности), а $ P $ --- суммарное количество  полюсов $ f $ в $ \Omega $ (с учётом кратности).
+ \end{align*} где $ N $ --- суммарное количество нулей $ f $ в $ \Omega $ (с учётом кратности), а $ P $ --- суммарное количество  полюсов $ f $ в $ \Omega $ (с учётом порядка).
 \end{thm}
-\begin{proof}[\normalfont\textsc{Доказательство}]
-По теореме Коши \eqref{theorem:cauchy_residue}
- \begin{align*}
-  \int\limits_{\partial\Omega} \frac{f'(z)}{f(z)} \,dz = 2\pi i \sum_{a \in E} \res_a \frac{f'}{f}.
- \end{align*} Левая часть по определению интеграла равна
- \begin{align*}
-  \sum_{k=1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt.
-\end{align*}, т.к. $\partial \Omega = \bigcup_{1}^{\tilde N} \gamma_k$ 
 
- Припишем $ \Imaginary$ к обоим частям:
- \begin{align*}
-  \Imaginary \left(\sum_{k=1}^{\tilde N} \int\limits_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))}\gamma'_k(t)\,dt\right) = \Imaginary \left( 2\pi i \sum_{a \in E}\res_a \frac{f'}{f} \right)
- \end{align*} Левая часть равна
- \begin{align*}
-  \sum_{1}^{\tilde N} \psi_k(1) - \psi_k(0) = \Delta_{\partial \Omega} \arg f,
- \end{align*} где $ \psi_k $ --- аргумент $ f $ вдоль $ \gamma_k $ Правая часть равна
- \begin{align*}
-  2\pi \sum_{a \in E} \Real \left( \res_a \frac{f'}{f} \right).
- \end{align*} Пусть $ a $ --- ноль функции $ f $ кратности $ k(a) $. Тогда
- \begin{align*}
-  \res_a \frac{f'}{f} = k(a).
- \end{align*} Пусть теперь $ a $ --- полюс порядка $ p(a) $, то
- \begin{align*}
-  \res_a \frac{f'}{f} = -p(a).
-\end{align*} У нас были два примера на это \eqref{example:logarithmic_derivative1} \eqref{example:logarithmic_derivative2} . Просуммировав всё, правая часть равна
- \begin{align*}
-  2\pi (N-P),
- \end{align*} что и требовалось доказать.
+В условии теоремы~\ref{theorem:Argument Principle} важно, что в величине~$ N $ также учитываются нули, попавшие во множество~$ E $ как устранимые особые точки (от того, что мы искусственно выкинем нуль, изменение аргумента не изменится).
+
+\begin{remrk}
+ В условиях теоремы~\ref{theorem:Argument Principle} число нулей и число полюсов у функции~$ f $ в области~$ \Omega $ конечно.
+\end{remrk}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Число полюсов конечно по условию, так как $ E $ --- конечное множество. Предположим, что у функции~$ f $ бесконечное число нулей в $ \Omega $. Функция~$ f $ не равна тождественно нулю в $ \Omega $, поскольку она непрерывно продолжается на границу и не принимает значение нуль на границе. Так как область~$ \Omega $ ограничена, то можно выбрать последовательность нулей, сходящуюся к некоторой точке~$ z_0 \in \overline\Omega $, причём по непрерывности $ f $ на $ \overline\Omega $ имеем $ f(z_0) = 0 $. Так как $ f $ не обнуляется на границе, то $ z_0 \in \Omega $, но тогда по теореме~\ref{theorem:uniqueness} единственности $ f \equiv 0 $ в $ \Omega $, чего не может быть.
 \end{proof}
 
+\begin{proof}[\normalfont\textsc{Доказательство теоремы~\ref{theorem:Argument Principle}}]
+ Рассмотрим интеграл логарифмической производной функции~$ f $ по границе:
+ \begin{align*}
+  \varointctrclockwise_{\partial\Omega}  \frac{f'(z)\,dz}{f(z)}.
+ \end{align*} Переходя к параметризации границы, он равен
+ \begin{align*}
+  \varointctrclockwise_{\partial\Omega} \frac{f'(z)\,dz}{f(z)} = \sum_{k=1}^{n} \int_{0}^{1} \frac{f'(\gamma_k(t))}{f(\gamma_k(t))} \cdot \gamma_k'(t)\,dt,
+ \end{align*} где $ \partial\Omega = \bigsqcup_{k=1}^{n} \gamma_k $  --- представление границы стандартной области~$ \Omega $ в виде объединения $ n $ непересекающихся простых кусочно-гладких замкнутых путей. Тогда по формулам~\eqref{eq:Explicit Def of Log Along Path} и \eqref{eq:Explicit Def Of True Log Along Path}:
+ \begin{align*}
+  \varointctrclockwise_{\partial\Omega} \frac{f'(z)\,dz}{f(z)} = \sum_{k=1}^{n} \left( \hat g_k(1) - \hat g_k(0) \right),
+ \end{align*} где $ \hat g_k \colon\,[0,1] \to \CC $ --- непрерывная ветвь логарифма функции~$ f $ вдоль пути~$ \gamma_k $, построенная в доказательстве теоремы~\ref{theorem:continious_branch_argument_path_exists}. Но так как путь $ \gamma_k $ замкнутый, то $ \log \left| \gamma_k(0) \right| = \log \left| \gamma_k(1) \right| $ , и, значит, $ \Real \hat g_k(0) = \Real \hat g_k(1) $. Следовательно, по формуле~\eqref{eq:Explicit Def of Argument Along Path}
+ \begin{align}
+  \begin{aligned}
+   \label{eq:Logarithmic Derivative Is Delta Arg:Argument Principle}
+   \varointctrclockwise_{\partial\Omega} \frac{f'(z)\,dz}{f(z)} &= i\sum_{k=1}^{n} \left( \Imaginary \hat g_k(1) - \Imaginary \hat g_k(0) \right) = i \sum_{k=1}^{n} \left( \psi_k(1) - \psi_k(0) \right) = \\
+   &= i \sum_{k=1}^{n} \Delta_{\gamma_k} \arg f = i \cdot \Delta_{\partial\Omega} \arg f,
+  \end{aligned}
+ \end{align} где $ \psi_k $ --- непрерывная ветвь аргумента функции~$ f $ вдоль пути~$ \gamma_k $.
+
+ С другой стороны, по теореме~\ref{theorem:cauchy_residue} Коши о вычетах
+ \begin{align*}
+  \varointctrclockwise_{\partial\Omega} \frac{f'(z)\,dz}{f(z)} = 2\pi i \sum_{a \in S} \residue_a \frac{f'(z)}{f(z)},
+ \end{align*} где $ S \subset \Omega$  --- множество всех нулей и полюсов функции~$ f $ в области~$ \Omega $ (учитывая нули, попавшие во множество~$ E $ как устранимые особенности). В примерах~\ref{example:logarithmic_derivative1} и \ref{example:logarithmic_derivative2} мы вычислили вычеты логарифмической производной:
+ \begin{align*}
+  &\residue_a \frac{f'(z)}{f(z)} = m, &&\text{если $ a $ --- нуль~$ f $ кратности~$ m \geqslant 1 $};\\
+  &\residue_a \frac{f'(z)}{f(z)} = -m, &&\text{если $ a $ --- полюс~$ f $ порядка~$ m \geqslant 1 $}.
+ \end{align*} Поэтому
+ \begin{align*}
+  \varointctrclockwise_{\partial\Omega} \frac{f'(z)\,dz}{f(z)} = 2\pi i (N-P),
+ \end{align*} где $ N $ --- суммарное число нулей, а $ P $ --- суммарное число полюсов функции~$ f $ в области~$ \Omega $ с учётом кратности/порядка. Совмещая полученное с~\eqref{eq:Logarithmic Derivative Is Delta Arg:Argument Principle}, заключаем
+ \begin{align*}
+  \Delta_{\partial\Omega} \arg f = 2\pi(N-P).
+ \end{align*}
+\end{proof}
+
+Продемонстрируем применение принципа аргумента на конкретном примере.
+
 \begin{exmpl}
- Пусть $ \Omega = \CC \setminus [-1, 1] $. Существует аналитическая в $ \Omega $ функция $ f $ такая, что $ f^{2} = z^{2} - 1 $, $ h = z^{2}-1 $.
-
- Действительно,  рассмотрим сначала такую функцию $ f $ в области $ \tilde \Omega  = \CC \setminus [-1, +\infty)$:
- \begin{align*}
-  f = e^{\frac{1}{2}\log(z^{2} - 1)},
- \end{align*} где $ \log(z^{2} - 1) $ --- аналитическая ветвь логарифма функции $ z^{2}-1 $ в односвязной области $ \tilde \Omega $.
-
-\begin{figure}[ht]
-    \centering
-	\incfig[0.7]{example_analytic_square_path}
-    \caption{Путь из верхнего предела точки в нижний.}
-    \label{fig:example_analytic_square_path}
-\end{figure}
-
- Определим функцию $ f $ на луче $ (1, +\infty) $ как предельные значения сверху и снизу. Почему существуют и одинаковы? Зафиксируем точку $ x_0 \in (1, +\infty) $. Значение сверху в точке $ x_0 $ --- это
- \begin{align*}
-  \lim_{\eps \to 0} f(x_0 + i\eps) = \lim_{\eps \to 0} e^{\frac{1}{2}\log \left| (x_0+i\eps)^{2} - 1 \right| + \frac{i}{2}\arg h(x_0 + i\eps)} = e^{\frac{1}{2}\log \left| x_0^{2}-1 \right|}.
- \end{align*} Предел снизу:
- \begin{align*}
-  \lim_{\eps \to 0} f(x_0 - i\eps) = \lim_{\eps \to 0} e^{\frac{1}{2} \log \left| (x_0 -i\eps)^{2}-1 \right| + \frac{i}{2}\arg h(x_0-\eps)} = e^{\frac{1}{2} \log \left| x_0^{2}-1 \right|} \cdot e^{\frac{i}{2} \Delta_\gamma \arg h} =
- \end{align*} Есть принцип аргумента! $ \Delta_{\gamma} \arg h = 4\pi $, так как два корня кратности $ 1 $, и полюсов нет. Тогда
- \begin{align*}
-  = e^{\frac{1}{2}\log \left| x_0^{2}-1 \right|} \cdot e^{2\pi i} = e^{\frac{1}{2} \log \left| x_0^{2}-1 \right|}.
- \end{align*} Более того, функция получилась непрерывной.
-
- Продолженная функция $ f $ аналитична, так как форма будет замкнутой по теореме \eqref{theorem:closed_1_form}(ведь тест на прямоугольниках выполняется) и из этого последует что $f$ аналитична по теореме \eqref{theorem:cauchy-gursa-morer}.
-
-\begin{figure}[ht]
-    \centering
-	\incfig{rectangle_test_example_analytic_square}
-    \caption{Тест прямоугольниками.}
-    \label{fig:rectangle_test_example_analytic_square}
-\end{figure}
-
-Т.е. на тех прямоугольниках что не касаются луча $(1, \infty)$ у нас интеграл 0, т.к. у нас функция аналитична в $\tilde \Omega$.
-А на тех, что касаются луча мы можем приближать прямоугольниками снизу и сверху, интеграл на которых 0, и пользоваться непрерывностью.
-
+ Докажите, что у функции~$ z \mapsto z^{2}-1 $ существует аналитический квадратный корень в области~$ \Omega = \CC \setminus [-1,1] $, то есть такая аналитическая в $ \Omega $ функция~$ f $, что $ f(z)^{2} = z^{2} - 1 $ всюду в $ \Omega $.
 \end{exmpl}
+\begin{proof}
+ Сначала упростим задачу: найдём аналитический квадратный корень функции~$ h(z) = z^{2}-1 $ в односвязной области~$ \tilde\Omega = \CC \setminus [-1, +\infty) $. Так как функция~$ h $ не обнуляется в $ \tilde\Omega $, то по теореме~\ref{theorem:exist_log_f} у неё есть аналитическая ветвь логарифма $ \log h $ в $ \tilde\Omega $. Тогда функция
+ \begin{align*}
+  f(z) = e^{\frac{1}{2}\log h(z)}
+ \end{align*} является аналитическим квадратным корнем функции~$h$ в области~$ \tilde\Omega $, что проверяется топорно:
+ \begin{align*}
+  f(z)^{2} = e^{\log h(z)} = h(z).
+ \end{align*}
+
+ Теперь покажем, что функцию~$ f $ можно аналитически продолжить в область~$ \Omega $. Для этого сначала непрерывно продолжим её на луч $ (1,+\infty) $.
+
+ Зафиксируем точку $ x \in (1,+\infty) $. Так как функция~$ h $ непрерывна в окрестности точки~$ x $, и $ h(x) \neq 0 $, то у непрерывной ветви аргумента $ \arg h(z) $, порождённой ветвью логарифма $ \log h(z) $, есть предел при $ z \to x $ <<по верхнему берегу>>:
+ \begin{align*}
+  \lim_{\substack{z \to x \\ z \in \CC_+}} \arg h(z) = 2\pi k_0, \quad k_0\in\Z.
+ \end{align*} При этом, не умаляя общности, можно считать
+ \begin{align}
+  \label{eq:Lim Upper Bank:Example Argument Principle}
+  \lim_{\substack{z \to x \\ z \in \CC_+}} \arg h(z) = 0.
+ \end{align} Аналогично, существует предел аргумента <<по нижнему берегу>>:
+ \begin{align}
+  \label{eq:Lim Lower Bank:Example Argument Principle}
+  \lim_{\substack{z \to x \\ z \in \CC_-}} \arg h(z) = 2\pi k, \quad k \in \Z.
+ \end{align}
+
+ Рассмотрим кусочно-гладкую петлю~$ \gamma \colon\,[0,1] \to \tilde \Omega $, которая начинается в точке~$ x $, обходит отрезок~$ [-1,1] $ против часовой стрелки и завершается также в точке~$ x $ (риуснок~\ref{fig:example_analytic_square_path}).
+
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.6]{example_analytic_square_path}
+  \caption{Путь из верхнего предела точки в нижний.}
+  \label{fig:example_analytic_square_path}
+ \end{figure}
+
+ Непрерывная ветвь аргумента $ \arg h $ функции~$ h $ в области $ \tilde\Omega $ порождает непрерывную ветвь аргумента функции~$ h $ вдоль пути $ \gamma $ (учитывая тот факт, что $ \arg h $ имеет пределы~\eqref{eq:Lim Upper Bank:Example Argument Principle} и \eqref{eq:Lim Lower Bank:Example Argument Principle} по верхнему и нижнему берегу). В частности,
+ \begin{align*}
+  \lim_{\substack{z \to x \\ z \in \CC_-}}  \arg h(z) = \Delta_\gamma \arg h(z).
+ \end{align*} Так как функция~$ h $ имеет два корня $ z=\pm 1 $ кратности~$ 1 $ в области, ограниченной путём $ \gamma $, то по принципу аргумента (теорема~\ref{theorem:Argument Principle}):
+ \begin{align*}
+  \Delta_\gamma \arg h(z) = 4\pi.
+ \end{align*}
+
+ Тогда, пользуясь \eqref{eq:Lim Upper Bank:Example Argument Principle} и \eqref{eq:Lim Lower Bank:Example Argument Principle}, запишем пределы функции~$ f $ по верхнему и нижнему берегу:
+ \begin{align*}
+  \lim_{\substack{z \to x \\ z \in \CC_+}}  f(z) &= \lim_{\substack{z \to x \\ z \in \CC_+}} e^{\frac{1}{2} \log h(z)} = \lim_{\substack{z \to x \\ z \in \CC_+}} e^{\frac{1}{2} \log \left| z^{2}-1 \right| + \frac{i}{2} \arg h(z)} = e^{\frac{1}{2} \log \left| x^{2}-1 \right| + \frac{i}{2} \cdot 0} = \sqrt{x^{2}-1},\\
+  \lim_{\substack{z \to x \\ z \in \CC_-}} f(z) &= \lim_{\substack{z \to x \\ z \in \CC_-}} e^{\frac{1}{2}\log h(z)} = \lim_{\substack{z \to x \\ z \in \CC_-}} e^{\frac{1}{2} \log \left| z^{2}-1 \right| + \frac{i}{2} \arg h(z)} = e^{\frac{1}{2} \log\left| x^{2}-1\right| + \frac{i}{2} \cdot 4\pi} = \sqrt{x^{2}-1}.
+ \end{align*} Так как пределы совпали, то функция $ f $ действительно непрерывно продолжается на луч $ (1,+\infty) $ по формуле $ f(x) = \sqrt{x^{2}-1} $.
+
+ Осталось понять, что это продолжение аналитично в $ \Omega $. Действительно, по условию~\ref{enum2:theorem:cauchy_gurs_morer} теоремы~\ref{theorem:cauchy-gursa-morer} Коши-Гурса-Морера нам достаточно проверить замкнутость дифференциальной формы~$ f\,dz $. А замкнутость мы будем проверять <<тестом на прямоугольнике>> (условие~\ref{enum3:theorem:closed_1_form} теоремы~\ref{theorem:closed_1_form}).
+
+ Интеграл формы~$ f\,dz $ по прямоугольникам, не касающихся луча $ (1,+\infty) $ (в том числе и строго пересекающих луч), и так равен нулю, потому что функция~$ f $ аналитична в $ \tilde\Omega $. А прямоугольники, касающиеся луча, мы будем приближать прямоугольником сверху (или снизу), интеграл по которому равен нулю (рисунок~\ref{fig:rectangle_test_example_analytic_square}). Пользуясь непрерывностью функции~$ f $, совершим предельный переход под знаком интеграла (по теореме Лебега о мажорируемой сходимости) и получим, что интеграл по касающемуся прямоугольнику также равен нулю.
+
+ \begin{figure}[ht]
+  \centering
+  \incfig[0.6]{rectangle_test_example_analytic_square}
+  \caption{Тест на прямоугольнике.}
+  \label{fig:rectangle_test_example_analytic_square}
+ \end{figure}
+\end{proof}
 
 \newpage
 \section{Теорема Руше.}
 
+Рассмотрим следующее приложение принципа аргумента.
+
 \begin{thm}[Руше]
- Пусть $ \Omega $ --- стандартная область, функции $ f,g \in C^{1}(\overline\Omega) $, $ f $ и $ g $ аналитичны в $ \Omega $, и $ \left| g \right| < \left| f \right| $ всюду на $ \partial \Omega $. Тогда $ f + g $ и $ f $ имеют одинаковое количество нулей в $ \Omega $.
+ \label{theorem:Rouche}
+ Пусть $ \Omega \subset \CC $ --- стандартная область; функции $ f,g $ аналитичны в $ \Omega $, $ C^{1} $-гладко продолжаются на границу: $ f,g \in C^{1}(\overline\Omega) $, и выполнено строгое неравенство
+ \begin{align}
+  \label{eq:Bound on Border:Rouche Thm}
+  \left| g(z) \right| < \left| f(z) \right|
+ \end{align}
+ всюду на $ \partial \Omega $. Тогда функции~$ f + g $ и $ f $ имеют одинаковое количество нулей в области~$ \Omega $ (с учётом кратности).
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- По принципу аргумента
+ Заметим, что из~\eqref{eq:Bound on Border:Rouche Thm} в частности следует, что $ f(z) \neq 0 $ и $ f(z) + g(z) \neq 0 $ всюду на $ \partial\Omega $. Тогда по принципу аргумента (теорема~\ref{theorem:Argument Principle}):
  \begin{align*} 2\pi N_f = \Delta_{\partial\Omega} \arg f, && 2\pi N_{f+g} = \Delta_{\partial\Omega}\arg(f+g).
- \end{align*} Поэтому, достаточно доказать, что $ \Delta_{\gamma_k} \arg f = \Delta_{\gamma_k} \arg (f+g) $ для всех путей $ \gamma_k $, из которых состоит граница $ \partial\Omega $. Распишем правую часть:
+ \end{align*} где $ N_f $, $ N_{f+g} $ --- число нулей с учётом кратности функций $ f $ и $ f+g $ (соответственно) в области~$ \Omega $. Поэтому, нам достаточно доказать
  \begin{align*}
-  \Delta_{\gamma_k} \arg (f+g)  = \Delta_{\gamma_k} \arg f + \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f}\right)
- \end{align*} так как аргумент произведения равен сумме аргументов. Значит, достаточно доказать, что
+  \Delta_{\gamma_k} \arg f = \Delta_{\gamma_k} \arg (f+g)
+ \end{align*} для всех путей $ \gamma_k $, из которых состоит граница $ \partial\Omega $. Распишем правую часть по формуле~\eqref{eq:Argument Along Paths Adds When Functions Multiply} (замечание~\ref{remark:Argument Along Paths Adds When Functions Multiply}):
+ \begin{align*}
+  \Delta_{\gamma_k} \arg (f+g)  = \Delta_{\gamma_k} \arg f + \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f}\right).
+ \end{align*} Значит, достаточно показать
  \begin{align*}
   \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0
- \end{align*} для всех $ k $. Рассмотрим 
+ \end{align*} для всех путей~$ \gamma_k $. Заметим, что по условию
  \begin{align*}
-  \Real \left(1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))}\right) \geqslant 1 - \left| \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right| > 0
- \end{align*} по условию. 
-
-Отсюда вывод
+  \Real \left(1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))}\right) \geqslant 1 - \left| \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right| > 0.
+ \end{align*} Отсюда для всех $ t \in [0,1] $ имеем
  \begin{align*}
-  \cos(\psi(t)) > 0
- \end{align*} если $ \psi $ такая, что  $ 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} = \left| 1 + \frac{g(\gamma_k(t))}{f(\gamma_k(t))} \right|e^{i\psi(t)} $. Поэтому, $ \psi(t) \in (- \pi / 2, \pi / 2) + 2\pi k (t) $ для любого  $ t $ . Здесь $ k(t) \in \Z $. Поэтому
-  \begin{align*}
-  \psi([0,1]) \subset \bigcup_{k \in \Z} (-\pi / 2, \pi / 2) + 2\pi k.
- \end{align*} Слева стоит связное множество (как непрерывный образ связного). Второе множество можно нарисовать {\color{red} рисунок}. Значит, весь образ лежит только в одном интервале: существует $ k_0 \in \Z $: $ \psi([0,1]) \subset (-\pi / 2, \pi / 2) + 2\pi k_0 $. Тогда
+  \cos(\psi_k(t)) > 0,
+ \end{align*} где $ \psi_k\colon\,[0,1]\to\R $ --- непрерывная ветвь аргумента функции~$ 1 + g(z) / f(z) $ вдоль пути~$ \gamma_k $. Следовательно, для каждого $ t \in [0,1] $
  \begin{align*}
-  \left|\psi(1) - \psi(0) \right| < \pi,
- \end{align*} а с другой стороны, в силу замкнутости $\gamma$ ,
+  \psi_k(t) \in (-\pi / 2, \pi / 2) + 2\pi k(t),
+ \end{align*} где $ k(t) \in \Z $ --- некоторая функция с целыми значениями. Иными словами,
  \begin{align*}
-  \left( 1+ \frac{g}{f} \right)(\gamma_k(0)) = \left(1 + \frac{g} f\right)(\gamma_k(1)) \\
-  \implies e^{i\psi(0)} = e^{i\psi(1)}.
- \end{align*} Значит, $ \psi(1) - \psi(0) = 2\pi N $, $ N \in \Z $. Значит
+  \psi_k([0,1]) \subset \bigsqcup_{k\in\Z} (-\pi / 2, \pi / 2) + 2\pi k.
+ \end{align*} Так как образ~$ \psi_k([0,1]) $ --- связное множество (как непрерывный образ связного), то оно лежит только в одном интервале-компоненте связности: существует целое $ k_0 \in \Z $:
  \begin{align*}
-  \left|2\pi N \right| < \pi \implies N = 0.
- \end{align*} Значит $ \psi(1) -\psi(0)=0 $, поэтому
+  \psi_k([0,1]) \subset (-\pi / 2, \pi / 2) + 2\pi k_0.
+ \end{align*} В частности, получаем
  \begin{align*}
-  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0.
- \end{align*}
-
+  \left| \psi_k(1) - \psi_k(0) \right| < \pi.
+ \end{align*} С другой стороны,
+ \begin{align*}
+  \psi_k(1) - \psi_k(0) = 2\pi m, \quad m\in\Z
+ \end{align*} поскольку путь $ \gamma_k $ замкнутый. Следовательно,
+ \begin{align*}
+  \Delta_{\gamma_k} \arg \left( 1 + \frac{g}{f} \right) = 0,
+ \end{align*} что завершает доказательство теоремы Руше.
 \end{proof}
 
 \end{document}

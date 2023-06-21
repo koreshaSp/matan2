@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
+%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'laurent-series-point-surgery.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{471.08188721bp}%
+    \setlength{\unitlength}{680.31496063bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,9 +50,24 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.01306294)%
+  \begin{picture}(1,0.75)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{laurent-series-point-surgery.pdf}}%
+    \put(0.40388012,0.47453289){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_2$\end{tabular}}}}%
+    \put(0.36231686,0.4129173){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_3$\end{tabular}}}}%
+    \put(0.29961967,0.56009235){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_1$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{laurent-series-point-surgery.pdf}}%
+    \put(0.25632571,0.50242009){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$I_4$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{laurent-series-point-surgery.pdf}}%
+    \put(0.71944942,0.67178523){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega_{R,r}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{laurent-series-point-surgery.pdf}}%
+    \put(0.54532172,0.60985133){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{\tilde R}$\end{tabular}}}}%
+    \put(0.54944655,0.24050191){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{\tilde r}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{laurent-series-point-surgery.pdf}}%
+    \put(0.33290831,0.46938457){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{laurent-series-point-surgery.pdf}}%
+    \put(0.37307574,0.55010433){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_\eps^{+}$\end{tabular}}}}%
+    \put(0.29058151,0.42623514){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma_\eps^{-}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

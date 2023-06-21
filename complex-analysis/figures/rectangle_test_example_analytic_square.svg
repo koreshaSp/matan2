@@ -3,7 +3,7 @@
 
 <svg
    sodipodi:docname="rectangle_test_example_analytic_square.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    id="svg8"
    version="1.1"
    viewBox="0 0 240 120"
@@ -15,8 +15,7 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:ns2="http://www.iki.fi/pav/software/textext/">
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <marker
@@ -63,18 +62,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="788.95439"
-     inkscape:cy="267.81669"
+     inkscape:zoom="0.95724331"
+     inkscape:cx="215.20129"
+     inkscape:cy="174.4593"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="svg8"
      showgrid="false"
      showborder="true"
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="2036"
+     inkscape:window-width="1440"
+     inkscape:window-height="840"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -108,230 +107,120 @@
      id="layer1"
      transform="translate(0,-177)">
     <path
-       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.627999;paint-order:markers stroke fill"
-       d="M 66.867156,237 H 142.14588"
+       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.840131;paint-order:markers stroke fill"
+       d="M 8.5621349,235.87206 H 109.26923"
        id="path194" />
     <path
-       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.627999;paint-order:markers stroke fill"
-       d="m 141.94928,234.89078 v 4.21843"
+       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.840131;paint-order:markers stroke fill"
+       d="m 109.00622,233.05037 v 5.64337"
        id="path408" />
     <path
-       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.627999;paint-order:markers stroke fill"
-       d="m 67.095724,234.89078 v 4.21843"
+       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.840131;paint-order:markers stroke fill"
+       d="m 8.8679108,233.05037 v 5.64337"
        id="path410" />
     <path
-       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:0.41000101,0.41000101;paint-order:markers stroke fill;stroke-dashoffset:0"
-       d="m 141.96529,237.0193 h 97.50935"
+       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.548495;stroke-dasharray:0.548495, 0.548495;stroke-dashoffset:0;paint-order:markers stroke fill"
+       d="m 109.02764,235.89788 h 130.447"
        id="path2772" />
     <path
-       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
-       d="m 154.82347,232.922 h 82.06636"
+       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.548495;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
+       d="M 126.22918,230.41655 H 236.01671"
        id="path5714" />
     <path
-       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
-       d="m 154.82347,240.922 h 82.06636"
+       style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.548495;stroke-dasharray:none;stroke-dashoffset:0;paint-order:markers stroke fill"
+       d="M 126.22918,241.11887 H 236.01671"
        id="path5716" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17815"
        clip-path="url(#clipPath16998)"
-       transform="translate(0.12854481,-6.230187)" />
+       transform="matrix(1.3377896,0,0,1.3377896,-80.720088,-89.518817)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17827"
        clip-path="url(#clipPath16998)"
-       transform="translate(37.279531,-6.230187)" />
+       transform="matrix(1.3377896,0,0,1.3377896,-31.019883,-89.518817)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17865"
        clip-path="url(#clipPath16998)"
-       transform="rotate(180,200.45255,240.03666)" />
+       transform="matrix(-1.3377896,0,0,-1.3377896,455.43464,561.05303)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17897"
        clip-path="url(#clipPath16998)"
-       transform="matrix(-1,0,0,1,363.75411,1.7174755)" />
+       transform="matrix(-1.3377896,0,0,1.3377896,405.73443,-78.886516)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17913"
        clip-path="url(#clipPath16998)"
-       transform="matrix(-1,0,0,1,363.75411,1.7174755)" />
+       transform="matrix(-1.3377896,0,0,1.3377896,405.73443,-78.886516)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17927"
        clip-path="url(#clipPath16998)"
-       transform="translate(0.12854481,26.424642)" />
+       transform="matrix(1.3377896,0,0,1.3377896,-80.720088,-45.833525)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17941"
        clip-path="url(#clipPath16998)"
-       transform="translate(37.279531,26.414045)" />
+       transform="matrix(1.3377896,0,0,1.3377896,-31.019883,-45.847701)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17955"
        clip-path="url(#clipPath16998)"
-       transform="rotate(180,200.45255,224.43613)" />
+       transform="matrix(-1.3377896,0,0,-1.3377896,455.43464,519.31258)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17969"
        clip-path="url(#clipPath16998)"
-       transform="matrix(-1,0,0,1,363.75411,-29.478829)" />
+       transform="matrix(-1.3377896,0,0,1.3377896,405.73443,-120.62056)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path17983"
        clip-path="url(#clipPath16998)"
-       transform="rotate(90,176.7847,217.19097)" />
+       transform="matrix(0,1.3377896,-1.3377896,0,446.16452,-27.129048)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path18011"
        clip-path="url(#clipPath16998)"
-       transform="rotate(90,176.7847,217.19097)" />
+       transform="matrix(0,1.3377896,-1.3377896,0,446.16452,-27.129048)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path18025"
        clip-path="url(#clipPath16998)"
-       transform="rotate(90,161.88795,232.08772)" />
+       transform="matrix(0,1.3377896,-1.3377896,0,446.16452,12.728385)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path18039"
        clip-path="url(#clipPath16998)"
-       transform="matrix(0,-1,-1,0,475.95121,404.03184)" />
+       transform="matrix(0,-1.3377896,-1.3377896,0,555.83055,459.32553)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path18793"
        clip-path="url(#clipPath16998)"
-       transform="matrix(0,-1,-1,0,475.95121,404.03184)" />
+       transform="matrix(0,-1.3377896,-1.3377896,0,555.83055,459.32553)" />
     <path
        style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.410001;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1);paint-order:markers stroke fill"
        d="m 181.19503,239.17156 h 1.62792"
        id="path18821"
        clip-path="url(#clipPath16998)"
-       transform="matrix(0,-1,-1,0,475.96509,433.82534)" />
+       transform="matrix(0,-1.3377896,-1.3377896,0,555.84912,499.18296)" />
   </g>
-  <g
-     transform="matrix(0.458611,0,0,0.458611,63.324967,62.717107)"
-     ns2:version="1.8.2"
-     ns2:texconverter="pdflatex"
-     ns2:pdfconverter="inkscape"
-     ns2:text="$$-1$$"
-     ns2:preamble="/home/buyolitsez/.config/inkscape/extensions/textext/default_packages.tex"
-     ns2:scale="1.3"
-     ns2:alignment="middle center"
-     ns2:stroke-to-path="0"
-     ns2:inkscapeversion="1.2.2"
-     ns2:jacobian_sqrt="0.458611"
-     id="g513">
-    <defs
-       id="id-4f601ba4-d1cb-4ed7-a8f3-137fbfa60732">
-      <g
-         id="id-6dcd98de-9da0-40a7-9051-16101e878286">
-        <g
-           id="id-09e5f7c6-9b80-4f4a-8774-cf54934eac30" />
-        <g
-           id="id-14fa0e82-cd14-4c56-bf28-4f154b6c465e">
-          <path
-             d="m 9.453125,-3.296875 c 0.25,0 0.5,0 0.5,-0.28125 0,-0.296875 -0.25,-0.296875 -0.5,-0.296875 H 1.6875 c -0.234375,0 -0.5,0 -0.5,0.296875 0,0.28125 0.265625,0.28125 0.5,0.28125 z m 0,0"
-             id="id-c2362100-d7d3-4359-be08-a46e8dfe9e81" />
-        </g>
-        <g
-           id="id-96ed1d97-037a-4850-a109-6ec8d65c8c11" />
-        <g
-           id="id-4a05a056-e926-4ba7-93af-f356b153b932">
-          <path
-             d="m 4.125,-9.1875 c 0,-0.34375 0,-0.34375 -0.28125,-0.34375 C 3.5,-9.15625 2.78125,-8.625 1.3125,-8.625 v 0.421875 c 0.328125,0 1.046875,0 1.828125,-0.375 v 7.46875 c 0,0.515625 -0.046875,0.6875 -1.296875,0.6875 H 1.390625 V 0 c 0.390625,-0.03125 1.78125,-0.03125 2.25,-0.03125 0.46875,0 1.859375,0 2.234375,0.03125 V -0.421875 H 5.4375 c -1.265625,0 -1.3125,-0.171875 -1.3125,-0.6875 z m 0,0"
-             id="id-e8e92802-5e65-4a05-b4c6-d2ad0fdf5685" />
-        </g>
-      </g>
-    </defs>
-    <g
-       fill="#000000"
-       fill-opacity="1"
-       id="id-d175b11a-740c-40ce-af06-471623ea8e51"
-       transform="translate(-289.735,-57.3528)">
-      <g
-         transform="translate(288.547,66.884)"
-         id="g506">
-        <path
-           d="m 9.453125,-3.296875 c 0.25,0 0.5,0 0.5,-0.28125 0,-0.296875 -0.25,-0.296875 -0.5,-0.296875 H 1.6875 c -0.234375,0 -0.5,0 -0.5,0.296875 0,0.28125 0.265625,0.28125 0.5,0.28125 z m 0,0"
-           id="id-cbe0bcf6-2b56-431b-a038-3582b3882b2f" />
-      </g>
-    </g>
-    <g
-       fill="#000000"
-       fill-opacity="1"
-       id="id-66b5450c-9450-4e54-a4be-e33109e84215"
-       transform="translate(-289.735,-57.3528)">
-      <g
-         transform="translate(299.705,66.884)"
-         id="g510">
-        <path
-           d="m 4.125,-9.1875 c 0,-0.34375 0,-0.34375 -0.28125,-0.34375 C 3.5,-9.15625 2.78125,-8.625 1.3125,-8.625 v 0.421875 c 0.328125,0 1.046875,0 1.828125,-0.375 v 7.46875 c 0,0.515625 -0.046875,0.6875 -1.296875,0.6875 H 1.390625 V 0 c 0.390625,-0.03125 1.78125,-0.03125 2.25,-0.03125 0.46875,0 1.859375,0 2.234375,0.03125 V -0.421875 H 5.4375 c -1.265625,0 -1.3125,-0.171875 -1.3125,-0.6875 z m 0,0"
-           id="id-1dcbf70f-940b-4677-bc21-4b9eee1b6573" />
-      </g>
-    </g>
-  </g>
-  <g
-     transform="matrix(0.458611,0,0,0.458611,142.79536,62.7171)"
-     ns2:version="1.8.2"
-     ns2:texconverter="pdflatex"
-     ns2:pdfconverter="inkscape"
-     ns2:text="$$1$$"
-     ns2:preamble="/home/buyolitsez/.config/inkscape/extensions/textext/default_packages.tex"
-     ns2:scale="1.3"
-     ns2:alignment="middle center"
-     ns2:stroke-to-path="0"
-     ns2:inkscapeversion="1.2.2"
-     ns2:jacobian_sqrt="0.458611"
-     id="g590">
-    <defs
-       id="id-69107896-4a9d-4e40-a19b-212beacc2931">
-      <g
-         id="id-4393bbe3-a731-4d0a-ab5c-f3b6f8c07aeb">
-        <g
-           id="id-33fd7989-532e-4bd2-8cfa-992df994e6cf" />
-        <g
-           id="id-72fc242c-dce9-48e5-b091-535cac78804a">
-          <path
-             d="m 4.125,-9.1875 c 0,-0.34375 0,-0.34375 -0.28125,-0.34375 C 3.5,-9.15625 2.78125,-8.625 1.3125,-8.625 v 0.421875 c 0.328125,0 1.046875,0 1.828125,-0.375 v 7.46875 c 0,0.515625 -0.046875,0.6875 -1.296875,0.6875 H 1.390625 V 0 c 0.390625,-0.03125 1.78125,-0.03125 2.25,-0.03125 0.46875,0 1.859375,0 2.234375,0.03125 V -0.421875 H 5.4375 c -1.265625,0 -1.3125,-0.171875 -1.3125,-0.6875 z m 0,0"
-             id="id-b2b69559-f0dc-412b-ae0b-dd87d7925d8f" />
-        </g>
-      </g>
-    </defs>
-    <g
-       fill="#000000"
-       fill-opacity="1"
-       id="id-98743456-6c9e-461c-8ae2-50d71c0a2136"
-       transform="translate(-295.439,-57.3528)">
-      <g
-         transform="translate(294.126,66.884)"
-         id="g660">
-        <path
-           d="m 4.125,-9.1875 c 0,-0.34375 0,-0.34375 -0.28125,-0.34375 C 3.5,-9.15625 2.78125,-8.625 1.3125,-8.625 v 0.421875 c 0.328125,0 1.046875,0 1.828125,-0.375 v 7.46875 c 0,0.515625 -0.046875,0.6875 -1.296875,0.6875 H 1.390625 V 0 c 0.390625,-0.03125 1.78125,-0.03125 2.25,-0.03125 0.46875,0 1.859375,0 2.234375,0.03125 V -0.421875 H 5.4375 c -1.265625,0 -1.3125,-0.171875 -1.3125,-0.6875 z m 0,0"
-           id="id-89f3b870-ac86-4719-8e06-e17511048856" />
-      </g>
-    </g>
-  </g>
-  <rect
-     style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.428;stroke-dasharray:none;paint-order:markers stroke fill"
-     id="rect762"
-     width="48.871971"
-     height="20.827747"
-     x="8.2777414"
-     y="76.610458" />
   <rect
      style="fill:#808080;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.41;stroke-dasharray:none;paint-order:markers stroke fill"
      id="rect2770"
@@ -339,5 +228,28 @@
      height="55.983902"
      x="154.74344"
      y="32.634449"
-     clip-path="url(#clipPath16966)" />
+     clip-path="url(#clipPath16966)"
+     transform="matrix(1.3377896,0,0,1.3377896,-80.892054,-21.39537)" />
+  <text
+     xml:space="preserve"
+     style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+     x="4.4168711"
+     y="69.135918"
+     id="text3442"><tspan
+       sodipodi:role="line"
+       id="tspan3440"
+       style="stroke-width:0.264583"
+       x="4.4168711"
+       y="69.135918">$-1$</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';stroke-width:0.264583"
+     x="107.27787"
+     y="69.132523"
+     id="text5464"><tspan
+       sodipodi:role="line"
+       id="tspan5462"
+       style="stroke-width:0.264583"
+       x="107.27787"
+       y="69.132523">$1$</tspan></text>
 </svg>

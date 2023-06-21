@@ -4,12 +4,13 @@
 
 Уже в самом доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} нам пришлось выяснить некоторые нетривиальные факты про аналитические функции. Оформим их как следствия.
 
-\begin{crly}[формула Коши]
+\begin{crly}[интегральная формула Коши]
  \label{corollary:cauchy_formula}
- Пусть функция~$ f  $ аналитична в области~$ \Omega \subset \CC $, и точка~$ z_0 $ лежит в $ \Omega $ вместе с замкнутым диском с центром в $ z_0 $ и радиусом $ \rho > 0 $. Пусть точка~$ b \in B(z_0,\rho) $. Тогда верна \emph{формула Коши:}
- \begin{align*}
+ Пусть функция~$ f  $ аналитична в области~$ \Omega \subset \CC $, и точка~$ z_0 $ лежит в $ \Omega $ вместе с замкнутым диском с центром в $ z_0 $ и радиусом $ \rho > 0 $. Пусть точка~$ b \in B(z_0,\rho) $. Тогда верна \emph{интегральная формула Коши:}
+ \begin{align}
+  \label{eq:Cauchy Formula}
   f(b) = \frac{1}{2\pi i} \int_{C_\rho} \frac{f(z)\,dz}{z - b},
- \end{align*} где $ C_\rho $ --- окружность с центром в $ z_0 $ и радиусом $ \rho $, проходимая против часовой стрелки.
+ \end{align} где $ C_\rho $ --- окружность с центром в $ z_0 $ и радиусом $ \rho $, проходимая против часовой стрелки.
 \end{crly}
 \begin{crly}
  \label{corollary:coefficients_of_analytic_function}
@@ -50,6 +51,13 @@
 
 Следствие~\ref{corollary:taylor_series} также было установлено в доказательстве теоремы~\ref{theorem:cauchy-gursa-morer} при выводе условия~\ref{enum3:theorem:cauchy_gurs_morer} из условия~\ref{enum1:theorem:cauchy_gurs_morer}. Оно показывает, что ряд Тейлора в старом смысле совпадает с рядом Тейлора аналитической функции.
 
+Наконец, многие <<разумные>> операции с аналитическими функциями на выходе выдают также аналитическую функцию.
+\begin{crly}
+ Сумма, разность, произведение, частное (при том условии, что знаменатель не обнуляется) аналитических в области~$ \Omega \subset \CC $ функций аналитичны в $ \Omega $. Если функции $ f \colon\,\Omega_1 \to \Omega_2 $ и $ g \colon\,\Omega_2 \to \CC $ аналитичны в областях~$ \Omega_1 \subset \CC$ и $ \Omega_2 \subset \CC $ соответственно, то их композиция $ g \circ f \colon\,\Omega_1 \to \CC $ аналитична в $ \Omega_1 $.
+\end{crly}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Тривиально выводится с помощью комплексной дифференцируемости --- условия~\ref{enum1:theorem:cauchy_gurs_morer} из теоремы~\ref{theorem:cauchy-gursa-morer}.
+\end{proof}
 
 \subsection{Теорема Лиувилля.}
 
@@ -167,6 +175,7 @@
  Подмножество~$ E \subset \Omega $ области~$ \Omega $ называется \emph{дискретным множеством}, если любая предельная точка $ E $ не лежит в $ \Omega $.
 \end{df}
 \begin{prop}
+ \label{proposition:Discrete Set is Countable}
  Дискретное множество не более, чем счётно.
 \end{prop}
 \begin{proof}[\normalfont\textsc{Доказательство}]
@@ -174,6 +183,7 @@
 \end{proof}
 
 \begin{crly}
+ \label{corollary:Zeroes of analytic fun is a Discrete Set}
  Множество нулей аналитической в области~$ \Omega $ функции~$ f $, не равной тождественно нулю в $ \Omega $, является дискретным.
 \end{crly}
 \begin{proof}[\normalfont\textsc{Доказательство}]

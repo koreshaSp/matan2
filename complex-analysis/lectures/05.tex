@@ -209,6 +209,7 @@
 \subsection{Непрерывная ветвь аргумента.}
 
 \begin{df}
+ \label{def:Continious Branch of Argument}
  Пусть функция~$ f $ аналитична в области~$ \Omega $. \textit{Непрерывной ветвью аргумента $ f $ в области~$ \Omega $} называется непрерывная функция~$ g \colon\, \Omega \to \R $ такая, что
  \begin{align*}
   \left| f(z) \right| \cdot e^{i g(z)} = f(z)
@@ -405,6 +406,16 @@
    \begin{align*}
     h_1'(z_0) = g(z) \neq 0.
    \end{align*} Раз так, то по следствию~\ref{corollary:open_map_derivative} отображение~$ h_1 $ также открыто в окрестности точки~$ z_0 $.
+  \end{proof}
+
+  Принцип максимума также применим в немного другой формулировке.
+
+  \begin{crly}
+   \label{corollary:maximum_principle_border}
+   Пусть функция~$ f $ аналитична в области~$ \Omega \subset \CC $, а ограниченная область~$ U $ лежит в $ \Omega $ вместе со своей границей: $ \overline U \subset \Omega $. Тогда максимум функции $ z \mapsto \left| f(z) \right| $ на компакте $ \overline U $ достигается на границе $ \partial U = \overline U \setminus U $.
+  \end{crly}
+  \begin{proof}[\normalfont\textsc{Доказательство}]
+   Если $ f $  постоянна на области~$ \Omega $, то и доказывать нечего. Иначе, максимум не может достигаться исключительно внутри области~$ U $, так как в этом случае по принципу максимума (теорема~\ref{theorem:maximum_principle}) $ f $ постоянна.
   \end{proof}
 
   \end{document}
