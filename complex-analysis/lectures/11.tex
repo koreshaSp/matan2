@@ -2,136 +2,163 @@
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
 
-\begin{thm}[теорема Римана]
- Пусть $ \Omega \subset \CC $ --- односвязная область  $ \Omega \neq \CC $ и $ \Omega \neq \varnothing $. Тогда существует конформное отображение $ \varphi \colon\,\Omega\to\mathbb D $.
+\begin{lm}
+ \label{lemma:Analytic Image of a Region}
+ Образ $ f(\Omega) $ непостоянной функции~$ f $, аналитичной в области~$ \Omega \subset \CC $, тоже является областью.
+\end{lm}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ $ f(\Omega) $ открыто по теореме~\ref{theorem:analytic_implies_open} и связно как непрерывный образ связного множества.
+\end{proof}
+
+\subsection{Теорема Римана об отображении.}
+
+Как мы выяснили в предыдущем разделе, не все области являются конформно эквивалентными. В частности, односвязная область не может быть конформно эквивалентна неодносвязной (пример~\ref{example:Simple Connectivity is Invariant w respect to Conform Map}). 
+
+Давайте упростим себе задачу и будем изучать конформную эквивалентность односвязных областей. Но снова получается, что не все односвязные области конформно эквивалентны: например, $ \CC $ не конформно эквивалентна $ \mathbb D $ (пример~\ref{example:C non Conform Equivalent with D}). Но оказывается, что если исключить этот случай, то все остальные односвязные области конформно эквивалентны друг другу, и об этом как раз и будет теорема Римана, к который мы подготавливались в течение нескольких параграфов.
+
+\begin{thm}[Римана]
+ \label{theorem:Riemann}
+ Пусть $ \Omega \subset \CC $ --- односвязная область, $ \Omega \neq \CC $ и $ \Omega \neq \varnothing $. Тогда существует конформное отображение $ f \colon\,\Omega\to\mathbb D $.
 \end{thm}
 \begin{crly}
- Для любых односвязных областей $ \Omega_1,\Omega_2 \subset \CC $, $ \Omega_i \neq \CC, \Omega_i \neq \varnothing $ существует конформное отображение $ \varphi \colon\, \Omega_1 \to \Omega_2 $.
+ Любые две односвязные области $ \Omega_1,\Omega_2 \subset \CC $, $ \Omega_i \neq \CC, \Omega_i \neq \varnothing $ конформно эквивалентны.
 \end{crly}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- $ \varphi = \varphi_2^{-1} \circ \varphi_1 $.
-\end{proof}
-\begin{proof}[\normalfont\textsc{Доказательство теоремы Римана}]\
+\begin{proof}[\normalfont\textsc{Доказательство теоремы~\ref{theorem:Riemann} Римана}]
+ Заметим, что по примеру~\ref{example:C non Conform Equivalent with D} любое конформное отображение сохраняет односвязность. В дальнейшем в доказательстве мы не будем это каждый раз упоминать.
+
  \begin{enumerate}
-  \item Покажем, что не умаляя общности можно считать $ \Omega \subset \mathbb D $ и $ 0 \in \Omega$. Так как существует некоторая точка $ z_0 \in \CC \setminus \Omega $, то определена аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $. Покажем, что отображение $ h $ инъективно. Пусть $ h(z_1) = h(z_2) $. Тогда
+  \item \label{enum1:proof:Riemann Thm} Покажем, что не умаляя общности можно считать, что $ \Omega \subset \mathbb D $, и $ 0 \in \Omega $.
+
+   Для этого нам достаточно показать существование конформного отображения из области~$ \Omega $ в ограниченную область~$ \tilde\Omega $: после этого можно применить конформное отображение вида $ z \mapsto a z + b $ для малого~$ a \in \CC $ и некоторого~$ b \in \CC $, и перевести $ \tilde\Omega $ в новую область, ограниченную диском~$ \mathbb D $, и содержащую точку~$ 0 $.
+
+   Более того, заметим, что нам достаточно перевести область~$ \Omega $ в область~$ \tilde\Omega $, для которой существует точка~$ a \in \CC \setminus \tilde\Omega $, отделённая от $ \tilde\Omega $ (то есть $ B(a,\eps) \cap \tilde\Omega  = \varnothing $ для некоторого $ \eps > 0 $). В самом деле, тогда можно применить конформное отображение $ z \mapsto 1 / (z - a) $, которое переведёт область~$ \tilde\Omega $ в новую область, ограниченную диском $ B(0, 1 / \eps) $.
+
+   Итак, зафиксируем произвольную точку~$ z_0 \in \CC \setminus \Omega $ (которая существует по условию). По теореме~\ref{theorem:exist_log_f} в области~$ \Omega $ существует аналитическая ветвь логарифма $ h(z) = \log (z - z_0) \colon\, \Omega \to \CC $ функции~$ z \mapsto z - z_0 $. Функция~$ h $ инъективна:
    \begin{align*}
-    e^{h(z_1)} = e^{h(z_2)} \implies z_1 - z_0 = z_2 - z_0 \implies z_1 = z_2,
+    h(z_1) = h(z_2) \implies e^{h(z_1)} = e^{h(z_2)} \implies z_1 - z_0 = z_2 - z_0 \implies z_1 = z_2,
    \end{align*} 
-   а значит $h$ --- конформна. Более того, $ h(\Omega) \cap (h(\Omega) + 2\pi i) = \varnothing $.
-   Действительно, если $ h(z_1) = h(z_2) + 2\pi i $, то
-   \begin{align*}
-    e^{h(z_1)} = e^{h(z_2) + 2\pi i} = e^{h(z_2)} \implies z_1 = z_2 \implies h(z_1) = h(z_1) + 2 \pi i
-   \end{align*} а это противоречие.
+   а значит, $h \colon\,\Omega \to \Omega_1$ --- конформное отображение, где $ \Omega_1 = h(\Omega) $ --- область значений функции~$ h $ (это действительно область по лемме~\ref{lemma:Analytic Image of a Region}).
 
-   Заметим, что $ h(\Omega) + 2\pi i $ --- область, как аналитическое отображение области.
-   Значит, существует точка $ a \in \CC $ такая, что
+   Покажем, что существует точка~$ a \in \CC \setminus \Omega_1 $, отделённая от $ \Omega_1 $. Заметим, что
+   \begin{align}
+    \label{eq:Omega1 not intersects with Omega1 + 2pi i:Riemann Thm}
+    \Omega_1 \cap (\Omega_1 + 2\pi i) = \varnothing.
+   \end{align}
+   Действительно, если вдруг $ h(z_1) = h(z_2) + 2\pi i $, то
    \begin{align*}
-    \mathrm{dist}(a, h(\Omega)) > 0,
-   \end{align*} ведь годится любая точка $ a \in h(\Omega) + 2\pi i $, так как существует $ \eps > 0 $: $ B(a,\eps) \subset h(\Omega) + 2\pi i \implies B(a, \eps) \cap h(\Omega) = \varnothing$.
+    e^{h(z_1)} = e^{h(z_2) + 2\pi i} = e^{h(z_2)} \implies z_1 = z_2 \implies h(z_1) = h(z_1) + 2 \pi i,
+   \end{align*} а это противоречие. Покажем, что в таком случае любая точка~$ a \in \Omega_1 + 2\pi i $ отделена от $ \Omega_1 $. Действительно, так как $ \Omega_1 + 2\pi i $ --- открытое множество, то точка~$ a $ входит в него вместе со своей окрестностью; эта же окрестность не пересекается с $ \Omega_1 $ по~\eqref{eq:Omega1 not intersects with Omega1 + 2pi i:Riemann Thm}.
 
-   Теперь рассмотрим отображение $ z \mapsto \frac{1}{h(z) - a} $ --- это конформное отображение на свой образ $ \Omega' $. Так как $ h(\Omega) $ отделено от $ a $, то область $ \Omega' $ ограничена. Сожмём её отображением $ z \mapsto cz + d $ и получим область $ \Omega'' \subset \mathbb D $, и $ 0 \in \Omega'' $ (выберем маленькое $ c > 0 $ и какое-нибудь $ d \in \CC $).
+   Далее мы будем полагать $ \Omega \subset \mathbb D $ и $ 0 \in \Omega $.
 
-   Теперь считаем, что $ \Omega \subset \mathbb D $ и $ \Omega \ni 0 $.
+  \item \label{enum2:proof:Riemann Thm} Рассмотрим семейство~$ \mathcal R $ инъективных аналитичных функций~$ f\colon\,\Omega \to \mathbb D $, таких, что $ f(0) = 0 $, в которое также добавлен тождественный нуль $ f \equiv 0 $ на~$ \Omega $. Обратим внимание на то, что в семействе~$ \mathcal R $ по шагу~\ref{enum1:proof:Riemann Thm} есть функция~$ f $, отличная от тождественного нуля: например, можно взять тождественную функцию~$ \mathrm{id}\colon\,\Omega \to \Omega $, поскольку $ \Omega \subset \mathbb D $, и $ 0 \in \Omega $.
 
-  \item Рассмотрим множество функций
-   \begin{align*}
-    \mathcal R = \left\{ f \colon\,\Omega \to \mathbb D \mid f \text{ инъективна аналитична, } f(0) = 0  \right\} \sqcup \left\{ 0 \right\}.
-   \end{align*} 
-Докажем, что если $ \{ f_n \}_{n=1}^\infty \subset \mathcal R$, то существует подпоследовательность $ f_{n_k} $ такая, что  $ f_{n_k} \to f \in \mathcal R $ равномерно на компактах в $ \Omega $ .
+   Докажем, что семейство~$ \mathcal R $  <<компактно>>: из всякой последовательности функций~$ \{f_{n}\}_{n=1}^{\infty} \subset \mathcal R $ можно выделить подпоследовательность~$ \{f_{i_n}\}_{n=1}^{\infty}  $, сходящуюся к функции~$ f \in \mathcal R $ равномерно на компактах в $ \Omega $.
 
-Благодаря тому, что функции $f_n$ ограничены и аналитичны, по теореме Монтеля \eqref{theorem:montel} существует $ \{f_{n_k}\}_{n_k=1}^{\infty}   $ такая, что $ f_{n_k} \to f $ равномерно на компактах в $ \Omega $, причем $ f $ аналитическая, что можно проверить тестом на прямоугольниках.
-Но по следствию теоремы Гурвица \eqref{theorem:analytic_injective} $ f $ либо инъективна, либо постоянна, но во втором случае будет $ f \equiv 0 $, ведь $ f(0) = 0 $.
-Таким образом, множество $ \mathcal R $ компактно.
+   Если в последовательности тождественный нуль встречается бесконечно много раз, то можно создать подпоследовательность из нулей, а иначе выкинем конечное число нулей в начале последовательности.
 
-  \item Если $ f \in \mathcal R $ и $ f(\Omega) \neq \mathbb D $(если получилось что равен, то мы уже нашли требуемое отображение), то существует отображения $ \varphi $ и $ g $ такое, что $ g \in \mathcal R $, и $ \varphi\colon\,\mathbb D \to \mathbb D $ и аналитично, а также:
-   \begin{align*}
-    \left| \varphi'(0) \right| < 1, \qquad f = \varphi \circ g.
-   \end{align*} В частности,
-   \begin{align*}
-	\left| f'(0) \right| = \left| \varphi'(\underbrace{g(0)}_{0}) \right| \cdot \left| g'(0) \right| = \left| \varphi'(0) \right| \cdot \left| g'(0) \right| < \left| g'(0) \right|.
-   \end{align*}
+   Благодаря тому, что функции~$f_n$ аналитичны и равномерно ограничены, по теореме \ref{theorem:montel} Монтеля существует подпоследовательность $ \{f_{i_n}\}_{n=1}^{\infty}$, сходящаяся к функции~$f$ равномерно на компактах в $ \Omega $, причём по замечанию~\ref{remark:Montel Theorem Analytic Limit} функция~$ f $ аналитична в $ \Omega $, и по понятным причинам $ f(0) = 0 $. По теореме~\ref{theorem:analytic_injective} (следствие из теоремы Гурвица) функция~$ f $ либо постоянна, либо инъективна. Если $ f $ постоянна, то $ f \equiv 0 $ на $ \Omega $ (так как $ f(0) = 0 $). В противном случае функция~$ f $ инъективна. При этом функция~$ f $ действует в $ \mathbb D $: по предельному переходу в неравенстве она уж точно действует в $ \overline{\mathbb D} $, а так как по теореме~\ref{theorem:analytic_implies_open} образ $ f(\Omega) $ --- открытое подмножество~$ \CC $, то $ f(\Omega) \subset \mathop{\mathrm{Int}} \overline{\mathbb D} = \mathbb D $. Так или иначе, $ f \in \mathcal R $, и семейство~$ \mathcal R $ компактно.
 
-   Докажем. Пусть $ f \in \mathcal R $ и существует точка $ w \in \mathbb D \setminus f(\Omega) $. Рассмотрим функцию
+  \item \label{enum3:proof:Riemann Thm} Пусть есть конформное отображение~$ f \in \mathcal R $, такое, что $ f(\Omega) \neq \mathbb D $ (если получилось равенство, то теорема уже доказана). Докажем, что тогда существует другое конформное отображение~$ g \in \mathcal R $, такое, что
+   \begin{align}
+    \label{eq:Larger Derivative at Zero:proof:Riemann Thm}
+    \left| f'(0) \right| < \left| g'(0) \right|.
+   \end{align}
+
+   Возьмём произвольную точку~$ w \in \mathbb D \setminus f(\Omega) $. Рассмотрим уже встречавшуюся нам ранее функцию, называющуюся \emph{множителем Бляшке}:
    \begin{align*}
-    T_1(z) = \frac{z-w}{1 - \overline w z}
-   \end{align*} Определена ветвь логарифма
+    T_1(z) = \frac{z-w}{1 - \overline w z}.
+   \end{align*} Эта функция является конформным отображением $ T_1\colon\mathbb D \to \mathbb D $ (замечание~\ref{remark:T1_conformal}). Поскольку $ T_1(f(z)) \neq 0 $ при $ z \in \Omega $ (ведь $ w \notin f(\Omega) $), то у функции $ T_1 \circ f $ в односвязной области~$ \Omega $ по теореме~\ref{theorem:exist_log_f} существует аналитическая ветвь логарифма $\log T_1(f(z))$, которая, очевидно, также инъективна. Так как $ T_1 $ действует в $ \mathbb D $, то
    \begin{align*}
-    \log (T_1 \circ f) = \log \frac{f(z) - w}{1 - \overline w f(z)}.
-   \end{align*} Т.к. функция не обнуляется. Заметим, что
-   \begin{align*}
-    \Real \log (T_1 \circ f) = \log \left| T_1 \circ f \right| < 0,
-\end{align*} так как $ f \colon\,\Omega \to \mathbb D $, а $ T_1 \colon\,\mathbb D \to \mathbb D $ --- конформное отображение (упражнение \eqref{exercise:T1_conformal}). Пусть
+    \Real \log T_1(f(z)) = \log \left| T_1(f(z)) \right| < 0,
+   \end{align*} то есть функция~$ z \mapsto \log T_1(f(z)) $ действует из $ \Omega $ в $ L := \left\{ z \in \CC : \Real z < 0 \right\} $.
+
+   В таком случае рассмотрим функцию
    \begin{align*}
     T_2(z) = \frac{z-a}{z+\overline a},
-   \end{align*} где $ a = (\log (T_1 \circ f))(0) $. $ T_2 $ --- конформное отображение из полуплоскости $ \left\{ \Real z < 0 \right\} $ в $ \mathbb D $(было на практике). Соберём то, что у нас есть:
+   \end{align*} являющуюся конформным отображением~$ T_2 \colon\, L \to \mathbb D $ по примеру~\ref{example:Re z < 0 Conform Map to D}, где
    \begin{align*}
-    g = T_2 \circ \log (T_1 \circ f)\colon\,\Omega \to \mathbb D
-   \end{align*} $ g $ аналитическая, $ g(0) = T_2(a) = 0 $. $ g $ инъективна как композиция инъективных:
-   \begin{align*}
-	   g(z_1) = g(z_2) \implies (\log(T_1 \circ f))(z_1) = (\log(T_1 \circ f))(z_2) &\implies \\
-	   \implies (T_1 \circ f) (z_1) = (T_2 \circ f)(z_2) \implies f(z_1) = f(z_2) &\implies z_1 = z_2.
-   \end{align*} То есть $ g \in \mathcal R $. Тогда
-   \begin{align*}
-    \log(T_1 \circ f) = T_2^{-1} \circ g \\
-    T_1 \circ f = \exp (T_2^{-1} \circ g) \\
-    f = T_1^{-1} \circ \exp (T_2^{-1} \circ g),
-   \end{align*} 
-   $ \varphi = T_1^{-1} \circ \exp \circ T_2^{-1} $, она аналитическая по построению.
-   Осталось убедиться, что $ \varphi \colon\,\mathbb D \to \mathbb D$ 
-   \begin{align*}
-	\varphi \colon\,\mathbb D \to \mathbb D &\iff T_1 \circ \varphi \colon\,\mathbb D \to \mathbb D \iff \\
-	&\iff T_1 \circ \varphi \circ T_2 \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D \iff \exp \colon\,\left\{ \Real z < 0 \right\} \to \mathbb D.
-   \end{align*} А это верно.
+    a = \log T_1(f(0)).
+   \end{align*}
 
-   Осталось доказать, что $ \left| \varphi'(0) \right| < 1 $. Действительно, $ \varphi\colon\,\mathbb D \to \mathbb D $, $ \varphi(0) = 0 $, значит
+   Соберём всё вместе: рассмотрим функцию
+   \begin{align}
+    \label{eq:g Definition:proof:Riemann Thm}
+    g(z) = T_2(\log(T_1(f(z)))).
+   \end{align} Функция~$ g \colon\,\Omega \to \mathbb D $ инъективна и аналитична в $ \Omega $ (как композиция инъективных и аналитичных функций), и при этом
    \begin{align*}
-    \left| \varphi(z) \right| < \left| z \right|, \ \forall z \in \mathbb D
-   \end{align*} или $ \varphi(z) \equiv \alpha z $ для некоторого $ \alpha $, $ \left| \alpha \right| = 1 $. Это лемма Шварца \eqref{lemma:schwarz}.
+    g(0) = T_2(\log T_1(f(0))) = T_2(a) = 0.
+   \end{align*} Таким образом, $ g \in \mathcal R $.
 
-   Если $ \left| \varphi(z) \right| < \left| z \right| $, то
+   Осталось показать неравенство~\eqref{eq:Larger Derivative at Zero:proof:Riemann Thm}. Перепишем \eqref{eq:g Definition:proof:Riemann Thm}, пользуясь обратимостью конформных отображений:
    \begin{align*}
-    \left| \frac{\varphi(z)}{z} \right| < 1
-   \end{align*} 
-   для любого $ z \in \mathbb D $, 
-   значит,
+    &T_2(\log T_1(f(z))) = g(z)\\
+    \iff\;&\log T_1(f(z)) = T_2^{-1}(g(z))\\
+    \iff\;&T_1(f(z)) = \exp(T_2^{-1}(g(z)))\\
+    \iff\;&f(z) = T_1^{-1}(\exp(T_2^{-1}(g(z)))).
+   \end{align*} То есть,
    \begin{align*}
-    |\varphi'(0)| = \left| \lim_{z \to 0} \frac{\varphi(z)}{z} \right| < 1
-   \end{align*} здесь мы победили.
+    f(z) = \varphi(g(z)),
+   \end{align*} где
+   \begin{align*}
+    \varphi(z) = T_1^{-1}(\exp(T_2^{-1}(z))).
+   \end{align*} Функция~$ \varphi $ действует из~$ \mathbb D $ в $ \mathbb D $, так как $ T_2^{-1}\colon\,\mathbb D \to L $, $ \exp\colon\,L \to \mathbb D $, и $ T_1^{-1}\colon\,\mathbb D \to \mathbb D $. Функция~$ \varphi $ аналитична как композиция аналитичных, но она не инъективна, так как функция~$ \exp\colon\,L\to\mathbb D $ не инъективна.
 
-   Остался случай $ \varphi(z) \equiv \alpha z $. Докажем, что такого не может быть, ведь $ \varphi $ не инъективна. Инъективность $ \varphi $ равносильна инъективности $ \exp \colon\, \left\{ \Real z < 0 \right\} \to \mathbb D $, а тут инъективности нет. А отображение $ \alpha z $ инъективно!
+   Докажем, что $ \left| \varphi'(0) \right| < 1 $. Так как $ \varphi\colon\,\mathbb D \to \mathbb D $, и $ \varphi(0) = 0 $, то по лемме~\ref{lemma:schwarz} Шварца либо $ \varphi(z) = \alpha z $ в $ \mathbb D $ для некоторого $ \left| \alpha \right| = 1 $, либо
+   \begin{align*}
+    \left| \varphi(z) \right| < \left| z \right|,
+   \end{align*} всюду в $ \mathbb D $. Первого случая не может быть, так как функция $ z \mapsto \alpha z $, $ \left| \alpha \right|=1 $ инъективна, а~$ \varphi $ не инъективна. Значит, верно второе; тогда для любого $ z \in \mathbb D $ выполнено
+   \begin{align*}
+    \left| \frac{\varphi(z)}{z} \right| < 1,
+   \end{align*} и так как функция $ z \mapsto \left| \varphi(z) / z \right| $ непрерывна на компакте~$ \overline B(0, 1 / 2) $, то
+   \begin{align*}
+    \left| \frac{\varphi(z)}{z} \right| \leqslant \delta < 1, \quad z \in \overline B(0, 1 / 2).
+   \end{align*} Следовательно,
+   \begin{align*}
+    \left|\varphi'(0)\right| = \left| \lim_{z \to 0} \frac{\varphi(z)}{z} \right| \leqslant \lim_{z \to 0}  \left| \frac{\varphi(z)}{z} \right| \leqslant \delta < 1.
+   \end{align*} Итого,
+   \begin{align*}
+    \left| f'(0) \right| = \left| \varphi'(g(0)) \cdot g'(0) \right| = \left| \varphi'(0) \right| \cdot \left| g'(0) \right| < \left| g'(0) \right|.
+   \end{align*}
 
-  \item Завершение доказательства.
-   По определению $\sup$, возьмем последовательность $ \{ f_n \}^\infty_{n=1} \in \mathcal R $ такие, что:
+  \item Рассмотрим величину
    \begin{align*}
-    \lim_{n \to \infty} \left| f'_n(0) \right| = \sup_{\psi \in \mathcal R} \left| \psi'(0) \right|.
-   \end{align*} 
-   Пользуясь шагом 2 выберем подпоследовательность $ f_{n_k} $, которая сходится к $ f \in \mathcal R $ равномерно на компактах в $ \Omega $. Тогда $ f'_{n_k} \rightrightarrows f' $ равномерно на компактах в $ \Omega $. Поэтому $ \left| f'_{n_k}(0) \right| \to \left| f'(0) \right| $. Значит $ f $ такова, что
+    A = \sup_{\psi \in \mathcal R} \left| \psi'(0) \right|.
+   \end{align*} Заметим, что $ A > 0 $, поскольку по шагу~\ref{enum1:proof:Riemann Thm} существует хотя бы одна функция~$ f \in \mathcal R $, не равная тождественному нулю, и тогда по теореме~\ref{theorem:Derivative of Injective Analytic Fun is not 0} $ \left| f'(0) \right| > 0 $. Тогда по определению супремума существует такая последовательность функций $ \{f_{n}\}_{n=1}^{\infty} \subset \mathcal R $, что
    \begin{align*}
-    \left| f'(0) \right| \geqslant \left| g'(0) \right|
-   \end{align*} для любой $ g \in \mathcal R $. Значит $ f(\Omega) = \mathbb D $ (иначе по шагу 3 равенство выше не выполнялось бы для некоторой $ g \in \mathcal R $). Ура!
+    \lim_{n \to \infty} \left| f_n'(0) \right| = A.
+   \end{align*} По шагу~\ref{enum2:proof:Riemann Thm} из этой последовательности можно выделить подпоследовательность~$ \{f_{i_n}\}_{n=1}^{\infty}  \subset\mathcal R$, сходящуюся к функции~$ f\in\mathcal R $ равномерно на компактах в области~$ \Omega $. Следовательно (например, по теореме~\ref{theorem:Derivative Convergence Example}), функции~$ f_{i_n}' $ также сходятся к функции~$ f' $ равномерно на компактах в $ \Omega $, и, в частности
+   \begin{align*}
+    A = \lim_{n \to \infty} \left| f_{i_n}'(0) \right| = \left| f'(0) \right|.
+   \end{align*} Таким образом, функция $ f \in \mathcal R $ такова, что для любой другой функции~$ g \in \mathcal R $
+   \begin{align}
+    \label{eq:f has largest Derivate at Zero:proof:Riemann Thm}
+    \left| f'(0) \right| \geqslant \left| g'(0) \right|.
+   \end{align}
+
+   Осталось понять, что~$ f $ и есть искомое конформное отображение~$ f \colon\,\Omega\to\mathbb D $. Действительно, $ f $ не равна тождественному нулю в $ \Omega $ по~\eqref{eq:f has largest Derivate at Zero:proof:Riemann Thm}, и поэтому $ f $ --- конформное отображение области~$ \Omega $ на свой образ. Тогда, если предположить $ f(\Omega) \neq \mathbb D $, то по шагу~\ref{enum3:proof:Riemann Thm} существует другое конформное отображение~$ g \in \mathcal R $, такое, что выполнено~\eqref{eq:Larger Derivative at Zero:proof:Riemann Thm}, а это противоречит \eqref{eq:f has largest Derivate at Zero:proof:Riemann Thm}!
  \end{enumerate}
 \end{proof}
 
-\begin{exercise}
-	\label{exercise:T1_conformal}
-	$T_1(z) = \frac{z - w}{1 - \overline w z}, \ w \in \mathbb D$ является конформным отображением из $\mathbb D$ в $\mathbb D$. 
-\end{exercise}
+\begin{remrk}
+ \label{remark:T1_conformal}
+ Множитель Бляшке
+ \begin{align*}
+  T_1(z) = \frac{z - w}{1 - \overline w z}, \quad w \in \mathbb D
+ \end{align*}
+ является конформным отображением $ T_1 \colon\,\mathbb D \to \mathbb D $.
+\end{remrk}
 \begin{proof}
-	Если $|z| = 1$, то
-	\begin{align*}
-		\left|\frac{z - w}{1 - \overline w z}\right| = \left|\frac{1 - w \overline z}{1 - \overline w z}\right| = 1.
-	\end{align*}
+ Заметим, что если $\left| z \right| = 1$, то
+ \begin{align*}
+  \left| T_1(z) \right| = \left|\frac{z - w}{1 - \overline w z}\right| = \left|\frac{1 - w \overline z}{1 - \overline w z}\right| = 1.
+ \end{align*} Тогда по принципу максимума (теорема~\ref{theorem:maximum_principle}) имеем $ \left| T_1(z) \right| < 1 $ всюду в $ \mathbb D $.
 
-	А значит по принципу максимума $|T_1(z)| < 1, \forall z \in \mathbb D$(т.к. функция $T_1$ не константа ). 
-
-	Теперь покажем инъективность, выберем произвольное $a : |a| < 1$ и покажем что найдется $z : |z| < 1, T_1(z) = a$:
-
-	\begin{align*}
-		\frac{z - w}{1 - \overline w z} = a \implies z - w = a - \overline w a z \implies z = \frac{a + w}{1 + \overline w a}
-	\end{align*}
-
-	Но функция $\frac{a + w}{1 + \overline w a}$ по модулю не превосходит 1, когда $|a| < 1, |w| < 1$ по соображениям выше(подставляем $|a| = 1$, домножаем на $\overline a$ и далее используем принцип максимума).
-
-	А значит функция $T_1: \mathbb D \to \mathbb D$ является конформной. 
+ Покажем теперь, что функция~$ T_1 $ обратима. Выберем произвольную точку $ \zeta \in \mathbb D $, и найдём её прообраз:
+ \begin{align*}
+  &T_1(z) = \zeta \iff \frac{z - w}{1 - \overline w z} = \zeta \iff z - w = \zeta - \overline w \zeta z \iff \\
+  \iff\;& z(1 + \overline w \zeta) = \zeta + w \iff z = \frac{\zeta + w}{1 + \overline w \zeta}.
+ \end{align*} Функция $ \zeta \mapsto (\zeta + w) / (1 + \overline w \zeta) $ также является множителем Бляшке с параметром~$ -w $, и по уже доказанному она действует в $ \mathbb D $. Таким образом, множитель Бляшке является конформным отображением $ T_1 \colon\,\mathbb D \to \mathbb D $.
 \end{proof}
 
+\end{document}
