@@ -155,7 +155,7 @@
  Обозначим
  \begin{align*}
   g = \sum_{k\in\Z}c_ke_k,\qquad c_k=(h,e_k),
-\end{align*} где ряд сходится по утверждению \eqref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
+\end{align*} где ряд сходится в $ H $ по утверждению \eqref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
  \begin{align*}
   (g-h,e_k) &= (g,e_k) - c_k = \left(\sum_{-N}^{N}c_je_j + g_N,\; e_k \right) - c_k = \\
   &= \left( \sum_{-N}^{N}c_je_j,\;e_k \right) - c_k + (g_N,e_k) = c_k - c_k + (g_N,e_k) = \\
@@ -202,17 +202,18 @@
 \end{remrk}
 
 \begin{thm}
-  Пусть $ E,F $ --- как в определении \eqref{definition:orthogonal_projection}. Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{e_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
+  Пусть $ E,F $ --- как в определении \eqref{definition:orthogonal_projection}.
+  Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{f_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
   P \colon\, h \mapsto \sum_{k\in I_1} c_ke_k, \qquad c_k=(h,e_k)
  \end{align*} совпадает с $ P_E $. А
  \begin{align*}
-  Q \colon\, h \mapsto \sum_{k \in I_2} c_kf_k, \qquad f_k=(h,f_k)
+  Q \colon\, h \mapsto \sum_{k \in I_2} c_kf_k, \qquad a_k=(h,f_k)
  \end{align*} совпадает с $ P_F $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  $ \left\{e_k\right\}_{k \in I_1} \sqcup \left\{f_k\right\}_{k \in I_2}  $ --- ОНБ в $ H $. Значит,
  \begin{align*}
-  h = \underbrace{\sum_{k\in I_1}c_k e_k}_{\in E} + \underbrace{\sum_{k \in I_2} a_k e_k}_{\in F}.
+  h = \underbrace{\sum_{k\in I_1}c_k e_k}_{\in E} + \underbrace{\sum_{k \in I_2} a_k f_k}_{\in F}.
  \end{align*} Здесь $ \sum_{k\in I_1}c_ke_k  $ лежит в $ E $, так как это предел, а $ E $ --- замкнуто. Аналогично для $ F $. Продолжим равенство:
  \begin{align*}
   h = P h + Q h = P_E h + P_F h.
