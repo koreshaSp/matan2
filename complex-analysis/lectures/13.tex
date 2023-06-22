@@ -44,7 +44,7 @@
    \begin{itemize}
     \item $ p_N \geqslant 0 $.
     \item $ \int_{-\pi}^{\pi} p_N\,dx = 1  $.
-    \item $ \max_{\pi \geqslant \left| x \right| > \eps} p_N(x) \to 0 $ для любого $ \eps > 0 $ при $ N \to \infty $.
+    \item $ \max_{ \eps \leqslant \left| x \right| \leqslant \pi } p_N(x) \to 0 $ для любого $ \eps > 0 $ при $ N \to \infty $.
    \end{itemize} Тогда 
    \begin{align*}
     \int_{-\pi}^{\pi} g(s)p_N(s)\,ds \to g(0)
@@ -64,8 +64,13 @@
   \frac{1}{M+1}\sum_{0}^{M} S_N(g,0) = \int_{-\pi}^{\pi}g(s)p_M(s)\,ds,
  \end{align} где
  \begin{align*}
+  p_M(s) &= \frac{1}{2\pi (M+1)} \sum_{N=0}^{M} \sum_{-N}^{N} e^{-ins}
+ \end{align*} 
+ Далее поймем, что двойную сумму на самом деле можно переписать:
+ \begin{align*}
   p_M(s) = \frac{1}{2 \pi (M+1)} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
- \end{align*} Действительно, \eqref{eq:feyera_S_N} верна по определению для
+ \end{align*} 
+ Действительно, \eqref{eq:feyera_S_N} верна по определению для
  {
 	 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
@@ -76,9 +81,9 @@
  \begin{align*}
   &\left| 1+\ldots+e^{iMs} + e^{i(M+1)s} \right|^{2} = \left[|a + b|^2 = |a|^2 + |b|^2 + a \overline b + \overline a b, \, \forall a, b \in \mathbb C\right] = \\
   &= \left| 1+\ldots+e^{iMs} \right|^{2} + \underbrace{\left| e^{i(M+1)s} \right|^{2}}_{=1} + \\ 
-  &+ \underbrace{(1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s}}_{\sum_{-M + 1}^{-1} e^{-ins}} + \underbrace{(1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s}}_{\sum_{1}^{M + 1} e^{-ins}} = \\
-  &= \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M+1}^{M+1} e^{-ins},
- \end{align*} переход проверен. Но при $ s \neq 2\pi k $.
+  &+ \underbrace{(1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s}}_{\sum_{-M - 1}^{-1} e^{-ins}} + \underbrace{(1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s}}_{\sum_{1}^{M + 1} e^{-ins}} = \\
+  &= \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M-1}^{M+1} e^{-ins},
+ \end{align*} переход проверен. Но при $ s \neq 2\pi k $ можно свернуть сумму геометрической прогрессии:
  \begin{align*}
   p_M(s) &= \frac{1}{2 \pi (M+1)} \left| \frac{1-e^{i(M+1)s}}{1-e^{is}} \right|^{2} = \\
   &= \frac{1}{2 \pi (M+1)}  \left|\frac{\frac{e^{-i(M+1)s / 2} - e^{i(M+1)s / 2}}{2i}}{\frac{e^{-is / 2} - e^{is / 2}}{2i}} \right|^{2} = \frac{1}{2 \pi (M+1)} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
