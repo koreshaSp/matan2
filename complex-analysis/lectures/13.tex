@@ -137,7 +137,7 @@
   \int\limits_{-\pi}^{\pi} f p \,dx = 0, \, \forall p \in \mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}.
  \end{align*} Тогда 
  \begin{align*}
-  \int\limits_{-\pi}^{\pi} f \cdot g_\eps \, dx = 0,
+  \int\limits_{-\pi}^{\pi} f \cdot g_\eps \, dx = 0, \forall \varepsilon > 0,
 \end{align*} где $ g_\eps $ как на картинке \eqref{fig:eint_full_in_l2_g_eps}(т.к. $g_{\eps}$ лежит в $\mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}$  ).
 
 \begin{figure}[ht]
@@ -147,13 +147,13 @@
     \label{fig:eint_full_in_l2_g_eps}
 \end{figure}
 
- Тогда
+ Тогда, рассматривая предел $ \varepsilon \to 0 $ по лемме Лебега о мажорируемой сходимости с мажорантой $ \left| f \right| $ можно совершить следующий переход:
  \begin{align*}
-  \int\limits_{-\pi}^{\pi} f(x) \chi_{[a,b]}(x) \,dx = 0
- \end{align*} перешли к пределу по $ \eps $ (теорема Лебега о мажорируемой сходимости). Мажоранта $ \left| f \right| $. Ну и получилось, что 
+     0 = \lim_{ \varepsilon \to 0 } \int\limits_{-\pi}^{\pi} f(x) g_{\varepsilon}(x) \,dx = \int\limits_{-\pi}^{\pi} f(x) \chi_{[a,b]}(x) \,dx
+ \end{align*} Ну и получилось, что 
  \begin{align*}
   \frac{1}{b-a} \int_a^{b} f(x)\,dx = 0
- \end{align*} для любых $ a,  b \in(-\pi,\pi)$. Следовательно, $ f(a) = 0 $ в любой точке Лебега $ a \in [-\pi,\pi] $. А они почти везде. Значит, $ f = 0 $ как элемент $ L^{2}[-\pi,\pi] $.
+ \end{align*} для любых $ a,  b \in(-\pi,\pi)$. Следовательно, $ f(x) = 0 $ в любой точке Лебега $ x \in [-\pi,\pi] $. А они почти везде. Значит, $ f = 0 $ как элемент $ L^{2}[-\pi,\pi] $.
 \end{proof}
 
 \begin{crly}
