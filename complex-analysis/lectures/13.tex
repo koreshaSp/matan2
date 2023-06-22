@@ -255,14 +255,14 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Ряд Фурье
  \begin{align*}
-  \sum_{k \in \Z}c_k e^{-ikt}
+  \sum_{k \in \Z}c_k e^{ikt}
  \end{align*} сходится по Чезаро к $ f $ всюду по теореме Фейера. Кроме того,
  \begin{align*}
   \left| c_ke^{ikt} \right| = \mathcal O(1 / k).
  \end{align*} По предыдущей теореме. Следовательно, нам достаточно доказать теорему Харди для числовых рядов: если $ \sum_{n=1}^{\infty} a_n $ сходится по Чезаро, и $ a_n = \mathcal O(1 / n) $, то ряд сходится и в обычном смысле. (Тауберовая теорема, она просто для чисел)
 \end{proof}
 
-\begin{proof}[\normalfont\textsc{Доказательство тау}]
+\begin{proof}[\normalfont\textsc{Доказательство тауберовой теоремы}]
  Для простоты считаем что занумеровано всё натуральными
  \begin{align*}
   s_n = a_1 + \ldots + a_n, \\
@@ -270,7 +270,7 @@
   \sigma_{n,l} = \frac{s_{n+1} + \ldots + s_{n+l}}{l}.
  \end{align*} Нам дано $ \sigma_n \to S $, $a_n = O(\frac 1 n)$(Тауберово условие) . Хотим $ s_n \to S $.
 
- Шаг 1: Пусть $l = [n \cdot \eps]$: 
+ Шаг 1: Пусть $l = [n \cdot \eps]$, где $ \varepsilon $ пока некоторая константа, а $ n \to \infty$: 
  \begin{align*}
   \sigma_{n,l} = \frac{1}{l}(\sigma_{n+l}(n+l) - \sigma_n \cdot n) =  \underbrace{(\sigma_{n+l} - \sigma_n)}_{\to 0 \text{ по Коши}}\underbrace{\frac{n+l}{l}}_{O(1)} + \underbrace{\sigma_n \left( \frac{n+l}{l} - \frac{n}{l} \right)}_{=\sigma_n} \implies \\
   \implies \varlimsup \left| \sigma_n - \sigma_{n,l} \right| = 0
@@ -282,8 +282,9 @@
 	&\leqslant \frac{\left| a_{n+1} \right| + (\left| a_{n+1} \right| + \left| a_{n+2} \right|) + \ldots + \left( \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right| \right)} {l} \leqslant \\
 	&\leqslant \frac{l |a_{n+1}| + (l - 1) |a_{n + 2}| + \ldots + |a_{n + l}|}{l} \leqslant |a_{n + 1}| + |a_{n + 2}| + \ldots + |a_{n + l}| \leqslant \\
 	&\leqslant \sum_{k=n+1}^{n+l} \frac{C}{k} \leqslant \frac{C\cdot l}{n+1} = \frac{c[n\eps]}{n} \leqslant \tilde C \cdot \eps \implies \\
-	&\implies \varlimsup \left| s_n - \sigma_{n,l} \right| \leqslant C \cdot \eps 
+    &\implies \varlimsup_{ n \to \infty } \left| s_n - \sigma_{n,l} \right| \leqslant C \cdot \eps 
  \end{align*}
+Устремив $ \varepsilon \to 0 $ получаем требуемую сходимость.
 \end{proof}
 
 \end{document}
