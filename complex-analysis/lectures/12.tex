@@ -1,53 +1,72 @@
 % 2023.05.16 lecture 12
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
- 
+
 \newpage
 \section{Ряды Фурье в гильбертовом пространстве.}
 
-Напомним, что \textit{гильбертовом пространством} называется линейное пространство $ H $ над полем $ \CC $, на котором задано отображение $ (\cdot,\cdot) \colon\, H \times H \to \CC $, называемое \textit{скалярным произведением}, обладающие свойствами
+В последних двух параграфах мы отойдём от комплексного анализа в сторону науки, называемой \emph{анализом Фурье}. Эта область имеет широкое применение на практике (в том числе и в программировании). Она неразрывно связана с функциональным анализом, поэтому начнём мы с того, что вспомним понятие \emph{гильбертова пространства}, и вспомним про его наиважнейшей пример --- пространство Лебега~$ L^{2} $.
+
+\subsection{Гильбертовы пространства.}
+
+Вспомним, что \textit{гильбертовом пространством} называется линейное пространство~$ H $ над полем~$ \CC $, на котором задана функция $ (\cdot,\cdot) \colon\, H \times H \to \CC $, называемая \textit{скалярным произведением}, обладающая следующими свойствами
 \begin{itemize}
  \item $ (x,x) \geqslant 0 $
  \item $ (x,x) = 0 \iff x = 0 $
  \item $ (x,y) = \overline{(y,x)} $
  \item $ (\alpha x, y) = \alpha(x,y) $
  \item $ (x + y, z) = (x,z) + (y,z) $
-\end{itemize} и кроме того, $ H $ является банаховым пространством относительно нормы $ \left\| x \right\|  = \sqrt{(x,x)}$.
+\end{itemize} причём пространство~$ H $ полно относительно нормы $ \left\| x \right\|  = \sqrt{(x,x)}$, порождённый скалярным произведением. В прошлых семестрах мы проверяли, что предыдущее выражение действительно определяет норму. 
 
-\begin{exmpl}\
-\begin{enumerate}
- \item Пространство Лебега $ L^{2}(X,\mu) $ , где
-  \begin{align*}
-   (f,g) = \int_{X} f\overline g\,d\mu. 
-  \end{align*}
+Приведём некоторые примеры важнейших гильбертовых пространств.
 
-  Есть дискретный вариант этого пространства
-  \begin{align*}
-       \ell^{2}(\Z) = \left\{ \{a_{k}\}_{k \in \mathbb{Z}} \Mid \sum_{k \in \mathbb{Z}}\left| a_k \right|^{2} < \infty  \right\},
-  \end{align*} где
-  \begin{align*}
-   \left( \{a_{k}\}_{k \in \mathbb{Z}}, \{b_{k}\}_{k \in \mathbb{Z}} \right) = \sum_{k \in\Z} a_k \overline{b_k}.
-  \end{align*}
- \item 
-  \begin{align*}
-   W_2^{1} [0,1] = \left\{ c + \int_{0}^{x} f(t)\,dt \Mid c \in \CC, x \in [0,1],\; f \in L^{2}[0,1] \right\}
-  \end{align*} --- \textit{пространство Соболева} функций, заданных на $ [0,1] $ и имеющих производную из пространства $ L^{2}[0,1] $. Скалярное произведение здесь задано так:
-  \begin{align*}
-   \left( c + \int_{0}^{x} f\,dt,\; b + \int_{0}^{x} g\,dt \right)_{W_2^{1}[0,1]} = c \overline b + \int_{0}^{1} f\overline g\,dt.
-  \end{align*}
+\begin{exmpl}[пространство Лебега~$ L^{2} $]
+ Пусть $ (X,\mathfrak A,\mu) $ --- пространство с мерой. Тогда \emph{пространством Лебега~$ L^{2}(X,\mu) $} называется гильбертово пространство измеримых функций~$ f \colon X \to \CC $, таких, что
+ \begin{align*}
+  \int_{X} \left| f \right|^{2} \,d\mu < +\infty,
+ \end{align*} отфакторизованное по отношению эквивалентности $ f = g $ $ \mu $-почти всюду, и обладающая скалярным произведением
+ \begin{align*}
+  (f,g) = \int_{X} f\overline g\,d\mu. 
+ \end{align*}
 
- \item $ S_2(\CC^{n}) $ --- конечномерное пространство Гильберта-Шмидта,
-  \begin{align*}
-   S_2(\CC^{n}) = \left\{ A \in \CC^{n \times n} \right\},
-  \end{align*} где скалярное произведение задано так:
-  \begin{align*}
-   (A,B) = \tr (B^{\ast}A),
-  \end{align*} где $ B^{\ast} = \overline{B^{\top}} $.
-\end{enumerate} 
+ В курсе теории меры мы проверяли, что $ L^{2}(X,\mu) $  корректно определено и действительно является гильбертовым пространством.
+
+ Подставив пространство $ X = \N $ со считающей мерой  $ \mu $, мы получаем дискретный вариант пространства Лебега:
+ \begin{align*}
+  \ell^{2}(\N) = \left\{ \{a_{n}\}_{n=1}^{\infty} : \sum_{n=1}^{\infty} \left| a_n \right|^{2} < +\infty  \right\},
+ \end{align*} где
+ \begin{align*}
+  \left( \{a_{n}\}_{n=1}^{\infty}, \{b_{n}\}_{n=1}^{\infty} \right) = \sum_{n=1}^{\infty} a_n \overline{b_n}.
+ \end{align*}
 \end{exmpl}
 
-\textit{Ортогональное проектирование} в гильбертовых пространствах --- очень важная и удобная операция. Все любят и охотятся за скалярным произведением.
+\begin{exmpl}[пространство Соболева]
+ \emph{Пространством Соболева} называется гильбертово пространство~$ W_2^{1}[0,1] $  функций $ \varphi \colon\, [0,1] \to \CC $ вида
+ \begin{align*}
+  \varphi(x) = c + \int_{0}^{x} f(t)\,dt, \quad c \in \CC,\; f \in L^{2}[0,1],
+ \end{align*} то есть функций, имеющих производную из пространства Лебега~$ L^{2}[0,1] $. Скалярное произведение функций
+ \begin{align*}
+  \varphi(x) = c + \int_{0}^{x} f(t)\,dt, && \psi(x) = d + \int_{0}^{x} g(t)\,dt
+ \end{align*} в пространстве $ W_2^{1}[0,1] $ определено следующим образом:
+ \begin{align*}
+  (\varphi,\psi) = c\overline d + \int_{0}^{1} f \overline g\,dt.
+ \end{align*}
+\end{exmpl}
 
+\begin{exmpl}[пространство Гильберта-Шмидта]
+ Конечномерным \emph{пространством Гильберта-Шмидта} называется пространство~$ S_2(\CC^{n}) $  матриц $ A \in \CC^{n \times n} $, в котором скалярное произведение задано так:
+ \begin{align*}
+  (A,B) = \tr (B^{\ast}A),
+ \end{align*} где $ B^{\ast} = \overline{B^{\top}} $.
+\end{exmpl}
+
+\subsection{Ортогональность в гильбертовом пространстве.}
+
+\textit{Ортогональное проектирование} в гильбертовых пространствах --- очень важная и удобная операция. Как теоретики, так и практики любят и ищут гильбертовы пространства, охотясь за скалярным произведением.
+
+\begin{df}
+ Два элемента~$ f,g \in H $ гильбертова пространства~$ H $ называются \emph{ортогональными}, если $ (f,g) = 0 $.
+\end{df}
 \begin{df}
  Пусть $ H $ --- гильбертово пространство. Множество $ \left\{e_k\right\}_{k \in \Z} \subset H  $ называется \textit{ортогональной системой}, если $ e_k \neq 0 $ для любого $ k \in \Z $ и $ (e_k, e_m) = 0 $ при $ k \neq m $.
 \end{df}
@@ -56,10 +75,10 @@
 \end{df}
 Любую ортогональную систему легко превратить в ортонормированную: нужно поделить каждое $ e_k $ на норму $ \left\| e_k \right\| $.
 \begin{df}
- Множество $ \left\{e_k\right\}_{k\in\Z}  \subset H $ --- \textit{ортонормированный базис}, если линейная оболочка этого множества:
+ Ортонормированная система $ \left\{e_k\right\}_{k\in\Z}  \subset H $ --- \textit{ортонормированный базис}, если линейная оболочка этого множества
  \begin{align*}
-     \left\{ \sum_{k=-N}^{N} c_k e_k \Mid c_k \in \CC, N \in \mathbb{N} \right\}
- \end{align*} плотна в $ H $.
+  \left\{ \sum_{k=-N}^{N} c_k e_k \Mid c_k \in \CC, N \in \mathbb{N} \right\}
+ \end{align*} плотна всюду в $ H $.
 \end{df}
 
 \begin{claim}
@@ -68,38 +87,40 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Пусть $ \left\{e_k\right\}_{k \in \Z}  $ --- ортонормированный базис. Тогда \begin{align*}
   \left\{ \sum_{k=-N}^{N} c_ke_k \Mid c_k \in \Q + i\Q,\, N \in\N \right\}
-\end{align*} --- это счётное всюду плотное подмножество $ H $. Тут мы пользуемся тем, что любое $ с\in \CC $ можно хорошо приблизить $ c' \in \mathbb{Q} + i \mathbb{Q} $.
+ \end{align*} --- это счётное всюду плотное подмножество $ H $. Тут мы пользуемся тем, что любое число~$ c \in \CC $ можно хорошо приблизить рациональным комплексным числом~$ c' \in \mathbb{Q} + i \mathbb{Q} $.
 
-Обратно, если $ E \subset H $ --- счётное всюду плотное подмножество $ E = \left\{ h_n \right\}_{n \in \Z_+} $.
-Из этой последовательности можно выделить подпоследовательность такую,
-что $ h_{n_k} \neq 0 $ для любого $ k $, и $ h_{n_k} \notin \mathrm{span}\{h_0, \ldots, h_{k-1}\} $. Ноль можно выкинуть, так как $ E \setminus \{0\} $,
-очевидно, все еще плотное.
-Далее просто знакомая нам ортогонализация Грама-Шмидта для последовательности $ \tilde{h}_k = h_{n_k} $.
+ Наоборот, пусть $ E \subset H $ --- счётное всюду плотное подмножество $ E = \left\{ h_n \right\}_{n =0}^{\infty} $.
+ Из этой последовательности можно выделить подпоследовательность (возможно, конечную) такую,
+ что $ h_{n_k} \neq 0 $ для любого $ k $, и $ h_{n_k} \notin \mathop{\mathrm{span}}\{h_{n_0}, \ldots, h_{n_{k-1}}\} $. Ноль можно выкинуть, так как $ E \setminus \{0\} $,
+ очевидно, все еще плотное.
+ Далее просто знакомая нам ортогонализация Грама-Шмидта для последовательности $ h_k := h_{n_k} $:
+ \begin{gather*}
+  e_0 = \frac{h_0}{\left\| h_0 \right\|}, \\
+  e_1 \in \mathop{\mathrm{span}} \left\{ h_0,h_1 \right\} \colon e_1 \perp e_0, \left\| e_1 \right\| = 1.\\
+  e_1 = \frac{h_1 - (h_1, e_0)e_0}{\left\| h_1 - (h_1, e_0)e_0 \right\|}
+ \end{gather*}
  \begin{align*}
-  e_0 = \frac{\tilde{h}_0}{\left\| \tilde{h}_0 \right\|}, \\
-  e_1 \in \mathrm{span} \left\{ \tilde{h}_0,\tilde{h}_1 \right\} \colon e_1 \perp e_0, \left\| e_1 \right\| = 1.
- \end{align*} \begin{align*}
-  e_1 = \frac{\tilde{h}_1 - (\tilde{h}_1, e_0)e_0}{\left\| \tilde{h}_1 - (\tilde{h}_1, e_0)e_0 \right\|}
+  e_2 \in \mathop{\mathrm{span}} \left\{ h_0, h_1, h_2 \right\}, \quad e_2 \perp e_0, e_2 \perp e_1, \left\| e_2 \right\| = 1.
  \end{align*}
  \begin{align*}
-  e_2 \in \mathrm{span} \left\{ \tilde{h}_0, \tilde{h}_1, \tilde{h}_2 \right\}, \quad e_2 \perp e_0, e_2 \perp e_1, \left\| e_2 \right\| = 1.
- \end{align*}
- \begin{align*}
-  e_2 = \frac{\tilde{h}_2 - (\tilde{h}_2, e_0)e_0 - (\tilde{h}_2, e_1)e_1}{\left\| \tilde{h}_2 - (\tilde{h}_2, e_0)e_0 - (\tilde{h}_2, e_1)e_1  \right\|}.
+  e_2 = \frac{h_2 - (h_2, e_0)e_0 - (h_2, e_1)e_1}{\left\| h_2 - (h_2, e_0)e_0 - (h_2, e_1)e_1  \right\|}.
  \end{align*} Продолжая процедуру получаем ортогональную систему $ \{e_{n}\}_{n=0}^{\infty}   $, причём
  \begin{align*}
-     \mathrm{span} \left\{ e_0, e_1, \ldots \right\} \supset \left\{ h_0, h_1, \ldots \right\}.
+  \mathop{\mathrm{span}} \left\{ e_0, e_1, \ldots \right\} \supset \left\{ h_0, h_1, \ldots \right\}.
  \end{align*} Правая часть плотна в $ H $, а значит и левая тоже.
 \end{proof}
 
+\subsection{Ряды Фурье.}
+
 \begin{df}
- \textit{Ряд Фурье элемента $ h \in H $} по ортонормированной системе $ \left\{e_k\right\}_{k \in \Z}  $ --- это
- \begin{align*}
+ \textit{Ряд Фурье элемента $ h \in H $} по ортонормированной системе $ \left\{e_k\right\}_{k \in \Z}  $ --- это формальный ряд
+ \begin{align}
+  \label{eq:Def Fourier Series}
   \sum_{k\in\Z} c_ke_k, 
- \end{align*} где $c_k = (h,e_k)$.
+ \end{align} где $c_k = (h,e_k)$.
 \end{df}
 \begin{remrk*}
- В дальнейшем мы покажем, что ряд $ \sum (h, e_k)e_k $ сходится в $ H $ для любого $ h \in H $ и любой ортонормированной системы в $ H $.
+ В дальнейшем мы покажем, что ряд~\eqref{eq:Def Fourier Series} сходится в $ H $ для любого $ h \in H $ и любой ортонормированной системы в $ H $.
 \end{remrk*}
 
 \begin{claim}[неравенство Бесселя]
@@ -155,7 +176,7 @@
  Обозначим
  \begin{align*}
   g = \sum_{k\in\Z}c_ke_k,\qquad c_k=(h,e_k),
-\end{align*} где ряд сходится в $ H $ по утверждению \eqref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
+ \end{align*} где ряд сходится в $ H $ по утверждению~\ref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
  \begin{align*}
   (g-h,e_k) &= (g,e_k) - c_k = \left(\sum_{-N}^{N}c_je_j + g_N,\; e_k \right) - c_k = \\
   &= \left( \sum_{-N}^{N}c_je_j,\;e_k \right) - c_k + (g_N,e_k) = c_k - c_k + (g_N,e_k) = \\
@@ -176,8 +197,8 @@
 
  Пусть $ f_n \to g-h $ в $ H $ и $ f_n $ лежат в линейной оболочке $ \left\{e_j\right\} $. Тогда
  \begin{align*}
-	 0 = (g-h,f_n) &= (g-h,g-h) + \underbrace{(g-h,f_n - (g-h))}_A, \\
-	 \left| A \right| &\leqslant \left\| g-h \right\| \cdot \left\| f_n - (g-h) \right\| \to 0.
+  0 = (g-h,f_n) &= (g-h,g-h) + \underbrace{(g-h,f_n - (g-h))}_A, \\
+  \left| A \right| &\leqslant \left\| g-h \right\| \cdot \left\| f_n - (g-h) \right\| \to 0.
  \end{align*} Тогда
  \begin{align*}
   \left\| g-h \right\|^{2} = 0 \implies g = h.
@@ -202,8 +223,8 @@
 \end{remrk}
 
 \begin{thm}
-  Пусть $ E,F $ --- как в определении \eqref{definition:orthogonal_projection}.
-  Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{f_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
+ Пусть $ E,F $ --- как в определении~\ref{definition:orthogonal_projection}.
+ Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{f_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
   P \colon\, h \mapsto \sum_{k\in I_1} c_ke_k, \qquad c_k=(h,e_k)
  \end{align*} совпадает с $ P_E $. А
  \begin{align*}
@@ -225,7 +246,7 @@
 \begin{thm}
  Линейный непрерывный оператор $ P \colon\,H \to H$  --- это ортогональный проектор на некоторое подпространство $ E \subset H $ тогда и только тогда, когда
  \begin{enumerate}
-  \item $ P^{2} = P $.
+  \item $ P^{2} = P $ (идемпотентность).
   \item $ (Ph, g) = (h,Pg) $ для любых $ h,g \in H $.
  \end{enumerate} Более того, $ E = P(H) $.
 \end{thm}
