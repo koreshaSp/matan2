@@ -1,164 +1,141 @@
 % 2023.04.27 lecture 10
 \documentclass[../complex-analysis.tex]{subfiles}
 \begin{document}
-Итак, мы нашли подпоследовательность $ f_{\alpha_1}, f_{\alpha_2}, f_{\alpha_3}, \ldots$ такую, что последовательность
-\begin{align*}
- \left\{f_{\alpha_{k}}(x_j) \right\}_{k=1}^{\infty}
-\end{align*} сходится для любой точки $ x_j $ из некоторого счётного всюду плотного подмножества $ X $.
-
-Шаг 2. Нужно доказать, что теперь эта же самая последовательность сходится всюду(а не только во всюду плотном подмножестве). Мы докажем, что последовательность $ \{f_{\alpha_k}(x)\}_{k=1}^{\infty}   $ фундаментальна в $ \CC $ любой точке $ x \in X $.
-
-Возьмём $ x \in X $, $ \eps > 0 $. Найдём $ \delta $ такое, что $\forall \alpha \in A, x, y : \rho(x, y) < \delta \implies | f_\alpha(x) - f_\alpha(y)| < \eps$ (из условия равностепенной непрерывности $f_\alpha$). Пусть $ k, m \in \N $. Воспользуемся $ \eps / 3 $-приёмом:
-\begin{align*}
- \left| f_{k}(x) - f_{m}(x) \right|\leqslant \left| f_k(x) - f_k(x_j) \right| + \left| f_k(x_j) - f_m(x_j) \right| + \left| f_m(x_j) - f_m(x) \right|,
-\end{align*} где $ x_j $ выбрана так, чтобы $ \rho(x, x_j) < \delta $(такое $x_j$ найдётся в силу всюду плотности $\{ x_j\}$). Тогда в силу равностепенной непрерывности можно оценить первое и третье слагаемые:
-\begin{align*}
- \left| f_k(x)-f_m(x) \right| \leqslant 2\eps + \left| f_k(x_j) - f_m(x_j) \right| \leqslant 3\eps
-\end{align*} при $ k, m \geqslant N(\eps) $, ведь последовательность $ f_k(x_j) $ фундаментальна.
-
-Значит, $ f_{\alpha_k}(x) $ сходится для любой точки $ x \in X $, обозначим её предел через $ f(x) $.
-
-Шаг 3. Обоснуем, что сходимость равномерная. Хотим показать что для любого $ \eps > 0 $ и для любого $ x \in X $ существует $ N_x $:
-\begin{align*}
- \left|f_{\alpha_k}(y) - f(y) \right| \leqslant 3\eps
-\end{align*} при $ k \geqslant N_x $, $ y \in B(x, \delta(x)) $(но этого критерия недостаточно для равномерной сходимости). Действительно,
-\begin{align*}
- \left| f_{\alpha_k}(y) - f(y) \right| \leqslant \left| f_{\alpha_k}(y) - f_{\alpha_k}(x) \right| + \left| f_{\alpha_k}(x) - f(x) \right| + \left| f(x) - f(y) \right| \leqslant \\ \leqslant 2\eps + \left| f_{\alpha_k}(x) - f(x) \right| \leqslant 3\eps
-\end{align*}  для любого $ y $, $ \rho(x, y) \leqslant \delta $, где $ \delta $ взята из определения равномерной непрерывности $ f_n $, так как
-\begin{align*}
- \left| f(x) - f(y) \right| = \lim_{n \to \infty} \left|f_{\alpha_n}(x) - f_{\alpha_n}(y) \right| \leqslant \eps.
-\end{align*} 
-
-И $|f_{\alpha_k}(x) - f(x)| \leqslant \eps$ при $N > N_x$, т.к. $f_{\alpha_k}(x) \to f(x)$ .  
-
-Заметим что $\delta $ даже не зависит от $ x $!
-
-Так как $ X $ компактно, то из открытого покрытия $ X = \bigcup_{x \in X} B(x, \delta(x))$ можно выделить конечное подпокрытие
-\begin{align*}
- X = \bigcup_{s=1}^{M} B(z_s, \delta(z_s)).
-\end{align*} Возьмём $ N = \max(N_{z_1}, \ldots, N_{z_M}) $ и победим.
-
-
-Шаг 4. Покажем что полученная функция $f$ непрерывна. Предел --- непрерывная функция: если $ \eps > 0 $, $ \delta $ --- из \eqref{eq:equicontinuity}, то
-\begin{align*}
- \left| f(x) - f(y) \right| = \lim_{k \to \infty} \left| f_{\alpha_k}(x) - f_{\alpha_k}(y) \right| \leqslant \eps,
-\end{align*} в силу \eqref{eq:equicontinuity} для любых $ x,y \in X $ таких, что $ \rho(x,y)<\delta $.
-
-Шаги 3 и 4 --- были в первом семестре (пространство непрерывных функций на компакте).
-
-\begin{remrk}
- Рассмотрим множество \begin{align*}
-  \left\{ f \colon\, X \to \CC \mid f \text{ --- непр} \right\}
- \end{align*} с нормой
- \begin{align*}
-  \left\| f \right\| = \max_{x \in X} \left| f(x) \right|.
- \end{align*} Это множество --- Банахово пространство непрерывных функций на компакте $ X $.
-\end{remrk}
-\begin{proof}[\normalfont\textsc{Доказательство}]
- Нужно доказать, что любой абсолютно сходящийся ряд сходится:
- \begin{align*}
-  \sum_{k=1}^{\infty}\left\| f_k \right\| < \infty \implies \sum_{k=1}^{\infty}f_k = f \in C(X),
- \end{align*} это верно так как верна сходимость числового ряда.
-\end{proof}
-
-В терминах функционального анализа теорема Арцела-Асколи описывает все предкомпкатные подмножества пространства $ C(X) $. Предкомпакт --- это множество, замыкание которого компактно.
 
 \newpage
 \section{Теорема Монтеля.}
 
+Вернёмся к комплексному анализу. Последний шаг перед доказательством теоремы Римана --- это теорема Монтеля.
+
 \begin{thm}[Монтеля]
-\label{theorem:montel}
-Пусть $ \Omega \subset \CC $ --- область, $ \left\{f_{\alpha}\right\}_{\alpha \in A}  $ --- бесконечное семейство аналитических в $ \Omega $ функций такое, что для любого $ z \in \Omega $ существует число $ \eps(z) > 0 $ такое, что $ B(z, \eps(z)) \subset \Omega $, и \begin{align*}
-  \sup_{\substack{w \in B(z, \eps(z)) \\ \alpha \in A}} \left| f_\alpha(w) \right| < \infty
- \end{align*} --- \textit{локальная равномерная ограниченность.} Тогда существует подпоследовательность $ f_{\alpha_k} $ с различными индексами такая, что $f_{\alpha_k} \to f$ равномерно на любом компакте $ K \subset \Omega $.
+ \label{theorem:montel}
+ Пусть $ \mathbf S = \left\{f_\alpha\right\}_{\alpha \in A} $  --- семейство аналитических в области~$ \Omega \subset \CC $ функций, удовлетворяющее условию \emph{локальной равномерной ограниченности:} для любой точки~$ z \in \Omega $ существует такой замкнутый диск~$ \overline B(z,\eps(z)) \subset \Omega$, что
+ \begin{align}
+  \label{eq:Local Uniform Bound:Montel Theorem}
+  \sup_{\substack{\zeta \in \overline B(z, \eps(z)) \\ \alpha \in A}} \left| f_\alpha(\zeta) \right| < +\infty.
+ \end{align} Тогда данное семейство функций <<предкомпактно>>: из всякой последовательности функций $ \{f_{n}\}_{n=1}^{\infty} \subset \mathbf S  $ можно выделить подпоследовательность~$ \{f_{i_n}\}_{n=1}^{\infty}  $, сходящуюся равномерно на компактах в $ \Omega $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Существуют компакты $ K_n $ в $ \Omega $ такие, что $ \Omega = \bigcup_{k=1}^{\infty} K_n $,
+ Первым шагом локализуем теорему на окрестность некоторой точки. Во-первых, существует возрастающая последовательность компактов $ K_1 \subset K_2 \subset \ldots \subset \Omega $, приближающая снизу область~$ \Omega $:
  \begin{align*}
-  K_n = \left\{ z \in \Omega \mid \mathrm{dist}(z, \CC \setminus \Omega) \geqslant 1 / n, \left| z \right| \leqslant n \right\},
- \end{align*} причём $ K_1 \subset K_2 \subset \ldots $ Для каждого $ n $ существует $ \{z_{j}\}_{j=1}^{N_n}   $ такое, что
+  \Omega = \bigcup_{n=1}^{\infty}K_n.
+ \end{align*} Например, можно взять
  \begin{align*}
-	 K_n \subset \bigcup_{j=1}^{N_n} B\left(z_j, \frac{\eps(z_j)}{2}\right),
- \end{align*} где $ \eps(z_j) $ --- из условия теоремы. Следовательно, существует счётный набор точек $ a_j $ такой, что
+  K_n = \left\{ z \in \Omega : \mathop{\mathrm{dist}}(z, \CC \setminus \Omega) \geqslant 1 / n,\; \left| z \right| \leqslant n \right\}.
+ \end{align*} Для каждого компакта $ K_n $ из его открытого покрытия $ \left\{B(z, \eps(z) / 2)\right\}_{z \in K_n} $, где $ \eps(z) $ взято из условия теоремы, можно выделить конечное подпокрытие
  \begin{align*}
-	\Omega = \bigcup_{j=1}^{\infty} B\left(a_j, \frac{\eps(a_j)}{2}\right).
- \end{align*} Достаточно показать, что для любого $ a \in \Omega $ существует последовательность $ f_{\alpha_k} $, сходящаяся равномерно на  $ B(a, \eps(a) / 2) $. Тогда в силу диагонального аргумента Кантора существует подпоследовательность  $ \{f_{\alpha_k}\}_{\alpha_k=1}^{\infty}   $, которая сходится равномерно на всех $ B(a_j, \eps(a_j) / 2) $. Эта последовательность сходится равномерно на любом компакте $ K \subset \Omega $, так как любой компакт можно покрыть конечным числом шаров вида $ B(a, \eps(a) / 2) $.
+  K_n \subset \bigcup_{j=1}^{N_n} B(z_j, \eps(z_j) / 2).
+ \end{align*} Следовательно, существует такой счётный набор точек $ \{a_{n}\}_{n=1}^{\infty} \subset \Omega $, что
+ \begin{align*}
+  \Omega = \bigcup_{n=1}^{\infty} B(a_n, \eps(a_n) / 2).
+ \end{align*}
 
- Возьмём $ a \in \Omega $ и рассмотрим $ \left\{f_{\alpha} \right\}_{\alpha \in A} $ в замкнутом шаре $ \overline{B(a, \eps(a) / 2)} = X $. Это семейство функций равномерно ограничено по условию. Проверим, что оно равностепенно непрерывно.
- \begin{align*}
-  \left|f_\alpha'(w) \right| = \left|\frac{1}{2\pi i} \int\limits_{\left| z - a \right| = \frac{3}{4} \eps(a)}   \frac{f_\alpha(z)}{(z-w)^{2}}\,dz \right| \leqslant \\
-  \leqslant [\text{возьмем $w$: }\left| a-w \right| = \eps(a) / 2] \leqslant \\
-  \leqslant \frac{\frac{3}{4} \cdot 2\pi \cdot \eps(a)}{2\pi} \cdot \sup_{\alpha \in A} \left|f_\alpha(z) \right| \cdot \frac{1}{(\eps(a) / 4)^{2}} = C < \infty
-\end{align*} См. рис. \eqref{fig:montel_theorem_location_of_points}. Мы поняли, что $ \left| f'_\alpha(w) \right| \leqslant C $ для любого $ \alpha \in A $ и $ w $ такого, что  $ \left| a-w \right| = \eps(a) / 2 $. По принципу максимума \eqref{theorem:maximum_principle} $ \left| f_\alpha'(w) \right| \leqslant C $ для любого $ w  $ : $ \left| w-a \right| \leqslant \eps / 2 $. Тогда по неравенству Лагранжа \eqref{theorem:Lagrange_inequality} есть равностепенная непрерывность семейства $ \{f_{\alpha}\}_{\alpha \in A}   $ на $ \overline {B(a, \eps(a) / 2) }$.
- \begin{align*}
-  \left| f_{\alpha}(w_1) - f_{\alpha}(w_2) \right| \leqslant C \left| w_1 - w_2 \right|
- \end{align*} По теореме Арцела-Асколи существует нужная подпоследовательность.
+ Достаточно показать, что для любой точки~$ a \in \Omega $ из последовательности $ \{f_{n}\}_{n=1}^{\infty}  $ можно выделить подпоследовательность, сходящуюся равномерно на $ B(a, \eps(a)/2) $. Тогда в силу диагонального аргумента Кантора существует подпоследовательность, которая равномерно сходится одновременно на всех дисках $ B(a_j, \eps(a_j) / 2) $. Эта подпоследовательность будет сходится равномерно на любом компакте $ K \subset \Omega $, так как любой компакт можно покрыть конечным числом дисков вида $ B(a, \eps(a) / 2) $.
 
-\begin{figure}[ht]
-    \centering
-	\incfig[0.3]{montel_theorem_location_of_points}
-    \caption{Расположение точек относительно друг друга.}
-    \label{fig:montel_theorem_location_of_points}
-\end{figure}
-
+ В таком случае зафиксируем точку~$ a \in \Omega $ и рассмотрим семейство функций~$\mathbf S$, суженное на компакт $ X = \overline{B}(a, \eps(a) / 2) $. Это семейство функций равномерно ограничено по условию~\eqref{eq:Local Uniform Bound:Montel Theorem}. Проверим, что оно равностепенно непрерывно. Для этого достаточно доказать, что производные равномерно ограничены:
+ \begin{align}
+  \label{eq:Bounded Derivative:Montel Theorem}
+  \sup_{\substack{z_0 \in X,\, f \in \mathbf S}}\left| f'(z_0) \right| \leqslant C
+ \end{align} для некоторого~$ C > 0 $; тогда по неравенству Лагранжа~\eqref{eq:lagrange_inequality} (теорема~\ref{theorem:Lagrange_inequality}) для всех $ f \in \mathbf S $, $ z_1,z_2 \in X $ будет верно
+ \begin{align*}
+  \left| f(z_1) - f(z_2) \right| \leqslant C \left| z_1 - z_2 \right|
+ \end{align*} (можно даже сказать, что верна равностепенная липшецевость). Проверим \eqref{eq:Bounded Derivative:Montel Theorem} с помощью формулы~\eqref{eq:Derivative Cauchy Integral Formula} (лемма~\ref{lemma:Derivative Cauchy Integral Formula}), где интегрировать мы будем по окружности~$ C(a,\eps(a)) $ с центром в $ a $ и радиусом~$ \eps(a) $:
+ \begin{align}
+  \label{eq:Derivative Cauchy Integral Formula:Montel Theorem}
+  \left| f'(z_0) \right| = \left| \frac{1}{2\pi i} \varointctrclockwise_{C(a,\eps(a))} \frac{f(z)\,dz}{(z-z_0)^{2}}   \right|.
+ \end{align} Оценим~\eqref{eq:Derivative Cauchy Integral Formula:Montel Theorem} пока что только для точек $ z_0 \in C(a, \eps(a) / 2) $, пользуясь неравенством~\eqref{eq:bound_on_absolute_value_of_int}:
+ \begin{align*}
+  \left| f'(z_0) \right| \leqslant \frac{2\pi \cdot \eps(a)}{2\pi \cdot (\eps(a) / 2)^{2}} \cdot \max_{\substack{z \in \overline B(a,\eps(a)) \\ f \in \mathbf S}} \left| f(z) \right| \leqslant C < +\infty.
+ \end{align*} Но тогда по принципу максимума (следствие~\ref{corollary:maximum_principle_border}) неравенство~\eqref{eq:Bounded Derivative:Montel Theorem} верно и для всех $ z_0 \in \overline B(a, \eps(a) / 2) $. Таким образом, семейство~$ \mathbf S $ равностепенно непрерывно. Тогда по теореме~\ref{theorem:Arzela-Ascoli} Арцела-Асколи из любой последовательности функций~$ \{f_{n}\}_{n=1}^{\infty} \subset \mathbf S $  можно выделить подпоследовательность, сходящуюся равномерно на компакте~$ X = \overline B(a,\eps(a) / 2) $.
 \end{proof}
 
 \begin{remrk}
- Функция $ f $ из теоремы Монтеля аналитична в $ \Omega $.
+ В условиях теоремы~\ref{theorem:montel} Монтеля предельная функция~$ f $ аналитична в области~$ \Omega $.
 \end{remrk}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Тест на прямоугольниках.
+ По лемме~\ref{lemma:Lim of Analytic Functions is Analytic} предел последовательности аналитических в области~$ \Omega $ функций, сходящихся равномерно на компактах в $ \Omega $, является аналитической функцией.
 \end{proof}
 
 \newpage
 \section{Теорема Римана.}
 
-\begin{df}
- $ \Omega_1 $, $ \Omega_2 $ --- области, $ f \colon\; \Omega_1 \to \Omega_2 $ --- конформное отображение, если $ f $ аналитична и $ f $ --- биекция между $ \Omega_1 $ и $ \Omega_2 $.
-\end{df}
-
-Физики любят конформные отображения, так как они сохраняют углы между кривыми. Конформная инвариантность --- очень важна.
+\subsection{Конформные отображения.}
 
 \begin{df}
- Области $ \Omega_1 $ и $ \Omega_2 $ называются \textit{конформно эквивалентными}, если существует конформное отображение $ f \colon\, \Omega_1 \to \Omega_2 $.
+ Пусть $ \Omega_1, \Omega_2 \subset \CC $ --- области. Функция $ f \colon\; \Omega_1 \to \Omega_2 $ называется \emph{конформным отображением}, если функция~$ f $ аналитична и является биекцией между $ \Omega_1 $  и $ \Omega_2 $.
 \end{df}
+
+\begin{prop}\
+ \label{proposition:conformal_map_group_properties}
+ \begin{enumerate}
+  \item Если $ f\colon\,\Omega_1 \to \Omega_2 $ и $ g\colon\,\Omega_2\to\Omega_3 $ --- конформные отображения, то их композиция $ (g \circ f) \colon\,\Omega_1 \to \Omega_3 $ --- конформное отображение.
+  \item Если $ f \colon\,\Omega_1 \to \Omega_2 $ --- конформное отображение, то обратное отображение $ f^{-1}\colon\,\Omega_2\to\Omega_1 $ также является конформным.
+ \end{enumerate}
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]\
+ \begin{enumerate}
+  \item Очевидно: композиция аналитичных функций аналитична (следствие~\ref{corollary:Simple Operations with Analytics Funs}).
+  \item Теорема об обратном отображении из вещественного анализа.
+ \end{enumerate}
+\end{proof}
+
+Физики очень любят конформные отображения, так как они сохраняют углы между кривыми. Конформная инвариантность очень важна в приложениях.
+
+\begin{df}
+ Области $ \Omega_1, \Omega_2 \subset \Omega $ называются \textit{конформно эквивалентными}, если существует конформное отображение $ f \colon\, \Omega_1 \to \Omega_2 $.
+\end{df}
+\begin{prop}
+ Конформная эквивалентность является отношением эквивалентности, то есть
+ \begin{itemize}
+  \item область~$ \Omega $ конформно эквивалентна сама себе;
+  \item если $ \Omega_1 $ конформно эквивалентна $ \Omega_2 $, то и $ \Omega_2 $ конформно эквивалентна $ \Omega_1 $;
+  \item если $ \Omega_1 $ конформно эквивалентна $ \Omega_2 $, а $ \Omega_2 $ конформно эквивалентна $ \Omega_3 $, то и $ \Omega_1 $ конформно эквивалентна $ \Omega_3 $.
+ \end{itemize}
+\end{prop}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Очевидно из предложения~\ref{proposition:conformal_map_group_properties}.
+\end{proof}
+
+В связи с данными определениями возникает естественный вопрос: какие области в $ \CC $ конформно эквивалентны, а какие нет? Приведём сначала отрицательные примеры, показывающие, что не все области конформно эквивалентны.
 
 \begin{exmpl}
- $ \CC $ и $ \mathbb D $ не являются конформно эквивалентными.
+ Области $ \CC $ и $ \mathbb D $ не являются конформно эквивалентными.
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство}]
-  Теорема Лиувилля \eqref{theorem:liuvill}.
+  Если бы существовало конформное отображение~$ f\colon\,\CC \to \mathbb D $, то по теореме \ref{theorem:liuvill} Лиувилля оно было бы постоянным, чего не может быть.
 \end{proof}
 \begin{exmpl}
- $ \mathbb D $ и $ \mathbb D \setminus \left\{ 0 \right\} $ не являются конформно эквивалентными, так как односвязность сохраняется при конформных отображениях.
-\end{exmpl}
-Приведём теперь положительный пример.
-\begin{exmpl}
- $ \left\{ \Real z < 0 \right\} $ и $ \mathbb D $ конформно эквивалентны.
+ Области $ \mathbb D $ и $ \mathbb D \setminus \left\{ 0 \right\} $ не являются конформно эквивалентными, так как односвязность сохраняется при конформных отображениях.
 \end{exmpl}
 \begin{proof}[\normalfont\textsc{Доказательство}]
- Возьмём точку $ a \in \left\{ \Real z < 0 \right\} $ и рассмотрим отображение
+ Пусть область $ \Omega_1 \subset \Omega $ односвязна, и $ f \colon\, \Omega_1 \to \Omega_2 $ --- конформное отображение на область~$ \Omega_2 \subset \CC $. Пусть $ \gamma_0, \gamma_1 \colon\,[a,b] \to \Omega_2 $ --- два пути в $ \Omega_2 $, имеющие одинаковые начало и конец. Тогда пути $ \eta_0,\eta_1 \colon [a,b] \to \Omega_2 $, $ \eta_0 = f^{-1} \circ \gamma_0 $, $ \eta_1 = f^{-1} \circ \gamma_1 $ гомотопны в односвязной области~$ \Omega_1 $; пусть $ H \colon\,[0,1] \times [a,b] \to \Omega_1 $ --- их гомотопия. Тогда отображение $ f \circ H $ является гомотопией путей $ \gamma_0 $ и $ \gamma_1 $.
+\end{proof}
+
+Приведём теперь положительный пример.
+\begin{exmpl}
+ Области $ \left\{ z \in \CC : \Real z < 0 \right\} $ и $ \mathbb D $ конформно эквивалентны.
+\end{exmpl}
+\begin{proof}[\normalfont\textsc{Доказательство}]
+ Для краткости обозначим $ \Omega = \left\{ z \in \CC : \Real z < 0 \right\} $. Возьмём любую точку~$ a \in \Omega $ и рассмотрим отображение
  \begin{align*}
   f(z) = \frac{z-a}{z+\overline a}.
- \end{align*} Проверим, что $ f $ и есть искомое конформное отображение на $ \mathbb D $. $ f(a) = 0 $.
+ \end{align*} Проверим, что $ f $ и есть искомое конформное отображение $ \Omega \to \mathbb D $. Проверим сначала что оно действует в $ \mathbb D $:
  \begin{align*}
-  1 - \left| f(z) \right|^{2} &= \frac{\left| z+\overline a \right|^{2} - \left| z-a \right|^{2}}{\left| z+\overline a \right|^{2}} = \frac{\left| z \right|^{2} + \left| a \right|^{2} + 2 \Real(za) -\left| z \right|^{2} - \left| a \right|^{2} + 2 \Real(z \overline a)}{\left| z+\overline a \right|^{2}} = \\
-  &= \frac{2 \Real(z(a+\overline a))}{\left| z+\overline a \right|^{2}} = \frac{4\Real(a)\Real(z)}{\left| z+\overline a \right|^{2}} > 0.
+  1 - \left| f(z) \right|^{2} &= \frac{\left| z+\overline a \right|^{2} - \left| z-a \right|^{2}}{\left| z+\overline a \right|^{2}} = \frac{\left| z \right|^{2} + 2 \Real(za) + \left| a \right|^{2} -\left| z \right|^{2} + 2 \Real(z \overline a) - \left| a \right|^{2}}{\left| z+\overline a \right|^{2}} = \\
+  &= \frac{2 \Real(z(a+\overline a))}{\left| z+\overline a \right|^{2}} = \frac{4\Real a \cdot \Real z}{\left| z+\overline a \right|^{2}} > 0, \quad \text{так как } \Real a < 0,\; \Real z < 0.
  \end{align*}
-То есть $ \left| f(z) \right|< 1 $ для любого $ z \in \left\{ \Real z < 0 \right\}$, то есть $ f $ действует из $ \left\{ \Real z < 0 \right\} $ в подмножество $ \mathbb D $. Докажем, что $ f $ обратима: пусть $ w \in \mathbb D $. Найдём точку $ z $ такое, что
+То есть $ \left| f(z) \right|< 1 $ для любого $ z \in \Omega$. Докажем теперь, что $ f $ обратима. Пусть $ w \in \mathbb D $. Найдём точку $ z \in \Omega $ такую, что
 \begin{align*}
- \frac{z-a}{z+\overline a} = w \iff z-a = wz + \overline a w \iff \\ \iff z(1-w) = a + \overline a w \iff z = \frac{a + \overline a w}{1 - w} = g(z).
-\end{align*} Утверждается, что $ \Real z < 0 $.
+ &\frac{z-a}{z+\overline a} = w \iff z-a = wz + \overline a w \iff \\
+ \iff\; &z(1-w) = a + \overline a w \iff z = \frac{a + \overline a w}{1 - w} = g(z).
+\end{align*} Утверждается, что при $ w \in \mathbb D $ $ \Real z < 0 $:
 \begin{align*}
-  \Real z &= \frac{\Real((1 - \overline w)(a + \overline a w))}{\left| 1-w \right|^{2}} =_{\mathrm sgn} \Real(a + \overline a w - \overline w a - \overline a \left| w \right|^{2}) =_{sgn} \\
-  &=_{sgn} \Real(a - \overline a |w|^2) =_{sgn} (\Real a)(1 - \left| w \right|^{2}) < 0.
-\end{align*}
+ &\Real z < 0 \iff \Real \frac{a + \overline a w}{1 - w} < 0 \iff \frac{\Real ((1-\overline w)(a + \overline a w))}{\left| 1-w \right|^{2}} < 0 \iff \\
+ \iff\;& \Real(a + \overline a w - a \overline w - \overline a \left| w \right|^{2}) < 0 \iff \Real(a - \overline a \left| w \right|^{2}) < 0 \iff \\
+ \iff\;& \Real  a < \Real (\overline a \left| w \right|^{2}) \iff \Real a < \left| w \right|^{2} \Real a,
+\end{align*} а последнее верно, так как $\Real a < 0$ и $ \left| w \right| < 1 $.
 
-Тогда инъективность легко получается из обратной функции:
-
-\begin{align*}
-	f(z_1) = f(z_2) \implies g(f(z_1)) = g(f(z_2)) \implies z_1 = z_2.
-\end{align*}
+Таким образом, аналитическая функция~$ f $ действует в $ \mathbb D $, и обратима, значит это конформное отображение между $ \Omega $ и $ \mathbb D $.
 
 \end{proof} 
 

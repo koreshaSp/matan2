@@ -44,7 +44,7 @@
    \begin{itemize}
     \item $ p_N \geqslant 0 $.
     \item $ \int_{-\pi}^{\pi} p_N\,dx = 1  $.
-    \item $ \max_{\pi \geqslant \left| x \right| > \eps} p_N(x) \to 0 $ для любого $ \eps > 0 $ при $ N \to \infty $.
+    \item $ \max_{ \eps \leqslant \left| x \right| \leqslant \pi } p_N(x) \to 0 $ для любого $ \eps > 0 $ при $ N \to \infty $.
    \end{itemize} Тогда 
    \begin{align*}
     \int_{-\pi}^{\pi} g(s)p_N(s)\,ds \to g(0)
@@ -64,8 +64,13 @@
   \frac{1}{M+1}\sum_{0}^{M} S_N(g,0) = \int_{-\pi}^{\pi}g(s)p_M(s)\,ds,
  \end{align} где
  \begin{align*}
+  p_M(s) &= \frac{1}{2\pi (M+1)} \sum_{N=0}^{M} \sum_{-N}^{N} e^{-ins}
+ \end{align*} 
+ Далее поймем, что двойную сумму на самом деле можно переписать:
+ \begin{align*}
   p_M(s) = \frac{1}{2 \pi (M+1)} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
- \end{align*} Действительно, \eqref{eq:feyera_S_N} верна по определению для
+ \end{align*} 
+ Действительно, \eqref{eq:feyera_S_N} верна по определению для
  {
 	 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
   \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
@@ -76,9 +81,9 @@
  \begin{align*}
   &\left| 1+\ldots+e^{iMs} + e^{i(M+1)s} \right|^{2} = \left[|a + b|^2 = |a|^2 + |b|^2 + a \overline b + \overline a b, \, \forall a, b \in \mathbb C\right] = \\
   &= \left| 1+\ldots+e^{iMs} \right|^{2} + \underbrace{\left| e^{i(M+1)s} \right|^{2}}_{=1} + \\ 
-  &+ \underbrace{(1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s}}_{\sum_{-M + 1}^{-1} e^{-ins}} + \underbrace{(1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s}}_{\sum_{1}^{M + 1} e^{-ins}} = \\
-  &= \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M+1}^{M+1} e^{-ins},
- \end{align*} переход проверен. Но при $ s \neq 2\pi k $.
+  &+ \underbrace{(1+e^{is}+ \ldots + e^{iMs})e^{-i(M+1)s}}_{\sum_{-M - 1}^{-1} e^{-ins}} + \underbrace{(1 + e^{-is} + \ldots + e^{-iMs})e^{i(M+1)s}}_{\sum_{1}^{M + 1} e^{-ins}} = \\
+  &= \sum_{0}^{M} \sum_{-N}^{N}e^{-ins} + \sum_{-M-1}^{M+1} e^{-ins},
+ \end{align*} переход проверен. Но при $ s \neq 2\pi k $ можно свернуть сумму геометрической прогрессии:
  \begin{align*}
   p_M(s) &= \frac{1}{2 \pi (M+1)} \left| \frac{1-e^{i(M+1)s}}{1-e^{is}} \right|^{2} = \\
   &= \frac{1}{2 \pi (M+1)}  \left|\frac{\frac{e^{-i(M+1)s / 2} - e^{i(M+1)s / 2}}{2i}}{\frac{e^{-is / 2} - e^{is / 2}}{2i}} \right|^{2} = \frac{1}{2 \pi (M+1)} \frac{ \sin^{2} \frac{(M+1)s}{2}}{\sin^{2} \frac{s}{2}}
@@ -132,7 +137,7 @@
   \int\limits_{-\pi}^{\pi} f p \,dx = 0, \, \forall p \in \mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}.
  \end{align*} Тогда 
  \begin{align*}
-  \int\limits_{-\pi}^{\pi} f \cdot g_\eps \, dx = 0,
+  \int\limits_{-\pi}^{\pi} f \cdot g_\eps \, dx = 0, \forall \varepsilon > 0,
 \end{align*} где $ g_\eps $ как на картинке \eqref{fig:eint_full_in_l2_g_eps}(т.к. $g_{\eps}$ лежит в $\mathrm{span} \left\{ e^{int} \right\}_{n \in \Z}$  ).
 
 \begin{figure}[ht]
@@ -142,13 +147,13 @@
     \label{fig:eint_full_in_l2_g_eps}
 \end{figure}
 
- Тогда
+ Тогда, рассматривая предел $ \varepsilon \to 0 $ по лемме Лебега о мажорируемой сходимости с мажорантой $ \left| f \right| $ можно совершить следующий переход:
  \begin{align*}
-  \int\limits_{-\pi}^{\pi} f(x) \chi_{[a,b]}(x) \,dx = 0
- \end{align*} перешли к пределу по $ \eps $ (теорема Лебега о мажорируемой сходимости). Мажоранта $ \left| f \right| $. Ну и получилось, что 
+     0 = \lim_{ \varepsilon \to 0 } \int\limits_{-\pi}^{\pi} f(x) g_{\varepsilon}(x) \,dx = \int\limits_{-\pi}^{\pi} f(x) \chi_{[a,b]}(x) \,dx
+ \end{align*} Ну и получилось, что 
  \begin{align*}
   \frac{1}{b-a} \int_a^{b} f(x)\,dx = 0
- \end{align*} для любых $ a,  b \in(-\pi,\pi)$. Следовательно, $ f(a) = 0 $ в любой точке Лебега $ a \in [-\pi,\pi] $. А они почти везде. Значит, $ f = 0 $ как элемент $ L^{2}[-\pi,\pi] $.
+ \end{align*} для любых $ a,  b \in(-\pi,\pi)$. Следовательно, $ f(x) = 0 $ в любой точке Лебега $ x \in [-\pi,\pi] $. А они почти везде. Значит, $ f = 0 $ как элемент $ L^{2}[-\pi,\pi] $.
 \end{proof}
 
 \begin{crly}
@@ -250,14 +255,14 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Ряд Фурье
  \begin{align*}
-  \sum_{k \in \Z}c_k e^{-ikt}
+  \sum_{k \in \Z}c_k e^{ikt}
  \end{align*} сходится по Чезаро к $ f $ всюду по теореме Фейера. Кроме того,
  \begin{align*}
   \left| c_ke^{ikt} \right| = \mathcal O(1 / k).
  \end{align*} По предыдущей теореме. Следовательно, нам достаточно доказать теорему Харди для числовых рядов: если $ \sum_{n=1}^{\infty} a_n $ сходится по Чезаро, и $ a_n = \mathcal O(1 / n) $, то ряд сходится и в обычном смысле. (Тауберовая теорема, она просто для чисел)
 \end{proof}
 
-\begin{proof}[\normalfont\textsc{Доказательство тау}]
+\begin{proof}[\normalfont\textsc{Доказательство тауберовой теоремы}]
  Для простоты считаем что занумеровано всё натуральными
  \begin{align*}
   s_n = a_1 + \ldots + a_n, \\
@@ -265,7 +270,7 @@
   \sigma_{n,l} = \frac{s_{n+1} + \ldots + s_{n+l}}{l}.
  \end{align*} Нам дано $ \sigma_n \to S $, $a_n = O(\frac 1 n)$(Тауберово условие) . Хотим $ s_n \to S $.
 
- Шаг 1: Пусть $l = [n \cdot \eps]$: 
+ Шаг 1: Пусть $l = [n \cdot \eps]$, где $ \varepsilon $ пока некоторая константа, а $ n \to \infty$: 
  \begin{align*}
   \sigma_{n,l} = \frac{1}{l}(\sigma_{n+l}(n+l) - \sigma_n \cdot n) =  \underbrace{(\sigma_{n+l} - \sigma_n)}_{\to 0 \text{ по Коши}}\underbrace{\frac{n+l}{l}}_{O(1)} + \underbrace{\sigma_n \left( \frac{n+l}{l} - \frac{n}{l} \right)}_{=\sigma_n} \implies \\
   \implies \varlimsup \left| \sigma_n - \sigma_{n,l} \right| = 0
@@ -277,8 +282,9 @@
 	&\leqslant \frac{\left| a_{n+1} \right| + (\left| a_{n+1} \right| + \left| a_{n+2} \right|) + \ldots + \left( \left| a_{n+1} \right| + \ldots + \left| a_{n+l} \right| \right)} {l} \leqslant \\
 	&\leqslant \frac{l |a_{n+1}| + (l - 1) |a_{n + 2}| + \ldots + |a_{n + l}|}{l} \leqslant |a_{n + 1}| + |a_{n + 2}| + \ldots + |a_{n + l}| \leqslant \\
 	&\leqslant \sum_{k=n+1}^{n+l} \frac{C}{k} \leqslant \frac{C\cdot l}{n+1} = \frac{c[n\eps]}{n} \leqslant \tilde C \cdot \eps \implies \\
-	&\implies \varlimsup \left| s_n - \sigma_{n,l} \right| \leqslant C \cdot \eps 
+    &\implies \varlimsup_{ n \to \infty } \left| s_n - \sigma_{n,l} \right| \leqslant C \cdot \eps 
  \end{align*}
+Устремив $ \varepsilon \to 0 $ получаем требуемую сходимость.
 \end{proof}
 
 \end{document}

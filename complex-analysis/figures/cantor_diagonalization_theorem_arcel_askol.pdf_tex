@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
+%% Creator: Inkscape 1.1.2 (0a00cf5339, 2022-02-04), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'cantor_diagonalization_theorem_arcel_askol.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{382.72622496bp}%
+    \setlength{\unitlength}{680.31496063bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,9 +50,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.51317874)%
+  \begin{picture}(1,0.5)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
+    \put(0.10723,0.37312772){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_1^{(1)}$\end{tabular}}}}%
+    \put(0.24164542,0.37312772){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_2^{(1)}$\end{tabular}}}}%
+    \put(0.37594935,0.37312772){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_3^{(1)}$\end{tabular}}}}%
+    \put(0.10723,0.23743346){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_1^{(2)}$\end{tabular}}}}%
+    \put(0.24164542,0.23743346){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_2^{(2)}$\end{tabular}}}}%
+    \put(0.37594935,0.23743346){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_3^{(2)}$\end{tabular}}}}%
+    \put(0.10723,0.10332958){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_1^{(3)}$\end{tabular}}}}%
+    \put(0.24164542,0.10332958){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_2^{(3)}$\end{tabular}}}}%
+    \put(0.37594935,0.10332958){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f_3^{(3)}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{cantor_diagonalization_theorem_arcel_askol.pdf}}%
   \end{picture}%
 \endgroup%
