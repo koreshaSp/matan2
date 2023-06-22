@@ -22,11 +22,11 @@
   \end{align*}
 
   Есть дискретный вариант этого пространства
-   \begin{align*}
-   \ell^{2}(\Z) = \left\{ \{a_{k}\}_{k=1}^{\infty} \Mid \sum_{k=1}^{\infty}\left| a_k \right|^{2} < \infty  \right\},
+  \begin{align*}
+       \ell^{2}(\Z) = \left\{ \{a_{k}\}_{k \in \mathbb{Z}} \Mid \sum_{k \in \mathbb{Z}}\left| a_k \right|^{2} < \infty  \right\},
   \end{align*} где
   \begin{align*}
-   \left( \{a_{k}\}_{k=1}^{\infty}, \{b_{k}\}_{k=1}^{\infty}   \right) = \sum_{k \in\Z}^{\infty} a_k \overline{b_k}.
+   \left( \{a_{k}\}_{k \in \mathbb{Z}}, \{b_{k}\}_{k \in \mathbb{Z}} \right) = \sum_{k \in\Z} a_k \overline{b_k}.
   \end{align*}
  \item 
   \begin{align*}
@@ -56,9 +56,9 @@
 \end{df}
 Любую ортогональную систему легко превратить в ортонормированную: нужно поделить каждое $ e_k $ на норму $ \left\| e_k \right\| $.
 \begin{df}
- Множество $ \left\{e_k\right\}_{k\in\Z}  \subset H $ --- \textit{ортонормированный базис}, если линейная оболочка этого множества
+ Множество $ \left\{e_k\right\}_{k\in\Z}  \subset H $ --- \textit{ортонормированный базис}, если линейная оболочка этого множества:
  \begin{align*}
-  \left\{ \sum_{k=-N}^{N} c_k e_k \Mid c_k \in \CC \right\}
+     \left\{ \sum_{k=-N}^{N} c_k e_k \Mid c_k \in \CC, N \in \mathbb{N} \right\}
  \end{align*} плотна в $ H $.
 \end{df}
 
@@ -68,24 +68,28 @@
 \begin{proof}[\normalfont\textsc{Доказательство}]
  Пусть $ \left\{e_k\right\}_{k \in \Z}  $ --- ортонормированный базис. Тогда \begin{align*}
   \left\{ \sum_{k=-N}^{N} c_ke_k \Mid c_k \in \Q + i\Q,\, N \in\N \right\}
- \end{align*} --- это счётное всюду плотное подмножество $ H $.
+\end{align*} --- это счётное всюду плотное подмножество $ H $. Тут мы пользуемся тем, что любое $ с\in \CC $ можно хорошо приблизить $ c' \in \mathbb{Q} + i \mathbb{Q} $.
 
-Обратно, если $ E \subset H $ --- счётное всюду плотное подмножество $ E = \left\{ h_k \right\}_{k \in \Z_+} $. Можно считать, что $ h_k \neq 0 $ для любого $ k $, и $ h_k \notin \mathrm{span}\{h_0, \ldots, h_{k-1}\} $. Далее
+Обратно, если $ E \subset H $ --- счётное всюду плотное подмножество $ E = \left\{ h_n \right\}_{n \in \Z_+} $.
+Из этой последовательности можно выделить подпоследовательность такую,
+что $ h_{n_k} \neq 0 $ для любого $ k $, и $ h_{n_k} \notin \mathrm{span}\{h_0, \ldots, h_{k-1}\} $. Ноль можно выкинуть, так как $ E \setminus \{0\} $,
+очевидно, все еще плотное.
+Далее просто знакомая нам ортогонализация Грама-Шмидта для последовательности $ \tilde{h}_k = h_{n_k} $.
  \begin{align*}
-  e_0 = \frac{h_0}{\left\| h_0 \right\|}, \\
-  e_1 \in \mathrm{span} \left\{ h_0,h_1 \right\} \colon e_1 \perp e_0, \left\| e_1 \right\| = 1.
+  e_0 = \frac{\tilde{h}_0}{\left\| \tilde{h}_0 \right\|}, \\
+  e_1 \in \mathrm{span} \left\{ \tilde{h}_0,\tilde{h}_1 \right\} \colon e_1 \perp e_0, \left\| e_1 \right\| = 1.
  \end{align*} \begin{align*}
-  e_1 = \frac{h_1 - (h_1, e_0)e_0}{\left\| h_1 - (h_1, e_0)e_0 \right\|}
+  e_1 = \frac{\tilde{h}_1 - (\tilde{h}_1, e_0)e_0}{\left\| \tilde{h}_1 - (\tilde{h}_1, e_0)e_0 \right\|}
  \end{align*}
  \begin{align*}
-  e_2 \in \mathrm{span} \left\{ h_0, h_1, h_2 \right\}, \quad e_2 \perp e_0, e_2 \perp e_1, \left\| e_2 \right\| = 1.
+  e_2 \in \mathrm{span} \left\{ \tilde{h}_0, \tilde{h}_1, \tilde{h}_2 \right\}, \quad e_2 \perp e_0, e_2 \perp e_1, \left\| e_2 \right\| = 1.
  \end{align*}
  \begin{align*}
-  e_2 = \frac{h_2 - (h_2, e_0)e_0 - (h_2, e_1)e_1}{\left\| h_2 - (h_2, e_0)e_0 - (h_2, e_1)e_1  \right\|}.
+  e_2 = \frac{\tilde{h}_2 - (\tilde{h}_2, e_0)e_0 - (\tilde{h}_2, e_1)e_1}{\left\| \tilde{h}_2 - (\tilde{h}_2, e_0)e_0 - (\tilde{h}_2, e_1)e_1  \right\|}.
  \end{align*} Продолжая процедуру получаем ортогональную систему $ \{e_{n}\}_{n=0}^{\infty}   $, причём
  \begin{align*}
-  \mathrm{span} \left\{ e_0, e_1, \ldots \right\} \supset \left\{ h_0, h_1, \ldots \right\}.
- \end{align*} Правая часть плотна в $ H $.
+     \mathrm{span} \left\{ e_0, e_1, \ldots \right\} \supset \left\{ h_0, h_1, \ldots \right\}.
+ \end{align*} Правая часть плотна в $ H $, а значит и левая тоже.
 \end{proof}
 
 \begin{df}
@@ -151,7 +155,7 @@
  Обозначим
  \begin{align*}
   g = \sum_{k\in\Z}c_ke_k,\qquad c_k=(h,e_k),
-\end{align*} где ряд сходится по утверждению \eqref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
+\end{align*} где ряд сходится в $ H $ по утверждению \eqref{claim:fourier_series_convergence}. Наша цель: показать $ g=h $. Рассмотрим
  \begin{align*}
   (g-h,e_k) &= (g,e_k) - c_k = \left(\sum_{-N}^{N}c_je_j + g_N,\; e_k \right) - c_k = \\
   &= \left( \sum_{-N}^{N}c_je_j,\;e_k \right) - c_k + (g_N,e_k) = c_k - c_k + (g_N,e_k) = \\
@@ -198,17 +202,18 @@
 \end{remrk}
 
 \begin{thm}
-  Пусть $ E,F $ --- как в определении \eqref{definition:orthogonal_projection}. Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{e_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
+  Пусть $ E,F $ --- как в определении \eqref{definition:orthogonal_projection}.
+  Пусть $ \left\{e_k\right\}_{k\in I_1}  $ --- ОНБ в $ E $, и $ \left\{f_k\right\}_{k\in I_2}  $ --- ОНБ в $ F $. Тогда оператор \begin{align*}
   P \colon\, h \mapsto \sum_{k\in I_1} c_ke_k, \qquad c_k=(h,e_k)
  \end{align*} совпадает с $ P_E $. А
  \begin{align*}
-  Q \colon\, h \mapsto \sum_{k \in I_2} c_kf_k, \qquad f_k=(h,f_k)
+  Q \colon\, h \mapsto \sum_{k \in I_2} c_kf_k, \qquad a_k=(h,f_k)
  \end{align*} совпадает с $ P_F $.
 \end{thm}
 \begin{proof}[\normalfont\textsc{Доказательство}]
  $ \left\{e_k\right\}_{k \in I_1} \sqcup \left\{f_k\right\}_{k \in I_2}  $ --- ОНБ в $ H $. Значит,
  \begin{align*}
-  h = \underbrace{\sum_{k\in I_1}c_k e_k}_{\in E} + \underbrace{\sum_{k \in I_2} a_k e_k}_{\in F}.
+  h = \underbrace{\sum_{k\in I_1}c_k e_k}_{\in E} + \underbrace{\sum_{k \in I_2} a_k f_k}_{\in F}.
  \end{align*} Здесь $ \sum_{k\in I_1}c_ke_k  $ лежит в $ E $, так как это предел, а $ E $ --- замкнуто. Аналогично для $ F $. Продолжим равенство:
  \begin{align*}
   h = P h + Q h = P_E h + P_F h.
